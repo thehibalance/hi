@@ -386,11 +386,11 @@ function openDetailPanel(profile, dim) {
         dot.style.color = '#1a7a3a';
         text.textContent = `Connected · ${resp.companies} companies · API live`;
       } else {
-        dot.style.color = '#d4a843';
+        dot.style.color = '#E07020';
         text.textContent = 'Offline · Using local database (206 companies)';
       }
     } catch (e) {
-      dot.style.color = '#d4a843';
+      dot.style.color = '#E07020';
       text.textContent = 'Offline · Using local database (206 companies)';
     }
   })();

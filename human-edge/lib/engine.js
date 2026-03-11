@@ -29,7 +29,7 @@ const HumanEngine = {
 
   TIERS: [
     { min: 90, max: 100, grade: "HI Certified", name: "HI Certified", letter: "HI",
-      stars: "★★★★★", color: "#1a7a3a", requiresVerification: true,
+      stars: "★★★★★", color: "#C49B20", requiresVerification: true,
       satire: "Humans and tech, in harmony. This is what balance looks like.",
       badge: "HI Certified — this is what balance looks like." },
     { min: 80, max: 89,  grade: "A", name: "Excellent", letter: "A",
@@ -41,11 +41,11 @@ const HumanEngine = {
       satire: "Humans and machines, learning to share the remote.",
       badge: "Good — learning to share the remote." },
     { min: 42, max: 59,  grade: "C", name: "The Answer", letter: "C",
-      stars: "★★☆☆☆", color: "#d4a843", requiresVerification: false,
+      stars: "★★☆☆☆", color: "#E07020", requiresVerification: false,
       satire: "42. The answer to everything. Now what's the question?",
       badge: "42 — now what's the question?" },
     { min: 0,  max: 41,  grade: "F", name: "Failing Humanity", letter: "F",
-      stars: "★☆☆☆☆", color: "#c0392b", requiresVerification: false,
+      stars: "★☆☆☆☆", color: "#6B7280", requiresVerification: false,
       satire: "Don't panic. Every journey starts somewhere.",
       badge: "Don't panic." },
   ],
@@ -266,11 +266,10 @@ const HumanEngine = {
    * Get the color for a score value (gradient from red to green).
    */
   getScoreColor(score) {
-    if (score >= 75) return "#1a7a3a";
-    if (score >= 60) return "#2e8b57";
-    if (score >= 45) return "#d4a843";
-    if (score >= 30) return "#d47843";
-    return "#c0392b";
+    if (score >= 80) return "#2e8b57";  // A and above — green
+    if (score >= 60) return "#4a90d9";  // B — blue
+    if (score >= 42) return "#E07020";  // C — orange
+    return "#6B7280";                   // F — slate gray
   },
 
   /**
