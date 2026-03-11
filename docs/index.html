@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HI. — Find the HI balance.</title>
+<meta name="description" content="The balance between humans and technology, measured. Every company gets an HI Grade.">
+<meta property="og:title" content="HI. — Find the HI balance.">
+<meta property="og:description" content="The balance between humans and technology, measured.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thehibalance.org">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B3A5C; --slate: #2E5E8E; --sky: #3A7BBF;
+  --bg: #F7F8FA; --white: #FFFFFF; --dark: #0F1A2E;
+  --text: #1a1a2e; --muted: #6B7280; --light: #E5E7EB;
+  --gold: #C49B20; --green: #2e8b57; --blue: #4a90d9;
+  --orange: #E07020; --gray: #6B7280;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'DM Sans','Helvetica Neue',sans-serif; background:var(--bg); color:var(--text); }
+a { color:var(--sky); text-decoration:none; }
+
+/* Nav */
+nav { background:var(--dark); padding:14px 0; position:sticky; top:0; z-index:100; border-bottom:3px solid var(--sky); }
+.nav-inner { max-width:1100px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; }
+.nav-brand { font-family:'DM Serif Display'; font-size:28px; color:var(--white); cursor:pointer; letter-spacing:1px; }
+.nav-links { display:flex; gap:16px; }
+.nav-link { color:#8899AA; font-size:13px; font-weight:500; cursor:pointer; border-bottom:2px solid transparent; padding-bottom:2px; transition:all 0.2s; }
+.nav-link.active, .nav-link:hover { color:var(--white); border-bottom-color:var(--sky); }
+.nav-tagline { color:#5A7A9A; font-size:11px; letter-spacing:1.5px; font-weight:500; text-transform:uppercase; }
+
+/* Hero */
+.hero { text-align:center; padding:80px 0 50px; }
+.hero h1 { font-family:'DM Serif Display'; font-size:72px; color:var(--navy); letter-spacing:-1px; }
+.hero p { font-size:22px; color:var(--slate); margin-top:8px; }
+.hero-sub { font-size:15px; color:var(--muted); margin-top:16px; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.6; }
+
+/* Search */
+.search-wrap { max-width:560px; margin:0 auto 50px; position:relative; }
+.search-input { width:100%; padding:16px 24px; font-size:17px; border:2px solid var(--light); border-radius:14px; outline:none; font-family:inherit; background:var(--white); box-shadow:0 4px 20px rgba(0,0,0,0.06); transition:border 0.2s; }
+.search-input:focus { border-color:var(--sky); }
+.search-results { position:absolute; top:100%; left:0; right:0; background:var(--white); border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.12); margin-top:8px; overflow:hidden; z-index:50; display:none; }
+.search-results.active { display:block; }
+.search-item { display:flex; align-items:center; gap:14px; padding:12px 20px; cursor:pointer; border-bottom:1px solid var(--light); transition:background 0.15s; }
+.search-item:hover { background:#F0F4FF; }
+.search-score { font-size:24px; font-weight:800; min-width:40px; text-align:center; }
+.search-name { font-weight:600; font-size:14px; }
+.search-grade { font-size:12px; font-weight:600; }
+.search-ticker { font-size:11px; color:var(--muted); background:#F0F0F0; padding:2px 8px; border-radius:4px; font-weight:600; }
+
+/* Stats */
+.stats { display:flex; justify-content:center; gap:32px; margin-bottom:50px; flex-wrap:wrap; }
+.stat-num { font-size:36px; font-weight:800; color:var(--navy); font-family:'DM Serif Display'; }
+.stat-label { font-size:12px; color:var(--muted); font-weight:500; letter-spacing:0.5px; margin-top:4px; }
+
+/* Grade Scale */
+.grade-section { margin-bottom:50px; }
+.grade-section h2 { font-family:'DM Serif Display'; font-size:28px; color:var(--navy); text-align:center; margin-bottom:24px; }
+.grade-list { display:flex; flex-direction:column; gap:8px; max-width:700px; margin:0 auto; }
+.grade-row { display:flex; align-items:center; gap:16px; padding:14px 20px; background:var(--white); border-radius:10px; border:1px solid var(--light); }
+.grade-badge { width:60px; height:44px; border-radius:8px; display:flex; align-items:center; justify-content:center; color:var(--white); font-weight:800; flex-shrink:0; }
+.grade-range { width:55px; font-size:12px; color:var(--muted); font-weight:600; flex-shrink:0; }
+.grade-satire { font-size:13px; color:#555; font-style:italic; line-height:1.4; }
+
+/* Cards */
+.cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; max-width:700px; margin:0 auto; }
+.card { background:var(--white); border-radius:10px; padding:16px 18px; border:1px solid var(--light); cursor:pointer; transition:all 0.2s; }
+.card:hover { transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,0.08); }
+.card-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+.card-score { font-size:28px; font-weight:800; }
+.card-grade-tag { font-size:12px; font-weight:700; padding:2px 10px; border-radius:6px; }
+.card-name { font-size:14px; font-weight:600; color:var(--text); }
+.view-all { text-align:center; margin-top:16px; }
+.view-all a { font-size:13px; color:var(--sky); font-weight:600; cursor:pointer; }
+
+/* Leaderboard */
+.leaderboard { padding:40px 0 60px; }
+.leaderboard h1 { font-family:'DM Serif Display'; font-size:36px; color:var(--navy); text-align:center; margin-bottom:8px; }
+.leaderboard-sub { text-align:center; color:var(--muted); font-size:14px; margin-bottom:30px; }
+.lb-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; max-width:900px; margin:0 auto; }
+.lb-col h3 { font-size:14px; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px; }
+.lb-row { display:flex; align-items:center; gap:12px; padding:10px 14px; background:var(--white); border-radius:8px; margin-bottom:6px; border:1px solid var(--light); cursor:pointer; transition:background 0.15s; }
+.lb-rank { font-size:13px; font-weight:700; color:var(--muted); width:22px; }
+.lb-score { font-size:22px; font-weight:800; width:44px; text-align:center; }
+.lb-name { flex:1; font-size:13px; font-weight:600; color:var(--text); }
+.lb-grade { font-size:11px; font-weight:700; }
+
+/* Detail */
+.detail { padding:40px 0 60px; max-width:700px; margin:0 auto; }
+.detail-back { font-size:13px; color:var(--sky); cursor:pointer; font-weight:500; }
+.detail-header { display:flex; align-items:center; gap:24px; margin-top:20px; margin-bottom:8px; }
+.detail-badge { width:80px; height:80px; border-radius:16px; display:flex; align-items:center; justify-content:center; color:var(--white); font-weight:900; flex-shrink:0; }
+.detail-name { font-family:'DM Serif Display'; font-size:32px; color:var(--navy); }
+.detail-tier { font-size:16px; font-weight:600; margin-top:4px; }
+.detail-satire { padding:14px 18px; background:var(--white); border-left:4px solid var(--navy); border-radius:0 8px 8px 0; margin-bottom:24px; font-size:14px; font-style:italic; color:#555; line-height:1.5; }
+.detail-section { background:var(--white); border-radius:14px; padding:24px; border:1px solid var(--light); margin-bottom:20px; }
+.detail-section h3 { font-size:12px; font-weight:700; color:var(--muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:16px; }
+.dim-row { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.dim-icon { font-size:20px; width:28px; text-align:center; }
+.dim-letter { width:14px; font-weight:800; color:var(--navy); font-size:13px; }
+.dim-info { flex:1; }
+.dim-top { display:flex; justify-content:space-between; margin-bottom:4px; }
+.dim-name { font-size:12px; color:var(--text); font-weight:500; }
+.dim-score { font-size:13px; font-weight:700; }
+.dim-bar { height:10px; background:#EEF1F5; border-radius:5px; overflow:hidden; }
+.dim-fill { height:100%; border-radius:5px; transition:width 0.8s ease; }
+.dim-desc { font-size:11px; color:var(--muted); margin-top:3px; }
+.signals-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.signal-box { padding:10px 14px; background:#F8F9FA; border-radius:8px; }
+.signal-label { font-size:10px; color:var(--muted); font-weight:600; letter-spacing:0.5px; text-transform:uppercase; }
+.signal-value { font-size:16px; font-weight:700; color:var(--text); margin-top:2px; }
+.hw-section { background:#FFF5F5; border-radius:14px; padding:18px 24px; border:1px solid #FEE2E2; margin-bottom:20px; }
+.hw-section h3 { color:#c0392b; }
+.hw-flag { font-size:13px; color:#7F1D1D; margin-bottom:4px; line-height:1.5; }
+.meta-tags { display:flex; gap:8px; flex-wrap:wrap; }
+.meta-tag { font-size:11px; color:var(--muted); background:#F0F0F0; padding:3px 10px; border-radius:6px; }
+
+/* About */
+.about { padding:50px 0 60px; max-width:700px; margin:0 auto; }
+.about h1 { font-family:'DM Serif Display'; font-size:36px; color:var(--navy); text-align:center; margin-bottom:8px; }
+.about-sub { text-align:center; color:var(--muted); font-size:15px; margin-bottom:40px; font-style:italic; }
+.about-card { background:var(--white); border-radius:14px; padding:32px; border:1px solid var(--light); margin-bottom:24px; line-height:1.8; font-size:15px; color:#444; }
+.about-card p { margin-bottom:16px; }
+.about-card p:last-child { margin-bottom:0; }
+.about-dim { display:flex; gap:14px; align-items:flex-start; margin-bottom:16px; }
+.about-dim-icon { font-size:24px; margin-top:2px; }
+.about-dim-name { font-weight:700; color:var(--navy); font-size:14px; }
+.about-dim-desc { font-size:13px; color:#666; margin-top:2px; }
+
+/* Footer */
+footer { background:var(--dark); padding:32px 24px; margin-top:40px; text-align:center; }
+.footer-brand { font-family:'DM Serif Display'; font-size:22px; color:var(--white); margin-bottom:6px; }
+.footer-tagline { font-size:12px; color:#5A7A9A; letter-spacing:1.5px; font-weight:500; text-transform:uppercase; }
+.footer-info { font-size:11px; color:#3A5A7A; margin-top:12px; }
+.footer-disclaimer { font-size:10px; color:#2A4A6A; margin-top:8px; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.5; }
+.footer-status { font-size:10px; color:#2A4A6A; margin-top:8px; }
+
+/* Responsive */
+@media(max-width:768px) {
+  .hero h1 { font-size:48px; }
+  .hero p { font-size:18px; }
+  .lb-grid { grid-template-columns:1fr; }
+  .signals-grid { grid-template-columns:1fr; }
+  .nav-tagline { display:none; }
+  .stats { gap:20px; }
+  .stat-num { font-size:28px; }
+}
+
+/* Page transitions */
+.page { animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+.hidden { display:none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div style="display:flex;align-items:center;gap:24px">
+      <span class="nav-brand" onclick="showPage('home')">HI.</span>
+      <div class="nav-links">
+        <span class="nav-link active" id="nav-home" onclick="showPage('home')">Home</span>
+        <span class="nav-link" id="nav-leaderboard" onclick="showPage('leaderboard')">Leaderboard</span>
+        <span class="nav-link" id="nav-about" onclick="showPage('about')">About</span>
+      </div>
+    </div>
+    <span class="nav-tagline">Find the HI balance.</span>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div id="page-home" class="page" style="max-width:1100px;margin:0 auto;padding:0 24px">
+  <div class="hero">
+    <h1>HI.</h1>
+    <p>The balance between humans and technology, measured.</p>
+    <p class="hero-sub">Every company gets an HI Grade — a simple letter grade measuring how human they are across five dimensions. Not anti-AI. Pro-balance.</p>
+  </div>
+
+  <div class="search-wrap">
+    <input class="search-input" id="searchInput" placeholder="Search any company..." oninput="doSearch(this.value)">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+
+  <div class="stats" id="statsRow"></div>
+
+  <div class="grade-section">
+    <h2>The HI Grade Scale</h2>
+    <div class="grade-list" id="gradeList"></div>
+  </div>
+
+  <div style="margin-bottom:60px">
+    <h2 style="font-family:'DM Serif Display';font-size:28px;color:var(--navy);text-align:center;margin-bottom:24px">Top Rated Companies</h2>
+    <div class="cards" id="topCards"></div>
+    <div class="view-all"><a onclick="showPage('leaderboard')">View full leaderboard →</a></div>
+  </div>
+</div>
+
+<!-- LEADERBOARD -->
+<div id="page-leaderboard" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
+  <div class="leaderboard">
+    <h1>HI Grade Leaderboard</h1>
+    <p class="leaderboard-sub" id="lbSub"></p>
+    <div class="lb-grid">
+      <div class="lb-col">
+        <h3 style="color:var(--green)">🏆 Highest HI Grades</h3>
+        <div id="lbTop"></div>
+      </div>
+      <div class="lb-col">
+        <h3 style="color:var(--gray)">📉 Lowest HI Grades</h3>
+        <div id="lbBottom"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DETAIL -->
+<div id="page-detail" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
+  <div class="detail" id="detailContent"></div>
+</div>
+
+<!-- ABOUT -->
+<div id="page-about" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
+  <div class="about">
+    <h1>About HI.</h1>
+    <p class="about-sub">Find the HI balance.</p>
+    <div class="about-card">
+      <p><strong>HI.</strong> measures the balance between humans and technology at every company. We score organizations across five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent.</p>
+      <p>Every company gets an <strong>HI Grade</strong> — a letter grade from HI Certified to F. The pass/fail line is 42 — the answer to life, the universe, and everything.</p>
+      <p>We're not anti-AI. We're pro-balance. Technology that empowers humans scores well. Technology that replaces and hides them scores poorly.</p>
+      <p>The scoring methodology is open source (Apache 2.0). Anyone can audit the math, verify the data, and hold us accountable.</p>
+    </div>
+    <div class="about-card">
+      <h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">The HUMAN Framework</h3>
+      <div class="about-dim"><span class="about-dim-icon">🧠</span><div><div class="about-dim-name">H — Human Consciousness</div><div class="about-dim-desc">Creative agency, craft, accountability vs. AI automation</div></div></div>
+      <div class="about-dim"><span class="about-dim-icon">💙</span><div><div class="about-dim-name">U — Understanding & Empathy</div><div class="about-dim-desc">Genuine care vs. simulated empathy</div></div></div>
+      <div class="about-dim"><span class="about-dim-icon">⚖️</span><div><div class="about-dim-name">M — Moral & Ethical Conduct</div><div class="about-dim-desc">Principled action vs. optimization-at-all-costs</div></div></div>
+      <div class="about-dim"><span class="about-dim-icon">🌍</span><div><div class="about-dim-name">A — Alive & Environmental</div><div class="about-dim-desc">True ecological cost including AI infrastructure</div></div></div>
+      <div class="about-dim"><span class="about-dim-icon">🔍</span><div><div class="about-dim-name">N — Natural Transparency</div><div class="about-dim-desc">Honest disclosure vs. humanwashing</div></div></div>
+    </div>
+    <div class="about-card">
+      <h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">Data Sources</h3>
+      <p>HI Grades are computed from six free, public data sources: SEC EDGAR, EPA ECHO, Bureau of Labor Statistics, CDP climate disclosures, job posting analysis, and Glassdoor employee ratings.</p>
+      <p>All scores are estimated from public data. Verified scores require HI Certification.</p>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <div style="font-family:'DM Serif Display';font-size:18px;color:var(--navy)">The Deep Thought Foundation</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:6px">Patent Pending · HUMAN Grade Methodology Spec v1.0 · Apache 2.0</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">HI.</div>
+  <div class="footer-tagline">Find the HI balance.</div>
+  <div class="footer-info">The Deep Thought Foundation · thehibalance.org · Patent Pending</div>
+  <div class="footer-disclaimer">HI Grades are estimated from public data and are not financial, legal, or investment advice. Not affiliated with or endorsed by any scored company. Methodology: HUMAN Grade Spec v1.0 (Apache 2.0).</div>
+  <div class="footer-status" id="footerStatus"></div>
+</footer>
+
+<script>
+// ═══ CONFIG ═══
+// Update this URL when the API is deployed to Railway
+const API = window.location.hostname === 'localhost' ? 'http://localhost:8080' : 'https://hi-api-production.up.railway.app';
+
+const GRADE_COLORS = {"HI Certified":"#C49B20","A":"#2e8b57","B":"#4a90d9","C":"#E07020","F":"#6B7280"};
+const DIM_INFO = {
+  H:{name:"Human Consciousness",icon:"🧠",desc:"Creative agency, craft, accountability"},
+  U:{name:"Understanding & Empathy",icon:"💙",desc:"Genuine care vs. simulated empathy"},
+  M:{name:"Moral & Ethical Conduct",icon:"⚖️",desc:"Principled action and fairness"},
+  A:{name:"Alive & Environmental",icon:"🌍",desc:"True ecological cost incl. AI footprint"},
+  N:{name:"Natural Transparency",icon:"🔍",desc:"Honest disclosure vs. humanwashing"},
+};
+
+function scoreColor(s) {
+  if(s>=80)return"#2e8b57";if(s>=60)return"#4a90d9";if(s>=42)return"#E07020";return"#6B7280";
+}
+
+const GRADES = [
+  ["HI Certified","90-100","Humans and tech, in harmony. This is what balance looks like."],
+  ["A","80-89","AI does the math. Humans do the handshakes. Nailed it."],
+  ["B","60-79","Humans and machines, learning to share the remote."],
+  ["C","42-59","42. The answer to everything. Now what's the question?"],
+  ["F","0-41","Don't panic. Every journey starts somewhere."],
+];
+
+// ═══ INIT ═══
+let topData=[], bottomData=[], statsData=null;
+
+async function init() {
+  try {
+    const [statsR, topR, bottomR] = await Promise.all([
+      fetch(API+'/api/v1/stats').then(r=>r.json()),
+      fetch(API+'/api/v1/grades/top?limit=10').then(r=>r.json()),
+      fetch(API+'/api/v1/grades/bottom?limit=10').then(r=>r.json()),
+    ]);
+    statsData=statsR; topData=topR.results||[]; bottomData=bottomR.results||[];
+    renderHome();
+    renderLeaderboard();
+    document.getElementById('footerStatus').textContent='● API Connected · '+statsData.total_companies+' companies';
+  } catch(e) {
+    document.getElementById('footerStatus').textContent='○ API Offline — Connect to localhost:8080 or deploy to Railway';
+  }
+}
+
+// ═══ RENDER ═══
+function renderHome() {
+  // Stats
+  if(statsData) {
+    document.getElementById('statsRow').innerHTML=[
+      [statsData.total_companies,'Companies Scored'],
+      [statsData.domains_indexed,'Domains Indexed'],
+      [statsData.tickers_indexed,'Public Companies'],
+      [statsData.average_composite,'Average Score'],
+    ].map(([v,l])=>`<div style="text-align:center"><div class="stat-num">${v}</div><div class="stat-label">${l}</div></div>`).join('');
+  }
+
+  // Grade scale
+  document.getElementById('gradeList').innerHTML=GRADES.map(([g,r,s])=>{
+    const fs=g==='HI Certified'?10:22;
+    return`<div class="grade-row"><div class="grade-badge" style="background:${GRADE_COLORS[g]};font-size:${fs}px">${g}</div><div class="grade-range">${r}</div><div class="grade-satire">"${s}"</div></div>`;
+  }).join('');
+
+  // Top cards
+  document.getElementById('topCards').innerHTML=topData.slice(0,6).map(c=>`
+    <div class="card" onclick="loadCompany('${c.ticker||''}','${(c.company||'').replace(/'/g,"\\'")}')">
+      <div class="card-top">
+        <span class="card-score" style="color:${scoreColor(c.composite)}">${c.composite}</span>
+        <span class="card-grade-tag" style="color:${GRADE_COLORS[c.hi_grade]};background:${GRADE_COLORS[c.hi_grade]}15">${c.hi_grade}</span>
+      </div>
+      <div class="card-name">${c.company}</div>
+    </div>
+  `).join('');
+}
+
+function renderLeaderboard() {
+  document.getElementById('lbSub').textContent=(statsData?.total_companies||'...')+' companies ranked by HI Grade';
+  document.getElementById('lbTop').innerHTML=topData.map((c,i)=>lbRow(c,i,'#F0FFF4')).join('');
+  document.getElementById('lbBottom').innerHTML=bottomData.map((c,i)=>lbRow(c,i,'#FFF5F5')).join('');
+}
+
+function lbRow(c,i,hoverBg) {
+  return`<div class="lb-row" onclick="loadCompany('${c.ticker||''}','${(c.company||'').replace(/'/g,"\\'")}')"><span class="lb-rank">${c.rank}</span><span class="lb-score" style="color:${scoreColor(c.composite)}">${c.composite}</span><span class="lb-name">${c.company}</span><span class="lb-grade" style="color:${GRADE_COLORS[c.hi_grade]}">${c.hi_grade}</span></div>`;
+}
+
+// ═══ SEARCH ═══
+let searchTimeout;
+function doSearch(q) {
+  clearTimeout(searchTimeout);
+  const el=document.getElementById('searchResults');
+  if(q.length<2){el.className='search-results';return;}
+  searchTimeout=setTimeout(async()=>{
+    try {
+      const r=await fetch(API+'/api/v1/search?q='+encodeURIComponent(q)+'&limit=10');
+      const d=await r.json();
+      const results=d.results||[];
+      if(results.length===0){el.className='search-results';return;}
+      el.innerHTML=results.map(c=>`
+        <div class="search-item" onclick="loadCompany('${c.ticker||''}','${(c.company||'').replace(/'/g,"\\'")}');document.getElementById('searchInput').value='';document.getElementById('searchResults').className='search-results';">
+          <span class="search-score" style="color:${scoreColor(c.composite)}">${c.composite}</span>
+          <div style="flex:1"><div class="search-name">${c.company}</div><div class="search-grade" style="color:${GRADE_COLORS[c.hi_grade]}">HI Grade: ${c.hi_grade}</div></div>
+          ${c.ticker?`<span class="search-ticker">${c.ticker}</span>`:''}
+        </div>
+      `).join('');
+      el.className='search-results active';
+    } catch(e){el.className='search-results';}
+  },300);
+}
+
+// ═══ LOAD COMPANY ═══
+async function loadCompany(ticker,name) {
+  try {
+    let url=ticker?API+'/api/v1/score/ticker/'+ticker:API+'/api/v1/search?q='+encodeURIComponent(name)+'&limit=1';
+    const r=await fetch(url);
+    const d=await r.json();
+    const c=ticker?d:(d.results&&d.results[0]?await fetch(API+'/api/v1/score/ticker/'+d.results[0].ticker).then(r=>r.json()):null);
+    if(!c||c.error)return;
+    renderDetail(c);
+    showPage('detail');
+  } catch(e){}
+}
+
+function renderDetail(c) {
+  const gc=GRADE_COLORS[c.hi_grade]||'#6B7280';
+  const fs=c.hi_grade==='HI Certified'?14:36;
+  const ks=c.key_signals||{};
+  
+  let html=`
+    <span class="detail-back" onclick="showPage('home')">← Back to search</span>
+    <div class="detail-header">
+      <div class="detail-badge" style="background:${gc};font-size:${fs}px">${c.hi_grade==='HI Certified'?'HI':c.hi_grade}</div>
+      <div>
+        <div class="detail-name">${c.company}</div>
+        <div class="detail-tier" style="color:${gc}">HI Grade: ${c.hi_grade} · ${c.composite}</div>
+        ${c.ticker?`<span class="meta-tag">${c.ticker}</span>`:''}
+      </div>
+    </div>
+    <div class="detail-satire">"${c.satire}"</div>
+    <div class="detail-section">
+      <h3>HUMAN Dimensions</h3>
+      ${['H','U','M','A','N'].map(dim=>{
+        const s=c['D_'+dim]||0;const info=DIM_INFO[dim];
+        return`<div class="dim-row"><span class="dim-icon">${info.icon}</span><div class="dim-letter">${dim}</div><div class="dim-info"><div class="dim-top"><span class="dim-name">${info.name}</span><span class="dim-score" style="color:${scoreColor(s)}">${s}</span></div><div class="dim-bar"><div class="dim-fill" style="width:${s}%;background:${scoreColor(s)}"></div></div><div class="dim-desc">${info.desc}</div></div></div>`;
+      }).join('')}
+    </div>
+    <div class="detail-section">
+      <h3>Key Signals</h3>
+      <div class="signals-grid">
+        ${[['Headcount',ks.headcount?ks.headcount.toLocaleString():'—'],['Headcount Δ',ks.headcount_change_pct!=null?ks.headcount_change_pct+'%':'—'],['Revenue/Employee',ks.revenue_per_employee?'$'+(ks.revenue_per_employee/1000).toFixed(0)+'K':'—'],['AI Hiring Ratio',ks.ai_hiring_ratio!=null?(ks.ai_hiring_ratio*100).toFixed(0)+'%':'—'],['Glassdoor',ks.glassdoor_rating?'★'+ks.glassdoor_rating:'—'],['CDP Climate',ks.cdp_climate||'—'],['EPA Violations',ks.epa_violations!=null?ks.epa_violations:'—'],['Displacement',ks.displacement_signal!=null?ks.displacement_signal.toFixed(1):'—']].map(([l,v])=>`<div class="signal-box"><div class="signal-label">${l}</div><div class="signal-value">${v}</div></div>`).join('')}
+      </div>
+    </div>`;
+
+  if(c.humanwashing_flags&&c.humanwashing_flags.length>0) {
+    html+=`<div class="hw-section"><h3>⚑ Humanwashing Flags</h3>${c.humanwashing_flags.map(f=>`<div class="hw-flag">${f}</div>`).join('')}</div>`;
+  }
+
+  html+=`<div class="meta-tags">
+    <span class="meta-tag">Confidence: ${c.confidence}</span>
+    <span class="meta-tag">Sources: ${(c.data_sources||[]).join(', ')}</span>
+    <span class="meta-tag">Spec: ${c.spec_version}</span>
+    ${c.signal_coverage?`<span class="meta-tag">Coverage: ${c.signal_coverage}</span>`:''}
+  </div>`;
+
+  document.getElementById('detailContent').innerHTML=html;
+}
+
+// ═══ NAVIGATION ═══
+function showPage(page) {
+  ['home','leaderboard','detail','about'].forEach(p=>{
+    document.getElementById('page-'+p).className=p===page?'page':'page hidden';
+    const nav=document.getElementById('nav-'+p);
+    if(nav) nav.className=p===page?'nav-link active':'nav-link';
+  });
+  window.scrollTo(0,0);
+}
+
+// Close search results when clicking outside
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.search-wrap'))document.getElementById('searchResults').className='search-results';
+});
+
+// Go!
+init();
+</script>
+</body>
+</html>
