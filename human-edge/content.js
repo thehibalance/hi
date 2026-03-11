@@ -315,6 +315,37 @@ function openDetailPanel(profile, dim) {
       }).join('')}
     </div>
 
+    <div class="human-panel__toggle-section">
+      <div class="human-panel__toggle-row">
+        <div>
+          <div class="human-panel__toggle-label" id="panelToggleLabel">Full View</div>
+          <div class="human-panel__toggle-sub" id="panelToggleSub">Showing all companies with scores</div>
+        </div>
+        <label class="human-panel__switch">
+          <input type="checkbox" id="panelMasterToggle" checked>
+          <span class="human-panel__switch-slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="human-panel__equalizer" id="panelEqualizer">
+      <div class="human-panel__eq-header">
+        <span class="human-panel__section-title">Dimension Thresholds</span>
+        <button class="human-panel__eq-mode" id="panelFilterMode">Soft</button>
+      </div>
+      ${HumanEngine.DIMENSIONS.map(d => {
+        const info = DIM_DESCRIPTIONS[d];
+        return `
+          <div class="human-panel__eq-slider">
+            <span class="human-panel__eq-icon">${info.icon}</span>
+            <span class="human-panel__eq-label">${d.toUpperCase()}</span>
+            <input type="range" class="human-panel__eq-input" id="panelSlider_${d}" min="0" max="100" value="0">
+            <span class="human-panel__eq-value" id="panelValue_${d}">0</span>
+          </div>
+        `;
+      }).join('')}
+    </div>
+
     <div class="human-panel__search-section">
       <div class="human-panel__section-title">Search Companies</div>
       <input type="text" class="human-panel__search" id="panelSearch" placeholder="Search companies...">
@@ -332,6 +363,63 @@ function openDetailPanel(profile, dim) {
   // Event listeners
   document.getElementById('panelClose').addEventListener('click', () => panel.remove());
   document.getElementById('panelBack').addEventListener('click', () => panel.remove());
+
+  // ═══ MASTER TOGGLE ═══
+  const panelToggle = document.getElementById('panelMasterToggle');
+  const panelToggleLabel = document.getElementById('panelToggleLabel');
+  const panelToggleSub = document.getElementById('panelToggleSub');
+  const panelEqualizer = document.getElementById('panelEqualizer');
+
+  // Load current prefs
+  loadPreferences().then(currentPrefs => {
+    panelToggle.checked = currentPrefs.masterToggle;
+    updatePanelToggleUI(currentPrefs.masterToggle);
+    updatePanelEqualizerState(currentPrefs.masterToggle);
+
+    // Set current filter mode
+    const modeBtn = document.getElementById('panelFilterMode');
+    modeBtn.textContent = currentPrefs.filterMode === 'strict' ? 'Strict' : 'Soft';
+    if (currentPrefs.filterMode === 'strict') modeBtn.classList.add('human-panel__eq-mode--strict');
+
+    // Set current slider values
+    HumanEngine.DIMENSIONS.forEach(d => {
+      const slider = document.getElementById(`panelSlider_${d}`);
+      const valueEl = document.getElementById(`panelValue_${d}`);
+      if (slider && valueEl) {
+        slider.value = currentPrefs.thresholds[d] || 0;
+        valueEl.textContent = slider.value;
+      }
+    });
+
+    // Toggle handler
+    panelToggle.addEventListener('change', async () => {
+      currentPrefs.masterToggle = panelToggle.checked;
+      updatePanelToggleUI(currentPrefs.masterToggle);
+      updatePanelEqualizerState(currentPrefs.masterToggle);
+      await savePanelPrefs(currentPrefs);
+    });
+
+    // Filter mode handler
+    modeBtn.addEventListener('click', async () => {
+      currentPrefs.filterMode = currentPrefs.filterMode === 'soft' ? 'strict' : 'soft';
+      modeBtn.textContent = currentPrefs.filterMode === 'strict' ? 'Strict' : 'Soft';
+      modeBtn.classList.toggle('human-panel__eq-mode--strict');
+      await savePanelPrefs(currentPrefs);
+    });
+
+    // Slider handlers
+    HumanEngine.DIMENSIONS.forEach(d => {
+      const slider = document.getElementById(`panelSlider_${d}`);
+      const valueEl = document.getElementById(`panelValue_${d}`);
+      if (slider) {
+        slider.addEventListener('input', async () => {
+          valueEl.textContent = slider.value;
+          currentPrefs.thresholds[d] = parseInt(slider.value);
+          await savePanelPrefs(currentPrefs);
+        });
+      }
+    });
+  });
 
   // Click other dimension rows to switch
   panel.querySelectorAll('[data-panel-dim]').forEach(row => {
@@ -379,4 +467,38 @@ function attachDimClickHandlers(badge, profile) {
       openDetailPanel(profile, el.dataset.dim);
     });
   });
+}
+
+/**
+ * Panel toggle UI helpers.
+ */
+function updatePanelToggleUI(isFullView) {
+  const label = document.getElementById('panelToggleLabel');
+  const sub = document.getElementById('panelToggleSub');
+  if (!label || !sub) return;
+  if (isFullView) {
+    label.textContent = 'Full View';
+    sub.textContent = 'Showing all companies with scores';
+  } else {
+    label.textContent = 'AI Filter Active';
+    sub.textContent = 'Filtering by your thresholds';
+  }
+}
+
+function updatePanelEqualizerState(isFullView) {
+  const eq = document.getElementById('panelEqualizer');
+  if (!eq) return;
+  if (isFullView) {
+    eq.classList.add('human-panel__equalizer--disabled');
+  } else {
+    eq.classList.remove('human-panel__equalizer--disabled');
+  }
+}
+
+async function savePanelPrefs(prefs) {
+  try {
+    if (typeof chrome !== 'undefined' && chrome.storage) {
+      await chrome.storage.local.set({ userPrefs: prefs });
+    }
+  } catch (e) {}
 }
