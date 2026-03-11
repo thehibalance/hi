@@ -1,0 +1,58 @@
+# ═══ Python ═══
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+
+# ═══ Node ═══
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# ═══ Data (generated, not committed) ═══
+data/
+*.json.bak
+
+# ═══ Extension packaging ═══
+*.zip
+*.crx
+*.pem
+
+# ═══ IDE ═══
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ═══ Environment / Secrets ═══
+.env
+.env.local
+.env.production
+*.secret
+config.local.py
+
+# ═══ Logs ═══
+*.log
+logs/
+
+# ═══ OS ═══
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# ═══ Confidential docs (keep in private storage) ═══
+# Uncomment these if you want to keep legal docs out of the repo:
+# docs/patent/
+# docs/ip-package/
