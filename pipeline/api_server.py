@@ -77,6 +77,15 @@ def build_index():
     global COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES
     COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES = {}, {}, {}, []
 
+    # Load S&P 500 domain mappings
+    sp500_domains = {}
+    try:
+        from sp500_domains import DOMAIN_MAP
+        sp500_domains = DOMAIN_MAP
+        print(f"  S&P 500 domains: {sum(len(d) for d in sp500_domains.values())} domains for {len(sp500_domains)} companies")
+    except ImportError:
+        pass
+
     # Load scoring engine output
     if DATA_DIR.exists():
         sf = DATA_DIR / "all_scores.json"
@@ -84,10 +93,21 @@ def build_index():
         for c in scored:
             if c.get("error"): continue
             t = c.get("ticker", "")
+            
+            # Inject domains from S&P 500 mapping if not already present
+            if t and t.upper() in sp500_domains and not c.get("domains"):
+                c["domains"] = sp500_domains[t.upper()]
+            
             if t: TICKERS[t.upper()] = c
             n = c.get("company", "")
             if n: NAME_INDEX[n.lower()] = c
             ALL_COMPANIES.append(c)
+            
+            # Index by domain
+            for d in c.get("domains", []):
+                d = d.lower().strip()
+                if d and d not in COMPANIES:
+                    COMPANIES[d] = c
 
     # Load seed database
     seed_candidates = [
