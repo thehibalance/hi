@@ -412,70 +412,18 @@ def process_company(ticker, company_name=None):
     return signals
 
 
-# ── Public company tickers from seed database ─────────────────────────
-# These are the public companies from our 206-company seed database
-# that will have SEC EDGAR data available
-SEED_PUBLIC_COMPANIES = [
-    ("AAPL", "Apple"),
-    ("MSFT", "Microsoft"),
-    ("GOOGL", "Google (Alphabet)"),
-    ("AMZN", "Amazon"),
-    ("META", "Meta (Facebook)"),
-    ("TSLA", "Tesla"),
-    ("NVDA", "NVIDIA"),
-    ("CRM", "Salesforce"),
-    ("ADBE", "Adobe"),
-    ("NFLX", "Netflix"),
-    ("SPOT", "Spotify"),
-    ("UBER", "Uber"),
-    ("ABNB", "Airbnb"),
-    ("SQ", "Block (Square)"),
-    ("SHOP", "Shopify"),
-    ("ZM", "Zoom"),
-    ("PLTR", "Palantir"),
-    ("COIN", "Coinbase"),
-    ("WMT", "Walmart"),
-    ("TGT", "Target"),
-    ("COST", "Costco"),
-    ("KO", "Coca-Cola"),
-    ("PEP", "PepsiCo"),
-    ("MCD", "McDonald's"),
-    ("SBUX", "Starbucks"),
-    ("NKE", "Nike"),
-    ("DIS", "Disney"),
-    ("CMCSA", "Comcast"),
-    ("T", "AT&T"),
-    ("VZ", "Verizon"),
-    ("JPM", "JPMorgan Chase"),
-    ("BAC", "Bank of America"),
-    ("GS", "Goldman Sachs"),
-    ("WFC", "Wells Fargo"),
-    ("V", "Visa"),
-    ("MA", "Mastercard"),
-    ("UNH", "UnitedHealth"),
-    ("JNJ", "Johnson & Johnson"),
-    ("PFE", "Pfizer"),
-    ("CVS", "CVS Health"),
-    ("XOM", "ExxonMobil"),
-    ("CVX", "Chevron"),
-    ("NEE", "NextEra Energy"),
-    ("BA", "Boeing"),
-    ("LMT", "Lockheed Martin"),
-    ("RTX", "RTX (Raytheon)"),
-    ("CAT", "Caterpillar"),
-    ("DE", "John Deere"),
-    ("GM", "General Motors"),
-    ("F", "Ford"),
-    ("HD", "Home Depot"),
-    ("LOW", "Lowe's"),
-    ("ETSY", "Etsy"),
-    ("CHWY", "Chewy"),
-    ("W", "Wayfair"),
-    ("EBAY", "eBay"),
-    ("PYPL", "PayPal"),
-    ("SYY", "Sysco"),
-    ("KR", "Kroger"),
-]
+# ── Company list ──────────────────────────────────────────────────────
+# Import full S&P 500 list, fall back to small list if not available
+try:
+    from sp500_companies import SP500
+    SEED_PUBLIC_COMPANIES = SP500
+except ImportError:
+    SEED_PUBLIC_COMPANIES = [
+        ("AAPL", "Apple"), ("MSFT", "Microsoft"), ("GOOGL", "Alphabet"),
+        ("AMZN", "Amazon"), ("META", "Meta Platforms"), ("TSLA", "Tesla"),
+        ("NVDA", "NVIDIA"), ("WMT", "Walmart"), ("JPM", "JPMorgan Chase"),
+        ("XOM", "ExxonMobil"), ("JNJ", "Johnson & Johnson"), ("PG", "Procter & Gamble"),
+    ]
 
 
 def main():
