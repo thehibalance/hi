@@ -97,7 +97,7 @@ function createBadge(profile, filterResult, prefs) {
 
   const badge = document.createElement('div');
   badge.id = 'human-score-badge';
-  badge.className = 'human-badge';
+  badge.className = 'human-badge human-badge--expanded'; // Start expanded
 
   // Determine badge state
   const isFiltered = !prefs.masterToggle && !filterResult.passes;
@@ -106,16 +106,22 @@ function createBadge(profile, filterResult, prefs) {
 
   badge.innerHTML = buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered);
 
-  // Add interaction
+  // Click to collapse, click again to expand
   badge.addEventListener('click', () => toggleExpanded(badge, profile, filterResult, prefs));
 
-  document.body.appendChild(badge);
-
-  // Auto-collapse after 8 seconds
-  setTimeout(() => {
-    if (badge.classList.contains('human-badge--expanded')) return;
+  // Add a close button so users can dismiss it
+  const closeBtn = document.createElement('div');
+  closeBtn.className = 'human-badge__close';
+  closeBtn.innerHTML = '✕';
+  closeBtn.title = 'Minimize';
+  closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    badge.classList.remove('human-badge--expanded');
     badge.classList.add('human-badge--compact');
-  }, 8000);
+  });
+  badge.querySelector('.human-badge__header').appendChild(closeBtn);
+
+  document.body.appendChild(badge);
 }
 
 /**

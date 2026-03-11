@@ -107,6 +107,22 @@
   flex-shrink: 0;
 }
 
+.human-badge__close {
+  font-size: 14px;
+  color: #aaa;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.human-badge__close:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
 /* ═══ DETAILS (expanded) ═══ */
 
 .human-badge__details {
@@ -307,4 +323,11 @@
   text-align: center;
   margin-top: 4px;
   letter-spacing: 0.3px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .human-badge__close:hover {
+    background: #333;
+    color: #eee;
+  }
 }
