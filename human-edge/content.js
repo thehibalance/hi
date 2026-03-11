@@ -376,23 +376,22 @@ function openDetailPanel(profile, dim) {
     const text = document.getElementById('panelConnText');
     if (!dot || !text) return;
 
-    const apiUrls = ['http://localhost:8080', 'http://localhost:5000', 'https://api.thehibalance.org'];
-    for (const url of apiUrls) {
-      try {
-        const resp = await fetch(`${url}/api/v1/health`, {
-          signal: AbortSignal.timeout(3000),
-          headers: { 'Accept': 'application/json' }
-        });
-        if (resp.ok) {
-          const data = await resp.json();
-          dot.style.color = '#1a7a3a';
-          text.textContent = `Connected · ${data.companies} companies · API live`;
-          return;
-        }
-      } catch (e) { }
+    try {
+      const resp = await new Promise((resolve) => {
+        chrome.runtime.sendMessage({ type: 'CHECK_CONNECTION' }, (r) => resolve(r));
+      });
+
+      if (resp && resp.connected) {
+        dot.style.color = '#1a7a3a';
+        text.textContent = `Connected · ${resp.companies} companies · API live`;
+      } else {
+        dot.style.color = '#d4a843';
+        text.textContent = 'Offline · Using local database (206 companies)';
+      }
+    } catch (e) {
+      dot.style.color = '#d4a843';
+      text.textContent = 'Offline · Using local database (206 companies)';
     }
-    dot.style.color = '#d4a843';
-    text.textContent = 'Offline · Using local database (206 companies)';
   })();
 
   // Event listeners

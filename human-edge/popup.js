@@ -294,24 +294,19 @@
     const el = document.getElementById('sync-status');
     if (!el) return;
 
-    // Ping the API directly — don't rely on the service worker being awake
-    const apiUrls = ['http://localhost:8080', 'http://localhost:5000', 'https://api.thehibalance.org'];
-    
-    for (const url of apiUrls) {
-      try {
-        const resp = await fetch(`${url}/api/v1/health`, { 
-          signal: AbortSignal.timeout(3000),
-          headers: { 'Accept': 'application/json' }
-        });
-        if (resp.ok) {
-          const data = await resp.json();
-          el.textContent = `☁ Connected · ${data.companies} companies · API live`;
-          return;
-        }
-      } catch (e) { /* try next URL */ }
-    }
+    try {
+      const resp = await new Promise((resolve) => {
+        chrome.runtime.sendMessage({ type: 'CHECK_CONNECTION' }, (r) => resolve(r));
+      });
 
-    el.textContent = '📦 Local database · 206 companies';
+      if (resp && resp.connected) {
+        el.textContent = `☁ Connected · ${resp.companies} companies · API live`;
+      } else {
+        el.textContent = '📦 Local database · 206 companies';
+      }
+    } catch (e) {
+      el.textContent = '📦 Local database · 206 companies';
+    }
   }
 
   updateSyncStatus();

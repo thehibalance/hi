@@ -33,7 +33,7 @@ chrome.runtime.onInstalled.addListener((details) => {
 // ═══ CLOUD SYNC — Phase 2 Track D ═══
 
 const API_BASE = 'https://api.thehibalance.org'; // Production
-const API_LOCAL = 'http://localhost:8080';        // Local dev
+const API_LOCAL = 'http://localhost:8080';        // Local dev (Mac uses 5000 for AirPlay)
 const CACHE_TTL = 24 * 60 * 60 * 1000;           // 24 hours
 
 /**
@@ -246,6 +246,27 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
           queueLength: (result.lookupQueue || []).length,
         });
       });
+      return true;
+
+    case 'CHECK_CONNECTION':
+      // Check if the API is reachable — only background can fetch external URLs
+      (async () => {
+        const urls = [API_LOCAL, API_BASE];
+        for (const url of urls) {
+          try {
+            const resp = await fetch(`${url}/api/v1/health`, {
+              signal: AbortSignal.timeout(3000),
+              headers: { 'Accept': 'application/json' }
+            });
+            if (resp.ok) {
+              const data = await resp.json();
+              sendResponse({ connected: true, companies: data.companies, url: url });
+              return;
+            }
+          } catch (e) { }
+        }
+        sendResponse({ connected: false });
+      })();
       return true;
 
     default:
