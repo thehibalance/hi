@@ -1,40 +1,32 @@
 #!/usr/bin/env python3
 """
-HI. — HUMAN Scoring Engine
-Phase 2, Track B: Convert raw data signals into HUMAN dimension scores.
+HI. — HUMAN Scoring Engine v2
+Merges signals from ALL data sources into HUMAN dimension scores.
 
-Takes JSON output from data pipelines (SEC EDGAR, EPA, etc.) and computes:
-  D_H  — Human Consciousness (0-100)
-  D_U  — Understanding & Empathy (0-100)
-  D_M  — Moral & Ethical Conduct (0-100)
-  D_A  — Alive & Environmental (0-100)
-  D_N  — Natural Transparency (0-100)
-  HUMAN — Composite score (0-100)
-  HI Grade — Letter grade (HI Certified, A, B, C, F)
+Data sources:
+  1. SEC EDGAR  — headcount, revenue, R&D, litigation, filing frequency
+  2. EPA ECHO   — environmental violations, penalties, inspections
+  3. BLS        — industry wage/employment benchmarks
+  4. CDP        — climate disclosure scores
+  5. Job Boards — AI hiring velocity
+  6. Glassdoor  — employee ratings, CEO approval, culture
 
 Follows HUMAN_Grade_Methodology_Spec v1.0
 Floor rule: any dimension < 10 caps composite at 40.
+
+Usage:
+  python scoring_engine.py
+  python scoring_engine.py --sec data/sec --epa data/epa --cdp data/cdp
 """
 
 import json, os, sys
 from pathlib import Path
 
-# ── Industry Benchmarks ───────────────────────────────────────────────
-# Revenue per employee medians by SIC code group (approximate)
-# Used for industry normalization per spec Section 10
 INDUSTRY_RPE_MEDIANS = {
-    "tech": 500000,         # Software, internet
-    "retail": 200000,       # Retail trade
-    "finance": 600000,      # Financial services
-    "healthcare": 250000,   # Healthcare
-    "energy": 1500000,      # Oil, gas, energy
-    "manufacturing": 300000,# Manufacturing
-    "food": 150000,         # Food & beverage
-    "media": 400000,        # Media & entertainment
-    "telecom": 500000,      # Telecommunications
-    "defense": 350000,      # Aerospace & defense
-    "auto": 300000,         # Automotive
-    "default": 350000,      # Fallback
+    "tech": 500000, "retail": 200000, "finance": 600000,
+    "healthcare": 250000, "energy": 1500000, "manufacturing": 300000,
+    "food": 150000, "media": 400000, "telecom": 500000,
+    "defense": 350000, "auto": 300000, "default": 350000,
 }
 
 SIC_TO_INDUSTRY = {
@@ -44,294 +36,270 @@ SIC_TO_INDUSTRY = {
     "60": "finance", "61": "finance", "62": "finance", "63": "finance", "64": "finance",
     "20": "food", "21": "food", "51": "food", "58": "food",
     "28": "healthcare", "80": "healthcare", "50": "retail",
-    "13": "energy", "29": "energy",
-    "27": "media", "78": "media",
-    "45": "defense",
-    "55": "auto",
+    "13": "energy", "29": "energy", "27": "media", "78": "media",
+    "45": "defense", "55": "auto",
 }
 
-
 def get_industry(sic_code):
-    """Map SIC code to industry group."""
-    if not sic_code:
-        return "default"
-    prefix = str(sic_code)[:2]
-    return SIC_TO_INDUSTRY.get(prefix, "default")
-
+    if not sic_code: return "default"
+    return SIC_TO_INDUSTRY.get(str(sic_code)[:2], "default")
 
 def clamp(v, lo=0, hi=100):
     return max(lo, min(hi, v))
 
-
 def normalize(v, v_min, v_max):
-    """Normalize value to 0-100 scale. Per spec Section 1.5."""
-    if v_max == v_min:
-        return 50
+    if v_max == v_min: return 50
     return clamp((v - v_min) / (v_max - v_min) * 100)
 
+def load_source(directory, filename="all_companies.json"):
+    path = Path(directory) / filename
+    if path.exists():
+        with open(path) as f:
+            return json.load(f)
+    return []
 
-# ── Dimension Scoring Functions ───────────────────────────────────────
+def index_by_company(records, key="company"):
+    idx = {}
+    for r in records:
+        name = r.get(key, "").lower().strip()
+        if name: idx[name] = r
+        ticker = r.get("ticker", "")
+        if ticker: idx[f"ticker:{ticker.upper()}"] = r
+    return idx
 
-def score_h_dimension(h_signals, industry):
-    """
-    H — Human Consciousness (20%)
-    Sub-signals per spec:
-      H.1 Creative Agency Ratio (0.25) — proxied by inverse automation signal
-      H.2 Craft & Tacit Knowledge (0.20) — proxied by industry type
-      H.3 Human Decision Depth (0.20) — default 50 (needs operational data)
-      H.4 Accountability Chain (0.15) — default 50 (needs governance data)
-      H.5 AI Displacement Trajectory (0.20) — from SEC headcount vs R&D
-    """
+def find_match(company_name, ticker, index):
+    result = index.get(company_name.lower().strip())
+    if result: return result
+    if ticker:
+        result = index.get(f"ticker:{ticker.upper()}")
+        if result: return result
+    name_lower = company_name.lower()
+    for key, val in index.items():
+        if not key.startswith("ticker:") and (name_lower in key or key in name_lower):
+            return val
+    return None
+
+
+# ── Dimension Scoring ─────────────────────────────────────────────────
+
+def score_h_dimension(sec_h, job_data, bls_data, industry):
     scores = {}
+    sources_used = []
 
-    # H.1 Creative Agency Ratio — proxy from revenue/employee
-    # High RPE relative to industry = more automation = lower human agency
-    rpe = h_signals.get("revenue_per_employee")
+    rpe = sec_h.get("revenue_per_employee")
     industry_median = INDUSTRY_RPE_MEDIANS.get(industry, INDUSTRY_RPE_MEDIANS["default"])
-    if rpe:
-        # Ratio of industry median to actual RPE
-        # If RPE = median, score ~60. If RPE = 3x median, score ~20. If RPE = 0.5x median, score ~90.
-        ratio = industry_median / rpe if rpe > 0 else 1.0
-        scores["H.1"] = clamp(ratio * 65)  # Scale so median = ~65
+    ai_ratio = job_data.get("h_signals", {}).get("ai_ratio") if job_data else None
+
+    if rpe and ai_ratio is not None:
+        rpe_score = clamp((industry_median / rpe) * 65) if rpe > 0 else 50
+        ai_score = job_data["h_signals"].get("adjusted_score", 50)
+        scores["H.1"] = round(rpe_score * 0.5 + ai_score * 0.5, 1)
+        sources_used.extend(["SEC", "Jobs"])
+    elif rpe:
+        scores["H.1"] = clamp((industry_median / rpe) * 65) if rpe > 0 else 50
+        sources_used.append("SEC")
+    elif ai_ratio is not None:
+        scores["H.1"] = job_data["h_signals"].get("adjusted_score", 50)
+        sources_used.append("Jobs")
     else:
-        scores["H.1"] = 50  # Default per spec Section 10.4
+        scores["H.1"] = 50
 
-    # H.2 Craft & Tacit Knowledge — proxy from industry type
-    craft_scores = {
-        "food": 65, "manufacturing": 60, "healthcare": 70, "defense": 55,
-        "auto": 55, "retail": 45, "tech": 40, "finance": 45,
-        "media": 55, "telecom": 40, "energy": 50, "default": 50,
-    }
-    scores["H.2"] = craft_scores.get(industry, 50)
-
-    # H.3 Human Decision Depth — default (needs operational disclosure data)
+    craft_defaults = {"food": 65, "manufacturing": 60, "healthcare": 70, "defense": 55,
+                      "auto": 55, "retail": 45, "tech": 40, "finance": 45,
+                      "media": 55, "telecom": 40, "energy": 50, "default": 50}
+    base_craft = craft_defaults.get(industry, 50)
+    if bls_data:
+        ind_data = bls_data.get("industries", {}).get(industry, {})
+        wage_ratio = ind_data.get("wage_vs_national")
+        if wage_ratio:
+            base_craft = clamp(base_craft + (wage_ratio - 1.0) * 20)
+            sources_used.append("BLS")
+    scores["H.2"] = round(base_craft, 1)
     scores["H.3"] = 50
-
-    # H.4 Accountability Chain — default (needs governance data)
     scores["H.4"] = 50
 
-    # H.5 AI Displacement Trajectory — from SEC data
-    displacement = h_signals.get("displacement_signal")
+    displacement = sec_h.get("displacement_signal")
+    job_trend = job_data.get("h_signals", {}).get("ai_hiring_trend") if job_data else None
     if displacement is not None:
-        # Per spec: S_H5 = clamp(100 - displacement_signal * 100, 0, 100)
-        # But our displacement is already (rd_change - hc_change) as percentage points
-        # Normalize: 0 displacement = score 80, +50 displacement = score 30, -20 = score 100
         scores["H.5"] = clamp(80 - displacement * 1.0)
+        sources_used.append("SEC")
+        if job_trend == "surging": scores["H.5"] = clamp(scores["H.5"] - 10)
+        elif job_trend == "growing": scores["H.5"] = clamp(scores["H.5"] - 5)
+    elif job_data and job_data.get("h_signals", {}).get("adjusted_score") is not None:
+        scores["H.5"] = job_data["h_signals"]["adjusted_score"]
+        sources_used.append("Jobs")
     else:
-        # Use headcount change alone if available
-        hc_change = h_signals.get("headcount_change_pct")
+        hc_change = sec_h.get("headcount_change_pct")
         if hc_change is not None:
-            # Growing headcount = good. Shrinking = bad.
-            # +10% growth = score 80, 0% = score 60, -20% = score 20
             scores["H.5"] = clamp(60 + hc_change * 2)
+            sources_used.append("SEC")
         else:
             scores["H.5"] = 50
 
-    # Weighted average per spec: D_H = Σ(W_i × S_i)
-    D_H = (
-        0.25 * scores["H.1"] +
-        0.20 * scores["H.2"] +
-        0.20 * scores["H.3"] +
-        0.15 * scores["H.4"] +
-        0.20 * scores["H.5"]
-    )
-
-    return round(D_H, 1), scores
+    D_H = 0.25*scores["H.1"] + 0.20*scores["H.2"] + 0.20*scores["H.3"] + 0.15*scores["H.4"] + 0.20*scores["H.5"]
+    return round(D_H, 1), scores, list(set(sources_used))
 
 
-def score_u_dimension(u_signals, industry):
-    """
-    U — Understanding & Empathy (20%)
-    Requires Glassdoor, customer service data, layoff tracking.
-    With SEC data only, we use defaults + any available signals.
-    """
+def score_u_dimension(sec_u, glassdoor_data, industry):
     scores = {}
+    sources_used = []
+    gd = glassdoor_data.get("u_signals", {}) if glassdoor_data else {}
 
-    # U.1 Empathy Expression — default (needs customer service data)
-    scores["U.1"] = 50
+    if gd.get("overall_score") is not None:
+        scores["U.1"] = round(gd.get("overall_score", 50) * 0.5 + gd.get("culture_score", 50) * 0.5, 1)
+        scores["U.2"] = round(gd.get("worklife_score", 50) * 0.5 + gd.get("recommend_pct", 50) * 0.5, 1)
+        scores["U.3"] = gd.get("culture_score", 50)
+        sources_used.append("Glassdoor")
+    else:
+        scores["U.1"] = 50
+        scores["U.2"] = 50
+        scores["U.3"] = 50
 
-    # U.2 Worker Empathy — default (needs Glassdoor/employee data)
-    scores["U.2"] = 50
-
-    # U.3 Relational Integrity — default (needs marketing/product analysis)
-    scores["U.3"] = 50
-
-    # U.4 Moral Courage — default
     scores["U.4"] = 50
-
-    # U.5 Simulated Empathy Detection — default
     scores["U.5"] = 50
 
-    D_U = (
-        0.25 * scores["U.1"] +
-        0.25 * scores["U.2"] +
-        0.20 * scores["U.3"] +
-        0.15 * scores["U.4"] +
-        0.15 * scores["U.5"]
-    )
-
-    return round(D_U, 1), scores
+    D_U = 0.25*scores["U.1"] + 0.25*scores["U.2"] + 0.20*scores["U.3"] + 0.15*scores["U.4"] + 0.15*scores["U.5"]
+    return round(D_U, 1), scores, sources_used
 
 
-def score_m_dimension(m_signals, industry):
-    """
-    M — Moral & Ethical Conduct (20%)
-    Deduction-based per spec: start at 100, subtract for violations.
-    """
-    score = 100
+def score_m_dimension(sec_m, epa_data, glassdoor_data, industry):
     scores = {}
+    sources_used = []
+    scores["M.1"] = 80
+    scores["M.2"] = 70
 
-    # M.1 Pricing Ethics — default (needs pricing analysis)
-    scores["M.1"] = 80  # Assume decent unless flagged
+    litigation = sec_m.get("litigation", {}).get("value")
+    epa_penalties = epa_data.get("m_signals", {}).get("total_penalties", 0) if epa_data else 0
+    epa_actions = epa_data.get("m_signals", {}).get("formal_actions", 0) if epa_data else 0
+    total_legal = (litigation or 0) + epa_penalties
 
-    # M.2 Data Ethics — default
-    scores["M.2"] = 70  # Moderate concern for most public companies
+    if total_legal > 1000000000: scores["M.3"] = 20
+    elif total_legal > 100000000: scores["M.3"] = 40
+    elif total_legal > 10000000: scores["M.3"] = 55
+    elif total_legal > 1000000: scores["M.3"] = 65
+    elif total_legal > 0: scores["M.3"] = 75
+    else: scores["M.3"] = 85
 
-    # M.3 Market Ethics — check for litigation
-    litigation = m_signals.get("litigation", {}).get("value")
-    if litigation and litigation > 0:
-        # Deduction based on litigation amount relative to assets
-        # Major litigation = bigger deduction
-        if litigation > 1000000000:  # >$1B
-            scores["M.3"] = 30
-        elif litigation > 100000000:  # >$100M
-            scores["M.3"] = 50
-        elif litigation > 10000000:  # >$10M
-            scores["M.3"] = 65
-        else:
-            scores["M.3"] = 75
+    if litigation: sources_used.append("SEC")
+    if epa_penalties > 0 or epa_actions > 0: sources_used.append("EPA")
+
+    gd_m = glassdoor_data.get("m_signals", {}) if glassdoor_data else {}
+    if gd_m.get("mgmt_score") is not None:
+        scores["M.4"] = round(gd_m["mgmt_score"] * 0.6 + gd_m.get("comp_score", 50) * 0.4, 1)
+        sources_used.append("Glassdoor")
     else:
-        scores["M.3"] = 85
+        scores["M.4"] = 70
 
-    # M.4 Product Ethics — default
-    scores["M.4"] = 70
+    if gd_m.get("ceo_score") is not None:
+        scores["M.5"] = gd_m["ceo_score"]
+    else:
+        scores["M.5"] = 60
 
-    # M.5 Political Ethics — default (needs lobbying data)
-    scores["M.5"] = 60
-
-    D_M = (
-        0.20 * scores["M.1"] +
-        0.20 * scores["M.2"] +
-        0.20 * scores["M.3"] +
-        0.25 * scores["M.4"] +
-        0.15 * scores["M.5"]
-    )
-
-    return round(D_M, 1), scores
+    D_M = 0.20*scores["M.1"] + 0.20*scores["M.2"] + 0.20*scores["M.3"] + 0.25*scores["M.4"] + 0.15*scores["M.5"]
+    return round(D_M, 1), scores, list(set(sources_used))
 
 
-def score_a_dimension(a_signals, industry):
-    """
-    A — Alive & Environmental (20%)
-    Limited from SEC data alone. Capex trends can proxy infrastructure investment.
-    """
+def score_a_dimension(sec_a, epa_data, cdp_data, industry):
     scores = {}
+    sources_used = []
+    cdp_a = cdp_data.get("a_signals", {}) if cdp_data else {}
 
-    # A.1 Energy Score — default (needs CDP/EPA data)
-    # Industry-adjusted defaults
-    energy_defaults = {
-        "energy": 30, "manufacturing": 45, "tech": 50, "finance": 65,
-        "healthcare": 55, "retail": 50, "food": 55, "media": 60,
-        "telecom": 45, "defense": 40, "auto": 40, "default": 50,
-    }
-    scores["A.1"] = energy_defaults.get(industry, 50)
+    if cdp_a.get("cdp_climate_score") is not None:
+        scores["A.1"] = cdp_a["cdp_climate_score"]
+        sources_used.append("CDP")
+    else:
+        defaults = {"energy": 30, "manufacturing": 45, "tech": 50, "finance": 65,
+                    "healthcare": 55, "retail": 50, "food": 55, "media": 60,
+                    "telecom": 45, "defense": 40, "auto": 40, "default": 50}
+        scores["A.1"] = defaults.get(industry, 50)
 
-    # A.2 Water Score — default (needs CDP water data)
-    scores["A.2"] = 50
+    if cdp_a.get("cdp_water_score") is not None:
+        scores["A.2"] = cdp_a["cdp_water_score"]
+        if "CDP" not in sources_used: sources_used.append("CDP")
+    else:
+        scores["A.2"] = 50
 
-    # A.3 Land & Habitat — default
-    scores["A.3"] = 50
+    epa_a = epa_data.get("a_signals", {}) if epa_data else {}
+    if epa_a.get("total_violations_3yr") is not None:
+        v = epa_a["total_violations_3yr"]
+        if v == 0: scores["A.3"] = 85
+        elif v <= 3: scores["A.3"] = 65
+        elif v <= 10: scores["A.3"] = 45
+        elif v <= 20: scores["A.3"] = 30
+        else: scores["A.3"] = 15
+        sources_used.append("EPA")
+    else:
+        scores["A.3"] = 50
 
-    # A.4 Hardware Lifecycle — default (needs iFixit/Boavizta data)
-    # Tech companies get lower default (more e-waste)
-    hw_defaults = {
-        "tech": 40, "telecom": 45, "manufacturing": 50, "default": 55,
-    }
-    scores["A.4"] = hw_defaults.get(industry, 55)
+    if cdp_a.get("cdp_forests_score") is not None:
+        scores["A.4"] = cdp_a["cdp_forests_score"]
+    else:
+        hw_defaults = {"tech": 40, "telecom": 45, "manufacturing": 50, "default": 55}
+        scores["A.4"] = hw_defaults.get(industry, 55)
 
-    D_A = (
-        0.30 * scores["A.1"] +
-        0.25 * scores["A.2"] +
-        0.20 * scores["A.3"] +
-        0.25 * scores["A.4"]
-    )
-
-    return round(D_A, 1), scores
+    D_A = 0.30*scores["A.1"] + 0.25*scores["A.2"] + 0.20*scores["A.3"] + 0.25*scores["A.4"]
+    return round(D_A, 1), scores, list(set(sources_used))
 
 
-def score_n_dimension(n_signals, industry):
-    """
-    N — Natural Transparency (20%)
-    SEC filing frequency is a direct transparency signal.
-    """
+def score_n_dimension(sec_n, cdp_data, epa_data, industry):
     scores = {}
+    sources_used = []
+    scores["N.1"] = 40
 
-    # N.1 AI Disclosure Quality — default (needs NLP analysis of filings)
-    scores["N.1"] = 40  # Most companies poor at AI disclosure
+    cdp_n = cdp_data.get("n_signals", {}) if cdp_data else {}
+    if cdp_n.get("cdp_non_responder") is True:
+        scores["N.2"] = 5
+        sources_used.append("CDP")
+    elif cdp_n.get("disclosure_quality"):
+        q = cdp_n["disclosure_quality"]
+        if "EXCELLENT" in q: scores["N.2"] = 90
+        elif "GOOD" in q: scores["N.2"] = 70
+        elif "PARTIAL" in q: scores["N.2"] = 45
+        else: scores["N.2"] = 25
+        sources_used.append("CDP")
+    else:
+        scores["N.2"] = 50
 
-    # N.2 Environmental Reporting — proxy from filing presence
-    scores["N.2"] = 50
-
-    # N.3 Labor Practice Auditability — default
     scores["N.3"] = 45
+    scores["N.4"] = 80
 
-    # N.4 Humanwashing Detection — default (no flags without full analysis)
-    scores["N.4"] = 80  # Start at 80 (no detected humanwashing)
+    total_filings = sec_n.get("total_recent_filings", 0)
+    if total_filings >= 8: scores["N.5"] = 90
+    elif total_filings >= 5: scores["N.5"] = 75
+    elif total_filings >= 3: scores["N.5"] = 60
+    elif total_filings >= 1: scores["N.5"] = 40
+    else: scores["N.5"] = 20
+    if total_filings > 0: sources_used.append("SEC")
 
-    # N.5 Disclosure Completeness — from SEC filing frequency
-    total_filings = n_signals.get("total_recent_filings", 0)
-    if total_filings >= 8:
-        scores["N.5"] = 90  # Very active filer
-    elif total_filings >= 5:
-        scores["N.5"] = 75
-    elif total_filings >= 3:
-        scores["N.5"] = 60
-    elif total_filings >= 1:
-        scores["N.5"] = 40
-    else:
-        scores["N.5"] = 20  # Very low disclosure
+    epa_a = epa_data.get("a_signals", {}) if epa_data else {}
+    if epa_a.get("inspections_5yr", 0) > 10:
+        scores["N.5"] = min(100, scores["N.5"] + 5)
+        if "EPA" not in sources_used: sources_used.append("EPA")
 
-    # Bonus: Large accelerated filers have more disclosure requirements
-    category = n_signals.get("category", "")
-    if "Large Accelerated" in str(category):
+    if "Large Accelerated" in str(sec_n.get("category", "")):
         scores["N.5"] = min(100, scores["N.5"] + 5)
 
-    D_N = (
-        0.25 * scores["N.1"] +
-        0.20 * scores["N.2"] +
-        0.20 * scores["N.3"] +
-        0.20 * scores["N.4"] +
-        0.15 * scores["N.5"]
-    )
+    D_N = 0.25*scores["N.1"] + 0.20*scores["N.2"] + 0.20*scores["N.3"] + 0.20*scores["N.4"] + 0.15*scores["N.5"]
+    return round(D_N, 1), scores, sources_used
 
-    return round(D_N, 1), scores
-
-
-# ── Composite Score & Grade ───────────────────────────────────────────
 
 def compute_composite(D_H, D_U, D_M, D_A, D_N):
-    """Compute composite HUMAN score with floor rule. Per spec Section 2."""
     composite = (D_H + D_U + D_M + D_A + D_N) / 5
     floor_triggered = False
     triggering_dimension = None
-
-    # Floor rule: any dimension < 10 caps composite at 40
     min_dim = min(D_H, D_U, D_M, D_A, D_N)
     if min_dim < 10:
         composite = min(composite, 40)
         floor_triggered = True
         dims = {"H": D_H, "U": D_U, "M": D_M, "A": D_A, "N": D_N}
         triggering_dimension = min(dims, key=dims.get)
-
     return round(composite, 1), floor_triggered, triggering_dimension
 
-
 def get_hi_grade(composite, verified=False):
-    """Classify composite into HI Grade. Per spec Section 2.3."""
     if composite >= 90 and verified:
         return "HI Certified", "Humans and tech, in harmony. This is what balance looks like."
     elif composite >= 90:
-        return "A", "AI does the math. Humans do the handshakes. Nailed it."  # Capped at A without verification
+        return "A", "AI does the math. Humans do the handshakes. Nailed it."
     elif composite >= 80:
         return "A", "AI does the math. Humans do the handshakes. Nailed it."
     elif composite >= 60:
@@ -342,179 +310,177 @@ def get_hi_grade(composite, verified=False):
         return "F", "Don't panic. Every journey starts somewhere."
 
 
-# ── Full Scoring Pipeline ─────────────────────────────────────────────
-
-def score_company(sec_data):
-    """Score a single company from SEC pipeline output. Returns HUMAN Genome."""
-    company = sec_data.get("company", "Unknown")
-    ticker = sec_data.get("ticker", "")
-
-    if sec_data.get("error"):
-        return {
-            "company": company,
-            "ticker": ticker,
-            "error": sec_data["error"],
-            "confidence": "Unscored",
-        }
-
-    # Determine industry
-    sic = sec_data.get("n_signals", {}).get("sic", "")
+def score_company(company_name, ticker="", sec_data=None, epa_data=None,
+                  bls_data=None, cdp_data=None, job_data=None, glassdoor_data=None):
+    sic = sec_data.get("n_signals", {}).get("sic", "") if sec_data else ""
     industry = get_industry(sic)
 
-    # Score each dimension
-    D_H, h_detail = score_h_dimension(sec_data.get("h_signals", {}), industry)
-    D_U, u_detail = score_u_dimension(sec_data.get("u_signals", {}), industry)
-    D_M, m_detail = score_m_dimension(sec_data.get("m_signals", {}), industry)
-    D_A, a_detail = score_a_dimension(sec_data.get("a_signals", {}), industry)
-    D_N, n_detail = score_n_dimension(sec_data.get("n_signals", {}), industry)
+    sec_h = sec_data.get("h_signals", {}) if sec_data else {}
+    sec_m = sec_data.get("m_signals", {}) if sec_data else {}
+    sec_n = sec_data.get("n_signals", {}) if sec_data else {}
+    sec_u = sec_data.get("u_signals", {}) if sec_data else {}
 
-    # Composite
+    D_H, h_detail, h_src = score_h_dimension(sec_h, job_data, bls_data, industry)
+    D_U, u_detail, u_src = score_u_dimension(sec_u, glassdoor_data, industry)
+    D_M, m_detail, m_src = score_m_dimension(sec_m, epa_data, glassdoor_data, industry)
+    D_A, a_detail, a_src = score_a_dimension(sec_data.get("a_signals", {}) if sec_data else {}, epa_data, cdp_data, industry)
+    D_N, n_detail, n_src = score_n_dimension(sec_n, cdp_data, epa_data, industry)
+
     composite, floor_triggered, triggering_dim = compute_composite(D_H, D_U, D_M, D_A, D_N)
     grade, satire = get_hi_grade(composite)
+    all_sources = sorted(set(h_src + u_src + m_src + a_src + n_src)) or ["Defaults"]
 
-    # Confidence level per spec Section 2.4
-    h_has_data = sec_data.get("h_signals", {}).get("headcount") is not None
-    n_has_data = sec_data.get("n_signals", {}).get("total_recent_filings", 0) > 0
-    if h_has_data and n_has_data:
-        confidence = "Estimated"  # Have real data but not verified
-    else:
-        confidence = "Estimated"  # All public companies have some SEC data
+    all_details = {**h_detail, **u_detail, **m_detail, **a_detail, **n_detail}
+    real_count = sum(1 for v in all_details.values() if v != 50)
 
-    # Humanwashing flags
     hw_flags = []
-    rpe = sec_data.get("h_signals", {}).get("revenue_per_employee")
+    rpe = sec_h.get("revenue_per_employee")
     if rpe and rpe > 2000000:
         hw_flags.append("HW.1: Revenue/employee >$2M suggests high automation")
-    displacement = sec_data.get("h_signals", {}).get("displacement_signal")
+    displacement = sec_h.get("displacement_signal")
     if displacement and displacement > 30:
-        hw_flags.append("HW.2: R&D growth significantly outpacing headcount — possible rapid AI displacement")
+        hw_flags.append("HW.2: R&D growth significantly outpacing headcount")
+    if job_data and job_data.get("h_signals", {}).get("ai_ratio", 0) >= 0.35:
+        hw_flags.append("HW.3: AI roles dominate job postings (>35%)")
+    if epa_data and epa_data.get("a_signals", {}).get("total_violations_3yr", 0) > 20:
+        hw_flags.append("HW.4: Significant environmental violations")
+    if cdp_data and cdp_data.get("n_signals", {}).get("cdp_non_responder"):
+        hw_flags.append("HW.5: Refuses CDP climate disclosure")
 
     return {
-        "company": company,
-        "ticker": ticker,
-        "industry": industry,
-        "sic": sic,
-        "sic_description": sec_data.get("n_signals", {}).get("sic_description", ""),
-
-        # Dimension scores
-        "D_H": D_H,
-        "D_U": D_U,
-        "D_M": D_M,
-        "D_A": D_A,
-        "D_N": D_N,
-
-        # Composite
-        "composite": composite,
-        "hi_grade": grade,
-        "satire": satire,
-        "floor_triggered": floor_triggered,
-        "triggering_dimension": triggering_dim,
-
-        # Metadata
-        "confidence": confidence,
-        "spec_version": "1.0.0",
-        "data_sources": ["SEC EDGAR"],
+        "company": company_name, "ticker": ticker, "industry": industry, "sic": sic,
+        "sic_description": sec_data.get("n_signals", {}).get("sic_description", "") if sec_data else "",
+        "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
+        "composite": composite, "hi_grade": grade, "satire": satire,
+        "floor_triggered": floor_triggered, "triggering_dimension": triggering_dim,
+        "confidence": "Estimated", "spec_version": "1.0.0",
+        "data_sources": all_sources,
+        "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
         "humanwashing_flags": hw_flags,
-
-        # Sub-signal detail (the HUMAN Genome)
         "genome": {
-            "H": h_detail,
-            "U": u_detail,
-            "M": m_detail,
-            "A": a_detail,
-            "N": n_detail,
+            "H": {"scores": h_detail, "sources": h_src},
+            "U": {"scores": u_detail, "sources": u_src},
+            "M": {"scores": m_detail, "sources": m_src},
+            "A": {"scores": a_detail, "sources": a_src},
+            "N": {"scores": n_detail, "sources": n_src},
         },
-
-        # Key signals for display
         "key_signals": {
-            "headcount": sec_data.get("h_signals", {}).get("headcount", {}).get("value"),
-            "headcount_change_pct": sec_data.get("h_signals", {}).get("headcount_change_pct"),
-            "revenue_per_employee": sec_data.get("h_signals", {}).get("revenue_per_employee"),
+            "headcount": sec_h.get("headcount", {}).get("value") if isinstance(sec_h.get("headcount"), dict) else None,
+            "headcount_change_pct": sec_h.get("headcount_change_pct"),
+            "revenue_per_employee": rpe,
             "displacement_signal": displacement,
+            "ai_hiring_ratio": job_data.get("h_signals", {}).get("ai_ratio") if job_data else None,
+            "glassdoor_rating": glassdoor_data.get("u_signals", {}).get("overall_rating") if glassdoor_data else None,
+            "cdp_climate": cdp_data.get("a_signals", {}).get("cdp_climate_letter") if cdp_data else None,
+            "epa_violations": epa_data.get("a_signals", {}).get("total_violations_3yr") if epa_data else None,
         },
     }
 
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="HI. HUMAN Scoring Engine")
-    parser.add_argument("--input", default="data/sec", help="Input directory (SEC pipeline output)")
-    parser.add_argument("--output", default="data/scores", help="Output directory")
-    parser.add_argument("--file", help="Score a single JSON file")
+    parser = argparse.ArgumentParser(description="HI. HUMAN Scoring Engine v2")
+    parser.add_argument("--sec", default="data/sec")
+    parser.add_argument("--epa", default="data/epa")
+    parser.add_argument("--bls", default="data/bls")
+    parser.add_argument("--cdp", default="data/cdp")
+    parser.add_argument("--jobs", default="data/jobs")
+    parser.add_argument("--glassdoor", default="data/glassdoor")
+    parser.add_argument("--output", default="data/scores")
     args = parser.parse_args()
 
     output_dir = Path(args.output)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    if args.file:
-        # Score single file
-        with open(args.file) as f:
-            sec_data = json.load(f)
-        result = score_company(sec_data)
-        print(json.dumps(result, indent=2))
-        outfile = output_dir / f"{result['ticker']}_scored.json"
-        with open(outfile, "w") as f:
-            json.dump(result, f, indent=2)
-        print(f"\nSaved to {outfile}")
-    else:
-        # Score all companies from pipeline output
-        input_dir = Path(args.input)
-        combined_file = input_dir / "all_companies.json"
+    print("HI. Scoring Engine v2 — Loading data sources")
+    print("=" * 60)
 
-        if combined_file.exists():
-            with open(combined_file) as f:
-                all_sec = json.load(f)
-        else:
-            # Load individual files
-            all_sec = []
-            for jf in sorted(input_dir.glob("*.json")):
-                if jf.name != "all_companies.json":
-                    with open(jf) as f:
-                        all_sec.append(json.load(f))
+    sec_records = load_source(args.sec)
+    epa_records = load_source(args.epa)
+    bls_data = None
+    bls_path = Path(args.bls) / "industry_benchmarks.json"
+    if bls_path.exists():
+        with open(bls_path) as f: bls_data = json.load(f)
+    cdp_records = load_source(args.cdp)
+    job_records = load_source(args.jobs)
+    gd_records = load_source(args.glassdoor)
 
-        print(f"HI. Scoring Engine — Processing {len(all_sec)} companies")
-        print(f"Spec version: 1.0.0")
-        print()
+    print(f"  SEC EDGAR:  {len(sec_records)} companies")
+    print(f"  EPA ECHO:   {len(epa_records)} companies")
+    print(f"  BLS:        {'loaded' if bls_data else 'not found'}")
+    print(f"  CDP:        {len(cdp_records)} companies")
+    print(f"  Job Boards: {len(job_records)} companies")
+    print(f"  Glassdoor:  {len(gd_records)} companies")
 
-        all_scores = []
-        for sec_data in all_sec:
-            result = score_company(sec_data)
-            all_scores.append(result)
+    sec_idx = index_by_company(sec_records)
+    epa_idx = index_by_company(epa_records)
+    cdp_idx = index_by_company(cdp_records)
+    job_idx = index_by_company(job_records)
+    gd_idx = index_by_company(gd_records)
 
-            grade = result.get("hi_grade", "?")
-            comp = result.get("composite", 0)
-            company = result.get("company", "?")
-            print(f"  {grade:12s} {comp:5.1f}  {company}")
+    all_companies = set()
+    for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx]:
+        for key in idx:
+            if not key.startswith("ticker:"): all_companies.add(key)
 
-        # Sort by composite descending
-        all_scores.sort(key=lambda x: x.get("composite", 0), reverse=True)
+    print(f"\n  Total unique companies: {len(all_companies)}")
+    print("=" * 60)
 
-        # Save
-        outfile = output_dir / "all_scores.json"
-        with open(outfile, "w") as f:
-            json.dump(all_scores, f, indent=2)
+    all_scores = []
+    for company_lower in sorted(all_companies):
+        sec = sec_idx.get(company_lower)
+        epa = epa_idx.get(company_lower)
+        cdp = cdp_idx.get(company_lower)
+        job = job_idx.get(company_lower)
+        gd = gd_idx.get(company_lower)
 
-        # Summary
-        print(f"\n{'='*60}")
-        print(f"SCORING COMPLETE")
-        print(f"{'='*60}")
+        name = company_lower.title()
+        ticker = ""
+        for source in [sec, epa, cdp, job, gd]:
+            if source:
+                name = source.get("company", name)
+                ticker = source.get("ticker", ticker) or ticker
 
-        grades = {}
-        for s in all_scores:
-            g = s.get("hi_grade", "?")
-            grades[g] = grades.get(g, 0) + 1
+        if sec and sec.get("error") and not any([epa, cdp, job, gd]):
+            continue
 
-        for g in ["HI Certified", "A", "B", "C", "F"]:
-            if g in grades:
-                print(f"  {g}: {grades[g]}")
+        result = score_company(name, ticker, sec, epa, bls_data, cdp, job, gd)
+        all_scores.append(result)
+        sources = ", ".join(result["data_sources"])
+        print(f"  {result['hi_grade']:12s} {result['composite']:5.1f}  {name:30s}  [{sources}]")
 
-        flagged = [s for s in all_scores if s.get("humanwashing_flags")]
-        if flagged:
-            print(f"\n  Humanwashing flags: {len(flagged)} companies")
-            for s in flagged:
-                print(f"    {s['company']}: {', '.join(s['humanwashing_flags'])}")
+    all_scores.sort(key=lambda x: x.get("composite", 0), reverse=True)
 
-        print(f"\n  Output: {outfile}")
+    outfile = output_dir / "all_scores.json"
+    with open(outfile, "w") as f:
+        json.dump(all_scores, f, indent=2)
+
+    print(f"\n{'=' * 60}")
+    print(f"SCORING COMPLETE — {len(all_scores)} companies")
+    print(f"{'=' * 60}")
+
+    grades = {}
+    for s in all_scores:
+        g = s.get("hi_grade", "?")
+        grades[g] = grades.get(g, 0) + 1
+    for g in ["HI Certified", "A", "B", "C", "F"]:
+        if g in grades: print(f"  {g}: {grades[g]}")
+
+    source_counts = {}
+    for s in all_scores:
+        for src in s.get("data_sources", []):
+            source_counts[src] = source_counts.get(src, 0) + 1
+    print(f"\n  Data source coverage:")
+    for src, count in sorted(source_counts.items(), key=lambda x: -x[1]):
+        print(f"    {src}: {count} companies")
+
+    flagged = [s for s in all_scores if s.get("humanwashing_flags")]
+    if flagged:
+        print(f"\n  Humanwashing flags: {len(flagged)} companies")
+        for s in flagged[:10]:
+            print(f"    {s['company']}: {'; '.join(s['humanwashing_flags'][:2])}")
+
+    print(f"\n  Output: {outfile}")
 
 
 if __name__ == "__main__":

@@ -216,7 +216,7 @@ def main():
         climate = cdp_data.get("climate", "—")
         water = cdp_data.get("water", "—")
         nr = " (NON-RESPONDER)" if cdp_data.get("non_responder") else ""
-        print(f"  {company:30s}  Climate: {climate:3s}  Water: {water:3s}{nr}")
+        print(f"  {company:30s}  Climate: {str(climate or "—"):3s}  Water: {str(water or "—"):3s}{nr}")
 
     combined = output_dir / "all_companies.json"
     with open(combined, "w") as f:
