@@ -173,6 +173,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
       ${filterWarning}
       <div class="human-badge__tagline">Find the HI balance.</div>
       ${profile.source === 'cloud' ? '<div class="human-badge__source">☁ Live score from thehibalance.org</div>' : '<div class="human-badge__source">📦 Local database</div>'}
+      <div class="human-badge__disclaimer">Estimated from public data. Not financial or legal advice.</div>
     </div>
   `;
 }
@@ -352,13 +353,47 @@ function openDetailPanel(profile, dim) {
       <div class="human-panel__results" id="panelResults"></div>
     </div>
 
+    <div class="human-panel__connection" id="panelConnection">
+      <span class="human-panel__connection-dot" id="panelConnDot">●</span>
+      <span id="panelConnText">Checking connection...</span>
+    </div>
+
     <div class="human-panel__footer">
       <div>Find the HI balance.</div>
       <div class="human-panel__footer-sub">thehibalance.org · The Deep Thought Foundation</div>
     </div>
+
+    <div class="human-panel__disclaimer">
+      HI Grades are estimated from public data and are not financial, legal, or investment advice. Scores reflect publicly available information and may not capture all aspects of a company's operations. Not affiliated with or endorsed by any scored company. Methodology: HUMAN Grade Spec v1.0 (Apache 2.0). Patent pending.
+    </div>
   `;
 
   document.body.appendChild(panel);
+
+  // ═══ CONNECTION STATUS ═══
+  (async () => {
+    const dot = document.getElementById('panelConnDot');
+    const text = document.getElementById('panelConnText');
+    if (!dot || !text) return;
+
+    const apiUrls = ['http://localhost:8080', 'http://localhost:5000', 'https://api.thehibalance.org'];
+    for (const url of apiUrls) {
+      try {
+        const resp = await fetch(`${url}/api/v1/health`, {
+          signal: AbortSignal.timeout(3000),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (resp.ok) {
+          const data = await resp.json();
+          dot.style.color = '#1a7a3a';
+          text.textContent = `Connected · ${data.companies} companies · API live`;
+          return;
+        }
+      } catch (e) { }
+    }
+    dot.style.color = '#d4a843';
+    text.textContent = 'Offline · Using local database (206 companies)';
+  })();
 
   // Event listeners
   document.getElementById('panelClose').addEventListener('click', () => panel.remove());
