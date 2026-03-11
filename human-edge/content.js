@@ -122,6 +122,9 @@ function createBadge(profile, filterResult, prefs) {
   badge.querySelector('.human-badge__header').appendChild(closeBtn);
 
   document.body.appendChild(badge);
+
+  // Attach click handlers for dimension detail panels
+  attachDimClickHandlers(badge, profile);
 }
 
 /**
@@ -184,12 +187,13 @@ function buildDimensionBars(dimensions) {
     const label = dim.toUpperCase();
     const fullLabel = HumanEngine.getDimensionLabel(dim);
     return `
-      <div class="human-badge__dim" title="${fullLabel}: ${score}">
+      <div class="human-badge__dim human-badge__dim--clickable" data-dim="${dim}" title="Click for details: ${fullLabel}">
         <span class="human-badge__dim-label">${label}</span>
         <div class="human-badge__dim-bar">
           <div class="human-badge__dim-fill" style="width: ${score}%; background: ${color}"></div>
         </div>
         <span class="human-badge__dim-score">${score}</span>
+        <span class="human-badge__dim-arrow">›</span>
       </div>
     `;
   }).join('');
@@ -201,4 +205,178 @@ function buildDimensionBars(dimensions) {
 function toggleExpanded(badge, profile, filterResult, prefs) {
   badge.classList.toggle('human-badge--expanded');
   badge.classList.remove('human-badge--compact');
+}
+
+// ═══ FULL DETAIL PANEL ═══
+
+const DIM_DESCRIPTIONS = {
+  h: {
+    name: "Human Consciousness",
+    icon: "🧠",
+    what: "Measures the depth of genuine human involvement — creative agency, craft, accountability, and whether humans meaningfully shape outcomes or just approve AI output.",
+    signals: ["Creative Agency Ratio", "Craft & Tacit Knowledge", "Human Decision Depth", "Accountability Chain", "AI Displacement Trajectory"],
+  },
+  u: {
+    name: "Understanding & Empathy",
+    icon: "💙",
+    what: "Measures whether the company demonstrates real human empathy toward workers, customers, and communities — or relies on AI-simulated empathy.",
+    signals: ["Empathy Expression", "Worker Empathy", "Relational Integrity", "Moral Courage", "Simulated Empathy Detection"],
+  },
+  m: {
+    name: "Moral & Ethical Conduct",
+    icon: "⚖️",
+    what: "Measures principled action — pricing ethics, data ethics, market behavior, product design, and political activity. Starts at 100, deducted for violations.",
+    signals: ["Pricing Ethics", "Data Ethics", "Market Ethics", "Product Ethics", "Political Ethics"],
+  },
+  a: {
+    name: "Alive & Environmental",
+    icon: "🌍",
+    what: "Measures true environmental cost including the hidden footprint of AI infrastructure — energy, water, land use, and hardware lifecycle.",
+    signals: ["Energy Score", "Water Score", "Land & Habitat", "Hardware Lifecycle"],
+  },
+  n: {
+    name: "Natural Transparency",
+    icon: "🔍",
+    what: "Measures whether the company is genuinely open about AI usage, environmental impact, and labor practices — or hiding behind humanwashing.",
+    signals: ["AI Disclosure Quality", "Environmental Reporting", "Labor Auditability", "Humanwashing Detection", "Disclosure Completeness"],
+  },
+};
+
+/**
+ * Open the full detail panel — injected into the page.
+ */
+function openDetailPanel(profile, dim) {
+  // Remove existing panel
+  const existing = document.getElementById('human-detail-panel');
+  if (existing) existing.remove();
+
+  const panel = document.createElement('div');
+  panel.id = 'human-detail-panel';
+  panel.className = 'human-panel';
+
+  const dimInfo = DIM_DESCRIPTIONS[dim];
+  const dimScore = profile.dimensions[dim] || 0;
+  const dimColor = HumanEngine.getScoreColor(dimScore);
+  const tierColor = profile.tier.color;
+
+  panel.innerHTML = `
+    <div class="human-panel__header">
+      <div class="human-panel__back" id="panelBack">← Back</div>
+      <div class="human-panel__title">HI.</div>
+      <div class="human-panel__close" id="panelClose">✕</div>
+    </div>
+
+    <div class="human-panel__company">
+      <div class="human-panel__grade" style="color: ${tierColor}">${profile.letter}</div>
+      <div>
+        <div class="human-panel__name">${profile.name}</div>
+        <div class="human-panel__tier" style="color: ${tierColor}">HI Grade: ${profile.grade} · ${profile.composite}</div>
+      </div>
+    </div>
+
+    <div class="human-panel__dim-detail">
+      <div class="human-panel__dim-header">
+        <span class="human-panel__dim-icon">${dimInfo.icon}</span>
+        <span class="human-panel__dim-name">${dim.toUpperCase()} — ${dimInfo.name}</span>
+        <span class="human-panel__dim-score" style="color: ${dimColor}">${dimScore}</span>
+      </div>
+      <div class="human-panel__dim-bar-large">
+        <div class="human-panel__dim-fill-large" style="width: ${dimScore}%; background: ${dimColor}"></div>
+      </div>
+      <div class="human-panel__dim-desc">${dimInfo.what}</div>
+      <div class="human-panel__signals-title">Sub-Signals</div>
+      <div class="human-panel__signals">
+        ${dimInfo.signals.map((s, i) => `
+          <div class="human-panel__signal">
+            <span class="human-panel__signal-id">${dim.toUpperCase()}.${i+1}</span>
+            <span class="human-panel__signal-name">${s}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="human-panel__all-dims">
+      <div class="human-panel__section-title">All Dimensions</div>
+      ${HumanEngine.DIMENSIONS.map(d => {
+        const s = profile.dimensions[d] || 0;
+        const c = HumanEngine.getScoreColor(s);
+        const info = DIM_DESCRIPTIONS[d];
+        const active = d === dim ? ' human-panel__dim-row--active' : '';
+        return `
+          <div class="human-panel__dim-row${active}" data-panel-dim="${d}">
+            <span class="human-panel__row-icon">${info.icon}</span>
+            <span class="human-panel__row-label">${d.toUpperCase()}</span>
+            <div class="human-panel__row-bar">
+              <div class="human-panel__row-fill" style="width: ${s}%; background: ${c}"></div>
+            </div>
+            <span class="human-panel__row-score" style="color: ${c}">${s}</span>
+          </div>
+        `;
+      }).join('')}
+    </div>
+
+    <div class="human-panel__search-section">
+      <div class="human-panel__section-title">Search Companies</div>
+      <input type="text" class="human-panel__search" id="panelSearch" placeholder="Search companies...">
+      <div class="human-panel__results" id="panelResults"></div>
+    </div>
+
+    <div class="human-panel__footer">
+      <div>Find the HI balance.</div>
+      <div class="human-panel__footer-sub">thehibalance.org · The Deep Thought Foundation</div>
+    </div>
+  `;
+
+  document.body.appendChild(panel);
+
+  // Event listeners
+  document.getElementById('panelClose').addEventListener('click', () => panel.remove());
+  document.getElementById('panelBack').addEventListener('click', () => panel.remove());
+
+  // Click other dimension rows to switch
+  panel.querySelectorAll('[data-panel-dim]').forEach(row => {
+    row.addEventListener('click', () => {
+      panel.remove();
+      openDetailPanel(profile, row.dataset.panelDim);
+    });
+  });
+
+  // Search
+  const searchInput = document.getElementById('panelSearch');
+  const searchResults = document.getElementById('panelResults');
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim();
+    if (q.length < 2) { searchResults.innerHTML = ''; return; }
+
+    const results = HumanDB.searchByName(q);
+    searchResults.innerHTML = results.slice(0, 6).map(c => {
+      const p = HumanEngine.getProfile(c);
+      const col = HumanEngine.getScoreColor(p.composite);
+      return `
+        <div class="human-panel__result">
+          <span class="human-panel__result-score" style="color: ${col}">${p.composite}</span>
+          <span class="human-panel__result-name">${p.name}</span>
+          <span class="human-panel__result-grade" style="color: ${p.tier.color}">${p.grade}</span>
+        </div>
+      `;
+    }).join('') || '<div class="human-panel__result"><span class="human-panel__result-name" style="color:#aaa">No results</span></div>';
+  });
+
+  // Click outside to close
+  panel.addEventListener('click', (e) => {
+    if (e.target === panel) panel.remove();
+  });
+}
+
+/**
+ * Attach dimension click handlers to the badge.
+ */
+function attachDimClickHandlers(badge, profile) {
+  badge.querySelectorAll('.human-badge__dim--clickable').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openDetailPanel(profile, el.dataset.dim);
+    });
+  });
 }
