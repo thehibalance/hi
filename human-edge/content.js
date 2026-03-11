@@ -274,6 +274,7 @@ function openDetailPanel(profile, dim) {
         <div class="human-panel__tier" style="color: ${tierColor}">HI Grade: ${profile.grade} · ${profile.composite}</div>
       </div>
     </div>
+    <div class="human-panel__satire">"${profile.tier.satire}"</div>
 
     <div class="human-panel__dim-detail">
       <div class="human-panel__dim-header">
