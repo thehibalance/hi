@@ -243,24 +243,11 @@
 }
 
 /* ═══ COMPACT STATE ═══ */
+/* Compact keeps the header visible — grade, company name, HI Grade line */
+/* Only the expanded details (dimension bars, satire, etc.) are hidden */
 
-.human-badge--compact {
-  max-width: 80px;
-  border-radius: 12px;
-}
-
-.human-badge--compact .human-badge__meta,
-.human-badge--compact .human-badge__toggle-indicator {
+.human-badge--compact .human-badge__close {
   display: none;
-}
-
-.human-badge--compact .human-badge__header {
-  padding: 8px 12px;
-  justify-content: center;
-}
-
-.human-badge--compact .human-badge__score {
-  font-size: 22px;
 }
 
 /* ═══ DARK MODE ═══ */
