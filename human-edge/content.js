@@ -18,36 +18,40 @@
   if (!domain) return;
 
   let company = HumanDB.getByDomain(domain);
+  let fromLocal = !!company;
 
-  // ═══ CLOUD FALLBACK (Phase 2 Track D) ═══
-  // If not in local seed database, ask the background service worker
-  // to check the cloud API
-  if (!company) {
-    try {
-      const response = await new Promise((resolve) => {
-        chrome.runtime.sendMessage(
-          { type: 'CLOUD_LOOKUP', domain: domain },
-          (resp) => resolve(resp)
-        );
-      });
+  // ═══ CLOUD CHECK (Phase 2 Track D) ═══
+  // Always try the cloud API — if found, use cloud data (fresher).
+  // If not found in cloud, fall back to local seed database.
+  try {
+    const response = await new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => resolve(null), 4000);
+      chrome.runtime.sendMessage(
+        { type: 'CLOUD_LOOKUP', domain: domain },
+        (resp) => {
+          clearTimeout(timeout);
+          resolve(resp);
+        }
+      );
+    });
 
-      if (response && response.data) {
-        // Convert API response to seed-data format for the engine
-        const d = response.data;
-        company = {
-          name: d.company,
-          h: d.D_H, u: d.D_U, m: d.D_M, a: d.D_A, n: d.D_N,
-          tags: d.tags || [],
-          domains: d.domains || [domain],
-          notes: d.notes || '',
-          source: 'cloud', // Flag that this came from the API
-        };
-      }
-    } catch (e) {
-      // Cloud unavailable — queue for later
+    if (response && response.data) {
+      const d = response.data;
+      company = {
+        name: d.company,
+        h: d.D_H, u: d.D_U, m: d.D_M, a: d.D_A, n: d.D_N,
+        tags: d.tags || [],
+        domains: d.domains || [domain],
+        notes: d.notes || '',
+        source: 'cloud',
+      };
+    }
+  } catch (e) {
+    // Cloud unavailable — use local data if we have it
+    if (!company) {
       try {
         chrome.runtime.sendMessage({ type: 'QUEUE_LOOKUP', domain: domain });
-      } catch (qe) { /* extension context may be invalidated */ }
+      } catch (qe) { }
     }
   }
 

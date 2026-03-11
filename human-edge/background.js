@@ -33,7 +33,7 @@ chrome.runtime.onInstalled.addListener((details) => {
 // ═══ CLOUD SYNC — Phase 2 Track D ═══
 
 const API_BASE = 'https://api.thehibalance.org'; // Production
-const API_LOCAL = 'http://localhost:5000';        // Local dev
+const API_LOCAL = 'http://localhost:8080';        // Local dev
 const CACHE_TTL = 24 * 60 * 60 * 1000;           // 24 hours
 
 /**

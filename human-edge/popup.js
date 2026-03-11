@@ -294,22 +294,24 @@
     const el = document.getElementById('sync-status');
     if (!el) return;
 
-    try {
-      const resp = await new Promise((resolve) => {
-        chrome.runtime.sendMessage({ type: 'GET_SYNC_STATUS' }, resolve);
-      });
-
-      if (resp && resp.lastSync > 0) {
-        const ago = Math.round((Date.now() - resp.lastSync) / 60000);
-        const companies = resp.serverStats?.companies || '?';
-        const queue = resp.queueLength || 0;
-        el.textContent = `☁ Connected · ${companies} companies · synced ${ago}m ago${queue > 0 ? ` · ${queue} queued` : ''}`;
-      } else {
-        el.textContent = '📦 Offline mode · 206 local companies';
-      }
-    } catch (e) {
-      el.textContent = '📦 Local database · 206 companies';
+    // Ping the API directly — don't rely on the service worker being awake
+    const apiUrls = ['http://localhost:8080', 'http://localhost:5000', 'https://api.thehibalance.org'];
+    
+    for (const url of apiUrls) {
+      try {
+        const resp = await fetch(`${url}/api/v1/health`, { 
+          signal: AbortSignal.timeout(3000),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (resp.ok) {
+          const data = await resp.json();
+          el.textContent = `☁ Connected · ${data.companies} companies · API live`;
+          return;
+        }
+      } catch (e) { /* try next URL */ }
     }
+
+    el.textContent = '📦 Local database · 206 companies';
   }
 
   updateSyncStatus();
