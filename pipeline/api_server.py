@@ -222,11 +222,7 @@ def search():
         name = c.get("company", "").lower()
         tags = " ".join(c.get("tags", [])).lower()
         if q in name or q in tags:
-            results.append({
-                "company": c["company"], "ticker": c.get("ticker"),
-                "composite": c["composite"], "hi_grade": c["hi_grade"],
-                "domains": c.get("domains", []),
-            })
+            results.append(c)
         if len(results) >= limit:
             break
 
@@ -261,23 +257,25 @@ def list_grades():
 
 @app.route("/api/v1/grades/top")
 def top_grades():
-    limit = min(int(request.args.get("limit", 10)), 50)
-    return jsonify({"count": limit, "results": [
-        {"rank": i+1, "company": c["company"], "ticker": c.get("ticker"),
-         "composite": c["composite"], "hi_grade": c["hi_grade"], "satire": c.get("satire")}
-        for i, c in enumerate(ALL_COMPANIES[:limit])
-    ]})
+    limit = min(int(request.args.get("limit", 10)), 100)
+    results = []
+    for i, c in enumerate(ALL_COMPANIES[:limit]):
+        rec = dict(c)
+        rec["rank"] = i + 1
+        results.append(rec)
+    return jsonify({"count": len(results), "results": results})
 
 
 @app.route("/api/v1/grades/bottom")
 def bottom_grades():
-    limit = min(int(request.args.get("limit", 10)), 50)
+    limit = min(int(request.args.get("limit", 10)), 100)
     bottom = list(reversed(ALL_COMPANIES[-limit:]))
-    return jsonify({"count": len(bottom), "results": [
-        {"rank": i+1, "company": c["company"], "ticker": c.get("ticker"),
-         "composite": c["composite"], "hi_grade": c["hi_grade"], "satire": c.get("satire")}
-        for i, c in enumerate(bottom)
-    ]})
+    results = []
+    for i, c in enumerate(bottom):
+        rec = dict(c)
+        rec["rank"] = i + 1
+        results.append(rec)
+    return jsonify({"count": len(results), "results": results})
 
 
 @app.route("/api/v1/stats")
@@ -334,3 +332,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+else:
+    print("HI. Score API starting under gunicorn")
+    build_index()
