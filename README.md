@@ -141,14 +141,14 @@ HI Certified requires paid certification + transparency verification. Companies 
 ## Architecture
 
 ```
-Edge (NO AI)                          Cloud (AI OK)
+Edge (NO AI)                          Cloud (NO AI currently)
 ┌──────────────────────┐    sync     ┌──────────────────────┐
 │ Browser Extension     │◄──────────►│ REST API (Flask)      │
 │ • 206 seed companies  │            │ • 6 data pipelines    │
 │ • Filter engine       │            │ • Scoring engine v2   │
 │ • Equalizer UI        │            │ • 500+ companies      │
 │ • Side panel + search │            │ • 585 domains indexed │
-│ • Deterministic only  │            │ • Humanwashing flags  │
+│ • Deterministic only  │            │ • Deterministic math  │
 └──────────────────────┘            └──────────────────────┘
          │                                    │
          └──── Both serve ────────────────────┘
@@ -157,9 +157,27 @@ Edge (NO AI)                          Cloud (AI OK)
             │ thehibalance │
             │    .org      │
             └──────────────┘
+                    │
+        ┌───────────────────────┐
+        │  AI-Informed Models   │
+        │  [Toggle: OFF by      │
+        │   default]            │
+        │                       │
+        │ • NLP filing analysis │
+        │ • ML humanwashing     │
+        │   detection           │
+        │ • Sentiment analysis  │
+        │ • Predictive scoring  │
+        │                       │
+        │ User opts IN — never  │
+        │ forced. Scores always │
+        │ available without AI. │
+        └───────────────────────┘
 ```
 
-The edge node is **entirely AI-free**. This is a philosophical commitment: you cannot credibly score companies on AI displacement while running AI on the consumer's device.
+The entire system is **zero AI** today — edge and cloud. Scoring is transparent math: averages, thresholds, and if/else logic. No machine learning, no neural networks, no LLMs. Anyone can audit every formula.
+
+**AI-Informed Models (planned):** An opt-in layer that enhances scoring with NLP analysis of SEC filings, ML-based humanwashing pattern detection, sentiment analysis of employee reviews, and predictive score trajectories. This layer is toggled OFF by default. Scores are always available without it. The user chooses whether AI helps — because that's what balance means.
 
 ## API
 
@@ -224,6 +242,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 - ⏳ Native iOS app
 - ⏳ HI Certification portal
 - ⏳ Logo design (balance beam I)
+- ⏳ AI-Informed Models — opt-in NLP filing analysis, ML humanwashing detection, predictive scoring (toggle OFF by default)
 
 ---
 
