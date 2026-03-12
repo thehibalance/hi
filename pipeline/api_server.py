@@ -70,6 +70,14 @@ def seed_to_record(s):
         "floor_triggered": min(s["h"], s["u"], s["m"], s["a"], s["n"]) < 10,
         "confidence": "Estimated", "data_sources": ["Manual Scoring"],
         "notes": s.get("notes", ""), "spec_version": "1.0.0",
+        "industry": s["tags"][0] if s.get("tags") else "",
+        "humanwashing_flags": [],
+        "key_signals": {
+            "headcount": None, "headcount_change_pct": None,
+            "revenue_per_employee": None, "displacement_signal": None,
+            "ai_hiring_ratio": None, "glassdoor_rating": None,
+            "cdp_climate": None, "epa_violations": None,
+        },
     }
 
 
