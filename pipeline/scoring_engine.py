@@ -58,25 +58,46 @@ def load_source(directory, filename="all_companies.json"):
             return json.load(f)
     return []
 
+def normalize_name(name):
+    """Normalize company name for matching: strip Inc, Corp, LLC, etc."""
+    n = name.lower().strip()
+    for suffix in [' inc.', ' inc', ' corp.', ' corp', ' llc', ' ltd.', ' ltd',
+                   ' co.', ' co', ' plc', ' sa', ' ag', ' nv', ' se',
+                   ' holdings', ' group', ' international', ' company',
+                   ' technologies', ' technology', ' enterprises', ' solutions',
+                   ' platforms', ' (google)', ' (alphabet)', ' (facebook)',
+                   ' (square)', ' (raytheon)']:
+        if n.endswith(suffix):
+            n = n[:-len(suffix)].strip()
+    # Remove trailing punctuation
+    n = n.rstrip('.,')
+    return n
+
 def index_by_company(records, key="company"):
     idx = {}
     for r in records:
         name = r.get(key, "").lower().strip()
         if name: idx[name] = r
+        # Also index by normalized name
+        norm = normalize_name(name)
+        if norm and norm != name: idx[norm] = r
         ticker = r.get("ticker", "")
         if ticker: idx[f"ticker:{ticker.upper()}"] = r
     return idx
 
 def find_match(company_name, ticker, index):
+    # 1. Exact name match
     result = index.get(company_name.lower().strip())
     if result: return result
+    # 2. Normalized name match
+    norm = normalize_name(company_name)
+    result = index.get(norm)
+    if result: return result
+    # 3. Ticker match (most reliable cross-source link)
     if ticker:
         result = index.get(f"ticker:{ticker.upper()}")
         if result: return result
-    name_lower = company_name.lower()
-    for key, val in index.items():
-        if not key.startswith("ticker:") and (name_lower in key or key in name_lower):
-            return val
+    # No partial/substring matching — too many false positives
     return None
 
 
@@ -418,23 +439,26 @@ def main():
     job_idx = index_by_company(job_records)
     gd_idx = index_by_company(gd_records)
 
+    # Build master company list using normalized names to prevent duplicates
     all_companies = set()
     for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx]:
         for key in idx:
-            if not key.startswith("ticker:"): all_companies.add(key)
+            if not key.startswith("ticker:"):
+                all_companies.add(normalize_name(key))
 
     print(f"\n  Total unique companies: {len(all_companies)}")
     print("=" * 60)
 
     all_scores = []
     for company_lower in sorted(all_companies):
-        # First pass: get ticker from any source that has it
+        # Get ticker from any source
         ticker = ""
+        norm = normalize_name(company_lower)
         for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx]:
-            for key, val in idx.items():
-                if key == company_lower or (not key.startswith("ticker:") and (company_lower in key or key in company_lower)):
-                    ticker = val.get("ticker", "") or ticker
-                    if ticker: break
+            for key in [company_lower, norm]:
+                if key in idx and idx[key].get("ticker"):
+                    ticker = idx[key]["ticker"]
+                    break
             if ticker: break
 
         sec = find_match(company_lower, ticker, sec_idx)
