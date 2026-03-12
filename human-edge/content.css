@@ -320,6 +320,16 @@
   line-height: 1.4;
 }
 
+.human-badge__brand {
+  font-size: 8px;
+  color: #1B3A5C;
+  text-align: center;
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  opacity: 0.5;
+}
+
 /* Clickable dimension bars */
 .human-badge__dim--clickable {
   cursor: pointer;
@@ -430,6 +440,15 @@
   font-size: 13px;
   font-weight: 600;
   margin-top: 2px;
+}
+
+.human-panel__brand {
+  font-size: 9px;
+  color: #1B3A5C;
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  opacity: 0.5;
 }
 
 .human-panel__satire {
@@ -843,6 +862,15 @@
   letter-spacing: 0.5px;
 }
 
+.human-panel__footer-brand {
+  font-size: 9px;
+  color: #1B3A5C;
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  opacity: 0.6;
+}
+
 /* Connection indicator */
 .human-panel__connection {
   display: flex;
@@ -909,4 +937,7 @@
   .human-panel__connection { border-color: #333; color: #888; }
   .human-panel__disclaimer { border-color: #333; color: #666; }
   .human-panel__satire { background: #252525; color: #aaa; border-left-color: #3A7BBF; }
+  .human-badge__brand { color: #6ba3d6; }
+  .human-panel__footer-brand { color: #6ba3d6; }
+  .human-panel__brand { color: #6ba3d6; }
 }

@@ -159,6 +159,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
         <div class="human-badge__tier" style="color: ${tierColor}">
           HI Grade: ${profile.grade} · ${profile.composite}
         </div>
+        <div class="human-badge__brand">HI. — Human Intelligence. The other AI.</div>
       </div>
       <div class="human-badge__toggle-indicator">▾</div>
     </div>
@@ -272,6 +273,7 @@ function openDetailPanel(profile, dim) {
       <div>
         <div class="human-panel__name">${profile.name}</div>
         <div class="human-panel__tier" style="color: ${tierColor}">HI Grade: ${profile.grade} · ${profile.composite}</div>
+        <div class="human-panel__brand">HI. — Human Intelligence. The other AI.</div>
       </div>
     </div>
     <div class="human-panel__satire">"${profile.tier.satire}"</div>
