@@ -428,14 +428,22 @@ def main():
 
     all_scores = []
     for company_lower in sorted(all_companies):
-        sec = sec_idx.get(company_lower)
-        epa = epa_idx.get(company_lower)
-        cdp = cdp_idx.get(company_lower)
-        job = job_idx.get(company_lower)
-        gd = gd_idx.get(company_lower)
+        # First pass: get ticker from any source that has it
+        ticker = ""
+        for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx]:
+            for key, val in idx.items():
+                if key == company_lower or (not key.startswith("ticker:") and (company_lower in key or key in company_lower)):
+                    ticker = val.get("ticker", "") or ticker
+                    if ticker: break
+            if ticker: break
+
+        sec = find_match(company_lower, ticker, sec_idx)
+        epa = find_match(company_lower, ticker, epa_idx)
+        cdp = find_match(company_lower, ticker, cdp_idx)
+        job = find_match(company_lower, ticker, job_idx)
+        gd = find_match(company_lower, ticker, gd_idx)
 
         name = company_lower.title()
-        ticker = ""
         for source in [sec, epa, cdp, job, gd]:
             if source:
                 name = source.get("company", name)
