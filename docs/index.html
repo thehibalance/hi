@@ -31,8 +31,18 @@ nav{background:var(--dark);padding:14px 0;position:sticky;top:0;z-index:100;bord
 footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:center}.footer-brand{font-family:'DM Serif Display';font-size:22px;color:var(--white);margin-bottom:6px}.footer-tagline{font-size:12px;color:#5A7A9A;letter-spacing:1.5px;font-weight:500;text-transform:uppercase}.footer-links{display:flex;gap:20px;justify-content:center;margin-top:12px}.footer-link{font-size:12px;color:#5A7A9A;cursor:pointer;transition:color .2s}.footer-link:hover{color:var(--white)}.footer-info{font-size:11px;color:#3A5A7A;margin-top:12px}.footer-disclaimer{font-size:10px;color:#2A4A6A;margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.5}.footer-status{font-size:10px;color:#2A4A6A;margin-top:8px}
 @media(max-width:768px){.hero h1{font-size:48px}.hero p{font-size:18px}.hero-ctas{flex-direction:column;align-items:center}.lb-grid{grid-template-columns:1fr}.signals-grid{grid-template-columns:1fr}.nav-tagline{display:none}.stats{gap:20px}.stat-num{font-size:28px}.detail-header{flex-direction:column;text-align:center}.detail-composite{flex-direction:column;text-align:center}.waitlist-form{flex-direction:column}.lb-controls{flex-direction:column;align-items:center}}
 .page{animation:fadeIn .3s ease}@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.hidden{display:none}
+.subpage{padding:50px 0 60px;max-width:800px;margin:0 auto}.subpage h1{font-family:'DM Serif Display';font-size:36px;color:var(--navy);text-align:center;margin-bottom:8px}.subpage-sub{text-align:center;color:var(--muted);font-size:15px;margin-bottom:40px}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}.feature-card{background:var(--white);border-radius:14px;padding:24px;border:1px solid var(--light)}.feature-icon{font-size:32px;margin-bottom:12px}.feature-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px}.feature-desc{font-size:13px;color:#666;line-height:1.6}
+.mockup-box{background:var(--dark);border-radius:14px;padding:32px;text-align:center;margin-bottom:32px;color:var(--white)}.mockup-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#5A7A9A;margin-bottom:12px}.mockup-preview{background:#1a2a4a;border-radius:10px;padding:24px;font-size:14px;color:#8899AA;line-height:1.8;text-align:left;font-family:'DM Sans',monospace}
+.steps{max-width:600px;margin:0 auto 32px}.step{display:flex;gap:16px;margin-bottom:20px}.step-num{width:36px;height:36px;border-radius:50%;background:var(--navy);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}.step-content{flex:1}.step-title{font-weight:700;color:var(--navy);font-size:14px;margin-bottom:4px}.step-desc{font-size:13px;color:#666;line-height:1.5}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}.price-card{background:var(--white);border-radius:14px;padding:24px;border:1px solid var(--light);text-align:center}.price-card.featured{border-color:var(--gold);box-shadow:0 4px 20px rgba(196,155,32,.15)}.price-name{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px}.price-cost{font-family:'DM Serif Display';font-size:28px;color:var(--navy);margin-bottom:4px}.price-period{font-size:12px;color:var(--muted)}.price-features{list-style:none;padding:0;margin:16px 0;text-align:left}.price-features li{font-size:12px;color:#666;padding:6px 0;border-bottom:1px solid var(--light)}.price-features li:before{content:'✓ ';color:var(--green);font-weight:700}
+.code-block{background:var(--dark);color:#A8D8A8;border-radius:10px;padding:20px;font-family:'DM Mono',monospace;font-size:13px;line-height:1.6;overflow-x:auto;margin-bottom:16px;white-space:pre}
+.endpoint{background:var(--white);border-radius:10px;padding:16px 20px;border:1px solid var(--light);margin-bottom:10px;display:flex;align-items:center;gap:12px}.ep-method{font-size:11px;font-weight:800;padding:3px 8px;border-radius:4px;background:#E8F5E9;color:var(--green)}.ep-path{font-size:13px;font-weight:600;color:var(--navy);font-family:monospace}.ep-desc{font-size:12px;color:var(--muted);margin-left:auto}
+.app-teaser{text-align:center;padding:40px;background:linear-gradient(135deg,var(--dark),#1a2a4a);border-radius:16px;margin-bottom:32px;color:var(--white)}.app-teaser h2{font-family:'DM Serif Display';font-size:28px;margin-bottom:8px}.app-teaser p{color:#8899AA;font-size:14px;margin-bottom:20px;line-height:1.6}
+.app-features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}.app-feat{text-align:center;padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light)}.app-feat-icon{font-size:36px;margin-bottom:10px}.app-feat-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px}.app-feat-desc{font-size:12px;color:#666}
+@media(max-width:768px){.feature-grid,.price-grid,.app-features{grid-template-columns:1fr}.nav-links{gap:8px;flex-wrap:wrap}}
 </style></head><body>
-<nav><div class="nav-inner"><div style="display:flex;align-items:center;gap:24px"><span class="nav-brand" onclick="showPage('home')">HI.</span><div class="nav-links"><span class="nav-link active" id="nav-home" onclick="showPage('home')">Home</span><span class="nav-link" id="nav-leaderboard" onclick="showPage('leaderboard')">Leaderboard</span><span class="nav-link" id="nav-about" onclick="showPage('about')">About</span></div></div><span class="nav-tagline">Find the HI balance.</span></div></nav>
+<nav><div class="nav-inner"><div style="display:flex;align-items:center;gap:24px"><span class="nav-brand" onclick="showPage('home')">HI.</span><div class="nav-links"><span class="nav-link active" id="nav-home" onclick="showPage('home')">Home</span><span class="nav-link" id="nav-leaderboard" onclick="showPage('leaderboard')">Leaderboard</span><span class="nav-link" id="nav-extension" onclick="showPage('extension')">Extension</span><span class="nav-link" id="nav-companies" onclick="showPage('companies')">For Companies</span><span class="nav-link" id="nav-api" onclick="showPage('api')">API</span><span class="nav-link" id="nav-about" onclick="showPage('about')">About</span></div></div><span class="nav-tagline">Find the HI balance.</span></div></nav>
 <div id="page-home" class="page" style="max-width:1100px;margin:0 auto;padding:0 24px">
 <div class="hero"><h1>HI.</h1><p>The balance between humans and technology, measured.</p><p class="hero-sub">Every company gets an HI Grade™ — a letter grade measuring how human they are across five dimensions. Not anti-AI. Pro-balance.</p><div class="hero-ctas"><button class="btn btn-primary" onclick="document.getElementById('searchInput').focus()"><span class="btn-icon">🔍</span> Search a Company</button><button class="btn btn-secondary" onclick="window.open('https://github.com/thehibalance/hi','_blank')"><span class="btn-icon">⬇</span> Get the Extension</button><button class="btn btn-gold" onclick="document.getElementById('waitlistSection').scrollIntoView({behavior:'smooth'})"><span class="btn-icon">✦</span> Get HI Certified</button></div></div>
 <div class="search-wrap"><input class="search-input" id="searchInput" placeholder="Search any company..." oninput="doSearch(this.value)"><div class="search-results" id="searchResults"></div></div>
@@ -43,8 +53,169 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 </div>
 <div id="page-leaderboard" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px"><div class="leaderboard"><h1 class="section-title" style="font-size:36px">HI Grade™ Leaderboard</h1><p style="text-align:center;color:var(--muted);font-size:14px;margin-bottom:20px" id="lbSub"></p><div class="lb-controls"><input class="lb-search" placeholder="Filter companies..." oninput="filterLB(this.value)"><button class="lb-filter active" onclick="setGF('all',this)">All</button><button class="lb-filter" onclick="setGF('A',this)">A</button><button class="lb-filter" onclick="setGF('B',this)">B</button><button class="lb-filter" onclick="setGF('C',this)">C</button><button class="lb-filter" onclick="setGF('F',this)">F</button></div><div class="lb-grid"><div class="lb-col"><h3 style="color:var(--green)">🏆 Highest HI Grades</h3><div id="lbTop"></div><div class="lb-count" id="lbTopCount"></div></div><div class="lb-col"><h3 style="color:var(--gray)">📉 Lowest HI Grades</h3><div id="lbBottom"></div><div class="lb-count" id="lbBottomCount"></div></div></div></div></div>
 <div id="page-detail" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px"><div class="detail" id="detailContent"></div></div>
+<div id="page-extension" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
+<div class="subpage">
+<h1>HI. Browser Extension</h1>
+<p class="subpage-sub">See every company's HI Grade™ as you browse. Zero AI. Zero tracking. Pure transparency.</p>
+
+<div class="mockup-box">
+<div class="mockup-label">Extension Preview</div>
+<div class="mockup-preview">
+┌─────────────────────────────────┐
+│  <span style="color:var(--green);font-weight:800">A</span>  <span style="color:#ccc">Patagonia</span>                     │
+│     <span style="color:var(--green)">HI Grade: A · 88.6</span>            │
+│                                 │
+│  🧠 H ████████████░░ <span style="color:var(--green)">82</span>        │
+│  💙 U █████████████░ <span style="color:var(--green)">86</span>        │
+│  ⚖️ M ████████████░░ <span style="color:var(--green)">84</span>        │
+│  🌍 A ███████████░░░ <span style="color:var(--blue)">78</span>        │
+│  🔍 N ████████████░░ <span style="color:var(--green)">83</span>        │
+│                                 │
+│  <span style="color:#5A7A9A">Find the HI balance.</span>            │
+└─────────────────────────────────┘
+</div>
+</div>
+
+<div class="feature-grid">
+<div class="feature-card"><div class="feature-icon">🔍</div><div class="feature-title">Instant Scores</div><div class="feature-desc">Visit any website and see its HI Grade™ badge automatically. No clicks needed. Scores appear as a floating badge on every scored site.</div></div>
+<div class="feature-card"><div class="feature-icon">📊</div><div class="feature-title">Five Dimensions</div><div class="feature-desc">Click any dimension bar to open a full detail panel with sub-signals, descriptions, and the complete HUMAN breakdown.</div></div>
+<div class="feature-card"><div class="feature-icon">🎛️</div><div class="feature-title">Equalizer</div><div class="feature-desc">Set your own thresholds per dimension. Care most about environmental impact? Slide A up. The extension filters companies that don't meet your standards.</div></div>
+<div class="feature-card"><div class="feature-icon">🔒</div><div class="feature-title">Zero AI. Zero Tracking.</div><div class="feature-desc">The extension runs entirely on deterministic logic. No machine learning, no data collection, no phone-home. Your browsing stays private.</div></div>
+<div class="feature-card"><div class="feature-icon">🔎</div><div class="feature-title">Search Any Company</div><div class="feature-desc">Search 500+ companies directly from the extension. Find scores, compare companies, and make informed decisions without leaving the page.</div></div>
+<div class="feature-card"><div class="feature-icon">☁️</div><div class="feature-title">Cloud + Local</div><div class="feature-desc">Works offline with a built-in database of 200+ companies. When connected, pulls live scores from the HI API for 500+ companies.</div></div>
+</div>
+
+<h2 class="section-title">Install in 3 Steps</h2>
+<div class="steps">
+<div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-title">Download from GitHub</div><div class="step-desc">Visit <a href="https://github.com/thehibalance/hi" target="_blank">github.com/thehibalance/hi</a> and download the human-edge folder.</div></div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-title">Load in Chrome</div><div class="step-desc">Open chrome://extensions, enable Developer mode, click "Load unpacked" and select the human-edge folder.</div></div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-title">Browse with balance</div><div class="step-desc">Visit any website. If the company is in our database, the HI Grade™ badge appears automatically. Click dimensions for details.</div></div></div>
+</div>
+
+<div style="text-align:center;margin-top:24px"><button class="btn btn-primary" onclick="window.open('https://github.com/thehibalance/hi','_blank')"><span class="btn-icon">⬇</span> Get the Extension on GitHub</button></div>
+<p style="text-align:center;color:var(--muted);font-size:12px;margin-top:12px">Chrome Web Store listing coming soon. Currently available as a developer install.</p>
+</div>
+</div>
+
+<div id="page-app" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
+<div class="subpage">
+<h1>HI. Mobile App</h1>
+<p class="subpage-sub">The HI Grade™ in your pocket. Coming to iOS and Safari.</p>
+
+<div class="app-teaser">
+<h2>Scan. Search. Score.</h2>
+<p>Walk into any store, scan a barcode, and see the HI Grade™ instantly. The balance between humans and technology — everywhere you shop.</p>
+<div class="waitlist-form"><input class="waitlist-input" id="appWaitlistEmail" type="email" placeholder="your@email.com"><button class="waitlist-btn" onclick="submitAppWaitlist()">Notify Me</button></div>
+<div class="waitlist-success" id="appWaitlistSuccess" style="display:none">✓ We'll notify you when the app launches!</div>
+</div>
+
+<div class="app-features">
+<div class="app-feat"><div class="app-feat-icon">📱</div><div class="app-feat-title">Barcode Scanner</div><div class="app-feat-desc">Scan any product barcode to see the manufacturer's HI Grade™ instantly.</div></div>
+<div class="app-feat"><div class="app-feat-icon">🔍</div><div class="app-feat-title">Company Search</div><div class="app-feat-desc">Search 500+ companies and see full HUMAN dimension breakdowns.</div></div>
+<div class="app-feat"><div class="app-feat-icon">📊</div><div class="app-feat-title">Personal Portfolio</div><div class="app-feat-desc">Track the average HI Grade™ of all the brands you use. Your ethical footprint.</div></div>
+<div class="app-feat"><div class="app-feat-icon">🏆</div><div class="app-feat-title">Leaderboard</div><div class="app-feat-desc">Browse top and bottom rated companies. Filter by industry and grade.</div></div>
+<div class="app-feat"><div class="app-feat-icon">📤</div><div class="app-feat-title">Share Cards</div><div class="app-feat-desc">Generate shareable score cards for any company. Spread the balance.</div></div>
+<div class="app-feat"><div class="app-feat-icon">🔔</div><div class="app-feat-title">Score Alerts</div><div class="app-feat-desc">Get notified when a company's score changes significantly. Stay informed.</div></div>
+</div>
+
+<div class="about-card" style="text-align:center">
+<p style="margin:0"><strong>Safari Extension</strong> — Your Chrome extension, ported to Safari on Mac, iPhone, and iPad. Same scores, same database, same zero-AI privacy. Coming first.</p>
+</div>
+
+<div class="about-card" style="text-align:center">
+<p style="margin:0"><strong>Native iOS App</strong> — Full app with barcode scanner, portfolio tracking, and share cards. Built in Swift for the best mobile experience. Coming Q3 2026.</p>
+</div>
+</div>
+</div>
+
+<div id="page-companies" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
+<div class="subpage">
+<h1>For Companies</h1>
+<p class="subpage-sub">Understand your score. Improve your balance. Get certified.</p>
+
+<div class="about-card">
+<h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">How Your HI Grade™ is Calculated</h3>
+<p>Every company receives a score from 0-100 across five dimensions — Human Consciousness, Understanding & Empathy, Moral & Ethical Conduct, Alive & Environmental, and Natural Transparency. These are averaged into a composite HI Grade™.</p>
+<p>Scores are computed from six public data sources: SEC EDGAR filings, EPA environmental records, BLS wage data, CDP climate disclosures, job posting analysis, and Glassdoor employee ratings. No private data is used without your consent.</p>
+<p>The methodology is <a href="https://github.com/thehibalance/hi" target="_blank">open source</a>. You can audit every formula, verify every data source, and understand exactly why you scored what you did.</p>
+</div>
+
+<div class="about-card">
+<h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">Improve Your Score</h3>
+<p>Your HI Grade™ isn't a judgment — it's a roadmap. Each dimension tells you exactly where the balance is off and what to improve.</p>
+<div class="feature-grid" style="margin-top:16px">
+<div class="feature-card"><div class="feature-icon">🧠</div><div class="feature-title">Low H Score?</div><div class="feature-desc">Invest in human creative roles. Ensure AI augments rather than replaces human decision-making. Maintain human accountability chains.</div></div>
+<div class="feature-card"><div class="feature-icon">💙</div><div class="feature-title">Low U Score?</div><div class="feature-desc">Improve work-life balance. Invest in employee wellbeing. Ensure customer interactions are genuinely human when it matters.</div></div>
+<div class="feature-card"><div class="feature-icon">⚖️</div><div class="feature-title">Low M Score?</div><div class="feature-desc">Address pricing fairness. Strengthen data ethics. Resolve outstanding regulatory issues. Improve leadership accountability.</div></div>
+<div class="feature-card"><div class="feature-icon">🌍</div><div class="feature-title">Low A Score?</div><div class="feature-desc">Disclose to CDP. Reduce environmental violations. Account for AI infrastructure energy costs. Invest in sustainable practices.</div></div>
+</div>
+</div>
+
+<h2 class="section-title">HI Certification ✦</h2>
+<div class="price-grid">
+<div class="price-card"><div class="price-name">Self-Assessment</div><div class="price-cost">$500</div><div class="price-period">per year</div><ul class="price-features"><li>Complete questionnaire</li><li>Submit documentation</li><li>"Self-Reported" badge</li><li>Listed on thehibalance.org</li></ul></div>
+<div class="price-card featured"><div class="price-name" style="color:var(--gold)">Third-Party Verified</div><div class="price-cost">$2,500</div><div class="price-period">per year</div><ul class="price-features"><li>Independent audit</li><li>"Verified" badge</li><li>Detailed score report</li><li>Improvement roadmap</li><li>Priority listing</li></ul></div>
+<div class="price-card"><div class="price-name">Full Audit</div><div class="price-cost">$10,000</div><div class="price-period">per year</div><ul class="price-features"><li>On-site evaluation</li><li>Employee interviews</li><li>Supply chain review</li><li>Gold HI Certified badge</li><li>Quarterly monitoring</li><li>Advisory support</li></ul></div>
+</div>
+
+<div style="text-align:center"><button class="btn btn-gold" onclick="showPage('home');setTimeout(function(){document.getElementById('waitlistSection').scrollIntoView({behavior:'smooth'})},300)"><span class="btn-icon">✦</span> Join the Certification Waitlist</button></div>
+<p style="text-align:center;color:var(--muted);font-size:12px;margin-top:12px">Certification program launching Q2 2026. Join the waitlist to be first in line.</p>
+</div>
+</div>
+
+<div id="page-api" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
+<div class="subpage">
+<h1>HI. API</h1>
+<p class="subpage-sub">Integrate HI Grades™ into your products. Procurement platforms, investment tools, ESG dashboards.</p>
+
+<div class="about-card">
+<h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">REST API</h3>
+<p>The HI Score API provides programmatic access to HI Grades™ for 500+ companies. JSON responses, no authentication required for public endpoints. Rate limited to 60 requests per minute.</p>
+<p>Base URL: <code style="background:#F0F0F0;padding:2px 8px;border-radius:4px;font-size:13px">https://hi-api-production.up.railway.app</code></p>
+</div>
+
+<h2 class="section-title" style="font-size:22px">Endpoints</h2>
+<div style="margin-bottom:32px">
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/score/{domain}</span><span class="ep-desc">Score by domain</span></div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/score/ticker/{ticker}</span><span class="ep-desc">Score by stock ticker</span></div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/search?q={query}</span><span class="ep-desc">Search companies</span></div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/grades/top?limit=10</span><span class="ep-desc">Top rated companies</span></div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/grades/bottom?limit=10</span><span class="ep-desc">Bottom rated companies</span></div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/stats</span><span class="ep-desc">Database statistics</span></div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/health</span><span class="ep-desc">Health check</span></div>
+</div>
+
+<div class="about-card">
+<h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">Example Response</h3>
+<div class="code-block">{
+  "company": "Apple",
+  "ticker": "AAPL",
+  "hi_grade": "B",
+  "composite": 64.7,
+  "D_H": 58.2,
+  "D_U": 65.0,
+  "D_M": 70.3,
+  "D_A": 62.5,
+  "D_N": 67.5,
+  "data_sources": ["CDP", "Glassdoor", "Jobs", "SEC"],
+  "humanwashing_flags": [],
+  "satire": "Humans and machines, learning to share the remote."
+}</div>
+</div>
+
+<h2 class="section-title" style="font-size:22px">API Plans</h2>
+<div class="price-grid">
+<div class="price-card"><div class="price-name">Public</div><div class="price-cost">Free</div><div class="price-period">60 req/min</div><ul class="price-features"><li>All public endpoints</li><li>500+ companies</li><li>No authentication</li><li>Community support</li></ul></div>
+<div class="price-card featured"><div class="price-name" style="color:var(--gold)">Professional</div><div class="price-cost">$99</div><div class="price-period">per month</div><ul class="price-features"><li>10,000 requests/day</li><li>API key authentication</li><li>Webhook notifications</li><li>Priority support</li><li>Batch endpoints</li></ul></div>
+<div class="price-card"><div class="price-name">Enterprise</div><div class="price-cost">Custom</div><div class="price-period">contact us</div><ul class="price-features"><li>Unlimited requests</li><li>Custom data feeds</li><li>SLA guarantee</li><li>Dedicated support</li><li>On-premise option</li><li>Custom integrations</li></ul></div>
+</div>
+
+<div style="text-align:center;margin-top:16px"><button class="btn btn-primary" onclick="window.open('https://github.com/thehibalance/hi','_blank')"><span class="btn-icon">📖</span> Full Documentation on GitHub</button></div>
+</div>
+</div>
+
 <div id="page-about" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px"><div class="about"><h1>About HI.</h1><p class="about-sub">Find the HI balance.</p><div class="about-card"><p><strong>HI.</strong> measures the balance between humans and technology at every company. We score organizations across five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent.</p><p>Every company gets an <strong>HI Grade™</strong> — a letter grade from HI Certified to F. The pass/fail line is 42 — the answer to life, the universe, and everything.</p><p>We're not anti-AI. We're pro-balance. Technology that empowers humans scores well. Technology that replaces and hides them scores poorly.</p><p>The scoring methodology is open source (Apache 2.0). Anyone can audit the math, verify the data, and hold us accountable.</p></div><div class="about-card"><h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">The HUMAN Framework</h3><div class="about-dim"><span class="about-dim-icon">🧠</span><div><div class="about-dim-name">H — Human Consciousness</div><div class="about-dim-desc">Creative agency, craft, accountability vs. AI automation</div></div></div><div class="about-dim"><span class="about-dim-icon">💙</span><div><div class="about-dim-name">U — Understanding & Empathy</div><div class="about-dim-desc">Genuine care vs. simulated empathy</div></div></div><div class="about-dim"><span class="about-dim-icon">⚖️</span><div><div class="about-dim-name">M — Moral & Ethical Conduct</div><div class="about-dim-desc">Principled action vs. optimization-at-all-costs</div></div></div><div class="about-dim"><span class="about-dim-icon">🌍</span><div><div class="about-dim-name">A — Alive & Environmental</div><div class="about-dim-desc">True ecological cost including AI infrastructure</div></div></div><div class="about-dim"><span class="about-dim-icon">🔍</span><div><div class="about-dim-name">N — Natural Transparency</div><div class="about-dim-desc">Honest disclosure vs. humanwashing</div></div></div></div><div class="about-card"><h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">Data Sources</h3><p>HI Grades are computed from six free, public data sources: SEC EDGAR, EPA ECHO, Bureau of Labor Statistics, CDP climate disclosures, job posting analysis, and Glassdoor employee ratings.</p><p>All scores are estimated from public data. Verified scores require HI Certification.</p></div><div class="about-card"><h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">Open Source</h3><p>The scoring methodology, browser extension, and community tools are open source on <a href="https://github.com/thehibalance/hi" target="_blank">GitHub</a>. A transparency framework that hides its own methodology would be hypocritical.</p><p>Patent Pending · HI Grade™ · Morf Innovations LLC</p></div><div style="text-align:center;margin-top:32px"><div style="font-family:'DM Serif Display';font-size:18px;color:var(--navy)">The Deep Thought Foundation</div><div style="font-size:13px;color:var(--muted);margin-top:6px">Patent Pending · HUMAN Grade Methodology Spec v1.0 · Apache 2.0</div></div></div></div>
-<footer><div class="footer-brand">HI.</div><div class="footer-tagline">Find the HI balance.</div><div class="footer-links"><span class="footer-link" onclick="showPage('about')">About</span><span class="footer-link" onclick="showPage('leaderboard')">Leaderboard</span><a class="footer-link" href="https://github.com/thehibalance/hi" target="_blank">GitHub</a><span class="footer-link" onclick="document.getElementById('waitlistSection')?.scrollIntoView({behavior:'smooth'});showPage('home');">Get Certified</span></div><div class="footer-info">The Deep Thought Foundation · thehibalance.org · Patent Pending · HI Grade™ Morf Innovations LLC</div><div class="footer-disclaimer">HI Grades are estimated from public data and are not financial, legal, or investment advice. Not affiliated with or endorsed by any scored company. Methodology: HUMAN Grade Spec v1.0 (Apache 2.0).</div><div class="footer-status" id="footerStatus"></div></footer>
+<footer><div class="footer-brand">HI.</div><div class="footer-tagline">Find the HI balance.</div><div class="footer-links"><span class="footer-link" onclick="showPage('about')">About</span><span class="footer-link" onclick="showPage('leaderboard')">Leaderboard</span><span class="footer-link" onclick="showPage('extension')">Extension</span><span class="footer-link" onclick="showPage('app')">App</span><span class="footer-link" onclick="showPage('companies')">For Companies</span><span class="footer-link" onclick="showPage('api')">API</span><a class="footer-link" href="https://github.com/thehibalance/hi" target="_blank">GitHub</a></div><div class="footer-info">The Deep Thought Foundation · thehibalance.org · Patent Pending · HI Grade™ Morf Innovations LLC</div><div class="footer-disclaimer">HI Grades are estimated from public data and are not financial, legal, or investment advice. Not affiliated with or endorsed by any scored company. Methodology: HUMAN Grade Spec v1.0 (Apache 2.0).</div><div class="footer-status" id="footerStatus"></div></footer>
 <script>
 const API=location.hostname==='localhost'?'http://localhost:8080':'https://hi-api-production.up.railway.app';
 const GC={"HI Certified":"#C49B20",A:"#2e8b57",B:"#4a90d9",C:"#E07020",F:"#6B7280"};
@@ -77,7 +248,8 @@ h+='<div class="detail-disclaimer">HI Grades are estimated from public data and 
 document.getElementById('detailContent').innerHTML=h}
 function submitWaitlist(){var e=document.getElementById('waitlistEmail').value.trim();if(!e||!e.includes('@'))return;var w=JSON.parse(localStorage.getItem('hi_waitlist')||'[]');w.push({email:e,date:new Date().toISOString()});localStorage.setItem('hi_waitlist',JSON.stringify(w));document.getElementById('waitlistSuccess').style.display='block';document.getElementById('waitlistEmail').value='';updWC()}
 function updWC(){var w=JSON.parse(localStorage.getItem('hi_waitlist')||'[]');if(w.length>0)document.getElementById('waitlistCount').textContent=w.length+' on the waitlist'}updWC();
-function showPage(p){['home','leaderboard','detail','about'].forEach(function(pg){document.getElementById('page-'+pg).className=pg===p?'page':'page hidden';var n=document.getElementById('nav-'+pg);if(n)n.className=pg===p?'nav-link active':'nav-link'});window.scrollTo(0,0)}
+function showPage(p){['home','leaderboard','detail','about','extension','app','companies','api'].forEach(function(pg){document.getElementById('page-'+pg).className=pg===p?'page':'page hidden';var n=document.getElementById('nav-'+pg);if(n)n.className=pg===p?'nav-link active':'nav-link'});window.scrollTo(0,0)}
+function submitAppWaitlist(){var e=document.getElementById('appWaitlistEmail').value.trim();if(!e||!e.includes('@'))return;var w=JSON.parse(localStorage.getItem('hi_app_waitlist')||'[]');w.push({email:e,date:new Date().toISOString()});localStorage.setItem('hi_app_waitlist',JSON.stringify(w));document.getElementById('appWaitlistSuccess').style.display='block';document.getElementById('appWaitlistEmail').value=''}
 document.addEventListener('click',function(e){if(!e.target.closest('.search-wrap'))document.getElementById('searchResults').className='search-results'});
 init();
 </script></body></html>
