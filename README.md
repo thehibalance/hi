@@ -1,5 +1,7 @@
 # HI. — Human Intelligence. The other AI.
 
+> Find the HI balance.
+
 > The balance between humans and technology, measured.
 
 **HI.** is an open scoring framework that measures how human a company is across five dimensions: **H**uman Consciousness, **U**nderstanding & Empathy, **M**oral & Ethical Conduct, **A**live & Environmental, **N**atural Transparency.
