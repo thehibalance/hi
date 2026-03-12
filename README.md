@@ -233,12 +233,12 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 - ✅ 6 data pipelines (SEC, EPA, BLS, CDP, Jobs, Glassdoor)
 - ✅ Scoring engine v2 (multi-source fusion)
 - ✅ Chrome extension with side panel, equalizer, search
+- ✅ Safari extension (Mac, iOS ready)
 - ✅ REST API live on Railway
 - ✅ Website live at thehibalance.org
 - ✅ GitHub repo public
 - ✅ thehibalance.org + thehibalance.com (redirect) with HTTPS
 - ⏳ Chrome Web Store listing
-- ✅ Safari extension (Mac, iOS ready)
 - ⏳ Native iOS app
 - ⏳ HI Certification portal
 - ⏳ Logo design (balance beam I)
