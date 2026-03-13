@@ -333,7 +333,7 @@ def get_hi_grade(composite, verified=False):
 
 def score_company(company_name, ticker="", sec_data=None, epa_data=None,
                   bls_data=None, cdp_data=None, job_data=None, glassdoor_data=None,
-                  dei_data=None):
+                  dei_data=None, hrc_data=None):
     sic = sec_data.get("n_signals", {}).get("sic", "") if sec_data else ""
     industry = get_industry(sic)
 
@@ -360,6 +360,19 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         m_detail["M.6_dei"] = dei_score
         u_src = sorted(set(u_src + ["DEI"]))
         m_src = sorted(set(m_src + ["DEI"]))
+
+    # Integrate HRC (Corporate Equality Index) into U and M
+    hrc_score = None
+    if hrc_data and hrc_data.get("cei_score") is not None:
+        hrc_score = hrc_data["cei_score"]
+        # HRC maps to U (inclusion/empathy) and M (ethical conduct)
+        # Weight: blend 15% HRC into U, 10% into M
+        D_U = round(D_U * 0.85 + hrc_score * 0.15, 1)
+        D_M = round(D_M * 0.90 + hrc_score * 0.10, 1)
+        u_detail["U.7_hrc"] = hrc_score
+        m_detail["M.7_hrc"] = hrc_score
+        u_src = sorted(set(u_src + ["HRC"]))
+        m_src = sorted(set(m_src + ["HRC"]))
 
     composite, floor_triggered, triggering_dim = compute_composite(D_H, D_U, D_M, D_A, D_N)
     grade, satire = get_hi_grade(composite)
@@ -409,6 +422,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
             "cdp_climate": cdp_data.get("a_signals", {}).get("cdp_climate_letter") if cdp_data else None,
             "epa_violations": epa_data.get("a_signals", {}).get("total_violations_3yr") if epa_data else None,
             "dei_score": dei_score,
+            "hrc_score": hrc_score,
         },
     }
 
@@ -423,6 +437,7 @@ def main():
     parser.add_argument("--jobs", default="data/jobs")
     parser.add_argument("--glassdoor", default="data/glassdoor")
     parser.add_argument("--dei", default="data/dei")
+    parser.add_argument("--hrc", default="data/hrc")
     parser.add_argument("--output", default="data/scores")
     args = parser.parse_args()
 
@@ -442,6 +457,7 @@ def main():
     job_records = load_source(args.jobs)
     gd_records = load_source(args.glassdoor)
     dei_records = load_source(args.dei)
+    hrc_records = load_source(args.hrc)
 
     print(f"  SEC EDGAR:  {len(sec_records)} companies")
     print(f"  EPA ECHO:   {len(epa_records)} companies")
@@ -450,6 +466,7 @@ def main():
     print(f"  Job Boards: {len(job_records)} companies")
     print(f"  Glassdoor:  {len(gd_records)} companies")
     print(f"  DEI (AAPD): {len(dei_records)} companies")
+    print(f"  HRC (CEI):  {len(hrc_records)} companies")
 
     sec_idx = index_by_company(sec_records)
     epa_idx = index_by_company(epa_records)
@@ -457,10 +474,11 @@ def main():
     job_idx = index_by_company(job_records)
     gd_idx = index_by_company(gd_records)
     dei_idx = index_by_company(dei_records)
+    hrc_idx = index_by_company(hrc_records)
 
     # Build master company list using normalized names to prevent duplicates
     all_companies = set()
-    for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx, dei_idx]:
+    for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx, dei_idx, hrc_idx]:
         for key in idx:
             if not key.startswith("ticker:"):
                 all_companies.add(normalize_name(key))
@@ -473,7 +491,7 @@ def main():
         # Get ticker from any source
         ticker = ""
         norm = normalize_name(company_lower)
-        for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx, dei_idx]:
+        for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx, dei_idx, hrc_idx]:
             for key in [company_lower, norm]:
                 if key in idx and idx[key].get("ticker"):
                     ticker = idx[key]["ticker"]
@@ -486,17 +504,18 @@ def main():
         job = find_match(company_lower, ticker, job_idx)
         gd = find_match(company_lower, ticker, gd_idx)
         dei = find_match(company_lower, ticker, dei_idx)
+        hrc = find_match(company_lower, ticker, hrc_idx)
 
         name = company_lower.title()
-        for source in [sec, epa, cdp, job, gd, dei]:
+        for source in [sec, epa, cdp, job, gd, dei, hrc]:
             if source:
                 name = source.get("company", name)
                 ticker = source.get("ticker", ticker) or ticker
 
-        if sec and sec.get("error") and not any([epa, cdp, job, gd, dei]):
+        if sec and sec.get("error") and not any([epa, cdp, job, gd, dei, hrc]):
             continue
 
-        result = score_company(name, ticker, sec, epa, bls_data, cdp, job, gd, dei)
+        result = score_company(name, ticker, sec, epa, bls_data, cdp, job, gd, dei, hrc)
         all_scores.append(result)
         sources = ", ".join(result["data_sources"])
         print(f"  {result['hi_grade']:12s} {result['composite']:5.1f}  {name:30s}  [{sources}]")
