@@ -333,7 +333,7 @@ def get_hi_grade(composite, verified=False):
 
 def score_company(company_name, ticker="", sec_data=None, epa_data=None,
                   bls_data=None, cdp_data=None, job_data=None, glassdoor_data=None,
-                  dei_data=None, hrc_data=None):
+                  dei_data=None, hrc_data=None, yahoo_data=None, av_data=None):
     sic = sec_data.get("n_signals", {}).get("sic", "") if sec_data else ""
     industry = get_industry(sic)
 
@@ -341,6 +341,22 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
     sec_m = sec_data.get("m_signals", {}) if sec_data else {}
     sec_n = sec_data.get("n_signals", {}) if sec_data else {}
     sec_u = sec_data.get("u_signals", {}) if sec_data else {}
+
+    # Fill SEC gaps with Yahoo Finance / Alpha Vantage data
+    yahoo_h = yahoo_data.get("h_signals", {}) if yahoo_data else {}
+    av_h = av_data.get("h_signals", {}) if av_data else {}
+
+    # Headcount: prefer SEC, fallback to Yahoo, then AV
+    if not sec_h.get("headcount") and yahoo_h.get("headcount"):
+        sec_h["headcount"] = {"value": yahoo_h["headcount"]}
+    elif not sec_h.get("headcount") and av_h.get("headcount"):
+        sec_h["headcount"] = {"value": av_h["headcount"]}
+
+    # Revenue per employee: prefer SEC, fallback to Yahoo, then AV
+    if not sec_h.get("revenue_per_employee") and yahoo_h.get("revenue_per_employee"):
+        sec_h["revenue_per_employee"] = yahoo_h["revenue_per_employee"]
+    elif not sec_h.get("revenue_per_employee") and av_h.get("revenue_per_employee"):
+        sec_h["revenue_per_employee"] = av_h["revenue_per_employee"]
 
     D_H, h_detail, h_src = score_h_dimension(sec_h, job_data, bls_data, industry)
     D_U, u_detail, u_src = score_u_dimension(sec_u, glassdoor_data, industry)
@@ -373,6 +389,12 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         m_detail["M.7_hrc"] = hrc_score
         u_src = sorted(set(u_src + ["HRC"]))
         m_src = sorted(set(m_src + ["HRC"]))
+
+    # Track Yahoo/AV as sources if they provided data
+    if yahoo_data and yahoo_data.get("h_signals", {}).get("headcount"):
+        h_src = sorted(set(h_src + ["Yahoo"]))
+    if av_data and av_data.get("h_signals", {}).get("headcount"):
+        h_src = sorted(set(h_src + ["AV"]))
 
     composite, floor_triggered, triggering_dim = compute_composite(D_H, D_U, D_M, D_A, D_N)
     grade, satire = get_hi_grade(composite)
@@ -438,6 +460,8 @@ def main():
     parser.add_argument("--glassdoor", default="data/glassdoor")
     parser.add_argument("--dei", default="data/dei")
     parser.add_argument("--hrc", default="data/hrc")
+    parser.add_argument("--yahoo", default="data/yahoo")
+    parser.add_argument("--alphavantage", default="data/alphavantage")
     parser.add_argument("--output", default="data/scores")
     args = parser.parse_args()
 
@@ -458,6 +482,8 @@ def main():
     gd_records = load_source(args.glassdoor)
     dei_records = load_source(args.dei)
     hrc_records = load_source(args.hrc)
+    yahoo_records = load_source(args.yahoo)
+    av_records = load_source(args.alphavantage)
 
     print(f"  SEC EDGAR:  {len(sec_records)} companies")
     print(f"  EPA ECHO:   {len(epa_records)} companies")
@@ -467,6 +493,8 @@ def main():
     print(f"  Glassdoor:  {len(gd_records)} companies")
     print(f"  DEI (AAPD): {len(dei_records)} companies")
     print(f"  HRC (CEI):  {len(hrc_records)} companies")
+    print(f"  Yahoo Fin:  {len(yahoo_records)} companies")
+    print(f"  Alpha Vant: {len(av_records)} companies")
 
     sec_idx = index_by_company(sec_records)
     epa_idx = index_by_company(epa_records)
@@ -475,10 +503,12 @@ def main():
     gd_idx = index_by_company(gd_records)
     dei_idx = index_by_company(dei_records)
     hrc_idx = index_by_company(hrc_records)
+    yahoo_idx = index_by_company(yahoo_records)
+    av_idx = index_by_company(av_records)
 
     # Build master company list using normalized names to prevent duplicates
     all_companies = set()
-    for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx, dei_idx, hrc_idx]:
+    for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx, dei_idx, hrc_idx, yahoo_idx, av_idx]:
         for key in idx:
             if not key.startswith("ticker:"):
                 all_companies.add(normalize_name(key))
@@ -491,7 +521,7 @@ def main():
         # Get ticker from any source
         ticker = ""
         norm = normalize_name(company_lower)
-        for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx, dei_idx, hrc_idx]:
+        for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx, dei_idx, hrc_idx, yahoo_idx, av_idx]:
             for key in [company_lower, norm]:
                 if key in idx and idx[key].get("ticker"):
                     ticker = idx[key]["ticker"]
@@ -505,17 +535,19 @@ def main():
         gd = find_match(company_lower, ticker, gd_idx)
         dei = find_match(company_lower, ticker, dei_idx)
         hrc = find_match(company_lower, ticker, hrc_idx)
+        yahoo = find_match(company_lower, ticker, yahoo_idx)
+        av = find_match(company_lower, ticker, av_idx)
 
         name = company_lower.title()
-        for source in [sec, epa, cdp, job, gd, dei, hrc]:
+        for source in [sec, epa, cdp, job, gd, dei, hrc, yahoo, av]:
             if source:
                 name = source.get("company", name)
                 ticker = source.get("ticker", ticker) or ticker
 
-        if sec and sec.get("error") and not any([epa, cdp, job, gd, dei, hrc]):
+        if sec and sec.get("error") and not any([epa, cdp, job, gd, dei, hrc, yahoo, av]):
             continue
 
-        result = score_company(name, ticker, sec, epa, bls_data, cdp, job, gd, dei, hrc)
+        result = score_company(name, ticker, sec, epa, bls_data, cdp, job, gd, dei, hrc, yahoo, av)
         all_scores.append(result)
         sources = ", ".join(result["data_sources"])
         print(f"  {result['hi_grade']:12s} {result['composite']:5.1f}  {name:30s}  [{sources}]")
