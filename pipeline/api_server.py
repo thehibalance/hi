@@ -81,9 +81,24 @@ def seed_to_record(s):
     }
 
 
+def normalize_name(name):
+    """Normalize company name for matching."""
+    n = name.lower().strip()
+    for suffix in [' inc.', ' inc', ' corp.', ' corp', ' llc', ' ltd.', ' ltd',
+                   ' co.', ' co', ' plc', ' sa', ' ag', ' nv', ' se',
+                   ' holdings', ' group', ' international', ' company',
+                   ' technologies', ' technology', ' enterprises', ' solutions',
+                   ' platforms', ' (google)', ' (alphabet)', ' (facebook)',
+                   ' (square)', ' (raytheon)']:
+        if n.endswith(suffix):
+            n = n[:-len(suffix)].strip()
+    return n.rstrip('.,')
+
+
 def build_index():
     global COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES
     COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES = {}, {}, {}, []
+    NORM_INDEX = {}  # normalized name index for dedup
 
     # Load S&P 500 domain mappings
     sp500_domains = {}
@@ -109,6 +124,8 @@ def build_index():
             if t: TICKERS[t.upper()] = c
             n = c.get("company", "")
             if n: NAME_INDEX[n.lower()] = c
+            norm = normalize_name(n)
+            if norm: NORM_INDEX[norm] = c
             ALL_COMPANIES.append(c)
             
             # Index by domain
@@ -131,9 +148,20 @@ def build_index():
             end = content.index("];", start) + 1
             for s in json.loads(content[start:end]):
                 rec = seed_to_record(s)
-                if rec["company"].lower() not in NAME_INDEX:
-                    NAME_INDEX[rec["company"].lower()] = rec
-                    ALL_COMPANIES.append(rec)
+                norm = normalize_name(rec["company"])
+                # Skip if already in scored data (exact or normalized match)
+                if rec["company"].lower() in NAME_INDEX or norm in NORM_INDEX:
+                    # But add domain mappings if missing
+                    existing = NAME_INDEX.get(rec["company"].lower()) or NORM_INDEX.get(norm)
+                    if existing:
+                        for d in rec.get("domains", []):
+                            d = d.lower().strip()
+                            if d and d not in COMPANIES:
+                                COMPANIES[d] = existing
+                    continue
+                NAME_INDEX[rec["company"].lower()] = rec
+                NORM_INDEX[norm] = rec
+                ALL_COMPANIES.append(rec)
                 for d in rec.get("domains", []):
                     d = d.lower().strip()
                     if d and d not in COMPANIES:
