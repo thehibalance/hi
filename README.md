@@ -1,4 +1,4 @@
-# HI. — Human Intelligence. The other AI.
+# HI. — Find the HI balance.
 
 > Find the HI balance.
 
@@ -12,7 +12,7 @@ Every company gets an **HI Grade™** — a simple letter grade (HI Certified, A
 
 ## Live Now
 
-- **Website**: [thehibalance.org](https://thehibalance.org) — Search 500+ companies, The HI 42 rankings, company detail pages
+- **Website**: [thehibalance.org](https://thehibalance.org) — Search 500+ companies, The HI Life rankings, company detail pages
 - **API**: [hi-api-production.up.railway.app](https://hi-api-production.up.railway.app/api/v1/stats) — Free public REST API
 - **Extension**: Chrome + Safari browser extensions (developer install below)
 - **Database**: 516 companies, 585 domains, 307 public company tickers
@@ -246,6 +246,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ---
 
-**HI. — Human Intelligence. The other AI.**
+**HI. — Find the HI balance.**
 
 Find the HI balance. · [thehibalance.org](https://thehibalance.org) · The Deep Thought Foundation · Patent Pending · HI Grade™ Morf Innovations LLC
