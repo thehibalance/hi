@@ -10,7 +10,7 @@
  * 
  * SPECIFICATION REFERENCE: HUMAN Methodology Spec v1.0
  * Governed by: The Deep Thought Foundation
- * Brand: HI. — Human Intelligence
+ * Brand: HI. — Find the HI balance.
  * 
  * ╔══════════════════════════════════════════════════════╗
  * ║  NO AI. NO ML. NO NEURAL NETWORKS. NO INFERENCE.   ║
