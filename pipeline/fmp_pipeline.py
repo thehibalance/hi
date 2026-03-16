@@ -19,7 +19,7 @@ except ImportError:
     print("Install: pip install requests --break-system-packages")
     sys.exit(1)
 
-BASE = "https://financialmodelingprep.com/api/v3"
+BASE = "https://financialmodelingprep.com/stable"
 
 
 def get_api_key():
@@ -56,28 +56,35 @@ def load_tickers():
 
 def fetch_profile(ticker, key):
     try:
-        r = requests.get(f"{BASE}/profile/{ticker}?apikey={key}", timeout=15)
+        r = requests.get(f"{BASE}/profile?symbol={ticker}&apikey={key}", timeout=15)
         d = r.json()
-        return d[0] if d and isinstance(d, list) else None
-    except:
+        if isinstance(d, list) and d:
+            return d[0]
+        elif isinstance(d, dict) and d.get("symbol"):
+            return d
+        return None
+    except Exception as e:
+        print(f"    ✗ {ticker} profile: {e}")
         return None
 
 
 def fetch_income(ticker, key):
     try:
-        r = requests.get(f"{BASE}/income-statement/{ticker}?period=annual&limit=3&apikey={key}", timeout=15)
+        r = requests.get(f"{BASE}/income-statement?symbol={ticker}&period=annual&limit=3&apikey={key}", timeout=15)
         d = r.json()
         return d if isinstance(d, list) else None
-    except:
+    except Exception as e:
+        print(f"    ✗ {ticker} income: {e}")
         return None
 
 
 def fetch_ratios(ticker, key):
     try:
-        r = requests.get(f"{BASE}/ratios/{ticker}?period=annual&limit=1&apikey={key}", timeout=15)
+        r = requests.get(f"{BASE}/ratios?symbol={ticker}&period=annual&limit=1&apikey={key}", timeout=15)
         d = r.json()
         return d[0] if d and isinstance(d, list) else None
-    except:
+    except Exception as e:
+        print(f"    ✗ {ticker} ratios: {e}")
         return None
 
 
@@ -94,13 +101,15 @@ def process_company(ticker, key):
     if isinstance(employees, str):
         try: employees = int(employees)
         except: employees = None
+    if isinstance(employees, float):
+        employees = int(employees)
 
     revenue = profile.get("revenue") or (income[0].get("revenue") if income else None)
     rd = income[0].get("researchAndDevelopmentExpenses") if income else None
-    market_cap = profile.get("mktCap")
+    market_cap = profile.get("marketCap") or profile.get("mktCap")
     sector = profile.get("sector", "")
     industry = profile.get("industry", "")
-    name = profile.get("companyName", ticker)
+    name = profile.get("companyName") or profile.get("company") or profile.get("symbol", ticker)
 
     rpe = round(revenue / employees) if employees and revenue and employees > 0 else None
     rd_pct = round(rd / revenue * 100, 1) if rd and revenue and revenue > 0 else None
