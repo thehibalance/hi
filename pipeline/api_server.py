@@ -43,6 +43,8 @@ HEARTBEAT_ALERTS = []
 HEARTBEAT_PULSE = {}
 HUMAN100 = []        # HUMAN 100 Index constituents
 HUMAN100_META = {}   # Index metadata
+ARBITRAGE = []       # Grade Arbitrage results
+ARBITRAGE_META = {}  # Arbitrage metadata
 DATA_DIR = Path("data/scores")
 
 
@@ -101,10 +103,11 @@ def normalize_name(name):
 
 
 def build_index():
-    global COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES, HEARTBEAT, HEARTBEAT_ALERTS, HEARTBEAT_PULSE, HUMAN100, HUMAN100_META
+    global COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES, HEARTBEAT, HEARTBEAT_ALERTS, HEARTBEAT_PULSE, HUMAN100, HUMAN100_META, ARBITRAGE, ARBITRAGE_META
     COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES = {}, {}, {}, []
     HEARTBEAT, HEARTBEAT_ALERTS, HEARTBEAT_PULSE = {}, [], {}
     HUMAN100, HUMAN100_META = [], {}
+    ARBITRAGE, ARBITRAGE_META = [], {}
     NORM_INDEX = {}  # normalized name index for dedup
 
     # Load heartbeat data
@@ -128,6 +131,14 @@ def build_index():
         print(f"  HUMAN 100: {len(HUMAN100)} constituents")
     if (h100_dir / "metadata.json").exists():
         HUMAN100_META = json.load(open(h100_dir / "metadata.json"))
+
+    # Load Grade Arbitrage data
+    arb_dir = DATA_DIR.parent / "arbitrage"
+    if (arb_dir / "all_arbitrage.json").exists():
+        ARBITRAGE = json.load(open(arb_dir / "all_arbitrage.json"))
+        print(f"  Arbitrage: {len(ARBITRAGE)} companies analyzed")
+    if (arb_dir / "metadata.json").exists():
+        ARBITRAGE_META = json.load(open(arb_dir / "metadata.json"))
 
     # Load S&P 500 domain mappings
     sp500_domains = {}
@@ -444,6 +455,49 @@ def human100_check(ticker):
         if c.get("ticker", "").upper() == ticker:
             return jsonify({"in_index": True, **c})
     return jsonify({"in_index": False, "ticker": ticker})
+
+
+# ═══ GRADE ARBITRAGE — Patent Feature ═══
+
+@app.route("/api/v1/arbitrage")
+def arbitrage_all():
+    """All grade arbitrage results."""
+    arb_type = request.args.get("type", "")  # esg_washing, hidden_gem, aligned, double_risk
+    limit = min(int(request.args.get("limit", 50)), 200)
+    results = ARBITRAGE
+    if arb_type:
+        results = [r for r in results if r.get("arbitrage_type") == arb_type]
+    return jsonify({
+        "total": len(results),
+        "metadata": ARBITRAGE_META,
+        "results": results[:limit],
+    })
+
+
+@app.route("/api/v1/arbitrage/washers")
+def arbitrage_washers():
+    """Companies where ESG overrates vs HI."""
+    limit = min(int(request.args.get("limit", 20)), 100)
+    washers = [r for r in ARBITRAGE if r.get("arbitrage_type") == "esg_washing"]
+    return jsonify({"count": len(washers), "results": washers[:limit]})
+
+
+@app.route("/api/v1/arbitrage/gems")
+def arbitrage_gems():
+    """Companies where HI outperforms ESG."""
+    limit = min(int(request.args.get("limit", 20)), 100)
+    gems = [r for r in ARBITRAGE if r.get("arbitrage_type") == "hidden_gem"]
+    return jsonify({"count": len(gems), "results": gems[:limit]})
+
+
+@app.route("/api/v1/arbitrage/<ticker>")
+def arbitrage_company(ticker):
+    """Arbitrage data for a specific company."""
+    ticker = ticker.upper().strip()
+    for r in ARBITRAGE:
+        if r.get("ticker", "").upper() == ticker:
+            return jsonify(r)
+    return jsonify({"error": "not_found", "ticker": ticker}), 404
 
 
 def main():
