@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 HI. — HUMAN Scoring Engine v2
-Merges signals from ALL data sources into HUMAN dimension scores.
+Merges signals from 18 data sources into HUMAN dimension scores.
 
-Data sources:
+Core sources (used directly by this engine):
   1. SEC EDGAR  — headcount, revenue, R&D, litigation, filing frequency
   2. EPA ECHO   — environmental violations, penalties, inspections
   3. BLS        — industry wage/employment benchmarks
@@ -11,8 +11,12 @@ Data sources:
   5. Job Boards — AI hiring velocity
   6. Glassdoor  — employee ratings, CEO approval, culture
 
+Additional sources feed into Heartbeat, HUMAN 100, and other patent features.
+
 Follows HUMAN_Grade_Methodology_Spec v1.0
 Floor rule: any dimension < 10 caps composite at 40.
+Balance floor: any dimension < 42 caps grade at C.
+Rounding: down unless decimal is .6 or higher (whole numbers only).
 
 Usage:
   python scoring_engine.py

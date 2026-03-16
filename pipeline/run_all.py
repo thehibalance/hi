@@ -1,191 +1,125 @@
 #!/usr/bin/env python3
 """
-HI. Pipeline Master Runner - Single Command
-Runs all data pipelines + scoring engine + Heartbeat in order.
+HI. — Single Command Runner
+Runs all pipelines, scoring, and patent feature generators.
 
 Usage:
-  python3 run_all.py                # Full run (everything)
-  python3 run_all.py --daily        # Daily pipelines (~15 min)
-  python3 run_all.py --weekly       # Weekly pipelines (~30 min)
-  python3 run_all.py --monthly      # Monthly full run (~2 hrs)
-  python3 run_all.py --daily --push # Daily + auto-push to git/Railway
+  python3 run_all.py --daily --push    # Daily pipelines + patent features + auto-push
+  python3 run_all.py --weekly --push   # Weekly + daily + push
+  python3 run_all.py --monthly --push  # Full run + push
+  python3 run_all.py --score-only      # Just re-score + generate patent features
 """
 
-import subprocess, sys, time, argparse, os
-from datetime import datetime
+import subprocess
+import sys
+import os
+import argparse
+import shutil
 from pathlib import Path
 
 
 def run(cmd, label):
-    print(f"\n{'─'*60}")
+    print(f"\n{'─'*50}")
     print(f"  ▶ {label}")
-    print(f"{'─'*60}")
-    start = time.time()
-    result = subprocess.run(cmd, shell=True)
-    elapsed = time.time() - start
-    status = "✅" if result.returncode == 0 else "❌"
-    print(f"  {status} {label} — {elapsed:.0f}s")
-    return result.returncode == 0
+    print(f"{'─'*50}")
+    result = subprocess.run([sys.executable, cmd], cwd=os.path.dirname(os.path.abspath(__file__)))
+    if result.returncode != 0:
+        print(f"  ⚠ {label} exited with code {result.returncode}")
+    return result.returncode
 
 
-def has_key(name, path):
-    if Path(path).exists():
-        return True
-    env_map = {"FMP": "FMP_KEY", "Finnhub": "FINNHUB_KEY", "FRED": "FRED_KEY",
-               "Alpha Vantage": "ALPHA_VANTAGE_KEY", "NewsAPI": "NEWSAPI_KEY"}
-    return bool(os.environ.get(env_map.get(name, "")))
+def push_repos():
+    repo_dir = Path(__file__).parent.parent
+    api_dir = Path.home() / "Desktop" / "hi-api"
+
+    print(f"\n{'─'*50}")
+    print(f"  ▶ Pushing to GitHub + Railway")
+    print(f"{'─'*50}")
+
+    if api_dir.exists():
+        data_dir = Path(__file__).parent / "data"
+        for subdir in ["scores", "heartbeat", "human100", "arbitrage", "ethical_moat",
+                       "contagion", "consumer_consciousness", "empathy_watermark",
+                       "collective_bargaining"]:
+            src = data_dir / subdir
+            dst = api_dir / "data" / subdir
+            if src.exists():
+                dst.mkdir(parents=True, exist_ok=True)
+                for f in src.glob("*.json"):
+                    shutil.copy2(f, dst / f.name)
+
+        api_src = Path(__file__).parent / "api_server.py"
+        if api_src.exists():
+            shutil.copy2(api_src, api_dir / "api_server.py")
+
+        subprocess.run(["git", "add", "."], cwd=api_dir)
+        subprocess.run(["git", "commit", "-m", "Auto-update: scores + patent features"], cwd=api_dir)
+        subprocess.run(["git", "push"], cwd=api_dir)
+
+    subprocess.run(["git", "add", "."], cwd=repo_dir)
+    subprocess.run(["git", "commit", "-m", "Auto-update: daily pipeline run"], cwd=repo_dir)
+    subprocess.run(["git", "push"], cwd=repo_dir)
 
 
-def print_status():
-    keys = {
-        "FMP": "data/fmp_key.txt",
-        "Finnhub": "data/finnhub_key.txt",
-        "FRED": "data/fred_key.txt",
-        "Alpha Vantage": "data/alpha_vantage_key.txt",
-        "NewsAPI": "data/newsapi_key.txt",
-    }
-    print(f"\n  API Keys:")
-    for name, path in keys.items():
-        s = "✅" if has_key(name, path) else "❌ missing"
-        print(f"    {name:20s} {s}")
-    csvs = {"Layoffs.fyi": "data/layoffs/layoffs.csv", "WARN Act": "data/warn/"}
-    print(f"  Manual Data:")
-    for name, path in csvs.items():
-        if Path(path).is_dir():
-            ok = len(list(Path(path).glob("*.csv"))) > 0
-        else:
-            ok = Path(path).exists()
-        s = "✅" if ok else "⚪ optional"
-        print(f"    {name:20s} {s}")
+def main():
+    parser = argparse.ArgumentParser(description="HI. Pipeline Runner")
+    parser.add_argument("--daily", action="store_true", help="Run daily pipelines")
+    parser.add_argument("--weekly", action="store_true", help="Run weekly + daily")
+    parser.add_argument("--monthly", action="store_true", help="Run all pipelines")
+    parser.add_argument("--score-only", action="store_true", help="Just re-score and generate features")
+    parser.add_argument("--push", action="store_true", help="Auto-push to GitHub + Railway")
+    args = parser.parse_args()
 
+    if not any([args.daily, args.weekly, args.monthly, args.score_only]):
+        args.daily = True
 
-def run_daily():
-    """Daily: news + API sources that accumulate + scoring + Heartbeat."""
     print(f"\n{'='*60}")
-    print(f"  ⚡ DAILY RUN — {datetime.now().strftime('%Y-%m-%d %H:%M')}")
-    print(f"{'='*60}")
-    print_status()
-
-    # News monitoring (breaking stories)
-    if has_key("NewsAPI", "data/newsapi_key.txt"):
-        run("python3 newsapi_pipeline.py --limit 90", "NewsAPI — media monitoring (90 companies)")
-    if has_key("Finnhub", "data/finnhub_key.txt"):
-        run("python3 finnhub_pipeline.py --limit 50", "Finnhub — ESG + news (50 companies)")
-
-    # Financial data (accumulates)
-    if has_key("FMP", "data/fmp_key.txt"):
-        run("python3 fmp_pipeline.py --limit 80", "FMP — financials (80 companies)")
-    if has_key("Alpha Vantage", "data/alpha_vantage_key.txt"):
-        run("python3 alpha_vantage_pipeline.py", "Alpha Vantage — earnings (12 companies)")
-
-    # SEC filings (free)
-    run("python3 sec_8k_pipeline.py --limit 50", "SEC 8-K — material events")
-
-    # CEO accountability
-    run("python3 ceo_pipeline.py", "CEO Accountability — leadership signals")
-
-    # Score + Heartbeat
-    run("python3 scoring_engine.py", "Scoring Engine — re-score all")
-    run("python3 heartbeat_monitor.py", "HUMAN Heartbeat — decay detection")
-
-
-def run_weekly():
-    """Weekly: daily + slower sources + bigger batches."""
-    print(f"\n{'='*60}")
-    print(f"  📅 WEEKLY RUN — {datetime.now().strftime('%Y-%m-%d %H:%M')}")
-    print(f"{'='*60}")
-    print_status()
-
-    # News (bigger batches)
-    if has_key("NewsAPI", "data/newsapi_key.txt"):
-        run("python3 newsapi_pipeline.py --limit 90", "NewsAPI — media monitoring")
-    if has_key("Finnhub", "data/finnhub_key.txt"):
-        run("python3 finnhub_pipeline.py --limit 200", "Finnhub — ESG + news")
-
-    # Financial data
-    if has_key("FMP", "data/fmp_key.txt"):
-        run("python3 fmp_pipeline.py --limit 80", "FMP — financials")
-    if has_key("Alpha Vantage", "data/alpha_vantage_key.txt"):
-        run("python3 alpha_vantage_pipeline.py", "Alpha Vantage — earnings")
-    run("python3 yahoo_pipeline.py", "Yahoo Finance — headcount, revenue (all)")
-
-    # Benchmarks + SEC
-    if has_key("FRED", "data/fred_key.txt"):
-        run("python3 fred_pipeline.py", "FRED — economic benchmarks")
-    run("python3 sec_8k_pipeline.py --limit 200", "SEC 8-K — material events")
-
-    # Inclusion + CEO
-    run("python3 dei_pipeline.py", "DEI — disability inclusion")
-    run("python3 hrc_pipeline.py", "HRC — LGBTQ+ inclusion")
-    run("python3 ceo_pipeline.py", "CEO Accountability")
-
-    # Score + Heartbeat
-    run("python3 scoring_engine.py", "Scoring Engine")
-    run("python3 heartbeat_monitor.py", "HUMAN Heartbeat")
-
-
-def run_monthly():
-    """Monthly: everything including slow/manual sources."""
-    print(f"\n{'='*60}")
-    print(f"  📆 MONTHLY RUN — {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    print(f"  HI. Pipeline Runner — 10 Patent Features")
+    print(f"  Mode: {'monthly' if args.monthly else 'weekly' if args.weekly else 'score-only' if args.score_only else 'daily'}")
+    print(f"  Push: {'yes' if args.push else 'no'}")
     print(f"{'='*60}")
 
-    run_weekly()
+    if args.monthly:
+        for s, l in [("sec_edgar_pipeline.py","SEC EDGAR"),("epa_echo_pipeline.py","EPA ECHO"),
+                     ("bls_pipeline.py","BLS"),("cdp_pipeline.py","CDP"),
+                     ("job_board_pipeline.py","Job Boards"),("glassdoor_pipeline.py","Glassdoor"),
+                     ("layoffs_pipeline.py","Layoffs.fyi"),("warn_pipeline.py","WARN Act")]:
+            if Path(s).exists(): run(s, l)
 
-    # Slow/static sources
-    run("python3 sec_edgar_pipeline.py", "SEC EDGAR — full run")
-    run("python3 cdp_pipeline.py", "CDP — climate disclosure")
-    run("python3 job_board_pipeline.py", "Job Boards — AI hiring ratio")
-    run("python3 glassdoor_pipeline.py", "Glassdoor — employee ratings")
-    run("python3 layoffs_pipeline.py", "Layoffs.fyi — layoff tracker")
-    run("python3 warn_pipeline.py", "WARN Act — layoff notices")
+    if args.weekly or args.monthly:
+        for s, l in [("dei_pipeline.py","DEI/AAPD"),("hrc_pipeline.py","HRC/CEI"),
+                     ("yahoo_pipeline.py","Yahoo Finance"),("fred_pipeline.py","FRED")]:
+            if Path(s).exists(): run(s, l)
 
-    # Final score + Heartbeat
-    run("python3 scoring_engine.py", "Scoring Engine — final")
-    run("python3 heartbeat_monitor.py", "HUMAN Heartbeat — final pulse")
+    if args.daily or args.weekly or args.monthly:
+        for s, l in [("alpha_vantage_pipeline.py","Alpha Vantage"),("fmp_pipeline.py","FMP"),
+                     ("finnhub_pipeline.py","Finnhub"),("newsapi_pipeline.py","NewsAPI"),
+                     ("sec_8k_pipeline.py","SEC 8-K"),("ceo_pipeline.py","CEO Pipeline")]:
+            if Path(s).exists(): run(s, l)
 
-
-def auto_push():
-    """Push scores to Railway and repo to GitHub."""
+    # Always run scoring + all 10 patent features
     print(f"\n{'='*60}")
-    print(f"  🚀 AUTO-PUSH")
+    print(f"  SCORING + 10 PATENT FEATURES")
     print(f"{'='*60}")
-    ts = datetime.now().strftime("%Y-%m-%d %H:%M")
-    hi_api = os.path.expanduser("~/Desktop/hi-api")
-    repo = os.path.expanduser("~/Desktop/repo")
-    scores = os.path.join(repo, "pipeline/data/scores/all_scores.json")
 
-    if os.path.exists(scores) and os.path.exists(hi_api):
-        run(f"cp {scores} {hi_api}/data/scores/all_scores.json", "Copy scores → API repo")
-        run(f"cd {hi_api} && git add . && git commit -m 'Scores update {ts}' && git push", "Push → Railway")
+    run("scoring_engine.py", "Scoring Engine")
 
-    if os.path.exists(repo):
-        run(f"cd {repo} && git add . && git commit -m 'Pipeline update {ts}' && git push", "Push → GitHub")
+    for s, l in [("heartbeat_monitor.py","HUMAN Heartbeat"),("human100_index.py","HUMAN 100 Index"),
+                 ("grade_arbitrage.py","Grade Arbitrage"),("ethical_moat.py","Ethical Moat"),
+                 ("contagion_effect.py","Contagion Effect"),("consumer_consciousness.py","Consumer Consciousness"),
+                 ("empathy_watermark.py","Empathy Watermark"),("collective_bargaining.py","Collective Bargaining")]:
+        if Path(s).exists(): run(s, l)
+
+    print(f"\n{'='*60}")
+    print(f"  ALL COMPLETE — 10 patent features generated")
+    print(f"{'='*60}")
+
+    if args.push:
+        push_repos()
+        print(f"\n  ✅ Pushed to GitHub + Railway")
+
+    print(f"\n  Done. Find the HI balance.\n")
 
 
 if __name__ == "__main__":
-    p = argparse.ArgumentParser(description="HI. Pipeline Master Runner")
-    p.add_argument("--daily", action="store_true", help="Daily pipelines (~15 min)")
-    p.add_argument("--weekly", action="store_true", help="Weekly pipelines (~30 min)")
-    p.add_argument("--monthly", action="store_true", help="Monthly full run (~2 hrs)")
-    p.add_argument("--push", action="store_true", help="Auto-push to git + Railway")
-    args = p.parse_args()
-
-    start = time.time()
-
-    if args.daily:
-        run_daily()
-    elif args.weekly:
-        run_weekly()
-    elif args.monthly:
-        run_monthly()
-    else:
-        run_monthly()
-
-    if args.push:
-        auto_push()
-
-    elapsed = time.time() - start
-    print(f"\n{'='*60}")
-    print(f"  ✅ ALL DONE — {int(elapsed//60)}m {int(elapsed%60)}s")
-    print(f"{'='*60}\n")
+    main()
