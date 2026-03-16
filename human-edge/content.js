@@ -220,11 +220,14 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
       ${floorWarning}
       ${hwFlags}
       ${profile.balance_floor ? `<div class="human-badge__decay human-badge__decay--warning">⚖ Balance Floor: ${profile.triggering_dimension ? profile.triggering_dimension.toUpperCase() : 'a dimension'} below 42. Grade capped at C.</div>` : ''}
-      ${profile.decay_level !== 'stable' && profile.decay_index > 0 ? `<div class="human-badge__decay human-badge__decay--${profile.decay_level}">♥ Heartbeat: ${profile.decay_level.charAt(0).toUpperCase() + profile.decay_level.slice(1)} · Decay: ${profile.decay_index}${profile.decay_factors.length ? '<div style="font-size:10px;opacity:0.8;margin-top:2px">' + profile.decay_factors.slice(0,2).join(' · ') + '</div>' : ''}</div>` : ''}
+      ${profile.decay_level !== 'stable' && profile.decay_index > 0 ? `
+        <div class="human-badge__decay human-badge__decay--${profile.decay_level}" style="padding:8px 10px">
+          <div style="font-weight:700;font-size:12px">♥ Heartbeat: ${profile.decay_level.charAt(0).toUpperCase() + profile.decay_level.slice(1)} · Decay: ${profile.decay_index}/100</div>
+          ${profile.decay_factors.map(f => `<div style="font-size:10px;margin-top:4px;padding-left:14px;position:relative"><span style="position:absolute;left:0">›</span>${f}</div>`).join('')}
+        </div>` : ''}
       ${filterWarning}
-      <div class="human-badge__tagline">Find the HI balance.</div>
-      ${profile.source === 'cloud' ? '<div class="human-badge__source">☁ Live score from thehibalance.org</div>' : '<div class="human-badge__source">📦 Local database</div>'}
       <div class="human-badge__pulse" id="human-badge-pulse"></div>
+      ${profile.source === 'cloud' ? '<div class="human-badge__source">☁ Live score from thehibalance.org</div>' : '<div class="human-badge__source">📦 Local database</div>'}
       <div class="human-badge__disclaimer">Estimated from public data. Not financial or legal advice.</div>
     </div>
   `;
