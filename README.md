@@ -123,7 +123,7 @@ Catches layoff surges, AI acceleration pivots, CEO controversies, ethics/legal e
 ## Architecture
 
 ```
-Edge (NO AI)                          Cloud (NO AI currently)
+Edge (NO AI)                          Cloud (NO AI)
 ┌──────────────────────┐    sync     ┌──────────────────────────┐
 │ Browser Extension     │◄──────────►│ REST API (Flask)          │
 │ • 206 seed companies  │            │ • 18 data pipelines       │
