@@ -47,6 +47,10 @@ ARBITRAGE = []       # Grade Arbitrage results
 ARBITRAGE_META = {}  # Arbitrage metadata
 MOATS = []           # Ethical Moat results
 MOATS_META = {}      # Moat metadata
+CONTAGION = []       # Contagion Effect results
+EMPATHY_WM = []      # Empathy Watermark results
+CONSUMER_BENCH = {}  # Consumer Consciousness benchmarks
+COLLECTIVE = {}      # Collective Bargaining signals
 DATA_DIR = Path("data/scores")
 
 
@@ -105,12 +109,13 @@ def normalize_name(name):
 
 
 def build_index():
-    global COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES, HEARTBEAT, HEARTBEAT_ALERTS, HEARTBEAT_PULSE, HUMAN100, HUMAN100_META, ARBITRAGE, ARBITRAGE_META, MOATS, MOATS_META
+    global COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES, HEARTBEAT, HEARTBEAT_ALERTS, HEARTBEAT_PULSE, HUMAN100, HUMAN100_META, ARBITRAGE, ARBITRAGE_META, MOATS, MOATS_META, CONTAGION, EMPATHY_WM, CONSUMER_BENCH, COLLECTIVE
     COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES = {}, {}, {}, []
     HEARTBEAT, HEARTBEAT_ALERTS, HEARTBEAT_PULSE = {}, [], {}
     HUMAN100, HUMAN100_META = [], {}
     ARBITRAGE, ARBITRAGE_META = [], {}
     MOATS, MOATS_META = [], {}
+    CONTAGION, EMPATHY_WM, CONSUMER_BENCH, COLLECTIVE = [], [], {}, {}
     NORM_INDEX = {}  # normalized name index for dedup
 
     # Load heartbeat data
@@ -150,6 +155,30 @@ def build_index():
         print(f"  Ethical Moat: {len(MOATS)} companies analyzed")
     if (moat_dir / "metadata.json").exists():
         MOATS_META = json.load(open(moat_dir / "metadata.json"))
+
+    # Load Contagion Effect
+    cont_dir = DATA_DIR.parent / "contagion"
+    if (cont_dir / "all_contagion.json").exists():
+        CONTAGION = json.load(open(cont_dir / "all_contagion.json"))
+        print(f"  Contagion: {len(CONTAGION)} companies")
+
+    # Load Empathy Watermark
+    ew_dir = DATA_DIR.parent / "empathy_watermark"
+    if (ew_dir / "all_watermarks.json").exists():
+        EMPATHY_WM = json.load(open(ew_dir / "all_watermarks.json"))
+        print(f"  Empathy Watermark: {len(EMPATHY_WM)} companies")
+
+    # Load Consumer Consciousness
+    cc_dir = DATA_DIR.parent / "consumer_consciousness"
+    if (cc_dir / "benchmarks.json").exists():
+        CONSUMER_BENCH = json.load(open(cc_dir / "benchmarks.json"))
+        print(f"  Consumer Consciousness: benchmarks loaded")
+
+    # Load Collective Bargaining
+    cb_dir = DATA_DIR.parent / "collective_bargaining"
+    if (cb_dir / "signals.json").exists():
+        COLLECTIVE = json.load(open(cb_dir / "signals.json"))
+        print(f"  Collective Bargaining: signals loaded")
 
     # Load S&P 500 domain mappings
     sp500_domains = {}
@@ -552,6 +581,93 @@ def moat_company(ticker):
         if r.get("ticker", "").upper() == ticker:
             return jsonify(r)
     return jsonify({"error": "not_found", "ticker": ticker}), 404
+
+
+# ═══ CONTAGION EFFECT — Patent Feature ═══
+
+@app.route("/api/v1/contagion")
+def contagion_all():
+    """Supply chain ethics ripple scores."""
+    ctype = request.args.get("type", "")
+    limit = min(int(request.args.get("limit", 50)), 200)
+    results = CONTAGION
+    if ctype:
+        results = [r for r in results if r.get("contagion_type") == ctype]
+    return jsonify({"total": len(results), "results": results[:limit]})
+
+
+@app.route("/api/v1/contagion/<ticker>")
+def contagion_company(ticker):
+    ticker = ticker.upper().strip()
+    for r in CONTAGION:
+        if r.get("ticker", "").upper() == ticker:
+            return jsonify(r)
+    return jsonify({"error": "not_found", "ticker": ticker}), 404
+
+
+# ═══ EMPATHY WATERMARK — Patent Feature ═══
+
+@app.route("/api/v1/empathy")
+def empathy_all():
+    """Empathy authenticity watermarks."""
+    wm = request.args.get("watermark", "")
+    limit = min(int(request.args.get("limit", 50)), 200)
+    results = EMPATHY_WM
+    if wm:
+        results = [r for r in results if r.get("watermark") == wm]
+    return jsonify({"total": len(results), "results": results[:limit]})
+
+
+@app.route("/api/v1/empathy/performative")
+def empathy_performative():
+    """Companies with performative empathy."""
+    limit = min(int(request.args.get("limit", 20)), 100)
+    perf = [r for r in EMPATHY_WM if r.get("watermark") == "performative"]
+    return jsonify({"count": len(perf), "results": perf[:limit]})
+
+
+@app.route("/api/v1/empathy/<ticker>")
+def empathy_company(ticker):
+    ticker = ticker.upper().strip()
+    for r in EMPATHY_WM:
+        if r.get("ticker", "").upper() == ticker:
+            return jsonify(r)
+    return jsonify({"error": "not_found", "ticker": ticker}), 404
+
+
+# ═══ CONSUMER CONSCIOUSNESS — Patent Feature ═══
+
+@app.route("/api/v1/consciousness")
+def consciousness_benchmarks():
+    """Consumer consciousness benchmarks and tiers."""
+    return jsonify(CONSUMER_BENCH or {"error": "Benchmarks not yet generated"})
+
+
+@app.route("/api/v1/consciousness/industry/<industry>")
+def consciousness_industry(industry):
+    """Benchmark for a specific industry."""
+    benchmarks = CONSUMER_BENCH.get("industry_benchmarks", {})
+    ind = industry.lower().strip()
+    if ind in benchmarks:
+        return jsonify({"industry": ind, **benchmarks[ind]})
+    return jsonify({"error": "not_found", "industry": ind}), 404
+
+
+# ═══ COLLECTIVE BARGAINING — Patent Feature ═══
+
+@app.route("/api/v1/collective")
+def collective_signals():
+    """Collective bargaining signals — market pressure data."""
+    return jsonify(COLLECTIVE or {"error": "Signals not yet generated"})
+
+
+@app.route("/api/v1/collective/pressure")
+def collective_pressure():
+    """Industry pressure rankings."""
+    return jsonify({
+        "industry_pressure": COLLECTIVE.get("industry_pressure", []),
+        "dimension_pressure": COLLECTIVE.get("dimension_pressure", {}),
+    })
 
 
 def main():
