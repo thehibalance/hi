@@ -44,6 +44,9 @@
         domains: d.domains || [domain],
         notes: d.notes || '',
         source: 'cloud',
+        decay_index: d.decay_index || 0,
+        decay_level: d.decay_level || 'stable',
+        decay_factors: d.decay_factors || [],
       };
     }
   } catch (e) {
@@ -62,6 +65,11 @@
 
   // Compute score profile
   const profile = HumanEngine.getProfile(company);
+  
+  // Attach heartbeat data
+  profile.decay_index = company.decay_index || 0;
+  profile.decay_level = company.decay_level || 'stable';
+  profile.decay_factors = company.decay_factors || [];
 
   // Apply filter
   const filterResult = HumanEngine.applyFilter(company, prefs);
@@ -171,6 +179,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
       ${profile.tier.cappedFromCertified ? '<div class="human-badge__floor-warning">⚡ Scores 90+ but not HI Certified. Displayed as A.</div>' : ''}
       ${floorWarning}
       ${hwFlags}
+      ${profile.decay_level !== 'stable' && profile.decay_index > 0 ? `<div class="human-badge__decay human-badge__decay--${profile.decay_level}">♥ Heartbeat: ${profile.decay_level.charAt(0).toUpperCase() + profile.decay_level.slice(1)} · Decay: ${profile.decay_index}${profile.decay_factors.length ? '<div style="font-size:10px;opacity:0.8;margin-top:2px">' + profile.decay_factors.slice(0,2).join(' · ') + '</div>' : ''}</div>` : ''}
       ${filterWarning}
       <div class="human-badge__tagline">Find the HI balance.</div>
       ${profile.source === 'cloud' ? '<div class="human-badge__source">☁ Live score from thehibalance.org</div>' : '<div class="human-badge__source">📦 Local database</div>'}

@@ -229,6 +229,31 @@
   cursor: help;
 }
 
+/* ═══ HEARTBEAT DECAY ═══ */
+
+.human-badge__decay {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-top: 6px;
+}
+
+.human-badge__decay--critical {
+  color: #DC2626;
+  background: #FEE2E2;
+}
+
+.human-badge__decay--warning {
+  color: #D97706;
+  background: #FEF3C7;
+}
+
+.human-badge__decay--watch {
+  color: #EA580C;
+  background: #FFF7ED;
+}
+
 /* ═══ TAGLINE ═══ */
 
 .human-badge__tagline {

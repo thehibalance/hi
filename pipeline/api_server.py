@@ -38,6 +38,9 @@ COMPANIES = {}       # domain -> record
 TICKERS = {}         # ticker -> record
 NAME_INDEX = {}      # lowercase name -> record
 ALL_COMPANIES = []   # sorted by composite desc
+HEARTBEAT = {}       # ticker -> heartbeat data
+HEARTBEAT_ALERTS = []
+HEARTBEAT_PULSE = {}
 DATA_DIR = Path("data/scores")
 
 
@@ -96,9 +99,24 @@ def normalize_name(name):
 
 
 def build_index():
-    global COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES
+    global COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES, HEARTBEAT, HEARTBEAT_ALERTS, HEARTBEAT_PULSE
     COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES = {}, {}, {}, []
+    HEARTBEAT, HEARTBEAT_ALERTS, HEARTBEAT_PULSE = {}, [], {}
     NORM_INDEX = {}  # normalized name index for dedup
+
+    # Load heartbeat data
+    hb_dir = DATA_DIR.parent / "heartbeat"
+    if (hb_dir / "heartbeats.json").exists():
+        for hb in json.load(open(hb_dir / "heartbeats.json")):
+            t = hb.get("ticker", "")
+            if t: HEARTBEAT[t.upper()] = hb
+        print(f"  Heartbeat: {len(HEARTBEAT)} companies")
+    if (hb_dir / "alerts.json").exists():
+        HEARTBEAT_ALERTS = json.load(open(hb_dir / "alerts.json"))
+        print(f"  Heartbeat alerts: {len(HEARTBEAT_ALERTS)}")
+    if (hb_dir / "pulse.json").exists():
+        HEARTBEAT_PULSE = json.load(open(hb_dir / "pulse.json"))
+        print(f"  Heartbeat pulse: {HEARTBEAT_PULSE.get('pulse', 'unknown')}")
 
     # Load S&P 500 domain mappings
     sp500_domains = {}
@@ -122,6 +140,14 @@ def build_index():
                 c["domains"] = sp500_domains[t.upper()]
             
             if t: TICKERS[t.upper()] = c
+            
+            # Inject heartbeat data
+            if t and t.upper() in HEARTBEAT:
+                hb = HEARTBEAT[t.upper()]
+                c["decay_index"] = hb.get("decay_index", 0)
+                c["decay_level"] = hb.get("decay_level", "stable")
+                c["decay_factors"] = hb.get("factors", [])
+            
             n = c.get("company", "")
             if n: NAME_INDEX[n.lower()] = c
             norm = normalize_name(n)
@@ -324,12 +350,46 @@ def stats():
         "average_composite": avg,
         "humanwashing_flagged": sum(1 for c in ALL_COMPANIES if c.get("humanwashing_flags")),
         "floor_rule_triggered": sum(1 for c in ALL_COMPANIES if c.get("floor_triggered")),
+        "data_sources": 18,
         "spec_version": "1.0.0",
         "brand": {
             "name": "HI.", "tagline": "Find the HI balance.",
             "domain": "thehibalance.org", "foundation": "The Deep Thought Foundation",
         },
     })
+
+
+@app.route("/api/v1/heartbeat/pulse")
+def heartbeat_pulse():
+    """Ecosystem pulse — overall health of the HI balance."""
+    return jsonify(HEARTBEAT_PULSE or {
+        "pulse": "unknown", "average_decay": 0,
+        "companies_analyzed": 0, "alerts_count": 0,
+    })
+
+
+@app.route("/api/v1/heartbeat/alerts")
+def heartbeat_alerts():
+    """Companies with elevated decay risk."""
+    limit = min(int(request.args.get("limit", 20)), 100)
+    level = request.args.get("level", "")  # critical, warning
+    alerts = HEARTBEAT_ALERTS
+    if level:
+        alerts = [a for a in alerts if a.get("decay_level") == level]
+    return jsonify({
+        "count": len(alerts[:limit]),
+        "total": len(alerts),
+        "results": alerts[:limit],
+    })
+
+
+@app.route("/api/v1/heartbeat/<ticker>")
+def heartbeat_company(ticker):
+    """Heartbeat data for a specific company."""
+    ticker = ticker.upper().strip()
+    if ticker in HEARTBEAT:
+        return jsonify(HEARTBEAT[ticker])
+    return jsonify({"error": "not_found", "ticker": ticker}), 404
 
 
 def main():
