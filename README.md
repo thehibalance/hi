@@ -13,14 +13,14 @@ Every company gets an **HI Grade™** — a simple letter grade (HI Certified, A
 ## Live Now
 
 - **Website**: [thehibalance.org](https://thehibalance.org) — Search 330+ companies, HUMAN 100 Index, Heartbeat monitor, Genome profiles
-- **API**: [hi-api-production.up.railway.app](https://hi-api-production.up.railway.app/api/v1/stats) — Free public REST API (15+ endpoints)
+- **API**: [hi-api-production.up.railway.app](https://hi-api-production.up.railway.app/api/v1/stats) — Free public REST API (32 endpoints)
 - **Extension**: Chrome + Safari browser extensions with live scores, heartbeat, genome
 - **HUMAN 100**: The top 100 most human public companies — ETF-licensable index
 - **Heartbeat**: Real-time score decay detection powered by 6 data feeds
 
 ---
 
-## Patent Features (4 Live)
+## Patent Features (10 of 10 Live)
 
 | # | Feature | Status | Description |
 |---|---------|--------|-------------|
@@ -28,12 +28,12 @@ Every company gets an **HI Grade™** — a simple letter grade (HI Certified, A
 | 2 | **Consciousness Decay Index** | ✅ Live | Per-company decay score 0-100 |
 | 3 | **HUMAN Genome** | ✅ Live | Sub-signal fingerprint of every company |
 | 4 | **HUMAN 100 Index** | ✅ Live | ETF-licensable top 100 ranking |
-| 5 | Empathy Authenticity Watermark | ⏳ | Real vs performative empathy detection |
-| 6 | Contagion Effect Score | ⏳ | Supply chain ethics ripple |
-| 7 | Ethical Moat Indicator | ⏳ | AI displacement resistance |
-| 8 | Consumer Consciousness Score | ⏳ | Personal ethical footprint |
-| 9 | Grade Arbitrage Detection | ⏳ | HI vs ESG gap detection |
-| 10 | Collective Bargaining Signal | ⏳ | Labor power vs corporate power ratio |
+| 5 | **Empathy Authenticity Watermark** | ✅ Live | Real vs performative empathy detection |
+| 6 | **Contagion Effect Score** | ✅ Live | Supply chain ethics ripple |
+| 7 | **Ethical Moat Indicator** | ✅ Live | AI displacement resistance |
+| 8 | **Consumer Consciousness Score** | ✅ Live | Personal ethical footprint |
+| 9 | **Grade Arbitrage Detection** | ✅ Live | HI vs ESG gap detection |
+| 10 | **Collective Bargaining Signal** | ✅ Live | Aggregated market pressure |
 
 ---
 
@@ -75,7 +75,13 @@ hi/
 │   ├── scoring_engine.py        # Multi-source HUMAN dimension scoring (v2)
 │   ├── heartbeat_monitor.py     # Heartbeat: 6-feed decay detection
 │   ├── human100_index.py        # HUMAN 100 Index generator
-│   ├── api_server.py            # REST API server (Flask, 15+ endpoints)
+│   ├── grade_arbitrage.py       # Grade Arbitrage: HI vs ESG gap
+│   ├── ethical_moat.py          # Ethical Moat: AI displacement resistance
+│   ├── contagion_effect.py      # Contagion Effect: supply chain ripple
+│   ├── consumer_consciousness.py # Consumer Consciousness: personal footprint
+│   ├── empathy_watermark.py     # Empathy Watermark: real vs performative
+│   ├── collective_bargaining.py # Collective Bargaining: market pressure
+│   ├── api_server.py            # REST API server (Flask, 32 endpoints)
 │   ├── run_all.py               # Single command runner (daily/weekly/monthly)
 │   └── sp500_domains.py         # Domain mappings
 │
@@ -185,6 +191,18 @@ Base URL: `https://hi-api-production.up.railway.app`
 | `GET /api/v1/human100` | HUMAN 100 Index |
 | `GET /api/v1/human100/metadata` | Index metadata |
 | `GET /api/v1/human100/check/{ticker}` | Check HUMAN 100 membership |
+| `GET /api/v1/arbitrage` | Grade Arbitrage (HI vs ESG) |
+| `GET /api/v1/arbitrage/washers` | ESG washing detection |
+| `GET /api/v1/arbitrage/gems` | Hidden gems |
+| `GET /api/v1/moat` | Ethical Moat scores |
+| `GET /api/v1/moat/fortresses` | Fortress-level companies |
+| `GET /api/v1/moat/vulnerable` | Most vulnerable to AI |
+| `GET /api/v1/contagion` | Supply chain contagion |
+| `GET /api/v1/empathy` | Empathy watermarks |
+| `GET /api/v1/empathy/performative` | Performative empathy detection |
+| `GET /api/v1/consciousness` | Consumer consciousness benchmarks |
+| `GET /api/v1/collective` | Collective bargaining signals |
+| `GET /api/v1/collective/pressure` | Industry pressure rankings |
 
 Free public access. No authentication required.
 
@@ -193,16 +211,16 @@ Free public access. No authentication required.
 - ✅ Provisional patent filed (March 5, 2026)
 - ✅ HI Grade™ trademark filed (March 12, 2026)
 - ✅ 330+ companies scored, 18 data sources
-- ✅ 4 patent features live (Heartbeat, Decay, Genome, HUMAN 100)
+- ✅ 10 patent features live (all 10 of 10 built and deployed)
+- ✅ 32 API endpoints
 - ✅ Balance floor rule (below 42 = capped at C)
 - ✅ Dimension drill-down with real data insights
 - ✅ Chrome extension with heartbeat, genome, auto-collapse
-- ✅ REST API live on Railway (15+ endpoints)
+- ✅ REST API live on Railway (32 endpoints)
 - ✅ Website live at thehibalance.org
 - ✅ Single command runner (`run_all.py --daily --push`)
 - ⏳ Chrome Web Store listing
 - ⏳ Native iOS app
-- ⏳ 6 more patent features in development
 
 ---
 
