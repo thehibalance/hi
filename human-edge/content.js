@@ -133,6 +133,20 @@ function createBadge(profile, filterResult, prefs) {
 
   // Attach click handlers for dimension detail panels
   attachDimClickHandlers(badge, profile);
+
+  // Fetch ecosystem pulse
+  try {
+    chrome.runtime.sendMessage({ type: 'PULSE_LOOKUP' }, (pulse) => {
+      if (pulse && pulse.pulse) {
+        const el = document.getElementById('human-badge-pulse');
+        if (el) {
+          const colors = { healthy: '#16A34A', elevated: '#D97706', stressed: '#EA580C', critical: '#DC2626' };
+          const c = colors[pulse.pulse] || '#6B7280';
+          el.innerHTML = `<span style="color:${c}">♥</span> Ecosystem: <strong style="color:${c}">${pulse.pulse.toUpperCase()}</strong> · ${pulse.alerts_count || 0} alerts`;
+        }
+      }
+    });
+  } catch (e) { /* pulse fetch optional */ }
 }
 
 /**
@@ -183,6 +197,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
       ${filterWarning}
       <div class="human-badge__tagline">Find the HI balance.</div>
       ${profile.source === 'cloud' ? '<div class="human-badge__source">☁ Live score from thehibalance.org</div>' : '<div class="human-badge__source">📦 Local database</div>'}
+      <div class="human-badge__pulse" id="human-badge-pulse"></div>
       <div class="human-badge__disclaimer">Estimated from public data. Not financial or legal advice.</div>
     </div>
   `;

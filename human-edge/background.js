@@ -238,6 +238,34 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       });
       return true;
 
+    case 'PULSE_LOOKUP':
+      (async () => {
+        try {
+          // Check cache
+          const cached = await chrome.storage.local.get('pulse_cache');
+          if (cached.pulse_cache && Date.now() - cached.pulse_cache.timestamp < 300000) { // 5 min cache
+            sendResponse(cached.pulse_cache.data);
+            return;
+          }
+          const apiUrl = await getApiUrl();
+          if (!apiUrl) { sendResponse(null); return; }
+          const resp = await fetch(`${apiUrl}/api/v1/heartbeat/pulse`, {
+            signal: AbortSignal.timeout(5000),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (resp.ok) {
+            const data = await resp.json();
+            await chrome.storage.local.set({ pulse_cache: { data, timestamp: Date.now() } });
+            sendResponse(data);
+          } else {
+            sendResponse(null);
+          }
+        } catch (e) {
+          sendResponse(null);
+        }
+      })();
+      return true;
+
     case 'GET_SYNC_STATUS':
       chrome.storage.local.get(['lastSync', 'serverStats', 'lookupQueue'], (result) => {
         sendResponse({
