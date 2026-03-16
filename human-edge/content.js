@@ -47,6 +47,8 @@
         decay_index: d.decay_index || 0,
         decay_level: d.decay_level || 'stable',
         decay_factors: d.decay_factors || [],
+        balance_floor: d.balance_floor || false,
+        triggering_dimension: d.triggering_dimension || null,
       };
     }
   } catch (e) {
@@ -70,6 +72,8 @@
   profile.decay_index = company.decay_index || 0;
   profile.decay_level = company.decay_level || 'stable';
   profile.decay_factors = company.decay_factors || [];
+  profile.balance_floor = company.balance_floor || false;
+  profile.triggering_dimension = company.triggering_dimension || null;
 
   // Apply filter
   const filterResult = HumanEngine.applyFilter(company, prefs);
@@ -193,6 +197,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
       ${profile.tier.cappedFromCertified ? '<div class="human-badge__floor-warning">⚡ Scores 90+ but not HI Certified. Displayed as A.</div>' : ''}
       ${floorWarning}
       ${hwFlags}
+      ${profile.balance_floor ? `<div class="human-badge__decay human-badge__decay--warning">⚖ Balance Floor: ${profile.triggering_dimension ? profile.triggering_dimension.toUpperCase() : 'a dimension'} below 42. Grade capped at C.</div>` : ''}
       ${profile.decay_level !== 'stable' && profile.decay_index > 0 ? `<div class="human-badge__decay human-badge__decay--${profile.decay_level}">♥ Heartbeat: ${profile.decay_level.charAt(0).toUpperCase() + profile.decay_level.slice(1)} · Decay: ${profile.decay_index}${profile.decay_factors.length ? '<div style="font-size:10px;opacity:0.8;margin-top:2px">' + profile.decay_factors.slice(0,2).join(' · ') + '</div>' : ''}</div>` : ''}
       ${filterWarning}
       <div class="human-badge__tagline">Find the HI balance.</div>

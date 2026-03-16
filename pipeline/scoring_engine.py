@@ -307,14 +307,26 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry):
 def compute_composite(D_H, D_U, D_M, D_A, D_N):
     composite = (D_H + D_U + D_M + D_A + D_N) / 5
     floor_triggered = False
+    balance_floor_triggered = False
     triggering_dimension = None
-    min_dim = min(D_H, D_U, D_M, D_A, D_N)
+    dims = {"H": D_H, "U": D_U, "M": D_M, "A": D_A, "N": D_N}
+    min_dim = min(dims.values())
+    
+    # Hard floor: any dimension < 10 caps composite at 40
     if min_dim < 10:
         composite = min(composite, 40)
         floor_triggered = True
-        dims = {"H": D_H, "U": D_U, "M": D_M, "A": D_A, "N": D_N}
         triggering_dimension = min(dims, key=dims.get)
-    return round(composite, 1), floor_triggered, triggering_dimension
+    
+    # Balance floor: any dimension < 42 caps grade at C (composite capped at 59)
+    # "You can't claim balance when any dimension is failing"
+    elif min_dim < 42:
+        balance_floor_triggered = True
+        triggering_dimension = min(dims, key=dims.get)
+        if composite > 59:
+            composite = 59.0  # Caps at top of C range
+    
+    return round(composite, 1), floor_triggered, balance_floor_triggered, triggering_dimension
 
 def get_hi_grade(composite, verified=False):
     if composite >= 90 and verified:
@@ -332,8 +344,7 @@ def get_hi_grade(composite, verified=False):
 
 
 def score_company(company_name, ticker="", sec_data=None, epa_data=None,
-                  bls_data=None, cdp_data=None, job_data=None, glassdoor_data=None,
-                  dei_data=None, hrc_data=None, yahoo_data=None, av_data=None):
+                  bls_data=None, cdp_data=None, job_data=None, glassdoor_data=None):
     sic = sec_data.get("n_signals", {}).get("sic", "") if sec_data else ""
     industry = get_industry(sic)
 
@@ -342,61 +353,13 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
     sec_n = sec_data.get("n_signals", {}) if sec_data else {}
     sec_u = sec_data.get("u_signals", {}) if sec_data else {}
 
-    # Fill SEC gaps with Yahoo Finance / Alpha Vantage data
-    yahoo_h = yahoo_data.get("h_signals", {}) if yahoo_data else {}
-    av_h = av_data.get("h_signals", {}) if av_data else {}
-
-    # Headcount: prefer SEC, fallback to Yahoo, then AV
-    if not sec_h.get("headcount") and yahoo_h.get("headcount"):
-        sec_h["headcount"] = {"value": yahoo_h["headcount"]}
-    elif not sec_h.get("headcount") and av_h.get("headcount"):
-        sec_h["headcount"] = {"value": av_h["headcount"]}
-
-    # Revenue per employee: prefer SEC, fallback to Yahoo, then AV
-    if not sec_h.get("revenue_per_employee") and yahoo_h.get("revenue_per_employee"):
-        sec_h["revenue_per_employee"] = yahoo_h["revenue_per_employee"]
-    elif not sec_h.get("revenue_per_employee") and av_h.get("revenue_per_employee"):
-        sec_h["revenue_per_employee"] = av_h["revenue_per_employee"]
-
     D_H, h_detail, h_src = score_h_dimension(sec_h, job_data, bls_data, industry)
     D_U, u_detail, u_src = score_u_dimension(sec_u, glassdoor_data, industry)
     D_M, m_detail, m_src = score_m_dimension(sec_m, epa_data, glassdoor_data, industry)
     D_A, a_detail, a_src = score_a_dimension(sec_data.get("a_signals", {}) if sec_data else {}, epa_data, cdp_data, industry)
     D_N, n_detail, n_src = score_n_dimension(sec_n, cdp_data, epa_data, industry)
 
-    # Integrate DEI (Disability Equality Index) into U and M
-    dei_score = None
-    if dei_data and dei_data.get("dei_score") is not None:
-        dei_score = dei_data["dei_score"]
-        # DEI maps to U (empathy/inclusion) and M (ethical conduct)
-        # Weight: blend 20% DEI into U, 15% into M
-        D_U = round(D_U * 0.80 + dei_score * 0.20, 1)
-        D_M = round(D_M * 0.85 + dei_score * 0.15, 1)
-        u_detail["U.6_dei"] = dei_score
-        m_detail["M.6_dei"] = dei_score
-        u_src = sorted(set(u_src + ["DEI"]))
-        m_src = sorted(set(m_src + ["DEI"]))
-
-    # Integrate HRC (Corporate Equality Index) into U and M
-    hrc_score = None
-    if hrc_data and hrc_data.get("cei_score") is not None:
-        hrc_score = hrc_data["cei_score"]
-        # HRC maps to U (inclusion/empathy) and M (ethical conduct)
-        # Weight: blend 15% HRC into U, 10% into M
-        D_U = round(D_U * 0.85 + hrc_score * 0.15, 1)
-        D_M = round(D_M * 0.90 + hrc_score * 0.10, 1)
-        u_detail["U.7_hrc"] = hrc_score
-        m_detail["M.7_hrc"] = hrc_score
-        u_src = sorted(set(u_src + ["HRC"]))
-        m_src = sorted(set(m_src + ["HRC"]))
-
-    # Track Yahoo/AV as sources if they provided data
-    if yahoo_data and yahoo_data.get("h_signals", {}).get("headcount"):
-        h_src = sorted(set(h_src + ["Yahoo"]))
-    if av_data and av_data.get("h_signals", {}).get("headcount"):
-        h_src = sorted(set(h_src + ["AV"]))
-
-    composite, floor_triggered, triggering_dim = compute_composite(D_H, D_U, D_M, D_A, D_N)
+    composite, floor_triggered, balance_floor_triggered, triggering_dim = compute_composite(D_H, D_U, D_M, D_A, D_N)
     grade, satire = get_hi_grade(composite)
     all_sources = sorted(set(h_src + u_src + m_src + a_src + n_src)) or ["Defaults"]
 
@@ -422,7 +385,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "sic_description": sec_data.get("n_signals", {}).get("sic_description", "") if sec_data else "",
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
-        "floor_triggered": floor_triggered, "triggering_dimension": triggering_dim,
+        "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
         "confidence": "Estimated", "spec_version": "1.0.0",
         "data_sources": all_sources,
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
@@ -443,8 +406,6 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
             "glassdoor_rating": glassdoor_data.get("u_signals", {}).get("overall_rating") if glassdoor_data else None,
             "cdp_climate": cdp_data.get("a_signals", {}).get("cdp_climate_letter") if cdp_data else None,
             "epa_violations": epa_data.get("a_signals", {}).get("total_violations_3yr") if epa_data else None,
-            "dei_score": dei_score,
-            "hrc_score": hrc_score,
         },
     }
 
@@ -458,10 +419,6 @@ def main():
     parser.add_argument("--cdp", default="data/cdp")
     parser.add_argument("--jobs", default="data/jobs")
     parser.add_argument("--glassdoor", default="data/glassdoor")
-    parser.add_argument("--dei", default="data/dei")
-    parser.add_argument("--hrc", default="data/hrc")
-    parser.add_argument("--yahoo", default="data/yahoo")
-    parser.add_argument("--alphavantage", default="data/alphavantage")
     parser.add_argument("--output", default="data/scores")
     args = parser.parse_args()
 
@@ -480,10 +437,6 @@ def main():
     cdp_records = load_source(args.cdp)
     job_records = load_source(args.jobs)
     gd_records = load_source(args.glassdoor)
-    dei_records = load_source(args.dei)
-    hrc_records = load_source(args.hrc)
-    yahoo_records = load_source(args.yahoo)
-    av_records = load_source(args.alphavantage)
 
     print(f"  SEC EDGAR:  {len(sec_records)} companies")
     print(f"  EPA ECHO:   {len(epa_records)} companies")
@@ -491,24 +444,16 @@ def main():
     print(f"  CDP:        {len(cdp_records)} companies")
     print(f"  Job Boards: {len(job_records)} companies")
     print(f"  Glassdoor:  {len(gd_records)} companies")
-    print(f"  DEI (AAPD): {len(dei_records)} companies")
-    print(f"  HRC (CEI):  {len(hrc_records)} companies")
-    print(f"  Yahoo Fin:  {len(yahoo_records)} companies")
-    print(f"  Alpha Vant: {len(av_records)} companies")
 
     sec_idx = index_by_company(sec_records)
     epa_idx = index_by_company(epa_records)
     cdp_idx = index_by_company(cdp_records)
     job_idx = index_by_company(job_records)
     gd_idx = index_by_company(gd_records)
-    dei_idx = index_by_company(dei_records)
-    hrc_idx = index_by_company(hrc_records)
-    yahoo_idx = index_by_company(yahoo_records)
-    av_idx = index_by_company(av_records)
 
     # Build master company list using normalized names to prevent duplicates
     all_companies = set()
-    for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx, dei_idx, hrc_idx, yahoo_idx, av_idx]:
+    for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx]:
         for key in idx:
             if not key.startswith("ticker:"):
                 all_companies.add(normalize_name(key))
@@ -521,7 +466,7 @@ def main():
         # Get ticker from any source
         ticker = ""
         norm = normalize_name(company_lower)
-        for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx, dei_idx, hrc_idx, yahoo_idx, av_idx]:
+        for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx]:
             for key in [company_lower, norm]:
                 if key in idx and idx[key].get("ticker"):
                     ticker = idx[key]["ticker"]
@@ -533,21 +478,17 @@ def main():
         cdp = find_match(company_lower, ticker, cdp_idx)
         job = find_match(company_lower, ticker, job_idx)
         gd = find_match(company_lower, ticker, gd_idx)
-        dei = find_match(company_lower, ticker, dei_idx)
-        hrc = find_match(company_lower, ticker, hrc_idx)
-        yahoo = find_match(company_lower, ticker, yahoo_idx)
-        av = find_match(company_lower, ticker, av_idx)
 
         name = company_lower.title()
-        for source in [sec, epa, cdp, job, gd, dei, hrc, yahoo, av]:
+        for source in [sec, epa, cdp, job, gd]:
             if source:
                 name = source.get("company", name)
                 ticker = source.get("ticker", ticker) or ticker
 
-        if sec and sec.get("error") and not any([epa, cdp, job, gd, dei, hrc, yahoo, av]):
+        if sec and sec.get("error") and not any([epa, cdp, job, gd]):
             continue
 
-        result = score_company(name, ticker, sec, epa, bls_data, cdp, job, gd, dei, hrc, yahoo, av)
+        result = score_company(name, ticker, sec, epa, bls_data, cdp, job, gd)
         all_scores.append(result)
         sources = ", ".join(result["data_sources"])
         print(f"  {result['hi_grade']:12s} {result['composite']:5.1f}  {name:30s}  [{sources}]")
@@ -582,6 +523,12 @@ def main():
         print(f"\n  Humanwashing flags: {len(flagged)} companies")
         for s in flagged[:10]:
             print(f"    {s['company']}: {'; '.join(s['humanwashing_flags'][:2])}")
+
+    balance_capped = [s for s in all_scores if s.get("balance_floor")]
+    if balance_capped:
+        print(f"\n  ⚖ Balance floor (capped at C): {len(balance_capped)} companies")
+        for s in balance_capped[:10]:
+            print(f"    {s['company']}: {s['triggering_dimension']} below 42")
 
     print(f"\n  Output: {outfile}")
 
