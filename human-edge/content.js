@@ -49,6 +49,9 @@
         decay_factors: d.decay_factors || [],
         balance_floor: d.balance_floor || false,
         triggering_dimension: d.triggering_dimension || null,
+        key_signals: d.key_signals || {},
+        genome: d.genome || {},
+        data_sources: d.data_sources || [],
       };
     }
   } catch (e) {
@@ -74,6 +77,9 @@
   profile.decay_factors = company.decay_factors || [];
   profile.balance_floor = company.balance_floor || false;
   profile.triggering_dimension = company.triggering_dimension || null;
+  profile.key_signals = company.key_signals || {};
+  profile.genome = company.genome || {};
+  profile.data_sources = company.data_sources || [];
 
   // Apply filter
   const filterResult = HumanEngine.applyFilter(company, prefs);
@@ -240,6 +246,53 @@ function toggleExpanded(badge, profile, filterResult, prefs) {
 
 // ═══ FULL DETAIL PANEL ═══
 
+/**
+ * Build human-readable insights for a dimension based on available data.
+ */
+function buildDimInsights(dim, profile) {
+  const ks = profile.key_signals || {};
+  const g = profile.genome || {};
+  const dd = g[dim.toUpperCase()] || {};
+  const srcs = dd.sources || profile.data_sources || [];
+  const ins = [];
+
+  if (dim === 'h') {
+    if (ks.headcount) ins.push({ t: 'Workforce Size', v: ks.headcount.toLocaleString() + ' employees', n: ks.headcount > 50000 ? 'Large workforce maintained' : 'Smaller workforce' });
+    if (ks.revenue_per_employee) ins.push({ t: 'Revenue per Employee', v: '$' + (ks.revenue_per_employee / 1000).toFixed(0) + 'K', n: ks.revenue_per_employee > 2000000 ? 'Very high — suggests heavy automation' : 'Healthy ratio' });
+    if (ks.headcount_change_pct != null) ins.push({ t: 'Headcount Change', v: ks.headcount_change_pct + '%', n: ks.headcount_change_pct < -5 ? 'Significant workforce reduction' : ks.headcount_change_pct > 5 ? 'Growing workforce' : 'Stable workforce' });
+    if (ks.ai_hiring_ratio != null) ins.push({ t: 'AI Hiring Ratio', v: (ks.ai_hiring_ratio * 100).toFixed(0) + '% of open roles', n: ks.ai_hiring_ratio > 0.35 ? 'AI roles dominate job postings' : 'Balanced hiring mix' });
+  } else if (dim === 'u') {
+    if (ks.glassdoor_rating) ins.push({ t: 'Employee Rating', v: '★ ' + ks.glassdoor_rating + '/5', n: ks.glassdoor_rating >= 4 ? 'Employees feel valued' : 'Room for improvement' });
+    if (ks.dei_score != null) ins.push({ t: 'Disability Inclusion', v: ks.dei_score + '/100', n: ks.dei_score >= 80 ? 'Strong disability inclusion' : 'Opportunity to improve' });
+    if (ks.hrc_score != null) ins.push({ t: 'LGBTQ+ Equality', v: ks.hrc_score + '/100', n: ks.hrc_score >= 80 ? 'Strong workplace equality' : 'Opportunity to improve' });
+  } else if (dim === 'm') {
+    if (ks.ceo_accountability_score != null) ins.push({ t: 'CEO Accountability', v: ks.ceo_accountability_score + '/100', n: ks.ceo_accountability_score < 30 ? 'Leadership accountability critically low' : ks.ceo_accountability_score < 50 ? 'Needs attention' : 'Reasonable accountability' });
+    if (ks.epa_violations != null) ins.push({ t: 'EPA Violations', v: ks.epa_violations + ' recorded', n: ks.epa_violations > 5 ? 'Significant regulatory issues' : ks.epa_violations > 0 ? 'Some concerns' : 'Clean record' });
+    if (ks.dei_score != null) ins.push({ t: 'DEI Score', v: ks.dei_score + '/100', n: 'Blended into ethical conduct' });
+    if (ks.hrc_score != null) ins.push({ t: 'HRC Score', v: ks.hrc_score + '/100', n: 'Blended into ethical conduct' });
+  } else if (dim === 'a') {
+    if (ks.cdp_climate) ins.push({ t: 'CDP Climate Grade', v: ks.cdp_climate, n: ks.cdp_climate <= 'B' ? 'Strong climate disclosure' : 'Room for improvement' });
+    if (ks.epa_violations != null) ins.push({ t: 'Environmental Violations', v: ks.epa_violations + '', n: ks.epa_violations > 0 ? 'Compliance issues detected' : 'No violations' });
+  } else if (dim === 'n') {
+    if (ks.cdp_climate) ins.push({ t: 'Climate Transparency', v: ks.cdp_climate !== 'N/A' ? 'Disclosed to CDP' : 'Not disclosed', n: ks.cdp_climate !== 'N/A' ? 'Voluntarily reports climate data' : 'Has not disclosed' });
+    if (profile.humanwashingFlags && profile.humanwashingFlags.length) ins.push({ t: 'Humanwashing Flags', v: profile.humanwashingFlags.length + ' detected', n: profile.humanwashingFlags[0].detail || '' });
+  }
+
+  if (srcs.length) ins.push({ t: 'Data Sources', v: srcs.join(', '), n: 'These sources informed this score' });
+
+  if (!ins.length) return '<div class="human-panel__signal"><span class="human-panel__signal-name" style="color:#888">Score based on industry defaults. More data will refine this.</span></div>';
+
+  return ins.map(x => `
+    <div class="human-panel__signal" style="padding:6px 0;border-bottom:1px solid #f0f0f0">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span class="human-panel__signal-name" style="font-weight:600">${x.t}</span>
+        <span style="font-weight:700;font-size:12px;color:${HumanEngine.getScoreColor(profile.dimensions[dim] || 50)}">${x.v}</span>
+      </div>
+      <div style="font-size:10px;color:#888;margin-top:2px">${x.n}</div>
+    </div>
+  `).join('');
+}
+
 const DIM_DESCRIPTIONS = {
   h: {
     name: "Human Consciousness",
@@ -317,14 +370,9 @@ function openDetailPanel(profile, dim) {
         <div class="human-panel__dim-fill-large" style="width: ${dimScore}%; background: ${dimColor}"></div>
       </div>
       <div class="human-panel__dim-desc">${dimInfo.what}</div>
-      <div class="human-panel__signals-title">Sub-Signals</div>
+      <div class="human-panel__signals-title">How This Score Was Formed</div>
       <div class="human-panel__signals">
-        ${dimInfo.signals.map((s, i) => `
-          <div class="human-panel__signal">
-            <span class="human-panel__signal-id">${dim.toUpperCase()}.${i+1}</span>
-            <span class="human-panel__signal-name">${s}</span>
-          </div>
-        `).join('')}
+        ${buildDimInsights(dim, profile)}
       </div>
     </div>
 
