@@ -41,6 +41,8 @@ ALL_COMPANIES = []   # sorted by composite desc
 HEARTBEAT = {}       # ticker -> heartbeat data
 HEARTBEAT_ALERTS = []
 HEARTBEAT_PULSE = {}
+HUMAN100 = []        # HUMAN 100 Index constituents
+HUMAN100_META = {}   # Index metadata
 DATA_DIR = Path("data/scores")
 
 
@@ -99,9 +101,10 @@ def normalize_name(name):
 
 
 def build_index():
-    global COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES, HEARTBEAT, HEARTBEAT_ALERTS, HEARTBEAT_PULSE
+    global COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES, HEARTBEAT, HEARTBEAT_ALERTS, HEARTBEAT_PULSE, HUMAN100, HUMAN100_META
     COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES = {}, {}, {}, []
     HEARTBEAT, HEARTBEAT_ALERTS, HEARTBEAT_PULSE = {}, [], {}
+    HUMAN100, HUMAN100_META = [], {}
     NORM_INDEX = {}  # normalized name index for dedup
 
     # Load heartbeat data
@@ -117,6 +120,14 @@ def build_index():
     if (hb_dir / "pulse.json").exists():
         HEARTBEAT_PULSE = json.load(open(hb_dir / "pulse.json"))
         print(f"  Heartbeat pulse: {HEARTBEAT_PULSE.get('pulse', 'unknown')}")
+
+    # Load HUMAN 100 Index
+    h100_dir = DATA_DIR.parent / "human100"
+    if (h100_dir / "index.json").exists():
+        HUMAN100 = json.load(open(h100_dir / "index.json"))
+        print(f"  HUMAN 100: {len(HUMAN100)} constituents")
+    if (h100_dir / "metadata.json").exists():
+        HUMAN100_META = json.load(open(h100_dir / "metadata.json"))
 
     # Load S&P 500 domain mappings
     sp500_domains = {}
@@ -403,6 +414,36 @@ def heartbeat_company(ticker):
     if ticker in HEARTBEAT:
         return jsonify(HEARTBEAT[ticker])
     return jsonify({"error": "not_found", "ticker": ticker}), 404
+
+
+# ═══ HUMAN 100 INDEX — Patent Feature ═══
+
+@app.route("/api/v1/human100")
+def human100_index():
+    """The full HUMAN 100 Index."""
+    limit = min(int(request.args.get("limit", 100)), 100)
+    return jsonify({
+        "index_name": "HUMAN 100",
+        "constituents_count": len(HUMAN100),
+        "metadata": HUMAN100_META,
+        "constituents": HUMAN100[:limit],
+    })
+
+
+@app.route("/api/v1/human100/metadata")
+def human100_metadata():
+    """Index metadata — stats, methodology, rebalance info."""
+    return jsonify(HUMAN100_META or {"error": "Index not yet generated"})
+
+
+@app.route("/api/v1/human100/check/<ticker>")
+def human100_check(ticker):
+    """Check if a company is in the HUMAN 100."""
+    ticker = ticker.upper().strip()
+    for c in HUMAN100:
+        if c.get("ticker", "").upper() == ticker:
+            return jsonify({"in_index": True, **c})
+    return jsonify({"in_index": False, "ticker": ticker})
 
 
 def main():
