@@ -171,51 +171,106 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div id="page-api" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
 <div class="subpage">
 <h1>HI. API</h1>
-<p class="subpage-sub">Integrate HI Grades™ into your products. Procurement platforms, investment tools, ESG dashboards.</p>
+<p class="subpage-sub">Integrate HI Grades™ into procurement platforms, investment tools, ESG dashboards, and consumer products.</p>
 
-<div class="about-card">
-<h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">REST API</h3>
-<p>The HI Score API provides programmatic access to HI Grades™ for 710+ companies. JSON responses, no authentication required for public endpoints. Rate limited to 60 requests per minute.</p>
-<p>Base URL: <code style="background:#F0F0F0;padding:2px 8px;border-radius:4px;font-size:13px">https://hi-api-production.up.railway.app</code></p>
+<div class="about-card" style="text-align:center;border-left:4px solid var(--navy)">
+<p style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px">330+ companies · 18 data sources · 15+ endpoints</p>
+<p style="margin:0;color:var(--muted)">HUMAN Heartbeat · HUMAN Genome · HUMAN 100 Index · Grade Arbitrage · Real-time decay detection</p>
+</div>
+
+<h2 class="section-title" style="font-size:22px;margin-top:32px">Pricing</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:32px">
+
+<div class="about-card" style="text-align:center">
+<div style="font-size:12px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px">COMMUNITY</div>
+<div style="font-size:36px;font-weight:800;color:var(--navy);font-family:'DM Serif Display'">Free</div>
+<div style="font-size:13px;color:var(--muted);margin-bottom:16px">For developers and researchers</div>
+<div style="text-align:left;font-size:13px;line-height:2">
+✓ All public endpoints<br>
+✓ 330+ companies<br>
+✓ Score, search, stats<br>
+✓ 60 requests/minute<br>
+✓ No authentication<br>
+✓ Community support
+</div>
+<div style="margin-top:16px"><a href="https://hi-api-production.up.railway.app/api/v1/stats" target="_blank" style="display:inline-block;padding:10px 24px;background:var(--navy);color:white;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">Start Building →</a></div>
+</div>
+
+<div class="about-card" style="text-align:center;border:2px solid var(--navy)">
+<div style="font-size:12px;font-weight:700;letter-spacing:1px;color:var(--gold);margin-bottom:8px">PROFESSIONAL</div>
+<div style="font-size:36px;font-weight:800;color:var(--navy);font-family:'DM Serif Display'">Contact</div>
+<div style="font-size:13px;color:var(--muted);margin-bottom:16px">For products and platforms — contact for pricing</div>
+<div style="text-align:left;font-size:13px;line-height:2">
+✓ Everything in Community<br>
+✓ <strong>Heartbeat API</strong> (pulse, alerts, decay)<br>
+✓ <strong>HUMAN Genome</strong> (sub-signal data)<br>
+✓ <strong>HUMAN 100 Index</strong><br>
+✓ <strong>Grade Arbitrage</strong> data<br>
+✓ API key authentication<br>
+✓ 600 requests/minute<br>
+✓ Webhook notifications<br>
+✓ Priority email support
+</div>
+<div style="margin-top:16px"><a href="mailto:arfrom@gmail.com?subject=HI%20API%20Professional&body=I'm%20interested%20in%20the%20Professional%20API%20plan.%20Company:%20%0AUse%20case:%20" style="display:inline-block;padding:10px 24px;background:var(--navy);color:white;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">Get API Key →</a></div>
+</div>
+
+<div class="about-card" style="text-align:center">
+<div style="font-size:12px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px">ENTERPRISE</div>
+<div style="font-size:36px;font-weight:800;color:var(--navy);font-family:'DM Serif Display'">Custom</div>
+<div style="font-size:13px;color:var(--muted);margin-bottom:16px">For institutions and funds</div>
+<div style="text-align:left;font-size:13px;line-height:2">
+✓ Everything in Professional<br>
+✓ <strong>Unlimited requests</strong><br>
+✓ <strong>HUMAN 100 Index licensing</strong><br>
+✓ <strong>Alternative data feed</strong> (hedge fund grade)<br>
+✓ Custom data pipelines<br>
+✓ SLA guarantee (99.9%)<br>
+✓ Dedicated account manager<br>
+✓ On-premise deployment option<br>
+✓ Custom integrations (SAP, Bloomberg)
+</div>
+<div style="margin-top:16px"><a href="mailto:arfrom@gmail.com?subject=HI%20API%20Enterprise&body=I'm%20interested%20in%20the%20Enterprise%20API%20plan.%20Company:%20%0AUse%20case:%20%0AEstimated%20volume:%20" style="display:inline-block;padding:10px 24px;background:var(--navy);color:white;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">Contact Sales →</a></div>
+</div>
+
+</div>
+
+<h2 class="section-title" style="font-size:22px">Use Cases</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:32px">
+<div class="about-card"><div style="font-size:20px;margin-bottom:8px">🏦</div><div style="font-weight:700;color:var(--navy);margin-bottom:4px">Investment Research</div><div style="font-size:12px;color:var(--muted)">Grade Arbitrage reveals gaps between ESG and HI ratings. The HUMAN 100 Index is ETF-licensable. Alternative data feed for quant strategies.</div></div>
+<div class="about-card"><div style="font-size:20px;margin-bottom:8px">🛒</div><div style="font-weight:700;color:var(--navy);margin-bottom:4px">Procurement</div><div style="font-size:12px;color:var(--muted)">Score vendors and suppliers. Plug into SAP Ariba, Coupa, or Jaggaer. Filter by dimension thresholds. Meet ethical sourcing requirements.</div></div>
+<div class="about-card"><div style="font-size:20px;margin-bottom:8px">📊</div><div style="font-weight:700;color:var(--navy);margin-bottom:4px">ESG Platforms</div><div style="font-size:12px;color:var(--muted)">Add the HUMAN dimension to existing ESG dashboards. The Genome API gives sub-signal granularity no other framework provides.</div></div>
+<div class="about-card"><div style="font-size:20px;margin-bottom:8px">📱</div><div style="font-weight:700;color:var(--navy);margin-bottom:4px">Consumer Apps</div><div style="font-size:12px;color:var(--muted)">Build ethical shopping assistants, portfolio consciousness dashboards, or corporate transparency tools. The Heartbeat API powers real-time alerts.</div></div>
 </div>
 
 <h2 class="section-title" style="font-size:22px">Endpoints</h2>
-<div style="margin-bottom:32px">
-<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/score/{domain}</span><span class="ep-desc">Score by domain</span></div>
+<div style="margin-bottom:16px">
+<div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px;margin-bottom:8px;margin-top:16px">SCORING</div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/score/{domain}</span><span class="ep-desc">Score by domain (with genome, heartbeat)</span></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/score/ticker/{ticker}</span><span class="ep-desc">Score by stock ticker</span></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/search?q={query}</span><span class="ep-desc">Search companies</span></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/grades/top?limit=10</span><span class="ep-desc">Top rated companies</span></div>
-<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/grades/bottom?limit=10</span><span class="ep-desc">Bottom rated companies</span></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/stats</span><span class="ep-desc">Database statistics</span></div>
-<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/health</span><span class="ep-desc">Health check</span></div>
+<div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px;margin-bottom:8px;margin-top:20px">HEARTBEAT <span style="font-size:9px;background:#F3F4F6;padding:1px 6px;border-radius:8px">Patent Pending</span></div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/heartbeat/pulse</span><span class="ep-desc">Ecosystem pulse — overall market health</span></div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/heartbeat/alerts</span><span class="ep-desc">Companies with active decay signals</span></div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/heartbeat/{ticker}</span><span class="ep-desc">Company heartbeat + decay factors</span></div>
+<div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px;margin-bottom:8px;margin-top:20px">HUMAN 100 INDEX <span style="font-size:9px;background:#F3F4F6;padding:1px 6px;border-radius:8px">Patent Pending</span></div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/human100</span><span class="ep-desc">Full HUMAN 100 Index with metadata</span></div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/human100/metadata</span><span class="ep-desc">Index stats, methodology, rebalance info</span></div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/human100/check/{ticker}</span><span class="ep-desc">Check HUMAN 100 membership</span></div>
+<div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px;margin-bottom:8px;margin-top:20px">GRADE ARBITRAGE <span style="font-size:9px;background:#F3F4F6;padding:1px 6px;border-radius:8px">Patent Pending</span></div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/arbitrage</span><span class="ep-desc">HI vs ESG gap analysis (all companies)</span></div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/arbitrage/washers</span><span class="ep-desc">ESG washing — overrated by ESG</span></div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/arbitrage/gems</span><span class="ep-desc">Hidden gems — underrated by ESG</span></div>
+<div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/arbitrage/{ticker}</span><span class="ep-desc">Single company arbitrage data</span></div>
 </div>
 
-<div class="about-card">
-<h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">Example Response</h3>
-<div class="code-block">{
-  "company": "Apple",
-  "ticker": "AAPL",
-  "hi_grade": "B",
-  "composite": 64.7,
-  "D_H": 58.2,
-  "D_U": 65.0,
-  "D_M": 70.3,
-  "D_A": 62.5,
-  "D_N": 67.5,
-  "data_sources": ["CDP", "Glassdoor", "Jobs", "SEC"],
-  "humanwashing_flags": [],
-  "satire": "Humans and machines, learning to share the remote."
-}</div>
+<div class="about-card" style="text-align:center;margin-top:32px;border-left:4px solid var(--gold)">
+<h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:8px">Ready to integrate?</h3>
+<p style="color:var(--muted);font-size:13px;margin-bottom:16px">The Community tier is live now — start building in minutes. For Professional or Enterprise access, reach out and we'll get you set up.</p>
+<a href="mailto:arfrom@gmail.com?subject=HI%20API%20Inquiry&body=I'm%20interested%20in%20integrating%20the%20HI%20API.%0A%0ACompany:%20%0AUse%20case:%20%0ATier%20interested%20in:%20" style="display:inline-block;padding:12px 32px;background:var(--navy);color:white;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none">Contact Us →</a>
+<div style="margin-top:12px"><a href="https://github.com/thehibalance/hi" target="_blank" style="color:var(--navy);font-size:12px;text-decoration:none">📖 Full documentation on GitHub</a></div>
 </div>
-
-<h2 class="section-title" style="font-size:22px">API Plans</h2>
-<div class="price-grid">
-<div class="price-card"><div class="price-name">Public</div><ul class="price-features"><li>All public endpoints</li><li>710+ companies</li><li>No authentication</li><li>Community support</li></ul></div>
-<div class="price-card featured"><div class="price-name" style="color:var(--gold)">Professional</div><ul class="price-features"><li>Higher rate limits</li><li>API key authentication</li><li>Webhook notifications</li><li>Priority support</li><li>Batch endpoints</li></ul></div>
-<div class="price-card"><div class="price-name">Enterprise</div><ul class="price-features"><li>Unlimited requests</li><li>Custom data feeds</li><li>SLA guarantee</li><li>Dedicated support</li><li>On-premise option</li><li>Custom integrations</li></ul></div>
-</div>
-
-<div style="text-align:center;margin-top:16px"><button class="btn btn-primary" onclick="window.open('https://github.com/thehibalance/hi','_blank')"><span class="btn-icon">📖</span> Full Documentation on GitHub</button></div>
 </div>
 </div>
 
