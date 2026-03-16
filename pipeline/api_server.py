@@ -131,15 +131,29 @@ def build_index():
     if DATA_DIR.exists():
         sf = DATA_DIR / "all_scores.json"
         scored = json.load(open(sf)) if sf.exists() else []
+        seen_norm = {}  # Track normalized names to prevent dupes
         for c in scored:
             if c.get("error"): continue
             t = c.get("ticker", "")
+            n = c.get("company", "")
+            norm = normalize_name(n)
+            
+            # Skip duplicates by normalized name — keep the one with more sources
+            if norm in seen_norm:
+                existing = seen_norm[norm]
+                if len(c.get("data_sources", [])) > len(existing.get("data_sources", [])):
+                    # Replace existing with this better record
+                    if existing in ALL_COMPANIES:
+                        ALL_COMPANIES.remove(existing)
+                    seen_norm[norm] = c
+                else:
+                    continue  # Skip this record, existing is better
+            else:
+                seen_norm[norm] = c
             
             # Inject domains from S&P 500 mapping if not already present
             if t and t.upper() in sp500_domains and not c.get("domains"):
                 c["domains"] = sp500_domains[t.upper()]
-            
-            if t: TICKERS[t.upper()] = c
             
             # Inject heartbeat data
             if t and t.upper() in HEARTBEAT:
@@ -148,9 +162,8 @@ def build_index():
                 c["decay_level"] = hb.get("decay_level", "stable")
                 c["decay_factors"] = hb.get("factors", [])
             
-            n = c.get("company", "")
+            if t: TICKERS[t.upper()] = c
             if n: NAME_INDEX[n.lower()] = c
-            norm = normalize_name(n)
             if norm: NORM_INDEX[norm] = c
             ALL_COMPANIES.append(c)
             

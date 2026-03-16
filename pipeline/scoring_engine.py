@@ -48,7 +48,9 @@ CANONICAL_NAMES = {
     "nike": "Nike, Inc.",
     "disney": "Walt Disney Company",
     "the walt disney": "Walt Disney Company",
+    "walt disney": "Walt Disney Company",
     "walt disney company (the)": "Walt Disney Company",
+    "walt disney co": "Walt Disney Company",
     # Finance
     "jpmorgan": "JPMorgan Chase & Co.",
     "jp morgan": "JPMorgan Chase & Co.",
@@ -233,7 +235,7 @@ def score_h_dimension(sec_h, job_data, bls_data, industry):
             scores["H.5"] = 50
 
     D_H = 0.25*scores["H.1"] + 0.20*scores["H.2"] + 0.20*scores["H.3"] + 0.15*scores["H.4"] + 0.20*scores["H.5"]
-    return round(D_H, 1), scores, list(set(sources_used))
+    return round_score(D_H), scores, list(set(sources_used))
 
 
 def score_u_dimension(sec_u, glassdoor_data, industry):
@@ -255,7 +257,7 @@ def score_u_dimension(sec_u, glassdoor_data, industry):
     scores["U.5"] = 50
 
     D_U = 0.25*scores["U.1"] + 0.25*scores["U.2"] + 0.20*scores["U.3"] + 0.15*scores["U.4"] + 0.15*scores["U.5"]
-    return round(D_U, 1), scores, sources_used
+    return round_score(D_U), scores, sources_used
 
 
 def score_m_dimension(sec_m, epa_data, glassdoor_data, industry):
@@ -292,7 +294,7 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry):
         scores["M.5"] = 60
 
     D_M = 0.20*scores["M.1"] + 0.20*scores["M.2"] + 0.20*scores["M.3"] + 0.25*scores["M.4"] + 0.15*scores["M.5"]
-    return round(D_M, 1), scores, list(set(sources_used))
+    return round_score(D_M), scores, list(set(sources_used))
 
 
 def score_a_dimension(sec_a, epa_data, cdp_data, industry):
@@ -334,7 +336,7 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry):
         scores["A.4"] = hw_defaults.get(industry, 55)
 
     D_A = 0.30*scores["A.1"] + 0.25*scores["A.2"] + 0.20*scores["A.3"] + 0.25*scores["A.4"]
-    return round(D_A, 1), scores, list(set(sources_used))
+    return round_score(D_A), scores, list(set(sources_used))
 
 
 def score_n_dimension(sec_n, cdp_data, epa_data, industry):
@@ -376,7 +378,14 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry):
         scores["N.5"] = min(100, scores["N.5"] + 5)
 
     D_N = 0.25*scores["N.1"] + 0.20*scores["N.2"] + 0.20*scores["N.3"] + 0.20*scores["N.4"] + 0.15*scores["N.5"]
-    return round(D_N, 1), scores, sources_used
+    return round_score(D_N), scores, sources_used
+
+
+def round_score(val):
+    """Round down unless decimal is .6 or higher."""
+    import math
+    remainder = round(val - math.floor(val), 4)  # Avoid float precision issues
+    return int(math.ceil(val)) if remainder >= 0.6 else int(math.floor(val))
 
 
 def compute_composite(D_H, D_U, D_M, D_A, D_N):
@@ -394,14 +403,13 @@ def compute_composite(D_H, D_U, D_M, D_A, D_N):
         triggering_dimension = min(dims, key=dims.get)
     
     # Balance floor: any dimension < 42 caps grade at C (composite capped at 59)
-    # "You can't claim balance when any dimension is failing"
     elif min_dim < 42:
         balance_floor_triggered = True
         triggering_dimension = min(dims, key=dims.get)
         if composite > 59:
-            composite = 59.0  # Caps at top of C range
+            composite = 59.0
     
-    return round(composite, 1), floor_triggered, balance_floor_triggered, triggering_dimension
+    return round_score(composite), floor_triggered, balance_floor_triggered, triggering_dimension
 
 def get_hi_grade(composite, verified=False):
     if composite >= 90 and verified:
@@ -584,24 +592,53 @@ def main():
 
     all_scores.sort(key=lambda x: x.get("composite", 0), reverse=True)
 
-    # Deduplicate by ticker — keep the record with the most data sources
+    # Deduplicate by ticker AND normalized name — keep the record with the most data sources
+    import re
+    def norm_for_dedup(name):
+        n = name.lower().strip()
+        for s in [' inc.', ' inc', ' corp.', ' corp', ' llc', ' ltd.', ' ltd',
+                  ' co.', ' co', ' plc', ' company', ' corporation', ' incorporated',
+                  ' group', ' holdings', ' international', ' (the)', ' the', ',', '.']:
+            n = n.replace(s, '')
+        n = re.sub(r'\s+', ' ', n).strip()
+        return n
+
     seen_tickers = {}
+    seen_names = {}
     deduped = []
     dupes_removed = 0
+
     for s in all_scores:
         t = s.get("ticker", "")
-        if t:
-            if t in seen_tickers:
-                # Keep the one with more sources
-                existing = seen_tickers[t]
-                if len(s.get("data_sources", [])) > len(existing.get("data_sources", [])):
-                    deduped.remove(existing)
-                    deduped.append(s)
-                    seen_tickers[t] = s
-                dupes_removed += 1
-                continue
-            seen_tickers[t] = s
-        deduped.append(s)
+        name = s.get("company", "")
+        norm = norm_for_dedup(name)
+        is_dupe = False
+
+        # Check ticker dupe
+        if t and t in seen_tickers:
+            existing = seen_tickers[t]
+            if len(s.get("data_sources", [])) > len(existing.get("data_sources", [])):
+                deduped.remove(existing)
+                seen_tickers[t] = s
+                seen_names[norm] = s
+                deduped.append(s)
+            dupes_removed += 1
+            is_dupe = True
+        # Check name dupe
+        elif norm and norm in seen_names:
+            existing = seen_names[norm]
+            if len(s.get("data_sources", [])) > len(existing.get("data_sources", [])):
+                deduped.remove(existing)
+                seen_names[norm] = s
+                if t: seen_tickers[t] = s
+                deduped.append(s)
+            dupes_removed += 1
+            is_dupe = True
+
+        if not is_dupe:
+            if t: seen_tickers[t] = s
+            if norm: seen_names[norm] = s
+            deduped.append(s)
     
     all_scores = deduped
     if dupes_removed:
