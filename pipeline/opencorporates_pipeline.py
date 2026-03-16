@@ -10,7 +10,7 @@ Maps to: N (transparency - corporate structure opacity), M (governance)
 No API key needed for basic access. Key available at: https://opencorporates.com/api_accounts/new
 """
 
-import json, time, sys, os
+import json, time, sys, os, re
 from pathlib import Path
 
 try:
@@ -42,18 +42,42 @@ def load_companies():
     return companies
 
 
+def simplify_name(name):
+    """Strip suffixes for better search results."""
+    name = re.sub(r'\s*[\(\[].*?[\)\]]', '', name)  # Remove parentheticals
+    name = re.sub(r',?\s+(Inc\.?|Corp\.?|LLC|Ltd\.?|Co\.?|PLC|SA|AG|NV|SE|Company|Corporation|Incorporated)\.?\s*$', '', name, flags=re.IGNORECASE)
+    name = re.sub(r'\s+', ' ', name).strip()
+    return name
+
+
 def search_company(name, key):
     """Search OpenCorporates for a company."""
     try:
-        params = {"q": name, "jurisdiction_code": "us", "per_page": 1}
+        simple = simplify_name(name)
+        # Don't filter by jurisdiction — US companies register in states (us_de, us_ca, etc.)
+        params = {"q": simple, "per_page": 3}
         if key: params["api_token"] = key
         r = requests.get(f"{BASE}/companies/search", params=params, timeout=15)
+
+        if r.status_code != 200:
+            print(f"    API status {r.status_code}: {r.text[:100]}")
+            return None
+
         d = r.json()
         results = d.get("results", {}).get("companies", [])
+
+        # Try to find best match (prefer US jurisdictions)
         if results:
+            for res in results:
+                co = res.get("company", {})
+                jur = co.get("jurisdiction_code", "")
+                if jur.startswith("us"):
+                    return co
+            # If no US match, return first result
             return results[0].get("company", {})
         return None
-    except:
+    except Exception as e:
+        print(f"    Search error: {e}")
         return None
 
 

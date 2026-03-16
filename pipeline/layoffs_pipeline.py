@@ -50,16 +50,18 @@ def run_pipeline():
             if not company:
                 continue
 
-            laid_off = row.get("# Laid Off", "").strip()
+            laid_off = row.get("Laid_Off_Count", "") or row.get("# Laid Off", "")
+            laid_off = laid_off.strip() if isinstance(laid_off, str) else laid_off
             try:
-                laid_off = int(laid_off) if laid_off else None
-            except ValueError:
+                laid_off = int(float(laid_off)) if laid_off else None
+            except (ValueError, TypeError):
                 laid_off = None
 
-            pct = row.get("Percentage", "").strip().replace("%", "")
+            pct = row.get("Percentage", "")
+            pct = str(pct).strip().replace("%", "") if pct else ""
             try:
                 pct = float(pct) if pct else None
-            except ValueError:
+            except (ValueError, TypeError):
                 pct = None
 
             date_str = row.get("Date", "").strip()
