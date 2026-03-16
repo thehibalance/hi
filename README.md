@@ -123,7 +123,7 @@ Catches layoff surges, AI acceleration pivots, CEO controversies, ethics/legal e
 ## Architecture
 
 ```
-Edge (NO AI)                          Cloud (NO AI currently)
+Edge (NO AI)                          Cloud (NO AI)
 ┌──────────────────────┐    sync     ┌──────────────────────────┐
 │ Browser Extension     │◄──────────►│ REST API (Flask)          │
 │ • 206 seed companies  │            │ • 18 data pipelines       │
@@ -137,9 +137,25 @@ Edge (NO AI)                          Cloud (NO AI currently)
             │ thehibalance │
             │    .org      │
             └──────────────┘
+                    │
+        ┌───────────────────────┐
+        │  AI-Informed Models   │
+        │  [Toggle: OFF by      │
+        │   default]            │
+        │                       │
+        │ • NLP filing analysis │
+        │ • ML humanwashing     │
+        │   detection           │
+        │ • Sentiment analysis  │
+        │ • Predictive scoring  │
+        │                       │
+        │ User opts IN — never  │
+        │ forced. Scores always │
+        │ available without AI. │
+        └───────────────────────┘
 ```
 
-Zero AI today. Scoring is transparent math. Anyone can audit every formula.
+Scoring is transparent math. Anyone can audit every formula. AI-Informed Models are a planned opt-in layer — toggled OFF by default. The user chooses whether AI helps.
 
 ## API
 
