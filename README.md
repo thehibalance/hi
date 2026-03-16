@@ -2,7 +2,7 @@
 
 **HI.** is an open scoring framework that measures how human a company is across five dimensions: **H**uman Consciousness, **U**nderstanding & Empathy, **M**oral & Ethical Conduct, **A**live & Environmental, **N**atural Transparency.
 
-Every company gets a **HI Grade™** — a simple letter grade (HI Certified, A, B, C, F) that consumers, investors, and procurement teams can use to make informed decisions. The balance between humans and technology, measured.
+Every company gets an **HI Grade™** — a simple letter grade (HI Certified, A, B, C, F) that consumers, investors, and procurement teams can use to make informed decisions. The balance between humans and technology, measured.
 
 🌐 [thehibalance.org](https://thehibalance.org) · 🏛 The Deep Thought Foundation · 📄 Patent Pending · ™ HI Grade — Morf Innovations LLC
 
@@ -10,105 +10,56 @@ Every company gets a **HI Grade™** — a simple letter grade (HI Certified, A,
 
 ## Live Now
 
-- **Website**: [thehibalance.org](https://thehibalance.org) — Search 710+ companies, The HI Life rankings, company detail pages
+- **Website**: [thehibalance.org](https://thehibalance.org) — 710+ companies, The HI Life rankings
 - **API**: [hi-api-production.up.railway.app](https://hi-api-production.up.railway.app/api/v1/stats) — Free public REST API
-- **Extension**: Chrome + Safari browser extensions (developer install below)
-- **Database**: 710 companies, 592 domains, 328 public company tickers, 17 data sources
+- **Extension**: Chrome + Safari browser extensions
+- **Database**: 710 companies, 592 domains, 328 tickers, 18 data sources
 
 ---
 
-## What's in this repo
-
-```
-hi/
-├── human-edge/                  # Chrome browser extension (Manifest V3)
-│   ├── manifest.json            # Extension config
-│   ├── background.js            # Service worker + cloud sync
-│   ├── content.js               # Page badge + side panel + equalizer
-│   ├── content.css              # Badge + panel styles
-│   ├── popup.html               # Extension popup UI
-│   ├── popup.js                 # Popup controller + cloud sync
-│   └── lib/
-│       ├── seed-data.js         # 206 hand-scored companies
-│       ├── engine.js            # Deterministic scoring engine (NO AI)
-│       └── db.js                # Database layer
-│
-├── pipeline/                    # Cloud scoring pipeline (17 data sources)
-│   ├── sec_edgar_pipeline.py    # SEC EDGAR — headcount, revenue, R&D, filings
-│   ├── epa_echo_pipeline.py     # EPA ECHO — environmental violations
-│   ├── bls_pipeline.py          # BLS — industry wage & employment benchmarks
-│   ├── cdp_pipeline.py          # CDP — climate disclosure scores
-│   ├── job_board_pipeline.py    # Job Boards — AI hiring velocity
-│   ├── glassdoor_pipeline.py    # Glassdoor — employee ratings, CEO approval
-│   ├── dei_pipeline.py          # AAPD/DEI — Disability Equality Index
-│   ├── hrc_pipeline.py          # HRC/CEI — Corporate Equality Index
-│   ├── yahoo_pipeline.py        # Yahoo Finance — headcount, revenue, market cap
-│   ├── alpha_vantage_pipeline.py# Alpha Vantage — R&D spend, earnings, margins
-│   ├── fmp_pipeline.py          # FMP — full financials, ratios
-│   ├── finnhub_pipeline.py      # Finnhub — ESG scores + company news
-│   ├── fred_pipeline.py         # FRED — economic benchmarks (18 series)
-│   ├── opencorporates_pipeline.py # OpenCorporates — corporate transparency
-│   ├── layoffs_pipeline.py      # Layoffs.fyi — tech layoff history
-│   ├── sec_8k_pipeline.py       # SEC 8-K — material event filings
-│   ├── warn_pipeline.py         # WARN Act — legally required layoff notices
-│   ├── heartbeat_monitor.py     # HUMAN Heartbeat — score decay detection (patent)
-│   ├── scoring_engine.py        # Multi-source HUMAN dimension scoring (v2)
-│   ├── api_server.py            # REST API server (Flask)
-│   ├── sp500_companies.py       # S&P 500 company list
-│   └── sp500_domains.py         # Domain mappings
-│
-├── docs/                        # Website (GitHub Pages)
-│   ├── index.html               # thehibalance.org
-│   └── CNAME                    # Custom domain config
-│
-├── LICENSE                      # AGPL-3.0 (extension) / Apache 2.0 (methodology)
-├── CONTRIBUTING.md
-└── README.md
-```
-
 ## Quick Start
 
-### Browser Extension (no server needed)
-
-1. Clone: `git clone https://github.com/thehibalance/hi.git`
-2. Open `chrome://extensions`, enable **Developer mode**
-3. Click **Load unpacked** → select `human-edge/`
-4. Visit any website — if the company is in our database, the HI Grade™ badge appears
-
-### Cloud Pipeline (17 data sources)
+### One Command
 
 ```bash
 cd pipeline
+python3 run_all.py --daily --push    # Run all daily pipelines + auto-push to git/Railway
+```
+
+### Run Modes
+
+| Command | What Runs | Time |
+|---------|-----------|------|
+| `python3 run_all.py --daily` | News, financials, SEC, CEO, score, Heartbeat | ~15 min |
+| `python3 run_all.py --weekly` | All daily + Yahoo, FRED, DEI, HRC | ~30 min |
+| `python3 run_all.py --monthly` | Everything including SEC EDGAR, CDP, Glassdoor | ~2 hrs |
+| `python3 run_all.py --daily --push` | Daily + auto-push to GitHub & Railway | ~16 min |
+
+### First Time Setup
+
+```bash
+git clone https://github.com/thehibalance/hi.git
+cd hi/pipeline
 pip install flask flask-cors yfinance requests --break-system-packages
 
-# Free sources (no keys needed)
-python3 cdp_pipeline.py
-python3 job_board_pipeline.py
-python3 glassdoor_pipeline.py
-python3 dei_pipeline.py
-python3 hrc_pipeline.py
-python3 yahoo_pipeline.py
-python3 sec_edgar_pipeline.py --limit 10
-python3 sec_8k_pipeline.py --limit 20
-python3 opencorporates_pipeline.py --limit 20
+# API keys (all free)
+echo YOUR_KEY > data/fmp_key.txt          # financialmodelingprep.com
+echo YOUR_KEY > data/finnhub_key.txt      # finnhub.io
+echo YOUR_KEY > data/fred_key.txt         # fred.stlouisfed.org
+echo YOUR_KEY > data/alpha_vantage_key.txt # alphavantage.co
+echo YOUR_KEY > data/newsapi_key.txt      # newsapi.org
 
-# Free API key sources
-python3 fmp_pipeline.py --limit 20          # financialmodelingprep.com
-python3 finnhub_pipeline.py --limit 20      # finnhub.io
-python3 fred_pipeline.py                    # fred.stlouisfed.org
-python3 alpha_vantage_pipeline.py           # alphavantage.co
-
-# Manual data (download CSVs first)
-python3 layoffs_pipeline.py                 # layoffs.fyi CSV
-python3 warn_pipeline.py                    # WARN Act CSVs
-
-# Score + Heartbeat
-python3 scoring_engine.py
-python3 heartbeat_monitor.py
-
-# Start API
-python3 api_server.py --port 8080
+# Run everything
+python3 run_all.py --daily --push
 ```
+
+### Browser Extension
+
+1. Open `chrome://extensions`, enable **Developer mode**
+2. Click **Load unpacked** → select `human-edge/`
+3. Visit any website — HI Grade™ badge appears for scored companies
+
+---
 
 ## The HI Grade™ Scale
 
@@ -124,39 +75,42 @@ The pass/fail line is **42** — the answer to life, the universe, and everythin
 
 ## The HUMAN Framework
 
-| Dimension | Measures | What AI Replaces |
-|-----------|----------|-----------------|
-| 🧠 **H** — Human Consciousness | Creative agency, craft, accountability | Automation, displacement |
-| 💙 **U** — Understanding & Empathy | Genuine care, emotional presence | Simulated empathy |
-| ⚖️ **M** — Moral & Ethical Conduct | Principled action, fairness | Optimization at all costs |
-| 🌍 **A** — Alive & Environmental | True ecological cost incl. AI infrastructure | Hidden compute footprint |
-| 🔍 **N** — Natural Transparency | Honest disclosure of AI usage | Humanwashing, opacity |
+| Dimension | Measures |
+|-----------|----------|
+| 🧠 **H** — Human Consciousness | Creative agency, craft, accountability |
+| 💙 **U** — Understanding & Empathy | Genuine care, emotional presence |
+| ⚖️ **M** — Moral & Ethical Conduct | Principled action, fairness, CEO accountability |
+| 🌍 **A** — Alive & Environmental | True ecological cost incl. AI infrastructure |
+| 🔍 **N** — Natural Transparency | Honest disclosure of AI usage |
 
-## Data Sources (17)
+## Data Sources (18)
 
-| # | Source | Dimensions | Key Data | Cost |
-|---|--------|-----------|----------|------|
-| 1 | SEC EDGAR | H, M, N | Filings, headcount, R&D | Free |
-| 2 | EPA ECHO | A, M | Environmental violations | Free |
-| 3 | BLS | H, U | Wage benchmarks | Free |
-| 4 | CDP | A, N | Climate disclosure | Free |
-| 5 | Job Boards | H | AI hiring velocity | Free |
-| 6 | Glassdoor | U, M | Employee ratings | Free |
-| 7 | AAPD/DEI | U, M | Disability Equality Index | Free |
-| 8 | HRC/CEI | U, M | Corporate Equality Index | Free |
-| 9 | Yahoo Finance | H, M | Headcount, revenue, market cap | Free |
-| 10 | Alpha Vantage | H, M | R&D spend, earnings, margins | Free key |
-| 11 | FMP | H, M, N | Full financials, ratios | Free key |
-| 12 | Finnhub | U, M, A, N | ESG scores + company news | Free key |
-| 13 | FRED | H, U, M | Economic benchmarks (18 series) | Free key |
-| 14 | OpenCorporates | N, M | Corporate transparency | Free |
-| 15 | Layoffs.fyi | H | Tech layoff history | Free CSV |
-| 16 | SEC 8-K | H | Material event filings | Free |
-| 17 | WARN Act | H | Legally required layoff notices | Free |
+| # | Source | Dimensions | Data | Schedule |
+|---|--------|-----------|------|----------|
+| 1 | SEC EDGAR | H, M, N | Filings, headcount, R&D | Monthly |
+| 2 | EPA ECHO | A, M | Environmental violations | Monthly |
+| 3 | BLS | H, U | Wage benchmarks | Monthly |
+| 4 | CDP | A, N | Climate disclosure | Monthly |
+| 5 | Job Boards | H | AI hiring velocity | Monthly |
+| 6 | Glassdoor | U, M | Employee ratings | Monthly |
+| 7 | AAPD/DEI | U, M | Disability Equality Index | Weekly |
+| 8 | HRC/CEI | U, M | Corporate Equality Index | Weekly |
+| 9 | Yahoo Finance | H, M | Headcount, revenue, market cap | Weekly |
+| 10 | Alpha Vantage | H, M | R&D spend, earnings, margins | Daily |
+| 11 | FMP | H, M, N | Full financials, ratios | Daily |
+| 12 | Finnhub | U, M, A, N | ESG scores + company news | Daily |
+| 13 | FRED | H, U, M | Economic benchmarks (18 series) | Weekly |
+| 14 | Layoffs.fyi | H | Tech layoff history | Monthly |
+| 15 | SEC 8-K | H | Material event filings | Daily |
+| 16 | WARN Act | H | Legally required layoff notices | Monthly |
+| 17 | NewsAPI | All | 150K+ media sources, 30-day coverage | Daily |
+| 18 | CEO Pipeline | M | Pay ratio, approval, tenure vs layoffs | Daily |
+
+Plus: **HUMAN Heartbeat** (patent feature) aggregates all signals for real-time score decay detection.
 
 ## HUMAN Heartbeat (Patent Feature)
 
-Real-time event monitor that detects score decay before it happens. Aggregates signals from Finnhub news, Layoffs.fyi, SEC 8-K filings, and WARN Act data.
+Real-time event monitor that detects score decay before it happens.
 
 | Output | What It Does |
 |--------|-------------|
@@ -164,46 +118,28 @@ Real-time event monitor that detects score decay before it happens. Aggregates s
 | **Alerts** | Flags companies at warning (30+) or critical (50+) decay |
 | **Ecosystem Pulse** | Overall market health: healthy / elevated / stressed / critical |
 
-Catches layoff surges, AI acceleration pivots, ethics/legal events, environmental incidents, and humanwashing patterns across multiple signals.
+Catches layoff surges, AI acceleration pivots, CEO controversies, ethics/legal events, environmental incidents, and humanwashing patterns.
 
 ## Architecture
 
 ```
-Edge (NO AI)                          Cloud (NO AI)
+Edge (NO AI)                          Cloud (NO AI currently)
 ┌──────────────────────┐    sync     ┌──────────────────────────┐
 │ Browser Extension     │◄──────────►│ REST API (Flask)          │
-│ • 206 seed companies  │            │ • 17 data pipelines       │
-│ • Filter engine       │            │ • HUMAN Heartbeat monitor │
-│ • Equalizer UI        │            │ • Scoring engine v2       │
-│ • Side panel + search │            │ • 710+ companies          │
-│ • Deterministic only  │            │ • 592 domains indexed     │
+│ • 206 seed companies  │            │ • 18 data pipelines       │
+│ • Filter engine       │            │ • CEO accountability      │
+│ • Equalizer UI        │            │ • HUMAN Heartbeat monitor │
+│ • Side panel + search │            │ • NewsAPI media monitoring│
+│ • Deterministic only  │            │ • 710+ companies          │
 └──────────────────────┘            └──────────────────────────┘
-         │                                    │
-         └──── Both serve ────────────────────┘
                     │
             ┌──────────────┐
             │ thehibalance │
             │    .org      │
             └──────────────┘
-                    │
-        ┌───────────────────────┐
-        │  AI-Informed Models   │
-        │  [Toggle: OFF by      │
-        │   default]            │
-        │                       │
-        │ • NLP filing analysis │
-        │ • ML humanwashing     │
-        │   detection           │
-        │ • Sentiment analysis  │
-        │ • Predictive scoring  │
-        │                       │
-        │ User opts IN — never  │
-        │ forced. Scores always │
-        │ available without AI. │
-        └───────────────────────┘
 ```
 
-Zero AI today. Scoring is transparent math: averages, thresholds, and if/else logic. Anyone can audit every formula. AI-Informed Models are planned as an opt-in layer — toggled OFF by default.
+Zero AI today. Scoring is transparent math. Anyone can audit every formula.
 
 ## API
 
@@ -230,6 +166,38 @@ Free public access. No authentication required.
 | HW.4 | Significant environmental violations |
 | HW.5 | Refuses CDP climate disclosure |
 
+## Repo Structure
+
+```
+hi/
+├── human-edge/                    # Chrome + Safari extension (Manifest V3)
+├── pipeline/
+│   ├── run_all.py                 # Single command master runner
+│   ├── scoring_engine.py          # Multi-source scoring (v2)
+│   ├── heartbeat_monitor.py       # HUMAN Heartbeat (patent feature)
+│   ├── ceo_pipeline.py            # CEO accountability (M dimension)
+│   ├── newsapi_pipeline.py        # Broad media monitoring
+│   ├── finnhub_pipeline.py        # ESG + company news
+│   ├── fmp_pipeline.py            # Full financials
+│   ├── yahoo_pipeline.py          # Headcount, revenue
+│   ├── alpha_vantage_pipeline.py  # R&D, earnings
+│   ├── fred_pipeline.py           # Economic benchmarks
+│   ├── sec_edgar_pipeline.py      # SEC filings
+│   ├── sec_8k_pipeline.py         # Material events
+│   ├── epa_echo_pipeline.py       # Environmental data
+│   ├── bls_pipeline.py            # Labor benchmarks
+│   ├── cdp_pipeline.py            # Climate disclosure
+│   ├── job_board_pipeline.py      # AI hiring ratio
+│   ├── glassdoor_pipeline.py      # Employee ratings
+│   ├── dei_pipeline.py            # Disability inclusion
+│   ├── hrc_pipeline.py            # LGBTQ+ inclusion
+│   ├── layoffs_pipeline.py        # Tech layoff tracker
+│   ├── warn_pipeline.py           # WARN Act notices
+│   └── api_server.py              # REST API (Flask)
+├── docs/                          # Website (GitHub Pages)
+└── README.md
+```
+
 ## Contributing
 
 We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md).
@@ -245,11 +213,13 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md).
 - ✅ Provisional patent filed (March 5, 2026)
 - ✅ HI Grade™ trademark filed (March 12, 2026)
 - ✅ 710 companies scored across 592 domains
-- ✅ 17 data pipelines live
-- ✅ HUMAN Heartbeat — score decay detection (patent feature)
+- ✅ 18 data pipelines + CEO accountability
+- ✅ HUMAN Heartbeat — real-time score decay detection (patent feature)
+- ✅ NewsAPI broad media monitoring — 150K+ sources
 - ✅ Chrome + Safari extensions
 - ✅ REST API on Railway
 - ✅ Website at thehibalance.org
+- ⏳ Company deduplication cleanup
 - ⏳ Chrome Web Store listing
 - ⏳ Native iOS app
 - ⏳ HI Certification portal
