@@ -45,6 +45,8 @@ HUMAN100 = []        # HUMAN 100 Index constituents
 HUMAN100_META = {}   # Index metadata
 ARBITRAGE = []       # Grade Arbitrage results
 ARBITRAGE_META = {}  # Arbitrage metadata
+MOATS = []           # Ethical Moat results
+MOATS_META = {}      # Moat metadata
 DATA_DIR = Path("data/scores")
 
 
@@ -103,11 +105,12 @@ def normalize_name(name):
 
 
 def build_index():
-    global COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES, HEARTBEAT, HEARTBEAT_ALERTS, HEARTBEAT_PULSE, HUMAN100, HUMAN100_META, ARBITRAGE, ARBITRAGE_META
+    global COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES, HEARTBEAT, HEARTBEAT_ALERTS, HEARTBEAT_PULSE, HUMAN100, HUMAN100_META, ARBITRAGE, ARBITRAGE_META, MOATS, MOATS_META
     COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES = {}, {}, {}, []
     HEARTBEAT, HEARTBEAT_ALERTS, HEARTBEAT_PULSE = {}, [], {}
     HUMAN100, HUMAN100_META = [], {}
     ARBITRAGE, ARBITRAGE_META = [], {}
+    MOATS, MOATS_META = [], {}
     NORM_INDEX = {}  # normalized name index for dedup
 
     # Load heartbeat data
@@ -139,6 +142,14 @@ def build_index():
         print(f"  Arbitrage: {len(ARBITRAGE)} companies analyzed")
     if (arb_dir / "metadata.json").exists():
         ARBITRAGE_META = json.load(open(arb_dir / "metadata.json"))
+
+    # Load Ethical Moat data
+    moat_dir = DATA_DIR.parent / "ethical_moat"
+    if (moat_dir / "all_moats.json").exists():
+        MOATS = json.load(open(moat_dir / "all_moats.json"))
+        print(f"  Ethical Moat: {len(MOATS)} companies analyzed")
+    if (moat_dir / "metadata.json").exists():
+        MOATS_META = json.load(open(moat_dir / "metadata.json"))
 
     # Load S&P 500 domain mappings
     sp500_domains = {}
@@ -495,6 +506,49 @@ def arbitrage_company(ticker):
     """Arbitrage data for a specific company."""
     ticker = ticker.upper().strip()
     for r in ARBITRAGE:
+        if r.get("ticker", "").upper() == ticker:
+            return jsonify(r)
+    return jsonify({"error": "not_found", "ticker": ticker}), 404
+
+
+# ═══ ETHICAL MOAT — Patent Feature ═══
+
+@app.route("/api/v1/moat")
+def moat_all():
+    """All ethical moat results."""
+    level = request.args.get("level", "")  # fortress, strong, moderate, thin, none
+    limit = min(int(request.args.get("limit", 50)), 200)
+    results = MOATS
+    if level:
+        results = [r for r in results if r.get("moat_level") == level]
+    return jsonify({
+        "total": len(results),
+        "metadata": MOATS_META,
+        "results": results[:limit],
+    })
+
+
+@app.route("/api/v1/moat/fortresses")
+def moat_fortresses():
+    """Companies with fortress-level AI displacement resistance."""
+    limit = min(int(request.args.get("limit", 20)), 100)
+    forts = [r for r in MOATS if r.get("moat_level") == "fortress"]
+    return jsonify({"count": len(forts), "results": forts[:limit]})
+
+
+@app.route("/api/v1/moat/vulnerable")
+def moat_vulnerable():
+    """Companies most vulnerable to AI displacement."""
+    limit = min(int(request.args.get("limit", 20)), 100)
+    vuln = [r for r in MOATS if r.get("moat_level") in ("thin", "none")]
+    return jsonify({"count": len(vuln), "results": vuln[:limit]})
+
+
+@app.route("/api/v1/moat/<ticker>")
+def moat_company(ticker):
+    """Ethical moat data for a specific company."""
+    ticker = ticker.upper().strip()
+    for r in MOATS:
         if r.get("ticker", "").upper() == ticker:
             return jsonify(r)
     return jsonify({"error": "not_found", "ticker": ticker}), 404
