@@ -163,17 +163,10 @@ function createBadge(profile, filterResult, prefs) {
         if (el) {
           el.innerHTML = `<span style="color:${c}">♥</span> Ecosystem: <strong style="color:${c}">${pulse.pulse.toUpperCase()}</strong> · ${pulse.alerts_count || 0} alerts`;
         }
-        // Update compact header — replace tagline with heartbeat
+        // Update compact header for stable companies (no decay)
         const hp = document.getElementById('human-badge-header-pulse');
         if (hp) {
-          const decayLevel = profile.decay_level || 'stable';
-          const decayIndex = profile.decay_index || 0;
-          if (decayLevel !== 'stable' && decayIndex > 0) {
-            const dc = { critical: '#DC2626', warning: '#D97706', watch: '#EA580C' };
-            hp.innerHTML = `<span style="color:${dc[decayLevel] || c}">♥</span> Decay: ${decayIndex} · Pulse: <strong style="color:${c}">${pulse.pulse.toUpperCase()}</strong>`;
-          } else {
-            hp.innerHTML = `<span style="color:${c}">♥</span> Pulse: <strong style="color:${c}">${pulse.pulse.toUpperCase()}</strong> · ${pulse.alerts_count || 0} alerts`;
-          }
+          hp.innerHTML = `<span style="color:${c}">♥</span> Pulse: <strong style="color:${c}">${pulse.pulse.toUpperCase()}</strong> · ${pulse.alerts_count || 0} alerts`;
         }
       }
     });
@@ -212,7 +205,9 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
         <div class="human-badge__tier" style="color: ${tierColor}">
           HI Grade: ${profile.grade} · ${profile.composite}
         </div>
-        <div class="human-badge__brand" id="human-badge-header-pulse">Find the HI balance.</div>
+        ${profile.decay_level !== 'stable' && profile.decay_index > 0 ? 
+          `<div class="human-badge__header-heartbeat" style="font-size:10px;margin-top:2px;line-height:1.3;color:${{critical:'#DC2626',warning:'#D97706',watch:'#EA580C'}[profile.decay_level]||'#6B7280'}">♥ ${profile.decay_level.charAt(0).toUpperCase()+profile.decay_level.slice(1)} · Decay: ${profile.decay_index}<div style="font-size:9px;opacity:0.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px">${(profile.decay_factors||[]).slice(0,2).join(' · ')}</div></div>` 
+          : '<div class="human-badge__header-heartbeat" style="font-size:10px;margin-top:2px;color:#16A34A" id="human-badge-header-pulse">♥ Stable</div>'}
       </div>
       <div class="human-badge__toggle-indicator">▾</div>
     </div>
