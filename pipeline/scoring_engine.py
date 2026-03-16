@@ -24,11 +24,77 @@ from pathlib import Path
 
 # Canonical names for companies known by multiple names
 CANONICAL_NAMES = {
+    # Tech
     "google": "Alphabet Inc.",
     "alphabet": "Alphabet Inc.",
     "amazon": "Amazon.com, Inc.",
+    "amazon.com": "Amazon.com, Inc.",
     "meta": "Meta Platforms, Inc.",
+    "meta platforms": "Meta Platforms, Inc.",
     "facebook": "Meta Platforms, Inc.",
+    "microsoft": "Microsoft Corporation",
+    "apple": "Apple Inc.",
+    # Consumer
+    "coca-cola": "Coca-Cola Company",
+    "coca cola": "Coca-Cola Company",
+    "the coca-cola": "Coca-Cola Company",
+    "coca-cola company (the)": "Coca-Cola Company",
+    "pepsi": "PepsiCo, Inc.",
+    "pepsico": "PepsiCo, Inc.",
+    "walmart": "Walmart Inc.",
+    "starbucks": "Starbucks Corporation",
+    "mcdonald's": "McDonald's Corporation",
+    "mcdonalds": "McDonald's Corporation",
+    "nike": "Nike, Inc.",
+    "disney": "Walt Disney Company",
+    "the walt disney": "Walt Disney Company",
+    "walt disney company (the)": "Walt Disney Company",
+    # Finance
+    "jpmorgan": "JPMorgan Chase & Co.",
+    "jp morgan": "JPMorgan Chase & Co.",
+    "jp morgan chase": "JPMorgan Chase & Co.",
+    "jpmorgan chase": "JPMorgan Chase & Co.",
+    "goldman sachs": "Goldman Sachs Group, Inc.",
+    "the goldman sachs group": "Goldman Sachs Group, Inc.",
+    "bank of america": "Bank of America Corporation",
+    "wells fargo": "Wells Fargo & Company",
+    "morgan stanley": "Morgan Stanley",
+    # Healthcare
+    "johnson & johnson": "Johnson & Johnson",
+    "johnson and johnson": "Johnson & Johnson",
+    "j&j": "Johnson & Johnson",
+    "pfizer": "Pfizer, Inc.",
+    "unitedhealth": "UnitedHealth Group Incorporated",
+    "unitedhealth group": "UnitedHealth Group Incorporated",
+    # Defense
+    "lockheed martin": "Lockheed Martin Corporation",
+    "boeing": "Boeing Company",
+    "the boeing": "Boeing Company",
+    "boeing company (the)": "Boeing Company",
+    # Retail
+    "target": "Target Corporation",
+    "home depot": "Home Depot, Inc.",
+    "the home depot": "Home Depot, Inc.",
+    "home depot, inc. (the)": "Home Depot, Inc.",
+    "costco": "Costco Wholesale Corporation",
+    "costco wholesale": "Costco Wholesale Corporation",
+    # Auto
+    "general motors": "General Motors Company",
+    "ford": "Ford Motor Company",
+    "ford motor": "Ford Motor Company",
+    # Energy
+    "nextera energy": "NextEra Energy, Inc.",
+    "chevron": "Chevron Corporation",
+    "exxon": "Exxon Mobil Corporation",
+    "exxon mobil": "Exxon Mobil Corporation",
+    "exxonmobil": "Exxon Mobil Corporation",
+    # Other
+    "dr. bronner's": "Dr. Bronner's",
+    "dr bronner": "Dr. Bronner's",
+    "at&t": "AT&T Inc.",
+    "procter & gamble": "Procter & Gamble Company",
+    "procter and gamble": "Procter & Gamble Company",
+    "the procter & gamble": "Procter & Gamble Company",
 }
 
 INDUSTRY_RPE_MEDIANS = {
@@ -495,9 +561,18 @@ def main():
                 ticker = source.get("ticker", ticker) or ticker
 
         # Apply canonical name for known duplicates
-        name_check = name.lower().split(',')[0].split(' inc')[0].split(' corp')[0].strip()
-        if name_check in CANONICAL_NAMES:
-            name = CANONICAL_NAMES[name_check]
+        name_check = name.lower().strip()
+        # Try progressively shorter versions
+        for check in [
+            name_check,
+            name_check.split(',')[0].strip(),
+            name_check.replace(' inc.', '').replace(' inc', '').replace(' corp.', '').replace(' corp', '').replace(' llc', '').replace(' ltd', '').replace(' company', '').replace(' corporation', '').replace(' incorporated', '').strip(),
+            name_check.replace('(the)', '').replace('the ', '').strip().rstrip('.,'),
+        ]:
+            check = check.strip().rstrip('.,')
+            if check in CANONICAL_NAMES:
+                name = CANONICAL_NAMES[check]
+                break
 
         if sec and sec.get("error") and not any([epa, cdp, job, gd]):
             continue
