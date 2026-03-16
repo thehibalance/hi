@@ -22,6 +22,15 @@ Usage:
 import json, os, sys
 from pathlib import Path
 
+# Canonical names for companies known by multiple names
+CANONICAL_NAMES = {
+    "google": "Alphabet Inc.",
+    "alphabet": "Alphabet Inc.",
+    "amazon": "Amazon.com, Inc.",
+    "meta": "Meta Platforms, Inc.",
+    "facebook": "Meta Platforms, Inc.",
+}
+
 INDUSTRY_RPE_MEDIANS = {
     "tech": 500000, "retail": 200000, "finance": 600000,
     "healthcare": 250000, "energy": 1500000, "manufacturing": 300000,
@@ -485,6 +494,11 @@ def main():
                 name = source.get("company", name)
                 ticker = source.get("ticker", ticker) or ticker
 
+        # Apply canonical name for known duplicates
+        name_check = name.lower().split(',')[0].split(' inc')[0].split(' corp')[0].strip()
+        if name_check in CANONICAL_NAMES:
+            name = CANONICAL_NAMES[name_check]
+
         if sec and sec.get("error") and not any([epa, cdp, job, gd]):
             continue
 
@@ -494,6 +508,29 @@ def main():
         print(f"  {result['hi_grade']:12s} {result['composite']:5.1f}  {name:30s}  [{sources}]")
 
     all_scores.sort(key=lambda x: x.get("composite", 0), reverse=True)
+
+    # Deduplicate by ticker — keep the record with the most data sources
+    seen_tickers = {}
+    deduped = []
+    dupes_removed = 0
+    for s in all_scores:
+        t = s.get("ticker", "")
+        if t:
+            if t in seen_tickers:
+                # Keep the one with more sources
+                existing = seen_tickers[t]
+                if len(s.get("data_sources", [])) > len(existing.get("data_sources", [])):
+                    deduped.remove(existing)
+                    deduped.append(s)
+                    seen_tickers[t] = s
+                dupes_removed += 1
+                continue
+            seen_tickers[t] = s
+        deduped.append(s)
+    
+    all_scores = deduped
+    if dupes_removed:
+        print(f"\n  Deduplication: removed {dupes_removed} duplicate records")
 
     outfile = output_dir / "all_scores.json"
     with open(outfile, "w") as f:
