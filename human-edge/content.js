@@ -227,8 +227,8 @@ const DIM_DESCRIPTIONS = {
   m: {
     name: "Moral & Ethical Conduct",
     icon: "⚖️",
-    what: "Measures principled action — pricing ethics, data ethics, market behavior, product design, and political activity. Starts at 100, deducted for violations.",
-    signals: ["Pricing Ethics", "Data Ethics", "Market Ethics", "Product Ethics", "Political Ethics"],
+    what: "Measures principled action — pricing ethics, data ethics, market behavior, CEO accountability, and leadership pay equity. Starts at 100, deducted for violations.",
+    signals: ["Pricing Ethics", "Data Ethics", "Market Ethics", "CEO Accountability", "Leadership Pay Equity"],
   },
   a: {
     name: "Alive & Environmental",
