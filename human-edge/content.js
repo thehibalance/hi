@@ -226,6 +226,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
           ${profile.decay_factors.map(f => `<div style="font-size:10px;margin-top:4px;padding-left:14px;position:relative"><span style="position:absolute;left:0">›</span>${f}</div>`).join('')}
         </div>` : ''}
       ${filterWarning}
+      ${buildGenomeStrip(profile)}
       <div class="human-badge__pulse" id="human-badge-pulse"></div>
       ${profile.source === 'cloud' ? '<div class="human-badge__source">☁ Live score from thehibalance.org</div>' : '<div class="human-badge__source">📦 Local database</div>'}
       <div class="human-badge__disclaimer">Estimated from public data. Not financial or legal advice.</div>
@@ -236,6 +237,46 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
 /**
  * Build the dimension bar visualizations.
  */
+
+const GENOME_LABELS = {
+  'H.1':'Creative Agency','H.2':'Craft','H.3':'Decision Depth','H.4':'Accountability','H.5':'Displacement',
+  'U.1':'Empathy','U.2':'Worker Care','U.3':'Relational','U.4':'Moral Courage','U.5':'Simulated Empathy',
+  'U.6_dei':'DEI','U.7_hrc':'HRC',
+  'M.1':'Pricing','M.2':'Data Ethics','M.3':'Market','M.4':'CEO','M.5':'Pay Equity',
+  'M.6_dei':'DEI','M.7_hrc':'HRC',
+  'A.1':'Carbon','A.2':'AI Energy','A.3':'EPA Compliance','A.4':'Resources',
+  'N.1':'AI Disclosure','N.2':'Env. Reporting','N.3':'Labor Audit','N.4':'Humanwashing','N.5':'Disclosure'
+};
+
+function buildGenomeStrip(profile) {
+  const genome = profile.genome || {};
+  const dims = ['H','U','M','A','N'];
+  const hasGenome = dims.some(d => genome[d] && Object.keys(genome[d].scores || {}).length > 0);
+  if (!hasGenome) return '';
+
+  let html = '<div style="margin-top:8px;padding:8px 0;border-top:1px solid #EEF1F5">';
+  html += '<div style="font-size:10px;font-weight:700;color:#1B3A5C;letter-spacing:0.5px;margin-bottom:6px">🧬 HUMAN GENOME</div>';
+
+  dims.forEach(d => {
+    const dd = genome[d];
+    if (!dd || !dd.scores) return;
+    const entries = Object.entries(dd.scores).sort((a,b) => a[0].localeCompare(b[0]));
+    html += '<div style="display:flex;align-items:center;gap:3px;margin-bottom:3px">';
+    html += `<span style="font-size:9px;font-weight:700;color:#1B3A5C;width:10px">${d}</span>`;
+    entries.forEach(([key, val]) => {
+      val = Math.round(val);
+      const bg = val >= 80 ? '#2e8b57' : val >= 60 ? '#4a90d9' : val >= 42 ? '#E07020' : '#6B7280';
+      const label = GENOME_LABELS[key] || key;
+      html += `<div style="flex:1;height:14px;background:${bg};border-radius:2px;position:relative;min-width:12px;cursor:help" title="${label}: ${val}"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:7px;color:white;font-weight:700">${val}</span></div>`;
+    });
+    html += '</div>';
+  });
+
+  html += '<div style="font-size:8px;color:#999;margin-top:2px">Patent Pending · Sub-signal fingerprint</div>';
+  html += '</div>';
+  return html;
+}
+
 function buildDimensionBars(dimensions) {
   return HumanEngine.DIMENSIONS.map(dim => {
     const score = dimensions[dim] || 0;
