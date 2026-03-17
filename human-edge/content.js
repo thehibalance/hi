@@ -522,6 +522,24 @@ function openFullPanel(profile, filterResult, prefs) {
       </div>
     </div>
 
+    <div class="human-panel__equalizer" id="panelEqualizer2" style="display:none">
+      <div class="human-panel__eq-header">
+        <span class="human-panel__section-title">Dimension Thresholds</span>
+        <button class="human-panel__eq-mode" id="panelFilterMode2">Soft</button>
+      </div>
+      ${HumanEngine.DIMENSIONS.map(d => {
+        const info = DIM_DESCRIPTIONS[d];
+        return `
+          <div class="human-panel__eq-slider">
+            <span class="human-panel__eq-icon">${info.icon}</span>
+            <span class="human-panel__eq-label">${d.toUpperCase()}</span>
+            <input type="range" class="human-panel__eq-input" id="panelSlider2_${d}" min="0" max="100" value="0">
+            <span class="human-panel__eq-value" id="panelValue2_${d}">0</span>
+          </div>
+        `;
+      }).join('')}
+    </div>
+
     <div class="human-panel__connection" id="panelConnection">
       <span class="human-panel__connection-dot" id="panelConnDot">●</span>
       <span id="panelConnText">Checking connection...</span>
@@ -573,6 +591,37 @@ function openFullPanel(profile, filterResult, prefs) {
     panelToggle.checked = currentPrefs.masterToggle;
     panelToggleLabel.textContent = currentPrefs.masterToggle ? 'Full View' : 'AI Filter Active';
     panelToggleSub.textContent = currentPrefs.masterToggle ? 'Showing all companies with scores' : 'Filtering by your thresholds';
+    const eq = document.getElementById('panelEqualizer2');
+    if (eq) eq.style.display = currentPrefs.masterToggle ? 'none' : 'block';
+    // Load slider values
+    HumanEngine.DIMENSIONS.forEach(d => {
+      const slider = document.getElementById('panelSlider2_' + d);
+      const valEl = document.getElementById('panelValue2_' + d);
+      if (slider && currentPrefs.thresholds && currentPrefs.thresholds[d] !== undefined) {
+        slider.value = currentPrefs.thresholds[d];
+        if (valEl) valEl.textContent = currentPrefs.thresholds[d];
+      }
+      if (slider) {
+        slider.addEventListener('input', async () => {
+          if (valEl) valEl.textContent = slider.value;
+          const p = await loadPreferences();
+          if (!p.thresholds) p.thresholds = {};
+          p.thresholds[d] = parseInt(slider.value);
+          try { chrome.storage.sync.set(p); } catch(e) {}
+        });
+      }
+    });
+    // Filter mode button
+    const modeBtn = document.getElementById('panelFilterMode2');
+    if (modeBtn) {
+      modeBtn.textContent = currentPrefs.filterMode === 'strict' ? 'Strict' : 'Soft';
+      modeBtn.addEventListener('click', async () => {
+        const p = await loadPreferences();
+        p.filterMode = p.filterMode === 'strict' ? 'soft' : 'strict';
+        modeBtn.textContent = p.filterMode === 'strict' ? 'Strict' : 'Soft';
+        try { chrome.storage.sync.set(p); } catch(e) {}
+      });
+    }
   });
 
   panelToggle.addEventListener('change', async () => {
@@ -580,6 +629,8 @@ function openFullPanel(profile, filterResult, prefs) {
     currentPrefs.masterToggle = panelToggle.checked;
     panelToggleLabel.textContent = panelToggle.checked ? 'Full View' : 'AI Filter Active';
     panelToggleSub.textContent = panelToggle.checked ? 'Showing all companies with scores' : 'Filtering by your thresholds';
+    const eq = document.getElementById('panelEqualizer2');
+    if (eq) eq.style.display = panelToggle.checked ? 'none' : 'block';
     try { chrome.storage.sync.set(currentPrefs); } catch (e) {}
   });
 }
