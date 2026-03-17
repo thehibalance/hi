@@ -399,11 +399,32 @@ def score_by_ticker(ticker):
     return jsonify({"error": "not_found", "ticker": ticker}), 404
 
 
+SEARCH_ALIASES = {
+    "google": "alphabet", "youtube": "alphabet", "gmail": "alphabet", "android": "alphabet",
+    "facebook": "meta", "instagram": "meta", "whatsapp": "meta",
+    "iphone": "apple", "ipad": "apple", "macbook": "apple",
+    "windows": "microsoft", "xbox": "microsoft", "linkedin": "microsoft",
+    "aws": "amazon", "alexa": "amazon", "kindle": "amazon", "prime": "amazon",
+    "gmail": "alphabet", "chrome": "alphabet", "waymo": "alphabet",
+    "tesla": "tesla", "spacex": "tesla",
+    "tiktok": "bytedance",
+    "snapchat": "snap",
+    "uber eats": "uber",
+    "venmo": "paypal",
+    "cashapp": "block", "square": "block",
+    "jet blue": "jetblue",
+}
+
 @app.route("/api/v1/search")
 def search():
     q = request.args.get("q", "").lower().strip()
     if len(q) < 2:
         return jsonify({"error": "Query too short (min 2 chars)"}), 400
+
+    # Expand query with aliases
+    search_terms = [q]
+    if q in SEARCH_ALIASES:
+        search_terms.append(SEARCH_ALIASES[q])
 
     limit = min(int(request.args.get("limit", 20)), 100)
     results = []
@@ -413,7 +434,9 @@ def search():
             name = (c.get("company") or "").lower()
             tags = " ".join(c.get("tags") or []).lower()
             ticker = (c.get("ticker") or "").lower()
-            if q in name or q in tags or q == ticker:
+            domains = " ".join(c.get("domains") or []).lower()
+            matched = any(term in name or term in tags or term == ticker or term in domains for term in search_terms)
+            if matched:
                 norm = normalize_name(c.get("company") or "")
                 if norm in seen_norms:
                     continue
