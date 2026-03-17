@@ -12,7 +12,7 @@ Every company gets an **HI Grade™** — a simple letter grade (HI Certified, A
 
 ## Live Now
 
-- **Website**: [thehibalance.org](https://thehibalance.org) — Search 330+ companies, HUMAN 100 Index, Heartbeat monitor, Genome profiles
+- **Website**: [thehibalance.org](https://thehibalance.org) — Search 440+ companies, HUMAN 100 Index, Heartbeat monitor, Genome profiles
 - **API**: [api.thehibalance.org](https://api.thehibalance.org/api/v1/stats) — Free public REST API (32 endpoints)
 - **Extension**: Chrome + Safari browser extensions with live scores, heartbeat, genome
 - **HUMAN 100**: The top 100 most human public companies — ETF-licensable index
@@ -104,7 +104,7 @@ hi/
 4. Click **Load unpacked** → select the `human-edge/` folder
 5. Visit any website — if the company is in our database, the HI Grade™ badge appears
 
-The extension includes 206 hand-scored companies offline. With the API connected, it scores 330+ companies with live heartbeat and genome data.
+The extension includes 206 hand-scored companies offline. With the API connected, it scores 440+ companies with live heartbeat and genome data.
 
 ### Daily Pipeline (one command)
 
@@ -210,7 +210,7 @@ Free public access. No authentication required.
 
 - ✅ Provisional patent filed (March 5, 2026)
 - ✅ HI Grade™ trademark filed (March 12, 2026)
-- ✅ 330+ companies scored, 18 data sources
+- ✅ 440+ companies scored, 18 data sources
 - ✅ 10 patent features live (all 10 of 10 built and deployed)
 - ✅ 32 API endpoints
 - ✅ Balance floor rule (below 42 = capped at C)
