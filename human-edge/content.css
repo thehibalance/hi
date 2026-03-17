@@ -28,7 +28,69 @@
   transform: translateY(-2px);
 }
 
-/* ═══ HEADER (always visible) ═══ */
+/* ═══ MINI PILL (default state) ═══ */
+
+.human-badge__mini {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  position: relative;
+}
+
+.human-badge--mini .human-badge__mini {
+  display: flex;
+}
+
+.human-badge__mini-grade {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.human-badge__mini-score {
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.human-badge__mini-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* In mini mode: show pill, hide everything else */
+.human-badge--mini {
+  max-width: 120px;
+  border-radius: 16px;
+}
+
+.human-badge--mini .human-badge__header,
+.human-badge--mini .human-badge__details,
+.human-badge--mini .human-badge__close,
+.human-badge--mini .human-badge__dark-toggle {
+  display: none !important;
+}
+
+/* In expanded mode: hide pill, show full sidebar */
+.human-badge--expanded .human-badge__mini {
+  display: none;
+}
+
+.human-badge--expanded {
+  max-width: 320px;
+  max-height: 500px;
+  overflow-y: auto;
+}
 
 .human-badge__header {
   display: flex;

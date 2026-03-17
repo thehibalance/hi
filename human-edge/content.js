@@ -125,7 +125,7 @@ function createBadge(profile, filterResult, prefs) {
 
   const badge = document.createElement('div');
   badge.id = 'human-score-badge';
-  badge.className = 'human-badge human-badge--expanded'; // Start expanded
+  badge.className = 'human-badge human-badge--mini'; // Start mini
   if (profile.decay_level === 'critical') badge.className += ' human-badge--critical-pulse';
 
   // Determine badge state
@@ -133,12 +133,17 @@ function createBadge(profile, filterResult, prefs) {
   const isSoftFiltered = isFiltered && prefs.filterMode === 'soft';
   const isHardFiltered = isFiltered && prefs.filterMode === 'strict';
 
-  badge.innerHTML = buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered);
+  badge.innerHTML = buildMiniHTML(profile) + buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered);
 
-  // Click to collapse, click again to expand
-  badge.addEventListener('click', () => toggleExpanded(badge, profile, filterResult, prefs));
+  // Click mini pill to expand
+  badge.addEventListener('click', (e) => {
+    if (badge.classList.contains('human-badge--mini')) {
+      badge.classList.remove('human-badge--mini');
+      badge.classList.add('human-badge--expanded');
+    }
+  });
 
-  // Add a close button so users can dismiss it
+  // Add close button to go back to mini
   const closeBtn = document.createElement('div');
   closeBtn.className = 'human-badge__close';
   closeBtn.innerHTML = '✕';
@@ -146,7 +151,7 @@ function createBadge(profile, filterResult, prefs) {
   closeBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     badge.classList.remove('human-badge--expanded');
-    badge.classList.add('human-badge--compact');
+    badge.classList.add('human-badge--mini');
   });
   badge.querySelector('.human-badge__header').appendChild(closeBtn);
 
@@ -159,11 +164,9 @@ function createBadge(profile, filterResult, prefs) {
     e.stopPropagation();
     badge.classList.toggle('human-badge--dark');
     darkBtn.innerHTML = badge.classList.contains('human-badge--dark') ? '☀️' : '🌙';
-    // Remember preference
     try { chrome.storage.local.set({ darkMode: badge.classList.contains('human-badge--dark') }); } catch(e) {}
   });
   badge.appendChild(darkBtn);
-  // Restore dark mode preference
   try {
     chrome.storage.local.get('darkMode', (r) => {
       if (r.darkMode) { badge.classList.add('human-badge--dark'); darkBtn.innerHTML = '☀️'; }
@@ -175,26 +178,16 @@ function createBadge(profile, filterResult, prefs) {
   // Attach click handlers for dimension detail panels
   attachDimClickHandlers(badge, profile);
 
-  // Auto-collapse after 5 seconds
-  setTimeout(() => {
-    if (badge.classList.contains('human-badge--expanded')) {
-      badge.classList.remove('human-badge--expanded');
-      badge.classList.add('human-badge--compact');
-    }
-  }, 5000);
-
   // Fetch ecosystem pulse
   try {
     chrome.runtime.sendMessage({ type: 'PULSE_LOOKUP' }, (pulse) => {
       if (pulse && pulse.pulse) {
         const colors = { healthy: '#16A34A', elevated: '#D97706', stressed: '#EA580C', critical: '#DC2626' };
         const c = colors[pulse.pulse] || '#6B7280';
-        // Update expanded view pulse
         const el = document.getElementById('human-badge-pulse');
         if (el) {
           el.innerHTML = `<span style="color:${c}">♥</span> Ecosystem: <strong style="color:${c}">${pulse.pulse.toUpperCase()}</strong> · ${pulse.alerts_count || 0} alerts`;
         }
-        // Update compact header for stable companies (no decay)
         const hp = document.getElementById('human-badge-header-pulse');
         if (hp) {
           hp.innerHTML = `<span style="color:${c}">♥</span> Pulse: <strong style="color:${c}">${pulse.pulse.toUpperCase()}</strong> · ${pulse.alerts_count || 0} alerts`;
@@ -202,6 +195,33 @@ function createBadge(profile, filterResult, prefs) {
       }
     });
   } catch (e) { /* pulse fetch optional */ }
+}
+
+/**
+ * Build the mini pill HTML — grade letter + score + warning dot.
+ */
+function buildMiniHTML(profile) {
+  const tierColor = profile.tier.color;
+  const hasWarning = profile.decay_level === 'critical' || profile.decay_level === 'warning';
+  const hasDecay = profile.decay_level !== 'stable' && profile.decay_index > 0;
+  const hasFloor = profile.balance_floor;
+  
+  let warningDot = '';
+  if (hasWarning) {
+    warningDot = `<span class="human-badge__mini-dot" style="background:#DC2626"></span>`;
+  } else if (hasDecay) {
+    warningDot = `<span class="human-badge__mini-dot" style="background:#D97706"></span>`;
+  } else if (hasFloor) {
+    warningDot = `<span class="human-badge__mini-dot" style="background:#EA580C"></span>`;
+  }
+  
+  return `
+    <div class="human-badge__mini">
+      <span class="human-badge__mini-grade" style="color:${tierColor}">${profile.letter}</span>
+      <span class="human-badge__mini-score" style="color:${tierColor}">${profile.composite}</span>
+      ${warningDot}
+    </div>
+  `;
 }
 
 /**
