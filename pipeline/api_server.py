@@ -523,7 +523,7 @@ def stats():
         "spec_version": "1.0.0",
         "brand": {
             "name": "HI.", "tagline": "Find the HI balance.",
-            "domain": "thehibalance.org", "foundation": "The Deep Thought Foundation",
+            "domain": "thehibalance.org", "foundation": "The HI Balance",
         },
     })
 
@@ -780,7 +780,7 @@ def main():
     DATA_DIR = Path(args.data)
 
     print("HI. Score API — Find the HI balance.")
-    print("thehibalance.org | The Deep Thought Foundation")
+    print("thehibalance.org | The HI Balance")
     print("=" * 50)
     build_index()
     print("=" * 50)

@@ -10,7 +10,7 @@ Not anti-AI. Pro-balance. Technology that empowers humans scores well. Technolog
 
 *The framework that measures humanity is enhanced by the same technology it holds accountable.*
 
-🌐 [thehibalance.org](https://thehibalance.org) · 🏛 The Deep Thought Foundation · 📄 Patent Pending · ™ HI Grade — Morf Innovations LLC
+🌐 [thehibalance.org](https://thehibalance.org) · 🏛 The HI Balance · 📄 Patent Pending · ™ HI Grade — Morf Innovations LLC
 
 ---
 
@@ -315,4 +315,4 @@ Free public access. No authentication required.
 
 **HI.** — Find the HI balance.
 
-[thehibalance.org](https://thehibalance.org) · The Deep Thought Foundation · Patent Pending · HI Grade™ Morf Innovations LLC
+[thehibalance.org](https://thehibalance.org) · The HI Balance · Patent Pending · HI Grade™ Morf Innovations LLC
