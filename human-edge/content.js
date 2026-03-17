@@ -133,68 +133,37 @@ function createBadge(profile, filterResult, prefs) {
   const isSoftFiltered = isFiltered && prefs.filterMode === 'soft';
   const isHardFiltered = isFiltered && prefs.filterMode === 'strict';
 
-  badge.innerHTML = buildMiniHTML(profile) + buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered);
+  badge.innerHTML = buildMiniHTML(profile);
 
-  // Click mini pill to expand
+  // Store profile data on badge for panel access
+  badge._profile = profile;
+  badge._filterResult = filterResult;
+  badge._prefs = prefs;
+
+  // Click mini pill to open full panel
   badge.addEventListener('click', (e) => {
     if (badge.classList.contains('human-badge--mini')) {
-      badge.classList.remove('human-badge--mini');
-      badge.classList.add('human-badge--expanded');
+      openFullPanel(profile, filterResult, prefs);
     }
   });
 
-  // Add close button to go back to mini
-  const closeBtn = document.createElement('div');
-  closeBtn.className = 'human-badge__close';
-  closeBtn.innerHTML = '✕';
-  closeBtn.title = 'Minimize';
-  closeBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    badge.classList.remove('human-badge--expanded');
-    badge.classList.add('human-badge--mini');
-  });
-  badge.querySelector('.human-badge__header').appendChild(closeBtn);
-
-  // Add dark mode toggle
-  const darkBtn = document.createElement('div');
-  darkBtn.className = 'human-badge__dark-toggle';
-  darkBtn.innerHTML = '🌙';
-  darkBtn.title = 'Toggle dark mode';
-  darkBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    badge.classList.toggle('human-badge--dark');
-    darkBtn.innerHTML = badge.classList.contains('human-badge--dark') ? '☀️' : '🌙';
-    try { chrome.storage.local.set({ darkMode: badge.classList.contains('human-badge--dark') }); } catch(e) {}
-  });
-  badge.appendChild(darkBtn);
+  // Dark mode on mini pill
   try {
     chrome.storage.local.get('darkMode', (r) => {
-      if (r.darkMode) { badge.classList.add('human-badge--dark'); darkBtn.innerHTML = '☀️'; }
+      if (r.darkMode) { badge.classList.add('human-badge--dark'); }
     });
   } catch(e) {}
 
   document.body.appendChild(badge);
 
-  // Attach click handlers for dimension detail panels
-  attachDimClickHandlers(badge, profile);
-
-  // Fetch ecosystem pulse
+  // Fetch ecosystem pulse (for panel use later)
   try {
     chrome.runtime.sendMessage({ type: 'PULSE_LOOKUP' }, (pulse) => {
       if (pulse && pulse.pulse) {
-        const colors = { healthy: '#16A34A', elevated: '#D97706', stressed: '#EA580C', critical: '#DC2626' };
-        const c = colors[pulse.pulse] || '#6B7280';
-        const el = document.getElementById('human-badge-pulse');
-        if (el) {
-          el.innerHTML = `<span style="color:${c}">♥</span> Ecosystem: <strong style="color:${c}">${pulse.pulse.toUpperCase()}</strong> · ${pulse.alerts_count || 0} alerts`;
-        }
-        const hp = document.getElementById('human-badge-header-pulse');
-        if (hp) {
-          hp.innerHTML = `<span style="color:${c}">♥</span> Pulse: <strong style="color:${c}">${pulse.pulse.toUpperCase()}</strong> · ${pulse.alerts_count || 0} alerts`;
-        }
+        badge._pulse = pulse;
       }
     });
-  } catch (e) { /* pulse fetch optional */ }
+  } catch (e) {}
 }
 
 /**
@@ -436,6 +405,184 @@ const DIM_DESCRIPTIONS = {
     signals: ["AI Disclosure Quality", "Environmental Reporting", "Labor Auditability", "Humanwashing Detection", "Disclosure Completeness"],
   },
 };
+
+/**
+ * Open the combined full panel — all data in one view.
+ */
+function openFullPanel(profile, filterResult, prefs) {
+  const existing = document.getElementById('human-detail-panel');
+  if (existing) existing.remove();
+
+  const panel = document.createElement('div');
+  panel.id = 'human-detail-panel';
+  panel.className = 'human-panel';
+
+  const tierColor = profile.tier.color;
+  const decayColors = { critical: '#DC2626', warning: '#D97706', watch: '#EA580C', stable: '#16A34A' };
+  
+  // Build all dimensions with inline insights
+  const allDimsHTML = HumanEngine.DIMENSIONS.map(d => {
+    const s = profile.dimensions[d] || 0;
+    const c = HumanEngine.getScoreColor(s);
+    const info = DIM_DESCRIPTIONS[d];
+    const insights = buildDimInsights(d, profile);
+    return `
+      <div style="margin-bottom:12px">
+        <div class="human-panel__dim-row" style="cursor:pointer" onclick="var det=this.nextElementSibling;det.style.display=det.style.display==='block'?'none':'block'">
+          <span class="human-panel__row-icon">${info.icon}</span>
+          <span class="human-panel__row-label">${d.toUpperCase()}</span>
+          <div class="human-panel__row-bar">
+            <div class="human-panel__row-fill" style="width: ${s}%; background: ${c}"></div>
+          </div>
+          <span class="human-panel__row-score" style="color: ${c}">${s}</span>
+          <span style="font-size:10px;color:#999;margin-left:4px">▾</span>
+        </div>
+        <div style="display:none;padding:8px 12px;background:#f8f9fa;border-radius:0 0 8px 8px;margin-top:-2px">
+          <div style="font-size:11px;color:#555;margin-bottom:6px">${info.what}</div>
+          ${insights}
+        </div>
+      </div>`;
+  }).join('');
+
+  // Genome strip
+  const genomeHTML = buildGenomeStrip(profile);
+
+  // Heartbeat/decay section
+  let decayHTML = '';
+  if (profile.decay_level !== 'stable' && profile.decay_index > 0) {
+    const dc = decayColors[profile.decay_level] || '#6B7280';
+    decayHTML = `
+      <div style="background:${dc}10;border:1px solid ${dc}30;border-radius:8px;padding:10px 12px;margin-top:8px">
+        <div style="font-weight:700;font-size:12px;color:${dc}">♥ ${profile.decay_level.charAt(0).toUpperCase() + profile.decay_level.slice(1)} · Decay: ${profile.decay_index}/100</div>
+        ${profile.decay_factors.map(f => `<div style="font-size:10px;margin-top:4px;padding-left:14px;position:relative;color:#444"><span style="position:absolute;left:0">›</span>${f}</div>`).join('')}
+      </div>`;
+  }
+
+  // Balance floor
+  let floorHTML = '';
+  if (profile.balance_floor) {
+    floorHTML = `<div style="background:#FFF7ED;border:1px solid #FDBA74;border-radius:8px;padding:8px 12px;margin-top:8px;font-size:11px;color:#9A3412">⚖ Balance Floor: ${profile.triggering_dimension ? profile.triggering_dimension.toUpperCase() : 'a dimension'} below 42. Grade capped at C.</div>`;
+  }
+
+  // Pulse
+  const badge = document.getElementById('human-score-badge');
+  const pulse = badge ? badge._pulse : null;
+  let pulseHTML = '';
+  if (pulse && pulse.pulse) {
+    const pc = { healthy: '#16A34A', elevated: '#D97706', stressed: '#EA580C', critical: '#DC2626' };
+    const pColor = pc[pulse.pulse] || '#6B7280';
+    pulseHTML = `<div style="font-size:11px;color:${pColor};margin-top:8px;text-align:center">♥ Ecosystem: <strong>${pulse.pulse.toUpperCase()}</strong> · ${pulse.alerts_count || 0} alerts</div>`;
+  }
+
+  panel.innerHTML = `
+    <div class="human-panel__header">
+      <div class="human-panel__back" id="panelBack" style="visibility:hidden">←</div>
+      <div class="human-panel__title">HI.</div>
+      <div class="human-panel__close" id="panelClose">✕</div>
+    </div>
+
+    <div class="human-panel__company">
+      <div class="human-panel__grade" style="color: ${tierColor}">${profile.letter}</div>
+      <div>
+        <div class="human-panel__name">${profile.name}</div>
+        <div class="human-panel__tier" style="color: ${tierColor}">HI Grade: ${profile.grade} · ${profile.composite}</div>
+        <div class="human-panel__brand">Find the HI balance.</div>
+      </div>
+    </div>
+    <div class="human-panel__satire">"${profile.tier.satire}"</div>
+
+    <div style="padding:0 16px">
+      <div style="font-size:11px;font-weight:700;color:#1B3A5C;letter-spacing:0.5px;margin-bottom:8px">DIMENSIONS</div>
+      ${allDimsHTML}
+    </div>
+
+    ${floorHTML ? `<div style="padding:0 16px">${floorHTML}</div>` : ''}
+    ${decayHTML ? `<div style="padding:0 16px">${decayHTML}</div>` : ''}
+
+    <div style="padding:0 16px">
+      ${genomeHTML}
+    </div>
+
+    ${pulseHTML ? `<div style="padding:0 16px">${pulseHTML}</div>` : ''}
+
+    <div style="padding:0 16px;margin-top:8px">
+      ${profile.source === 'cloud' ? '<div style="font-size:9px;color:#999;text-align:center">☁ Live score from thehibalance.org</div>' : '<div style="font-size:9px;color:#999;text-align:center">📦 Local database</div>'}
+    </div>
+
+    <div class="human-panel__toggle-section">
+      <div class="human-panel__toggle-row">
+        <div>
+          <div class="human-panel__toggle-label" id="panelToggleLabel">Full View</div>
+          <div class="human-panel__toggle-sub" id="panelToggleSub">Showing all companies with scores</div>
+        </div>
+        <label class="human-panel__switch">
+          <input type="checkbox" id="panelMasterToggle" checked>
+          <span class="human-panel__switch-slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="human-panel__connection" id="panelConnection">
+      <span class="human-panel__connection-dot" id="panelConnDot">●</span>
+      <span id="panelConnText">Checking connection...</span>
+    </div>
+
+    <div class="human-panel__footer">
+      <div>Find the HI balance.</div>
+      <div class="human-panel__footer-sub">thehibalance.org · The Deep Thought Foundation</div>
+    </div>
+
+    <div class="human-panel__disclaimer">
+      HI Grades are estimated from public data. Not financial or legal advice. Patent pending.
+    </div>
+  `;
+
+  document.body.appendChild(panel);
+
+  // Connection status
+  (async () => {
+    const dot = document.getElementById('panelConnDot');
+    const text = document.getElementById('panelConnText');
+    if (!dot || !text) return;
+    try {
+      const resp = await new Promise((resolve) => {
+        chrome.runtime.sendMessage({ type: 'CHECK_CONNECTION' }, (r) => resolve(r));
+      });
+      if (resp && resp.connected) {
+        dot.style.color = '#1a7a3a';
+        text.textContent = `Connected · ${resp.companies} companies · API live`;
+      } else {
+        dot.style.color = '#E07020';
+        text.textContent = 'Offline · Using local database';
+      }
+    } catch (e) {
+      dot.style.color = '#E07020';
+      text.textContent = 'Offline · Using local database';
+    }
+  })();
+
+  // Close panel
+  document.getElementById('panelClose').addEventListener('click', () => panel.remove());
+
+  // Master toggle
+  const panelToggle = document.getElementById('panelMasterToggle');
+  const panelToggleLabel = document.getElementById('panelToggleLabel');
+  const panelToggleSub = document.getElementById('panelToggleSub');
+
+  loadPreferences().then(currentPrefs => {
+    panelToggle.checked = currentPrefs.masterToggle;
+    panelToggleLabel.textContent = currentPrefs.masterToggle ? 'Full View' : 'AI Filter Active';
+    panelToggleSub.textContent = currentPrefs.masterToggle ? 'Showing all companies with scores' : 'Filtering by your thresholds';
+  });
+
+  panelToggle.addEventListener('change', async () => {
+    const currentPrefs = await loadPreferences();
+    currentPrefs.masterToggle = panelToggle.checked;
+    panelToggleLabel.textContent = panelToggle.checked ? 'Full View' : 'AI Filter Active';
+    panelToggleSub.textContent = panelToggle.checked ? 'Showing all companies with scores' : 'Filtering by your thresholds';
+    try { chrome.storage.sync.set(currentPrefs); } catch (e) {}
+  });
+}
 
 /**
  * Open the full detail panel — injected into the page.
