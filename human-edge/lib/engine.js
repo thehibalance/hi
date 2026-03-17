@@ -78,10 +78,13 @@ const HumanEngine = {
     const minScore = Math.min(...scores);
     const minDimension = this.DIMENSIONS[scores.indexOf(minScore)];
     const floorTriggered = minScore < this.FLOOR_THRESHOLD;
-    const composite = floorTriggered ? Math.min(raw, this.FLOOR_CAP) : raw;
+    let composite = floorTriggered ? Math.min(raw, this.FLOOR_CAP) : raw;
+    
+    // Round to whole number (same as cloud scoring engine)
+    composite = Math.round(composite);
 
     return {
-      composite: Math.round(composite * 10) / 10, // 1 decimal place
+      composite,
       floorTriggered,
       floorDimension: floorTriggered ? minDimension : null
     };
@@ -121,8 +124,20 @@ const HumanEngine = {
   getProfile(company) {
     const { composite, floorTriggered, floorDimension } = this.computeComposite(company);
     const verified = company.confidence === "verified";
-    const tier = this.classifyTier(composite, verified);
+    let tier = this.classifyTier(composite, verified);
     const hwFlags = this.detectHumanwashing(company);
+
+    // Balance floor rule: any dimension below 42 caps grade at C
+    const scores = this.DIMENSIONS.map(d => company[d] || 0);
+    const minScore = Math.min(...scores);
+    const minDim = this.DIMENSIONS[scores.indexOf(minScore)];
+    let balanceFloor = false;
+    let balanceDim = null;
+    if (minScore < 42 && (tier.grade === 'A' || tier.grade === 'B' || tier.grade === 'HI Certified')) {
+      tier = this.TIERS.find(t => t.grade === 'C');
+      balanceFloor = true;
+      balanceDim = minDim;
+    }
 
     return {
       id: company.id,
@@ -134,12 +149,14 @@ const HumanEngine = {
         a: company.a,
         n: company.n
       },
-      composite,
+      composite: balanceFloor ? Math.min(composite, 59) : composite,
       grade: tier.grade,
       letter: tier.letter,
       tier,
       floorTriggered,
       floorDimension,
+      balanceFloor,
+      balanceDim,
       humanwashingFlags: hwFlags,
       confidence: company.confidence || "estimated",
       source: company.source || "local"

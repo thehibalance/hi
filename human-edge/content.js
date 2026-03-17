@@ -44,6 +44,9 @@
         domains: d.domains || [domain],
         notes: d.notes || '',
         source: 'cloud',
+        cloud_grade: d.hi_grade || null,
+        cloud_composite: d.composite || null,
+        cloud_satire: d.satire || null,
         decay_index: d.decay_index || 0,
         decay_level: d.decay_level || 'stable',
         decay_factors: d.decay_factors || [],
@@ -70,6 +73,13 @@
 
   // Compute score profile
   const profile = HumanEngine.getProfile(company);
+  
+  // Override with cloud grade/composite when available (cloud is authoritative)
+  if (company.source === 'cloud' && company.cloud_grade) {
+    profile.grade = company.cloud_grade;
+    profile.composite = company.cloud_composite || profile.composite;
+    if (company.cloud_satire) profile.satire = company.cloud_satire;
+  }
   
   // Attach heartbeat data
   profile.decay_index = company.decay_index || 0;
