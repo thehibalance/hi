@@ -43,14 +43,14 @@ HEARTBEAT_ALERTS = []
 HEARTBEAT_PULSE = {}
 HUMAN100 = []        # HUMAN 100 Index constituents
 HUMAN100_META = {}   # Index metadata
-ARBITRAGE = []       # Grade Arbitrage results
+ARBITRAGE = []       # HUMAN Lens results
 ARBITRAGE_META = {}  # Arbitrage metadata
-MOATS = []           # Ethical Moat results
+MOATS = []           # HUMAN Shield results
 MOATS_META = {}      # Moat metadata
-CONTAGION = []       # Contagion Effect results
+CONTAGION = []       # HUMAN Contagion results
 EMPATHY_WM = []      # Empathy Watermark results
-CONSUMER_BENCH = {}  # Consumer Consciousness benchmarks
-COLLECTIVE = {}      # Collective Bargaining signals
+CONSUMER_BENCH = {}  # HUMAN Consciousness benchmarks
+COLLECTIVE = {}      # HUMAN Wave signals
 DATA_DIR = Path("data/scores")
 
 
@@ -96,7 +96,8 @@ def seed_to_record(s):
 
 def normalize_name(name):
     """Aggressively normalize company name for dedup matching."""
-    import re
+    if not name:
+        return ""
     n = name.lower().strip()
     # Normalize & to and, then strip "and" later if between words
     n = n.replace('&', ' and ')
@@ -150,7 +151,7 @@ def build_index():
     if (h100_dir / "metadata.json").exists():
         HUMAN100_META = json.load(open(h100_dir / "metadata.json"))
 
-    # Load Grade Arbitrage data
+    # Load HUMAN Lens data
     arb_dir = DATA_DIR.parent / "arbitrage"
     if (arb_dir / "all_arbitrage.json").exists():
         ARBITRAGE = json.load(open(arb_dir / "all_arbitrage.json"))
@@ -158,15 +159,15 @@ def build_index():
     if (arb_dir / "metadata.json").exists():
         ARBITRAGE_META = json.load(open(arb_dir / "metadata.json"))
 
-    # Load Ethical Moat data
+    # Load HUMAN Shield data
     moat_dir = DATA_DIR.parent / "ethical_moat"
     if (moat_dir / "all_moats.json").exists():
         MOATS = json.load(open(moat_dir / "all_moats.json"))
-        print(f"  Ethical Moat: {len(MOATS)} companies analyzed")
+        print(f"  HUMAN Shield: {len(MOATS)} companies analyzed")
     if (moat_dir / "metadata.json").exists():
         MOATS_META = json.load(open(moat_dir / "metadata.json"))
 
-    # Load Contagion Effect
+    # Load HUMAN Contagion
     cont_dir = DATA_DIR.parent / "contagion"
     if (cont_dir / "all_contagion.json").exists():
         CONTAGION = json.load(open(cont_dir / "all_contagion.json"))
@@ -178,17 +179,17 @@ def build_index():
         EMPATHY_WM = json.load(open(ew_dir / "all_watermarks.json"))
         print(f"  Empathy Watermark: {len(EMPATHY_WM)} companies")
 
-    # Load Consumer Consciousness
+    # Load HUMAN Consciousness
     cc_dir = DATA_DIR.parent / "consumer_consciousness"
     if (cc_dir / "benchmarks.json").exists():
         CONSUMER_BENCH = json.load(open(cc_dir / "benchmarks.json"))
-        print(f"  Consumer Consciousness: benchmarks loaded")
+        print(f"  HUMAN Consciousness: benchmarks loaded")
 
-    # Load Collective Bargaining
+    # Load HUMAN Wave
     cb_dir = DATA_DIR.parent / "collective_bargaining"
     if (cb_dir / "signals.json").exists():
         COLLECTIVE = json.load(open(cb_dir / "signals.json"))
-        print(f"  Collective Bargaining: signals loaded")
+        print(f"  HUMAN Wave: signals loaded")
 
     # Load S&P 500 domain mappings
     sp500_domains = {}
@@ -408,20 +409,23 @@ def search():
     results = []
     seen_norms = set()
     for c in ALL_COMPANIES:
-        name = c.get("company", "").lower()
-        tags = " ".join(c.get("tags", [])).lower()
-        ticker = c.get("ticker", "").lower()
-        if q in name or q in tags or q == ticker:
-            norm = normalize_name(c.get("company", ""))
-            if norm in seen_norms:
-                continue
-            seen_norms.add(norm)
-            results.append(c)
-        if len(results) >= limit:
-            break
+        try:
+            name = (c.get("company") or "").lower()
+            tags = " ".join(c.get("tags") or []).lower()
+            ticker = (c.get("ticker") or "").lower()
+            if q in name or q in tags or q == ticker:
+                norm = normalize_name(c.get("company") or "")
+                if norm in seen_norms:
+                    continue
+                seen_norms.add(norm)
+                results.append(c)
+            if len(results) >= limit:
+                break
+        except Exception:
+            continue
 
     # Sort: scored companies (with data_sources) before seed
-    results.sort(key=lambda x: (len(x.get("data_sources", [])) > 1, x.get("composite", 0)), reverse=True)
+    results.sort(key=lambda x: (len(x.get("data_sources") or []) > 1, x.get("composite") or 0), reverse=True)
     return jsonify({"query": q, "count": len(results), "results": results})
 
 

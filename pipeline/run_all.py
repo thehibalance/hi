@@ -105,9 +105,9 @@ def main():
     run("scoring_engine.py", "Scoring Engine")
 
     for s, l in [("heartbeat_monitor.py","HUMAN Heartbeat"),("human100_index.py","HUMAN 100 Index"),
-                 ("grade_arbitrage.py","Grade Arbitrage"),("ethical_moat.py","Ethical Moat"),
-                 ("contagion_effect.py","Contagion Effect"),("consumer_consciousness.py","Consumer Consciousness"),
-                 ("empathy_watermark.py","Empathy Watermark"),("collective_bargaining.py","Collective Bargaining")]:
+                 ("grade_arbitrage.py","HUMAN Lens"),("ethical_moat.py","HUMAN Shield"),
+                 ("contagion_effect.py","HUMAN Contagion"),("consumer_consciousness.py","HUMAN Consciousness"),
+                 ("empathy_watermark.py","HUMAN Watermark"),("collective_bargaining.py","HUMAN Wave")]:
         if Path(s).exists(): run(s, l)
 
     print(f"\n{'='*60}")

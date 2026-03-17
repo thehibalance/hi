@@ -25,15 +25,15 @@ Every company gets an **HI Grade™** — a simple letter grade (HI Certified, A
 | # | Feature | Status | Description |
 |---|---------|--------|-------------|
 | 1 | **HUMAN Heartbeat** | ✅ Live | Real-time score decay detection from 6 feeds |
-| 2 | **Consciousness Decay Index** | ✅ Live | Per-company decay score 0-100 |
+| 2 | **HUMAN Decay** | ✅ Live | Per-company decay score 0-100 |
 | 3 | **HUMAN Genome** | ✅ Live | Sub-signal fingerprint of every company |
 | 4 | **HUMAN 100 Index** | ✅ Live | ETF-licensable top 100 ranking |
-| 5 | **Empathy Authenticity Watermark** | ✅ Live | Real vs performative empathy detection |
-| 6 | **Contagion Effect Score** | ✅ Live | Supply chain ethics ripple |
-| 7 | **Ethical Moat Indicator** | ✅ Live | AI displacement resistance |
-| 8 | **Consumer Consciousness Score** | ✅ Live | Personal ethical footprint |
-| 9 | **Grade Arbitrage Detection** | ✅ Live | HI vs ESG gap detection |
-| 10 | **Collective Bargaining Signal** | ✅ Live | Aggregated market pressure |
+| 5 | **HUMAN Watermark** | ✅ Live | Real vs performative empathy detection |
+| 6 | **HUMAN Contagion** | ✅ Live | Supply chain ethics ripple |
+| 7 | **HUMAN Shield** | ✅ Live | AI displacement resistance |
+| 8 | **HUMAN Consciousness** | ✅ Live | Personal ethical footprint |
+| 9 | **HUMAN Lens** | ✅ Live | HI vs ESG gap detection |
+| 10 | **HUMAN Wave** | ✅ Live | Aggregated market pressure |
 
 ---
 
@@ -75,12 +75,12 @@ hi/
 │   ├── scoring_engine.py        # Multi-source HUMAN dimension scoring (v2)
 │   ├── heartbeat_monitor.py     # Heartbeat: 6-feed decay detection
 │   ├── human100_index.py        # HUMAN 100 Index generator
-│   ├── grade_arbitrage.py       # Grade Arbitrage: HI vs ESG gap
-│   ├── ethical_moat.py          # Ethical Moat: AI displacement resistance
-│   ├── contagion_effect.py      # Contagion Effect: supply chain ripple
-│   ├── consumer_consciousness.py # Consumer Consciousness: personal footprint
+│   ├── grade_arbitrage.py       # HUMAN Lens: HI vs ESG gap
+│   ├── ethical_moat.py          # HUMAN Shield: AI displacement resistance
+│   ├── contagion_effect.py      # HUMAN Contagion: supply chain ripple
+│   ├── consumer_consciousness.py # HUMAN Consciousness: personal footprint
 │   ├── empathy_watermark.py     # Empathy Watermark: real vs performative
-│   ├── collective_bargaining.py # Collective Bargaining: market pressure
+│   ├── collective_bargaining.py # HUMAN Wave: market pressure
 │   ├── api_server.py            # REST API server (Flask, 32 endpoints)
 │   ├── run_all.py               # Single command runner (daily/weekly/monthly)
 │   └── sp500_domains.py         # Domain mappings
@@ -191,10 +191,10 @@ Base URL: `https://api.thehibalance.org`
 | `GET /api/v1/human100` | HUMAN 100 Index |
 | `GET /api/v1/human100/metadata` | Index metadata |
 | `GET /api/v1/human100/check/{ticker}` | Check HUMAN 100 membership |
-| `GET /api/v1/arbitrage` | Grade Arbitrage (HI vs ESG) |
+| `GET /api/v1/arbitrage` | HUMAN Lens (HI vs ESG) |
 | `GET /api/v1/arbitrage/washers` | ESG washing detection |
 | `GET /api/v1/arbitrage/gems` | Hidden gems |
-| `GET /api/v1/moat` | Ethical Moat scores |
+| `GET /api/v1/moat` | HUMAN Shield scores |
 | `GET /api/v1/moat/fortresses` | Fortress-level companies |
 | `GET /api/v1/moat/vulnerable` | Most vulnerable to AI |
 | `GET /api/v1/contagion` | Supply chain contagion |
