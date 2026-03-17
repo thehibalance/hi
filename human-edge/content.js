@@ -116,6 +116,7 @@ function createBadge(profile, filterResult, prefs) {
   const badge = document.createElement('div');
   badge.id = 'human-score-badge';
   badge.className = 'human-badge human-badge--expanded'; // Start expanded
+  if (profile.decay_level === 'critical') badge.className += ' human-badge--critical-pulse';
 
   // Determine badge state
   const isFiltered = !prefs.masterToggle && !filterResult.passes;

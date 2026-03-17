@@ -245,6 +245,16 @@
   background: #FEE2E2;
 }
 
+/* Critical pulse animation on badge border */
+.human-badge--critical-pulse {
+  animation: criticalPulse 2s ease-in-out infinite;
+}
+
+@keyframes criticalPulse {
+  0%, 100% { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15), 0 1px 4px rgba(0, 0, 0, 0.1); }
+  50% { box-shadow: 0 4px 24px rgba(220, 38, 38, 0.35), 0 0 12px rgba(220, 38, 38, 0.2); }
+}
+
 .human-badge__decay--warning {
   color: #D97706;
   background: #FEF3C7;
