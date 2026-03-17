@@ -95,18 +95,28 @@ def seed_to_record(s):
 
 
 def normalize_name(name):
-    """Normalize company name for matching."""
+    """Aggressively normalize company name for dedup matching."""
+    import re
     n = name.lower().strip()
-    for suffix in [' inc.', ' inc', ' corp.', ' corp', ' llc', ' ltd.', ' ltd',
-                   ' co.', ' co', ' plc', ' sa', ' ag', ' nv', ' se',
-                   ' holdings', ' group', ' international', ' company',
-                   ' technologies', ' technology', ' enterprises', ' solutions',
-                   ' platforms', ' (google)', ' (alphabet)', ' (facebook)',
-                   ' (square)', ' (raytheon)']:
-        if n.endswith(suffix):
-            n = n[:-len(suffix)].strip()
-    return n.rstrip('.,')
-
+    # Normalize & to and, then strip "and" later if between words
+    n = n.replace('&', ' and ')
+    # Strip punctuation first so suffixes match cleanly
+    n = re.sub(r'[,.\-\'\"()\[\]]', ' ', n)
+    n = re.sub(r'\s+', ' ', n).strip()
+    # Strip possessive
+    if n.endswith(' s'): n = n[:-2].strip()
+    # Strip common prefixes
+    for prefix in ['the ', 'a ']:
+        if n.startswith(prefix):
+            n = n[len(prefix):]
+    # Strip common suffixes — run twice to catch chained suffixes
+    for _pass in range(2):
+        for suffix in [' incorporated', ' corporation', ' international', ' technologies', ' technology',
+                       ' enterprises', ' solutions', ' platforms', ' provisions', ' holdings', ' group',
+                       ' company', ' inc', ' corp', ' llc', ' ltd', ' co', ' plc', ' sa', ' ag', ' nv', ' se']:
+            if n.endswith(suffix):
+                n = n[:-len(suffix)].strip()
+    return n.strip()
 
 def build_index():
     global COMPANIES, TICKERS, NAME_INDEX, ALL_COMPANIES, HEARTBEAT, HEARTBEAT_ALERTS, HEARTBEAT_PULSE, HUMAN100, HUMAN100_META, ARBITRAGE, ARBITRAGE_META, MOATS, MOATS_META, CONTAGION, EMPATHY_WM, CONSUMER_BENCH, COLLECTIVE
@@ -242,6 +252,8 @@ def build_index():
         "lib/seed-data.js",
         "seed-data.js",
     ]
+    seed_added = 0
+    seed_skipped = 0
     for seed_path in seed_candidates:
         if os.path.exists(seed_path):
             content = open(seed_path).read()
@@ -250,16 +262,61 @@ def build_index():
             for s in json.loads(content[start:end]):
                 rec = seed_to_record(s)
                 norm = normalize_name(rec["company"])
-                # Skip if already in scored data (exact or normalized match)
-                if rec["company"].lower() in NAME_INDEX or norm in NORM_INDEX:
-                    # But add domain mappings if missing
-                    existing = NAME_INDEX.get(rec["company"].lower()) or NORM_INDEX.get(norm)
-                    if existing:
-                        for d in rec.get("domains", []):
-                            d = d.lower().strip()
-                            if d and d not in COMPANIES:
-                                COMPANIES[d] = existing
+                
+                # Check 1: Exact name match
+                if rec["company"].lower() in NAME_INDEX:
+                    existing = NAME_INDEX[rec["company"].lower()]
+                    for d in rec.get("domains", []):
+                        d = d.lower().strip()
+                        if d and d not in COMPANIES:
+                            COMPANIES[d] = existing
+                    seed_skipped += 1
                     continue
+                
+                # Check 2: Normalized name match
+                if norm in NORM_INDEX:
+                    existing = NORM_INDEX[norm]
+                    for d in rec.get("domains", []):
+                        d = d.lower().strip()
+                        if d and d not in COMPANIES:
+                            COMPANIES[d] = existing
+                    seed_skipped += 1
+                    continue
+                
+                # Check 3: Domain overlap — if any seed domain already maps to a scored company
+                domain_match = False
+                for d in rec.get("domains", []):
+                    d = d.lower().strip()
+                    if d in COMPANIES:
+                        # This domain already has a scored company — skip seed, add remaining domains
+                        existing = COMPANIES[d]
+                        for d2 in rec.get("domains", []):
+                            d2 = d2.lower().strip()
+                            if d2 and d2 not in COMPANIES:
+                                COMPANIES[d2] = existing
+                        domain_match = True
+                        seed_skipped += 1
+                        break
+                if domain_match:
+                    continue
+                
+                # Check 4: Partial name match — "patagonia" matches "patagonia provisions"
+                partial_match = False
+                for existing_norm in NORM_INDEX:
+                    if norm in existing_norm or existing_norm in norm:
+                        if abs(len(norm) - len(existing_norm)) < 15:  # Close enough
+                            existing = NORM_INDEX[existing_norm]
+                            for d in rec.get("domains", []):
+                                d = d.lower().strip()
+                                if d and d not in COMPANIES:
+                                    COMPANIES[d] = existing
+                            partial_match = True
+                            seed_skipped += 1
+                            break
+                if partial_match:
+                    continue
+                
+                # No match found — add as seed-only company
                 NAME_INDEX[rec["company"].lower()] = rec
                 NORM_INDEX[norm] = rec
                 ALL_COMPANIES.append(rec)
@@ -267,6 +324,8 @@ def build_index():
                     d = d.lower().strip()
                     if d and d not in COMPANIES:
                         COMPANIES[d] = rec
+                seed_added += 1
+            print(f"  Seed data: {seed_added} added, {seed_skipped} skipped (already scored)")
             break
 
     ALL_COMPANIES.sort(key=lambda x: x.get("composite", 0), reverse=True)
@@ -347,14 +406,22 @@ def search():
 
     limit = min(int(request.args.get("limit", 20)), 100)
     results = []
+    seen_norms = set()
     for c in ALL_COMPANIES:
         name = c.get("company", "").lower()
         tags = " ".join(c.get("tags", [])).lower()
-        if q in name or q in tags:
+        ticker = c.get("ticker", "").lower()
+        if q in name or q in tags or q == ticker:
+            norm = normalize_name(c.get("company", ""))
+            if norm in seen_norms:
+                continue
+            seen_norms.add(norm)
             results.append(c)
         if len(results) >= limit:
             break
 
+    # Sort: scored companies (with data_sources) before seed
+    results.sort(key=lambda x: (len(x.get("data_sources", [])) > 1, x.get("composite", 0)), reverse=True)
     return jsonify({"query": q, "count": len(results), "results": results})
 
 

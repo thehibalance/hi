@@ -600,11 +600,16 @@ def main():
     import re
     def norm_for_dedup(name):
         n = name.lower().strip()
-        for s in [' inc.', ' inc', ' corp.', ' corp', ' llc', ' ltd.', ' ltd',
-                  ' co.', ' co', ' plc', ' company', ' corporation', ' incorporated',
-                  ' group', ' holdings', ' international', ' (the)', ' the', ',', '.']:
-            n = n.replace(s, '')
+        n = n.replace('&', ' and ')
+        n = re.sub(r'[,.\-\'\"()\[\]]', ' ', n)
         n = re.sub(r'\s+', ' ', n).strip()
+        if n.endswith(' s'): n = n[:-2].strip()
+        if n.startswith('the '): n = n[4:]
+        for _pass in range(2):
+            for s in [' incorporated', ' corporation', ' international', ' technologies', ' technology',
+                      ' enterprises', ' solutions', ' platforms', ' provisions', ' holdings', ' group',
+                      ' company', ' inc', ' corp', ' llc', ' ltd', ' co', ' plc', ' sa', ' ag', ' nv', ' se']:
+                if n.endswith(s): n = n[:-len(s)].strip()
         return n
 
     seen_tickers = {}
