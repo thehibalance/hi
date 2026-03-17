@@ -2,7 +2,7 @@
 
 > **HI Grade™** — The balance between humans and technology, measured.
 
-*We built the world's first scoring framework that uses AI to protect humanity from AI.*
+*Built without AI to measure AI. The world's first edge-to-cloud scoring framework — using AI to balance humanity with AI.*
 
 **HI.** measures how human a company is across five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent. The first edge-to-cloud framework with open source methodology, a consumer AI Toggle, and an AI Enhancement Layer that improves data without ever changing the formula.
 
