@@ -1,4 +1,4 @@
-# HI.
+# HI. — Find the HI Balance.
 
 > **HI Grade™** — The balance between humans and technology, measured.
 
@@ -311,11 +311,7 @@ Free public access. No authentication required.
 
 ---
 
-> *"The question 'AI or HI?' is not about companies. It is about civilization."*
-
-> *"It changes the world not when people care deeply — but when they stop thinking about it because it's already woven into how they live."*
-
-> *"Price. Reviews. Stars. Shipping. HI Grade. The fifth thing you check."*
+*"Price. Reviews. Stars. Shipping. HI Grade. The fifth thing you check."*
 
 **HI.** — Find the HI balance.
 
