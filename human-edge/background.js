@@ -32,7 +32,7 @@ chrome.runtime.onInstalled.addListener((details) => {
 
 // ═══ CLOUD SYNC — Phase 2 Track D ═══
 
-const API_BASE = 'https://hi-api-production.up.railway.app'; // Production
+const API_BASE = 'https://api.thehibalance.org'; // Production
 const API_LOCAL = 'http://localhost:8080';        // Local dev (Mac uses 5000 for AirPlay)
 const CACHE_TTL = 24 * 60 * 60 * 1000;           // 24 hours
 

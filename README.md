@@ -13,7 +13,7 @@ Every company gets an **HI Grade™** — a simple letter grade (HI Certified, A
 ## Live Now
 
 - **Website**: [thehibalance.org](https://thehibalance.org) — Search 330+ companies, HUMAN 100 Index, Heartbeat monitor, Genome profiles
-- **API**: [hi-api-production.up.railway.app](https://hi-api-production.up.railway.app/api/v1/stats) — Free public REST API (32 endpoints)
+- **API**: [api.thehibalance.org](https://api.thehibalance.org/api/v1/stats) — Free public REST API (32 endpoints)
 - **Extension**: Chrome + Safari browser extensions with live scores, heartbeat, genome
 - **HUMAN 100**: The top 100 most human public companies — ETF-licensable index
 - **Heartbeat**: Real-time score decay detection powered by 6 data feeds
@@ -176,7 +176,7 @@ The top 100 most human public companies, ranked by HI Grade™ composite score. 
 
 ## API
 
-Base URL: `https://hi-api-production.up.railway.app`
+Base URL: `https://api.thehibalance.org`
 
 | Endpoint | Description |
 |----------|-------------|
