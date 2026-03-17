@@ -1,39 +1,89 @@
-# HI. — Find the HI balance.
+# HI.
 
-> Find the HI balance.
+> **HI Grade™** — The balance between humans and technology, measured.
 
-**HI.** is an open scoring framework that measures how human a company is across five dimensions: **H**uman Consciousness, **U**nderstanding & Empathy, **M**oral & Ethical Conduct, **A**live & Environmental, **N**atural Transparency.
-
-Every company gets an **HI Grade™** — a simple letter grade (HI Certified, A, B, C, F) that consumers, investors, and procurement teams can use to make informed decisions. The balance between humans and technology, measured.
+**HI.** is the first edge-to-cloud scoring framework that measures how human a company is. Five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent. Open source methodology. Patent pending.
 
 🌐 [thehibalance.org](https://thehibalance.org) · 🏛 The Deep Thought Foundation · 📄 Patent Pending · ™ HI Grade — Morf Innovations LLC
 
 ---
 
-## Live Now
+## Architecture
 
-- **Website**: [thehibalance.org](https://thehibalance.org) — Search 440+ companies, HUMAN 100 Index, Heartbeat monitor, Genome profiles
-- **API**: [api.thehibalance.org](https://api.thehibalance.org/api/v1/stats) — Free public REST API (32 endpoints)
-- **Extension**: Chrome + Safari browser extensions with live scores, heartbeat, genome
-- **HUMAN 100**: The top 100 most human public companies — ETF-licensable index
-- **Heartbeat**: Real-time score decay detection powered by 6 data feeds
+```
+┌───────────────────────────────────┐
+│           EDGE NODE               │
+│     (Browser Extension)           │
+│                                   │
+│  • Zero AI. Zero black boxes.     │
+│  • Deterministic scoring engine   │
+│  • AI Toggle + Equalizer          │
+│  • Mini pill → full sidebar       │
+│  • HUMAN Genome strip             │
+│  • Heartbeat decay display        │
+│  • Offline: 206 seed companies    │
+│  • Online: 440+ from cloud API    │
+│                                   │
+│  "Every line of code is           │
+│   auditable, every decision       │
+│   is traceable."                  │
+│                                   │
+└──────────┬────────────────────────┘
+           │ Delta Sync
+           ▼
+┌───────────────────────────────────┐
+│           CLOUD LAYER             │
+│     (Railway + GitHub Pages)      │
+│                                   │
+│  REST API (Flask, 32 endpoints)   │
+│  • 18 data pipelines              │
+│  • Scoring engine v2              │
+│  • 440+ companies                 │
+│  • 10 HUMAN features (all live)   │
+│  • Search aliases + dedup         │
+│  • HUMAN Heartbeat (6 feeds)      │
+│  • HUMAN 100 Index                │
+│  • HUMAN Genome                   │
+│  • HUMAN Lens                     │
+│  • HUMAN Shield                   │
+│  • Balance floor rule             │
+│                                   │
+│  AI Enhancement Layer (planned)   │
+│  • NLP on SEC filings             │
+│  • ML humanwashing detection      │
+│  • Predictive decay               │
+│  • Toggle: OFF by default         │
+│                                   │
+└───────────────────────────────────┘
+```
+
+The edge node runs **zero AI**. The cloud computes scores from **18 free public data sources**. The AI Enhancement Layer improves inputs — it never changes the scoring formula.
 
 ---
 
-## Patent Features (10 of 10 Live)
+## Live Now
 
-| # | Feature | Status | Description |
-|---|---------|--------|-------------|
-| 1 | **HUMAN Heartbeat** | ✅ Live | Real-time score decay detection from 6 feeds |
-| 2 | **HUMAN Decay** | ✅ Live | Per-company decay score 0-100 |
-| 3 | **HUMAN Genome** | ✅ Live | Sub-signal fingerprint of every company |
-| 4 | **HUMAN 100 Index** | ✅ Live | ETF-licensable top 100 ranking |
-| 5 | **HUMAN Watermark** | ✅ Live | Real vs performative empathy detection |
-| 6 | **HUMAN Contagion** | ✅ Live | Supply chain ethics ripple |
-| 7 | **HUMAN Shield** | ✅ Live | AI displacement resistance |
-| 8 | **HUMAN Consciousness** | ✅ Live | Personal ethical footprint |
-| 9 | **HUMAN Lens** | ✅ Live | HI vs ESG gap detection |
-| 10 | **HUMAN Wave** | ✅ Live | Aggregated market pressure |
+- **Website**: [thehibalance.org](https://thehibalance.org) — Search 440+ companies, all 10 HUMAN features, 3-tab dropdown nav
+- **API**: [api.thehibalance.org](https://api.thehibalance.org/api/v1/stats) — Free public REST API (32 endpoints)
+- **Extension**: Chrome + Safari — mini pill badge, full sidebar panel, AI Toggle, Equalizer
+- **Nav**: HI ▾ (App, Extension, API) · HUMAN ▾ (all 10 features) · About HI
+
+---
+
+## 10 HUMAN Features (All Live, Patent Pending)
+
+| # | Feature | Description |
+|---|---------|-------------|
+| 1 | **HUMAN 100 Index** | ETF-licensable top 100 most human public companies |
+| 2 | **HUMAN Heartbeat** | Real-time score decay detection from 6 feeds |
+| 3 | **HUMAN Decay** | Per-company decay score 0-100 with alert levels |
+| 4 | **HUMAN Shield** | AI displacement resistance — 6 component moat score |
+| 5 | **HUMAN Lens** | HI vs ESG gap detection — where traditional ratings miss |
+| 6 | **HUMAN Genome** | Sub-signal fingerprint of every company |
+| 7 | **HUMAN Contagion** | Industry ethics ripple — how behavior spreads |
+| 8 | **HUMAN Watermark** | Real vs performative empathy detection |
+| 9 | **HUMAN Wave** | Collective market pressure by dimension and industry |
+| 10 | **HUMAN Consciousness** | Consumer ethical footprint — personal portfolio score |
 
 ---
 
@@ -42,10 +92,10 @@ Every company gets an **HI Grade™** — a simple letter grade (HI Certified, A
 ```
 hi/
 ├── human-edge/                  # Chrome browser extension (Manifest V3)
-│   ├── manifest.json            # Extension config
+│   ├── manifest.json            # Extension config (v0.3.0)
 │   ├── background.js            # Service worker + cloud sync + heartbeat pulse
-│   ├── content.js               # Badge + genome strip + heartbeat + drill-down
-│   ├── content.css              # Badge + panel styles
+│   ├── content.js               # Mini pill + full panel + genome + heartbeat
+│   ├── content.css              # Mini pill + panel + dark mode styles
 │   ├── popup.html               # Extension popup UI
 │   ├── popup.js                 # Popup controller + cloud sync
 │   └── lib/
@@ -73,13 +123,13 @@ hi/
 │   ├── warn_pipeline.py         # WARN Act — legally filed layoff notices
 │   ├── ceo_pipeline.py          # CEO — pay ratio, approval, accountability
 │   ├── scoring_engine.py        # Multi-source HUMAN dimension scoring (v2)
-│   ├── heartbeat_monitor.py     # Heartbeat: 6-feed decay detection
+│   ├── heartbeat_monitor.py     # HUMAN Heartbeat: 6-feed decay detection
 │   ├── human100_index.py        # HUMAN 100 Index generator
 │   ├── grade_arbitrage.py       # HUMAN Lens: HI vs ESG gap
 │   ├── ethical_moat.py          # HUMAN Shield: AI displacement resistance
 │   ├── contagion_effect.py      # HUMAN Contagion: supply chain ripple
 │   ├── consumer_consciousness.py # HUMAN Consciousness: personal footprint
-│   ├── empathy_watermark.py     # Empathy Watermark: real vs performative
+│   ├── empathy_watermark.py     # HUMAN Watermark: real vs performative
 │   ├── collective_bargaining.py # HUMAN Wave: market pressure
 │   ├── api_server.py            # REST API server (Flask, 32 endpoints)
 │   ├── run_all.py               # Single command runner (daily/weekly/monthly)
@@ -102,18 +152,20 @@ hi/
 2. Open `chrome://extensions` in Chrome
 3. Enable **Developer mode**
 4. Click **Load unpacked** → select the `human-edge/` folder
-5. Visit any website — if the company is in our database, the HI Grade™ badge appears
+5. Visit any website — mini pill badge appears for scored companies
 
-The extension includes 206 hand-scored companies offline. With the API connected, it scores 440+ companies with live heartbeat and genome data.
+The extension starts as a small pill (grade letter + score). Click it → full sidebar panel with all dimensions, genome, heartbeat, and AI Toggle.
 
 ### Daily Pipeline (one command)
 
 ```bash
 cd pipeline
-python3 run_all.py --daily --push    # Run daily pipelines + auto-push
+python3 run_all.py --daily --push    # Run daily pipelines + 10 HUMAN features + auto-push
 python3 run_all.py --weekly --push   # Weekly pipelines + push
 python3 run_all.py --monthly --push  # Full run + push
 ```
+
+---
 
 ## The HI Grade™ Scale
 
@@ -164,16 +216,6 @@ The pass/fail line is **42** — the answer to life, the universe, and everythin
 
 All data sources are free and public.
 
-## HUMAN Heartbeat (Patent Pending)
-
-Real-time score decay detection powered by 6 feeds: Finnhub, NewsAPI, Layoffs.fyi, SEC 8-K, CEO Pipeline, WARN Act.
-
-Decay levels: Stable (0-9), Watch (10-29), Warning (30-49), Critical (50+).
-
-## HUMAN 100 Index (Patent Pending)
-
-The top 100 most human public companies, ranked by HI Grade™ composite score. Eligibility: publicly traded, 2+ verified data sources, no humanwashing flags. Rebalanced monthly. Designed for ETF licensing.
-
 ## API
 
 Base URL: `https://api.thehibalance.org`
@@ -182,7 +224,7 @@ Base URL: `https://api.thehibalance.org`
 |----------|-------------|
 | `GET /api/v1/score/{domain}` | HI Grade by domain |
 | `GET /api/v1/score/ticker/{ticker}` | HI Grade by stock ticker |
-| `GET /api/v1/search?q={query}` | Search companies |
+| `GET /api/v1/search?q={query}` | Search companies (aliases + domain matching) |
 | `GET /api/v1/grades/top?limit=10` | Top rated companies |
 | `GET /api/v1/stats` | Database statistics |
 | `GET /api/v1/heartbeat/pulse` | Ecosystem pulse |
@@ -197,33 +239,50 @@ Base URL: `https://api.thehibalance.org`
 | `GET /api/v1/moat` | HUMAN Shield scores |
 | `GET /api/v1/moat/fortresses` | Fortress-level companies |
 | `GET /api/v1/moat/vulnerable` | Most vulnerable to AI |
-| `GET /api/v1/contagion` | Supply chain contagion |
-| `GET /api/v1/empathy` | Empathy watermarks |
+| `GET /api/v1/contagion` | HUMAN Contagion scores |
+| `GET /api/v1/empathy` | HUMAN Watermark scores |
 | `GET /api/v1/empathy/performative` | Performative empathy detection |
-| `GET /api/v1/consciousness` | Consumer consciousness benchmarks |
-| `GET /api/v1/collective` | Collective bargaining signals |
+| `GET /api/v1/consciousness` | HUMAN Consciousness benchmarks |
+| `GET /api/v1/collective` | HUMAN Wave pressure signals |
 | `GET /api/v1/collective/pressure` | Industry pressure rankings |
 
 Free public access. No authentication required.
+
+## What Makes This Different
+
+**1. Edge-to-Cloud Native** — The browser extension runs on deterministic, human-engineered code. Zero AI. Zero black boxes. The cloud computes scores from 18 data sources. No other scoring framework ships consumer-side and enterprise-side simultaneously.
+
+**2. Fully Open Source Methodology** — Every formula, every weight, every threshold is auditable on GitHub. A transparency framework that hides its own math would be hypocritical.
+
+**3. AI Toggle + Equalizer** — Consumers filter companies by HI Grade thresholds across all five dimensions. Strict mode hides AI-heavy companies. Soft mode flags them. No other framework gives consumers this control.
+
+**4. AI Enhancement Layer** — AI improves the inputs, never the formula. NLP on SEC filings, ML humanwashing detection, predictive decay. Toggle OFF by default. The AI makes the telescope sharper — it doesn't move the stars.
 
 ## Status
 
 - ✅ Provisional patent filed (March 5, 2026)
 - ✅ HI Grade™ trademark filed (March 12, 2026)
 - ✅ 440+ companies scored, 18 data sources
-- ✅ 10 patent features live (all 10 of 10 built and deployed)
-- ✅ 32 API endpoints
+- ✅ 10 HUMAN features live (all 10 built and deployed)
+- ✅ 32 API endpoints at api.thehibalance.org
 - ✅ Balance floor rule (below 42 = capped at C)
-- ✅ Dimension drill-down with real data insights
-- ✅ Chrome extension with heartbeat, genome, auto-collapse
-- ✅ REST API live on Railway (32 endpoints)
-- ✅ Website live at thehibalance.org
+- ✅ 3-tab dropdown nav (HI / HUMAN / About HI)
+- ✅ Mini pill → full sidebar panel (extension)
+- ✅ Dark mode toggle on extension
+- ✅ Search & Compare on homepage
+- ✅ For Companies section with certification tiers
+- ✅ Search aliases (google→Alphabet, facebook→Meta, etc.)
+- ✅ Company dedup (4-layer matching)
 - ✅ Single command runner (`run_all.py --daily --push`)
 - ⏳ Chrome Web Store listing
 - ⏳ Native iOS app
+- ⏳ AI Enhancement Layer (Phase 1: NLP on SEC filings)
+- ⏳ Non-provisional patent (March 2027)
 
 ---
 
-**HI. — Find the HI balance.**
+**HI.** — Find the HI balance.
+
+*10 HUMAN features. One question: Is it HUMAN?*
 
 [thehibalance.org](https://thehibalance.org) · The Deep Thought Foundation · Patent Pending · HI Grade™ Morf Innovations LLC
