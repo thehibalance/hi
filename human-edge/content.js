@@ -140,6 +140,26 @@ function createBadge(profile, filterResult, prefs) {
   });
   badge.querySelector('.human-badge__header').appendChild(closeBtn);
 
+  // Add dark mode toggle
+  const darkBtn = document.createElement('div');
+  darkBtn.className = 'human-badge__dark-toggle';
+  darkBtn.innerHTML = '🌙';
+  darkBtn.title = 'Toggle dark mode';
+  darkBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    badge.classList.toggle('human-badge--dark');
+    darkBtn.innerHTML = badge.classList.contains('human-badge--dark') ? '☀️' : '🌙';
+    // Remember preference
+    try { chrome.storage.local.set({ darkMode: badge.classList.contains('human-badge--dark') }); } catch(e) {}
+  });
+  badge.appendChild(darkBtn);
+  // Restore dark mode preference
+  try {
+    chrome.storage.local.get('darkMode', (r) => {
+      if (r.darkMode) { badge.classList.add('human-badge--dark'); darkBtn.innerHTML = '☀️'; }
+    });
+  } catch(e) {}
+
   document.body.appendChild(badge);
 
   // Attach click handlers for dimension detail panels

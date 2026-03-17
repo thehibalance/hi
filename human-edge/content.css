@@ -353,6 +353,47 @@
   }
 }
 
+/* Manual dark mode toggle class (mirrors media query) */
+.human-badge--dark {
+  background: #1e1e1e !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+.human-badge--dark .human-badge__company { color: #e0e0e0; }
+.human-badge--dark .human-badge__confidence { background: #333; color: #aaa; }
+.human-badge--dark .human-badge__dim-label { color: #aaa; }
+.human-badge--dark .human-badge__dim-bar { background: #333; }
+.human-badge--dark .human-badge__dim-score { color: #bbb; }
+.human-badge--dark .human-badge__details { border-top-color: #333; }
+.human-badge--dark .human-badge__floor-warning { background: #3a3000; color: #ffc107; }
+.human-badge--dark .human-badge__filter-warning { background: #3a0000; color: #ff6b6b; }
+.human-badge--dark .human-badge__hw-flag { background: #3a1010; color: #ff6b6b; }
+.human-badge--dark .human-badge__tagline { color: #6ba3d6; }
+.human-badge--dark .human-badge__satire { color: #aaa; }
+.human-badge--dark .human-badge__source { color: #666; }
+.human-badge--dark .human-badge__disclaimer { color: #555; background: #252525; border-color: #333; }
+.human-badge--dark .human-badge__tier { opacity: 0.9; }
+.human-badge--dark .human-badge__header-heartbeat { opacity: 0.9; }
+
+/* Dark mode toggle button */
+.human-badge__dark-toggle {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  opacity: 0.4;
+  z-index: 10;
+  padding: 0;
+}
+.human-badge__dark-toggle:hover { opacity: 1; }
+
 /* Cloud/Local source indicator */
 .human-badge__source {
   font-size: 9px;
