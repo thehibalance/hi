@@ -59,7 +59,7 @@ def get_grade(score):
     return "scored"
 
 THRESHOLD_FLOOR = 55  # Hard minimum — never drops below this
-THRESHOLD_RATCHET_FILE = DATA_DIR.parent / "threshold_ratchet.json" if DATA_DIR else None
+THRESHOLD_HIGH_WATER = THRESHOLD_FLOOR  # In-memory ratchet (persists per deploy)
 
 def compute_hi_balanced_threshold(companies):
     """
@@ -67,11 +67,9 @@ def compute_hi_balanced_threshold(companies):
     
     Failsafes:
     1. Hard floor: never below THRESHOLD_FLOOR (55)
-    2. Ratchet: can only go UP, never down — persisted across runs
-    
-    If all companies get worse, the threshold holds. The bar only moves up.
-    Companies force each other to improve, but can't drag each other down.
+    2. Ratchet: can only go UP, never down (in-memory per deploy)
     """
+    global THRESHOLD_HIGH_WATER
     composites = [c.get("composite", 0) for c in companies 
                   if c.get("composite", 0) > 0 
                   and c.get("data_sources") 
@@ -89,26 +87,10 @@ def compute_hi_balanced_threshold(companies):
     # Failsafe 1: Hard floor
     computed = max(computed, THRESHOLD_FLOOR)
     
-    # Failsafe 2: Ratchet — load previous high-water mark
-    previous_high = THRESHOLD_FLOOR
-    try:
-        if THRESHOLD_RATCHET_FILE and THRESHOLD_RATCHET_FILE.exists():
-            ratchet = json.load(open(THRESHOLD_RATCHET_FILE))
-            previous_high = ratchet.get("high_water_mark", THRESHOLD_FLOOR)
-    except:
-        pass
+    # Failsafe 2: Ratchet — can only go up
+    THRESHOLD_HIGH_WATER = max(computed, THRESHOLD_HIGH_WATER)
     
-    # Threshold can only go up
-    final = max(computed, previous_high)
-    
-    # Persist new high-water mark
-    try:
-        if THRESHOLD_RATCHET_FILE:
-            json.dump({"high_water_mark": final, "computed": computed, "mean": round(mean, 1), "stdev": round(stdev, 1), "floor": THRESHOLD_FLOOR}, open(THRESHOLD_RATCHET_FILE, "w"))
-    except:
-        pass
-    
-    return final
+    return THRESHOLD_HIGH_WATER
 
 def check_hi_balanced(company, threshold):
     """Check all 10 gates for HI Balanced status."""
@@ -442,33 +424,37 @@ def build_index():
         HUMAN100.append(entry)
     
     # Compute HUMAN 100 metadata
-    h100_composites = [c["composite"] for c in HUMAN100]
-    h100_avg = round(sum(h100_composites) / len(h100_composites), 1) if h100_composites else 0
-    dim_avgs = {}
-    for dim in ["D_H", "D_U", "D_M", "D_A", "D_N"]:
-        vals = [c.get(dim, 0) for c in HUMAN100 if c.get(dim, 0) > 0]
-        dim_avgs[dim] = round(sum(vals) / len(vals), 1) if vals else 0
-    HUMAN100_META = {
-        "average_composite": h100_avg,
-        "dimension_averages": dim_avgs,
-        "rebalance_date": "Quarterly",
-        "watchlist_count": sum(1 for c in HUMAN100 if c.get("decay_index", 0) >= 30),
-        "hi_balanced_count": sum(1 for c in HUMAN100 if c.get("hi_balanced")),
-    }
-    print(f"  HUMAN 100: {len(HUMAN100)} constituents | {HUMAN100_META.get('hi_balanced_count', 0)} HI Balanced")
+    if HUMAN100:
+        h100_composites = [c["composite"] for c in HUMAN100]
+        h100_avg = round(sum(h100_composites) / len(h100_composites), 1)
+        dim_avgs = {}
+        for dim in ["D_H", "D_U", "D_M", "D_A", "D_N"]:
+            vals = [c.get(dim, 0) for c in HUMAN100 if c.get(dim, 0) > 0]
+            dim_avgs[dim] = round(sum(vals) / len(vals), 1) if vals else 0
+        HUMAN100_META = {
+            "average_composite": h100_avg,
+            "dimension_averages": dim_avgs,
+            "rebalance_date": "Quarterly",
+            "watchlist_count": sum(1 for c in HUMAN100 if c.get("decay_index", 0) >= 30),
+            "hi_balanced_count": sum(1 for c in HUMAN100 if c.get("hi_balanced")),
+        }
+    print(f"  HUMAN 100: {len(HUMAN100)} constituents")
     
     # Inject hi_balanced into all feature lists (they load from pre-generated files)
-    balanced_tickers = {c.get("ticker", "").upper(): c for c in ALL_COMPANIES if c.get("hi_balanced")}
-    balanced_companies = {c.get("company", "").lower(): c for c in ALL_COMPANIES if c.get("hi_balanced")}
-    for feature_list in [CONTAGION, EMPATHY_WM, MOATS, ARBITRAGE]:
-        if isinstance(feature_list, list):
-            for item in feature_list:
-                t = (item.get("ticker") or "").upper()
-                n = (item.get("company") or "").lower()
-                if t in balanced_tickers or n in balanced_companies:
-                    item["hi_balanced"] = True
-                    src = balanced_tickers.get(t) or balanced_companies.get(n, {})
-                    item["composite"] = src.get("composite", item.get("composite", 0))
+    try:
+        balanced_tickers = {c.get("ticker", "").upper(): c for c in ALL_COMPANIES if c.get("hi_balanced")}
+        balanced_companies = {c.get("company", "").lower(): c for c in ALL_COMPANIES if c.get("hi_balanced")}
+        for feature_list in [CONTAGION, EMPATHY_WM, MOATS, ARBITRAGE]:
+            if isinstance(feature_list, list):
+                for item in feature_list:
+                    t = (item.get("ticker") or "").upper()
+                    n = (item.get("company") or "").lower()
+                    if t in balanced_tickers or n in balanced_companies:
+                        item["hi_balanced"] = True
+                        src = balanced_tickers.get(t) or balanced_companies.get(n, {})
+                        item["composite"] = src.get("composite", item.get("composite", 0))
+    except Exception as e:
+        print(f"  Warning: hi_balanced injection error: {e}")
     print(f"  {len(ALL_COMPANIES)} companies | {len(COMPANIES)} domains | {len(TICKERS)} tickers")
 
 

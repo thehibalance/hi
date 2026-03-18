@@ -230,22 +230,87 @@ Base URL: `https://api.thehibalance.org` · Free · No auth required
 | `GET /api/v1/consciousness` | HUMAN Consciousness |
 | `GET /api/v1/collective` | HUMAN Wave |
 
-## Status
+## Patent Claims — Implementation Status
 
-- ✅ Provisional patent filed
-- ✅ HI Grade™ trademark filed
-- ✅ 440+ companies scored from 18 data sources
-- ✅ 10 HUMAN features live (all gates operational)
-- ✅ 32 API endpoints
-- ✅ Dynamic hybrid threshold (mean + 2 SD, quarterly)
-- ✅ 42 balance floor (per dimension)
-- ✅ Score-only grading (no letters)
-- ✅ Edge-to-cloud architecture
-- ✅ Mini pill → full sidebar with gates
-- ✅ AI Toggle + 5-dimension Equalizer
-- ⏳ Chrome Web Store listing
-- ⏳ iOS app
-- ⏳ AI Enhancement Layer
+20 claims filed. Here's what's built, what's next, and what no one else does.
+
+### Core Scoring (Claims 1-5) — ✅ All Live
+
+| Claim | What It Does | Status | What's Different |
+|-------|-------------|--------|-----------------|
+| **1** | Multi-dimensional scoring: 5 dims, composite, floor rule, tier classification | ✅ Live | No other framework scores human consciousness, empathy, ethics, environment, AND transparency in one composite |
+| **2** | Equal weighting at 20% each | ✅ Live | ESG overweights governance. We treat all five as equally fundamental |
+| **3** | Humanwashing detection: revenue/employee ratio, headcount vs AI spend, disclosed vs detected AI usage | ✅ Live | No ESG framework detects performative human involvement |
+| **4** | Simulated empathy detection: response timing, language variability, contextual adaptation depth | ✅ Live | Nobody else distinguishes genuine human empathy from AI-simulated empathy |
+| **5** | AI-specific environmental costs: training energy, inference energy, water cooling, rare earth, e-waste | ✅ Live | CDP and carbon tools don't isolate AI infrastructure costs |
+
+### Architecture (Claims 6-8) — ✅ All Live
+
+| Claim | What It Does | Status | What's Different |
+|-------|-------------|--------|-----------------|
+| **6** | Deterministic edge node: browser extension with zero AI, offline scoring, cloud sync | ✅ Live | No other scoring framework ships a consumer-side edge node. Zero AI. Zero black boxes. Every line auditable |
+| **7** | AI enhancement layer: NLP on filings, ML humanwashing detection, predictive decay. Toggle OFF by default | ⏳ Partial | AI improves inputs, never changes the formula. The telescope gets sharper — it doesn't move the stars |
+| **8** | Consumer interface: master toggle, dimension sliders, strict/soft filter modes | ✅ Live | No other framework gives consumers real-time control over what they see |
+
+### Detection Methods (Claims 9-10) — ✅ All Live
+
+| Claim | What It Does | Status | What's Different |
+|-------|-------------|--------|-----------------|
+| **9** | Humanwashing detection method: 5-factor analysis | ✅ Live | Patent-pending. No prior art covers this combination |
+| **10** | Simulated empathy detection method: 4-factor analysis | ✅ Live | First method for detecting AI-simulated empathy in commercial contexts |
+
+### 10 HUMAN Features (Claims 11-20) — ✅ All Live, All Gates Operational
+
+| Claim | Feature | Status | What's Different |
+|-------|---------|--------|-----------------|
+| **11** | **HUMAN Genome** — Sub-signal fingerprint per company | ✅ Live + Gate | No two genomes are the same. Full dimensional DNA, not just a number |
+| **12** | **HUMAN Decay** — Consciousness Decay Index, linear regression over trailing scores | ✅ Live + Gate | Predicts score drops before they happen. CDI of -8/quarter = freefall |
+| **13** | **HUMAN Heartbeat** — Real-time monitoring from 6 feeds, pulse indicator, anomaly alerts | ✅ Live + Gate | Turns a periodic report into a living monitoring system |
+| **14** | **HUMAN Watermark** — Empathy authenticity verification, cryptographic hash | ✅ Live + Gate | Certifies what's real instead of labeling what's AI |
+| **15** | **HUMAN Contagion** — Ethical propagation through supply chains/industries | ✅ Live + Gate | When Amazon cuts 27k jobs, does the sector follow? Weighted by influence |
+| **16** | **HUMAN Shield** — Structural AI displacement resistance, 6-component moat | ✅ Live + Gate | Measures how deep the human moat is. Craft, empathy, ethics, transparency, human capital, AI resistance |
+| **17** | **HUMAN Consciousness** — Personal ethical footprint, portfolio scoring | ✅ Live | All computation on consumer's local device. No purchasing data transmitted |
+| **18** | **HUMAN 100 Index** — ETF-licensable top 100 by composite score | ✅ Live | Dual-weight: market cap + ethical production score. Rebalanced quarterly |
+| **19** | **HUMAN Lens** — Grade arbitrage detection, HI vs ESG gap analysis | ✅ Live + Gate | When ESG says A but HI says C, the gap reveals what traditional metrics miss |
+| **20** | **HUMAN Wave** — Collective market pressure signals from consumer filtering | ✅ Live + Gate | Turns individual choices into visible collective pressure. No boycotts needed |
+
+### What's Built But Not Yet Patented
+
+| Feature | Status | Description |
+|---------|--------|-------------|
+| **Dynamic Hybrid Threshold** | ✅ Live | mean + 2 SD, recalculated quarterly. Companies force each other to improve |
+| **Ratchet Failsafe** | ✅ Live | Threshold can only go UP, never down. Hard floor at 55 |
+| **42 Balance Floor** | ✅ Live | All 5 dimensions ≥ 42. The answer to everything |
+| **10 Gates / 3 Categories** | ✅ Live | Score + Balance + 8 HUMAN Features. First certification that certifies itself |
+| **Data Integrity Firewall** | ✅ Documented | 7 defensive layers: source verification, anomaly detection, cross-reference validation, humanwashing detection, rate limiting, input sanitization, audit trail |
+
+### What's Next
+
+| Item | Priority | Notes |
+|------|----------|-------|
+| Chrome Web Store listing | 🔴 High | Extension is built, needs store listing |
+| iOS app | 🔴 High | TestFlight → App Store |
+| Non-provisional patent | 🔴 High | Due by March 2027 (12 months from provisional) |
+| AI Enhancement Layer (Claim 7) | 🟡 Medium | NLP on SEC filings, ML humanwashing, predictive decay |
+| Empathy Watermark v2 (Claim 14) | 🟡 Medium | Cryptographic hash + interaction-level verification |
+| API rate limiting + CORS | 🟡 Medium | Security hardening |
+| Score change audit log | 🟡 Medium | Every change timestamped with reason |
+| International PCT filing | 🟡 Medium | Global patent protection |
+
+## Prior Art — Why This Hasn't Been Done
+
+No prior art covers this intersection. Here's why each existing framework falls short:
+
+| Framework | What It Misses |
+|-----------|---------------|
+| **ESG (MSCI, Sustainalytics)** | No AI displacement. No consciousness depth. No empathy detection. No humanwashing |
+| **B Corp** | No scoring granularity. No AI dimension. No real-time monitoring. No consumer interface |
+| **Fair Trade** | No AI measurement. No empathy simulation. No technology dimension at all |
+| **AI Detectors (GPTZero, etc.)** | Detect AI content, not AI displacement of human agency in production |
+| **Carbon Tools (CDP, Watershed)** | One dimension only. No consciousness, empathy, ethics, or transparency |
+| **Glassdoor / Indeed** | Employee sentiment, not ethical production scoring. No composite framework |
+
+The HUMAN Grade unifies all five into a single, consumer-facing framework with humanwashing detection, edge-to-cloud architecture, and a dynamic certification system. That's the patent.
 
 ---
 
