@@ -2,9 +2,9 @@
 
 > **HI Grade™** — The balance between humans and technology, measured.
 
-*Built without AI to measure AI. The world's first edge-to-cloud scoring framework — using AI to balance humanity with AI.*
+*Built without AI to measure AI. 34 free data sources. 24 sub-signals. All covered without AI. The world's first edge-to-cloud ethical scoring framework.*
 
-**HI.** measures how human a company is across five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent. Every company gets a score. Meet all 3 requirements? You're **✦ HI Balanced.**
+**HI.** measures how human a company is across five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent. Every company gets a score. Pass all 10 gates across 3 categories? You're **✦ HI Balanced.**
 
 🌐 [thehibalance.org](https://thehibalance.org) · 🏛 The HI Balance · 📄 Patent Pending · ™ HI Grade — Morf Innovations LLC
 
@@ -61,9 +61,10 @@ No other framework does what HI. does. Here's why.
 ### The Scoring
 
 - **Five dimensions, one composite.** Human Consciousness, Understanding & Empathy, Moral & Ethical Conduct, Alive & Environmental, Natural Transparency. Equal weight. No single value outranks another. No other framework scores all five.
+- **24 sub-signals, all covered without AI.** Every sub-signal in the HUMAN methodology spec has a deterministic data source. 34 free, public, and government data sources including SEC EDGAR, EPA, CFPB, OSHA, FTC, EEOC, USPTO, FDA, DOL, FEC, CPSC, HIBP, iFixit, SBTi, GRI, and more. Zero AI. Zero black boxes.
 - **Humanwashing detection.** Revenue/employee ratio, headcount vs AI spend, disclosed vs detected AI usage. No ESG framework detects performative human involvement.
-- **Simulated empathy detection.** Response timing, language variability, contextual adaptation depth. Nobody else distinguishes genuine human empathy from AI-simulated empathy.
-- **AI-specific environmental costs.** Training energy, inference energy, water cooling, rare earth extraction, e-waste. CDP and carbon tools don't isolate AI infrastructure costs.
+- **Simulated empathy detection.** Industry automation baselines, customer service channel analysis, employee culture signals. Nobody else distinguishes genuine human empathy from AI-simulated empathy.
+- **AI-specific environmental costs.** Training energy, inference energy, water cooling, rare earth extraction, e-waste, hardware lifecycle repairability. CDP and carbon tools don't isolate AI infrastructure costs.
 
 ### The Architecture
 
