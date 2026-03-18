@@ -125,13 +125,13 @@ Three layers. One rule: **the AI makes the telescope sharper — it doesn't move
 
 | Grade | Score | Satire |
 |-------|-------|--------|
-| **HI Certified** | 90-100 | Humans and tech, in harmony. This is what balance looks like. |
-| **A** | 80-89 | AI does the math. Humans do the handshakes. Nailed it. |
-| **B** | 60-79 | Humans and machines, learning to share the remote. |
-| **C** | 42-59 | 42. The answer to everything. Now what's the question? |
-| **F** | 0-41 | Don't panic. Every journey starts somewhere. |
+| **A (HI Certified)** | 90-100 | Humans and tech, in harmony. This is what balance looks like. |
+| **B** | 80-89 | AI does the math. Humans do the handshakes. Nailed it. |
+| **C** | 70-79 | Humans and machines, learning to share the remote. |
+| **D** | 60-69 | The balance is off. Time to course correct. |
+| **F** | 0-59 | Don't panic. Every journey starts somewhere. |
 
-**Balance Floor Rule**: Any dimension below 42 caps the grade at C. *You can't claim balance when any dimension is failing.*
+**Balance Floor Rule**: 1 dimension below 42 caps the grade at D. 2+ dimensions below 42 = F. *You can't claim balance when any dimension is failing.*
 
 ## The HUMAN Framework
 

@@ -28,23 +28,23 @@ const HumanEngine = {
   FLOOR_CAP: 40,           // ...cap composite at this value
 
   TIERS: [
-    { min: 90, max: 100, grade: "HI Certified", name: "HI Certified", letter: "HI",
+    { min: 90, max: 100, grade: "A", name: "HI Certified", letter: "A",
       stars: "★★★★★", color: "#C49B20", requiresVerification: true,
       satire: "Humans and tech, in harmony. This is what balance looks like.",
       badge: "HI Certified — this is what balance looks like." },
-    { min: 80, max: 89,  grade: "A", name: "Excellent", letter: "A",
+    { min: 80, max: 89,  grade: "B", name: "Excellent", letter: "B",
       stars: "★★★★☆", color: "#2e8b57", requiresVerification: false,
       satire: "AI does the math. Humans do the handshakes. Nailed it.",
       badge: "Excellent — nailed the balance." },
-    { min: 60, max: 79,  grade: "B", name: "Good", letter: "B",
+    { min: 70, max: 79,  grade: "C", name: "Good", letter: "C",
       stars: "★★★☆☆", color: "#4a90d9", requiresVerification: false,
       satire: "Humans and machines, learning to share the remote.",
       badge: "Good — learning to share the remote." },
-    { min: 42, max: 59,  grade: "C", name: "The Answer", letter: "C",
+    { min: 60, max: 69,  grade: "D", name: "Needs Work", letter: "D",
       stars: "★★☆☆☆", color: "#E07020", requiresVerification: false,
-      satire: "42. The answer to everything. Now what's the question?",
-      badge: "42 — now what's the question?" },
-    { min: 0,  max: 41,  grade: "F", name: "Failing Humanity", letter: "F",
+      satire: "The balance is off. Time to course correct.",
+      badge: "The balance is off." },
+    { min: 0,  max: 59,  grade: "F", name: "Failing", letter: "F",
       stars: "★☆☆☆☆", color: "#6B7280", requiresVerification: false,
       satire: "Don't panic. Every journey starts somewhere.",
       badge: "Don't panic." },
@@ -127,14 +127,22 @@ const HumanEngine = {
     let tier = this.classifyTier(composite, verified);
     const hwFlags = this.detectHumanwashing(company);
 
-    // Balance floor rule: any dimension below 42 caps grade at C
+    // Balance floor rule: dimensions below 42
     const scores = this.DIMENSIONS.map(d => company[d] || 0);
+    const belowCount = scores.filter(s => s < 42).length;
     const minScore = Math.min(...scores);
     const minDim = this.DIMENSIONS[scores.indexOf(minScore)];
     let balanceFloor = false;
     let balanceDim = null;
-    if (minScore < 42 && (tier.grade === 'A' || tier.grade === 'B' || tier.grade === 'HI Certified')) {
-      tier = this.TIERS.find(t => t.grade === 'C');
+    
+    if (belowCount >= 2) {
+      // 2+ dimensions below 42 = F. No balance.
+      tier = this.TIERS.find(t => t.grade === 'F');
+      balanceFloor = true;
+      balanceDim = minDim;
+    } else if (belowCount === 1 && (tier.grade === 'A' || tier.grade === 'B' || tier.grade === 'C')) {
+      // 1 dimension below 42 = capped at D
+      tier = this.TIERS.find(t => t.grade === 'D');
       balanceFloor = true;
       balanceDim = minDim;
     }
@@ -149,7 +157,7 @@ const HumanEngine = {
         a: company.a,
         n: company.n
       },
-      composite: balanceFloor ? Math.min(composite, 59) : composite,
+      composite: balanceFloor && belowCount >= 2 ? Math.min(composite, 59) : balanceFloor ? Math.min(composite, 69) : composite,
       grade: tier.grade,
       letter: tier.letter,
       tier,
@@ -157,6 +165,7 @@ const HumanEngine = {
       floorDimension,
       balanceFloor,
       balanceDim,
+      balanceBelowCount: belowCount,
       humanwashingFlags: hwFlags,
       confidence: company.confidence || "estimated",
       source: company.source || "local"

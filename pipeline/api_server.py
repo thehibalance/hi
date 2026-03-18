@@ -55,32 +55,45 @@ DATA_DIR = Path("data/scores")
 
 
 def get_grade(score):
-    if score >= 90: return "HI Certified"
-    if score >= 80: return "A"
-    if score >= 60: return "B"
-    if score >= 42: return "C"
+    if score >= 90: return "A"
+    if score >= 80: return "B"
+    if score >= 70: return "C"
+    if score >= 60: return "D"
     return "F"
 
 SATIRES = {
-    "HI Certified": "Humans and tech, in harmony. This is what balance looks like.",
-    "A": "AI does the math. Humans do the handshakes. Nailed it.",
-    "B": "Humans and machines, learning to share the remote.",
-    "C": "42. The answer to everything. Now what's the question?",
+    "A": "Humans and tech, in harmony. This is what balance looks like.",
+    "B": "AI does the math. Humans do the handshakes. Nailed it.",
+    "C": "Humans and machines, learning to share the remote.",
+    "D": "The balance is off. Time to course correct.",
     "F": "Don't panic. Every journey starts somewhere.",
 }
 
 
 def seed_to_record(s):
     composite = round((s["h"] + s["u"] + s["m"] + s["a"] + s["n"]) / 5, 1)
-    if min(s["h"], s["u"], s["m"], s["a"], s["n"]) < 10:
+    dims = [s["h"], s["u"], s["m"], s["a"], s["n"]]
+    below_42 = sum(1 for d in dims if d < 42)
+    if min(dims) < 10:
         composite = min(composite, 40.0)
     grade = get_grade(composite)
+    # Balance floor: 1 below 42 = D cap, 2+ below 42 = F
+    balance_floor = False
+    if below_42 >= 2 and grade != "F":
+        grade = "F"
+        composite = min(composite, 59)
+        balance_floor = True
+    elif below_42 == 1 and grade in ("A", "B", "C"):
+        grade = "D"
+        composite = min(composite, 69)
+        balance_floor = True
     return {
         "company": s["name"], "ticker": None,
         "domains": s.get("domains", []), "tags": s.get("tags", []),
         "D_H": s["h"], "D_U": s["u"], "D_M": s["m"], "D_A": s["a"], "D_N": s["n"],
         "composite": composite, "hi_grade": grade, "satire": SATIRES.get(grade, ""),
-        "floor_triggered": min(s["h"], s["u"], s["m"], s["a"], s["n"]) < 10,
+        "floor_triggered": min(dims) < 10,
+        "balance_floor": balance_floor,
         "confidence": "Estimated", "data_sources": ["Manual Scoring"],
         "notes": s.get("notes", ""), "spec_version": "1.0.0",
         "industry": s["tags"][0] if s.get("tags") else "",
@@ -460,7 +473,7 @@ def list_grades():
 
     filtered = ALL_COMPANIES
     if grade_filter:
-        gmap = {"HI": "HI Certified", "A": "A", "B": "B", "C": "C", "F": "F"}
+        gmap = {"A": "A", "B": "B", "C": "C", "D": "D", "F": "F"}
         target = gmap.get(grade_filter, grade_filter)
         filtered = [c for c in ALL_COMPANIES if c.get("hi_grade") == target]
 
