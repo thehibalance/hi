@@ -370,6 +370,20 @@ def build_index():
             break
 
     ALL_COMPANIES.sort(key=lambda x: x.get("composite", 0), reverse=True)
+    
+    # Compute HI Balanced threshold and tag qualifying companies
+    threshold = compute_hi_balanced_threshold(ALL_COMPANIES)
+    balanced_count = 0
+    for c in ALL_COMPANIES:
+        passed, gates = check_hi_balanced(c, threshold)
+        c["hi_balanced"] = passed
+        c["hi_balanced_gates"] = gates
+        c["hi_balanced_threshold"] = threshold
+        if passed:
+            c["hi_grade"] = "HI Balanced"
+            c["satire"] = "Humans and tech, in harmony. Probably unicorns too."
+            balanced_count += 1
+    print(f"  HI Balanced threshold: {threshold} | {balanced_count} companies qualified")
     print(f"  {len(ALL_COMPANIES)} companies | {len(COMPANIES)} domains | {len(TICKERS)} tickers")
 
 
