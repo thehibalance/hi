@@ -10,13 +10,13 @@
 
 ---
 
-## ✦ HI Balanced — 3 Requirements
+## ✦ HI Balanced — 10 Gates · 3 Categories
 
 Every company gets a score from 0 to 100. No letters. No tiers. Just the number.
 
 Pass all three? You've found the HI balance.
 
-### Requirement 1: Score Threshold
+### 📊 Category 1: Score
 
 The composite score must exceed the adaptive threshold — calculated as **mean + 2 standard deviations** of the entire scored market.
 
@@ -24,7 +24,7 @@ The composite score must exceed the adaptive threshold — calculated as **mean 
 
 *Current threshold: ~62 (Q1 2026)*
 
-### Requirement 2: HUMAN 42 Balance Floor
+### ⚖ Category 2: Balance
 
 All 5 HUMAN dimensions must score **≥ 42**. No blind spots. No hiding a failing dimension behind a strong one.
 
@@ -33,7 +33,7 @@ All 5 HUMAN dimensions must score **≥ 42**. No blind spots. No hiding a failin
 
 *42 — the answer to life, the universe, and everything. Also the minimum per dimension to be in balance.*
 
-### Requirement 3: All 10 HUMAN Gates
+### 🔒 Category 3: 8 HUMAN Features
 
 Every patent-pending HUMAN feature acts as a gate. All 10 must pass:
 
