@@ -121,7 +121,6 @@ Three layers. One rule: **the AI makes the telescope sharper — it doesn't move
 
 ## The HI Grade™ Scale
 
-> *42 — the answer to life, the universe, and everything. Also the answer to: what's the minimum score to be in balance?*
 
 | Grade | Score | Satire |
 |-------|-------|--------|
