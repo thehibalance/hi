@@ -171,6 +171,7 @@ function createBadge(profile, filterResult, prefs) {
  */
 function buildMiniHTML(profile) {
   const scoreColor = profile.hiCertified ? '#C49B20' : '#1B3A5C';
+  const threshold = profile.certificationThreshold || 62;
   const hasWarning = profile.decay_level === 'critical' || profile.decay_level === 'warning';
   const hasDecay = profile.decay_level !== 'stable' && profile.decay_index > 0;
   const hasFloor = profile.balance_floor;
@@ -186,8 +187,10 @@ function buildMiniHTML(profile) {
   
   return `
     <div class="human-badge__mini">
-      ${profile.hiCertified ? '<span class="human-badge__mini-certified" style="color:#C49B20;font-size:14px">✦</span>' : ''}
-      <span class="human-badge__mini-grade" style="color:${scoreColor};font-size:24px;font-weight:900">${profile.composite}</span>
+      ${profile.hiCertified ? '<span style="color:#C49B20;font-size:14px;margin-right:2px">✦</span>' : ''}
+      <span style="color:${scoreColor};font-size:22px;font-weight:900">${profile.composite}</span>
+      <span style="color:#999;font-size:12px;margin:0 1px">/</span>
+      <span style="color:#999;font-size:12px">${threshold}</span>
       ${warningDot}
     </div>
   `;
@@ -481,7 +484,7 @@ function openFullPanel(profile, filterResult, prefs) {
     </div>
 
     <div class="human-panel__company">
-      <div class="human-panel__grade" style="color: ${scoreColor};font-size:36px">${profile.hiCertified ? '✦ ' : ''}${profile.composite}</div>
+      <div class="human-panel__grade" style="color: ${scoreColor};font-size:36px">${profile.hiCertified ? '✦ ' : ''}${profile.composite}<span style="color:#999;font-size:16px;font-weight:400"> / ${profile.certificationThreshold || 62}</span></div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
         <div class="human-panel__tier" style="color: ${scoreColor}">${profile.hiCertified ? 'HI Certified' : 'HI Grade™'}</div>
@@ -490,6 +493,29 @@ function openFullPanel(profile, filterResult, prefs) {
     </div>
     ${profile.hiCertified ? '<div style="padding:4px 16px;font-size:11px;color:#C49B20;font-weight:600">✦ All 10 gates passed · In balance</div>' : ''}
     ${profile.tier.satire ? `<div class="human-panel__satire">"${profile.tier.satire}"</div>` : ''}
+
+    ${(() => {
+      const gates = profile.certificationGates || {};
+      const total = Object.keys(gates).length || 10;
+      const passed = Object.values(gates).filter(v => v).length;
+      const failed = Object.entries(gates).filter(([k,v]) => !v);
+      const gateLabels = {
+        composite: 'Composite ≥ threshold',
+        allDimsAbove42: 'All dimensions ≥ 42',
+        noHumanwashing: 'No humanwashing flags',
+        decayBelow30: 'Decay index < 30',
+        shieldAbove50: 'Shield score ≥ 50',
+        noESGWashing: 'No ESG washing',
+        notNegativeLeader: 'Not negative industry leader',
+        noCriticalGaps: 'No critical genome gaps',
+        notUnderPressure: 'Not under collective pressure',
+        noActiveAlerts: 'No critical alerts',
+      };
+      if (profile.hiCertified) return '';
+      return '<div style="padding:8px 16px;margin-top:4px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><span style="font-size:11px;font-weight:700;color:#1B3A5C">' + passed + '/' + total + ' GATES</span><div style="flex:1;height:4px;background:#EEF1F5;border-radius:2px"><div style="height:100%;width:' + (passed/total*100) + '%;background:' + (passed === total ? '#C49B20' : '#1B3A5C') + ';border-radius:2px"></div></div></div>' +
+        failed.map(([k,v]) => '<div style="font-size:10px;color:#DC2626;padding:2px 0">✗ ' + (gateLabels[k] || k) + '</div>').join('') +
+        '</div>';
+    })()}
 
     <div style="padding:0 16px">
       <div style="font-size:11px;font-weight:700;color:#1B3A5C;letter-spacing:0.5px;margin-bottom:8px">DIMENSIONS</div>
