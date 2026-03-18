@@ -296,10 +296,9 @@ const HumanEngine = {
    * Get the color for a score value (gradient from red to green).
    */
   getScoreColor(score) {
-    if (score >= 80) return "#2e8b57";  // A and above — green
-    if (score >= 60) return "#4a90d9";  // B — blue
-    if (score >= 42) return "#E07020";  // C — orange
-    return "#6B7280";                   // F — slate gray
+    if (score >= 62) return "#1B3A5C";  // Above threshold — navy
+    if (score >= 42) return "#8899AA";  // In range — muted
+    return "#DC2626";                   // Below balance floor — red
   },
 
   /**
