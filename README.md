@@ -39,7 +39,7 @@ All 5 HUMAN dimensions must score **≥ 42**. No blind spots. No hiding a failin
 
 ### 🔒 Category 3: 8 HUMAN Features
 
-Every patent-pending HUMAN feature acts as a gate. All 10 must pass:
+Every HUMAN feature acts as a gate. All 10 must pass:
 
 1. **Composite ≥ threshold** — Score above the adaptive line
 2. **All dimensions ≥ 42** — No blind spots
@@ -53,6 +53,16 @@ Every patent-pending HUMAN feature acts as a gate. All 10 must pass:
 10. **No critical alerts** — HUMAN Heartbeat is stable
 
 *The first certification that certifies itself. You can't buy it. You can't apply for it. The data proves it.*
+
+### Dynamic Hybrid Scoring Model
+
+The HI Balanced threshold isn't a fixed number. It's **mean + 2 standard deviations** of every scored company — recalculated quarterly. When companies improve, the standard deviation tightens, and the bar rises. Companies force each other to be better.
+
+**Two failsafes protect the standard:**
+- 🔒 **Hard floor:** The threshold never drops below 55.
+- 🔒 **Ratchet:** It can only go up, never down. Once the market pushes it to 62, it stays at 62 even if every company declines.
+
+*The bar only moves one direction. The math decides, not us.*
 
 ## What Makes HI. Different
 
@@ -93,7 +103,7 @@ The deterministic engine covers all 24 sub-signals without AI. The AI layer make
 
 Every AI capability is a toggle. The edge node stays deterministic. The formula stays deterministic. AI only touches the inputs.
 
-### The 10 HUMAN Features (All Patent-Pending)
+### The 10 HUMAN Features
 
 | Feature | What It Does | Why It Matters |
 |---------|-------------|----------------|
@@ -119,7 +129,7 @@ Every AI capability is a toggle. The edge node stays deterministic. The formula 
 | **Carbon Tools (CDP, Watershed)** | One dimension only. No consciousness, empathy, ethics, or transparency |
 | **Glassdoor / Indeed** | Employee sentiment, not ethical production scoring. No composite framework |
 
-HI. unifies all five dimensions into a single, consumer-facing framework with humanwashing detection, edge-to-cloud architecture, and a dynamic certification system. Patent pending.
+HI. unifies all five dimensions into a single, consumer-facing framework with humanwashing detection, edge-to-cloud architecture, and a dynamic certification system.
 
 ---
 
@@ -190,7 +200,7 @@ HI. unifies all five dimensions into a single, consumer-facing framework with hu
 
 ---
 
-## 10 HUMAN Features (All Live, Patent Pending)
+## 10 HUMAN Features (All Live)
 
 | # | Feature | Description | Gate |
 |---|---------|-------------|------|
