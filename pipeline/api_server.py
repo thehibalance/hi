@@ -55,10 +55,10 @@ DATA_DIR = Path("data/scores")
 
 
 def get_grade(score):
-    """Score-only system. Returns 'HI Certified' or 'scored'."""
+    """Score-only system. Returns 'HI Balanced' or 'scored'."""
     return "scored"
 
-def compute_hi_certified_threshold(companies):
+def compute_hi_balanced_threshold(companies):
     """Adaptive threshold: mean + 2 SD of all composites."""
     composites = [c.get("composite", 0) for c in companies if c.get("composite", 0) > 0]
     if len(composites) < 10:
@@ -69,8 +69,8 @@ def compute_hi_certified_threshold(companies):
     stdev = math.sqrt(variance)
     return round(mean + 2 * stdev, 1)
 
-def check_hi_certified(company, threshold):
-    """Check all 10 gates for HI Certified status."""
+def check_hi_balanced(company, threshold):
+    """Check all 10 gates for HI Balanced status."""
     dims = [company.get("D_H", 0), company.get("D_U", 0), company.get("D_M", 0), company.get("D_A", 0), company.get("D_N", 0)]
     below_42 = sum(1 for d in dims if d < 42)
     gates = {
@@ -88,7 +88,7 @@ def check_hi_certified(company, threshold):
     return all(gates.values()), gates
 
 SATIRES = {
-    "HI Certified": "Humans and tech, in harmony. This is what balance looks like.",
+    "HI Balanced": "Humans and tech, in harmony. This is what balance looks like.",
     "scored": "",
 }
 
@@ -111,7 +111,7 @@ def seed_to_record(s):
         "company": s["name"], "ticker": None,
         "domains": s.get("domains", []), "tags": s.get("tags", []),
         "D_H": s["h"], "D_U": s["u"], "D_M": s["m"], "D_A": s["a"], "D_N": s["n"],
-        "composite": composite, "hi_grade": "scored", "hi_certified": False,
+        "composite": composite, "hi_grade": "scored", "hi_balanced": False,
         "satire": "",
         "floor_triggered": min(dims) < 10,
         "balance_floor": balance_floor,
@@ -544,8 +544,8 @@ def stats():
 
     composites = [c["composite"] for c in ALL_COMPANIES if c.get("composite")]
     avg = round(sum(composites) / len(composites), 1) if composites else 0
-    threshold = compute_hi_certified_threshold(ALL_COMPANIES)
-    certified_count = sum(1 for c in ALL_COMPANIES if check_hi_certified(c, threshold)[0])
+    threshold = compute_hi_balanced_threshold(ALL_COMPANIES)
+    certified_count = sum(1 for c in ALL_COMPANIES if check_hi_balanced(c, threshold)[0])
 
     return jsonify({
         "total_companies": len(ALL_COMPANIES),
@@ -553,8 +553,8 @@ def stats():
         "tickers_indexed": len(TICKERS),
         "grade_distribution": grades,
         "average_composite": avg,
-        "hi_certified_threshold": threshold,
-        "hi_certified_count": certified_count,
+        "hi_balanced_threshold": threshold,
+        "hi_balanced_count": certified_count,
         "humanwashing_flagged": sum(1 for c in ALL_COMPANIES if c.get("humanwashing_flags")),
         "floor_rule_triggered": sum(1 for c in ALL_COMPANIES if c.get("floor_triggered")),
         "balance_floor_triggered": sum(1 for c in ALL_COMPANIES if c.get("balance_floor")),
