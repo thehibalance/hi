@@ -170,7 +170,6 @@ function createBadge(profile, filterResult, prefs) {
  * Build the mini pill HTML — grade letter + score + warning dot.
  */
 function buildMiniHTML(profile) {
-  const scoreColor = profile.hiCertified ? '#C49B20' : '#1B3A5C';
   const threshold = profile.certificationThreshold || 62;
   const hasWarning = profile.decay_level === 'critical' || profile.decay_level === 'warning';
   const hasDecay = profile.decay_level !== 'stable' && profile.decay_index > 0;
@@ -182,13 +181,21 @@ function buildMiniHTML(profile) {
   } else if (hasDecay) {
     warningDot = `<span class="human-badge__mini-dot" style="background:#D97706"></span>`;
   } else if (hasFloor) {
-    warningDot = `<span class="human-badge__mini-dot" style="background:#EA580C"></span>`;
+    warningDot = `<span class="human-badge__mini-dot" style="background:#DC2626"></span>`;
+  }
+  
+  if (profile.hiCertified) {
+    return `
+      <div class="human-badge__mini" style="background:linear-gradient(135deg,#C49B2015,#C49B2005);border:1px solid #C49B2040;border-radius:14px">
+        <span style="color:#C49B20;font-size:20px;font-weight:900;letter-spacing:-1px">HI.</span>
+        <span style="color:#C49B20;font-size:9px;font-weight:600;opacity:0.8">balanced</span>
+      </div>
+    `;
   }
   
   return `
     <div class="human-badge__mini">
-      ${profile.hiCertified ? '<span style="color:#C49B20;font-size:14px;margin-right:2px">✦</span>' : ''}
-      <span style="color:${scoreColor};font-size:22px;font-weight:900">${profile.composite}</span>
+      <span style="color:#1B3A5C;font-size:22px;font-weight:900">${profile.composite}</span>
       <span style="color:#999;font-size:12px;margin:0 1px">/</span>
       <span style="color:#999;font-size:12px">${threshold}</span>
       ${warningDot}
