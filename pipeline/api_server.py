@@ -404,7 +404,7 @@ def build_index():
     
     # Generate/refresh HUMAN 100 from live data (always use ALL_COMPANIES for freshness)
     eligible = [c for c in ALL_COMPANIES if c.get("composite", 0) > 0 and not c.get("humanwashing_flags")]
-    eligible.sort(key=lambda x: x.get("composite", 0), reverse=True)
+    eligible.sort(key=lambda x: (x.get("hi_balanced", False), x.get("composite", 0)), reverse=True)
     HUMAN100 = []
     for rank, c in enumerate(eligible[:100], 1):
         entry = {
@@ -453,6 +453,10 @@ def build_index():
                         item["hi_balanced"] = True
                         src = balanced_tickers.get(t) or balanced_companies.get(n, {})
                         item["composite"] = src.get("composite", item.get("composite", 0))
+                    else:
+                        # Ensure defaults exist for all items
+                        item.setdefault("hi_balanced", False)
+                        item.setdefault("composite", 0)
     except Exception as e:
         print(f"  Warning: hi_balanced injection error: {e}")
     print(f"  {len(ALL_COMPANIES)} companies | {len(COMPANIES)} domains | {len(TICKERS)} tickers")
