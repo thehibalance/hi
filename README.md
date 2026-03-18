@@ -70,7 +70,28 @@ No other framework does what HI. does. Here's why.
 
 - **Edge-to-cloud native.** A browser extension built on deterministic, human-engineered code (zero AI, zero black boxes) paired with a cloud scoring engine. No other scoring framework ships a consumer-side edge node.
 - **AI Toggle + Equalizer.** Consumers filter companies across all five dimensions. Strict mode hides AI-heavy companies. No other framework gives consumers this control.
-- **AI improves inputs, never the formula.** NLP on SEC filings, ML humanwashing detection, predictive decay — all toggle OFF by default. The telescope gets sharper. It doesn't move the stars.
+- **AI improves inputs, never the formula.** The AI Enhancement Layer sharpens 34 data sources — it never changes the scoring formula. Toggle OFF by default. The telescope gets sharper. It doesn't move the stars.
+
+### The AI Enhancement Layer (Coming)
+
+The deterministic engine covers all 24 sub-signals without AI. The AI layer makes them sharper:
+
+| Capability | What AI Adds | Toggle |
+|-----------|-------------|--------|
+| **SEC Filing NLP** | Extract AI displacement language, layoff signals, ethics red flags from 10-K/10-Q text | OFF by default |
+| **Earnings Call Analysis** | Parse quarterly call transcripts for workforce intent, AI adoption signals | OFF by default |
+| **Job Posting NLP** | Deep analysis of what AI roles replace, not just counting them | OFF by default |
+| **ML Humanwashing Detection** | Pattern detection across disclosures vs behavior at scale | OFF by default |
+| **Empathy Simulation Detection** | Response timing, language variability, contextual depth analysis | OFF by default |
+| **Corporate Content Analysis** | Detect stock photos vs real employees, AI-generated vs human copy | OFF by default |
+| **Predictive HI Balanced** | Forecast which companies are 1-2 quarters from earning/losing ✦ | OFF by default |
+| **Supply Chain Mapping** | AI maps supplier networks from filings + news for HUMAN Contagion | OFF by default |
+| **Sentiment Fusion** | Combine Glassdoor + Reddit + news sentiment into unified empathy signal | OFF by default |
+| **Real-Time Event Detection** | Monitor news/social for score-relevant events between quarterly runs | OFF by default |
+| **Anomaly Detection** | ML-powered detection of score manipulation, gaming, data poisoning | Always on (defensive) |
+| **Cross-Lingual Analysis** | Score non-US companies using filings in other languages | OFF by default |
+
+Every AI capability is a toggle. The edge node stays deterministic. The formula stays deterministic. AI only touches the inputs.
 
 ### The 10 HUMAN Features (All Patent-Pending)
 
@@ -140,9 +161,16 @@ HI. unifies all five dimensions into a single, consumer-facing framework with hu
 │      AI ENHANCEMENT LAYER         │
 │     (Toggle: OFF by default)      │
 │                                   │
-│  • NLP on SEC filings             │
+│  • NLP on SEC filings + earnings  │
 │  • ML humanwashing detection      │
-│  • Predictive decay               │
+│  • Empathy simulation analysis    │
+│  • Job posting deep analysis      │
+│  • Predictive HI Balanced         │
+│  • Supply chain mapping           │
+│  • Sentiment fusion               │
+│  • Real-time event detection      │
+│  • Anomaly detection (defensive)  │
+│  • Cross-lingual analysis         │
 │                                   │
 │  "AI may improve the quality      │
 │   of inputs. AI may never         │
