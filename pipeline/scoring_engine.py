@@ -399,6 +399,7 @@ def compute_composite(D_H, D_U, D_M, D_A, D_N):
     triggering_dimension = None
     dims = {"H": D_H, "U": D_U, "M": D_M, "A": D_A, "N": D_N}
     min_dim = min(dims.values())
+    below_42 = sum(1 for v in dims.values() if v < 42)
     
     # Hard floor: any dimension < 10 caps composite at 40
     if min_dim < 10:
@@ -406,26 +407,31 @@ def compute_composite(D_H, D_U, D_M, D_A, D_N):
         floor_triggered = True
         triggering_dimension = min(dims, key=dims.get)
     
-    # Balance floor: any dimension < 42 caps grade at C (composite capped at 59)
-    elif min_dim < 42:
+    # Balance floor: 2+ dimensions below 42 = F (cap at 59)
+    elif below_42 >= 2:
         balance_floor_triggered = True
         triggering_dimension = min(dims, key=dims.get)
         if composite > 59:
             composite = 59.0
     
+    # Balance floor: 1 dimension below 42 = D cap (cap at 69)
+    elif below_42 == 1:
+        balance_floor_triggered = True
+        triggering_dimension = min(dims, key=dims.get)
+        if composite > 69:
+            composite = 69.0
+    
     return round_score(composite), floor_triggered, balance_floor_triggered, triggering_dimension
 
 def get_hi_grade(composite, verified=False):
-    if composite >= 90 and verified:
-        return "HI Certified", "Humans and tech, in harmony. This is what balance looks like."
-    elif composite >= 90:
-        return "A", "AI does the math. Humans do the handshakes. Nailed it."
+    if composite >= 90:
+        return "A", "Humans and tech, in harmony. This is what balance looks like."
     elif composite >= 80:
-        return "A", "AI does the math. Humans do the handshakes. Nailed it."
+        return "B", "AI does the math. Humans do the handshakes. Nailed it."
+    elif composite >= 70:
+        return "C", "Humans and machines, learning to share the remote."
     elif composite >= 60:
-        return "B", "Humans and machines, learning to share the remote."
-    elif composite >= 42:
-        return "C", "42. The answer to everything. Now what's the question?"
+        return "D", "The balance is off. Time to course correct."
     else:
         return "F", "Don't panic. Every journey starts somewhere."
 
@@ -665,7 +671,7 @@ def main():
     for s in all_scores:
         g = s.get("hi_grade", "?")
         grades[g] = grades.get(g, 0) + 1
-    for g in ["HI Certified", "A", "B", "C", "F"]:
+    for g in ["A", "B", "C", "D", "F"]:
         if g in grades: print(f"  {g}: {grades[g]}")
 
     source_counts = {}
