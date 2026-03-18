@@ -573,11 +573,11 @@ function openFullPanel(profile, filterResult, prefs) {
 
     <div class="human-panel__footer">
       <div>Find the HI balance.</div>
-      <div class="human-panel__footer-sub">thehibalance.org · The Deep Thought Foundation</div>
+      <div class="human-panel__footer-sub">thehibalance.org · The HI Balance</div>
     </div>
 
     <div class="human-panel__disclaimer">
-      HI Grades are estimated from public data. Not financial or legal advice. Patent pending.
+      HI Certified threshold (currently ${profile.certificationThreshold || 62}) is adaptive — recalculated quarterly as mean + 2 standard deviations of the scored market. As companies improve, the bar rises. The math decides, not us. All 10 patent-pending gates must pass. Scores are estimated from public data. Not financial or legal advice.
     </div>
   `;
 
@@ -775,11 +775,11 @@ function openDetailPanel(profile, dim) {
 
     <div class="human-panel__footer">
       <div>Find the HI balance.</div>
-      <div class="human-panel__footer-sub">thehibalance.org · The Deep Thought Foundation</div>
+      <div class="human-panel__footer-sub">thehibalance.org · The HI Balance</div>
     </div>
 
     <div class="human-panel__disclaimer">
-      HI Grades are estimated from public data and are not financial, legal, or investment advice. Scores reflect publicly available information and may not capture all aspects of a company's operations. Not affiliated with or endorsed by any scored company. Methodology: HUMAN Grade Spec v1.0 (Apache 2.0). Patent pending.
+      HI Certified threshold is adaptive — recalculated quarterly as mean + 2 standard deviations. As companies improve, the bar rises. All 10 patent-pending gates must pass. Scores are estimated from public data. Not financial or legal advice.
     </div>
   `;
 
