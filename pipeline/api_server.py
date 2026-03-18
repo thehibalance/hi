@@ -55,18 +55,41 @@ DATA_DIR = Path("data/scores")
 
 
 def get_grade(score):
-    if score >= 90: return "A"
-    if score >= 80: return "B"
-    if score >= 70: return "C"
-    if score >= 60: return "D"
-    return "F"
+    """Score-only system. Returns 'HI Certified' or 'scored'."""
+    return "scored"
+
+def compute_hi_certified_threshold(companies):
+    """Adaptive threshold: mean + 2 SD of all composites."""
+    composites = [c.get("composite", 0) for c in companies if c.get("composite", 0) > 0]
+    if len(composites) < 10:
+        return 62  # Default
+    import math
+    mean = sum(composites) / len(composites)
+    variance = sum((x - mean) ** 2 for x in composites) / len(composites)
+    stdev = math.sqrt(variance)
+    return round(mean + 2 * stdev, 1)
+
+def check_hi_certified(company, threshold):
+    """Check all 10 gates for HI Certified status."""
+    dims = [company.get("D_H", 0), company.get("D_U", 0), company.get("D_M", 0), company.get("D_A", 0), company.get("D_N", 0)]
+    below_42 = sum(1 for d in dims if d < 42)
+    gates = {
+        "composite": company.get("composite", 0) >= threshold,
+        "all_dims_above_42": below_42 == 0,
+        "no_humanwashing": len(company.get("humanwashing_flags", [])) == 0,
+        "decay_below_30": company.get("decay_index", 0) < 30,
+        "shield_above_50": company.get("shield_score", 50) >= 50,
+        "no_esg_washing": not company.get("esg_washing", False),
+        "not_negative_leader": not company.get("negative_contagion_leader", False),
+        "no_critical_gaps": not company.get("critical_genome_gaps", False),
+        "not_under_pressure": not company.get("under_collective_pressure", False),
+        "no_active_alerts": company.get("decay_level", "stable") != "critical",
+    }
+    return all(gates.values()), gates
 
 SATIRES = {
-    "A": "Humans and tech, in harmony. This is what balance looks like.",
-    "B": "AI does the math. Humans do the handshakes. Nailed it.",
-    "C": "Humans and machines, learning to share the remote.",
-    "D": "The balance is off. Time to course correct.",
-    "F": "Don't panic. Every journey starts somewhere.",
+    "HI Certified": "Humans and tech, in harmony. This is what balance looks like.",
+    "scored": "",
 }
 
 
@@ -76,22 +99,20 @@ def seed_to_record(s):
     below_42 = sum(1 for d in dims if d < 42)
     if min(dims) < 10:
         composite = min(composite, 40.0)
-    grade = get_grade(composite)
-    # Balance floor: 1 below 42 = D cap, 2+ below 42 = F
+    # Balance floor: 2+ below 42 = cap 41, 1 below 42 = cap 49
     balance_floor = False
-    if below_42 >= 2 and grade != "F":
-        grade = "F"
-        composite = min(composite, 59)
+    if below_42 >= 2:
+        composite = min(composite, 41)
         balance_floor = True
-    elif below_42 == 1 and grade in ("A", "B", "C"):
-        grade = "D"
-        composite = min(composite, 69)
+    elif below_42 == 1:
+        composite = min(composite, 49)
         balance_floor = True
     return {
         "company": s["name"], "ticker": None,
         "domains": s.get("domains", []), "tags": s.get("tags", []),
         "D_H": s["h"], "D_U": s["u"], "D_M": s["m"], "D_A": s["a"], "D_N": s["n"],
-        "composite": composite, "hi_grade": grade, "satire": SATIRES.get(grade, ""),
+        "composite": composite, "hi_grade": "scored", "hi_certified": False,
+        "satire": "",
         "floor_triggered": min(dims) < 10,
         "balance_floor": balance_floor,
         "confidence": "Estimated", "data_sources": ["Manual Scoring"],

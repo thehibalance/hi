@@ -170,7 +170,7 @@ function createBadge(profile, filterResult, prefs) {
  * Build the mini pill HTML — grade letter + score + warning dot.
  */
 function buildMiniHTML(profile) {
-  const tierColor = profile.tier.color;
+  const scoreColor = profile.hiCertified ? '#C49B20' : '#1B3A5C';
   const hasWarning = profile.decay_level === 'critical' || profile.decay_level === 'warning';
   const hasDecay = profile.decay_level !== 'stable' && profile.decay_index > 0;
   const hasFloor = profile.balance_floor;
@@ -186,8 +186,8 @@ function buildMiniHTML(profile) {
   
   return `
     <div class="human-badge__mini">
-      <span class="human-badge__mini-grade" style="color:${tierColor}">${profile.letter}</span>
-      <span class="human-badge__mini-score" style="color:${tierColor}">${profile.composite}</span>
+      ${profile.hiCertified ? '<span class="human-badge__mini-certified" style="color:#C49B20;font-size:14px">✦</span>' : ''}
+      <span class="human-badge__mini-grade" style="color:${scoreColor};font-size:24px;font-weight:900">${profile.composite}</span>
       ${warningDot}
     </div>
   `;
@@ -417,9 +417,8 @@ function openFullPanel(profile, filterResult, prefs) {
   panel.id = 'human-detail-panel';
   panel.className = 'human-panel';
 
-  const tierColor = profile.tier.color;
-  const decayColors = { critical: '#DC2626', warning: '#D97706', watch: '#EA580C', stable: '#16A34A' };
-  
+  const scoreColor = profile.hiCertified ? '#C49B20' : '#1B3A5C';
+
   // Build all dimensions with inline insights
   const allDimsHTML = HumanEngine.DIMENSIONS.map(d => {
     const s = profile.dimensions[d] || 0;
@@ -482,14 +481,15 @@ function openFullPanel(profile, filterResult, prefs) {
     </div>
 
     <div class="human-panel__company">
-      <div class="human-panel__grade" style="color: ${tierColor}">${profile.letter}</div>
+      <div class="human-panel__grade" style="color: ${scoreColor};font-size:36px">${profile.hiCertified ? '✦ ' : ''}${profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
-        <div class="human-panel__tier" style="color: ${tierColor}">HI Grade: ${profile.grade} · ${profile.composite}</div>
+        <div class="human-panel__tier" style="color: ${scoreColor}">${profile.hiCertified ? 'HI Certified' : 'HI Grade™'}</div>
         <div class="human-panel__brand">Find the HI balance.</div>
       </div>
     </div>
-    <div class="human-panel__satire">"${profile.tier.satire}"</div>
+    ${profile.hiCertified ? '<div style="padding:4px 16px;font-size:11px;color:#C49B20;font-weight:600">✦ All 10 gates passed · In balance</div>' : ''}
+    ${profile.tier.satire ? `<div class="human-panel__satire">"${profile.tier.satire}"</div>` : ''}
 
     <div style="padding:0 16px">
       <div style="font-size:11px;font-weight:700;color:#1B3A5C;letter-spacing:0.5px;margin-bottom:8px">DIMENSIONS</div>
@@ -660,14 +660,14 @@ function openDetailPanel(profile, dim) {
     </div>
 
     <div class="human-panel__company">
-      <div class="human-panel__grade" style="color: ${tierColor}">${profile.letter}</div>
+      <div class="human-panel__grade" style="color: ${profile.hiCertified ? '#C49B20' : '#1B3A5C'};font-size:36px">${profile.hiCertified ? '✦ ' : ''}${profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
-        <div class="human-panel__tier" style="color: ${tierColor}">HI Grade: ${profile.grade} · ${profile.composite}</div>
+        <div class="human-panel__tier" style="color: ${profile.hiCertified ? '#C49B20' : '#1B3A5C'}">${profile.hiCertified ? 'HI Certified' : 'HI Grade™'}</div>
         <div class="human-panel__brand">Find the HI balance.</div>
       </div>
     </div>
-    <div class="human-panel__satire">"${profile.tier.satire}"</div>
+    ${profile.tier.satire ? `<div class="human-panel__satire">"${profile.tier.satire}"</div>` : ''}
 
     <div class="human-panel__dim-detail">
       <div class="human-panel__dim-header">

@@ -407,33 +407,56 @@ def compute_composite(D_H, D_U, D_M, D_A, D_N):
         floor_triggered = True
         triggering_dimension = min(dims, key=dims.get)
     
-    # Balance floor: 2+ dimensions below 42 = F (cap at 59)
+    # Balance floor: 2+ dimensions below 42 = F (cap at 41)
     elif below_42 >= 2:
         balance_floor_triggered = True
         triggering_dimension = min(dims, key=dims.get)
-        if composite > 59:
-            composite = 59.0
+        if composite > 41:
+            composite = 41.0
     
-    # Balance floor: 1 dimension below 42 = D cap (cap at 69)
+    # Balance floor: 1 dimension below 42 = D cap (cap at 49)
     elif below_42 == 1:
         balance_floor_triggered = True
         triggering_dimension = min(dims, key=dims.get)
-        if composite > 69:
-            composite = 69.0
+        if composite > 49:
+            composite = 49.0
     
     return round_score(composite), floor_triggered, balance_floor_triggered, triggering_dimension
 
 def get_hi_grade(composite, verified=False):
-    if composite >= 90:
-        return "A", "Humans and tech, in harmony. This is what balance looks like."
-    elif composite >= 80:
-        return "B", "AI does the math. Humans do the handshakes. Nailed it."
-    elif composite >= 70:
-        return "C", "Humans and machines, learning to share the remote."
-    elif composite >= 60:
-        return "D", "The balance is off. Time to course correct."
-    else:
-        return "F", "Don't panic. Every journey starts somewhere."
+    """Score-only system. All companies return 'scored'. HI Certified is checked separately."""
+    return "scored", ""
+
+
+def compute_hi_certified_threshold(all_scores):
+    """Adaptive threshold: mean + 2 SD of all composites."""
+    composites = [s.get("composite", 0) for s in all_scores if s.get("composite", 0) > 0]
+    if len(composites) < 10:
+        return 62
+    import math
+    mean = sum(composites) / len(composites)
+    variance = sum((x - mean) ** 2 for x in composites) / len(composites)
+    stdev = math.sqrt(variance)
+    return round(mean + 2 * stdev, 1)
+
+
+def check_hi_certified(record, threshold):
+    """Check all 10 gates for HI Certified status."""
+    dims = [record.get("D_H", 0), record.get("D_U", 0), record.get("D_M", 0), record.get("D_A", 0), record.get("D_N", 0)]
+    below_42 = sum(1 for d in dims if d < 42)
+    gates = {
+        "composite": record.get("composite", 0) >= threshold,
+        "all_dims_above_42": below_42 == 0,
+        "no_humanwashing": len(record.get("humanwashing_flags", [])) == 0,
+        "decay_below_30": record.get("decay_index", 0) < 30,
+        "shield_above_50": record.get("shield_score", 50) >= 50,
+        "no_esg_washing": not record.get("esg_washing", False),
+        "not_negative_leader": not record.get("negative_contagion_leader", False),
+        "no_critical_gaps": not record.get("critical_genome_gaps", False),
+        "not_under_pressure": not record.get("under_collective_pressure", False),
+        "no_active_alerts": record.get("decay_level", "stable") != "critical",
+    }
+    return all(gates.values()), gates
 
 
 def score_company(company_name, ticker="", sec_data=None, epa_data=None,

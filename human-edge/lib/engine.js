@@ -28,27 +28,14 @@ const HumanEngine = {
   FLOOR_CAP: 40,           // ...cap composite at this value
 
   TIERS: [
-    { min: 90, max: 100, grade: "A", name: "HI Certified", letter: "A",
-      stars: "★★★★★", color: "#C49B20", requiresVerification: true,
-      satire: "Humans and tech, in harmony. This is what balance looks like.",
-      badge: "HI Certified — this is what balance looks like." },
-    { min: 80, max: 89,  grade: "B", name: "Excellent", letter: "B",
-      stars: "★★★★☆", color: "#2e8b57", requiresVerification: false,
-      satire: "AI does the math. Humans do the handshakes. Nailed it.",
-      badge: "Excellent — nailed the balance." },
-    { min: 70, max: 79,  grade: "C", name: "Good", letter: "C",
-      stars: "★★★☆☆", color: "#4a90d9", requiresVerification: false,
-      satire: "Humans and machines, learning to share the remote.",
-      badge: "Good — learning to share the remote." },
-    { min: 60, max: 69,  grade: "D", name: "Needs Work", letter: "D",
-      stars: "★★☆☆☆", color: "#E07020", requiresVerification: false,
-      satire: "The balance is off. Time to course correct.",
-      badge: "The balance is off." },
-    { min: 0,  max: 59,  grade: "F", name: "Failing", letter: "F",
-      stars: "★☆☆☆☆", color: "#6B7280", requiresVerification: false,
-      satire: "Don't panic. Every journey starts somewhere.",
-      badge: "Don't panic." },
+    { min: 0, max: 100, grade: "scored", name: "Scored", letter: "",
+      stars: "", color: "#1B3A5C", requiresVerification: false,
+      satire: "",
+      badge: "" },
   ],
+
+  HI_CERTIFIED_COLOR: "#C49B20",
+  SCORE_COLOR: "#1B3A5C",
 
   DIMENSIONS: ['h', 'u', 'm', 'a', 'n'],
 
@@ -100,31 +87,44 @@ const HumanEngine = {
    * @returns {Object} tier object with grade, satire, badge, etc.
    */
   classifyTier(composite, verified = false) {
-    for (const tier of this.TIERS) {
-      if (composite >= tier.min && composite <= tier.max) {
-        // HI Certified tier requires verification — cap at A if not verified
-        if (tier.requiresVerification && !verified) {
-          return {
-            ...this.TIERS[1], // Return "A" tier instead
-            cappedFromCertified: true,
-            cappedNote: "Scores above 90 but has not completed HI Certification. Displayed as A until verified."
-          };
-        }
-        return { ...tier, cappedFromCertified: false };
-      }
-    }
-    return { ...this.TIERS[this.TIERS.length - 1], cappedFromCertified: false };
+    return { ...this.TIERS[0], cappedFromCertified: false };
+  },
+
+  /**
+   * Check if a company passes all 10 HI Certified gates.
+   * Adaptive threshold: mean + 2 SD, recalculated from market data.
+   */
+  checkHICertified(company, composite, hwFlags, marketStats) {
+    const dims = this.DIMENSIONS.map(d => company[d] || 0);
+    const belowCount = dims.filter(s => s < 42).length;
+    
+    // Default threshold if no market stats available
+    const threshold = (marketStats && marketStats.hiCertifiedThreshold) || 62;
+    
+    const gates = {
+      composite: composite >= threshold,
+      allDimsAbove42: belowCount === 0,
+      noHumanwashing: hwFlags.length === 0,
+      decayBelow30: (company.decay_index || 0) < 30,
+      shieldAbove50: (company.shield_score || 50) >= 50,
+      noESGWashing: !(company.esg_washing || false),
+      notNegativeLeader: !(company.negative_contagion_leader || false),
+      noCriticalGaps: !(company.critical_genome_gaps || false),
+      notUnderPressure: !(company.under_collective_pressure || false),
+      noActiveAlerts: (company.decay_level || 'stable') !== 'critical',
+    };
+    
+    const passed = Object.values(gates).every(v => v);
+    return { certified: passed, gates, threshold };
   },
 
   /**
    * Get full HI Grade profile for a company.
    * @param {Object} company - Company object from database
-   * @returns {Object} Complete score profile with grade, satire, etc.
+   * @returns {Object} Complete score profile
    */
-  getProfile(company) {
+  getProfile(company, marketStats) {
     const { composite, floorTriggered, floorDimension } = this.computeComposite(company);
-    const verified = company.confidence === "verified";
-    let tier = this.classifyTier(composite, verified);
     const hwFlags = this.detectHumanwashing(company);
 
     // Balance floor rule: dimensions below 42
@@ -134,33 +134,37 @@ const HumanEngine = {
     const minDim = this.DIMENSIONS[scores.indexOf(minScore)];
     let balanceFloor = false;
     let balanceDim = null;
+    let adjustedComposite = composite;
     
     if (belowCount >= 2) {
-      // 2+ dimensions below 42 = F. No balance.
-      tier = this.TIERS.find(t => t.grade === 'F');
       balanceFloor = true;
       balanceDim = minDim;
-    } else if (belowCount === 1 && (tier.grade === 'A' || tier.grade === 'B' || tier.grade === 'C')) {
-      // 1 dimension below 42 = capped at D
-      tier = this.TIERS.find(t => t.grade === 'D');
+      adjustedComposite = Math.min(composite, 41);
+    } else if (belowCount === 1) {
       balanceFloor = true;
       balanceDim = minDim;
+      adjustedComposite = Math.min(composite, 49);
     }
+
+    // Check HI Certified gates
+    const certification = this.checkHICertified(company, adjustedComposite, hwFlags, marketStats);
+    const isCertified = certification.certified;
+    const scoreColor = isCertified ? this.HI_CERTIFIED_COLOR : this.SCORE_COLOR;
 
     return {
       id: company.id,
       name: company.name,
       dimensions: {
-        h: company.h,
-        u: company.u,
-        m: company.m,
-        a: company.a,
-        n: company.n
+        h: company.h, u: company.u, m: company.m, a: company.a, n: company.n
       },
-      composite: balanceFloor && belowCount >= 2 ? Math.min(composite, 59) : balanceFloor ? Math.min(composite, 69) : composite,
-      grade: tier.grade,
-      letter: tier.letter,
-      tier,
+      composite: adjustedComposite,
+      hiCertified: isCertified,
+      certificationGates: certification.gates,
+      certificationThreshold: certification.threshold,
+      grade: isCertified ? "HI Certified" : "scored",
+      letter: isCertified ? "✦" : "",
+      scoreColor,
+      tier: { color: scoreColor, satire: isCertified ? "Humans and tech, in harmony. This is what balance looks like." : "" },
       floorTriggered,
       floorDimension,
       balanceFloor,
