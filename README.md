@@ -119,18 +119,32 @@ Three layers. One rule: **the AI makes the telescope sharper — it doesn't move
 
 ---
 
-## The HI Grade™ Scale
+## The HI Grade™
 
+> *No letters. Just the number. And one badge that's earned, never bought.*
 
-| Grade | Score | Satire |
-|-------|-------|--------|
-| **A (HI Certified)** | 90-100 | Humans and tech, in harmony. This is what balance looks like. |
-| **B** | 80-89 | AI does the math. Humans do the handshakes. Nailed it. |
-| **C** | 70-79 | Humans and machines, learning to share the remote. |
-| **D** | 60-69 | The balance is off. Time to course correct. |
-| **F** | 0-59 | Don't panic. Every journey starts somewhere. |
+Every company gets a **score from 0 to 100**. Navy by default. Gold for HI Certified.
 
-**Balance Floor Rule**: 1 dimension below 42 caps the grade at D. 2+ dimensions below 42 = F. *You can't claim balance when any dimension is below the answer to life and everything.*
+**✦ HI Certified** — Earned by passing all 10 patent-pending gates:
+
+1. Composite ≥ adaptive threshold (mean + 2 SD, currently ~62)
+2. All 5 HUMAN dimensions ≥ 42
+3. No humanwashing flags (HUMAN Watermark)
+4. Decay index < 30 (HUMAN Decay)
+5. Shield score ≥ 50 (HUMAN Shield)
+6. No ESG washing flag (HUMAN Lens)
+7. Not negative industry leader (HUMAN Contagion)
+8. No critical genome gaps (HUMAN Genome)
+9. Not under collective pressure (HUMAN Wave)
+10. No critical alerts (HUMAN Heartbeat)
+
+The HI Certified threshold is adaptive — recalculated quarterly as mean + 2 standard deviations of the scored market. As companies improve, the bar rises. **The math decides, not us.**
+
+*The first certification that certifies itself.*
+
+> *42 — the answer to life, the universe, and everything. Also the minimum per dimension to be in balance.*
+
+**Balance Floor Rule**: 1 dimension below 42 → composite capped. 2+ dimensions below 42 → no balance. *You can't claim balance when any dimension is failing.*
 
 ## The HUMAN Framework
 
