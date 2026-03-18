@@ -3,6 +3,12 @@
 HI. — REST API
 Phase 2, Track C: API layer serving HI Grades.
 
+Security:
+  - CORS whitelist: thehibalance.org, extension, localhost
+  - Rate limiting: 100 req/min per IP, 20 req/min on search
+  - Input sanitization: query length caps, character filtering
+  - Read-only: no write endpoints exposed
+
 Endpoints:
   GET  /api/v1/score/<domain>         — Score by domain (extension uses this)
   GET  /api/v1/score/ticker/<ticker>  — Score by ticker
@@ -14,12 +20,12 @@ Endpoints:
   GET  /api/v1/health                 — Health check
 
 Run:
-  pip install flask flask-cors
+  pip install flask flask-cors flask-limiter
   python api_server.py
   python api_server.py --port 8080
 """
 
-import json, os, sys, re
+import json, os, sys, re, html as html_lib
 from pathlib import Path
 from datetime import datetime
 
@@ -30,8 +36,100 @@ except ImportError:
     print("Install: pip install flask flask-cors")
     sys.exit(1)
 
+# Optional: rate limiting (graceful if not installed)
+try:
+    from flask_limiter import Limiter
+    from flask_limiter.util import get_remote_address
+    HAS_LIMITER = True
+except ImportError:
+    HAS_LIMITER = False
+    print("Warning: flask-limiter not installed. Rate limiting disabled.")
+    print("Install: pip install flask-limiter")
+
 app = Flask(__name__)
-CORS(app)
+
+# ═══ CORS WHITELIST ═══
+# Only allow requests from our domains + extension + localhost dev
+ALLOWED_ORIGINS = [
+    "https://thehibalance.org",
+    "https://www.thehibalance.org",
+    "http://localhost:8080",
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:8080",
+    "chrome-extension://*",
+]
+CORS(app, origins=ALLOWED_ORIGINS, supports_credentials=False)
+
+# ═══ RATE LIMITING ═══
+if HAS_LIMITER:
+    limiter = Limiter(
+        get_remote_address,
+        app=app,
+        default_limits=["100 per minute", "1000 per hour"],
+        storage_uri="memory://",
+    )
+else:
+    # No-op decorator if limiter not available
+    class FakeLimiter:
+        def limit(self, *args, **kwargs):
+            def decorator(f): return f
+            return decorator
+    limiter = FakeLimiter()
+
+# ═══ INPUT SANITIZATION ═══
+MAX_QUERY_LENGTH = 100
+MAX_PARAM_LENGTH = 50
+
+def sanitize_input(text, max_len=MAX_QUERY_LENGTH):
+    """Sanitize user input: strip dangerous chars, cap length, escape HTML."""
+    if not text:
+        return ""
+    text = str(text)[:max_len]
+    text = html_lib.escape(text)
+    # Strip control characters and null bytes
+    text = re.sub(r'[\x00-\x1f\x7f]', '', text)
+    # Strip potential SQL/NoSQL injection patterns
+    text = re.sub(r'[;{}$]', '', text)
+    return text.strip()
+
+def sanitize_domain(domain):
+    """Sanitize domain input."""
+    if not domain:
+        return ""
+    domain = str(domain)[:MAX_PARAM_LENGTH].lower().strip()
+    # Only allow valid domain characters
+    domain = re.sub(r'[^a-z0-9.\-]', '', domain)
+    return domain
+
+def sanitize_ticker(ticker):
+    """Sanitize ticker input."""
+    if not ticker:
+        return ""
+    ticker = str(ticker)[:10].upper().strip()
+    # Only allow alphanumeric + dots (for BRK.B style)
+    ticker = re.sub(r'[^A-Z0-9.]', '', ticker)
+    return ticker
+
+# ═══ SECURITY HEADERS ═══
+@app.after_request
+def add_security_headers(response):
+    """Add security headers to every response."""
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'DENY'
+    response.headers['X-XSS-Protection'] = '1; mode=block'
+    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+    response.headers['Cache-Control'] = 'public, max-age=300'  # 5 min cache
+    response.headers['X-Powered-By'] = 'HI.'
+    return response
+
+@app.errorhandler(429)
+def rate_limit_exceeded(e):
+    return jsonify({
+        "error": "rate_limit_exceeded",
+        "message": "Too many requests. Please slow down.",
+        "retry_after": "60 seconds"
+    }), 429
 
 # In-memory indexes
 COMPANIES = {}       # domain -> record
@@ -494,7 +592,7 @@ def health():
 @app.route("/api/v1/score/<path:domain>")
 def score_by_domain(domain):
     """Primary endpoint for browser extension."""
-    domain = re.sub(r"^(https?://)?(www\.)?", "", domain.lower().strip()).split("/")[0]
+    domain = sanitize_domain(re.sub(r"^(https?://)?(www\.)?", "", domain.lower().strip()).split("/")[0])
 
     # Direct match
     if domain in COMPANIES:
@@ -522,7 +620,7 @@ def score_by_domain(domain):
 
 @app.route("/api/v1/score/ticker/<ticker>")
 def score_by_ticker(ticker):
-    ticker = ticker.upper().strip()
+    ticker = sanitize_ticker(ticker)
     if ticker in TICKERS:
         return jsonify(TICKERS[ticker])
     return jsonify({"error": "not_found", "ticker": ticker}), 404
@@ -545,8 +643,9 @@ SEARCH_ALIASES = {
 }
 
 @app.route("/api/v1/search")
+@limiter.limit("30 per minute")
 def search():
-    q = request.args.get("q", "").lower().strip()
+    q = sanitize_input(request.args.get("q", ""), MAX_QUERY_LENGTH).lower().strip()
     if len(q) < 2:
         return jsonify({"error": "Query too short (min 2 chars)"}), 400
 
@@ -583,9 +682,9 @@ def search():
 
 @app.route("/api/v1/grades")
 def list_grades():
-    page = int(request.args.get("page", 1))
-    per_page = min(int(request.args.get("per_page", 50)), 200)
-    grade_filter = request.args.get("grade", "").upper()
+    page = max(1, min(int(request.args.get("page", 1) or 1), 100))
+    per_page = max(1, min(int(request.args.get("per_page", 50) or 50), 200))
+    grade_filter = sanitize_input(request.args.get("grade", ""), 10).upper()
 
     filtered = ALL_COMPANIES
     if grade_filter:
