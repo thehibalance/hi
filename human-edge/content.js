@@ -183,6 +183,7 @@ function buildMiniHTML(profile) {
   const hasWarning = profile.decay_level === 'critical' || profile.decay_level === 'warning';
   const hasDecay = profile.decay_level !== 'stable' && profile.decay_index > 0;
   const hasFloor = profile.balance_floor;
+  const scoreColor = HumanEngine.getScoreColor(profile.composite, threshold);
   
   let warningDot = '';
   if (hasWarning) {
@@ -195,18 +196,16 @@ function buildMiniHTML(profile) {
   
   if (profile.hiBalanced) {
     return `
-      <div class="human-badge__mini" style="background:linear-gradient(135deg,#C49B2015,#C49B2005);border:1px solid #C49B2040;border-radius:14px">
-        <span style="color:#C49B20;font-size:20px;font-weight:900;letter-spacing:-1px">HI.</span>
-        <span style="color:#C49B20;font-size:9px;font-weight:600;opacity:0.8">balanced</span>
+      <div class="human-badge__mini" style="background:linear-gradient(135deg,#C49B2015,#C49B2005);border:1px solid #C49B2040;border-radius:14px;display:flex;flex-direction:column;align-items:center;padding:6px 12px">
+        <span style="color:#C49B20;font-size:18px;font-weight:900;letter-spacing:-1px;line-height:1">HI.</span>
+        <span style="color:#C49B20;font-size:8px;font-weight:600;opacity:0.8;line-height:1">balanced</span>
       </div>
     `;
   }
   
   return `
     <div class="human-badge__mini">
-      <span style="color:#1B3A5C;font-size:22px;font-weight:900">${profile.composite}</span>
-      <span style="color:#999;font-size:12px;margin:0 1px">/</span>
-      <span style="color:#999;font-size:12px">${threshold}</span>
+      <span style="color:${scoreColor};font-size:22px;font-weight:900">${profile.composite}</span>
       ${warningDot}
     </div>
   `;
@@ -429,6 +428,7 @@ const DIM_DESCRIPTIONS = {
  * Open the combined full panel — all data in one view.
  */
 function openFullPanel(profile, filterResult, prefs) {
+  try {
   const existing = document.getElementById('human-detail-panel');
   if (existing) existing.remove();
 
@@ -473,6 +473,7 @@ function openFullPanel(profile, filterResult, prefs) {
   // Heartbeat/decay section
   let decayHTML = '';
   if (profile.decay_level !== 'stable' && profile.decay_index > 0) {
+    const decayColors = {'critical':'#DC2626','warning':'#DC2626','watch':'#D97706','stable':'#16A34A'};
     const dc = decayColors[profile.decay_level] || '#6B7280';
     decayHTML = `
       <div style="background:${dc}10;border:1px solid ${dc}30;border-radius:8px;padding:10px 12px;margin-top:8px">
@@ -681,6 +682,7 @@ function openFullPanel(profile, filterResult, prefs) {
     if (eq) eq.style.display = panelToggle.checked ? 'none' : 'block';
     try { chrome.storage.sync.set(currentPrefs); } catch (e) {}
   });
+  } catch(err) { console.error('HI. panel error:', err); }
 }
 
 /**
