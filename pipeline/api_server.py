@@ -59,8 +59,14 @@ def get_grade(score):
     return "scored"
 
 def compute_hi_balanced_threshold(companies):
-    """Adaptive threshold: mean + 2 SD of all composites."""
-    composites = [c.get("composite", 0) for c in companies if c.get("composite", 0) > 0]
+    """Adaptive threshold: mean + 2 SD of pipeline-scored composites only (excludes hand-scored seed data)."""
+    composites = [c.get("composite", 0) for c in companies 
+                  if c.get("composite", 0) > 0 
+                  and c.get("data_sources") 
+                  and c.get("data_sources") != ["Manual Scoring"]]
+    if len(composites) < 10:
+        # Fallback: use all companies if not enough pipeline data
+        composites = [c.get("composite", 0) for c in companies if c.get("composite", 0) > 0]
     if len(composites) < 10:
         return 62  # Default
     import math
