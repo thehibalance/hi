@@ -419,6 +419,56 @@ def build_index():
             c["satire"] = "Humans and tech, in harmony. Probably unicorns too."
             balanced_count += 1
     print(f"  HI Balanced threshold: {threshold} | {balanced_count} companies qualified")
+    
+    # Generate/refresh HUMAN 100 from live data (always use ALL_COMPANIES for freshness)
+    eligible = [c for c in ALL_COMPANIES if c.get("composite", 0) > 0 and not c.get("humanwashing_flags")]
+    eligible.sort(key=lambda x: x.get("composite", 0), reverse=True)
+    HUMAN100 = []
+    for rank, c in enumerate(eligible[:100], 1):
+        entry = {
+            "rank": rank,
+            "company": c.get("company", ""),
+            "ticker": c.get("ticker", ""),
+            "composite": c.get("composite", 0),
+            "D_H": c.get("D_H", 0), "D_U": c.get("D_U", 0), "D_M": c.get("D_M", 0),
+            "D_A": c.get("D_A", 0), "D_N": c.get("D_N", 0),
+            "industry": c.get("industry", ""),
+            "hi_balanced": c.get("hi_balanced", False),
+            "hi_grade": c.get("hi_grade", "scored"),
+            "decay_index": c.get("decay_index", 0),
+            "decay_level": c.get("decay_level", "stable"),
+            "balance_floor": c.get("balance_floor", False),
+        }
+        HUMAN100.append(entry)
+    
+    # Compute HUMAN 100 metadata
+    h100_composites = [c["composite"] for c in HUMAN100]
+    h100_avg = round(sum(h100_composites) / len(h100_composites), 1) if h100_composites else 0
+    dim_avgs = {}
+    for dim in ["D_H", "D_U", "D_M", "D_A", "D_N"]:
+        vals = [c.get(dim, 0) for c in HUMAN100 if c.get(dim, 0) > 0]
+        dim_avgs[dim] = round(sum(vals) / len(vals), 1) if vals else 0
+    HUMAN100_META = {
+        "average_composite": h100_avg,
+        "dimension_averages": dim_avgs,
+        "rebalance_date": "Quarterly",
+        "watchlist_count": sum(1 for c in HUMAN100 if c.get("decay_index", 0) >= 30),
+        "hi_balanced_count": sum(1 for c in HUMAN100 if c.get("hi_balanced")),
+    }
+    print(f"  HUMAN 100: {len(HUMAN100)} constituents | {HUMAN100_META.get('hi_balanced_count', 0)} HI Balanced")
+    
+    # Inject hi_balanced into all feature lists (they load from pre-generated files)
+    balanced_tickers = {c.get("ticker", "").upper(): c for c in ALL_COMPANIES if c.get("hi_balanced")}
+    balanced_companies = {c.get("company", "").lower(): c for c in ALL_COMPANIES if c.get("hi_balanced")}
+    for feature_list in [CONTAGION, EMPATHY_WM, MOATS, ARBITRAGE]:
+        if isinstance(feature_list, list):
+            for item in feature_list:
+                t = (item.get("ticker") or "").upper()
+                n = (item.get("company") or "").lower()
+                if t in balanced_tickers or n in balanced_companies:
+                    item["hi_balanced"] = True
+                    src = balanced_tickers.get(t) or balanced_companies.get(n, {})
+                    item["composite"] = src.get("composite", item.get("composite", 0))
     print(f"  {len(ALL_COMPANIES)} companies | {len(COMPANIES)} domains | {len(TICKERS)} tickers")
 
 
