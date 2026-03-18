@@ -295,10 +295,11 @@ const HumanEngine = {
   /**
    * Get the color for a score value (gradient from red to green).
    */
-  getScoreColor(score) {
-    if (score >= 62) return "#1B3A5C";  // Above threshold — navy
-    if (score >= 42) return "#8899AA";  // In range — muted
-    return "#DC2626";                   // Below balance floor — red
+  getScoreColor(score, threshold) {
+    const t = threshold || 62;
+    if (score >= t) return "#16A34A";   // Green — above threshold
+    if (score >= 42) return "#D97706";  // Yellow — room to grow
+    return "#DC2626";                   // Red — out of balance
   },
 
   /**
