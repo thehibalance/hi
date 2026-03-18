@@ -58,14 +58,25 @@ def get_grade(score):
     """Score-only system. Returns 'HI Balanced' or 'scored'."""
     return "scored"
 
+THRESHOLD_FLOOR = 55  # Hard minimum — never drops below this
+THRESHOLD_RATCHET_FILE = DATA_DIR.parent / "threshold_ratchet.json" if DATA_DIR else None
+
 def compute_hi_balanced_threshold(companies):
-    """Adaptive threshold: mean + 2 SD of pipeline-scored composites only (excludes hand-scored seed data)."""
+    """
+    Adaptive threshold: mean + 2 SD of pipeline-scored composites.
+    
+    Failsafes:
+    1. Hard floor: never below THRESHOLD_FLOOR (55)
+    2. Ratchet: can only go UP, never down — persisted across runs
+    
+    If all companies get worse, the threshold holds. The bar only moves up.
+    Companies force each other to improve, but can't drag each other down.
+    """
     composites = [c.get("composite", 0) for c in companies 
                   if c.get("composite", 0) > 0 
                   and c.get("data_sources") 
                   and c.get("data_sources") != ["Manual Scoring"]]
     if len(composites) < 10:
-        # Fallback: use all companies if not enough pipeline data
         composites = [c.get("composite", 0) for c in companies if c.get("composite", 0) > 0]
     if len(composites) < 10:
         return 62  # Default
@@ -73,7 +84,31 @@ def compute_hi_balanced_threshold(companies):
     mean = sum(composites) / len(composites)
     variance = sum((x - mean) ** 2 for x in composites) / len(composites)
     stdev = math.sqrt(variance)
-    return round(mean + 2 * stdev, 1)
+    computed = round(mean + 2 * stdev, 1)
+    
+    # Failsafe 1: Hard floor
+    computed = max(computed, THRESHOLD_FLOOR)
+    
+    # Failsafe 2: Ratchet — load previous high-water mark
+    previous_high = THRESHOLD_FLOOR
+    try:
+        if THRESHOLD_RATCHET_FILE and THRESHOLD_RATCHET_FILE.exists():
+            ratchet = json.load(open(THRESHOLD_RATCHET_FILE))
+            previous_high = ratchet.get("high_water_mark", THRESHOLD_FLOOR)
+    except:
+        pass
+    
+    # Threshold can only go up
+    final = max(computed, previous_high)
+    
+    # Persist new high-water mark
+    try:
+        if THRESHOLD_RATCHET_FILE:
+            json.dump({"high_water_mark": final, "computed": computed, "mean": round(mean, 1), "stdev": round(stdev, 1), "floor": THRESHOLD_FLOOR}, open(THRESHOLD_RATCHET_FILE, "w"))
+    except:
+        pass
+    
+    return final
 
 def check_hi_balanced(company, threshold):
     """Check all 10 gates for HI Balanced status."""

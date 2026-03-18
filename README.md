@@ -22,6 +22,10 @@ The composite score must exceed the adaptive threshold — calculated as **mean 
 
 **This is a dynamic hybrid model.** The threshold recalculates quarterly as the market shifts. When companies improve, the bar rises. When the standard deviation tightens, the threshold moves. Companies force each other to be better. The math decides, not us.
 
+**Two failsafes protect the standard:**
+- **Hard floor:** The threshold never drops below 55 — a baseline minimum, non-negotiable
+- **Ratchet:** The threshold can only go UP, never down — once companies push it to 62, it stays at 62 even if they all decline. The bar only moves one direction.
+
 *Current threshold: ~62 (Q1 2026)*
 
 ### ⚖ Category 2: Balance
