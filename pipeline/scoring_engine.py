@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 HI. — HUMAN Scoring Engine v2
-Merges signals from 18 data sources into HUMAN dimension scores.
+Merges signals from 24 sub-signals across 18+ data sources into HUMAN dimension scores.
 
 Core sources (used directly by this engine):
   1. SEC EDGAR  — headcount, revenue, R&D, litigation, filing frequency
@@ -10,12 +10,18 @@ Core sources (used directly by this engine):
   4. CDP        — climate disclosure scores
   5. Job Boards — AI hiring velocity
   6. Glassdoor  — employee ratings, CEO approval, culture
+  7. CFPB       — consumer complaints (U.1, M.1)
+  8. FEC        — political donations (M.5)
+  9. CPSC       — product recalls (M.4)
+  10. HIBP      — data breaches (M.2)
+  11. iFixit    — hardware repairability (A.4)
+  12. Industry  — land/habitat risk (A.3)
 
 Additional sources feed into Heartbeat, HUMAN 100, and other patent features.
 
 Follows HUMAN_Grade_Methodology_Spec v1.0
 Floor rule: any dimension < 10 caps composite at 40.
-Balance floor: any dimension < 42 caps grade at C.
+Balance floor: any dimension < 42 caps grade.
 Rounding: down unless decimal is .6 or higher (whole numbers only).
 
 Usage:
@@ -242,34 +248,69 @@ def score_h_dimension(sec_h, job_data, bls_data, industry):
     return round_score(D_H), scores, list(set(sources_used))
 
 
-def score_u_dimension(sec_u, glassdoor_data, industry):
+def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
     scores = {}
     sources_used = []
     gd = glassdoor_data.get("u_signals", {}) if glassdoor_data else {}
+    ss = subsignals or {}
 
-    if gd.get("overall_score") is not None:
+    # U.1 Customer Empathy — CFPB data if available, else Glassdoor
+    cfpb_u1 = ss.get("cfpb", {}).get("U.1")
+    if cfpb_u1 is not None:
+        scores["U.1"] = cfpb_u1
+        sources_used.append("CFPB")
+    elif gd.get("overall_score") is not None:
         scores["U.1"] = round(gd.get("overall_score", 50) * 0.5 + gd.get("culture_score", 50) * 0.5, 1)
-        scores["U.2"] = round(gd.get("worklife_score", 50) * 0.5 + gd.get("recommend_pct", 50) * 0.5, 1)
-        scores["U.3"] = gd.get("culture_score", 50)
         sources_used.append("Glassdoor")
     else:
         scores["U.1"] = 50
+
+    # U.2 Worker Empathy — Glassdoor
+    if gd.get("worklife_score") is not None:
+        scores["U.2"] = round(gd.get("worklife_score", 50) * 0.5 + gd.get("recommend_pct", 50) * 0.5, 1)
+        if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
+    else:
         scores["U.2"] = 50
+
+    # U.3 Relational Integrity — Glassdoor culture
+    if gd.get("culture_score") is not None:
+        scores["U.3"] = gd["culture_score"]
+        if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
+    else:
         scores["U.3"] = 50
 
+    # U.4 Simulated Empathy Detection — placeholder for AI Enhancement Layer
     scores["U.4"] = 50
+
+    # U.5 Moral Courage — placeholder
     scores["U.5"] = 50
 
     D_U = 0.25*scores["U.1"] + 0.25*scores["U.2"] + 0.20*scores["U.3"] + 0.15*scores["U.4"] + 0.15*scores["U.5"]
     return round_score(D_U), scores, sources_used
 
 
-def score_m_dimension(sec_m, epa_data, glassdoor_data, industry):
+def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None):
     scores = {}
     sources_used = []
-    scores["M.1"] = 80
-    scores["M.2"] = 70
+    ss = subsignals or {}
 
+    # M.1 Pricing Ethics — CFPB if available
+    cfpb_m1 = ss.get("cfpb", {}).get("M.1")
+    if cfpb_m1 is not None:
+        scores["M.1"] = cfpb_m1
+        sources_used.append("CFPB")
+    else:
+        scores["M.1"] = 80  # Default generous
+
+    # M.2 Data Ethics — HIBP breach data
+    hibp_m2 = ss.get("hibp", {}).get("M.2")
+    if hibp_m2 is not None:
+        scores["M.2"] = hibp_m2
+        sources_used.append("HIBP")
+    else:
+        scores["M.2"] = 70  # Default
+
+    # M.3 Market Ethics — SEC + EPA
     litigation = sec_m.get("litigation", {}).get("value")
     epa_penalties = epa_data.get("m_signals", {}).get("total_penalties", 0) if epa_data else 0
     epa_actions = epa_data.get("m_signals", {}).get("formal_actions", 0) if epa_data else 0
@@ -285,27 +326,42 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry):
     if litigation: sources_used.append("SEC")
     if epa_penalties > 0 or epa_actions > 0: sources_used.append("EPA")
 
-    gd_m = glassdoor_data.get("m_signals", {}) if glassdoor_data else {}
-    if gd_m.get("mgmt_score") is not None:
-        scores["M.4"] = round(gd_m["mgmt_score"] * 0.6 + gd_m.get("comp_score", 50) * 0.4, 1)
-        sources_used.append("Glassdoor")
+    # M.4 Product Ethics — CPSC recalls if available, else Glassdoor
+    cpsc_m4 = ss.get("cpsc", {}).get("M.4")
+    if cpsc_m4 is not None:
+        scores["M.4"] = cpsc_m4
+        sources_used.append("CPSC")
     else:
-        scores["M.4"] = 70
+        gd_m = glassdoor_data.get("m_signals", {}) if glassdoor_data else {}
+        if gd_m.get("mgmt_score") is not None:
+            scores["M.4"] = round(gd_m["mgmt_score"] * 0.6 + gd_m.get("comp_score", 50) * 0.4, 1)
+            sources_used.append("Glassdoor")
+        else:
+            scores["M.4"] = 70
 
-    if gd_m.get("ceo_score") is not None:
-        scores["M.5"] = gd_m["ceo_score"]
+    # M.5 Political Ethics — FEC data if available, else Glassdoor CEO
+    fec_m5 = ss.get("fec", {}).get("M.5")
+    if fec_m5 is not None:
+        scores["M.5"] = fec_m5
+        sources_used.append("FEC")
     else:
-        scores["M.5"] = 60
+        gd_m = glassdoor_data.get("m_signals", {}) if glassdoor_data else {}
+        if gd_m.get("ceo_score") is not None:
+            scores["M.5"] = gd_m["ceo_score"]
+        else:
+            scores["M.5"] = 60
 
     D_M = 0.20*scores["M.1"] + 0.20*scores["M.2"] + 0.20*scores["M.3"] + 0.25*scores["M.4"] + 0.15*scores["M.5"]
     return round_score(D_M), scores, list(set(sources_used))
 
 
-def score_a_dimension(sec_a, epa_data, cdp_data, industry):
+def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None):
     scores = {}
     sources_used = []
+    ss = subsignals or {}
     cdp_a = cdp_data.get("a_signals", {}) if cdp_data else {}
 
+    # A.1 Energy — CDP climate
     if cdp_a.get("cdp_climate_score") is not None:
         scores["A.1"] = cdp_a["cdp_climate_score"]
         sources_used.append("CDP")
@@ -315,29 +371,43 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry):
                     "telecom": 45, "defense": 40, "auto": 40, "default": 50}
         scores["A.1"] = defaults.get(industry, 50)
 
+    # A.2 Water — CDP water
     if cdp_a.get("cdp_water_score") is not None:
         scores["A.2"] = cdp_a["cdp_water_score"]
         if "CDP" not in sources_used: sources_used.append("CDP")
     else:
         scores["A.2"] = 50
 
-    epa_a = epa_data.get("a_signals", {}) if epa_data else {}
-    if epa_a.get("total_violations_3yr") is not None:
-        v = epa_a["total_violations_3yr"]
-        if v == 0: scores["A.3"] = 85
-        elif v <= 3: scores["A.3"] = 65
-        elif v <= 10: scores["A.3"] = 45
-        elif v <= 20: scores["A.3"] = 30
-        else: scores["A.3"] = 15
-        sources_used.append("EPA")
+    # A.3 Land & Habitat — Enhanced with industry deforestation risk
+    land_score = ss.get("land", {}).get("A.3")
+    if land_score is not None:
+        scores["A.3"] = land_score
+        sources_used.append("Industry+EPA")
     else:
-        scores["A.3"] = 50
+        epa_a = epa_data.get("a_signals", {}) if epa_data else {}
+        if epa_a.get("total_violations_3yr") is not None:
+            v = epa_a["total_violations_3yr"]
+            if v == 0: scores["A.3"] = 85
+            elif v <= 3: scores["A.3"] = 65
+            elif v <= 10: scores["A.3"] = 45
+            elif v <= 20: scores["A.3"] = 30
+            else: scores["A.3"] = 15
+            sources_used.append("EPA")
+        else:
+            scores["A.3"] = 50
 
-    if cdp_a.get("cdp_forests_score") is not None:
-        scores["A.4"] = cdp_a["cdp_forests_score"]
+    # A.4 Hardware Lifecycle — iFixit + industry data
+    hw_score = ss.get("hardware", {}).get("A.4")
+    if hw_score is not None:
+        scores["A.4"] = hw_score
+        hw_src = ss.get("hardware", {}).get("source", "iFixit")
+        if hw_src not in sources_used: sources_used.append(hw_src)
     else:
-        hw_defaults = {"tech": 40, "telecom": 45, "manufacturing": 50, "default": 55}
-        scores["A.4"] = hw_defaults.get(industry, 55)
+        if cdp_a.get("cdp_forests_score") is not None:
+            scores["A.4"] = cdp_a["cdp_forests_score"]
+        else:
+            hw_defaults = {"tech": 40, "telecom": 45, "manufacturing": 50, "default": 55}
+            scores["A.4"] = hw_defaults.get(industry, 55)
 
     D_A = 0.30*scores["A.1"] + 0.25*scores["A.2"] + 0.20*scores["A.3"] + 0.25*scores["A.4"]
     return round_score(D_A), scores, list(set(sources_used))
@@ -460,9 +530,21 @@ def check_hi_certified(record, threshold):
 
 
 def score_company(company_name, ticker="", sec_data=None, epa_data=None,
-                  bls_data=None, cdp_data=None, job_data=None, glassdoor_data=None):
+                  bls_data=None, cdp_data=None, job_data=None, glassdoor_data=None,
+                  subsignal_data=None):
     sic = sec_data.get("n_signals", {}).get("sic", "") if sec_data else ""
     industry = get_industry(sic)
+    
+    # Load subsignal data if available
+    ss = subsignal_data or {}
+    if not ss and ticker:
+        try:
+            ss_file = Path("data/subsignals/all_subsignals.json")
+            if ss_file.exists():
+                all_ss = json.load(open(ss_file))
+                ss = all_ss.get(ticker.upper(), {})
+        except:
+            pass
 
     sec_h = sec_data.get("h_signals", {}) if sec_data else {}
     sec_m = sec_data.get("m_signals", {}) if sec_data else {}
@@ -470,9 +552,9 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
     sec_u = sec_data.get("u_signals", {}) if sec_data else {}
 
     D_H, h_detail, h_src = score_h_dimension(sec_h, job_data, bls_data, industry)
-    D_U, u_detail, u_src = score_u_dimension(sec_u, glassdoor_data, industry)
-    D_M, m_detail, m_src = score_m_dimension(sec_m, epa_data, glassdoor_data, industry)
-    D_A, a_detail, a_src = score_a_dimension(sec_data.get("a_signals", {}) if sec_data else {}, epa_data, cdp_data, industry)
+    D_U, u_detail, u_src = score_u_dimension(sec_u, glassdoor_data, industry, ss)
+    D_M, m_detail, m_src = score_m_dimension(sec_m, epa_data, glassdoor_data, industry, ss)
+    D_A, a_detail, a_src = score_a_dimension(sec_data.get("a_signals", {}) if sec_data else {}, epa_data, cdp_data, industry, ss)
     D_N, n_detail, n_src = score_n_dimension(sec_n, cdp_data, epa_data, industry)
 
     composite, floor_triggered, balance_floor_triggered, triggering_dim = compute_composite(D_H, D_U, D_M, D_A, D_N)
