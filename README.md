@@ -130,7 +130,7 @@ Three layers. One rule: **the AI makes the telescope sharper — it doesn't move
 | **D** | 60-69 | The balance is off. Time to course correct. |
 | **F** | 0-59 | Don't panic. Every journey starts somewhere. |
 
-**Balance Floor Rule**: 1 dimension below 42 caps the grade at D. 2+ dimensions below 42 = F. *You can't claim balance when any dimension is failing.*
+**Balance Floor Rule**: 1 dimension below 42 caps the grade at D. 2+ dimensions below 42 = F. *You can't claim balance when any dimension is below the answer to life and everything.*
 
 ## The HUMAN Framework
 
