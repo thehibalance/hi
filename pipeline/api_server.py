@@ -544,6 +544,8 @@ def stats():
 
     composites = [c["composite"] for c in ALL_COMPANIES if c.get("composite")]
     avg = round(sum(composites) / len(composites), 1) if composites else 0
+    threshold = compute_hi_certified_threshold(ALL_COMPANIES)
+    certified_count = sum(1 for c in ALL_COMPANIES if check_hi_certified(c, threshold)[0])
 
     return jsonify({
         "total_companies": len(ALL_COMPANIES),
@@ -551,8 +553,11 @@ def stats():
         "tickers_indexed": len(TICKERS),
         "grade_distribution": grades,
         "average_composite": avg,
+        "hi_certified_threshold": threshold,
+        "hi_certified_count": certified_count,
         "humanwashing_flagged": sum(1 for c in ALL_COMPANIES if c.get("humanwashing_flags")),
         "floor_rule_triggered": sum(1 for c in ALL_COMPANIES if c.get("floor_triggered")),
+        "balance_floor_triggered": sum(1 for c in ALL_COMPANIES if c.get("balance_floor")),
         "data_sources": 18,
         "spec_version": "1.0.0",
         "brand": {
