@@ -4,7 +4,7 @@
  * Pure deterministic logic for:
  *   - Computing composite HUMAN scores (HI Grades)
  *   - Applying the floor rule
- *   - Classifying scores into 5 tiers (HI Certified, A, B, C, F)
+ *   - Classifying scores into score-only + HI Balanced certification
  *   - Filtering companies against user thresholds
  *   - Detecting humanwashing flags (rule-based)
  * 
@@ -34,7 +34,7 @@ const HumanEngine = {
       badge: "" },
   ],
 
-  HI_CERTIFIED_COLOR: "#C49B20",
+  HI_BALANCED_COLOR: "#C49B20",
   SCORE_COLOR: "#1B3A5C",
 
   DIMENSIONS: ['h', 'u', 'm', 'a', 'n'],
@@ -81,7 +81,7 @@ const HumanEngine = {
 
   /**
    * Classify a composite score into an HI Grade tier.
-   * Companies scoring 90+ from public data are capped at "A" unless HI Certified.
+   * Companies scoring 90+ from public data are capped at "A" unless HI Balanced.
    * @param {number} composite - The composite HUMAN score (0-100)
    * @param {boolean} verified - Whether the company has completed HI Certification
    * @returns {Object} tier object with grade, satire, badge, etc.
@@ -91,15 +91,15 @@ const HumanEngine = {
   },
 
   /**
-   * Check if a company passes all 10 HI Certified gates.
+   * Check if a company passes all 10 HI Balanced gates.
    * Adaptive threshold: mean + 2 SD, recalculated from market data.
    */
-  checkHICertified(company, composite, hwFlags, marketStats) {
+  checkHIBalanced(company, composite, hwFlags, marketStats) {
     const dims = this.DIMENSIONS.map(d => company[d] || 0);
     const belowCount = dims.filter(s => s < 42).length;
     
     // Default threshold if no market stats available
-    const threshold = (marketStats && marketStats.hiCertifiedThreshold) || 62;
+    const threshold = (marketStats && marketStats.hiBalancedThreshold) || 62;
     
     const gates = {
       composite: composite >= threshold,
@@ -115,7 +115,7 @@ const HumanEngine = {
     };
     
     const passed = Object.values(gates).every(v => v);
-    return { certified: passed, gates, threshold };
+    return { balanced: passed, gates, threshold };
   },
 
   /**
@@ -146,10 +146,10 @@ const HumanEngine = {
       adjustedComposite = Math.min(composite, 49);
     }
 
-    // Check HI Certified gates
-    const certification = this.checkHICertified(company, adjustedComposite, hwFlags, marketStats);
-    const isCertified = certification.certified;
-    const scoreColor = isCertified ? this.HI_CERTIFIED_COLOR : this.SCORE_COLOR;
+    // Check HI Balanced gates
+    const balanced = this.checkHIBalanced(company, adjustedComposite, hwFlags, marketStats);
+    const isBalanced = balanced.certified;
+    const scoreColor = isBalanced ? this.HI_BALANCED_COLOR : this.getScoreColor(adjustedComposite, balanced.threshold);
 
     return {
       id: company.id,
@@ -158,13 +158,13 @@ const HumanEngine = {
         h: company.h, u: company.u, m: company.m, a: company.a, n: company.n
       },
       composite: adjustedComposite,
-      hiCertified: isCertified,
-      certificationGates: certification.gates,
-      certificationThreshold: certification.threshold,
-      grade: isCertified ? "HI Certified" : "scored",
-      letter: isCertified ? "✦" : "",
+      hiBalanced: isBalanced,
+      balancedGates: balanced.gates,
+      balancedThreshold: balanced.threshold,
+      grade: isBalanced ? "HI Balanced" : "scored",
+      letter: isBalanced ? "✦" : "",
       scoreColor,
-      tier: { color: scoreColor, satire: isCertified ? "Humans and tech, in harmony. This is what balance looks like." : "" },
+      tier: { color: scoreColor, satire: isBalanced ? "Humans and tech, in harmony. This is what balance looks like." : "" },
       floorTriggered,
       floorDimension,
       balanceFloor,

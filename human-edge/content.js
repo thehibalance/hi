@@ -47,6 +47,8 @@
         cloud_grade: d.hi_grade || null,
         cloud_composite: d.composite || null,
         cloud_satire: d.satire || null,
+        cloud_hi_balanced: d.hi_balanced || false,
+        cloud_hi_balanced_threshold: d.hi_balanced_threshold || 62,
         decay_index: d.decay_index || 0,
         decay_level: d.decay_level || 'stable',
         decay_factors: d.decay_factors || [],
@@ -79,6 +81,13 @@
     profile.grade = company.cloud_grade;
     profile.composite = company.cloud_composite || profile.composite;
     if (company.cloud_satire) profile.satire = company.cloud_satire;
+    if (company.cloud_hi_balanced) {
+      profile.hiBalanced = true;
+      profile.grade = "HI Balanced";
+    }
+    if (company.cloud_hi_balanced_threshold) {
+      profile.balancedThreshold = company.cloud_hi_balanced_threshold;
+    }
   }
   
   // Attach heartbeat data
@@ -170,7 +179,7 @@ function createBadge(profile, filterResult, prefs) {
  * Build the mini pill HTML — grade letter + score + warning dot.
  */
 function buildMiniHTML(profile) {
-  const threshold = profile.certificationThreshold || 62;
+  const threshold = profile.balancedThreshold || 62;
   const hasWarning = profile.decay_level === 'critical' || profile.decay_level === 'warning';
   const hasDecay = profile.decay_level !== 'stable' && profile.decay_index > 0;
   const hasFloor = profile.balance_floor;
@@ -184,7 +193,7 @@ function buildMiniHTML(profile) {
     warningDot = `<span class="human-badge__mini-dot" style="background:#DC2626"></span>`;
   }
   
-  if (profile.hiCertified) {
+  if (profile.hiBalanced) {
     return `
       <div class="human-badge__mini" style="background:linear-gradient(135deg,#C49B2015,#C49B2005);border:1px solid #C49B2040;border-radius:14px">
         <span style="color:#C49B20;font-size:20px;font-weight:900;letter-spacing:-1px">HI.</span>
@@ -207,7 +216,7 @@ function buildMiniHTML(profile) {
  * Build the badge HTML content.
  */
 function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
-  const scoreColor = HumanEngine.getScoreColor(profile.composite);
+  const scoreColor = HumanEngine.getScoreColor(profile.composite, profile.balancedThreshold);
   const tierColor = profile.tier.color;
   const confidenceBadge = profile.confidence === 'estimated' 
     ? '<span class="human-badge__confidence">EST</span>' 
@@ -236,7 +245,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
           HI Grade: ${profile.grade} · ${profile.composite}
         </div>
         ${profile.decay_level !== 'stable' && profile.decay_index > 0 ? 
-          `<div class="human-badge__header-heartbeat" style="font-size:10px;margin-top:2px;line-height:1.3;color:${{critical:'#DC2626',warning:'#D97706',watch:'#EA580C'}[profile.decay_level]||'#6B7280'}">♥ ${profile.decay_level.charAt(0).toUpperCase()+profile.decay_level.slice(1)} · Decay: ${profile.decay_index}<div style="font-size:9px;opacity:0.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px">${(profile.decay_factors||[]).slice(0,2).join(' · ')}</div></div>` 
+          `<div class="human-badge__header-heartbeat" style="font-size:10px;margin-top:2px;line-height:1.3;color:${{critical:'#DC2626',warning:'#DC2626',watch:'#D97706'}[profile.decay_level]||'#6B7280'}">♥ ${profile.decay_level.charAt(0).toUpperCase()+profile.decay_level.slice(1)} · Decay: ${profile.decay_index}<div style="font-size:9px;opacity:0.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px">${(profile.decay_factors||[]).slice(0,2).join(' · ')}</div></div>` 
           : '<div class="human-badge__header-heartbeat" style="font-size:10px;margin-top:2px;color:#16A34A" id="human-badge-header-pulse">♥ Stable</div>'}
       </div>
       <div class="human-badge__toggle-indicator">▾</div>
@@ -246,7 +255,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
       <div class="human-badge__dimensions">
         ${buildDimensionBars(profile.dimensions)}
       </div>
-      ${profile.tier.cappedFromCertified ? '<div class="human-badge__floor-warning">⚡ Scores 90+ but not HI Certified. Displayed as A.</div>' : ''}
+      ${profile.tier.cappedFromCertified ? '<div class="human-badge__floor-warning">⚡ Scores 90+ but not HI Balanced. Displayed as A.</div>' : ''}
       ${floorWarning}
       ${hwFlags}
       ${profile.balance_floor ? `<div class="human-badge__decay human-badge__decay--warning">⚖ Balance Floor: ${profile.triggering_dimension ? profile.triggering_dimension.toUpperCase() : 'a dimension'} below 42. Grade capped at C.</div>` : ''}
@@ -295,7 +304,7 @@ function buildGenomeStrip(profile) {
     html += `<span style="font-size:9px;font-weight:700;color:#1B3A5C;width:10px">${d}</span>`;
     entries.forEach(([key, val]) => {
       val = Math.round(val);
-      const bg = val >= 80 ? '#2e8b57' : val >= 60 ? '#4a90d9' : val >= 42 ? '#E07020' : '#6B7280';
+      const bg = HumanEngine.getScoreColor(val, profile.balancedThreshold);
       const label = GENOME_LABELS[key] || key;
       html += `<div style="flex:1;height:14px;background:${bg};border-radius:2px;position:relative;min-width:12px;cursor:help" title="${label}: ${val}"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:7px;color:white;font-weight:700">${val}</span></div>`;
     });
@@ -310,7 +319,7 @@ function buildGenomeStrip(profile) {
 function buildDimensionBars(dimensions) {
   return HumanEngine.DIMENSIONS.map(dim => {
     const score = dimensions[dim] || 0;
-    const color = HumanEngine.getScoreColor(score);
+    const color = HumanEngine.getScoreColor(score, profile.balancedThreshold);
     const label = dim.toUpperCase();
     const fullLabel = HumanEngine.getDimensionLabel(dim);
     return `
@@ -376,7 +385,7 @@ function buildDimInsights(dim, profile) {
     <div class="human-panel__signal" style="padding:6px 0;border-bottom:1px solid #f0f0f0">
       <div style="display:flex;justify-content:space-between;align-items:center">
         <span class="human-panel__signal-name" style="font-weight:600">${x.t}</span>
-        <span style="font-weight:700;font-size:12px;color:${HumanEngine.getScoreColor(profile.dimensions[dim] || 50)}">${x.v}</span>
+        <span style="font-weight:700;font-size:12px;color:${HumanEngine.getScoreColor(profile.dimensions[dim] || 50, profile.balancedThreshold)}">${x.v}</span>
       </div>
       <div style="font-size:10px;color:#888;margin-top:2px">${x.n}</div>
     </div>
@@ -427,12 +436,17 @@ function openFullPanel(profile, filterResult, prefs) {
   panel.id = 'human-detail-panel';
   panel.className = 'human-panel';
 
-  const scoreColor = profile.hiCertified ? '#C49B20' : '#1B3A5C';
+  const scoreColor = profile.hiBalanced ? '#C49B20' : HumanEngine.getScoreColor(profile.composite, profile.balancedThreshold);
+  const pulseColors = {'critical':'#DC2626','warning':'#DC2626','watch':'#D97706','stable':'#16A34A'};
+  const pulseColor = pulseColors[profile.decay_level] || '#16A34A';
+  const decayHTML = profile.decay_index > 0 
+    ? `<span style="font-size:12px;font-weight:700;color:${pulseColor};margin-left:8px${profile.decay_level==='critical'||profile.decay_level==='warning'?';animation:blink 2s infinite':''}">♥${profile.decay_index}</span>`
+    : `<span style="font-size:12px;color:#16A34A;margin-left:8px">♥</span>`;
 
   // Build all dimensions with inline insights
   const allDimsHTML = HumanEngine.DIMENSIONS.map(d => {
     const s = profile.dimensions[d] || 0;
-    const c = HumanEngine.getScoreColor(s);
+    const c = HumanEngine.getScoreColor(s, profile.balancedThreshold);
     const info = DIM_DESCRIPTIONS[d];
     const insights = buildDimInsights(d, profile);
     return `
@@ -478,7 +492,7 @@ function openFullPanel(profile, filterResult, prefs) {
   const pulse = badge ? badge._pulse : null;
   let pulseHTML = '';
   if (pulse && pulse.pulse) {
-    const pc = { healthy: '#16A34A', elevated: '#D97706', stressed: '#EA580C', critical: '#DC2626' };
+    const pc = { healthy: '#16A34A', elevated: '#D97706', stressed: '#DC2626', critical: '#DC2626' };
     const pColor = pc[pulse.pulse] || '#6B7280';
     pulseHTML = `<div style="font-size:11px;color:${pColor};margin-top:8px;text-align:center">♥ Ecosystem: <strong>${pulse.pulse.toUpperCase()}</strong> · ${pulse.alerts_count || 0} alerts</div>`;
   }
@@ -491,36 +505,37 @@ function openFullPanel(profile, filterResult, prefs) {
     </div>
 
     <div class="human-panel__company">
-      <div class="human-panel__grade" style="color: ${scoreColor};font-size:36px">${profile.hiCertified ? '✦ ' : ''}${profile.composite}<span style="color:#999;font-size:16px;font-weight:400"> / ${profile.certificationThreshold || 62}</span></div>
+      <div class="human-panel__grade" style="color: ${scoreColor};font-size:36px">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px">HI.</span><span style="font-size:11px;display:block;opacity:0.85;margin-top:-4px">balanced</span>' : profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
-        <div class="human-panel__tier" style="color: ${scoreColor}">${profile.hiCertified ? 'HI Certified' : 'HI Grade™'}</div>
+        <div class="human-panel__tier" style="color: ${scoreColor}">${profile.hiBalanced ? '✦ HI Balanced' : 'HI Grade™'}${decayHTML}</div>
         <div class="human-panel__brand">Find the HI balance.</div>
       </div>
     </div>
-    ${profile.hiCertified ? '<div style="padding:4px 16px;font-size:11px;color:#C49B20;font-weight:600">✦ All 10 gates passed · In balance</div>' : ''}
+    ${profile.hiBalanced ? '<div style="padding:4px 16px;font-size:11px;color:#C49B20;font-weight:600">✦ All 10 gates passed · In balance</div>' : ''}
     ${profile.tier.satire ? `<div class="human-panel__satire">"${profile.tier.satire}"</div>` : ''}
 
     ${(() => {
-      const gates = profile.certificationGates || {};
+      const gates = profile.balancedGates || {};
       const total = Object.keys(gates).length || 10;
       const passed = Object.values(gates).filter(v => v).length;
-      const failed = Object.entries(gates).filter(([k,v]) => !v);
-      const gateLabels = {
-        composite: 'Composite ≥ threshold',
-        allDimsAbove42: 'All dimensions ≥ 42',
-        noHumanwashing: 'No humanwashing flags',
-        decayBelow30: 'Decay index < 30',
-        shieldAbove50: 'Shield score ≥ 50',
-        noESGWashing: 'No ESG washing',
-        notNegativeLeader: 'Not negative industry leader',
-        noCriticalGaps: 'No critical genome gaps',
-        notUnderPressure: 'Not under collective pressure',
-        noActiveAlerts: 'No critical alerts',
-      };
-      if (profile.hiCertified) return '';
-      return '<div style="padding:8px 16px;margin-top:4px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><span style="font-size:11px;font-weight:700;color:#1B3A5C">' + passed + '/' + total + ' GATES</span><div style="flex:1;height:4px;background:#EEF1F5;border-radius:2px"><div style="height:100%;width:' + (passed/total*100) + '%;background:' + (passed === total ? '#C49B20' : '#1B3A5C') + ';border-radius:2px"></div></div></div>' +
-        failed.map(([k,v]) => '<div style="font-size:10px;color:#DC2626;padding:2px 0">✗ ' + (gateLabels[k] || k) + '</div>').join('') +
+      const threshold = profile.balancedThreshold || 62;
+      const gc = (k,v) => '<div style="font-size:10px;padding:2px 0;color:' + (v ? '#16A34A' : '#DC2626') + '">' + (v ? '✓' : '✗') + ' ' + k + '</div>';
+      return '<div style="padding:8px 16px;margin-top:4px">' +
+        '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:11px;font-weight:700;color:#1B3A5C">' + passed + '/' + total + ' GATES</span><div style="flex:1;height:4px;background:#EEF1F5;border-radius:2px"><div style="height:100%;width:' + (passed/total*100) + '%;background:' + (passed === total ? '#C49B20' : '#1B3A5C') + ';border-radius:2px"></div></div></div>' +
+        '<div style="font-size:9px;font-weight:700;color:#1B3A5C;letter-spacing:1px;margin-bottom:4px">📊 SCORE</div>' +
+        gc('Composite ≥ ' + threshold, gates.composite) +
+        '<div style="font-size:9px;font-weight:700;color:#C49B20;letter-spacing:1px;margin:6px 0 4px">⚖ BALANCE</div>' +
+        gc('All dimensions ≥ 42', gates.allDimsAbove42) +
+        '<div style="font-size:9px;font-weight:700;color:#16A34A;letter-spacing:1px;margin:6px 0 4px">🔒 8 HUMAN FEATURES</div>' +
+        gc('No humanwashing', gates.noHumanwashing) +
+        gc('Decay < 30', gates.decayBelow30) +
+        gc('Shield ≥ 50', gates.shieldAbove50) +
+        gc('No ESG washing', gates.noESGWashing) +
+        gc('Not negative leader', gates.notNegativeLeader) +
+        gc('No genome gaps', gates.noCriticalGaps) +
+        gc('Not under pressure', gates.notUnderPressure) +
+        gc('No critical alerts', gates.noActiveAlerts) +
         '</div>';
     })()}
 
@@ -584,7 +599,7 @@ function openFullPanel(profile, filterResult, prefs) {
     </div>
 
     <div class="human-panel__disclaimer">
-      HI Certified threshold (currently ${profile.certificationThreshold || 62}) is adaptive — recalculated quarterly as mean + 2 standard deviations of the scored market. As companies improve, the bar rises. The math decides, not us. All 10 patent-pending gates must pass. Scores are estimated from public data. Not financial or legal advice.
+      HI Balanced threshold (currently ${profile.balancedThreshold || 62}) is adaptive — recalculated quarterly as mean + 2 standard deviations of the scored market. As companies improve, the bar rises. The math decides, not us. 10 gates in 3 categories: Score, Balance, 8 HUMAN Features. Scores are estimated from public data. Not financial or legal advice.
     </div>
   `;
 
@@ -603,11 +618,11 @@ function openFullPanel(profile, filterResult, prefs) {
         dot.style.color = '#1a7a3a';
         text.textContent = `Connected · ${resp.companies} companies · API live`;
       } else {
-        dot.style.color = '#E07020';
+        dot.style.color = '#D97706';
         text.textContent = 'Offline · Using local database';
       }
     } catch (e) {
-      dot.style.color = '#E07020';
+      dot.style.color = '#D97706';
       text.textContent = 'Offline · Using local database';
     }
   })();
@@ -682,7 +697,7 @@ function openDetailPanel(profile, dim) {
 
   const dimInfo = DIM_DESCRIPTIONS[dim];
   const dimScore = profile.dimensions[dim] || 0;
-  const dimColor = HumanEngine.getScoreColor(dimScore);
+  const dimColor = HumanEngine.getScoreColor(dimScore, profile.balancedThreshold);
   const tierColor = profile.tier.color;
 
   panel.innerHTML = `
@@ -693,10 +708,10 @@ function openDetailPanel(profile, dim) {
     </div>
 
     <div class="human-panel__company">
-      <div class="human-panel__grade" style="color: ${profile.hiCertified ? '#C49B20' : '#1B3A5C'};font-size:36px">${profile.hiCertified ? '✦ ' : ''}${profile.composite}</div>
+      <div class="human-panel__grade" style="color: ${scoreColor};font-size:36px">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px">HI.</span><span style="font-size:11px;display:block;opacity:0.85;margin-top:-4px">balanced</span>' : profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
-        <div class="human-panel__tier" style="color: ${profile.hiCertified ? '#C49B20' : '#1B3A5C'}">${profile.hiCertified ? 'HI Certified' : 'HI Grade™'}</div>
+        <div class="human-panel__tier" style="color: ${scoreColor}">${profile.hiBalanced ? '✦ HI Balanced' : 'HI Grade™'}${decayHTML}</div>
         <div class="human-panel__brand">Find the HI balance.</div>
       </div>
     </div>
@@ -722,7 +737,7 @@ function openDetailPanel(profile, dim) {
       <div class="human-panel__section-title">All Dimensions</div>
       ${HumanEngine.DIMENSIONS.map(d => {
         const s = profile.dimensions[d] || 0;
-        const c = HumanEngine.getScoreColor(s);
+        const c = HumanEngine.getScoreColor(s, profile.balancedThreshold);
         const info = DIM_DESCRIPTIONS[d];
         const active = d === dim ? ' human-panel__dim-row--active' : '';
         return `
@@ -786,7 +801,7 @@ function openDetailPanel(profile, dim) {
     </div>
 
     <div class="human-panel__disclaimer">
-      HI Certified threshold is adaptive — recalculated quarterly as mean + 2 standard deviations. As companies improve, the bar rises. All 10 patent-pending gates must pass. Scores are estimated from public data. Not financial or legal advice.
+      HI Balanced threshold is adaptive — recalculated quarterly as mean + 2 standard deviations. As companies improve, the bar rises. 10 gates in 3 categories. Scores are estimated from public data. Not financial or legal advice.
     </div>
   `;
 
@@ -807,11 +822,11 @@ function openDetailPanel(profile, dim) {
         dot.style.color = '#1a7a3a';
         text.textContent = `Connected · ${resp.companies} companies · API live`;
       } else {
-        dot.style.color = '#E07020';
+        dot.style.color = '#D97706';
         text.textContent = 'Offline · Using local database (206 companies)';
       }
     } catch (e) {
-      dot.style.color = '#E07020';
+      dot.style.color = '#D97706';
       text.textContent = 'Offline · Using local database (206 companies)';
     }
   })();
@@ -896,7 +911,7 @@ function openDetailPanel(profile, dim) {
     const results = HumanDB.searchByName(q);
     searchResults.innerHTML = results.slice(0, 6).map(c => {
       const p = HumanEngine.getProfile(c);
-      const col = HumanEngine.getScoreColor(p.composite);
+      const col = HumanEngine.getScoreColor(p.composite, p.balancedThreshold);
       return `
         <div class="human-panel__result">
           <span class="human-panel__result-score" style="color: ${col}">${p.composite}</span>
