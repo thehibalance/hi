@@ -125,7 +125,7 @@ HI. unifies all five dimensions into a single, consumer-facing framework with hu
 │     (Railway + GitHub Pages)      │
 │                                   │
 │  REST API (Flask, 32 endpoints)   │
-│  • 18 data pipelines              │
+│  • 34 data pipelines              │
 │  • Dynamic hybrid threshold       │
 │  • 440+ companies                 │
 │  • 10 HUMAN gates (all live)      │
@@ -218,7 +218,7 @@ hi/
 │   ├── consumer_consciousness.py # HUMAN Consciousness
 │   ├── empathy_watermark.py     # HUMAN Watermark
 │   ├── collective_bargaining.py # HUMAN Wave
-│   └── [18 data pipelines]     # SEC, EPA, BLS, CDP, etc.
+│   └── [34 data pipelines]     # SEC, EPA, BLS, CDP, etc.
 │
 ├── docs/                        # Website (GitHub Pages)
 │   ├── index.html               # thehibalance.org
