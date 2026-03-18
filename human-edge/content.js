@@ -439,7 +439,7 @@ function openFullPanel(profile, filterResult, prefs) {
   const scoreColor = profile.hiBalanced ? '#C49B20' : HumanEngine.getScoreColor(profile.composite, profile.balancedThreshold);
   const pulseColors = {'critical':'#DC2626','warning':'#DC2626','watch':'#D97706','stable':'#16A34A'};
   const pulseColor = pulseColors[profile.decay_level] || '#16A34A';
-  const decayHTML = profile.decay_index > 0 
+  const pulseDotHTML = profile.decay_index > 0 
     ? `<span style="font-size:12px;font-weight:700;color:${pulseColor};margin-left:8px${profile.decay_level==='critical'||profile.decay_level==='warning'?';animation:blink 2s infinite':''}">♥${profile.decay_index}</span>`
     : `<span style="font-size:12px;color:#16A34A;margin-left:8px">♥</span>`;
 
@@ -508,7 +508,7 @@ function openFullPanel(profile, filterResult, prefs) {
       <div class="human-panel__grade" style="color: ${scoreColor};font-size:36px">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px">HI.</span><span style="font-size:11px;display:block;opacity:0.85;margin-top:-4px">balanced</span>' : profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
-        <div class="human-panel__tier" style="color: ${scoreColor}">${profile.hiBalanced ? '✦ HI Balanced' : 'HI Grade™'}${decayHTML}</div>
+        <div class="human-panel__tier" style="color: ${scoreColor}">${profile.hiBalanced ? '✦ HI Balanced' : 'HI Grade™'}${pulseDotHTML}</div>
         <div class="human-panel__brand">Find the HI balance.</div>
       </div>
     </div>
@@ -711,7 +711,7 @@ function openDetailPanel(profile, dim) {
       <div class="human-panel__grade" style="color: ${scoreColor};font-size:36px">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px">HI.</span><span style="font-size:11px;display:block;opacity:0.85;margin-top:-4px">balanced</span>' : profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
-        <div class="human-panel__tier" style="color: ${scoreColor}">${profile.hiBalanced ? '✦ HI Balanced' : 'HI Grade™'}${decayHTML}</div>
+        <div class="human-panel__tier" style="color: ${scoreColor}">${profile.hiBalanced ? '✦ HI Balanced' : 'HI Grade™'}${pulseDotHTML}</div>
         <div class="human-panel__brand">Find the HI balance.</div>
       </div>
     </div>
