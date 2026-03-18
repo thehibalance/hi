@@ -54,19 +54,50 @@ Every patent-pending HUMAN feature acts as a gate. All 10 must pass:
 
 *The first certification that certifies itself. You can't buy it. You can't apply for it. The data proves it.*
 
----
+## What Makes HI. Different
 
-## What Makes This Different
+No other framework does what HI. does. Here's why.
 
-**1. Dynamic Hybrid Scoring Model** — The HI Balanced threshold isn't fixed. It recalculates quarterly as the market's standard deviation shifts. Companies force each other to improve. As the average rises, the bar rises. No one stays balanced by standing still.
+### The Scoring
 
-**2. Edge-to-Cloud Native** — A browser extension built on deterministic, human-engineered code (zero AI, zero black boxes) paired with a cloud scoring engine using 18 public data sources. No other scoring framework ships consumer-side and enterprise-side simultaneously.
+- **Five dimensions, one composite.** Human Consciousness, Understanding & Empathy, Moral & Ethical Conduct, Alive & Environmental, Natural Transparency. Equal weight. No single value outranks another. No other framework scores all five.
+- **Humanwashing detection.** Revenue/employee ratio, headcount vs AI spend, disclosed vs detected AI usage. No ESG framework detects performative human involvement.
+- **Simulated empathy detection.** Response timing, language variability, contextual adaptation depth. Nobody else distinguishes genuine human empathy from AI-simulated empathy.
+- **AI-specific environmental costs.** Training energy, inference energy, water cooling, rare earth extraction, e-waste. CDP and carbon tools don't isolate AI infrastructure costs.
 
-**3. Fully Open Source Methodology** — Every formula, every weight, every threshold is auditable on GitHub. A transparency framework that hides its own math would be hypocritical. Open source methodology. Proprietary data.
+### The Architecture
 
-**4. AI Toggle + Equalizer** — Consumers filter companies by HI Grade thresholds across all five HUMAN dimensions. Strict mode hides AI-heavy companies. Soft mode flags them. No other framework gives consumers this control.
+- **Edge-to-cloud native.** A browser extension built on deterministic, human-engineered code (zero AI, zero black boxes) paired with a cloud scoring engine. No other scoring framework ships a consumer-side edge node.
+- **AI Toggle + Equalizer.** Consumers filter companies across all five dimensions. Strict mode hides AI-heavy companies. No other framework gives consumers this control.
+- **AI improves inputs, never the formula.** NLP on SEC filings, ML humanwashing detection, predictive decay — all toggle OFF by default. The telescope gets sharper. It doesn't move the stars.
 
-**5. AI Enhancement Layer** — AI improves the inputs, never the formula. NLP on SEC filings, ML humanwashing detection, predictive decay. Toggle OFF by default. *The AI makes the telescope sharper — it doesn't move the stars.*
+### The 10 HUMAN Features (All Patent-Pending)
+
+| Feature | What It Does | Why It Matters |
+|---------|-------------|----------------|
+| **HUMAN Genome** | Sub-signal fingerprint per company | No two genomes are the same. Full dimensional DNA, not just a number |
+| **HUMAN Decay** | Predicts score drops via trailing regression | CDI of -8/quarter = freefall. Leading indicator for investors |
+| **HUMAN Heartbeat** | Real-time monitoring from 6 feeds | Turns a periodic report into a living system |
+| **HUMAN Watermark** | Detects performative vs genuine empathy | Cross-references external signals against internal reality |
+| **HUMAN Contagion** | Measures ethical ripple through industries | When Amazon cuts 27k jobs, does the sector follow? |
+| **HUMAN Shield** | AI displacement resistance — 6-component moat | Craft, empathy, ethics, transparency, human capital, AI resistance |
+| **HUMAN Consciousness** | Personal ethical footprint | All computation local. No purchasing data transmitted |
+| **HUMAN 100 Index** | ETF-licensable top 100 | Dual-weight: market cap + ethical score. Rebalanced quarterly |
+| **HUMAN Lens** | HI vs ESG gap detection | When ESG says A but HI says C, the gap reveals what they miss |
+| **HUMAN Wave** | Collective market pressure signals | Turns individual choices into visible pressure. No boycotts needed |
+
+### Compared to Existing Frameworks
+
+| Framework | What It Misses |
+|-----------|---------------|
+| **ESG (MSCI, Sustainalytics)** | No AI displacement. No consciousness depth. No empathy detection. No humanwashing |
+| **B Corp** | No scoring granularity. No AI dimension. No real-time monitoring. No consumer interface |
+| **Fair Trade** | No AI measurement. No empathy simulation. No technology dimension at all |
+| **AI Detectors (GPTZero, etc.)** | Detect AI content, not AI displacement of human agency in production |
+| **Carbon Tools (CDP, Watershed)** | One dimension only. No consciousness, empathy, ethics, or transparency |
+| **Glassdoor / Indeed** | Employee sentiment, not ethical production scoring. No composite framework |
+
+HI. unifies all five dimensions into a single, consumer-facing framework with humanwashing detection, edge-to-cloud architecture, and a dynamic certification system. Patent pending.
 
 ---
 
@@ -229,51 +260,6 @@ Base URL: `https://api.thehibalance.org` · Free · No auth required
 | `GET /api/v1/empathy` | HUMAN Watermark |
 | `GET /api/v1/consciousness` | HUMAN Consciousness |
 | `GET /api/v1/collective` | HUMAN Wave |
-
-## What Makes HI. Different
-
-No other framework does what HI. does. Here's why.
-
-### The Scoring
-
-- **Five dimensions, one composite.** Human Consciousness, Understanding & Empathy, Moral & Ethical Conduct, Alive & Environmental, Natural Transparency. Equal weight. No single value outranks another. No other framework scores all five.
-- **Humanwashing detection.** Revenue/employee ratio, headcount vs AI spend, disclosed vs detected AI usage. No ESG framework detects performative human involvement.
-- **Simulated empathy detection.** Response timing, language variability, contextual adaptation depth. Nobody else distinguishes genuine human empathy from AI-simulated empathy.
-- **AI-specific environmental costs.** Training energy, inference energy, water cooling, rare earth extraction, e-waste. CDP and carbon tools don't isolate AI infrastructure costs.
-
-### The Architecture
-
-- **Edge-to-cloud native.** A browser extension built on deterministic, human-engineered code (zero AI, zero black boxes) paired with a cloud scoring engine. No other scoring framework ships a consumer-side edge node.
-- **AI Toggle + Equalizer.** Consumers filter companies across all five dimensions. Strict mode hides AI-heavy companies. No other framework gives consumers this control.
-- **AI improves inputs, never the formula.** NLP on SEC filings, ML humanwashing detection, predictive decay — all toggle OFF by default. The telescope gets sharper. It doesn't move the stars.
-
-### The 10 HUMAN Features (All Patent-Pending)
-
-| Feature | What It Does | Why It Matters |
-|---------|-------------|----------------|
-| **HUMAN Genome** | Sub-signal fingerprint per company | No two genomes are the same. Full dimensional DNA, not just a number |
-| **HUMAN Decay** | Predicts score drops via trailing regression | CDI of -8/quarter = freefall. Leading indicator for investors |
-| **HUMAN Heartbeat** | Real-time monitoring from 6 feeds | Turns a periodic report into a living system |
-| **HUMAN Watermark** | Detects performative vs genuine empathy | Cross-references external signals against internal reality |
-| **HUMAN Contagion** | Measures ethical ripple through industries | When Amazon cuts 27k jobs, does the sector follow? |
-| **HUMAN Shield** | AI displacement resistance — 6-component moat | Craft, empathy, ethics, transparency, human capital, AI resistance |
-| **HUMAN Consciousness** | Personal ethical footprint | All computation local. No purchasing data transmitted |
-| **HUMAN 100 Index** | ETF-licensable top 100 | Dual-weight: market cap + ethical score. Rebalanced quarterly |
-| **HUMAN Lens** | HI vs ESG gap detection | When ESG says A but HI says C, the gap reveals what they miss |
-| **HUMAN Wave** | Collective market pressure signals | Turns individual choices into visible pressure. No boycotts needed |
-
-### Compared to Existing Frameworks
-
-| Framework | What It Misses |
-|-----------|---------------|
-| **ESG (MSCI, Sustainalytics)** | No AI displacement. No consciousness depth. No empathy detection. No humanwashing |
-| **B Corp** | No scoring granularity. No AI dimension. No real-time monitoring. No consumer interface |
-| **Fair Trade** | No AI measurement. No empathy simulation. No technology dimension at all |
-| **AI Detectors (GPTZero, etc.)** | Detect AI content, not AI displacement of human agency in production |
-| **Carbon Tools (CDP, Watershed)** | One dimension only. No consciousness, empathy, ethics, or transparency |
-| **Glassdoor / Indeed** | Employee sentiment, not ethical production scoring. No composite framework |
-
-HI. unifies all five dimensions into a single, consumer-facing framework with humanwashing detection, edge-to-cloud architecture, and a dynamic certification system. Patent pending.
 
 ### What's Next
 
