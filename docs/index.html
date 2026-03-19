@@ -656,7 +656,7 @@ var byDim={H:{total:0,count:0,name:'Human Consciousness'},U:{total:0,count:0,nam
 alerts.forEach(function(a){var di=a.decay_index||0;['H','U','M','A','N'].forEach(function(d){byDim[d].total+=di;byDim[d].count++})});
 // Compute pressure per dimension from alerts + check which dimensions score lowest across all alerts
 var sr=await fetch(API+'/api/v1/grades/top?limit=200');var sd=await sr.json();var all=sd.results||sd||[];
-['H','U','M','A','N'].forEach(function(d){var scores=all.map(function(c){return c['D_'+d]||50});var below42=scores.filter(function(s){return s<42}).length;byDim[d].failing_pct=scores.length?Math.round(below42/scores.length*100):0;byDim[d].pressure=Math.min(100,Math.round(byDim[d].failing_pct*1.5+(byDim[d].count>0?byDim[d].total/byDim[d].count*0.5:0)))});
+['H','U','M','A','N'].forEach(function(d){var scores=all.map(function(c){return c['D_'+d]||50});var belowT=scores.filter(function(s){return s<hiT}).length;byDim[d].failing_pct=scores.length?Math.round(belowT/scores.length*100):0;byDim[d].pressure=Math.min(100,Math.round(byDim[d].failing_pct*1.5+(byDim[d].count>0?byDim[d].total/byDim[d].count*0.5:0)))});
 items=['H','U','M','A','N'].map(function(d){return{dimension:d,dimension_name:byDim[d].name,pressure:byDim[d].pressure,failing_pct:byDim[d].failing_pct}});
 items.sort(function(a,b){return b.pressure-a.pressure})}catch(e2){}}
 if(!items.length){el.innerHTML='<div style="text-align:center;color:var(--muted);padding:40px">No wave data available yet.</div>';return}

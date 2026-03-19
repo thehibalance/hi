@@ -374,13 +374,24 @@ def compute_lens(companies):
 # Which industries and dimensions are under the most pressure?
 # ═══════════════════════════════════════════════════════════════════════
 
-def compute_wave(companies):
+def compute_wave(companies, threshold=64.6):
     """
     Aggregates scoring data into market pressure signals.
     Identifies which industries and dimensions are failing system-wide.
+    Uses HI Balanced threshold as the bar — not the floor.
     """
+    # Load saved threshold if available
+    try:
+        import os
+        t_path = os.path.join("data", "threshold.json")
+        if os.path.exists(t_path):
+            import json as _json
+            threshold = _json.load(open(t_path)).get("threshold", threshold)
+    except:
+        pass
+    
     # Industry pressure
-    industries = defaultdict(lambda: {"scores": [], "dims": defaultdict(list), "hw_flags": 0, "algo_harm": 0, "below_42": 0})
+    industries = defaultdict(lambda: {"scores": [], "dims": defaultdict(list), "hw_flags": 0, "algo_harm": 0, "below_threshold": 0})
     
     for c in companies:
         ind = c.get("industry", "Other") or "Other"
@@ -390,8 +401,8 @@ def compute_wave(companies):
         for d in ["H", "U", "M", "A", "N"]:
             val = c.get(f"D_{d}", 50)
             industries[ind]["dims"][d].append(val)
-            if val < 42:
-                industries[ind]["below_42"] += 1
+            if val < threshold:
+                industries[ind]["below_threshold"] += 1
         
         industries[ind]["hw_flags"] += len(c.get("humanwashing_flags", []))
         if c.get("algo_harm", {}).get("has_harm"):
@@ -406,26 +417,28 @@ def compute_wave(companies):
     dim_pressure = {}
     for d, vals in dim_totals.items():
         avg = sum(vals) / len(vals) if vals else 50
-        below_42 = sum(1 for v in vals if v < 42)
-        below_42_pct = round(below_42 / len(vals) * 100, 1) if vals else 0
+        below_threshold = sum(1 for v in vals if v < threshold)
+        below_threshold_pct = round(below_threshold / len(vals) * 100, 1) if vals else 0
         stdev = math.sqrt(sum((v - avg) ** 2 for v in vals) / len(vals)) if len(vals) > 1 else 0
         
         dim_names = {"H": "Human Consciousness", "U": "Understanding & Empathy",
                      "M": "Moral & Ethical Conduct", "A": "Alive & Environmental",
                      "N": "Natural Transparency"}
         
-        # Pressure score: lower avg + higher below_42_pct + higher stdev = more pressure
-        pressure = round(max(0, 100 - avg) * 0.5 + below_42_pct * 0.3 + min(30, stdev) * 0.2, 1)
+        # Pressure score: lower avg + higher below_threshold_pct + higher stdev = more pressure
+        pressure = round(max(0, 100 - avg) * 0.5 + below_threshold_pct * 0.3 + min(30, stdev) * 0.2, 1)
         
         dim_pressure[d] = {
             "dimension": d,
             "name": dim_names.get(d, d),
             "average": round(avg, 1),
-            "below_42_count": below_42,
-            "below_42_pct": below_42_pct,
+            "below_threshold_count": below_threshold,
+            "below_threshold_pct": below_threshold_pct,
+            "failing_pct": below_threshold_pct,
             "stdev": round(stdev, 1),
             "pressure_score": pressure,
             "status": "critical" if pressure >= 50 else "warning" if pressure >= 30 else "stable",
+            "threshold": round(threshold, 1),
         }
     
     # Industry signals
@@ -435,7 +448,7 @@ def compute_wave(companies):
         if not scores:
             continue
         avg = sum(scores) / len(scores)
-        below_42_total = data["below_42"]
+        below_threshold_total = data["below_threshold"]
         
         # Worst dimension for this industry
         dim_avgs = {}
@@ -448,7 +461,7 @@ def compute_wave(companies):
             max(0, 100 - avg) * 0.40 +
             min(50, data["hw_flags"] * 5) * 0.20 +
             min(50, data["algo_harm"] * 10) * 0.15 +
-            min(50, below_42_total * 3) * 0.25
+            min(50, below_threshold_total * 2) * 0.25
         , 1)
         
         industry_signals.append({
@@ -459,7 +472,7 @@ def compute_wave(companies):
             "worst_dimension_avg": round(dim_avgs.get(worst_dim, 50), 1),
             "humanwashing_flags": data["hw_flags"],
             "algo_harm_companies": data["algo_harm"],
-            "below_42_dimensions": below_42_total,
+            "below_threshold_dimensions": below_threshold_total,
             "pressure_score": pressure,
             "status": "critical" if pressure >= 50 else "warning" if pressure >= 30 else "stable",
         })

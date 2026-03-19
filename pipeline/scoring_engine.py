@@ -237,6 +237,9 @@ def score_h_dimension(sec_h, job_data, bls_data, industry):
     
     # Adjust by headcount — larger workforces have deeper decision chains
     headcount = sec_h.get("headcount")
+    if isinstance(headcount, dict):
+        headcount = headcount.get("value", 0)
+    headcount = headcount or 0
     if headcount:
         if headcount > 200000: h3 = min(100, h3 + 15)
         elif headcount > 50000: h3 = min(100, h3 + 10)
