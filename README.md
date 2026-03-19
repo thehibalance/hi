@@ -30,10 +30,7 @@ The composite score must exceed the adaptive threshold — calculated as **mean 
 
 ### ⚖ Category 2: Balance
 
-All 5 HUMAN dimensions must score **≥ 42**. No blind spots. No hiding a failing dimension behind a strong one.
-
-- 1 dimension below 42 → composite capped
-- 2+ dimensions below 42 → no balance
+All 5 HUMAN dimensions must score **≥ 42**. Any dimension below 42? Not balanced. No exceptions.
 
 *42 — the answer to life, the universe, and everything. Also the minimum per dimension to be in balance.*
 
@@ -53,16 +50,6 @@ Every HUMAN feature acts as a gate. All 10 must pass:
 10. **No critical alerts** — HUMAN Heartbeat is stable
 
 *The first certification that certifies itself. You can't buy it. You can't apply for it. The data proves it.*
-
-### Dynamic Hybrid Scoring Model
-
-The HI Balanced threshold isn't a fixed number. It's **mean + 2 standard deviations** of every scored company — recalculated quarterly. When companies improve, the standard deviation tightens, and the bar rises. Companies force each other to be better.
-
-**Two failsafes protect the standard:**
-- 🔒 **Hard floor:** The threshold never drops below 55.
-- 🔒 **Ratchet:** It can only go up, never down. Once the market pushes it to 62, it stays at 62 even if every company declines.
-
-*The bar only moves one direction. The math decides, not us.*
 
 ## What Makes HI. Different
 

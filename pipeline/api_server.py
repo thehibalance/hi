@@ -165,7 +165,10 @@ def compute_hi_balanced_threshold(companies):
     
     Failsafes:
     1. Hard floor: never below THRESHOLD_FLOOR (55)
-    2. Ratchet: can only go UP, never down (in-memory per deploy)
+    2. Ratchet: can only go UP, never down (persisted to file)
+    
+    Only recalculates when --quarterly flag is passed.
+    Daily runs use the saved threshold.
     """
     global THRESHOLD_HIGH_WATER
     composites = [c.get("composite", 0) for c in companies 
@@ -189,6 +192,27 @@ def compute_hi_balanced_threshold(companies):
     THRESHOLD_HIGH_WATER = max(computed, THRESHOLD_HIGH_WATER)
     
     return THRESHOLD_HIGH_WATER
+
+THRESHOLD_FILE = Path("data/threshold.json")
+
+def load_saved_threshold():
+    """Load the last quarterly threshold from file."""
+    if THRESHOLD_FILE.exists():
+        try:
+            data = json.load(open(THRESHOLD_FILE))
+            return data.get("threshold", 62)
+        except:
+            pass
+    return None
+
+def save_threshold(threshold):
+    """Save the quarterly threshold to file."""
+    THRESHOLD_FILE.parent.mkdir(parents=True, exist_ok=True)
+    json.dump({
+        "threshold": threshold,
+        "updated": datetime.now().isoformat(),
+        "type": "quarterly"
+    }, open(THRESHOLD_FILE, "w"), indent=2)
 
 def check_hi_balanced(company, threshold):
     """Check all 10 gates for HI Balanced status."""
@@ -486,8 +510,16 @@ def build_index():
 
     ALL_COMPANIES.sort(key=lambda x: x.get("composite", 0), reverse=True)
     
-    # Compute HI Balanced threshold and tag qualifying companies
-    threshold = compute_hi_balanced_threshold(ALL_COMPANIES)
+    # Compute HI Balanced threshold
+    # Daily: use saved threshold. Quarterly: recalculate.
+    saved = load_saved_threshold()
+    if saved and not getattr(app, '_quarterly_mode', False):
+        threshold = saved
+        print(f"  Using saved quarterly threshold: {threshold}")
+    else:
+        threshold = compute_hi_balanced_threshold(ALL_COMPANIES)
+        save_threshold(threshold)
+        print(f"  {'Quarterly recalculated' if getattr(app, '_quarterly_mode', False) else 'Initial'} threshold: {threshold}")
     balanced_count = 0
     for c in ALL_COMPANIES:
         passed, gates = check_hi_balanced(c, threshold)
@@ -738,8 +770,8 @@ def stats():
 
     composites = [c["composite"] for c in ALL_COMPANIES if c.get("composite")]
     avg = round(sum(composites) / len(composites), 1) if composites else 0
-    threshold = compute_hi_balanced_threshold(ALL_COMPANIES)
-    certified_count = sum(1 for c in ALL_COMPANIES if check_hi_balanced(c, threshold)[0])
+    threshold = load_saved_threshold() or compute_hi_balanced_threshold(ALL_COMPANIES)
+    certified_count = sum(1 for c in ALL_COMPANIES if c.get("hi_balanced"))
 
     return jsonify({
         "total_companies": len(ALL_COMPANIES),
@@ -1004,6 +1036,7 @@ def main():
     parser.add_argument("--host", default="0.0.0.0")
     parser.add_argument("--data", default="data/scores")
     parser.add_argument("--debug", action="store_true")
+    parser.add_argument("--quarterly", action="store_true", help="Recalculate HI Balanced threshold (run quarterly only)")
     args = parser.parse_args()
 
     # Railway/Render/Fly set PORT env var automatically
@@ -1011,6 +1044,10 @@ def main():
 
     global DATA_DIR
     DATA_DIR = Path(args.data)
+    
+    if args.quarterly:
+        app._quarterly_mode = True
+        print("🔄 QUARTERLY MODE — Threshold will be recalculated")
 
     print("HI. Score API — Find the HI balance.")
     print("thehibalance.org | The HI Balance")
