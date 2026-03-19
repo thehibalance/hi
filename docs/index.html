@@ -56,10 +56,73 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div class="hero"><h1>HI.</h1><p>The balance between <strong>Human Intelligence</strong> and <strong>Artificial Intelligence</strong>, measured.</p></div>
 <div class="stats" id="statsRow"></div>
 <div id="homePulse" style="text-align:center;margin:16px 0 24px"></div>
+<div style="background:white;border-radius:16px;border:1px solid #eee;padding:24px;margin-bottom:24px;overflow:visible">
+<div style="text-align:center;margin-bottom:16px"><span style="font-size:13px;font-weight:700;color:var(--navy);letter-spacing:1px">SEARCH & COMPARE</span></div>
+<div style="display:flex;gap:16px;flex-wrap:wrap">
+<div style="flex:1;min-width:200px;position:relative"><input class="search-input" id="searchInput" placeholder="Search any company..." oninput="doSearch(this.value)" style="width:100%"><div class="search-results" id="searchResults"></div></div>
+<div style="align-self:center;font-size:12px;color:var(--muted);font-weight:600">vs</div>
+<div style="flex:1;min-width:200px;position:relative"><input class="search-input" id="cmpSearch2" placeholder="Compare with..." oninput="cmpDoSearch(2,this.value)" style="width:100%"><div class="search-results" id="cmpResults2"></div></div>
+</div>
+<div style="display:flex;gap:16px;margin-top:16px;flex-wrap:wrap" id="homeCompareCards">
+<div id="cmpCard1" style="flex:1;min-width:200px"></div>
+<div id="cmpCard2" style="flex:1;min-width:200px"></div>
+</div>
+<div id="cmpDimCompare" style="margin-top:8px"></div>
+</div>
+<div style="margin-top:40px;margin-bottom:40px;max-width:650px;margin-left:auto;margin-right:auto;text-align:center">
+<h2 class="section-title">Get Involved</h2>
+<p style="color:var(--muted);font-size:13px;margin-bottom:20px;line-height:1.6">Whether you're a consumer, a company, or just curious — there's a way in.</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:24px">
+<div style="flex:1;min-width:140px;padding:16px;background:white;border-radius:10px;border:1px solid #eee;text-align:center;cursor:pointer" onclick="showPage('decay')">
+<div style="font-size:20px;margin-bottom:6px">💀</div>
+<div style="font-weight:700;color:var(--navy);font-size:12px;margin-bottom:4px">Decay Index</div>
+<div style="font-size:10px;color:var(--muted)">Is your favorite company declining?</div>
+</div>
+<div style="flex:1;min-width:140px;padding:16px;background:white;border-radius:10px;border:1px solid #eee;text-align:center;cursor:pointer" onclick="showPage('heartbeat')">
+<div style="font-size:20px;margin-bottom:6px">♥</div>
+<div style="font-weight:700;color:var(--navy);font-size:12px;margin-bottom:4px">Heartbeat</div>
+<div style="font-size:10px;color:var(--muted)">Real-time ecosystem health</div>
+</div>
+<div style="flex:1;min-width:140px;padding:16px;background:white;border-radius:10px;border:1px solid #eee;text-align:center;cursor:pointer" onclick="showPage('wave')">
+<div style="font-size:20px;margin-bottom:6px">🌊</div>
+<div style="font-weight:700;color:var(--navy);font-size:12px;margin-bottom:4px">Wave</div>
+<div style="font-size:10px;color:var(--muted)">Where is market pressure building?</div>
+</div>
+<div style="flex:1;min-width:140px;padding:16px;background:white;border-radius:10px;border:1px solid #eee;text-align:center;cursor:pointer" onclick="showPage('moat')">
+<div style="font-size:20px;margin-bottom:6px">🏰</div>
+<div style="font-weight:700;color:var(--navy);font-size:12px;margin-bottom:4px">Shield</div>
+<div style="font-size:10px;color:var(--muted)">Who can resist AI displacement?</div>
+</div>
+</div>
+<div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px">
+<div style="flex:1;min-width:250px;padding:20px;background:white;border-radius:12px;border:1px solid #eee;text-align:left">
+<div style="font-size:11px;font-weight:700;color:var(--navy);letter-spacing:1px;margin-bottom:10px">🔍 REQUEST A HI GRADE</div>
+<div style="font-size:12px;color:var(--muted);margin-bottom:12px">Don't see a company? We'll score them.</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<input id="reqCompany" placeholder="Company name..." style="flex:1;min-width:120px;padding:8px 12px;border:1px solid #ddd;border-radius:6px;font-size:13px;outline:none;font-family:inherit">
+<input id="reqEmail" placeholder="Email (optional)" style="flex:1;min-width:120px;padding:8px 12px;border:1px solid #ddd;border-radius:6px;font-size:13px;outline:none;font-family:inherit">
+<button onclick="submitRequest()" style="padding:8px 16px;background:var(--navy);color:white;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer">Request</button>
+</div>
+<div id="reqSuccess" style="display:none;margin-top:8px;color:#16A34A;font-weight:600;font-size:11px">✓ Request submitted.</div>
+<div id="reqError" style="display:none;margin-top:8px;color:#DC2626;font-size:11px">Please enter a company name.</div>
+</div>
+<div style="flex:1;min-width:250px;padding:20px;background:white;border-radius:12px;border:1px solid #eee;text-align:left">
+<div style="font-size:11px;font-weight:700;color:#C49B20;letter-spacing:1px;margin-bottom:10px">🏢 ARE YOU A COMPANY?</div>
+<div style="font-size:12px;color:var(--muted);margin-bottom:12px">Challenge your score, improve your grade, or earn HI Balanced.</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<input id="companyContactName" placeholder="Company name..." style="flex:1;min-width:120px;padding:8px 12px;border:1px solid #ddd;border-radius:6px;font-size:13px;outline:none;font-family:inherit">
+<input id="companyContactEmail" placeholder="Work email..." style="flex:1;min-width:120px;padding:8px 12px;border:1px solid #ddd;border-radius:6px;font-size:13px;outline:none;font-family:inherit">
+<button onclick="submitCompanyContact()" style="padding:8px 16px;background:#C49B20;color:white;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer">Reach Out</button>
+</div>
+<div id="companyContactSuccess" style="display:none;margin-top:8px;color:#16A34A;font-weight:600;font-size:11px">✓ We'll reach out within 48 hours.</div>
+</div>
+</div>
+</div>
+
 <div class="grade-section"><h2 class="section-title">The HI Grade™</h2><p style="text-align:center;color:var(--muted);font-size:13px;margin-bottom:8px">Every company gets a numbered grade, color-coded to their distance from being HI Balanced. Only the balanced get the badge.</p>
 <div style="display:flex;gap:16px;justify-content:center;margin-bottom:24px;flex-wrap:wrap">
 <div style="flex:1;max-width:260px;text-align:center;padding:24px;background:linear-gradient(135deg,#C49B2020,#C49B2008);border:2px solid #C49B20;border-radius:16px"><div style="font-size:18px;color:#C49B20;font-weight:700;letter-spacing:1px"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#C49B20;color:white;font-size:11px;font-weight:900;letter-spacing:-0.5px;vertical-align:middle">HI.</span> HI BALANCED</div><div style="font-size:11px;color:#92400E;margin-top:6px;font-style:italic">10 gates. 3 categories. The math decides, not us.</div></div>
-<div style="flex:1;max-width:260px;text-align:center;padding:24px;background:#F8FAFC;border-radius:16px;border:1px solid #eee"><div style="font-size:9px;font-weight:700;color:var(--navy);letter-spacing:1.5px;margin-bottom:4px">MARKET AVERAGE</div><div style="font-size:42px;font-weight:900;color:var(--navy)" id="homeAvgScore">—</div><div style="font-size:10px;color:var(--muted);margin-top:4px" id="homeAvgLabel">across all scored companies</div></div>
+
 </div>
 <h3 style="text-align:center;font-family:'DM Serif Display';font-size:18px;color:var(--navy);margin-bottom:16px">10 Gates · 3 Categories</h3>
 <div style="display:flex;gap:16px;justify-content:center;margin-bottom:20px;flex-wrap:wrap">
@@ -84,62 +147,11 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div style="text-align:center;margin-bottom:8px"><span style="font-size:11px;font-weight:700;color:#C49B20;letter-spacing:2px">THE HI BALANCED GROUP</span></div>
 <div id="hiBalancedTicker" style="overflow:hidden;white-space:nowrap;padding:12px 0;margin-bottom:24px;border-top:1px solid #C49B2030;border-bottom:1px solid #C49B2030;background:linear-gradient(135deg,#C49B2008,#C49B2003)"><div id="tickerContent" style="display:inline-block;animation:ticker 60s linear infinite"></div></div>
 <style>@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}</style>
-<div style="background:white;border-radius:16px;border:1px solid #eee;padding:24px;margin-bottom:24px;overflow:visible">
-<div style="text-align:center;margin-bottom:16px"><span style="font-size:13px;font-weight:700;color:var(--navy);letter-spacing:1px">SEARCH & COMPARE</span></div>
-<div style="display:flex;gap:16px;flex-wrap:wrap">
-<div style="flex:1;min-width:200px;position:relative"><input class="search-input" id="searchInput" placeholder="Search any company..." oninput="doSearch(this.value)" style="width:100%"><div class="search-results" id="searchResults"></div></div>
-<div style="align-self:center;font-size:12px;color:var(--muted);font-weight:600">vs</div>
-<div style="flex:1;min-width:200px;position:relative"><input class="search-input" id="cmpSearch2" placeholder="Compare with..." oninput="cmpDoSearch(2,this.value)" style="width:100%"><div class="search-results" id="cmpResults2"></div></div>
-</div>
-<div style="display:flex;gap:16px;margin-top:16px;flex-wrap:wrap" id="homeCompareCards">
-<div id="cmpCard1" style="flex:1;min-width:200px"></div>
-<div id="cmpCard2" style="flex:1;min-width:200px"></div>
-</div>
-<div id="cmpDimCompare" style="margin-top:8px"></div>
-</div>
+
 <div style="display:flex;gap:16px;justify-content:center;margin-bottom:32px;flex-wrap:wrap">
 <button class="btn btn-secondary" onclick="showPage('extension')"><span class="btn-icon">⬇</span> Get the Extension</button>
 <button class="btn btn-secondary" onclick="showPage('app')"><span class="btn-icon">📱</span> Get the App</button>
 <button class="btn btn-secondary" onclick="showPage('api')"><span class="btn-icon">⚡</span> Get the API</button>
-</div>
-<div style="margin-top:40px;margin-bottom:40px;text-align:center;max-width:500px;margin-left:auto;margin-right:auto">
-<h2 class="section-title">Don't See a Company?</h2>
-<p style="color:var(--muted);font-size:13px;margin-bottom:16px">Request their HI Grade. We'll score them and notify you.</p>
-<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
-<input id="reqCompany" placeholder="Company name..." style="flex:1;min-width:180px;padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-size:14px;outline:none;font-family:inherit">
-<input id="reqEmail" placeholder="Your email (optional)" style="flex:1;min-width:180px;padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-size:14px;outline:none;font-family:inherit">
-<button onclick="submitRequest()" style="padding:10px 20px;background:var(--navy);color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer">Request HI Grade</button>
-</div>
-<div id="reqSuccess" style="display:none;margin-top:12px;color:#16A34A;font-weight:600;font-size:13px">✓ Request submitted. We'll score them soon.</div>
-<div id="reqError" style="display:none;margin-top:12px;color:#DC2626;font-size:13px">Please enter a company name.</div>
-</div>
-
-<div style="margin-top:48px;margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto;text-align:center">
-<h2 class="section-title">Are You a Company?</h2>
-<p style="color:var(--muted);font-size:13px;margin-bottom:20px;line-height:1.6">Your HI Grade is scored from public data — but you know your company better than any filing. If you want to improve your score, challenge your results, or submit additional data, we want to hear from you.</p>
-<div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
-<div style="flex:1;min-width:160px;padding:16px;background:white;border-radius:10px;border:1px solid #eee;text-align:center">
-<div style="font-size:20px;margin-bottom:6px">📊</div>
-<div style="font-weight:700;color:var(--navy);font-size:13px;margin-bottom:4px">Challenge Your Score</div>
-<div style="font-size:11px;color:var(--muted)">Think your score is wrong? Send us data we missed.</div>
-</div>
-<div style="flex:1;min-width:160px;padding:16px;background:white;border-radius:10px;border:1px solid #eee;text-align:center">
-<div style="font-size:20px;margin-bottom:6px">📈</div>
-<div style="font-weight:700;color:var(--navy);font-size:13px;margin-bottom:4px">Improve Your Grade</div>
-<div style="font-size:11px;color:var(--muted)">We'll tell you which dimensions to focus on and how.</div>
-</div>
-<div style="flex:1;min-width:160px;padding:16px;background:white;border-radius:10px;border:1px solid #eee;text-align:center">
-<div style="font-size:20px;margin-bottom:6px">🏅</div>
-<div style="font-weight:700;color:var(--navy);font-size:13px;margin-bottom:4px">Earn HI Balanced</div>
-<div style="font-size:11px;color:var(--muted)">Pass all 10 gates. You can't buy it — the data proves it.</div>
-</div>
-</div>
-<div style="margin-top:16px">
-<input id="companyContactName" placeholder="Company name..." style="padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-size:14px;outline:none;font-family:inherit;width:200px;margin-right:4px">
-<input id="companyContactEmail" placeholder="Your work email..." style="padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-size:14px;outline:none;font-family:inherit;width:200px;margin-right:4px">
-<button onclick="submitCompanyContact()" style="padding:10px 20px;background:var(--gold);color:white;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer">Get in Touch</button>
-</div>
-<div id="companyContactSuccess" style="display:none;margin-top:12px;color:#16A34A;font-weight:600;font-size:13px">✓ We'll reach out within 48 hours.</div>
 </div>
 </div>
 </div> 
@@ -547,7 +559,7 @@ const GRADES=[["HI Balanced","Adaptive (mean + 2 SD)","Passed all 10 gates. In b
 let stats=null,pulse=null;
 async function init(){try{var sr=await fetch(API+'/api/v1/stats');stats=await sr.json();console.log('HI. loaded:',stats.total_companies,'companies');renderHome();loadBalancedTicker();loadHeartbeat();loadHuman100();loadArbitrage();loadMoat();loadContagion();loadWatermark();loadConsciousness();loadWave();loadDecay();loadGenome();loadConsciousnessExample();document.getElementById('footerStatus').textContent='● API Connected · '+stats.total_companies+' companies · '+stats.tickers_indexed+' tickers · '+stats.data_sources+' data sources'}catch(e){console.log('HI. init error:',e);document.getElementById('footerStatus').textContent='○ API Offline — try refreshing'}}
 async function loadBalancedTicker(){try{var r=await fetch(API+'/api/v1/grades/top?limit=100');var d=await r.json();var list=(d.results||d).filter(function(c){return c.hi_balanced});if(!list.length){document.getElementById('hiBalancedTicker').style.display='none';return}var items=list.map(function(c){return'<span style="display:inline-flex;align-items:center;gap:6px;margin:0 24px;cursor:pointer" onclick="loadC(\''+esc(c.ticker||'')+'\',\''+esc(c.company)+'\')">'+hiE(16)+'<span style="font-weight:700;color:var(--navy);font-size:13px">'+c.company+'</span><span style="color:#C49B20;font-weight:800;font-size:13px">'+c.composite+'</span></span>'}).join('');document.getElementById('tickerContent').innerHTML='<span style="color:#C49B20;font-size:11px;font-weight:700;letter-spacing:1.5px;margin-right:20px">HI BALANCED</span>'+items+items}catch(e){console.log('Ticker error:',e)}}
-function renderHome(){if(stats){if(stats.hi_balanced_threshold)hiT=stats.hi_balanced_threshold;document.getElementById('statsRow').innerHTML=[[stats.total_companies,'Companies Scored'],[stats.hi_balanced_count||4,'HI Balanced'],[stats.data_sources||'34','Data Sources'],[stats.humanwashing_flagged||0,'Humanwashing Flagged']].map(([v,l])=>'<div style="text-align:center"><div class="stat-num">'+v+'</div><div class="stat-label">'+l+'</div></div>').join('');var td=document.getElementById('thresholdDisplay');if(td&&stats.hi_balanced_threshold)td.textContent=stats.hi_balanced_threshold;var tb=document.getElementById('homeThresholdBig');if(tb&&stats.hi_balanced_threshold)tb.textContent=stats.hi_balanced_threshold;var as=document.getElementById('homeAvgScore');if(as)as.textContent=stats.average_composite||'—';var al=document.getElementById('homeAvgLabel');if(al)al.textContent='across '+stats.total_companies+' scored companies'}}
+function renderHome(){if(stats){if(stats.hi_balanced_threshold)hiT=stats.hi_balanced_threshold;document.getElementById('statsRow').innerHTML=[[stats.total_companies,'Companies Scored'],[stats.data_sources||'34','Data Sources'],['24','Sub-Signals'],['10','Gates']].map(([v,l])=>'<div style="text-align:center"><div class="stat-num">'+v+'</div><div class="stat-label">'+l+'</div></div>').join('');var td=document.getElementById('thresholdDisplay');if(td&&stats.hi_balanced_threshold)td.textContent=stats.hi_balanced_threshold;var tb=document.getElementById('homeThresholdBig');if(tb&&stats.hi_balanced_threshold)tb.textContent=stats.hi_balanced_threshold;}}
 var sT;function doSearch(q){clearTimeout(sT);var el=document.getElementById('searchResults');if(q.length<2){el.className='search-results';return}el.innerHTML='<div style="padding:16px;text-align:center;color:var(--muted);font-size:13px">Searching...</div>';el.className='search-results active';sT=setTimeout(async function(){try{var r=await fetch(API+'/api/v1/search?q='+encodeURIComponent(q)+'&limit=12');if(!r.ok)throw new Error('API error '+r.status);var d=await r.json();var res=d.results||[];if(!res.length){el.innerHTML='<div style="padding:16px;text-align:center"><div style="color:var(--muted);font-size:13px;margin-bottom:8px">No results for "'+q+'"</div><div style="font-size:12px"><a href="#" onclick="event.preventDefault();document.getElementById(\'reqCompany\').value=\''+q+'\';document.getElementById(\'reqCompany\').scrollIntoView({behavior:\'smooth\'});document.getElementById(\'reqCompany\').focus()" style="color:var(--navy);font-weight:600;text-decoration:none">Request their HI Grade →</a></div></div>';return}el.innerHTML=res.map(function(c){return'<div class="search-item" onclick="searchSelect(\''+esc(c.ticker||'')+'\',\''+esc(c.company)+'\')"><span class="search-score" style="color:'+(c.hi_balanced?'#C49B20':sc(c.composite||0))+'">'+(c.hi_balanced?hiE(20):c.composite)+'</span><div style="flex:1"><div class="search-name">'+c.company+'</div><div class="search-grade" style="color:'+(c.hi_balanced?'#C49B20':sc(c.composite||0))+'">'+(c.hi_balanced?hiE(14)+' HI Balanced':'HI Grade™')+' · '+c.composite+'</div></div>'+(c.ticker?'<span class="search-ticker">'+c.ticker+'</span>':'')+'</div>'}).join('')}catch(e){console.log('Search error:',e);el.innerHTML='<div style="padding:16px;text-align:center;color:var(--muted);font-size:13px">Search unavailable — try refreshing</div>'}},250)}
 function searchSelect(ticker,name){document.getElementById('searchInput').value=name;document.getElementById('searchResults').className='search-results';try{cmpSelect(1,ticker,name)}catch(e){}}
 async function loadC(ticker,name){try{var c=null;if(ticker){var r=await fetch(API+'/api/v1/score/ticker/'+ticker);var d=await r.json();if(!d.error)c=d}if(!c||c.error||!c.D_H){var r2=await fetch(API+'/api/v1/search?q='+encodeURIComponent(name)+'&limit=1');var d2=await r2.json();if(d2.results&&d2.results[0]){var res=d2.results[0];if(res.ticker&&res.ticker!==ticker){var r3=await fetch(API+'/api/v1/score/ticker/'+res.ticker);var d3=await r3.json();if(!d3.error&&d3.D_H)c=d3}if(!c||!c.D_H){if(res.domains&&res.domains[0]){var r4=await fetch(API+'/api/v1/score/'+res.domains[0]);var d4=await r4.json();if(!d4.error)c=d4}if(!c||!c.D_H)c=res}}}if(!c||c.error)return;renderDet(c);showPage('detail')}catch(e){console.log('loadC error',e)}}
