@@ -1,6 +1,6 @@
 # HI. — Find the HI Balance.
 
-> **HI Grade™** — The balance between humans and technology, measured.
+> **HI Grade™** — The balance between Human Intelligence and Artificial Intelligence, measured.
 
 *Built without AI to measure AI. 34 free data sources. 24 sub-signals. All covered without AI. The world's first edge-to-cloud ethical scoring framework.*
 
