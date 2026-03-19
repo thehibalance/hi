@@ -47,7 +47,7 @@ async function handleCloudLookup(domain) {
   }
 
   try {
-    const response = await fetch(`${API_BASE}/api/v1/score/domain/${encodeURIComponent(domain)}`, {
+    const response = await fetch(`${API_BASE}/api/v1/score/${encodeURIComponent(domain)}`, {
       headers: { 'Accept': 'application/json' },
       signal: AbortSignal.timeout(5000)
     });

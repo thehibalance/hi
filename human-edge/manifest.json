@@ -11,7 +11,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["lib/engine.js", "content.js"],
+      "js": ["lib/db.js", "lib/engine.js", "content.js"],
       "css": ["content.css"],
       "run_at": "document_idle"
     }
