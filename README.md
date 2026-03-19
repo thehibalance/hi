@@ -4,7 +4,7 @@
 
 *Built without AI to measure AI. 34 free data sources. 24 sub-signals. All covered without AI. The world's first edge-to-cloud ethical scoring framework.*
 
-**HI.** measures how human a company is across five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent. Every company gets a score. The ✦ HI Balanced have craft behind the work, empathy in the service, and humans in the loop.
+**HI.** measures how human a company is across five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent. Every company gets a score. The ✦ HI Balanced have craft behind the work, empathy in the service, and humans in the loop. **Bringing balance to the workforce.**
 
 🌐 [thehibalance.org](https://thehibalance.org) · 🏛 The HI Balance · 📄 Patent Pending · ™ HI Grade — Morf Innovations LLC
 
@@ -120,7 +120,7 @@ The deterministic engine covers all 24 sub-signals without AI. The AI layer make
 | **ML Humanwashing Detection** | Pattern detection across disclosures vs behavior at scale | OFF by default |
 | **Empathy Simulation Detection** | Response timing, language variability, contextual depth analysis | OFF by default |
 | **Corporate Content Analysis** | Detect stock photos vs real employees, AI-generated vs human copy | OFF by default |
-| **Predictive HI Balanced** | Forecast which companies are 1-2 quarters from earning/losing ✦ | OFF by default |
+| **Predictive HI Balanced** | Forecast which companies are 1-2 quarters from earning/losing HI Balanced | OFF by default |
 | **Supply Chain Mapping** | AI maps supplier networks from filings + news for HUMAN Contagion | OFF by default |
 | **Sentiment Fusion** | Combine Glassdoor + Reddit + news sentiment into unified empathy signal | OFF by default |
 | **Real-Time Event Detection** | Monitor news/social for score-relevant events between quarterly runs | OFF by default |
