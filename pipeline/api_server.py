@@ -77,6 +77,53 @@ else:
             return decorator
     limiter = FakeLimiter()
 
+# ═══ API KEY AUTHENTICATION ═══
+try:
+    from api_keys import validate_key, TIERS
+    HAS_KEYS = True
+except ImportError:
+    HAS_KEYS = False
+    print("Warning: api_keys module not found. Key authentication disabled.")
+
+# ═══ STRIPE INTEGRATION ═══
+try:
+    from stripe_integration import register_stripe_routes
+    register_stripe_routes(app)
+except ImportError:
+    print("  Stripe: not loaded (stripe_integration.py missing or stripe not installed)")
+except Exception as e:
+    print(f"  Stripe: error loading — {e}")
+
+@app.before_request
+def check_api_key():
+    """Validate API key on every request. Free tier = no key needed."""
+    # Skip key check for non-API routes
+    path = request.path
+    if not path.startswith("/api/") or path in ["/api/v1/stats", "/api/v1/health", "/api/v1/pricing"]:
+        return
+    # Skip for Stripe routes
+    if path.startswith("/stripe/"):
+        return
+    
+    if not HAS_KEYS:
+        return
+    
+    key = request.headers.get("X-API-Key") or request.headers.get("Authorization", "")
+    result = validate_key(key)
+    
+    if result is None:
+        return jsonify({"error": "invalid_api_key", "message": "Invalid API key. Get one at thehibalance.org/api"}), 401
+    
+    if isinstance(result, dict) and result.get("error") == "daily_limit":
+        return jsonify({
+            "error": "daily_limit_exceeded",
+            "message": f"Daily limit of {result['limit']} calls reached for {result['tier']} tier.",
+            "upgrade": "https://thehibalance.org/api#pricing"
+        }), 429
+    
+    # Store tier on request for downstream use
+    request.api_tier = result
+
 # ═══ INPUT SANITIZATION ═══
 MAX_QUERY_LENGTH = 100
 MAX_PARAM_LENGTH = 50

@@ -245,57 +245,57 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:32px">
 
 <div class="about-card" style="text-align:center">
-<div style="font-size:12px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px">COMMUNITY</div>
-<div style="font-size:36px;font-weight:800;color:var(--navy);font-family:'DM Serif Display'">Free</div>
-<div style="font-size:13px;color:var(--muted);margin-bottom:16px">For developers and researchers</div>
+<div style="font-size:12px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px">FREE</div>
+<div style="font-size:36px;font-weight:800;color:var(--navy);font-family:'DM Serif Display'">$0</div>
+<div style="font-size:13px;color:var(--muted);margin-bottom:16px">No key required</div>
 <div style="text-align:left;font-size:13px;line-height:2">
 ✓ All public endpoints<br>
-✓ 440+ companies<br>
+✓ 435+ companies<br>
 ✓ Score, search, stats<br>
-✓ 60 requests/minute<br>
+✓ 100 calls/day<br>
 ✓ No authentication<br>
 ✓ Community support
 </div>
 <div style="margin-top:16px"><a href="https://api.thehibalance.org/api/v1/stats" target="_blank" style="display:inline-block;padding:10px 24px;background:var(--navy);color:white;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">Start Building →</a></div>
 </div>
 
-<div class="about-card" style="text-align:center;border:2px solid var(--navy)">
-<div style="font-size:12px;font-weight:700;letter-spacing:1px;color:var(--gold);margin-bottom:8px">PROFESSIONAL</div>
-<div style="font-size:36px;font-weight:800;color:var(--navy);font-family:'DM Serif Display'">Contact</div>
-<div style="font-size:13px;color:var(--muted);margin-bottom:16px">For products and platforms — contact for pricing</div>
+<div class="about-card" style="text-align:center;border:2px solid var(--gold)">
+<div style="font-size:12px;font-weight:700;letter-spacing:1px;color:var(--gold);margin-bottom:8px">PRO</div>
+<div style="font-size:36px;font-weight:800;color:var(--navy);font-family:'DM Serif Display'">$49<span style="font-size:14px;color:var(--muted);font-weight:400">/mo</span></div>
+<div style="font-size:13px;color:var(--muted);margin-bottom:16px">For products and platforms</div>
 <div style="text-align:left;font-size:13px;line-height:2">
-✓ Everything in Community<br>
-✓ <strong>Heartbeat API</strong> (pulse, alerts, decay)<br>
+✓ Everything in Free<br>
+✓ <strong>10,000 calls/day</strong><br>
+✓ <strong>HUMAN Heartbeat</strong> (pulse, alerts, decay)<br>
 ✓ <strong>HUMAN Genome</strong> (sub-signal data)<br>
 ✓ <strong>HUMAN 100 Index</strong><br>
-✓ <strong>HUMAN Lens</strong> data<br>
+✓ <strong>HUMAN Lens + Shield + Wave</strong><br>
 ✓ API key authentication<br>
-✓ 600 requests/minute<br>
 ✓ Webhook notifications<br>
 ✓ Priority email support
 </div>
-<div style="margin-top:16px"><a href="mailto:hi@thehibalance.org?subject=HI API Key Request" style="display:inline-block;padding:10px 24px;background:var(--navy);color:white;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">Get API Key →</a></div>
+<div style="margin-top:16px"><button onclick="startCheckout('pro')" style="display:inline-block;padding:10px 24px;background:var(--gold);color:white;border-radius:8px;font-size:13px;font-weight:600;border:none;cursor:pointer">Subscribe — $49/mo →</button></div>
 </div>
 
 <div class="about-card" style="text-align:center">
 <div style="font-size:12px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px">ENTERPRISE</div>
-<div style="font-size:36px;font-weight:800;color:var(--navy);font-family:'DM Serif Display'">Custom</div>
+<div style="font-size:36px;font-weight:800;color:var(--navy);font-family:'DM Serif Display'">$499<span style="font-size:14px;color:var(--muted);font-weight:400">/mo</span></div>
 <div style="font-size:13px;color:var(--muted);margin-bottom:16px">For institutions and funds</div>
 <div style="text-align:left;font-size:13px;line-height:2">
-✓ Everything in Professional<br>
+✓ Everything in Pro<br>
 ✓ <strong>Unlimited requests</strong><br>
 ✓ <strong>HUMAN 100 Index licensing</strong><br>
-✓ <strong>Alternative data feed</strong> (hedge fund grade)<br>
+✓ <strong>Bulk export + raw data</strong><br>
+✓ <strong>White-label option</strong><br>
 ✓ Custom data pipelines<br>
 ✓ SLA guarantee (99.9%)<br>
-✓ Dedicated account manager<br>
-✓ On-premise deployment option<br>
-✓ Custom integrations (SAP, Bloomberg)
+✓ Dedicated account manager
 </div>
-<div style="margin-top:16px"><a href="mailto:hi@thehibalance.org?subject=HI App Inquiry" style="display:inline-block;padding:10px 24px;background:var(--navy);color:white;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">Contact Sales →</a></div>
+<div style="margin-top:16px"><button onclick="startCheckout('enterprise')" style="display:inline-block;padding:10px 24px;background:var(--navy);color:white;border-radius:8px;font-size:13px;font-weight:600;border:none;cursor:pointer">Subscribe — $499/mo →</button></div>
 </div>
 
 </div>
+<p style="text-align:center;color:var(--muted);font-size:12px;margin-bottom:32px">All plans include full API documentation. Cancel anytime. Enterprise includes custom onboarding.</p>
 
 <h2 class="section-title" style="font-size:22px">Use Cases</h2>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:32px">
@@ -661,6 +661,7 @@ function submitAppWaitlist(){var e=document.getElementById('appWaitlistEmail').v
 fetch('https://formspree.io/f/xbdzkrdj',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,type:'app',date:new Date().toISOString()})}).then(function(){document.getElementById('appWaitlistSuccess').style.display='block';document.getElementById('appWaitlistEmail').value=''}).catch(function(){document.getElementById('appWaitlistSuccess').style.display='block';document.getElementById('appWaitlistEmail').value=''})}
 function submitRequest(company,email){var c=company||document.getElementById('reqCompany').value.trim();var e=email||document.getElementById('reqEmail').value.trim();if(!c){var err=document.getElementById('reqError');if(err){err.style.display='block';setTimeout(function(){err.style.display='none'},3000)}return}
 fetch('https://formspree.io/f/xbdzkrdj',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({company:c,email:e||'none',type:'score_request',date:new Date().toISOString()})}).then(function(){var s=document.getElementById('reqSuccess');if(s){s.style.display='block';setTimeout(function(){s.style.display='none'},5000)}document.getElementById('reqCompany').value='';document.getElementById('reqEmail').value=''}).catch(function(){var s=document.getElementById('reqSuccess');if(s){s.style.display='block';setTimeout(function(){s.style.display='none'},5000)}})}
+function startCheckout(tier){fetch(API+'/stripe/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tier:tier})}).then(function(r){return r.json()}).then(function(d){if(d.url){window.location.href=d.url}else{alert('Stripe checkout not yet configured. Email hi@thehibalance.org for '+tier+' access.')}}).catch(function(){window.location.href='mailto:hi@thehibalance.org?subject=HI API '+tier+' Access'})}
 function submitCompanyContact(){var c=document.getElementById('companyContactName').value.trim();var e=document.getElementById('companyContactEmail').value.trim();if(!c||!e)return;fetch('https://formspree.io/f/xbdzkrdj',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({company:c,email:e,type:'company_improve',date:new Date().toISOString()})}).then(function(){var s=document.getElementById('companyContactSuccess');if(s){s.style.display='block';setTimeout(function(){s.style.display='none'},5000)}document.getElementById('companyContactName').value='';document.getElementById('companyContactEmail').value=''}).catch(function(){var s=document.getElementById('companyContactSuccess');if(s){s.style.display='block';setTimeout(function(){s.style.display='none'},5000)}})}function showPage(p){['home','detail','about','contact','extension','app','api','heartbeat','human100','arbitrage','moat','compare','contagion','watermark','consciousness','wave','decay','genome'].forEach(function(pg){var el=document.getElementById('page-'+pg);if(el)el.className=pg===p?'page':'page hidden';var n=document.getElementById('nav-'+pg);if(n)n.className=pg===p?'nav-link active':'nav-link'});window.scrollTo(0,0)}
 document.addEventListener('click',function(e){if(!e.target.closest('.search-input')&&!e.target.closest('.search-results')){var r1=document.getElementById('searchResults');if(r1)r1.className='search-results';var r2=document.getElementById('cmpResults2');if(r2)r2.className='search-results'}});
 async function loadHeartbeat(){try{var pr=await fetch(API+'/api/v1/heartbeat/pulse');pulse=await pr.json();var pc={'healthy':'#16A34A','elevated':'#D97706','stressed':'#DC2626','critical':'#DC2626'};var pv=document.getElementById('pulseValue');if(pv){pv.textContent=(pulse.pulse||'unknown').toUpperCase();pv.style.color=pc[pulse.pulse]||'var(--navy)'}var ps=document.getElementById('pulseStats');if(ps)ps.textContent='Avg decay: '+(pulse.average_decay||0)+' · '+(pulse.companies_analyzed||0)+' companies · '+(pulse.alerts_count||0)+' alerts';var hp=document.getElementById('homePulse');if(hp&&pulse.pulse){hp.innerHTML='<a onclick="showPage(\'heartbeat\')" style="cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:600;background:'+(pc[pulse.pulse]||'#EEF1F5')+'15;border:1px solid '+(pc[pulse.pulse]||'#ccc')+'30;color:'+(pc[pulse.pulse]||'var(--navy)')+'"><span style="font-size:8px;animation:blink 2s infinite">●</span> Ecosystem Pulse: '+(pulse.pulse||'').toUpperCase()+' <span style="font-weight:400;opacity:0.7">· '+(pulse.alerts_count||0)+' alerts</span></a><style>@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}</style>'}var ar=await fetch(API+'/api/v1/heartbeat/alerts?limit=20');var ad=await ar.json();var ae=document.getElementById('heartbeatAlerts');if(ae&&ad.results){var ic={'critical':'🔴','warning':'🔴','watch':'🟡'};ae.innerHTML=ad.results.length?ad.results.map(function(a,idx){return'<div style="border-radius:8px;margin-bottom:8px;overflow:hidden;border:1px solid '+(a.decay_level==='critical'?'#FECACA':'#FDE68A')+'"><div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:'+(a.decay_level==='critical'?'#FEE2E2':'#FEF3C7')+';cursor:pointer" onclick="var d=document.getElementById(\'hbDetail'+idx+'\');d.style.display=d.style.display===\'block\'?\'none\':\'block\'"><span style="font-size:18px">'+(ic[a.decay_level]||'🟠')+'</span><div style="flex:1"><div style="font-weight:700;color:var(--navy)">'+a.company+'</div><div style="font-size:12px;color:var(--muted)">'+a.current_grade+' · Decay: '+a.decay_index+'</div></div><span style="font-size:11px;color:var(--muted)">▾</span></div><div id="hbDetail'+idx+'" style="display:none;padding:12px 16px;background:white;font-size:12px">'+(a.factors||[]).map(function(f){return'<div style="padding:4px 0;color:#444;border-bottom:1px solid #f5f5f5">› '+f+'</div>'}).join('')+'<div style="margin-top:8px"><span style="color:var(--sky);cursor:pointer;font-weight:600" onclick="event.stopPropagation();loadC(\''+esc(a.ticker||'')+'\',\''+esc(a.company||'')+'\')">View full profile →</span></div></div></div>'}).join(''):'<div style="text-align:center;color:var(--muted);padding:24px">No active alerts. The ecosystem is healthy.</div>'}}catch(e){console.log('Heartbeat load error:',e)}}
