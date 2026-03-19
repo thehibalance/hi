@@ -30,6 +30,7 @@ def main():
     parser = argparse.ArgumentParser(description="HI. Daily Pipeline")
     parser.add_argument("--quarterly", action="store_true", help="Recalculate threshold")
     parser.add_argument("--features-only", action="store_true", help="Skip scoring, regenerate features only")
+    parser.add_argument("--skip-collect", action="store_true", help="Skip data collection, use existing data")
     parser.add_argument("--data", default="data/scores", help="Scores directory")
     parser.add_argument("--output", default="data", help="Output base directory")
     parser.add_argument("--port", default="8080", help="API port for restart")
@@ -59,23 +60,29 @@ def main():
         return
 
     if not args.features_only:
-        # Step 1: Run scoring engine
-        run(f"python3 scoring_engine.py --output {args.data}", "Step 1: Scoring Engine (34 sources, 24 sub-signals)")
+        # Step 1: Collect fresh data from all 34 sources
+        if not args.skip_collect:
+            run(f"python3 data_collector.py --all --data {args.output}", "Step 1: Data Collection (34 sources)")
+        else:
+            print("\n  ⏭ Step 1: Data collection skipped (--skip-collect)")
+        
+        # Step 2: Run scoring engine
+        run(f"python3 scoring_engine.py --output {args.data}", "Step 2: Scoring Engine (24 sub-signals + algo harm)")
 
-    # Step 2: Run feature pipelines
-    run(f"python3 feature_pipelines.py --data {args.data} --output {args.output}", "Step 2: Feature Pipelines (Shield, Contagion, Lens, Wave, Watermark)")
+    # Step 3: Run feature pipelines
+    run(f"python3 feature_pipelines.py --data {args.data} --output {args.output}", "Step 3: Feature Pipelines (Shield, Contagion, Lens, Wave, Watermark)")
 
-    # Step 3: Run heartbeat monitor
+    # Step 4: Run heartbeat monitor
     if Path("heartbeat_monitor.py").exists():
-        run(f"python3 heartbeat_monitor.py --data {args.data} --output {args.output}/heartbeat", "Step 3: HUMAN Heartbeat")
+        run(f"python3 heartbeat_monitor.py --data {args.data} --output {args.output}/heartbeat", "Step 4: HUMAN Heartbeat")
     else:
-        print("\n  ⏭ Step 3: Heartbeat monitor not found, skipping")
+        print("\n  ⏭ Step 4: Heartbeat monitor not found, skipping")
 
-    # Step 4: Run HUMAN 100 Index
+    # Step 5: Run HUMAN 100 Index
     if Path("human100_index.py").exists():
-        run(f"python3 human100_index.py --data {args.data} --output {args.output}/human100", "Step 4: HUMAN 100 Index")
+        run(f"python3 human100_index.py --data {args.data} --output {args.output}/human100", "Step 5: HUMAN 100 Index")
     else:
-        print("\n  ⏭ Step 4: HUMAN 100 not found, skipping")
+        print("\n  ⏭ Step 5: HUMAN 100 not found, skipping")
 
     elapsed = round(time.time() - start, 1)
     print(f"\n{'═' * 60}")

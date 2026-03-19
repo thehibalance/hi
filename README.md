@@ -227,10 +227,11 @@ hi/
 │       └── db.js                # Database layer
 │
 ├── pipeline/                    # Cloud scoring pipeline
+│   ├── data_collector.py         # All 34 data source fetchers
 │   ├── scoring_engine.py        # HUMAN scoring + adaptive threshold
 │   ├── feature_pipelines.py     # Shield, Contagion, Lens, Wave, Watermark
 │   ├── api_server.py            # REST API (Flask, 32 endpoints)
-│   ├── run_all.py               # Single command runner
+│   ├── run_all.py               # Single command: collect → score → features
 │   ├── heartbeat_monitor.py     # HUMAN Heartbeat
 │   ├── human100_index.py        # HUMAN 100 Index
 │   ├── grade_arbitrage.py       # HUMAN Lens
@@ -265,7 +266,7 @@ git clone https://github.com/thehibalance/hi.git
 
 # Pipeline
 cd pipeline
-python3 run_all.py --daily --push
+python3 run_all.py
 ```
 
 ## API
