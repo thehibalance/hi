@@ -206,10 +206,9 @@ HI. unifies all five dimensions into a single, consumer-facing framework with hu
 
 - **Website**: [thehibalance.org](https://thehibalance.org) — Search 440+ companies, all 10 HUMAN features
 - **API**: [api.thehibalance.org](https://api.thehibalance.org/api/v1/stats) — Free public REST API (32 endpoints)
-- **Extension**: Chrome + Safari — mini pill (score/threshold), full sidebar with gates
+- **Chrome Web Store**: [HI. — Human Intelligence Grade](https://chrome.google.com/webstore) — Live
+- **Extension**: Chrome — mini pill (score/threshold), full sidebar with gates
 - **Nav**: HI. (App · Extension · API) · HUMAN ▾ (all 10 features) · About HI · Contact HI
-
----
 
 ---
 
@@ -243,6 +242,7 @@ hi/
 │
 ├── docs/                        # Website (GitHub Pages)
 │   ├── index.html               # thehibalance.org
+│   ├── privacy.html             # Privacy policy
 │   └── CNAME                    # Custom domain
 │
 ├── LICENSE                      # AGPL-3.0 / Apache 2.0
@@ -292,7 +292,6 @@ Base URL: `https://api.thehibalance.org` · Free · No auth required
 
 | Item | Priority |
 |------|----------|
-| Chrome Web Store listing | 🔴 High |
 | iOS app (TestFlight → App Store) | 🔴 High |
 | Non-provisional patent (due March 2027) | 🔴 High |
 | AI Enhancement Layer | 🟡 Medium |
