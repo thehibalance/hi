@@ -53,23 +53,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <span class="nav-link" id="nav-contact" onclick="showPage('contact')">Contact HI</span>
 </div></div><span class="nav-tagline">FIND THE HI BALANCE.</span></div></nav>
 <div id="page-home" class="page" style="max-width:1100px;margin:0 auto;padding:0 24px">
-<div class="hero"><h1>HI.</h1><p>The balance between <strong>Human Intelligence</strong> and <strong>Artificial Intelligence</strong>, measured.</p><div class="hero-ctas"><button class="btn btn-secondary" onclick="showPage('extension')"><span class="btn-icon">⬇</span> Get the Extension</button><button class="btn btn-secondary" onclick="showPage('app')"><span class="btn-icon">📱</span> Get the App</button><button class="btn btn-secondary" onclick="showPage('api')"><span class="btn-icon">⚡</span> Get the API</button></div></div>
-<div style="text-align:center;margin-bottom:8px"><span style="font-size:11px;font-weight:700;color:#C49B20;letter-spacing:2px">THE HI BALANCED GROUP</span></div>
-<div id="hiBalancedTicker" style="overflow:hidden;white-space:nowrap;padding:12px 0;margin-bottom:24px;border-top:1px solid #C49B2030;border-bottom:1px solid #C49B2030;background:linear-gradient(135deg,#C49B2008,#C49B2003)"><div id="tickerContent" style="display:inline-block;animation:ticker 60s linear infinite"></div></div>
-<style>@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}</style>
-<div style="background:white;border-radius:16px;border:1px solid #eee;padding:24px;margin-bottom:24px;overflow:visible">
-<div style="text-align:center;margin-bottom:16px"><span style="font-size:13px;font-weight:700;color:var(--navy);letter-spacing:1px">SEARCH & COMPARE</span></div>
-<div style="display:flex;gap:16px;flex-wrap:wrap">
-<div style="flex:1;min-width:200px;position:relative"><input class="search-input" id="searchInput" placeholder="Search any company..." oninput="doSearch(this.value)" style="width:100%"><div class="search-results" id="searchResults"></div></div>
-<div style="align-self:center;font-size:12px;color:var(--muted);font-weight:600">vs</div>
-<div style="flex:1;min-width:200px;position:relative"><input class="search-input" id="cmpSearch2" placeholder="Compare with..." oninput="cmpDoSearch(2,this.value)" style="width:100%"><div class="search-results" id="cmpResults2"></div></div>
-</div>
-<div style="display:flex;gap:16px;margin-top:16px;flex-wrap:wrap" id="homeCompareCards">
-<div id="cmpCard1" style="flex:1;min-width:200px"></div>
-<div id="cmpCard2" style="flex:1;min-width:200px"></div>
-</div>
-<div id="cmpDimCompare" style="margin-top:8px"></div>
-</div>
+<div class="hero"><h1>HI.</h1><p>The balance between <strong>Human Intelligence</strong> and <strong>Artificial Intelligence</strong>, measured.</p></div>
 <div class="stats" id="statsRow"></div>
 <div id="homePulse" style="text-align:center;margin:16px 0 24px"></div>
 <div class="grade-section"><h2 class="section-title">The HI Grade™</h2><p style="text-align:center;color:var(--muted);font-size:13px;margin-bottom:8px">Every company gets a numbered grade, color-coded to their distance from being HI Balanced. Only the balanced get the badge.</p>
@@ -95,6 +79,28 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div style="font-size:11px;color:#444;line-height:1.6">No humanwashing · Decay < 30<br>Shield ≥ 50 · No ESG washing<br>Not negative leader · No genome gaps<br>Not under pressure · No alerts</div>
 <div style="font-size:10px;color:var(--muted);margin-top:8px">The first certification that certifies itself</div>
 </div>
+</div>
+</div>
+<div style="text-align:center;margin-bottom:8px"><span style="font-size:11px;font-weight:700;color:#C49B20;letter-spacing:2px">THE HI BALANCED GROUP</span></div>
+<div id="hiBalancedTicker" style="overflow:hidden;white-space:nowrap;padding:12px 0;margin-bottom:24px;border-top:1px solid #C49B2030;border-bottom:1px solid #C49B2030;background:linear-gradient(135deg,#C49B2008,#C49B2003)"><div id="tickerContent" style="display:inline-block;animation:ticker 60s linear infinite"></div></div>
+<style>@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}</style>
+<div style="background:white;border-radius:16px;border:1px solid #eee;padding:24px;margin-bottom:24px;overflow:visible">
+<div style="text-align:center;margin-bottom:16px"><span style="font-size:13px;font-weight:700;color:var(--navy);letter-spacing:1px">SEARCH & COMPARE</span></div>
+<div style="display:flex;gap:16px;flex-wrap:wrap">
+<div style="flex:1;min-width:200px;position:relative"><input class="search-input" id="searchInput" placeholder="Search any company..." oninput="doSearch(this.value)" style="width:100%"><div class="search-results" id="searchResults"></div></div>
+<div style="align-self:center;font-size:12px;color:var(--muted);font-weight:600">vs</div>
+<div style="flex:1;min-width:200px;position:relative"><input class="search-input" id="cmpSearch2" placeholder="Compare with..." oninput="cmpDoSearch(2,this.value)" style="width:100%"><div class="search-results" id="cmpResults2"></div></div>
+</div>
+<div style="display:flex;gap:16px;margin-top:16px;flex-wrap:wrap" id="homeCompareCards">
+<div id="cmpCard1" style="flex:1;min-width:200px"></div>
+<div id="cmpCard2" style="flex:1;min-width:200px"></div>
+</div>
+<div id="cmpDimCompare" style="margin-top:8px"></div>
+</div>
+<div style="display:flex;gap:16px;justify-content:center;margin-bottom:32px;flex-wrap:wrap">
+<button class="btn btn-secondary" onclick="showPage('extension')"><span class="btn-icon">⬇</span> Get the Extension</button>
+<button class="btn btn-secondary" onclick="showPage('app')"><span class="btn-icon">📱</span> Get the App</button>
+<button class="btn btn-secondary" onclick="showPage('api')"><span class="btn-icon">⚡</span> Get the API</button>
 </div>
 <div style="margin-top:40px;margin-bottom:40px;text-align:center;max-width:500px;margin-left:auto;margin-right:auto">
 <h2 class="section-title">Don't See a Company?</h2>
@@ -487,12 +493,12 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div style="text-align:center;margin-top:32px"><div style="font-family:'DM Serif Display';font-size:18px;color:var(--navy)">The HI Balance</div><div style="font-size:13px;color:var(--muted);margin-top:6px">Patent Pending · HUMAN Grade Methodology Spec v1.0 · Apache 2.0</div></div></div></div>
 <div id="page-contact" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
 <div class="subpage">
-<h1 class="section-title" style="font-size:36px">Contact HI.</h1>
-<p class="subpage-sub">Find the HI balance — together.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:24px">
-<div class="about-card" style="text-align:center;border-left:4px solid var(--navy)"><div style="font-size:28px;margin-bottom:8px">🏢</div><h3 style="font-family:'DM Serif Display';font-size:18px;color:var(--navy);margin-bottom:8px">For Companies</h3><p style="font-size:13px;color:var(--muted)">Understand your HI Grade. See your gates. Improve your score.</p><a href="mailto:press@thehibalance.org?subject=HI Grade Inquiry" style="display:inline-block;margin-top:12px;padding:8px 20px;background:var(--navy);color:white;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none">Get in Touch</a></div>
-<div class="about-card" style="text-align:center;border-left:4px solid var(--sky)"><div style="font-size:28px;margin-bottom:8px">🤝</div><h3 style="font-family:'DM Serif Display';font-size:18px;color:var(--navy);margin-bottom:8px">For Partners</h3><p style="font-size:13px;color:var(--muted)">Integrate HI Grade data into your platform. API access, data licensing, ETF licensing.</p><a href="mailto:contact@thehibalance.org?subject=HI API Partnership" style="display:inline-block;margin-top:12px;padding:8px 20px;background:var(--sky);color:white;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none">Partner With Us</a></div>
-<div class="about-card" style="text-align:center;border-left:4px solid var(--green)"><div style="font-size:28px;margin-bottom:8px">💙</div><h3 style="font-family:'DM Serif Display';font-size:18px;color:var(--navy);margin-bottom:8px">For Everyone</h3><p style="font-size:13px;color:var(--muted)">Questions, feedback, ideas, or just want to say hi.</p><a href="mailto:hi@thehibalance.org?subject=Hi from thehibalance.org" style="display:inline-block;margin-top:12px;padding:8px 20px;background:var(--green);color:white;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none">Say HI</a></div>
+<h1 style="font-family:'DM Serif Display';font-size:42px;color:var(--navy);text-align:center;margin-bottom:8px">Say HI.</h1>
+<p style="text-align:center;color:var(--muted);font-size:15px;margin-bottom:32px">We'd love to hear from you.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:24px">
+<div style="text-align:center;padding:32px 24px;background:white;border-radius:16px;border:1px solid #eee;transition:all .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'"><div style="width:48px;height:48px;border-radius:50%;background:var(--navy);color:white;display:inline-flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;margin-bottom:16px">HI.</div><h3 style="font-family:'DM Serif Display';font-size:20px;color:var(--navy);margin-bottom:8px">Say HI as a Company</h3><p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px">Understand your HI Grade. See your gates. Find out what it takes to join the HI Balanced Group.</p><a href="mailto:press@thehibalance.org?subject=Say HI — Company Inquiry" style="display:inline-block;padding:10px 24px;background:var(--navy);color:white;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">Say HI</a></div>
+<div style="text-align:center;padding:32px 24px;background:white;border-radius:16px;border:1px solid #eee;transition:all .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'"><div style="width:48px;height:48px;border-radius:50%;background:#C49B20;color:white;display:inline-flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;margin-bottom:16px">HI.</div><h3 style="font-family:'DM Serif Display';font-size:20px;color:var(--navy);margin-bottom:8px">Say HI as a Partner</h3><p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px">Integrate HI Grade data into your platform. API access, data licensing, HUMAN 100 ETF licensing.</p><a href="mailto:contact@thehibalance.org?subject=Say HI — Partnership" style="display:inline-block;padding:10px 24px;background:#C49B20;color:white;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">Say HI</a></div>
+<div style="text-align:center;padding:32px 24px;background:white;border-radius:16px;border:1px solid #eee;transition:all .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'"><div style="width:48px;height:48px;border-radius:50%;background:#16A34A;color:white;display:inline-flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;margin-bottom:16px">HI.</div><h3 style="font-family:'DM Serif Display';font-size:20px;color:var(--navy);margin-bottom:8px">Just Say HI</h3><p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px">Questions, feedback, ideas, or just want to say hi. We're humans too.</p><a href="mailto:hi@thehibalance.org?subject=HI!" style="display:inline-block;padding:10px 24px;background:#16A34A;color:white;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">Say HI</a></div>
 </div>
 <div style="text-align:center;margin-top:32px">
 
