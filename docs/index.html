@@ -16,13 +16,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#1B3A5C;--slate:#2E5E8E;--sky:#3A7BBF;--bg:#F7F8FA;--white:#FFF;--dark:#0F1A2E;--text:#1a1a2e;--muted:#6B7280;--light:#E5E7EB;--gold:#C49B20;--green:#16A34A;--yellow:#D97706;--red:#DC2626;--gray:#6B7280}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans','Helvetica Neue',sans-serif;background:var(--bg);color:var(--text)}a{color:var(--sky);text-decoration:none}
+:root{--navy:#1B3A5C;--slate:#2E5E8E;--sky:#3A7BBF;--bg:#FFFFFF;--white:#FFF;--dark:#0F1A2E;--text:#1a1a2e;--muted:#6B7280;--light:#E5E7EB;--gold:#C49B20;--green:#16A34A;--yellow:#D97706;--red:#DC2626;--gray:#6B7280}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans','Helvetica Neue',sans-serif;background:var(--bg);color:var(--text)}a{color:var(--sky);text-decoration:none}
 nav{background:var(--dark);padding:14px 0;position:sticky;top:0;z-index:100;border-bottom:3px solid var(--sky)}.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}.nav-brand{font-family:'DM Serif Display';font-size:28px;color:var(--white);cursor:pointer;letter-spacing:1px}.nav-links{display:flex;gap:24px;align-items:center}.nav-link{color:#8899AA;font-size:13px;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;padding-bottom:2px;transition:all .2s}.nav-link.active,.nav-link:hover{color:var(--white);border-bottom-color:var(--sky)}.nav-tagline{color:#5A7A9A;font-size:11px;letter-spacing:1.5px;font-weight:500;text-transform:uppercase}
 .nav-dropdown{position:relative;padding:8px 0}.nav-dropdown:hover .nav-dd-menu{display:block}.nav-dd-trigger{color:#8899AA;font-size:13px;font-weight:600;cursor:pointer;padding-bottom:2px;border-bottom:2px solid transparent;transition:all .2s;user-select:none}.nav-dropdown:hover .nav-dd-trigger{color:var(--white);border-bottom-color:var(--sky)}.nav-dd-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:var(--dark);border:1px solid #2a3f5f;border-radius:10px;padding:8px 0;margin-top:0;min-width:220px;box-shadow:0 8px 32px rgba(0,0,0,.3);z-index:200}.nav-dd-menu::before{content:'';position:absolute;top:-12px;left:0;right:0;height:12px;background:transparent}.nav-dd-item{display:block;padding:9px 20px;color:#8899AA;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;white-space:nowrap}.nav-dd-item:hover{color:var(--white);background:rgba(58,123,191,.15)}.nav-dd-divider{height:1px;background:#2a3f5f;margin:4px 12px}
-.hero{text-align:center;padding:80px 0 30px}.hero h1{font-family:'DM Serif Display';font-size:72px;color:var(--navy);letter-spacing:-1px}.hero p{font-size:22px;color:var(--slate);margin-top:8px}.hero-sub{font-size:15px;color:var(--muted);margin-top:16px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6}
-.hero-ctas{display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;border:none;font-family:inherit}.btn-primary{background:var(--navy);color:var(--white)}.btn-primary:hover{background:var(--slate);transform:translateY(-1px);box-shadow:0 4px 12px rgba(27,58,92,.3)}.btn-secondary{background:var(--white);color:var(--navy);border:2px solid var(--light)}.btn-secondary:hover{border-color:var(--sky);transform:translateY(-1px)}.btn-gold{background:linear-gradient(135deg,#C49B20,#D4AA30);color:var(--white)}.btn-gold:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(196,155,32,.4)}.btn-icon{font-size:18px}
-.search-wrap{max-width:560px;margin:30px auto 50px;position:relative}.search-input{width:100%;padding:16px 24px;font-size:17px;border:2px solid var(--light);border-radius:14px;outline:none;font-family:inherit;background:var(--white);box-shadow:0 4px 20px rgba(0,0,0,.06);transition:border .2s}.search-input:focus{border-color:var(--sky)}.search-results{position:absolute;top:100%;left:0;right:0;background:var(--white);border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);margin-top:8px;overflow-x:hidden;overflow-y:auto;z-index:999;display:none;max-height:400px}.search-results.active{display:block}.search-item{display:flex;align-items:center;gap:14px;padding:12px 20px;cursor:pointer;border-bottom:1px solid var(--light);transition:background .15s}.search-item:hover{background:#F0F4FF}.search-score{font-size:24px;font-weight:800;min-width:40px;text-align:center}.search-name{font-weight:600;font-size:14px}.search-grade{font-size:12px;font-weight:600}.search-ticker{font-size:11px;color:var(--muted);background:#F0F0F0;padding:2px 8px;border-radius:4px;font-weight:600}
-.stats{display:flex;justify-content:center;gap:32px;margin-bottom:50px;flex-wrap:wrap}.stat-num{font-size:36px;font-weight:800;color:var(--navy);font-family:'DM Serif Display'}.stat-label{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:.5px;margin-top:4px}
+.hero{text-align:center;padding:100px 0 60px}.hero h1{font-family:'DM Serif Display';font-size:120px;color:var(--navy);letter-spacing:-3px;line-height:1}.hero p{font-size:20px;color:var(--muted);margin-top:16px;font-weight:400;letter-spacing:0.3px}
+.hero-ctas{display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;border:none;font-family:inherit}.btn-primary{background:var(--navy);color:var(--white)}.btn-primary:hover{background:var(--slate);transform:translateY(-1px);box-shadow:0 4px 12px rgba(27,58,92,.3)}.btn-secondary{background:var(--white);color:var(--navy);border:1px solid #E0E0E0}.btn-secondary:hover{border-color:var(--navy);transform:translateY(-1px)}.btn-gold{background:linear-gradient(135deg,#C49B20,#D4AA30);color:var(--white)}.btn-gold:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(196,155,32,.4)}.btn-icon{font-size:18px}
+.search-wrap{max-width:560px;margin:30px auto 50px;position:relative}.search-input{width:100%;padding:18px 24px;font-size:16px;border:1px solid #E0E0E0;border-radius:16px;outline:none;font-family:inherit;background:var(--white);transition:border .2s,box-shadow .2s}.search-input:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(27,58,92,.08)}.search-results{position:absolute;top:100%;left:0;right:0;background:var(--white);border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.1);margin-top:8px;overflow-x:hidden;overflow-y:auto;z-index:999;display:none;max-height:400px}.search-results.active{display:block}.search-item{display:flex;align-items:center;gap:14px;padding:14px 20px;cursor:pointer;border-bottom:1px solid #F5F5F5;transition:background .15s}.search-item:hover{background:#F8FAFC}.search-score{font-size:24px;font-weight:800;min-width:40px;text-align:center}.search-name{font-weight:600;font-size:14px}.search-grade{font-size:12px;font-weight:600}.search-ticker{font-size:11px;color:var(--muted);background:#F5F5F5;padding:2px 8px;border-radius:4px;font-weight:600}
+.stats{display:flex;justify-content:center;gap:60px;margin-bottom:60px;flex-wrap:wrap}.stat-num{font-size:48px;font-weight:800;color:var(--navy);font-family:'DM Serif Display'}.stat-label{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:1px;margin-top:6px;text-transform:uppercase}
 .section-title{font-family:'DM Serif Display';font-size:28px;color:var(--navy);text-align:center;margin-bottom:24px}.grade-section{margin-bottom:50px}.grade-list{display:flex;flex-direction:column;gap:8px;max-width:700px;margin:0 auto}.grade-row{display:flex;align-items:center;gap:16px;padding:14px 20px;background:var(--white);border-radius:10px;border:1px solid var(--light)}.grade-badge{width:60px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:800;flex-shrink:0}.grade-range{width:55px;font-size:12px;color:var(--muted);font-weight:600;flex-shrink:0}.grade-satire{font-size:13px;color:#555;font-style:italic;line-height:1.4}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;max-width:700px;margin:0 auto}.card{background:var(--white);border-radius:10px;padding:16px 18px;border:1px solid var(--light);cursor:pointer;transition:all .2s}.card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.08)}.card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}.card-score{font-size:28px;font-weight:800}.card-grade-tag{font-size:12px;font-weight:700;padding:2px 10px;border-radius:6px}.card-name{font-size:14px;font-weight:600;color:var(--text)}.card-industry{font-size:11px;color:var(--muted);margin-top:2px}.view-all{text-align:center;margin-top:16px}.view-all a{font-size:13px;color:var(--sky);font-weight:600;cursor:pointer}
 .leaderboard{padding:40px 0 60px}.lb-controls{display:flex;gap:12px;justify-content:center;margin-bottom:24px;flex-wrap:wrap}.lb-filter{padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--light);background:var(--white);color:var(--muted);transition:all .2s;font-family:inherit}.lb-filter.active,.lb-filter:hover{background:var(--navy);color:var(--white);border-color:var(--navy)}.lb-search{padding:10px 16px;border-radius:8px;border:1px solid var(--light);font-size:13px;width:220px;outline:none;font-family:inherit}.lb-search:focus{border-color:var(--sky)}.lb-grid{max-width:600px;margin:0 auto}.lb-col h3{font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}.lb-row{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--white);border-radius:8px;margin-bottom:6px;border:1px solid var(--light);cursor:pointer;transition:all .15s}.lb-row:hover{transform:translateX(4px);box-shadow:0 2px 8px rgba(0,0,0,.06)}.lb-rank{font-size:13px;font-weight:700;color:var(--muted);width:22px}.lb-score{font-size:22px;font-weight:800;width:44px;text-align:center}.lb-info{flex:1}.lb-name{font-size:13px;font-weight:600;color:var(--text)}.lb-industry{font-size:10px;color:var(--muted);margin-top:1px}.lb-grade{font-size:11px;font-weight:700}.lb-dims{display:flex;gap:3px;margin-top:3px}.lb-dim-dot{width:6px;height:6px;border-radius:50%}.lb-count{text-align:center;color:var(--muted);font-size:13px;margin-top:16px}
@@ -34,7 +34,7 @@ nav{background:var(--dark);padding:14px 0;position:sticky;top:0;z-index:100;bord
 .waitlist{max-width:600px;margin:0 auto 60px;text-align:center;padding:40px 32px;background:linear-gradient(135deg,var(--dark),#1a2a4a);border-radius:16px}.waitlist h2{font-family:'DM Serif Display';font-size:24px;color:var(--white);margin-bottom:8px}.waitlist p{font-size:14px;color:#8899AA;margin-bottom:20px;line-height:1.6}.waitlist-form{display:flex;gap:8px;max-width:420px;margin:0 auto}.waitlist-input{flex:1;padding:12px 16px;border-radius:8px;border:none;font-size:14px;font-family:inherit;outline:none}.waitlist-btn{padding:12px 20px;border-radius:8px;background:var(--gold);color:var(--white);font-weight:700;font-size:14px;border:none;cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap}.waitlist-btn:hover{background:#D4AA30;transform:translateY(-1px)}.waitlist-success{color:var(--gold);font-size:14px;font-weight:600;margin-top:12px;display:none}.waitlist-count{font-size:11px;color:#5A7A9A;margin-top:12px}
 .about{padding:50px 0 60px;max-width:700px;margin:0 auto}.about h1{font-family:'DM Serif Display';font-size:36px;color:var(--navy);text-align:center;margin-bottom:8px}.about-sub{text-align:center;color:var(--muted);font-size:15px;margin-bottom:40px;font-style:italic}.about-card{background:var(--white);border-radius:14px;padding:32px;border:1px solid var(--light);margin-bottom:24px;line-height:1.8;font-size:15px;color:#444}.about-card p{margin-bottom:16px}.about-card p:last-child{margin-bottom:0}.about-dim{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}.about-dim-icon{font-size:24px;margin-top:2px}.about-dim-name{font-weight:700;color:var(--navy);font-size:14px}.about-dim-desc{font-size:13px;color:#666;margin-top:2px}
 footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:center}.footer-brand{font-family:'DM Serif Display';font-size:22px;color:var(--white);margin-bottom:6px}.footer-tagline{font-size:12px;color:#5A7A9A;letter-spacing:1.5px;font-weight:500;text-transform:uppercase}.footer-links{display:flex;gap:20px;justify-content:center;margin-top:12px}.footer-link{font-size:12px;color:#5A7A9A;cursor:pointer;transition:color .2s}.footer-link:hover{color:var(--white)}.footer-info{font-size:11px;color:#3A5A7A;margin-top:12px}.footer-disclaimer{font-size:10px;color:#2A4A6A;margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.5}.footer-status{font-size:10px;color:#2A4A6A;margin-top:8px}
-@media(max-width:768px){.hero h1{font-size:48px}.hero p{font-size:18px}.hero-ctas{flex-direction:column;align-items:center}.lb-grid{grid-template-columns:1fr}.signals-grid{grid-template-columns:1fr}.nav-tagline{display:none}.stats{gap:20px}.stat-num{font-size:28px}.detail-header{flex-direction:column;text-align:center}.detail-composite{flex-direction:column;text-align:center}.waitlist-form{flex-direction:column}.lb-controls{flex-direction:column;align-items:center}}
+@media(max-width:768px){.hero h1{font-size:72px}.hero p{font-size:16px}.hero-ctas{flex-direction:column;align-items:center}.lb-grid{grid-template-columns:1fr}.signals-grid{grid-template-columns:1fr}.nav-tagline{display:none}.stats{gap:32px}.stat-num{font-size:36px}.detail-header{flex-direction:column;text-align:center}.detail-composite{flex-direction:column;text-align:center}.waitlist-form{flex-direction:column}.lb-controls{flex-direction:column;align-items:center}}
 .page{animation:fadeIn .3s ease}@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.hidden{display:none}
 .subpage{padding:50px 0 60px;max-width:800px;margin:0 auto}.subpage h1{font-family:'DM Serif Display';font-size:36px;color:var(--navy);text-align:center;margin-bottom:8px}.subpage-sub{text-align:center;color:var(--muted);font-size:15px;margin-bottom:40px}
 .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}.feature-card{background:var(--white);border-radius:14px;padding:24px;border:1px solid var(--light)}.feature-icon{font-size:32px;margin-bottom:12px}.feature-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px}.feature-desc{font-size:13px;color:#666;line-height:1.6}
@@ -52,16 +52,16 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <span class="nav-link" id="nav-about" onclick="showPage('about')">About HI</span>
 <span class="nav-link" id="nav-contact" onclick="showPage('contact')">Contact HI</span>
 </div></div><span class="nav-tagline">FIND THE HI BALANCE.</span></div></nav>
-<div id="page-home" class="page" style="max-width:1100px;margin:0 auto;padding:0 24px">
-<div class="hero"><h1>HI.</h1><p>The balance between <strong>Human Intelligence</strong> and <strong>Artificial Intelligence</strong>, measured.</p></div>
+<div id="page-home" class="page" style="max-width:1000px;margin:0 auto;padding:0 24px">
+<div class="hero"><h1>HI.</h1><p>The balance between Human Intelligence and Artificial Intelligence, measured.</p></div>
 <div class="stats" id="statsRow"></div>
 <div id="homePulse" style="display:none"></div>
-<div style="background:white;border-radius:16px;border:1px solid #eee;padding:24px;margin-bottom:16px;overflow:visible">
-<div style="text-align:center;margin-bottom:16px"><span style="font-size:13px;font-weight:700;color:var(--navy);letter-spacing:1px">SEARCH & COMPARE</span></div>
+
+<div style="max-width:700px;margin:0 auto 60px">
 <div style="display:flex;gap:16px;flex-wrap:wrap">
-<div style="flex:1;min-width:200px;position:relative"><input class="search-input" id="searchInput" placeholder="Search any company..." oninput="doSearch(this.value)" style="width:100%"><div class="search-results" id="searchResults"></div></div>
-<div style="align-self:center;font-size:12px;color:var(--muted);font-weight:600">vs</div>
-<div style="flex:1;min-width:200px;position:relative"><input class="search-input" id="cmpSearch2" placeholder="Compare with..." oninput="cmpDoSearch(2,this.value)" style="width:100%"><div class="search-results" id="cmpResults2"></div></div>
+<div style="flex:1;min-width:200px;position:relative"><input class="search-input" id="searchInput" placeholder="Search any company..." oninput="doSearch(this.value)"><div class="search-results" id="searchResults"></div></div>
+<div style="align-self:center;font-size:13px;color:var(--muted);font-weight:500">vs</div>
+<div style="flex:1;min-width:200px;position:relative"><input class="search-input" id="cmpSearch2" placeholder="Compare with..." oninput="cmpDoSearch(2,this.value)"><div class="search-results" id="cmpResults2"></div></div>
 </div>
 <div style="display:flex;gap:16px;margin-top:16px;flex-wrap:wrap" id="homeCompareCards">
 <div id="cmpCard1" style="flex:1;min-width:200px"></div>
@@ -69,78 +69,80 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 </div>
 <div id="cmpDimCompare" style="margin-top:8px"></div>
 </div>
-<div style="text-align:center;margin-bottom:8px"><span style="font-size:11px;font-weight:700;color:#C49B20;letter-spacing:2px">THE HI BALANCED GROUP</span></div>
-<div id="hiBalancedTicker" style="overflow:hidden;white-space:nowrap;padding:12px 0;margin-bottom:32px;border-top:1px solid #C49B2030;border-bottom:1px solid #C49B2030;background:linear-gradient(135deg,#C49B2008,#C49B2003)"><div id="tickerContent" style="display:inline-block;animation:ticker 60s linear infinite"></div></div>
+
+<div style="text-align:center;margin-bottom:6px"><span style="font-size:10px;font-weight:600;color:#C49B20;letter-spacing:3px;text-transform:uppercase">The HI Balanced Group</span></div>
+<div id="hiBalancedTicker" style="overflow:hidden;white-space:nowrap;padding:14px 0;margin-bottom:80px;border-top:1px solid #C49B2020;border-bottom:1px solid #C49B2020"><div id="tickerContent" style="display:inline-block;animation:ticker 60s linear infinite"></div></div>
 <style>@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}</style>
-<div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:32px">
+
+<div style="display:flex;gap:48px;flex-wrap:wrap;margin-bottom:80px">
 <div style="flex:1;min-width:300px">
-<div class="grade-section"><h2 class="section-title" style="text-align:left;font-size:24px">The HI Grade™</h2><p style="color:var(--muted);font-size:13px;margin-bottom:16px">Every company gets a score. Only the balanced get the badge.</p>
-<div style="padding:20px;background:linear-gradient(135deg,#C49B2020,#C49B2008);border:2px solid #C49B20;border-radius:16px;text-align:center;margin-bottom:16px"><div style="font-size:18px;color:#C49B20;font-weight:700;letter-spacing:1px"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#C49B20;color:white;font-size:11px;font-weight:900;letter-spacing:-0.5px;vertical-align:middle">HI.</span> HI BALANCED</div><div style="font-size:11px;color:#92400E;margin-top:6px;font-style:italic">10 gates. 3 categories. The math decides, not us.</div></div>
-<h3 style="font-family:'DM Serif Display';font-size:16px;color:var(--navy);margin-bottom:12px">10 Gates · 3 Categories</h3>
-<div style="display:flex;flex-direction:column;gap:10px">
-<div style="padding:14px 16px;background:white;border-radius:10px;border:1px solid #eee;border-left:3px solid var(--navy)">
-<div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1px;margin-bottom:4px">📊 SCORE</div>
-<div style="font-size:12px;color:#444">Composite ≥ <strong id="homeThresholdBig" style="color:var(--navy)">~62</strong><span id="thresholdDisplay" style="display:none"></span> · mean + 2 SD · quarterly · only goes up</div>
+<h2 style="font-family:'DM Serif Display';font-size:28px;color:var(--navy);margin-bottom:8px">The HI Grade™</h2>
+<p style="color:var(--muted);font-size:14px;margin-bottom:24px;line-height:1.6">Every company gets a score. Only the balanced get the badge.</p>
+<div style="padding:24px;background:linear-gradient(135deg,#C49B2010,#C49B2005);border-radius:16px;text-align:center;margin-bottom:24px"><div style="font-size:18px;color:#C49B20;font-weight:700;letter-spacing:1px"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#C49B20;color:white;font-size:11px;font-weight:900;letter-spacing:-0.5px;vertical-align:middle">HI.</span> HI BALANCED</div><div style="font-size:12px;color:#92400E;margin-top:8px">10 gates · 3 categories · the math decides, not us</div></div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="padding:16px 20px;border-left:3px solid var(--navy)">
+<div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1.5px;margin-bottom:6px">SCORE</div>
+<div style="font-size:13px;color:#555;line-height:1.5">Composite ≥ <strong id="homeThresholdBig" style="color:var(--navy)">~62</strong><span id="thresholdDisplay" style="display:none"></span> · adaptive threshold · mean + 2 SD · quarterly</div>
 </div>
-<div style="padding:14px 16px;background:white;border-radius:10px;border:1px solid #eee;border-left:3px solid #C49B20">
-<div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1px;margin-bottom:4px">⚖ BALANCE</div>
-<div style="font-size:12px;color:#444">All 5 dimensions ≥ 42 · no blind spots</div>
+<div style="padding:16px 20px;border-left:3px solid #C49B20">
+<div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1.5px;margin-bottom:6px">BALANCE</div>
+<div style="font-size:13px;color:#555;line-height:1.5">All 5 dimensions ≥ 42 · no blind spots</div>
 </div>
-<div style="padding:14px 16px;background:white;border-radius:10px;border:1px solid #eee;border-left:3px solid #16A34A">
-<div style="font-size:10px;font-weight:700;color:#16A34A;letter-spacing:1px;margin-bottom:4px">🔒 8 HUMAN FEATURES</div>
-<div style="font-size:11px;color:#444;line-height:1.5">No humanwashing · Decay < 30 · Shield ≥ 50 · No ESG washing · Not negative leader · No genome gaps · Not under pressure · No alerts</div>
-</div>
+<div style="padding:16px 20px;border-left:3px solid #16A34A">
+<div style="font-size:10px;font-weight:700;color:#16A34A;letter-spacing:1.5px;margin-bottom:6px">8 HUMAN FEATURES</div>
+<div style="font-size:12px;color:#555;line-height:1.6">No humanwashing · Decay < 30 · Shield ≥ 50 · No ESG washing · Not negative leader · No genome gaps · Not under pressure · No alerts</div>
 </div>
 </div>
 </div>
 <div style="flex:1;min-width:300px">
-<h2 class="section-title" style="text-align:left;font-size:24px">Get Involved</h2>
-<p style="color:var(--muted);font-size:13px;margin-bottom:16px">Whether you're a consumer, a company, or just curious.</p>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
-<div style="padding:14px;background:white;border-radius:10px;border:1px solid #eee;text-align:center;cursor:pointer" onclick="showPage('decay')">
-<div style="font-size:18px;margin-bottom:4px">💀</div>
-<div style="font-weight:700;color:var(--navy);font-size:11px">Decay Index</div>
-<div style="font-size:9px;color:var(--muted)">Is your favorite company declining?</div>
+<h2 style="font-family:'DM Serif Display';font-size:28px;color:var(--navy);margin-bottom:8px">Get Involved</h2>
+<p style="color:var(--muted);font-size:14px;margin-bottom:24px;line-height:1.6">Whether you're a consumer, a company, or just curious.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+<div style="padding:20px;text-align:center;cursor:pointer;border-radius:12px;transition:background .2s" onmouseover="this.style.background='#F5F7FA'" onmouseout="this.style.background='transparent'" onclick="showPage('decay')">
+<div style="font-size:24px;margin-bottom:8px">💀</div>
+<div style="font-weight:700;color:var(--navy);font-size:12px">Decay Index</div>
+<div style="font-size:10px;color:var(--muted);margin-top:4px">Is your favorite company declining?</div>
 </div>
-<div style="padding:14px;background:white;border-radius:10px;border:1px solid #eee;text-align:center;cursor:pointer" onclick="showPage('heartbeat')">
-<div style="font-size:18px;margin-bottom:4px">♥</div>
-<div style="font-weight:700;color:var(--navy);font-size:11px">Heartbeat</div>
-<div style="font-size:9px;color:var(--muted)">Real-time ecosystem health</div>
+<div style="padding:20px;text-align:center;cursor:pointer;border-radius:12px;transition:background .2s" onmouseover="this.style.background='#F5F7FA'" onmouseout="this.style.background='transparent'" onclick="showPage('heartbeat')">
+<div style="font-size:24px;margin-bottom:8px">♥</div>
+<div style="font-weight:700;color:var(--navy);font-size:12px">Heartbeat</div>
+<div style="font-size:10px;color:var(--muted);margin-top:4px">Real-time ecosystem health</div>
 </div>
-<div style="padding:14px;background:white;border-radius:10px;border:1px solid #eee;text-align:center;cursor:pointer" onclick="showPage('wave')">
-<div style="font-size:18px;margin-bottom:4px">🌊</div>
-<div style="font-weight:700;color:var(--navy);font-size:11px">Wave</div>
-<div style="font-size:9px;color:var(--muted)">Where is pressure building?</div>
+<div style="padding:20px;text-align:center;cursor:pointer;border-radius:12px;transition:background .2s" onmouseover="this.style.background='#F5F7FA'" onmouseout="this.style.background='transparent'" onclick="showPage('wave')">
+<div style="font-size:24px;margin-bottom:8px">🌊</div>
+<div style="font-weight:700;color:var(--navy);font-size:12px">Wave</div>
+<div style="font-size:10px;color:var(--muted);margin-top:4px">Where is pressure building?</div>
 </div>
-<div style="padding:14px;background:white;border-radius:10px;border:1px solid #eee;text-align:center;cursor:pointer" onclick="showPage('moat')">
-<div style="font-size:18px;margin-bottom:4px">🏰</div>
-<div style="font-weight:700;color:var(--navy);font-size:11px">Shield</div>
-<div style="font-size:9px;color:var(--muted)">Who resists AI displacement?</div>
-</div>
-</div>
-<div style="padding:16px;background:white;border-radius:10px;border:1px solid #eee;margin-bottom:10px">
-<div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1px;margin-bottom:8px">🔍 REQUEST A HI GRADE</div>
-<div style="display:flex;gap:6px;flex-wrap:wrap">
-<input id="reqCompany" placeholder="Company name..." style="flex:1;min-width:100px;padding:8px 10px;border:1px solid #ddd;border-radius:6px;font-size:12px;outline:none;font-family:inherit">
-<input id="reqEmail" placeholder="Email (optional)" style="flex:1;min-width:100px;padding:8px 10px;border:1px solid #ddd;border-radius:6px;font-size:12px;outline:none;font-family:inherit">
-<button onclick="submitRequest()" style="padding:8px 14px;background:var(--navy);color:white;border:none;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer">Request</button>
-</div>
-<div id="reqSuccess" style="display:none;margin-top:6px;color:#16A34A;font-weight:600;font-size:10px">✓ Request submitted.</div>
-<div id="reqError" style="display:none;margin-top:6px;color:#DC2626;font-size:10px">Please enter a company name.</div>
-</div>
-<div style="padding:16px;background:white;border-radius:10px;border:1px solid #eee">
-<div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1px;margin-bottom:8px">🏢 ARE YOU A COMPANY?</div>
-<div style="font-size:11px;color:var(--muted);margin-bottom:8px">Challenge your score, improve your grade, or earn HI Balanced.</div>
-<div style="display:flex;gap:6px;flex-wrap:wrap">
-<input id="companyContactName" placeholder="Company name..." style="flex:1;min-width:100px;padding:8px 10px;border:1px solid #ddd;border-radius:6px;font-size:12px;outline:none;font-family:inherit">
-<input id="companyContactEmail" placeholder="Work email..." style="flex:1;min-width:100px;padding:8px 10px;border:1px solid #ddd;border-radius:6px;font-size:12px;outline:none;font-family:inherit">
-<button onclick="submitCompanyContact()" style="padding:8px 14px;background:#C49B20;color:white;border:none;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer">Reach Out</button>
-</div>
-<div id="companyContactSuccess" style="display:none;margin-top:6px;color:#16A34A;font-weight:600;font-size:10px">✓ We'll reach out within 48 hours.</div>
+<div style="padding:20px;text-align:center;cursor:pointer;border-radius:12px;transition:background .2s" onmouseover="this.style.background='#F5F7FA'" onmouseout="this.style.background='transparent'" onclick="showPage('moat')">
+<div style="font-size:24px;margin-bottom:8px">🏰</div>
+<div style="font-weight:700;color:var(--navy);font-size:12px">Shield</div>
+<div style="font-size:10px;color:var(--muted);margin-top:4px">Who resists AI displacement?</div>
 </div>
 </div>
+<div style="margin-bottom:16px">
+<div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1.5px;margin-bottom:10px">REQUEST A HI GRADE</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<input id="reqCompany" placeholder="Company name..." style="flex:1;min-width:120px;padding:12px 16px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit">
+<input id="reqEmail" placeholder="Email (optional)" style="flex:1;min-width:120px;padding:12px 16px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit">
+<button onclick="submitRequest()" style="padding:12px 20px;background:var(--navy);color:white;border:none;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s">Request</button>
 </div>
-<div style="display:flex;gap:16px;justify-content:center;margin-bottom:32px;flex-wrap:wrap">
+<div id="reqSuccess" style="display:none;margin-top:8px;color:#16A34A;font-weight:600;font-size:11px">✓ Request submitted.</div>
+<div id="reqError" style="display:none;margin-top:8px;color:#DC2626;font-size:11px">Please enter a company name.</div>
+</div>
+<div>
+<div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1.5px;margin-bottom:10px">ARE YOU A COMPANY?</div>
+<div style="font-size:12px;color:var(--muted);margin-bottom:10px">Challenge your score, improve your grade, or earn HI Balanced.</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<input id="companyContactName" placeholder="Company name..." style="flex:1;min-width:120px;padding:12px 16px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit">
+<input id="companyContactEmail" placeholder="Work email..." style="flex:1;min-width:120px;padding:12px 16px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit">
+<button onclick="submitCompanyContact()" style="padding:12px 20px;background:#C49B20;color:white;border:none;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s">Reach Out</button>
+</div>
+<div id="companyContactSuccess" style="display:none;margin-top:8px;color:#16A34A;font-weight:600;font-size:11px">✓ We'll reach out within 48 hours.</div>
+</div>
+</div>
+</div>
+
+<div style="display:flex;gap:16px;justify-content:center;margin-bottom:60px;flex-wrap:wrap">
 <button class="btn btn-secondary" onclick="showPage('extension')"><span class="btn-icon">⬇</span> Get the Extension</button>
 <button class="btn btn-secondary" onclick="showPage('app')"><span class="btn-icon">📱</span> Get the App</button>
 <button class="btn btn-secondary" onclick="showPage('api')"><span class="btn-icon">⚡</span> Get the API</button>
