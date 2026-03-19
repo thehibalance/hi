@@ -51,6 +51,20 @@ Every HUMAN feature acts as a gate. All 10 must pass:
 
 *The first certification that certifies itself. You can't buy it. You can't apply for it. The data proves it.*
 
+## The HUMAN Framework
+
+> *Five dimensions of humanity. Five elements. Love is what activates them all.*
+
+| Dimension | Measures | What AI Replaces |
+|-----------|----------|-----------------|
+| 🧠 **H** — Human Consciousness | Creative agency, craft, accountability | Automation, displacement |
+| 💙 **U** — Understanding & Empathy | Genuine care, emotional presence | Simulated empathy |
+| ⚖️ **M** — Moral & Ethical Conduct | Principled action, CEO accountability, pay equity | Optimization at all costs |
+| 🌍 **A** — Alive & Environmental | True ecological cost incl. AI infrastructure | Hidden compute footprint |
+| 🔍 **N** — Natural Transparency | Honest disclosure of AI usage | Humanwashing, opacity |
+
+---
+
 ## What Makes HI. Different
 
 No other framework does what HI. does. Here's why.
@@ -68,6 +82,21 @@ No other framework does what HI. does. Here's why.
 - **Edge-to-cloud native.** A browser extension built on deterministic, human-engineered code (zero AI, zero black boxes) paired with a cloud scoring engine. No other scoring framework ships a consumer-side edge node.
 - **AI Toggle + Equalizer.** Consumers filter companies across all five dimensions. Strict mode hides AI-heavy companies. No other framework gives consumers this control.
 - **AI improves inputs, never the formula.** The AI Enhancement Layer sharpens 34 data sources — it never changes the scoring formula. Toggle OFF by default. The telescope gets sharper. It doesn't move the stars.
+
+### The 10 HUMAN Features
+
+| Feature | What It Does | Why It Matters |
+|---------|-------------|----------------|
+| **HUMAN Genome** | Sub-signal fingerprint per company | No two genomes are the same. Full dimensional DNA, not just a number |
+| **HUMAN Decay** | Predicts score drops via trailing regression | CDI of -8/quarter = freefall. Leading indicator for investors |
+| **HUMAN Heartbeat** | Real-time monitoring from 6 feeds | Turns a periodic report into a living system |
+| **HUMAN Watermark** | Detects performative vs genuine empathy | Cross-references external signals against internal reality |
+| **HUMAN Contagion** | Measures ethical ripple through industries | When Amazon cuts 27k jobs, does the sector follow? |
+| **HUMAN Shield** | AI displacement resistance — 6-component moat | Craft, empathy, ethics, transparency, human capital, AI resistance |
+| **HUMAN Consciousness** | Personal ethical footprint | All computation local. No purchasing data transmitted |
+| **HUMAN 100 Index** | ETF-licensable top 100 | Dual-weight: market cap + ethical score. Rebalanced quarterly |
+| **HUMAN Lens** | HI vs ESG gap detection | When ESG says A but HI says C, the gap reveals what they miss |
+| **HUMAN Wave** | Collective market pressure signals | Turns individual choices into visible pressure. No boycotts needed |
 
 ### The AI Enhancement Layer (Coming)
 
@@ -89,21 +118,6 @@ The deterministic engine covers all 24 sub-signals without AI. The AI layer make
 | **Cross-Lingual Analysis** | Score non-US companies using filings in other languages | OFF by default |
 
 Every AI capability is a toggle. The edge node stays deterministic. The formula stays deterministic. AI only touches the inputs.
-
-### The 10 HUMAN Features
-
-| Feature | What It Does | Why It Matters |
-|---------|-------------|----------------|
-| **HUMAN Genome** | Sub-signal fingerprint per company | No two genomes are the same. Full dimensional DNA, not just a number |
-| **HUMAN Decay** | Predicts score drops via trailing regression | CDI of -8/quarter = freefall. Leading indicator for investors |
-| **HUMAN Heartbeat** | Real-time monitoring from 6 feeds | Turns a periodic report into a living system |
-| **HUMAN Watermark** | Detects performative vs genuine empathy | Cross-references external signals against internal reality |
-| **HUMAN Contagion** | Measures ethical ripple through industries | When Amazon cuts 27k jobs, does the sector follow? |
-| **HUMAN Shield** | AI displacement resistance — 6-component moat | Craft, empathy, ethics, transparency, human capital, AI resistance |
-| **HUMAN Consciousness** | Personal ethical footprint | All computation local. No purchasing data transmitted |
-| **HUMAN 100 Index** | ETF-licensable top 100 | Dual-weight: market cap + ethical score. Rebalanced quarterly |
-| **HUMAN Lens** | HI vs ESG gap detection | When ESG says A but HI says C, the gap reveals what they miss |
-| **HUMAN Wave** | Collective market pressure signals | Turns individual choices into visible pressure. No boycotts needed |
 
 ### Compared to Existing Frameworks
 
@@ -186,35 +200,6 @@ HI. unifies all five dimensions into a single, consumer-facing framework with hu
 - **Nav**: HI. (App · Extension · API) · HUMAN ▾ (all 10 features) · About HI · Contact HI
 
 ---
-
-## 10 HUMAN Features (All Live)
-
-| # | Feature | Description | Gate |
-|---|---------|-------------|------|
-| 1 | **HUMAN 100 Index** | ETF-licensable top 100 most human public companies | — |
-| 2 | **HUMAN Heartbeat** | Real-time score decay detection from 6 feeds | No critical alerts |
-| 3 | **HUMAN Decay** | Per-company decay score 0-100 with alert levels | Decay < 30 |
-| 4 | **HUMAN Shield** | AI displacement resistance — 6 component moat | Shield ≥ 50 |
-| 5 | **HUMAN Lens** | HI vs ESG gap detection | No ESG washing |
-| 6 | **HUMAN Genome** | Sub-signal fingerprint of every company | No critical gaps |
-| 7 | **HUMAN Contagion** | Industry ethics ripple — how behavior spreads | Not negative leader |
-| 8 | **HUMAN Watermark** | Real vs performative empathy detection | No humanwashing |
-| 9 | **HUMAN Wave** | Collective market pressure by dimension/industry | Not under pressure |
-| 10 | **HUMAN Consciousness** | Consumer ethical footprint — portfolio score | — |
-
----
-
-## The HUMAN Framework
-
-> *Five dimensions of humanity. Five elements. Love is what activates them all.*
-
-| Dimension | Measures | What AI Replaces |
-|-----------|----------|-----------------|
-| 🧠 **H** — Human Consciousness | Creative agency, craft, accountability | Automation, displacement |
-| 💙 **U** — Understanding & Empathy | Genuine care, emotional presence | Simulated empathy |
-| ⚖️ **M** — Moral & Ethical Conduct | Principled action, CEO accountability, pay equity | Optimization at all costs |
-| 🌍 **A** — Alive & Environmental | True ecological cost incl. AI infrastructure | Hidden compute footprint |
-| 🔍 **N** — Natural Transparency | Honest disclosure of AI usage | Humanwashing, opacity |
 
 ---
 
