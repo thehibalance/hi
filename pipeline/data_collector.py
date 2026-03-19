@@ -441,7 +441,9 @@ def collect_all(companies, keys, core=True, subsignals=True, extended=True):
             sec = fetch_sec(name, ticker)
             if sec:
                 sec_results.append(sec)
-                print(f"    ✓ SEC: headcount={sec.get('h_signals',{}).get('headcount',{}).get('value','?')}, RPE={sec.get('h_signals',{}).get('revenue_per_employee','?')}")
+                hc = sec.get('h_signals',{}).get('headcount')
+                hc_val = hc.get('value','?') if isinstance(hc, dict) else (hc or '?')
+                print(f"    ✓ SEC: headcount={hc_val}, RPE={sec.get('h_signals',{}).get('revenue_per_employee','?')}")
             
             # EPA
             epa = fetch_epa(name, ticker)

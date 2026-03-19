@@ -195,6 +195,7 @@ def score_h_dimension(sec_h, job_data, bls_data, industry):
     sources_used = []
 
     rpe = sec_h.get("revenue_per_employee")
+    displacement = sec_h.get("displacement_signal")
     industry_median = INDUSTRY_RPE_MEDIANS.get(industry, INDUSTRY_RPE_MEDIANS["default"])
     ai_ratio = job_data.get("h_signals", {}).get("ai_ratio") if job_data else None
 
@@ -579,6 +580,113 @@ def check_hi_certified(record, threshold):
     return all(gates.values()), gates
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ALGORITHMIC HARM INDEX — Cross-cutting penalty
+# Measures whether a company's algorithms empower or exploit humans.
+# Hits M, U, H, N — like humanwashing detection, but for algorithms.
+# ═══════════════════════════════════════════════════════════════════════
+
+# Curated from FTC actions, congressional testimony, academic research,
+# platform transparency reports, and documented harm events.
+# 5 factors (0-100, higher = more harmful):
+#   division:       amplifies outrage, tribalism, polarization
+#   addiction:       dopamine loops, infinite scroll, dark patterns
+#   manipulation:    exploits vulnerable users (kids, mental health, financial stress)
+#   transparency:    discloses how algorithms work (inverted: lower = less transparent)
+#   human_override:  users can opt out or control the algorithm (inverted)
+
+ALGO_HARM_DATA = {
+    # Social media — highest harm
+    "META":  {"division": 85, "addiction": 90, "manipulation": 80, "transparency": 25, "human_override": 30,
+              "flags": ["Instagram teen mental health crisis", "Engagement algorithm amplifies outrage", "Algorithmic feed replaced chronological", "Whistleblower confirmed harm awareness"]},
+    "SNAP":  {"division": 40, "addiction": 75, "manipulation": 70, "transparency": 30, "human_override": 35,
+              "flags": ["Streaks create artificial social pressure", "Discover feed optimizes engagement over wellbeing"]},
+    # Video platforms
+    "GOOG":  {"division": 70, "addiction": 75, "manipulation": 55, "transparency": 40, "human_override": 45,
+              "flags": ["YouTube autoplay radicalization pipeline", "Kids content algorithm failures", "Search ranking manipulation for ad revenue"]},
+    "GOOGL": {"division": 70, "addiction": 75, "manipulation": 55, "transparency": 40, "human_override": 45,
+              "flags": ["YouTube autoplay radicalization pipeline", "Kids content algorithm failures"]},
+    "NFLX":  {"division": 15, "addiction": 60, "manipulation": 30, "transparency": 35, "human_override": 50,
+              "flags": ["Autoplay next episode", "Algorithmic thumbnails personalized to maximize clicks"]},
+    # E-commerce / marketplace
+    "AMZN":  {"division": 15, "addiction": 45, "manipulation": 55, "transparency": 20, "human_override": 30,
+              "flags": ["Dynamic pricing algorithms", "Dark patterns in Prime cancellation", "Buy Box manipulation"]},
+    "BKNG":  {"division": 10, "addiction": 40, "manipulation": 60, "transparency": 25, "human_override": 30,
+              "flags": ["Fake urgency dark patterns", "Hidden fees revealed late", "Pressure-based conversion"]},
+    # Ride-hailing / gig economy
+    "UBER":  {"division": 10, "addiction": 30, "manipulation": 55, "transparency": 25, "human_override": 20,
+              "flags": ["Surge pricing exploits demand spikes", "Driver gamification manipulation", "Algorithmic wage suppression"]},
+    "LYFT":  {"division": 10, "addiction": 25, "manipulation": 45, "transparency": 30, "human_override": 25,
+              "flags": ["Surge pricing", "Driver earnings opacity"]},
+    # Social / messaging
+    "PINS":  {"division": 20, "addiction": 55, "manipulation": 35, "transparency": 40, "human_override": 50,
+              "flags": ["Infinite scroll feed", "Body image content concerns"]},
+    "RDDT":  {"division": 55, "addiction": 50, "manipulation": 30, "transparency": 50, "human_override": 60,
+              "flags": ["Recommendation algo can push extreme communities", "Strong community moderation helps"]},
+    # Tech platforms
+    "AAPL":  {"division": 5, "addiction": 20, "manipulation": 15, "transparency": 45, "human_override": 70,
+              "flags": ["Screen Time tools show commitment", "App Store ranking opacity"]},
+    "MSFT":  {"division": 10, "addiction": 25, "manipulation": 20, "transparency": 50, "human_override": 60,
+              "flags": ["LinkedIn feed engagement-driven", "Copilot dependency concerns"]},
+    # Fintech / payments
+    "PYPL":  {"division": 5, "addiction": 20, "manipulation": 35, "transparency": 30, "human_override": 40,
+              "flags": ["BNPL algorithms target financially vulnerable"]},
+    "SQ":    {"division": 5, "addiction": 30, "manipulation": 35, "transparency": 30, "human_override": 40,
+              "flags": ["Cash App gambling-like features", "Algorithmic lending"]},
+    "AFRM":  {"division": 5, "addiction": 25, "manipulation": 50, "transparency": 30, "human_override": 35,
+              "flags": ["BNPL targets impulse purchases", "Algorithmic credit scoring"]},
+    # Gaming
+    "EA":    {"division": 15, "addiction": 70, "manipulation": 65, "transparency": 20, "human_override": 25,
+              "flags": ["Loot box algorithms designed for addiction", "Pay-to-win mechanics", "Targets minors"]},
+    "TTWO":  {"division": 15, "addiction": 60, "manipulation": 55, "transparency": 25, "human_override": 30,
+              "flags": ["GTA Online shark cards", "NBA 2K microtransaction pressure"]},
+    "ATVI":  {"division": 10, "addiction": 55, "manipulation": 45, "transparency": 30, "human_override": 35,
+              "flags": ["Matchmaking patents designed to push purchases", "Engagement optimization"]},
+    # Telecom
+    "T":     {"division": 5, "addiction": 10, "manipulation": 30, "transparency": 25, "human_override": 35,
+              "flags": ["Algorithmic throttling", "Opaque data pricing"]},
+    "CMCSA": {"division": 10, "addiction": 15, "manipulation": 35, "transparency": 20, "human_override": 25,
+              "flags": ["Data cap algorithms", "Bundle pricing dark patterns"]},
+    # Retail — low harm
+    "WMT":   {"division": 5, "addiction": 15, "manipulation": 20, "transparency": 40, "human_override": 60, "flags": []},
+    "COST":  {"division": 0, "addiction": 5, "manipulation": 5, "transparency": 60, "human_override": 80, "flags": []},
+    "TGT":   {"division": 5, "addiction": 15, "manipulation": 15, "transparency": 45, "human_override": 60, "flags": []},
+}
+
+def compute_algo_harm(ticker):
+    """
+    Compute Algorithmic Harm Index — cross-cutting penalty.
+    Returns harm score + per-dimension penalties + flags.
+    """
+    data = ALGO_HARM_DATA.get(ticker.upper())
+    if not data:
+        return {"algo_harm_score": 0, "penalties": {"H": 0, "U": 0, "M": 0, "N": 0}, "flags": [], "has_harm": False}
+    
+    # Composite harm score: weighted average of 5 factors
+    harm = (
+        data["division"] * 0.25 +
+        data["addiction"] * 0.25 +
+        data["manipulation"] * 0.25 +
+        (100 - data["transparency"]) * 0.15 +
+        (100 - data["human_override"]) * 0.10
+    )
+    
+    # Only apply penalties if harm > 30
+    if harm <= 30:
+        return {"algo_harm_score": round(harm, 1), "penalties": {"H": 0, "U": 0, "M": 0, "N": 0}, "flags": data.get("flags", []), "has_harm": False}
+    
+    # Penalties scale: max -15 per dimension at harm=100
+    pf = (harm - 30) / 70  # 0 to 1
+    penalties = {
+        "H": round(-pf * 10, 1),   # H.1 — algo replaces human editorial judgment
+        "U": round(-pf * 15, 1),   # U.1 + U.4 — exploiting users isn't empathy
+        "M": round(-pf * 15, 1),   # M.4 — dark patterns, addiction, manipulation
+        "N": round(-pf * 10, 1),   # N.4 — claiming to "connect" while dividing
+    }
+    
+    return {"algo_harm_score": round(harm, 1), "penalties": penalties, "flags": data.get("flags", []), "has_harm": True}
+
+
 def score_company(company_name, ticker="", sec_data=None, epa_data=None,
                   bls_data=None, cdp_data=None, job_data=None, glassdoor_data=None,
                   subsignal_data=None):
@@ -685,6 +793,15 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         D_U = clamp(D_U + ext.get("charity", {}).get("U.5_adj", 0))
         if ext.get("charity", {}).get("U.5_adj", 0) != 0 and "IRS 990" not in n_src: n_src.append("IRS 990")
     
+    # ═══ ALGORITHMIC HARM INDEX — Cross-cutting penalty ═══
+    algo_harm = compute_algo_harm(ticker)
+    if algo_harm["has_harm"]:
+        p = algo_harm["penalties"]
+        D_H = clamp(D_H + p["H"])
+        D_U = clamp(D_U + p["U"])
+        D_M = clamp(D_M + p["M"])
+        D_N = clamp(D_N + p["N"])
+
     # Round dimensions after all adjustments
     D_H, D_U, D_M, D_A, D_N = round_score(D_H), round_score(D_U), round_score(D_M), round_score(D_A), round_score(D_N)
 
@@ -708,6 +825,12 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         hw_flags.append("HW.4: Significant environmental violations")
     if cdp_data and cdp_data.get("n_signals", {}).get("cdp_non_responder"):
         hw_flags.append("HW.5: Refuses CDP climate disclosure")
+    
+    # Add algo harm flags
+    algo_flags = []
+    if algo_harm["has_harm"]:
+        algo_flags = [f"AH: {f}" for f in algo_harm["flags"][:3]]  # Top 3 flags
+        hw_flags.extend(algo_flags)
 
     return {
         "company": company_name, "ticker": ticker, "industry": industry, "sic": sic,
@@ -719,6 +842,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "data_sources": all_sources,
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
         "humanwashing_flags": hw_flags,
+        "algo_harm": algo_harm,
         "genome": {
             "H": {"scores": h_detail, "sources": h_src},
             "U": {"scores": u_detail, "sources": u_src},
