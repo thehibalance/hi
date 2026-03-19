@@ -68,7 +68,24 @@
     }
   }
 
-  if (!company) return; // Not in local DB or cloud
+  if (!company) {
+    // Show "Request HI Grade" mini badge
+    if (document.getElementById('human-score-badge')) return;
+    const reqBadge = document.createElement('div');
+    reqBadge.id = 'human-score-badge';
+    reqBadge.className = 'human-badge human-badge--mini';
+    reqBadge.innerHTML = `
+      <div class="human-badge__mini" style="padding:8px 12px;cursor:pointer">
+        <span style="color:#1B3A5C;font-size:13px;font-weight:700">HI.</span>
+        <span style="color:#999;font-size:9px;margin-left:4px">not scored</span>
+      </div>
+    `;
+    reqBadge.addEventListener('click', () => {
+      window.open('https://thehibalance.org/#request&company=' + encodeURIComponent(domain), '_blank');
+    });
+    document.body.appendChild(reqBadge);
+    return;
+  }
 
   // Load user preferences
   const prefs = await loadPreferences();
