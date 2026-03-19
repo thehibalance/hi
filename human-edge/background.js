@@ -85,7 +85,9 @@ async function handleConnectionCheck() {
       headers: { 'Accept': 'application/json' },
       signal: AbortSignal.timeout(3000)
     });
-    return { connected: response.ok };
+    if (!response.ok) return { connected: false };
+    const data = await response.json();
+    return { connected: true, companies: data.total_companies || 0 };
   } catch (e) {
     return { connected: false };
   }

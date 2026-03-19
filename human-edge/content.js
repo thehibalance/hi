@@ -634,7 +634,7 @@ function openFullPanel(profile, filterResult, prefs) {
       });
       if (resp && resp.connected) {
         dot.style.color = '#1a7a3a';
-        text.textContent = `Connected · ${resp.companies} companies · API live`;
+        text.textContent = `Connected · ${resp.companies||0} companies · API live`;
       } else {
         dot.style.color = '#D97706';
         text.textContent = 'Offline · Using local database';
@@ -839,7 +839,7 @@ function openDetailPanel(profile, dim) {
 
       if (resp && resp.connected) {
         dot.style.color = '#1a7a3a';
-        text.textContent = `Connected · ${resp.companies} companies · API live`;
+        text.textContent = `Connected · ${resp.companies||0} companies · API live`;
       } else {
         dot.style.color = '#D97706';
         text.textContent = 'Offline · Using local database (206 companies)';
