@@ -76,12 +76,22 @@ No other framework does what HI. does. Here's why.
 - **Humanwashing detection.** Revenue/employee ratio, headcount vs AI spend, disclosed vs detected AI usage. No ESG framework detects performative human involvement.
 - **Simulated empathy detection.** Industry automation baselines, customer service channel analysis, employee culture signals. Nobody else distinguishes genuine human empathy from AI-simulated empathy.
 - **AI-specific environmental costs.** Training energy, inference energy, water cooling, rare earth extraction, e-waste, hardware lifecycle repairability. CDP and carbon tools don't isolate AI infrastructure costs.
+- **Algorithmic Harm Index.** Cross-cutting penalty for algorithms that divide, addict, or manipulate. Engagement algorithms that amplify outrage, loot boxes that target minors, dark patterns that exploit — they all reduce your score across H, U, M, and N simultaneously. No other framework penalizes algorithmic harm to human wellbeing.
 
 ### The Architecture
 
 - **Edge-to-cloud native.** A browser extension built on deterministic, human-engineered code (zero AI, zero black boxes) paired with a cloud scoring engine. No other scoring framework ships a consumer-side edge node.
 - **AI Toggle + Equalizer.** Consumers filter companies across all five dimensions. Strict mode hides AI-heavy companies. No other framework gives consumers this control.
 - **AI improves inputs, never the formula.** The AI Enhancement Layer sharpens 34 data sources — it never changes the scoring formula. Toggle OFF by default. The telescope gets sharper. It doesn't move the stars.
+
+### Security
+
+- **Read-only API** — no write endpoints exist
+- **CORS whitelist** — thehibalance.org + browser extension only
+- **Rate limiting** — 100 req/min global, 30 req/min on search
+- **Input sanitization** — HTML escape, control chars stripped, length-capped
+- **Security headers** — X-Content-Type-Options, X-Frame-Options, X-XSS-Protection, strict Referrer-Policy
+- **Extension** — zero AI, zero tracking, zero phone-home
 
 ### The 10 HUMAN Features
 
@@ -95,7 +105,7 @@ No other framework does what HI. does. Here's why.
 | **HUMAN Shield** | AI displacement resistance — 6-component moat | Craft, empathy, ethics, transparency, human capital, AI resistance |
 | **HUMAN Consciousness** | Personal ethical footprint | All computation local. No purchasing data transmitted |
 | **HUMAN 100 Index** | ETF-licensable top 100 | Dual-weight: market cap + ethical score. Rebalanced quarterly |
-| **HUMAN Lens** | HI vs ESG gap detection | When ESG says A but HI says C, the gap reveals what they miss |
+| **HUMAN Lens** | HI vs ESG gap detection | When ESG rates them high but HI rates them low, the gap reveals what they miss |
 | **HUMAN Wave** | Collective market pressure signals | Turns individual choices into visible pressure. No boycotts needed |
 
 ### The AI Enhancement Layer (Coming)
