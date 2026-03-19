@@ -157,8 +157,8 @@ HI. unifies all five dimensions into a single, consumer-facing framework with hu
 │  • Mini pill → full sidebar       │
 │  • Score / threshold display      │
 │  • 10 gates status                │
-│  • Offline: 206 seed companies    │
-│  • Online: 440+ from cloud API    │
+│  • Offline: 206 seed + 315 API companies    │
+│  • Online: 435+ from cloud API    │
 │                                   │
 └──────────┬────────────────────────┘
            │ Delta Sync
@@ -170,7 +170,7 @@ HI. unifies all five dimensions into a single, consumer-facing framework with hu
 │  REST API (Flask, 32 endpoints)   │
 │  • 34 data pipelines              │
 │  • Dynamic hybrid threshold       │
-│  • 440+ companies                 │
+│  • 435+ companies                 │
 │  • 10 HUMAN gates (all live)      │
 │  • Balance floor (42 per dim)     │
 │  • No AI. Pure math.              │
@@ -204,7 +204,7 @@ HI. unifies all five dimensions into a single, consumer-facing framework with hu
 
 ## Live Now
 
-- **Website**: [thehibalance.org](https://thehibalance.org) — Search 440+ companies, all 10 HUMAN features
+- **Website**: [thehibalance.org](https://thehibalance.org) — Search 435+ companies, all 10 HUMAN features
 - **API**: [api.thehibalance.org](https://api.thehibalance.org/api/v1/stats) — Free public REST API (32 endpoints)
 - **Chrome Web Store**: [HI. — Human Intelligence Grade](https://chrome.google.com/webstore) — Live
 - **Extension**: Chrome — mini pill (score/threshold), full sidebar with gates
@@ -229,9 +229,10 @@ hi/
 ├── pipeline/                    # Cloud scoring pipeline
 │   ├── data_collector.py         # All 34 data source fetchers
 │   ├── scoring_engine.py        # HUMAN scoring + adaptive threshold
+│   ├── merge_seed.py            # Merges private companies from seed data
 │   ├── feature_pipelines.py     # Shield, Contagion, Lens, Wave, Watermark
 │   ├── api_server.py            # REST API (Flask, 32 endpoints)
-│   ├── run_all.py               # Single command: collect → score → features
+│   ├── run_all.py               # Single command: collect → score → merge → features
 │   ├── heartbeat_monitor.py     # HUMAN Heartbeat
 │   ├── human100_index.py        # HUMAN 100 Index
 │   ├── grade_arbitrage.py       # HUMAN Lens
