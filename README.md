@@ -228,6 +228,7 @@ hi/
 │
 ├── pipeline/                    # Cloud scoring pipeline
 │   ├── scoring_engine.py        # HUMAN scoring + adaptive threshold
+│   ├── feature_pipelines.py     # Shield, Contagion, Lens, Wave, Watermark
 │   ├── api_server.py            # REST API (Flask, 32 endpoints)
 │   ├── run_all.py               # Single command runner
 │   ├── heartbeat_monitor.py     # HUMAN Heartbeat
