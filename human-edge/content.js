@@ -274,7 +274,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
       ${profile.tier.cappedFromCertified ? '<div class="human-badge__floor-warning">⚡ Scores 90+ but not HI Balanced.</div>' : ''}
       ${floorWarning}
       ${hwFlags}
-      ${profile.balance_floor ? `<div class="human-badge__decay human-badge__decay--warning">⚖ Balance Floor: ${profile.triggering_dimension ? profile.triggering_dimension.toUpperCase() : 'a dimension'} below 42. Not balanced.</div>` : ''}
+      ${profile.balance_floor ? `<div class="human-badge__decay human-badge__decay--warning">⚖ Balance Floor: ${['H','U','M','A','N'].filter(d => (profile.dimensions[d] || 0) < 42).length} Dimension${['H','U','M','A','N'].filter(d => (profile.dimensions[d] || 0) < 42).length > 1 ? 's' : ''} below 42. Not balanced.</div>` : ''}
       ${profile.decay_level !== 'stable' && profile.decay_index > 0 ? `
         <div class="human-badge__decay human-badge__decay--${profile.decay_level}" style="padding:8px 10px">
           <div style="font-weight:700;font-size:12px">♥ Heartbeat: ${profile.decay_level.charAt(0).toUpperCase() + profile.decay_level.slice(1)} · Decay: ${profile.decay_index}/100</div>
@@ -502,7 +502,7 @@ function openFullPanel(profile, filterResult, prefs) {
   // Balance floor
   let floorHTML = '';
   if (profile.balance_floor) {
-    floorHTML = `<div style="background:#FFF7ED;border:1px solid #FDBA74;border-radius:8px;padding:8px 12px;margin-top:8px;font-size:11px;color:#9A3412">⚖ Balance Floor: ${profile.triggering_dimension ? profile.triggering_dimension.toUpperCase() : 'a dimension'} below 42. Not balanced.</div>`;
+    floorHTML = `<div style="background:#FFF7ED;border:1px solid #FDBA74;border-radius:8px;padding:8px 12px;margin-top:8px;font-size:11px;color:#9A3412">⚖ Balance Floor: ${(() => { const bc = ['H','U','M','A','N'].filter(d => (profile.dimensions[d]||0) < 42).length; return bc + ' Dimension' + (bc > 1 ? 's' : '') + ' below 42. Not balanced.'; })()}</div>`;
   }
 
   // Pulse
