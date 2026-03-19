@@ -4,13 +4,13 @@
 
 *Built without AI to measure AI. 34 free data sources. 24 sub-signals. All covered without AI. The world's first edge-to-cloud ethical scoring framework.*
 
-**HI.** measures how human a company is across five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent. Every company gets a score. The ✦ HI Balanced have craft behind the work, empathy in the service, and humans in the loop.
+**HI.** measures how human a company is across five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent. Every company gets a score. The **HI.** Balanced have craft behind the work, empathy in the service, and humans in the loop.
 
 🌐 [thehibalance.org](https://thehibalance.org) · 🏛 The HI Balance · 📄 Patent Pending · ™ HI Grade — Morf Innovations LLC
 
 ---
 
-## ✦ HI Balanced — 10 Gates · 3 Categories
+## **HI.** Balanced — 10 Gates · 3 Categories
 
 Every company gets a score from 0 to 100. No letters. No tiers. Just the number.
 
@@ -248,6 +248,12 @@ hi/
 ├── LICENSE                      # AGPL-3.0 / Apache 2.0
 └── README.md
 ```
+
+## Privacy
+
+The extension collects **zero user data**. No tracking, no analytics, no cookies, no browsing history. The only network request is a domain lookup (e.g., "apple.com") to our scoring API. No personal information is transmitted. Full policy: [thehibalance.org/privacy.html](https://thehibalance.org/privacy.html)
+
+---
 
 ## Quick Start
 
