@@ -68,21 +68,30 @@ def main():
         
         # Step 2: Run scoring engine
         run(f"python3 scoring_engine.py --output {args.data}", "Step 2: Scoring Engine (24 sub-signals + algo harm)")
+    
+    # Step 3: Merge seed data (private companies)
+    seed_path = Path("../human-edge/lib/seed-data.js")
+    if not seed_path.exists():
+        seed_path = Path("seed-data.js")  # Fallback
+    if seed_path.exists():
+        run(f"python3 merge_seed.py --seed {seed_path} --scores {args.data}/all_scores.json", "Step 3: Merge Seed Data (private companies)")
+    else:
+        print("\n  ⏭ Step 3: No seed-data.js found, skipping merge")
 
-    # Step 3: Run feature pipelines
-    run(f"python3 feature_pipelines.py --data {args.data} --output {args.output}", "Step 3: Feature Pipelines (Shield, Contagion, Lens, Wave, Watermark)")
+    # Step 4: Run feature pipelines
+    run(f"python3 feature_pipelines.py --data {args.data} --output {args.output}", "Step 4: Feature Pipelines (Shield, Contagion, Lens, Wave, Watermark)")
 
-    # Step 4: Run heartbeat monitor
+    # Step 5: Run heartbeat monitor
     if Path("heartbeat_monitor.py").exists():
-        run(f"python3 heartbeat_monitor.py --data {args.data} --output {args.output}/heartbeat", "Step 4: HUMAN Heartbeat")
+        run(f"python3 heartbeat_monitor.py --data {args.data} --output {args.output}/heartbeat", "Step 5: HUMAN Heartbeat")
     else:
-        print("\n  ⏭ Step 4: Heartbeat monitor not found, skipping")
+        print("\n  ⏭ Step 5: Heartbeat monitor not found, skipping")
 
-    # Step 5: Run HUMAN 100 Index
+    # Step 6: Run HUMAN 100 Index
     if Path("human100_index.py").exists():
-        run(f"python3 human100_index.py --data {args.data} --output {args.output}/human100", "Step 5: HUMAN 100 Index")
+        run(f"python3 human100_index.py --data {args.data} --output {args.output}/human100", "Step 6: HUMAN 100 Index")
     else:
-        print("\n  ⏭ Step 5: HUMAN 100 not found, skipping")
+        print("\n  ⏭ Step 6: HUMAN 100 not found, skipping")
 
     elapsed = round(time.time() - start, 1)
     print(f"\n{'═' * 60}")
