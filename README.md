@@ -293,7 +293,8 @@ Base URL: `https://api.thehibalance.org` · Free · No auth required
 | Item | Priority |
 |------|----------|
 | iOS app (TestFlight → App Store) | 🔴 High |
-| Non-provisional patent (due March 2027) | 🔴 High |
+| Safari extension | 🔴 High |
+| Google Play Store (Android) | 🔴 High |
 | AI Enhancement Layer | 🟡 Medium |
 
 ---
