@@ -17,7 +17,7 @@ def run(cmd, label):
     print(f"  {label}")
     print(f"{'═' * 60}")
     start = time.time()
-    result = subprocess.run(cmd, shell=True, cwd=os.path.dirname(__file__) or ".")
+    result = subprocess.run(cmd, shell=True, cwd=os.path.dirname(os.path.abspath(__file__)))
     elapsed = round(time.time() - start, 1)
     if result.returncode != 0:
         print(f"  ⚠ {label} failed (exit {result.returncode}) in {elapsed}s")
@@ -40,6 +40,23 @@ def main():
     print("║  HI. — Daily Pipeline Runner                           ║")
     print("║  Find the HI balance.                                  ║")
     print("╚══════════════════════════════════════════════════════════╝")
+    
+    # Verify scores exist
+    scores_path = Path(args.data) / "all_scores.json"
+    if not scores_path.exists():
+        # Try relative to script dir
+        script_dir = Path(os.path.dirname(os.path.abspath(__file__)))
+        scores_path = script_dir / args.data / "all_scores.json"
+    
+    if not args.features_only and not scores_path.exists():
+        print(f"\n  Scores will be generated at: {args.data}/all_scores.json")
+    elif scores_path.exists():
+        scores = __import__('json').load(open(scores_path))
+        print(f"\n  Found {len(scores)} companies in {scores_path}")
+    else:
+        print(f"\n  ⚠ No scores found at {args.data}/all_scores.json")
+        print(f"    Run without --features-only first to generate scores")
+        return
 
     if not args.features_only:
         # Step 1: Run scoring engine
