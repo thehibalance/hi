@@ -262,9 +262,18 @@ def save_threshold(threshold):
     }, open(THRESHOLD_FILE, "w"), indent=2)
 
 def check_hi_balanced(company, threshold):
-    """Check all 10 gates for HI Balanced status."""
+    """Check all 10 gates for Gold HI Grade status."""
     dims = [company.get("D_H", 0), company.get("D_U", 0), company.get("D_M", 0), company.get("D_A", 0), company.get("D_N", 0)]
     below_42 = sum(1 for d in dims if d < 42)
+    
+    # Seed companies need real feature data to qualify — can't pass on defaults
+    is_seed = company.get("_source") == "seed" or company.get("confidence", "").startswith("Estimated from")
+    has_feature_data = any([
+        company.get("shield_score") is not None and company.get("shield_score") != 50,
+        company.get("decay_index") is not None and company.get("decay_index") != 0,
+        len(company.get("humanwashing_flags", [])) > 0,
+    ])
+    
     gates = {
         "composite": company.get("composite", 0) >= threshold,
         "all_dims_above_42": below_42 == 0,
@@ -277,6 +286,11 @@ def check_hi_balanced(company, threshold):
         "not_under_pressure": not company.get("under_collective_pressure", False),
         "no_active_alerts": company.get("decay_level", "stable") != "critical",
     }
+    
+    # Seed companies without real feature data can't earn gold
+    if is_seed and not has_feature_data:
+        return False, gates
+    
     return all(gates.values()), gates
 
 SATIRES = {
@@ -286,7 +300,7 @@ SATIRES = {
 
 
 def seed_to_record(s):
-    composite = round((s["h"] + s["u"] + s["m"] + s["a"] + s["n"]) / 5, 1)
+    composite = round((s["h"] + s["u"] + s["m"] + s["a"] + s["n"]) / 5)
     dims = [s["h"], s["u"], s["m"], s["a"], s["n"]]
     below_42 = sum(1 for d in dims if d < 42)
     if min(dims) < 10:
@@ -603,11 +617,11 @@ def build_index():
     # Compute HUMAN 100 metadata
     if HUMAN100:
         h100_composites = [c["composite"] for c in HUMAN100]
-        h100_avg = round(sum(h100_composites) / len(h100_composites), 1)
+        h100_avg = round(sum(h100_composites) / len(h100_composites))
         dim_avgs = {}
         for dim in ["D_H", "D_U", "D_M", "D_A", "D_N"]:
             vals = [c.get(dim, 0) for c in HUMAN100 if c.get(dim, 0) > 0]
-            dim_avgs[dim] = round(sum(vals) / len(vals), 1) if vals else 0
+            dim_avgs[dim] = round(sum(vals) / len(vals)) if vals else 0
         HUMAN100_META = {
             "average_composite": h100_avg,
             "dimension_averages": dim_avgs,
@@ -620,11 +634,13 @@ def build_index():
     # Inject hi_balanced into all feature lists (they load from pre-generated files)
     try:
         balanced_tickers = {c.get("ticker", "").upper() for c in ALL_COMPANIES if c.get("hi_balanced") and c.get("ticker")}
+        balanced_names = {c.get("company", "").strip() for c in ALL_COMPANIES if c.get("hi_balanced") and c.get("company")}
         for feature_list in [CONTAGION, EMPATHY_WM, MOATS, ARBITRAGE]:
             if isinstance(feature_list, list):
                 for item in feature_list:
                     t = (item.get("ticker") or "").upper()
-                    if t and t in balanced_tickers:
+                    n = (item.get("company") or "").strip()
+                    if (t and t in balanced_tickers) or (n and n in balanced_names):
                         item["hi_balanced"] = True
                     else:
                         item["hi_balanced"] = False
@@ -810,7 +826,7 @@ def stats():
         grades[g] = grades.get(g, 0) + 1
 
     composites = [c["composite"] for c in ALL_COMPANIES if c.get("composite")]
-    avg = round(sum(composites) / len(composites), 1) if composites else 0
+    avg = round(sum(composites) / len(composites)) if composites else 0
     threshold = load_saved_threshold() or compute_hi_balanced_threshold(ALL_COMPANIES)
     certified_count = sum(1 for c in ALL_COMPANIES if c.get("hi_balanced"))
 

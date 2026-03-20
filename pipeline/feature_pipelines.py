@@ -154,7 +154,7 @@ def compute_shield(companies):
     meta = {
         "total": len(results),
         "distribution": dict(dist),
-        "average_moat": round(sum(r["moat_score"] for r in results) / len(results), 1) if results else 0,
+        "average_moat": round(sum(r["moat_score"] for r in results) / len(results)) if results else 0,
     }
     
     return results, meta
@@ -237,7 +237,7 @@ def compute_contagion(companies):
             "company": c["company"], "ticker": c.get("ticker", ""),
             "industry": ind,
             "composite": comp,
-            "industry_average": round(ind_avg, 1),
+            "industry_average": round(ind_avg),
             "gap_from_industry": round(gap, 1),
             "influence_weight": round(influence, 3),
             "contagion_magnitude": round(contagion_magnitude, 1),
@@ -431,7 +431,7 @@ def compute_wave(companies, threshold=64.6):
         dim_pressure[d] = {
             "dimension": d,
             "name": dim_names.get(d, d),
-            "average": round(avg, 1),
+            "average": round(avg),
             "below_threshold_count": below_threshold,
             "below_threshold_pct": below_threshold_pct,
             "failing_pct": below_threshold_pct,

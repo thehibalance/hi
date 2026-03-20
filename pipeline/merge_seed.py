@@ -169,7 +169,7 @@ def seed_to_pipeline(seed_entry):
     a = seed_entry.get("a", 50)
     n = seed_entry.get("n", 50)
     
-    composite = round((h + u + m + a + n) / 5, 1)
+    composite = round((h + u + m + a + n) / 5)
     
     # Determine industry from tags
     tags = seed_entry.get("tags", [])
