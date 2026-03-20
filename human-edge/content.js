@@ -271,7 +271,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
       <div class="human-badge__dimensions">
         ${buildDimensionBars(profile.dimensions)}
       </div>
-      ${profile.tier.cappedFromCertified ? '<div class="human-badge__floor-warning">⚡ Scores 90+ but hasn't passed all 10 gates.</div>' : ''}
+      ${profile.tier.cappedFromCertified ? '<div class="human-badge__floor-warning">⚡ Scores 90+ but has not passed all 10 gates.</div>' : ''}
       ${floorWarning}
       ${hwFlags}
       ${profile.balance_floor ? `<div class="human-badge__decay human-badge__decay--warning">⚖ Balance Floor: ${['h','u','m','a','n'].filter(d => (profile.dimensions[d] || 0) < 42).length} Dimension${['h','u','m','a','n'].filter(d => (profile.dimensions[d] || 0) < 42).length > 1 ? 's' : ''} below 42. Not balanced.</div>` : ''}

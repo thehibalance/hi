@@ -294,7 +294,6 @@ def check_hi_balanced(company, threshold):
     return all(gates.values()), gates
 
 SATIRES = {
-    "HI Balanced": "Humans and tech, in harmony. This is what balance looks like.",
     "scored": "",
 }
 
@@ -588,8 +587,8 @@ def build_index():
         c["hi_balanced_gates"] = gates
         c["hi_balanced_threshold"] = threshold
         if passed:
-            c["hi_grade"] = "HI Balanced"
-            c["satire"] = "Humans and tech, in harmony. Probably unicorns too."
+            c["hi_grade"] = "scored"
+            c["satire"] = ""
             balanced_count += 1
     print(f"  HI Balanced threshold: {threshold} | {balanced_count} companies qualified")
     
