@@ -619,21 +619,15 @@ def build_index():
     
     # Inject hi_balanced into all feature lists (they load from pre-generated files)
     try:
-        balanced_tickers = {c.get("ticker", "").upper(): c for c in ALL_COMPANIES if c.get("hi_balanced")}
-        balanced_companies = {c.get("company", "").lower(): c for c in ALL_COMPANIES if c.get("hi_balanced")}
+        balanced_tickers = {c.get("ticker", "").upper() for c in ALL_COMPANIES if c.get("hi_balanced") and c.get("ticker")}
         for feature_list in [CONTAGION, EMPATHY_WM, MOATS, ARBITRAGE]:
             if isinstance(feature_list, list):
                 for item in feature_list:
                     t = (item.get("ticker") or "").upper()
-                    n = (item.get("company") or "").lower()
-                    if t in balanced_tickers or n in balanced_companies:
+                    if t and t in balanced_tickers:
                         item["hi_balanced"] = True
-                        src = balanced_tickers.get(t) or balanced_companies.get(n, {})
-                        item["composite"] = src.get("composite", item.get("composite", 0))
                     else:
-                        # Ensure defaults exist for all items
-                        item.setdefault("hi_balanced", False)
-                        item.setdefault("composite", 0)
+                        item["hi_balanced"] = False
     except Exception as e:
         print(f"  Warning: hi_balanced injection error: {e}")
     print(f"  {len(ALL_COMPANIES)} companies | {len(COMPANIES)} domains | {len(TICKERS)} tickers")
