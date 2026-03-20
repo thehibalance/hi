@@ -1,10 +1,10 @@
 # HI. — Think human intelligence.
 
-> **Think human intelligence.** Every company gets a HI Grade™.
+> **Think human intelligence.** Every company gets a HI Grade™. Brands that empower humans score well. Brands that replace, divide, or addict them score poorly.
 
 *Built without AI to measure AI. 34 free data sources. 24 sub-signals. All covered without AI. The world's first edge-to-cloud ethical scoring framework.*
 
-**HI.** measures how human a company is across five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent. Every company gets a score. The **HI.** Balanced have craft behind the work, empathy in the service, and humans in the loop.
+**HI.** measures how human a company is across five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent. Every company gets a score. Brands that pass all 10 gates earn **Gold HI Grade** — craft behind the work, empathy in the service, and humans in the loop.
 
 🌐 [thehibalance.org](https://thehibalance.org) · 🏛 The HI Balance · 📄 Patent Pending · ™ HI Grade — Morf Innovations LLC
 
@@ -30,9 +30,9 @@ The composite score must exceed the adaptive threshold — calculated as **mean 
 
 ### ⚖ Category 2: Balance
 
-All 5 HUMAN dimensions must score **≥ 42**. Any dimension below 42? Not balanced. No exceptions.
+All 5 HUMAN dimensions must score **≥ 42**. Any dimension below 42? No blind spots allowed. No exceptions.
 
-*42 — the answer to life, the universe, and everything. Also the minimum per dimension to be in balance.*
+*42 — the answer to life, the universe, and everything. Also the minimum per dimension to earn gold.*
 
 ### 🔒 Category 3: 8 HUMAN Features
 
