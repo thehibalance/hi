@@ -115,9 +115,9 @@ def compute_shield(companies):
         elif moat_score >= 60:
             level, label = "strong", "Strong"
         elif moat_score >= 42:
-            level, label = "moderate", "Moderate"
+            level, label = "developing", "Developing"
         elif moat_score >= 25:
-            level, label = "thin", "Thin"
+            level, label = "vulnerable", "Vulnerable"
         else:
             level, label = "none", "None"
         

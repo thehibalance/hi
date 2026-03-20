@@ -551,7 +551,7 @@ function openFullPanel(profile, filterResult, prefs) {
       <div>
         <div class="human-panel__name">${profile.name}</div>
         <div class="human-panel__tier" style="color: ${scoreColor}">HI Grade™${pulseDotHTML}</div>
-        <div class="human-panel__brand">Find the HI balance.</div>
+        <div class="human-panel__brand">Think human intelligence.</div>
       </div>
     </div>
     ${profile.hiBalanced ? '<div style="padding:4px 16px;font-size:11px;color:#C49B20;font-weight:600">HI. All 10 gates passed</div><div style="padding:2px 16px;font-size:20px;font-weight:900;color:#C49B20">'+profile.composite+'</div>' : ''}
@@ -643,7 +643,7 @@ function openFullPanel(profile, filterResult, prefs) {
     </div>
 
     <div class="human-panel__footer">
-      <div>Find the HI balance.</div>
+      <div>Think human intelligence.</div>
       <div class="human-panel__footer-sub">thehibalance.org · The HI Balance</div>
     </div>
 
@@ -762,7 +762,7 @@ function openDetailPanel(profile, dim) {
       <div>
         <div class="human-panel__name">${profile.name}</div>
         <div class="human-panel__tier" style="color: ${scoreColor}">HI Grade™${pulseDotHTML}</div>
-        <div class="human-panel__brand">Find the HI balance.</div>
+        <div class="human-panel__brand">Think human intelligence.</div>
       </div>
     </div>
     ${profile.tier.satire ? `<div class="human-panel__satire">"${profile.tier.satire}"</div>` : ''}
@@ -846,7 +846,7 @@ function openDetailPanel(profile, dim) {
     </div>
 
     <div class="human-panel__footer">
-      <div>Find the HI balance.</div>
+      <div>Think human intelligence.</div>
       <div class="human-panel__footer-sub">thehibalance.org · The HI Balance</div>
     </div>
 
