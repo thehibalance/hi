@@ -197,32 +197,51 @@ function createBadge(profile, filterResult, prefs) {
  */
 function buildMiniHTML(profile) {
   const threshold = profile.balancedThreshold || 62;
-  const hasWarning = profile.decay_level === 'critical' || profile.decay_level === 'warning';
-  const hasDecay = profile.decay_level !== 'stable' && profile.decay_index > 0;
-  const hasFloor = profile.balance_floor;
   const scoreColor = HumanEngine.getScoreColor(profile.composite, threshold);
+  const decayLevel = profile.decay_level || 'stable';
   
-  let warningDot = '';
-  if (hasWarning) {
-    warningDot = `<span class="human-badge__mini-dot" style="background:#DC2626"></span>`;
-  } else if (hasDecay) {
-    warningDot = `<span class="human-badge__mini-dot" style="background:#D97706"></span>`;
-  } else if (hasFloor) {
-    warningDot = `<span class="human-badge__mini-dot" style="background:#DC2626"></span>`;
-  }
+  // Human silhouette path
+  const silhouette = 'M24,0 C30,-3 38,-3 44,0 C52,4 54,12 54,20 C54,30 46,38 34,38 C22,38 14,30 14,20 C14,12 16,4 24,0 Z M4,66 C4,48 16,40 34,40 C52,40 64,48 64,66 L64,72 C64,74 62,76 60,76 L8,76 C6,76 4,74 4,72 Z';
+  
+  // Pulse animation based on decay level
+  const pulseAnim = {
+    'critical': 'pulse-critical 0.8s ease-in-out infinite',
+    'warning': 'pulse-critical 1s ease-in-out infinite',
+    'watch': 'pulse-watch 1.5s ease-in-out infinite',
+    'stable': 'pulse-stable 2.5s ease-in-out infinite',
+  };
+  const heartAnim = pulseAnim[decayLevel] || pulseAnim['stable'];
+  
+  // Color mapping
+  const colorMap = {
+    '#16A34A': '#16A34A',
+    '#D97706': '#D97706', 
+    '#DC2626': '#DC2626',
+  };
+  const fillColor = profile.hiBalanced ? '#C49B20' : scoreColor;
   
   if (profile.hiBalanced) {
+    // Gold: centered HI. across whole shape, gentle glow
     return `
-      <div class="human-badge__mini" style="background:linear-gradient(135deg,#C49B2015,#C49B2005);border:1px solid #C49B2040;border-radius:14px;display:flex;flex-direction:column;align-items:center;padding:6px 12px">
-        <span style="color:#C49B20;font-size:18px;font-weight:900;letter-spacing:-1px;line-height:1">HI.</span>
+      <div class="human-badge__mini" style="padding:0">
+        <svg width="48" height="56" viewBox="0 0 68 80" style="animation:gold-glow 3s ease-in-out infinite;filter:drop-shadow(0 2px 8px rgba(196,155,32,0.4))">
+          <path d="${silhouette}" fill="#C49B20"/>
+          <text x="34" y="48" text-anchor="middle" fill="white" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="22" font-weight="900" letter-spacing="-1">HI.</text>
+        </svg>
       </div>
     `;
   }
   
+  // Regular: score in head, pulsing heart in torso
   return `
-    <div class="human-badge__mini">
-      <span style="color:${scoreColor};font-size:22px;font-weight:900">${profile.composite}</span>
-      ${warningDot}
+    <div class="human-badge__mini" style="padding:0">
+      <svg width="48" height="56" viewBox="0 0 68 80" style="filter:drop-shadow(0 2px 8px ${fillColor}40)">
+        <path d="${silhouette}" fill="${fillColor}"/>
+        <text x="34" y="24" text-anchor="middle" fill="white" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="16" font-weight="900">${profile.composite}</text>
+        <g style="animation:${heartAnim};transform-origin:34px 58px">
+          <text x="34" y="64" text-anchor="middle" fill="white" font-size="18">♥</text>
+        </g>
+      </svg>
     </div>
   `;
 }
