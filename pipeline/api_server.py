@@ -464,8 +464,12 @@ def build_index():
                 seen_norm[norm] = c
             
             # Inject domains from S&P 500 mapping if not already present
-            if t and t.upper() in sp500_domains and not c.get("domains"):
-                c["domains"] = sp500_domains[t.upper()]
+            # Merge S&P 500 domains (add missing ones, don't replace)
+            if t and t.upper() in sp500_domains:
+                existing = set(d.lower() for d in c.get("domains", []))
+                for d in sp500_domains[t.upper()]:
+                    if d.lower() not in existing:
+                        c.setdefault("domains", []).append(d)
             
             # Inject heartbeat data
             if t and t.upper() in HEARTBEAT:

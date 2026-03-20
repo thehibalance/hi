@@ -215,7 +215,6 @@ function buildMiniHTML(profile) {
     return `
       <div class="human-badge__mini" style="background:linear-gradient(135deg,#C49B2015,#C49B2005);border:1px solid #C49B2040;border-radius:14px;display:flex;flex-direction:column;align-items:center;padding:6px 12px">
         <span style="color:#C49B20;font-size:18px;font-weight:900;letter-spacing:-1px;line-height:1">HI.</span>
-        <span style="color:#C49B20;font-size:8px;font-weight:600;opacity:0.8;line-height:1">balanced</span>
       </div>
     `;
   }
@@ -274,7 +273,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
       ${profile.tier.cappedFromCertified ? '<div class="human-badge__floor-warning">⚡ Scores 90+ but has not passed all 10 gates.</div>' : ''}
       ${floorWarning}
       ${hwFlags}
-      ${profile.balance_floor ? `<div class="human-badge__decay human-badge__decay--warning">⚖ Balance Floor: ${['h','u','m','a','n'].filter(d => (profile.dimensions[d] || 0) < 42).length} Dimension${['h','u','m','a','n'].filter(d => (profile.dimensions[d] || 0) < 42).length > 1 ? 's' : ''} below 42. Not balanced.</div>` : ''}
+      ${profile.balance_floor ? `<div class="human-badge__decay human-badge__decay--warning">⚖ Balance Floor: ${['h','u','m','a','n'].filter(d => (profile.dimensions[d] || 0) < 42).length} Dimension${['h','u','m','a','n'].filter(d => (profile.dimensions[d] || 0) < 42).length > 1 ? 's' : ''} below 42. Floor triggered.</div>` : ''}
       ${profile.decay_level !== 'stable' && profile.decay_index > 0 ? `
         <div class="human-badge__decay human-badge__decay--${profile.decay_level}" style="padding:8px 10px">
           <div style="font-weight:700;font-size:12px">♥ Heartbeat: ${profile.decay_level.charAt(0).toUpperCase() + profile.decay_level.slice(1)} · Decay: ${profile.decay_index}/100</div>
@@ -502,7 +501,7 @@ function openFullPanel(profile, filterResult, prefs) {
   // Balance floor
   let floorHTML = '';
   if (profile.balance_floor) {
-    floorHTML = `<div style="background:#FFF7ED;border:1px solid #FDBA74;border-radius:8px;padding:8px 12px;margin-top:8px;font-size:11px;color:#9A3412">⚖ Balance Floor: ${(() => { const bc = ['h','u','m','a','n'].filter(d => (profile.dimensions[d]||0) < 42).length; return bc + ' Dimension' + (bc > 1 ? 's' : '') + ' below 42. Not balanced.'; })()}</div>`;
+    floorHTML = `<div style="background:#FFF7ED;border:1px solid #FDBA74;border-radius:8px;padding:8px 12px;margin-top:8px;font-size:11px;color:#9A3412">⚖ Balance Floor: ${(() => { const bc = ['h','u','m','a','n'].filter(d => (profile.dimensions[d]||0) < 42).length; return bc + ' Dimension' + (bc > 1 ? 's' : '') + ' below 42. Floor triggered.'; })()}</div>`;
   }
 
   // Pulse
@@ -523,14 +522,14 @@ function openFullPanel(profile, filterResult, prefs) {
     </div>
 
     <div class="human-panel__company">
-      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<span style="font-size:22px;font-weight:900;letter-spacing:-1px;line-height:1">HI.</span><span style="font-size:8px;font-weight:600;opacity:0.85;line-height:1">balanced</span>' : profile.composite}</div>
+      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px;line-height:1">HI.</span>' : profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
         <div class="human-panel__tier" style="color: ${scoreColor}">HI Grade™${pulseDotHTML}</div>
         <div class="human-panel__brand">Find the HI balance.</div>
       </div>
     </div>
-    ${profile.hiBalanced ? '<div style="padding:4px 16px;font-size:11px;color:#C49B20;font-weight:600">HI. All 10 gates passed · In balance</div><div style="padding:2px 16px;font-size:20px;font-weight:900;color:#C49B20">'+profile.composite+'</div>' : ''}
+    ${profile.hiBalanced ? '<div style="padding:4px 16px;font-size:11px;color:#C49B20;font-weight:600">HI. All 10 gates passed</div><div style="padding:2px 16px;font-size:20px;font-weight:900;color:#C49B20">'+profile.composite+'</div>' : ''}
     ${profile.tier.satire ? `<div class="human-panel__satire">"${profile.tier.satire}"</div>` : ''}
 
     ${(() => {
@@ -734,7 +733,7 @@ function openDetailPanel(profile, dim) {
     </div>
 
     <div class="human-panel__company">
-      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<span style="font-size:22px;font-weight:900;letter-spacing:-1px;line-height:1">HI.</span><span style="font-size:8px;font-weight:600;opacity:0.85;line-height:1">balanced</span>' : profile.composite}</div>
+      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px;line-height:1">HI.</span>' : profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
         <div class="human-panel__tier" style="color: ${scoreColor}">HI Grade™${pulseDotHTML}</div>
