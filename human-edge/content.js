@@ -258,7 +258,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
       <div class="human-badge__meta">
         <div class="human-badge__company">${profile.name} ${confidenceBadge}</div>
         <div class="human-badge__tier" style="color: ${tierColor}">
-          ${profile.hiBalanced ? 'Gold HI Grade™' : 'HI Grade™'} · ${profile.composite}
+          HI Grade™ · ${profile.composite}
         </div>
         ${profile.decay_level !== 'stable' && profile.decay_index > 0 ? 
           `<div class="human-badge__header-heartbeat" style="font-size:10px;margin-top:2px;line-height:1.3;color:${{critical:'#DC2626',warning:'#DC2626',watch:'#D97706'}[profile.decay_level]||'#6B7280'}">♥ ${profile.decay_level.charAt(0).toUpperCase()+profile.decay_level.slice(1)} · Decay: ${profile.decay_index}<div style="font-size:9px;opacity:0.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px">${(profile.decay_factors||[]).slice(0,2).join(' · ')}</div></div>` 
@@ -271,7 +271,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
       <div class="human-badge__dimensions">
         ${buildDimensionBars(profile.dimensions)}
       </div>
-      ${profile.tier.cappedFromCertified ? '<div class="human-badge__floor-warning">⚡ Scores 90+ but not Gold HI Grade.</div>' : ''}
+      ${profile.tier.cappedFromCertified ? '<div class="human-badge__floor-warning">⚡ Scores 90+ but hasn't passed all 10 gates.</div>' : ''}
       ${floorWarning}
       ${hwFlags}
       ${profile.balance_floor ? `<div class="human-badge__decay human-badge__decay--warning">⚖ Balance Floor: ${['h','u','m','a','n'].filter(d => (profile.dimensions[d] || 0) < 42).length} Dimension${['h','u','m','a','n'].filter(d => (profile.dimensions[d] || 0) < 42).length > 1 ? 's' : ''} below 42. Not balanced.</div>` : ''}
