@@ -1,6 +1,6 @@
-# HI. — Find the HI Balance.
+# HI. — Think human intelligence.
 
-> **HI Grade™** — The balance between Human Intelligence and Artificial Intelligence, measured.
+> **Think human intelligence.** Every company gets a HI Grade™.
 
 *Built without AI to measure AI. 34 free data sources. 24 sub-signals. All covered without AI. The world's first edge-to-cloud ethical scoring framework.*
 
@@ -304,6 +304,6 @@ Base URL: `https://api.thehibalance.org` · Free · No auth required
 
 *"Price. Reviews. Stars. Shipping. HI Grade. The fifth thing you check."*
 
-**HI.** — Find the HI Balance.
+**HI.** — Think human intelligence.
 
 [thehibalance.org](https://thehibalance.org) · The HI Balance · Patent Pending · HI Grade™ Morf Innovations LLC

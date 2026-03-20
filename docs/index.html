@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HI. — Find the HI balance.</title>
-<meta name="description" content="How human is the company behind this website? Every company gets a HI Grade™.">
+<meta name="description" content="Think human intelligence. Every company gets a HI Grade™.">
 <meta property="og:title" content="HI. — Find the HI balance.">
-<meta property="og:description" content="How human is the company behind this website?">
+<meta property="og:description" content="Think human intelligence.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://thehibalance.org">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -53,7 +53,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <span class="nav-link" id="nav-contact" onclick="showPage('contact')">Contact HI</span>
 </div></div><span class="nav-tagline">FIND THE HI BALANCE.</span></div></nav>
 <div id="page-home" class="page" style="max-width:1000px;margin:0 auto;padding:0 24px">
-<div class="hero"><h1>HI.</h1><p>How human is the company behind this website?</p></div>
+<div class="hero"><h1>HI.</h1><p>Think human intelligence.</p></div>
 <div class="stats" id="statsRow"></div>
 <div id="homePulse" style="display:none"></div>
 
@@ -132,6 +132,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div>
 <div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1.5px;margin-bottom:10px">ARE YOU A COMPANY?</div>
 <div style="font-size:12px;color:var(--muted);margin-bottom:10px">Think your score is wrong? Want to improve it? Talk to us.</div>
+<div style="font-size:11px;color:#C49B20;margin-bottom:10px">Earn HI Balanced → license the badge for your website, packaging, and job listings.</div>
 <div style="display:flex;gap:8px;flex-wrap:wrap">
 <input id="companyContactName" placeholder="Company name..." style="flex:1;min-width:120px;padding:12px 16px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit">
 <input id="companyContactEmail" placeholder="Work email..." style="flex:1;min-width:120px;padding:12px 16px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit">
@@ -292,6 +293,23 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 
 </div>
 <p style="text-align:center;color:var(--muted);font-size:12px;margin-bottom:32px">All plans include full API documentation. Cancel anytime. Enterprise includes custom onboarding.</p>
+
+<div style="background:linear-gradient(135deg,#0F1A2E,#1a2a4a);border-radius:16px;padding:32px;text-align:center;margin-bottom:32px;color:white">
+<div style="font-size:10px;font-weight:700;letter-spacing:2px;color:#C49B20;margin-bottom:8px">COMING SOON</div>
+<h3 style="font-family:'DM Serif Display';font-size:24px;margin-bottom:8px">Investor Data Feed</h3>
+<p style="color:#8899AA;font-size:13px;margin-bottom:16px;max-width:500px;margin-left:auto;margin-right:auto">Daily curated feed: HUMAN 100 Index changes, decay alerts, humanwashing flags, and contagion signals. Timestamped. Historical. Tradeable.</p>
+<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
+<span style="font-size:11px;color:#C49B20;background:#C49B2020;padding:4px 12px;border-radius:6px">HUMAN 100 Rebalances</span>
+<span style="font-size:11px;color:#C49B20;background:#C49B2020;padding:4px 12px;border-radius:6px">Decay Alerts</span>
+<span style="font-size:11px;color:#C49B20;background:#C49B2020;padding:4px 12px;border-radius:6px">Humanwashing Flags</span>
+<span style="font-size:11px;color:#C49B20;background:#C49B2020;padding:4px 12px;border-radius:6px">Contagion Signals</span>
+</div>
+<div style="display:flex;gap:8px;justify-content:center;max-width:400px;margin:0 auto">
+<input id="investorEmail" placeholder="your@fund.com" style="flex:1;padding:10px 14px;border:none;border-radius:8px;font-size:13px;outline:none;font-family:inherit">
+<button onclick="submitInvestorWaitlist()" style="padding:10px 20px;background:#C49B20;color:white;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap">Join Waitlist</button>
+</div>
+<div id="investorSuccess" style="display:none;margin-top:8px;color:#C49B20;font-size:11px;font-weight:600">✓ We'll reach out when the feed launches.</div>
+</div>
 
 <h2 class="section-title" style="font-size:22px">Use Cases</h2>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:32px">
@@ -530,6 +548,32 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div style="text-align:center;padding:32px 24px;background:white;border-radius:16px;border:1px solid #eee;transition:all .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'"><div style="width:48px;height:48px;border-radius:50%;background:#C49B20;color:white;display:inline-flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;margin-bottom:16px">HI.</div><h3 style="font-family:'DM Serif Display';font-size:20px;color:var(--navy);margin-bottom:8px">Say HI as a Partner</h3><p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px">Integrate HI Grade data into your platform. API access, data licensing, HUMAN 100 ETF licensing.</p><a href="mailto:contact@thehibalance.org?subject=Say HI — Partnership" style="display:inline-block;padding:10px 24px;background:#C49B20;color:white;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">Say HI</a></div>
 <div style="text-align:center;padding:32px 24px;background:white;border-radius:16px;border:1px solid #eee;transition:all .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'"><div style="width:48px;height:48px;border-radius:50%;background:#16A34A;color:white;display:inline-flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;margin-bottom:16px">HI.</div><h3 style="font-family:'DM Serif Display';font-size:20px;color:var(--navy);margin-bottom:8px">Just Say HI</h3><p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px">Questions, feedback, ideas, or just want to say hi. We're humans too.</p><a href="mailto:hi@thehibalance.org?subject=HI!" style="display:inline-block;padding:10px 24px;background:#16A34A;color:white;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">Say HI</a></div>
 </div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:800px;margin:32px auto 0">
+<div style="padding:28px;background:linear-gradient(135deg,#0F1A2E,#1a2a4a);border-radius:16px;text-align:center;color:white">
+<div style="font-size:24px;margin-bottom:12px">📊</div>
+<h3 style="font-family:'DM Serif Display';font-size:20px;margin-bottom:8px">Sponsored Research</h3>
+<p style="font-size:12px;color:#8899AA;line-height:1.6;margin-bottom:16px">"State of Human Intelligence in [Your Industry]" — custom reports powered by 34 data sources. Perfect for industry associations, conferences, and thought leadership.</p>
+<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px">
+<span style="font-size:10px;color:#C49B20;background:#C49B2020;padding:3px 10px;border-radius:4px">Industry Deep Dives</span>
+<span style="font-size:10px;color:#C49B20;background:#C49B2020;padding:3px 10px;border-radius:4px">Quarterly Reports</span>
+<span style="font-size:10px;color:#C49B20;background:#C49B2020;padding:3px 10px;border-radius:4px">Conference Presentations</span>
+</div>
+<a href="mailto:hi@thehibalance.org?subject=Sponsored Research Inquiry" style="display:inline-block;padding:8px 20px;background:#C49B20;color:white;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none">Inquire →</a>
+</div>
+<div style="padding:28px;background:white;border-radius:16px;border:1px solid #eee;text-align:center">
+<div style="font-size:24px;margin-bottom:12px">🤝</div>
+<h3 style="font-family:'DM Serif Display';font-size:20px;color:var(--navy);margin-bottom:8px">Affiliate Program</h3>
+<p style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:16px">Write about ethical companies? Recommend brands with high HI Grades? Join our affiliate program — earn referral revenue when your audience shops at scored companies.</p>
+<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px">
+<span style="font-size:10px;color:var(--navy);background:#F0F4F8;padding:3px 10px;border-radius:4px">Bloggers & Creators</span>
+<span style="font-size:10px;color:var(--navy);background:#F0F4F8;padding:3px 10px;border-radius:4px">Journalists</span>
+<span style="font-size:10px;color:var(--navy);background:#F0F4F8;padding:3px 10px;border-radius:4px">ESG Newsletters</span>
+</div>
+<a href="mailto:hi@thehibalance.org?subject=Affiliate Program Interest" style="display:inline-block;padding:8px 20px;background:var(--navy);color:white;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none">Join Program →</a>
+</div>
+</div>
+</div>
 <div style="text-align:center;margin-top:32px">
 
 <div style="display:flex;gap:16px;justify-content:center"><a href="https://github.com/thehibalance/hi" target="_blank" style="font-size:13px;color:var(--sky);font-weight:600">GitHub</a><a href="https://thehibalance.org" style="font-size:13px;color:var(--sky);font-weight:600">thehibalance.org</a></div>
@@ -649,6 +693,11 @@ var dlc={'critical':'#DC2626','warning':'#DC2626','watch':'#D97706','stable':'#1
 if(dl!=='stable'&&di>0){h+='<div class="hw-section" style="background:'+(dl==='critical'?'#FEE2E2':dl==='warning'?'#FEF3C7':'#FFF7ED')+';border-color:'+(dlc[dl]||'#ccc')+'"><h3 style="color:'+(dlc[dl]||'var(--navy)')+'">♥ Heartbeat: '+(dl.charAt(0).toUpperCase()+dl.slice(1))+' (Decay: '+di+')</h3>'+(c.decay_factors||[]).map(function(f){return'<div class="hw-flag" style="color:#444">'+f+'</div>'}).join('')+'</div>'}
 h+='<div class="meta-tags"><span class="meta-tag">Confidence: '+(c.confidence||'Estimated')+'</span><span class="meta-tag">Sources: '+(c.data_sources||['Estimated']).join(', ')+'</span><span class="meta-tag">Spec: '+(c.spec_version||'1.0.0')+'</span>'+(c.signal_coverage?'<span class="meta-tag">Coverage: '+c.signal_coverage+'</span>':'')+'</div>';
 h+='<div class="detail-disclaimer">HI Grades are estimated from public data and are not financial, legal, or investment advice. Not affiliated with or endorsed by '+(c.company||'this company')+'. Methodology: HUMAN Grade Spec v1.0 (Apache 2.0). HI Grade™ Morf Innovations LLC.</div>';
+h+='<div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap">';
+h+='<div style="flex:1;min-width:200px;padding:16px;border-radius:12px;background:linear-gradient(135deg,#1B3A5C08,#1B3A5C03);text-align:center"><div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1.5px;margin-bottom:6px">FULL HI GRADE REPORT</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px">Detailed breakdown, recommendations, and industry comparison for '+(c.company||'this company')+'.</div><button onclick="submitReportRequest(\''+esc(c.company||'')+'\',\''+esc(c.ticker||'')+'\')" style="padding:8px 20px;background:var(--navy);color:white;border:none;border-radius:8px;font-size:11px;font-weight:600;cursor:pointer">Get Report — Join Waitlist</button><div id="reportSuccess" style="display:none;margin-top:6px;color:#16A34A;font-size:10px;font-weight:600">✓ Added to waitlist</div></div>';
+h+='<div style="flex:1;min-width:200px;padding:16px;border-radius:12px;background:linear-gradient(135deg,#C49B2008,#C49B2003);text-align:center"><div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1.5px;margin-bottom:6px">IS THIS YOUR COMPANY?</div><div style="font-size:11px;color:var(--muted);margin-bottom:10px">Challenge this score, submit data we missed, or earn the HI Balanced badge.</div><button onclick="document.getElementById(\'companyContactName\').value=\''+esc(c.company||'')+'\';showPage(\'home\');setTimeout(function(){document.getElementById(\'companyContactName\').scrollIntoView({behavior:\'smooth\'})},300)" style="padding:8px 20px;background:#C49B20;color:white;border:none;border-radius:8px;font-size:11px;font-weight:600;cursor:pointer">Improve Your Score</button></div>';
+h+='</div>';
+if(c.domains&&c.domains.length){h+='<div style="text-align:center;margin-top:12px"><a href="https://'+c.domains[0]+'" target="_blank" rel="noopener" style="font-size:12px;color:var(--navy);font-weight:600;text-decoration:none;padding:8px 20px;border:1px solid #E0E0E0;border-radius:8px;display:inline-block;transition:all .2s" onmouseover="this.style.background=\'#F5F7FA\'" onmouseout="this.style.background=\'transparent\'">Visit '+c.company+' →</a></div>';}
 document.getElementById('detailContent').innerHTML=h;
 var csb=document.getElementById('copyShareBtn');if(csb){csb.onclick=function(){var txt=decodeURIComponent(shareText);navigator.clipboard.writeText(txt).then(function(){csb.textContent='Copied!';setTimeout(function(){csb.textContent='Copy'},2000)})}}}
 function submitWaitlist(){var e=document.getElementById('waitlistEmail').value.trim();if(!e||!e.includes('@'))return;
@@ -657,6 +706,8 @@ function submitAppWaitlist(){var e=document.getElementById('appWaitlistEmail').v
 fetch('https://formspree.io/f/xbdzkrdj',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,type:'app',date:new Date().toISOString()})}).then(function(){document.getElementById('appWaitlistSuccess').style.display='block';document.getElementById('appWaitlistEmail').value=''}).catch(function(){document.getElementById('appWaitlistSuccess').style.display='block';document.getElementById('appWaitlistEmail').value=''})}
 function submitRequest(company,email){var c=company||document.getElementById('reqCompany').value.trim();var e=email||document.getElementById('reqEmail').value.trim();if(!c){var err=document.getElementById('reqError');if(err){err.style.display='block';setTimeout(function(){err.style.display='none'},3000)}return}
 fetch('https://formspree.io/f/xbdzkrdj',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({company:c,email:e||'none',type:'score_request',date:new Date().toISOString()})}).then(function(){var s=document.getElementById('reqSuccess');if(s){s.style.display='block';setTimeout(function(){s.style.display='none'},5000)}document.getElementById('reqCompany').value='';document.getElementById('reqEmail').value=''}).catch(function(){var s=document.getElementById('reqSuccess');if(s){s.style.display='block';setTimeout(function(){s.style.display='none'},5000)}})}
+function submitInvestorWaitlist(){var e=document.getElementById('investorEmail').value.trim();if(!e)return;fetch('https://formspree.io/f/xbdzkrdj',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,type:'investor_feed_waitlist',date:new Date().toISOString()})}).then(function(){var s=document.getElementById('investorSuccess');if(s){s.style.display='block';setTimeout(function(){s.style.display='none'},5000)}document.getElementById('investorEmail').value=''}).catch(function(){})}
+function submitReportRequest(company,ticker){fetch('https://formspree.io/f/xbdzkrdj',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({company:company,ticker:ticker,type:'report_request',date:new Date().toISOString()})}).then(function(){var s=document.getElementById('reportSuccess');if(s){s.style.display='block';setTimeout(function(){s.style.display='none'},5000)}}).catch(function(){})}
 function startCheckout(tier){fetch(API+'/stripe/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tier:tier})}).then(function(r){return r.json()}).then(function(d){if(d.url){window.location.href=d.url}else{alert('Stripe checkout not yet configured. Email hi@thehibalance.org for '+tier+' access.')}}).catch(function(){window.location.href='mailto:hi@thehibalance.org?subject=HI API '+tier+' Access'})}
 function submitCompanyContact(){var c=document.getElementById('companyContactName').value.trim();var e=document.getElementById('companyContactEmail').value.trim();if(!c||!e)return;fetch('https://formspree.io/f/xbdzkrdj',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({company:c,email:e,type:'company_improve',date:new Date().toISOString()})}).then(function(){var s=document.getElementById('companyContactSuccess');if(s){s.style.display='block';setTimeout(function(){s.style.display='none'},5000)}document.getElementById('companyContactName').value='';document.getElementById('companyContactEmail').value=''}).catch(function(){var s=document.getElementById('companyContactSuccess');if(s){s.style.display='block';setTimeout(function(){s.style.display='none'},5000)}})}function showPage(p){['home','detail','about','contact','extension','app','api','heartbeat','human100','arbitrage','moat','compare','contagion','watermark','consciousness','wave','decay','genome'].forEach(function(pg){var el=document.getElementById('page-'+pg);if(el)el.className=pg===p?'page':'page hidden';var n=document.getElementById('nav-'+pg);if(n)n.className=pg===p?'nav-link active':'nav-link'});window.scrollTo(0,0)}
 document.addEventListener('click',function(e){if(!e.target.closest('.search-input')&&!e.target.closest('.search-results')){var r1=document.getElementById('searchResults');if(r1)r1.className='search-results';var r2=document.getElementById('cmpResults2');if(r2)r2.className='search-results'}});
