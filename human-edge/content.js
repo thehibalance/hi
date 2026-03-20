@@ -17,6 +17,9 @@
   const domain = HumanDB.getCurrentDomain();
   if (!domain) return;
 
+  // Don't show badge on our own site
+  if (domain === 'thehibalance.org' || domain === 'www.thehibalance.org') return;
+
   let company = HumanDB.getByDomain(domain);
   let fromLocal = !!company;
 
