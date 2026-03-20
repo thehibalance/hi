@@ -120,7 +120,7 @@ The deterministic engine covers all 24 sub-signals without AI. The AI layer make
 | **ML Humanwashing Detection** | Pattern detection across disclosures vs behavior at scale | OFF by default |
 | **Empathy Simulation Detection** | Response timing, language variability, contextual depth analysis | OFF by default |
 | **Corporate Content Analysis** | Detect stock photos vs real employees, AI-generated vs human copy | OFF by default |
-| **Predictive HI Balanced** | Forecast which companies are 1-2 quarters from earning/losing HI Balanced | OFF by default |
+| **Predictive Gold HI Grade** | Forecast which companies are 1-2 quarters from earning/losing Gold HI Grade status | OFF by default |
 | **Supply Chain Mapping** | AI maps supplier networks from filings + news for HUMAN Contagion | OFF by default |
 | **Sentiment Fusion** | Combine Glassdoor + Reddit + news sentiment into unified empathy signal | OFF by default |
 | **Real-Time Event Detection** | Monitor news/social for score-relevant events between quarterly runs | OFF by default |
@@ -186,7 +186,7 @@ HI. unifies all five dimensions into a single, consumer-facing framework with hu
 │  • ML humanwashing detection      │
 │  • Empathy simulation analysis    │
 │  • Job posting deep analysis      │
-│  • Predictive HI Balanced         │
+│  • Predictive Gold HI Grade         │
 │  • Supply chain mapping           │
 │  • Sentiment fusion               │
 │  • Real-time event detection      │
@@ -276,7 +276,7 @@ Base URL: `https://api.thehibalance.org` · Free · No auth required
 
 | Endpoint | Description |
 |----------|-------------|
-| `GET /api/v1/stats` | Stats + current HI Balanced threshold |
+| `GET /api/v1/stats` | Stats + current Gold HI Grade threshold |
 | `GET /api/v1/score/{domain}` | Score by domain |
 | `GET /api/v1/score/ticker/{ticker}` | Score by ticker |
 | `GET /api/v1/search?q={query}` | Search (aliases + domains) |
