@@ -96,7 +96,7 @@
   // Override with cloud grade/composite when available (cloud is authoritative)
   if (company.source === 'cloud' && company.cloud_grade) {
     profile.grade = company.cloud_grade;
-    profile.composite = company.cloud_composite || profile.composite;
+    profile.composite = Math.round(company.cloud_composite || profile.composite);
     if (company.cloud_satire) profile.satire = company.cloud_satire;
     if (company.cloud_hi_balanced) {
       profile.hiBalanced = true;
@@ -253,12 +253,12 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
   return `
     <div class="human-badge__header">
       <div class="human-badge__grade" style="color: ${tierColor}">
-        ${profile.letter}
+        
       </div>
       <div class="human-badge__meta">
         <div class="human-badge__company">${profile.name} ${confidenceBadge}</div>
         <div class="human-badge__tier" style="color: ${tierColor}">
-          HI Grade: ${profile.grade} · ${profile.composite}
+          ${profile.hiBalanced ? 'HI Balanced' : 'HI Grade™'} · ${profile.composite}
         </div>
         ${profile.decay_level !== 'stable' && profile.decay_index > 0 ? 
           `<div class="human-badge__header-heartbeat" style="font-size:10px;margin-top:2px;line-height:1.3;color:${{critical:'#DC2626',warning:'#DC2626',watch:'#D97706'}[profile.decay_level]||'#6B7280'}">♥ ${profile.decay_level.charAt(0).toUpperCase()+profile.decay_level.slice(1)} · Decay: ${profile.decay_index}<div style="font-size:9px;opacity:0.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px">${(profile.decay_factors||[]).slice(0,2).join(' · ')}</div></div>` 
@@ -530,7 +530,7 @@ function openFullPanel(profile, filterResult, prefs) {
         <div class="human-panel__brand">Find the HI balance.</div>
       </div>
     </div>
-    ${profile.hiBalanced ? '<div style="padding:4px 16px;font-size:11px;color:#C49B20;font-weight:600">✦ All 10 gates passed · In balance</div><div style="padding:2px 16px;font-size:20px;font-weight:900;color:#C49B20">'+profile.composite+'</div>' : ''}
+    ${profile.hiBalanced ? '<div style="padding:4px 16px;font-size:11px;color:#C49B20;font-weight:600">HI. All 10 gates passed · In balance</div><div style="padding:2px 16px;font-size:20px;font-weight:900;color:#C49B20">'+profile.composite+'</div>' : ''}
     ${profile.tier.satire ? `<div class="human-panel__satire">"${profile.tier.satire}"</div>` : ''}
 
     ${(() => {
@@ -611,13 +611,20 @@ function openFullPanel(profile, filterResult, prefs) {
       <span id="panelConnText">Checking connection...</span>
     </div>
 
+    <div style="display:flex;gap:8px;justify-content:center;padding:8px 16px;background:#F8FAFC;border-radius:8px;margin:8px 16px">
+      <span style="font-size:10px;font-weight:700;color:#1B3A5C;padding:4px 10px;background:white;border-radius:6px;border:1px solid #1B3A5C">Chrome ✓</span>
+      <span style="font-size:10px;font-weight:500;color:#999;padding:4px 10px">Safari · Soon</span>
+      <span style="font-size:10px;font-weight:500;color:#999;padding:4px 10px">Edge · Soon</span>
+      <span style="font-size:10px;font-weight:500;color:#999;padding:4px 10px">Firefox · Soon</span>
+    </div>
+
     <div class="human-panel__footer">
       <div>Find the HI balance.</div>
       <div class="human-panel__footer-sub">thehibalance.org · The HI Balance</div>
     </div>
 
     <div class="human-panel__disclaimer">
-      HI Balanced threshold (currently ${profile.balancedThreshold || 62}) is adaptive — recalculated quarterly as mean + 2 standard deviations of the scored market. As companies improve, the bar rises. The math decides, not us. 10 gates in 3 categories: Score, Balance, 8 HUMAN Features. Scores are estimated from public data. Not financial or legal advice.
+      HI Balanced threshold (currently ${profile.balancedThreshold || 62}) is adaptive — recalculated quarterly. Scores are estimated from public data. Not financial or legal advice.
     </div>
   `;
 

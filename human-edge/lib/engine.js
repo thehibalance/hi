@@ -157,12 +157,12 @@ const HumanEngine = {
       dimensions: {
         h: company.h, u: company.u, m: company.m, a: company.a, n: company.n
       },
-      composite: adjustedComposite,
+      composite: Math.round(adjustedComposite),
       hiBalanced: isBalanced,
       balancedGates: balanced.gates,
       balancedThreshold: balanced.threshold,
       grade: isBalanced ? "HI Balanced" : "scored",
-      letter: isBalanced ? "✦" : "",
+      letter: isBalanced ? "HI." : "",
       scoreColor,
       tier: { color: scoreColor, satire: isBalanced ? "Humans and tech, in harmony. This is what balance looks like." : "" },
       floorTriggered,
