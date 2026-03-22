@@ -1,0 +1,60 @@
+{
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "UNITED PARCEL SERVICE INC",
+      "ticker": "UPS",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-03-18T17:18:19.251427",
+      "source": "CFPB"
+    }
+  },
+  "hibp": {
+    "M.2": 60,
+    "raw": {
+      "company": "United Parcel Service Inc",
+      "ticker": "UPS",
+      "domain": "ups.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "Upstox",
+          "date": "2021-04-08",
+          "pwn_count": 111002,
+          "data_classes": [
+            "Bank account numbers",
+            "Dates of birth",
+            "Email addresses",
+            "Family members' names",
+            "Genders",
+            "Government issued IDs",
+            "Income levels",
+            "Marital statuses",
+            "Nationalities",
+            "Occupations",
+            "Passwords",
+            "Phone numbers",
+            "Physical addresses"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 111002,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-03-20T09:59:59.545086",
+      "source": "HIBP"
+    }
+  },
+  "hardware": {
+    "A.4": 55,
+    "source": "Industry"
+  },
+  "land": {
+    "A.3": 50,
+    "source": "Industry+EPA"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "Adobe",
+      "ticker": "ADBE",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-03-18T17:20:56.945554",
+      "source": "CFPB"
+    }
+  },
+  "hibp": {
+    "M.2": 35,
+    "raw": {
+      "company": "Adobe Inc",
+      "ticker": "ADBE",
+      "domain": "adobe.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "Adobe",
+          "date": "2013-10-04",
+          "pwn_count": 152445165,
+          "data_classes": [
+            "Email addresses",
+            "Password hints",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 152445165,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-03-20T10:00:26.016469",
+      "source": "HIBP"
+    }
+  },
+  "hardware": {
+    "A.4": 45,
+    "source": "Industry"
+  },
+  "land": {
+    "A.3": 65,
+    "source": "Industry+EPA"
+  }
+}
