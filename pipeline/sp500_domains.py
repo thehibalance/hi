@@ -272,3 +272,10 @@ DOMAIN_MAP.update({
     "CELH": ["celsius.com"],
     "MNST": ["monsterenergy.com"],
 })
+
+# International company domains
+try:
+    from international_tickers import INTL_DOMAINS
+    DOMAIN_MAP.update(INTL_DOMAINS)
+except ImportError:
+    pass

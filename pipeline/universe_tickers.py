@@ -109,14 +109,22 @@ RUSSELL_1000_ADDITIONS = [
 ]
 
 def get_all_tickers():
-    """Return deduplicated list of all tickers."""
+    """Return deduplicated list of all tickers (US + international)."""
     all_tickers = set()
     for t in SP500 + RUSSELL_1000_ADDITIONS:
         t = t.strip().upper()
-        if t and "." not in t:  # Skip share classes like BRK.B, BF.B
+        if t:
             all_tickers.add(t)
-        elif "." in t:
-            all_tickers.add(t)  # Keep them, some APIs handle them
+    
+    # Add international tickers
+    try:
+        from international_tickers import get_international_tickers
+        intl = get_international_tickers()
+        for t in intl:
+            all_tickers.add(t)
+    except ImportError:
+        pass
+    
     return sorted(all_tickers)
 
 if __name__ == "__main__":
