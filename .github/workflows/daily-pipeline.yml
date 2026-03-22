@@ -2,9 +2,21 @@ name: Daily HI. Pipeline
 
 on:
   schedule:
-    # Run daily at 6:00 AM UTC (midnight CST)
+    # Daily at 6:00 AM UTC (midnight CST)
     - cron: '0 6 * * *'
-  workflow_dispatch:  # Manual trigger
+    # Quarterly: 1st of Jan/Apr/Jul/Oct at 7:00 AM UTC
+    - cron: '0 7 1 1,4,7,10 *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Run mode'
+        required: true
+        default: 'daily'
+        type: choice
+        options:
+          - daily
+          - quarterly
+          - features-only
 
 jobs:
   score:
@@ -24,7 +36,7 @@ jobs:
         run: |
           pip install -r pipeline/requirements.txt
       
-      - name: Run pipeline (incremental)
+      - name: Run pipeline
         env:
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
           FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
@@ -33,7 +45,23 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: |
           cd pipeline
-          python3 run_all.py --workers 8 --incremental 24
+          MODE="${{ github.event.inputs.mode || 'daily' }}"
+          
+          # Quarterly on schedule: check if it's the 1st of Jan/Apr/Jul/Oct
+          if [ "${{ github.event.schedule }}" = "0 7 1 1,4,7,10 *" ]; then
+            MODE="quarterly"
+          fi
+          
+          if [ "$MODE" = "quarterly" ]; then
+            echo "🔄 Quarterly run — full refresh + threshold recalculation"
+            python3 run_all.py --workers 8 --quarterly
+          elif [ "$MODE" = "features-only" ]; then
+            echo "⚡ Features only — skip collection"
+            python3 run_all.py --skip-collect --features-only
+          else
+            echo "📊 Daily run — incremental collection"
+            python3 run_all.py --workers 8 --incremental 24
+          fi
       
       - name: Commit updated data
         run: |
