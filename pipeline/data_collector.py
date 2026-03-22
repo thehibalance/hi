@@ -62,15 +62,18 @@ def safe_get(url, params=None, headers=None, timeout=15):
 
 
 def load_company_list():
-    """Load master company list from scores or seed data."""
-    # Try existing scores first
+    """Load master company list from scores + universe tickers."""
+    companies = []
+    seen_tickers = set()
+    
+    # Load existing scores first
     scores_file = DATA_DIR / "scores" / "all_scores.json"
     if scores_file.exists():
         scores = json.load(open(scores_file))
-        companies = []
         for s in scores:
             if s.get("error"):
                 continue
+            t = s.get("ticker", "").upper()
             companies.append({
                 "name": s.get("company", ""),
                 "ticker": s.get("ticker", ""),
@@ -78,10 +81,34 @@ def load_company_list():
                 "sic": s.get("sic", ""),
                 "domains": s.get("domains", []),
             })
-        return companies
+            if t:
+                seen_tickers.add(t)
     
-    print("  No existing scores found. Using S&P 500 + seed data.")
-    return []
+    # Add universe tickers not already in scores
+    try:
+        from universe_tickers import get_all_tickers
+        universe = get_all_tickers()
+        new_count = 0
+        for ticker in universe:
+            if ticker.upper() not in seen_tickers:
+                companies.append({
+                    "name": "",  # Will be resolved by SEC/Finnhub
+                    "ticker": ticker,
+                    "industry": "",
+                    "sic": "",
+                    "domains": [],
+                })
+                seen_tickers.add(ticker.upper())
+                new_count += 1
+        if new_count:
+            print(f"  Universe tickers: {new_count} new tickers added (total: {len(companies)})")
+    except ImportError:
+        print("  No universe_tickers.py found, using existing scores only.")
+    
+    if not companies:
+        print("  No existing scores or universe tickers found.")
+    
+    return companies
 
 
 # ═══════════════════════════════════════════════════════════════════════

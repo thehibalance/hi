@@ -39,7 +39,7 @@ def main():
     start = time.time()
     print("╔══════════════════════════════════════════════════════════╗")
     print("║  HI. — Daily Pipeline Runner                           ║")
-    print("║  Find the HI balance.                                  ║")
+    print("║  Think human intelligence.                                  ║")
     print("╚══════════════════════════════════════════════════════════╝")
     
     # Verify scores exist
