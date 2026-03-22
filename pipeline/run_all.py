@@ -31,6 +31,8 @@ def main():
     parser.add_argument("--quarterly", action="store_true", help="Recalculate threshold")
     parser.add_argument("--features-only", action="store_true", help="Skip scoring, regenerate features only")
     parser.add_argument("--skip-collect", action="store_true", help="Skip data collection, use existing data")
+    parser.add_argument("--workers", type=int, default=8, help="Parallel collection threads (default: 8)")
+    parser.add_argument("--incremental", type=int, default=0, help="Skip companies with data fresher than N hours")
     parser.add_argument("--data", default="data/scores", help="Scores directory")
     parser.add_argument("--output", default="data", help="Output base directory")
     parser.add_argument("--port", default="8080", help="API port for restart")
@@ -62,7 +64,8 @@ def main():
     if not args.features_only:
         # Step 1: Collect fresh data from all 34 sources
         if not args.skip_collect:
-            run(f"python3 data_collector.py --all --data {args.output}", "Step 1: Data Collection (34 sources)")
+            inc_flag = f" --incremental {args.incremental}" if args.incremental else ""
+            run(f"python3 data_collector.py --all --data {args.output} --workers {args.workers}{inc_flag}", "Step 1: Data Collection (34 sources)")
         else:
             print("\n  ⏭ Step 1: Data collection skipped (--skip-collect)")
         

@@ -440,92 +440,151 @@ def fetch_extended(company_name, ticker, domain=None, industry=None):
 # MASTER COLLECTOR
 # ═══════════════════════════════════════════════════════════════════════
 
-def collect_all(companies, keys, core=True, subsignals=True, extended=True):
-    """Collect data from all 34 sources for all companies."""
+def safe_filename(name, ticker):
+    """Sanitize a company name/ticker for use as a filename."""
+    raw = ticker or name.replace(' ', '_')
+    return raw.replace('/','_').replace('\\','_').replace(':','_').replace('*','_').replace('?','_').replace('"','_').replace('<','_').replace('>','_').replace('|','_')
+
+
+def is_stale(filepath, max_age_hours=24):
+    """Check if a file is older than max_age_hours."""
+    if not filepath.exists():
+        return True
+    age = time.time() - filepath.stat().st_mtime
+    return age > (max_age_hours * 3600)
+
+
+def collect_one(company, keys, core, subsignals, extended, data_dir, incremental_hours=0):
+    """Collect all data for a single company. Thread-safe."""
+    name = company["name"]
+    ticker = company.get("ticker", "")
+    industry = company.get("industry", "")
+    domain = company.get("domains", [""])[0] if company.get("domains") else ""
+    
+    if not name and not ticker:
+        return None
+    
+    safe = safe_filename(name, ticker)
+    
+    # Incremental: skip if data is fresh
+    if incremental_hours > 0:
+        ss_file = data_dir / "subsignals" / f"{safe}.json"
+        ext_file = data_dir / "extended" / f"{safe}.json"
+        if not is_stale(ss_file, incremental_hours) and not is_stale(ext_file, incremental_hours):
+            return {"skipped": True, "name": name, "ticker": ticker}
+    
+    result = {"name": name, "ticker": ticker, "sec": None, "epa": None, "glassdoor": None}
+    
+    finnhub_key = keys.get("finnhub")
+    fmp_key = keys.get("fmp")
+    
+    if core:
+        sec = fetch_sec(name, ticker)
+        if sec:
+            result["sec"] = sec
+        
+        epa = fetch_epa(name, ticker)
+        if epa:
+            result["epa"] = epa
+        
+        if finnhub_key and ticker:
+            esg, gd = fetch_finnhub(ticker, finnhub_key)
+            if gd:
+                result["glassdoor"] = gd
+        
+        if fmp_key and ticker:
+            fmp = fetch_fmp(ticker, fmp_key)
+            if fmp and result.get("sec"):
+                sec_data = result["sec"]
+                if not sec_data.get("h_signals", {}).get("headcount") and fmp.get("employees"):
+                    sec_data["h_signals"]["headcount"] = {"value": fmp["employees"]}
+                    rev = sec_data.get("m_signals", {}).get("revenue", 0)
+                    if rev and fmp["employees"]:
+                        sec_data["h_signals"]["revenue_per_employee"] = round(rev / fmp["employees"])
+    
+    if subsignals:
+        ss = fetch_subsignals(name, ticker, domain, industry)
+        if ss:
+            ss_dir = data_dir / "subsignals"
+            ss_dir.mkdir(parents=True, exist_ok=True)
+            ss_file = ss_dir / f"{safe}.json"
+            json.dump(ss, open(ss_file, "w"), indent=2)
+            result["subsignals"] = sum(1 for v in ss.values() if v)
+    
+    if extended:
+        ext = fetch_extended(name, ticker, domain, industry)
+        if ext:
+            ext_dir = data_dir / "extended"
+            ext_dir.mkdir(parents=True, exist_ok=True)
+            ext_file = ext_dir / f"{safe}.json"
+            json.dump({ticker.upper(): ext} if ticker else {name: ext}, open(ext_file, "w"), indent=2)
+            result["extended"] = sum(1 for v in ext.values() if v)
+    
+    return result
+
+
+def collect_all(companies, keys, core=True, subsignals=True, extended=True, workers=8, incremental_hours=0):
+    """Collect data from all 34 sources for all companies. Parallel + incremental."""
+    from concurrent.futures import ThreadPoolExecutor, as_completed
     
     sec_results = []
     epa_results = []
     glassdoor_results = []
     cdp_results = load_cdp_data()
-    job_results = []
-    
-    finnhub_key = keys.get("finnhub")
-    fmp_key = keys.get("fmp")
-    newsapi_key = keys.get("newsapi")
     
     total = len(companies)
+    skipped = 0
+    completed = 0
     
-    for i, company in enumerate(companies):
-        name = company["name"]
-        ticker = company.get("ticker", "")
-        industry = company.get("industry", "")
-        domain = company.get("domains", [""])[0] if company.get("domains") else ""
+    print(f"\n  Workers: {workers} threads | Incremental: {'ON (' + str(incremental_hours) + 'h)' if incremental_hours else 'OFF (full refresh)'}")
+    
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        futures = {}
+        for i, company in enumerate(companies):
+            future = executor.submit(
+                collect_one, company, keys, core, subsignals, extended, 
+                DATA_DIR, incremental_hours
+            )
+            futures[future] = (i, company)
         
-        # Skip entries with no name and no useful ticker
-        if not name and not ticker:
-            continue
-        
-        print(f"  [{i+1}/{total}] {name} ({ticker})")
-        
-        if core:
-            # SEC EDGAR
-            sec = fetch_sec(name, ticker)
-            if sec:
-                sec_results.append(sec)
-                hc = sec.get('h_signals',{}).get('headcount')
-                hc_val = hc.get('value','?') if isinstance(hc, dict) else (hc or '?')
-                print(f"    ✓ SEC: headcount={hc_val}, RPE={sec.get('h_signals',{}).get('revenue_per_employee','?')}")
-            
-            # EPA
-            epa = fetch_epa(name, ticker)
-            if epa:
-                epa_results.append(epa)
-                v = epa.get("a_signals", {}).get("total_violations_3yr", 0)
-                print(f"    ✓ EPA: {v} violations")
-            
-            # Finnhub (ESG + Glassdoor proxy)
-            if finnhub_key and ticker:
-                esg, gd = fetch_finnhub(ticker, finnhub_key)
-                if gd:
-                    glassdoor_results.append(gd)
-                    print(f"    ✓ Finnhub: profile loaded")
-            
-            # FMP (enrich headcount/revenue if SEC missed)
-            if fmp_key and ticker:
-                fmp = fetch_fmp(ticker, fmp_key)
-                if fmp:
-                    # Enrich SEC data if missing
-                    sec_match = next((s for s in sec_results if s.get("ticker") == ticker), None)
-                    if sec_match and not sec_match.get("h_signals", {}).get("headcount") and fmp.get("employees"):
-                        sec_match["h_signals"]["headcount"] = {"value": fmp["employees"]}
-                        if fmp.get("employees") and sec_match.get("h_signals", {}).get("revenue_per_employee") is None:
-                            rev = sec_match.get("m_signals", {}).get("revenue", 0)
-                            if rev and fmp["employees"]:
-                                sec_match["h_signals"]["revenue_per_employee"] = round(rev / fmp["employees"])
-                    print(f"    ✓ FMP: {fmp.get('employees',0)} employees, {fmp.get('industry','?')}")
-        
-        if subsignals:
-            ss = fetch_subsignals(name, ticker, domain, industry)
-            if ss:
-                # Save to subsignals dir
-                ss_dir = DATA_DIR / "subsignals"
-                ss_dir.mkdir(parents=True, exist_ok=True)
-                safe_name = (ticker or name.replace(' ','_')).replace('/','_').replace('\\','_').replace(':','_').replace('*','_').replace('?','_').replace('"','_').replace('<','_').replace('>','_').replace('|','_')
-                ss_file = ss_dir / f"{safe_name}.json"
-                json.dump(ss, open(ss_file, "w"), indent=2)
-                count = sum(1 for v in ss.values() if v)
-                if count: print(f"    ✓ Subsignals: {count} sources")
-        
-        if extended:
-            ext = fetch_extended(name, ticker, domain, industry)
-            if ext:
-                ext_dir = DATA_DIR / "extended"
-                ext_dir.mkdir(parents=True, exist_ok=True)
-                safe_ext_name = (ticker or name.replace(' ','_')).replace('/','_').replace('\\','_').replace(':','_').replace('*','_').replace('?','_').replace('"','_').replace('<','_').replace('>','_').replace('|','_')
-                ext_file = ext_dir / f"{safe_ext_name}.json"
-                json.dump({ticker.upper(): ext} if ticker else {name: ext}, open(ext_file, "w"), indent=2)
-                count = sum(1 for v in ext.values() if v)
-                if count: print(f"    ✓ Extended: {count} sources")
+        for future in as_completed(futures):
+            i, company = futures[future]
+            try:
+                result = future.result()
+                if result is None:
+                    continue
+                
+                if result.get("skipped"):
+                    skipped += 1
+                    continue
+                
+                completed += 1
+                name = result["name"]
+                ticker = result["ticker"]
+                
+                # Collect core results
+                if result.get("sec"):
+                    sec_results.append(result["sec"])
+                if result.get("epa"):
+                    epa_results.append(result["epa"])
+                if result.get("glassdoor"):
+                    glassdoor_results.append(result["glassdoor"])
+                
+                # Progress
+                ss_count = result.get("subsignals", 0)
+                ext_count = result.get("extended", 0)
+                status = []
+                if result.get("sec"): status.append("SEC")
+                if result.get("glassdoor"): status.append("Finnhub")
+                if ss_count: status.append(f"{ss_count}ss")
+                if ext_count: status.append(f"{ext_count}ext")
+                
+                print(f"  [{completed + skipped}/{total}] {name or ticker} {'· ' + ', '.join(status) if status else ''}")
+                
+            except Exception as e:
+                name = company.get("name", "?")
+                ticker = company.get("ticker", "?")
+                print(f"  [{completed + skipped}/{total}] {name} ({ticker}) ERROR: {e}")
     
     # Save all core data
     if core:
@@ -552,12 +611,17 @@ def collect_all(companies, keys, core=True, subsignals=True, extended=True):
         json.dump(bls, open(bls_dir / "industry_benchmarks.json", "w"), indent=2)
         print(f"  BLS: {len(bls)} industry benchmarks saved")
     
+    if skipped:
+        print(f"\n  ⏭ Skipped {skipped} companies (data fresh within {incremental_hours}h)")
+    
     return {
         "sec": len(sec_results),
         "epa": len(epa_results),
         "glassdoor": len(glassdoor_results),
         "cdp": len(cdp_results),
         "bls": "loaded",
+        "skipped": skipped,
+        "collected": completed,
     }
 
 
@@ -574,6 +638,8 @@ def main():
     parser.add_argument("--extended", action="store_true", help="12 extended sources")
     parser.add_argument("--company", help="Single company name")
     parser.add_argument("--data", default="data", help="Data directory")
+    parser.add_argument("--workers", type=int, default=8, help="Parallel threads (default: 8)")
+    parser.add_argument("--incremental", type=int, default=0, help="Skip companies with data fresher than N hours (0=full refresh)")
     args = parser.parse_args()
     
     global DATA_DIR
@@ -619,6 +685,8 @@ def main():
         core=args.all or args.core,
         subsignals=args.all or args.subsignals,
         extended=args.all or args.extended,
+        workers=args.workers,
+        incremental_hours=args.incremental,
     )
     
     elapsed = round(time.time() - start, 1)

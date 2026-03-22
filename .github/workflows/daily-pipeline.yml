@@ -1,0 +1,59 @@
+name: Daily HI. Pipeline
+
+on:
+  schedule:
+    # Run daily at 6:00 AM UTC (midnight CST)
+    - cron: '0 6 * * *'
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r pipeline/requirements.txt
+      
+      - name: Run pipeline (incremental)
+        env:
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
+          ALPHA_VANTAGE_KEY: ${{ secrets.ALPHA_VANTAGE_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: |
+          cd pipeline
+          python3 run_all.py --workers 8 --incremental 24
+      
+      - name: Commit updated data
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "HI. Pipeline Bot"
+          git add pipeline/data/
+          git diff --staged --quiet || git commit -m "Daily pipeline: $(date +%Y-%m-%d) · $(cat pipeline/data/scores/all_scores.json | python3 -c 'import sys,json; print(len(json.load(sys.stdin)))') companies"
+          git push
+      
+      - name: Deploy to Railway
+        if: success()
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          # Copy pipeline files to hi-api structure
+          mkdir -p deploy
+          cp -r pipeline/data deploy/
+          cp pipeline/*.py deploy/
+          cp pipeline/requirements.txt deploy/
+          cp pipeline/Procfile deploy/ 2>/dev/null || true
+          echo "Pipeline data ready for Railway deployment"
+          # Note: For auto-deploy, connect Railway to this repo's hi-api branch
+          # Or use Railway CLI: npm install -g @railway/cli && railway up
