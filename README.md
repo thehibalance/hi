@@ -157,7 +157,7 @@ HI. unifies all five dimensions into a single, consumer-facing framework with hu
 │  • Mini pill → full sidebar       │
 │  • Score / threshold display      │
 │  • 10 gates status                │
-│  • Offline: 206 seed + 315 API companies    │
+│  • Offline: 206 seed + 315 API    │
 │  • Online: 815+ from cloud API    │
 │                                   │
 └──────────┬────────────────────────┘
@@ -186,7 +186,7 @@ HI. unifies all five dimensions into a single, consumer-facing framework with hu
 │  • ML humanwashing detection      │
 │  • Empathy simulation analysis    │
 │  • Job posting deep analysis      │
-│  • Predictive Gold HI Grade         │
+│  • Predictive Gold HI Grade       │
 │  • Supply chain mapping           │
 │  • Sentiment fusion               │
 │  • Real-time event detection      │
