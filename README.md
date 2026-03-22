@@ -10,11 +10,11 @@
 
 ---
 
-## **HI.** Balanced — 10 Gates · 3 Categories
+## Gold HI Grade — 10 Gates · 3 Categories
 
 Every company gets a score from 0 to 100. No letters. No tiers. Just the number.
 
-Pass all three? You've found the HI balance.
+Pass all three? Your score turns gold. The data decides.
 
 ### 📊 Category 1: Score
 
@@ -158,7 +158,7 @@ HI. unifies all five dimensions into a single, consumer-facing framework with hu
 │  • Score / threshold display      │
 │  • 10 gates status                │
 │  • Offline: 206 seed + 315 API companies    │
-│  • Online: 435+ from cloud API    │
+│  • Online: 815+ from cloud API    │
 │                                   │
 └──────────┬────────────────────────┘
            │ Delta Sync
@@ -170,7 +170,7 @@ HI. unifies all five dimensions into a single, consumer-facing framework with hu
 │  REST API (Flask, 32 endpoints)   │
 │  • 34 data pipelines              │
 │  • Dynamic hybrid threshold       │
-│  • 435+ companies                 │
+│  • 815+ companies                 │
 │  • 10 HUMAN gates (all live)      │
 │  • Balance floor (42 per dim)     │
 │  • No AI. Pure math.              │
@@ -204,11 +204,11 @@ HI. unifies all five dimensions into a single, consumer-facing framework with hu
 
 ## Live Now
 
-- **Website**: [thehibalance.org](https://thehibalance.org) — Search 435+ companies, all 10 HUMAN features
-- **API**: [api.thehibalance.org](https://api.thehibalance.org/api/v1/stats) — Free public REST API (32 endpoints)
-- **Chrome Web Store**: [HI. — Human Intelligence Grade](https://chrome.google.com/webstore) — Live
-- **Extension**: Chrome — mini pill (score/threshold), full sidebar with gates
-- **Nav**: HI. (App · Extension · API) · HUMAN ▾ (all 10 features) · About HI · Contact HI
+- **Website**: [thehibalance.org](https://thehibalance.org) — Search 815+ brands, all 10 HUMAN features
+- **API**: [api.thehibalance.org](https://api.thehibalance.org/api/v1/stats) — Free public REST API (32 endpoints, Pro $49/mo, Enterprise $499/mo)
+- **Extension**: Chrome — human silhouette pill (score in head, heartbeat in torso, gold for Gold HI Grade)
+- **Pipeline**: Automated daily via GitHub Actions (S&P 500 + Russell 1000 + FTSE + DAX + CAC + Nikkei + Global)
+- **Social**: @thehibalance on Twitter/X, LinkedIn, TikTok, Instagram, Facebook, YouTube, Threads, Reddit
 
 ---
 
@@ -219,7 +219,7 @@ hi/
 ├── human-edge/                  # Chrome browser extension (Manifest V3)
 │   ├── manifest.json            # Extension config
 │   ├── background.js            # Service worker + cloud sync
-│   ├── content.js               # Mini pill + full panel + gates
+│   ├── content.js               # Human silhouette pill + full panel + gates
 │   ├── content.css              # Pill + panel + dark mode
 │   └── lib/
 │       ├── seed-data.js         # 206 hand-scored companies
@@ -227,28 +227,29 @@ hi/
 │       └── db.js                # Database layer
 │
 ├── pipeline/                    # Cloud scoring pipeline
-│   ├── data_collector.py         # All 34 data source fetchers
+│   ├── run_all.py               # Single command: collect → score → merge → features
+│   ├── data_collector.py        # All 34 data sources (parallel, incremental)
 │   ├── scoring_engine.py        # HUMAN scoring + adaptive threshold
 │   ├── merge_seed.py            # Merges private companies from seed data
 │   ├── feature_pipelines.py     # Shield, Contagion, Lens, Wave, Watermark
 │   ├── api_server.py            # REST API (Flask, 32 endpoints)
-│   ├── run_all.py               # Single command: collect → score → merge → features
-│   ├── heartbeat_monitor.py     # HUMAN Heartbeat
-│   ├── human100_index.py        # HUMAN 100 Index
-│   ├── grade_arbitrage.py       # HUMAN Lens
-│   ├── ethical_moat.py          # HUMAN Shield
-│   ├── contagion_effect.py      # HUMAN Contagion
-│   ├── consumer_consciousness.py # HUMAN Consciousness
-│   ├── empathy_watermark.py     # HUMAN Watermark
-│   ├── collective_bargaining.py # HUMAN Wave
-│   └── [34 data pipelines]     # SEC, EPA, BLS, CDP, etc.
+│   ├── universe_tickers.py      # S&P 500 + Russell 1000 ticker universe
+│   ├── international_tickers.py # FTSE 100, DAX 40, CAC 40, Nikkei 225, global
+│   ├── sp500_domains.py         # Domain → company mapping for extension
+│   ├── stripe_integration.py    # Stripe checkout + webhook handler
+│   ├── api_keys.py              # API key management + tiered rate limits
+│   └── [34 data pipelines]      # SEC, EPA, BLS, CDP, Finnhub, FMP, etc.
 │
 ├── docs/                        # Website (GitHub Pages)
 │   ├── index.html               # thehibalance.org
 │   ├── privacy.html             # Privacy policy
 │   └── CNAME                    # Custom domain
 │
-├── LICENSE                      # AGPL-3.0 / Apache 2.0
+├── .github/workflows/
+│   └── daily-pipeline.yml       # GitHub Actions: daily + quarterly automation
+│
+├── CHEATSHEET.md                # Pipeline run commands
+├── LICENSE                      # Apache 2.0
 └── README.md
 ```
 
@@ -265,10 +266,43 @@ The extension collects **zero user data**. No tracking, no analytics, no cookies
 git clone https://github.com/thehibalance/hi.git
 # chrome://extensions → Developer mode → Load unpacked → human-edge/
 
-# Pipeline
+# Pipeline (parallel, ~8 min)
 cd pipeline
 python3 run_all.py
+
+# Incremental (only new/stale data, ~2 min)
+python3 run_all.py --incremental 24
+
+# Features only (~1 min)
+python3 run_all.py --skip-collect --features-only
+
+# Quarterly (recalculates Gold threshold)
+python3 run_all.py --quarterly
 ```
+
+## Automation
+
+The pipeline runs automatically via GitHub Actions — no laptop required.
+
+| Schedule | Mode | What Happens |
+|----------|------|-------------|
+| Daily (midnight CST) | Incremental | 8 threads, skips fresh data, commits scores |
+| Quarterly (Jan/Apr/Jul/Oct 1) | Full refresh | Recalculates Gold HI Grade threshold |
+| Manual | Your choice | Trigger from Actions tab: daily / quarterly / features-only |
+
+## Coverage
+
+| Index | Companies |
+|-------|-----------|
+| S&P 500 | 503 |
+| Russell 1000 | ~150 |
+| FTSE 100 (UK) | 90 |
+| DAX 40 (Germany) | 53 |
+| CAC 40 (France) | 48 |
+| Nikkei 225 (Japan) | 62 |
+| Global Majors | 64 |
+| Seed (private) | 206 |
+| **Total** | **~1,175 tickers → 815+ scored** |
 
 ## API
 
@@ -297,13 +331,16 @@ Base URL: `https://api.thehibalance.org` · Free · No auth required
 |------|----------|
 | iOS app (TestFlight → App Store) | 🔴 High |
 | Safari extension | 🔴 High |
-| Google Play Store (Android) | 🔴 High |
+| Connect Railway to GitHub (full auto-deploy) | 🔴 High |
+| International data sources (Companies House, EDINET, EU CSRD) | 🟡 Medium |
 | AI Enhancement Layer | 🟡 Medium |
+| Creative work scoring | 🟢 Future |
+| AI agent detection | 🟢 Future |
 
 ---
 
-*"Price. Reviews. Stars. Shipping. HI Grade. The fifth thing you check."*
+*"We're not anti-AI. We're pro-balance. Brands that empower humans score well. Brands that replace, divide, or addict them score poorly."*
 
 **HI.** — Think human intelligence.
 
-[thehibalance.org](https://thehibalance.org) · The HI Balance · Patent Pending · HI Grade™ Morf Innovations LLC
+[thehibalance.org](https://thehibalance.org) · The HI Balance · Patent Pending · HI Grade™ Morf Innovations LLC · @thehibalance
