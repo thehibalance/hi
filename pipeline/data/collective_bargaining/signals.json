@@ -1,10 +1,16 @@
 {
+<<<<<<< HEAD
   "market_average": 56.4,
   "total_companies": 821,
+=======
+  "market_average": 50.0,
+  "total_companies": 206,
+>>>>>>> 813df0922effc7cdf3051a7f377b61801cba9bd0
   "dimension_pressure": {
     "H": {
       "dimension": "H",
       "name": "Human Consciousness",
+<<<<<<< HEAD
       "average": 51,
       "below_threshold_count": 762,
       "below_threshold_pct": 92.8,
@@ -12,23 +18,42 @@
       "stdev": 8.4,
       "pressure_score": 53.9,
       "status": "critical",
+=======
+      "average": 55,
+      "below_threshold_count": 144,
+      "below_threshold_pct": 69.9,
+      "failing_pct": 69.9,
+      "stdev": 16.9,
+      "pressure_score": 47.0,
+      "status": "warning",
+>>>>>>> 813df0922effc7cdf3051a7f377b61801cba9bd0
       "threshold": 64.6
     },
     "U": {
       "dimension": "U",
       "name": "Understanding & Empathy",
+<<<<<<< HEAD
       "average": 52,
       "below_threshold_count": 768,
       "below_threshold_pct": 93.5,
       "failing_pct": 93.5,
       "stdev": 7.4,
       "pressure_score": 53.4,
+=======
+      "average": 50,
+      "below_threshold_count": 148,
+      "below_threshold_pct": 71.8,
+      "failing_pct": 71.8,
+      "stdev": 17.6,
+      "pressure_score": 50.1,
+>>>>>>> 813df0922effc7cdf3051a7f377b61801cba9bd0
       "status": "critical",
       "threshold": 64.6
     },
     "M": {
       "dimension": "M",
       "name": "Moral & Ethical Conduct",
+<<<<<<< HEAD
       "average": 72,
       "below_threshold_count": 52,
       "below_threshold_pct": 6.3,
@@ -36,35 +61,63 @@
       "stdev": 8.4,
       "pressure_score": 17.8,
       "status": "stable",
+=======
+      "average": 51,
+      "below_threshold_count": 143,
+      "below_threshold_pct": 69.4,
+      "failing_pct": 69.4,
+      "stdev": 21.2,
+      "pressure_score": 49.8,
+      "status": "warning",
+>>>>>>> 813df0922effc7cdf3051a7f377b61801cba9bd0
       "threshold": 64.6
     },
     "A": {
       "dimension": "A",
       "name": "Alive & Environmental",
+<<<<<<< HEAD
       "average": 52,
       "below_threshold_count": 779,
       "below_threshold_pct": 94.9,
       "failing_pct": 94.9,
       "stdev": 7.9,
       "pressure_score": 54.3,
+=======
+      "average": 47,
+      "below_threshold_count": 169,
+      "below_threshold_pct": 82.0,
+      "failing_pct": 82.0,
+      "stdev": 16.4,
+      "pressure_score": 54.6,
+>>>>>>> 813df0922effc7cdf3051a7f377b61801cba9bd0
       "status": "critical",
       "threshold": 64.6
     },
     "N": {
       "dimension": "N",
       "name": "Natural Transparency",
+<<<<<<< HEAD
       "average": 58,
       "below_threshold_count": 755,
       "below_threshold_pct": 92.0,
       "failing_pct": 92.0,
       "stdev": 8.0,
       "pressure_score": 50.3,
+=======
+      "average": 49,
+      "below_threshold_count": 158,
+      "below_threshold_pct": 76.7,
+      "failing_pct": 76.7,
+      "stdev": 20.0,
+      "pressure_score": 52.7,
+>>>>>>> 813df0922effc7cdf3051a7f377b61801cba9bd0
       "status": "critical",
       "threshold": 64.6
     }
   },
   "industry_signals": [
     {
+<<<<<<< HEAD
       "industry": "tech",
       "company_count": 245,
       "average_composite": 54.7,
@@ -110,10 +163,22 @@
       "algo_harm_companies": 1,
       "below_threshold_dimensions": 249,
       "pressure_score": 33.7,
+=======
+      "industry": "energy",
+      "company_count": 5,
+      "average_composite": 38.0,
+      "worst_dimension": "M",
+      "worst_dimension_avg": 32.0,
+      "humanwashing_flags": 0,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 23,
+      "pressure_score": 36.3,
+>>>>>>> 813df0922effc7cdf3051a7f377b61801cba9bd0
       "status": "warning"
     },
     {
       "industry": "finance",
+<<<<<<< HEAD
       "company_count": 93,
       "average_composite": 57.4,
       "worst_dimension": "U",
@@ -146,10 +211,81 @@
       "algo_harm_companies": 1,
       "below_threshold_dimensions": 31,
       "pressure_score": 31.8,
+=======
+      "company_count": 15,
+      "average_composite": 41.9,
+      "worst_dimension": "M",
+      "worst_dimension_avg": 39.2,
+      "humanwashing_flags": 0,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 68,
+      "pressure_score": 35.8,
+      "status": "warning"
+    },
+    {
+      "industry": "healthcare",
+      "company_count": 9,
+      "average_composite": 44.1,
+      "worst_dimension": "A",
+      "worst_dimension_avg": 38.0,
+      "humanwashing_flags": 0,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 41,
+      "pressure_score": 34.9,
+      "status": "warning"
+    },
+    {
+      "industry": "tech",
+      "company_count": 58,
+      "average_composite": 45.3,
+      "worst_dimension": "A",
+      "worst_dimension_avg": 41.6,
+      "humanwashing_flags": 0,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 233,
+      "pressure_score": 34.4,
+      "status": "warning"
+    },
+    {
+      "industry": "auto",
+      "company_count": 6,
+      "average_composite": 47.0,
+      "worst_dimension": "N",
+      "worst_dimension_avg": 42.2,
+      "humanwashing_flags": 0,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 29,
+      "pressure_score": 33.7,
+      "status": "warning"
+    },
+    {
+      "industry": "telecom",
+      "company_count": 3,
+      "average_composite": 36.0,
+      "worst_dimension": "N",
+      "worst_dimension_avg": 31.7,
+      "humanwashing_flags": 0,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 15,
+      "pressure_score": 33.1,
+      "status": "warning"
+    },
+    {
+      "industry": "retail",
+      "company_count": 53,
+      "average_composite": 53.7,
+      "worst_dimension": "A",
+      "worst_dimension_avg": 50.0,
+      "humanwashing_flags": 0,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 174,
+      "pressure_score": 31.0,
+>>>>>>> 813df0922effc7cdf3051a7f377b61801cba9bd0
       "status": "warning"
     },
     {
       "industry": "food",
+<<<<<<< HEAD
       "company_count": 54,
       "average_composite": 60.6,
       "worst_dimension": "H",
@@ -188,10 +324,27 @@
       "industry": "healthcare",
       "company_count": 65,
       "average_composite": 58.9,
+=======
+      "company_count": 28,
+      "average_composite": 55.2,
+      "worst_dimension": "N",
+      "worst_dimension_avg": 53.4,
+      "humanwashing_flags": 0,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 94,
+      "pressure_score": 30.4,
+      "status": "warning"
+    },
+    {
+      "industry": "default",
+      "company_count": 15,
+      "average_composite": 57.4,
+>>>>>>> 813df0922effc7cdf3051a7f377b61801cba9bd0
       "worst_dimension": "A",
       "worst_dimension_avg": 54.1,
       "humanwashing_flags": 0,
       "algo_harm_companies": 0,
+<<<<<<< HEAD
       "below_threshold_dimensions": 252,
       "pressure_score": 28.9,
       "status": "stable"
@@ -212,4 +365,50 @@
   "market_status": "healthy",
   "most_pressured_dimension": "A",
   "most_pressured_industry": "tech"
+=======
+      "below_threshold_dimensions": 47,
+      "pressure_score": 29.5,
+      "status": "stable"
+    },
+    {
+      "industry": "defense",
+      "company_count": 1,
+      "average_composite": 35.0,
+      "worst_dimension": "M",
+      "worst_dimension_avg": 25.0,
+      "humanwashing_flags": 0,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 5,
+      "pressure_score": 28.5,
+      "status": "stable"
+    },
+    {
+      "industry": "media",
+      "company_count": 7,
+      "average_composite": 59.1,
+      "worst_dimension": "A",
+      "worst_dimension_avg": 40.3,
+      "humanwashing_flags": 0,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 20,
+      "pressure_score": 26.3,
+      "status": "stable"
+    },
+    {
+      "industry": "manufacturing",
+      "company_count": 6,
+      "average_composite": 62.7,
+      "worst_dimension": "A",
+      "worst_dimension_avg": 51.2,
+      "humanwashing_flags": 0,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 13,
+      "pressure_score": 21.4,
+      "status": "stable"
+    }
+  ],
+  "market_status": "warning",
+  "most_pressured_dimension": "A",
+  "most_pressured_industry": "energy"
+>>>>>>> 813df0922effc7cdf3051a7f377b61801cba9bd0
 }
