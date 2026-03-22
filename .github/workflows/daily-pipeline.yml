@@ -67,7 +67,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "HI. Pipeline Bot"
-          git add pipeline/data/
+          git add -f pipeline/data/
           git diff --staged --quiet || git commit -m "Daily pipeline: $(date +%Y-%m-%d) · $(cat pipeline/data/scores/all_scores.json | python3 -c 'import sys,json; print(len(json.load(sys.stdin)))') companies"
           git push
       
