@@ -370,65 +370,89 @@ def build_index():
 
     # Load heartbeat data
     hb_dir = DATA_DIR.parent / "heartbeat"
-    if (hb_dir / "heartbeats.json").exists():
-        for hb in json.load(open(hb_dir / "heartbeats.json")):
-            t = hb.get("ticker", "")
-            if t: HEARTBEAT[t.upper()] = hb
-        print(f"  Heartbeat: {len(HEARTBEAT)} companies")
-    if (hb_dir / "alerts.json").exists():
-        HEARTBEAT_ALERTS = json.load(open(hb_dir / "alerts.json"))
-        print(f"  Heartbeat alerts: {len(HEARTBEAT_ALERTS)}")
-    if (hb_dir / "pulse.json").exists():
-        HEARTBEAT_PULSE = json.load(open(hb_dir / "pulse.json"))
-        print(f"  Heartbeat pulse: {HEARTBEAT_PULSE.get('pulse', 'unknown')}")
+    try:
+        if (hb_dir / "heartbeats.json").exists():
+            for hb in json.load(open(hb_dir / "heartbeats.json")):
+                t = hb.get("ticker", "")
+                if t: HEARTBEAT[t.upper()] = hb
+            print(f"  Heartbeat: {len(HEARTBEAT)} companies")
+        if (hb_dir / "alerts.json").exists():
+            HEARTBEAT_ALERTS = json.load(open(hb_dir / "alerts.json"))
+            print(f"  Heartbeat alerts: {len(HEARTBEAT_ALERTS)}")
+        if (hb_dir / "pulse.json").exists():
+            HEARTBEAT_PULSE = json.load(open(hb_dir / "pulse.json"))
+            print(f"  Heartbeat pulse: {HEARTBEAT_PULSE.get('pulse', 'unknown')}")
+    except Exception as e:
+        print(f"  Heartbeat: skipped (corrupt data: {e})")
 
     # Load HUMAN 100 Index
     h100_dir = DATA_DIR.parent / "human100"
-    if (h100_dir / "index.json").exists():
-        HUMAN100 = json.load(open(h100_dir / "index.json"))
-        print(f"  HUMAN 100: {len(HUMAN100)} constituents")
-    if (h100_dir / "metadata.json").exists():
-        HUMAN100_META = json.load(open(h100_dir / "metadata.json"))
+    try:
+        if (h100_dir / "index.json").exists():
+            HUMAN100 = json.load(open(h100_dir / "index.json"))
+            print(f"  HUMAN 100: {len(HUMAN100)} constituents")
+        if (h100_dir / "metadata.json").exists():
+            HUMAN100_META = json.load(open(h100_dir / "metadata.json"))
+    except Exception as e:
+        print(f"  HUMAN 100: skipped ({e})")
 
     # Load HUMAN Lens data
-    arb_dir = DATA_DIR.parent / "arbitrage"
-    if (arb_dir / "all_arbitrage.json").exists():
-        ARBITRAGE = json.load(open(arb_dir / "all_arbitrage.json"))
-        print(f"  Arbitrage: {len(ARBITRAGE)} companies analyzed")
-    if (arb_dir / "metadata.json").exists():
-        ARBITRAGE_META = json.load(open(arb_dir / "metadata.json"))
+    try:
+        arb_dir = DATA_DIR.parent / "arbitrage"
+        if (arb_dir / "all_arbitrage.json").exists():
+            ARBITRAGE = json.load(open(arb_dir / "all_arbitrage.json"))
+            print(f"  Arbitrage: {len(ARBITRAGE)} companies analyzed")
+        if (arb_dir / "metadata.json").exists():
+            ARBITRAGE_META = json.load(open(arb_dir / "metadata.json"))
+    except Exception as e:
+        print(f"  Arbitrage: skipped ({e})")
 
     # Load HUMAN Shield data
-    moat_dir = DATA_DIR.parent / "ethical_moat"
-    if (moat_dir / "all_moats.json").exists():
-        MOATS = json.load(open(moat_dir / "all_moats.json"))
-        print(f"  HUMAN Shield: {len(MOATS)} companies analyzed")
-    if (moat_dir / "metadata.json").exists():
-        MOATS_META = json.load(open(moat_dir / "metadata.json"))
+    try:
+        moat_dir = DATA_DIR.parent / "ethical_moat"
+        if (moat_dir / "all_moats.json").exists():
+            MOATS = json.load(open(moat_dir / "all_moats.json"))
+            print(f"  HUMAN Shield: {len(MOATS)} companies analyzed")
+        if (moat_dir / "metadata.json").exists():
+            MOATS_META = json.load(open(moat_dir / "metadata.json"))
+    except Exception as e:
+        print(f"  HUMAN Shield: skipped ({e})")
 
     # Load HUMAN Contagion
-    cont_dir = DATA_DIR.parent / "contagion"
-    if (cont_dir / "all_contagion.json").exists():
-        CONTAGION = json.load(open(cont_dir / "all_contagion.json"))
-        print(f"  Contagion: {len(CONTAGION)} companies")
+    try:
+        cont_dir = DATA_DIR.parent / "contagion"
+        if (cont_dir / "all_contagion.json").exists():
+            CONTAGION = json.load(open(cont_dir / "all_contagion.json"))
+            print(f"  Contagion: {len(CONTAGION)} companies")
+    except Exception as e:
+        print(f"  Contagion: skipped ({e})")
 
     # Load Empathy Watermark
-    ew_dir = DATA_DIR.parent / "empathy_watermark"
-    if (ew_dir / "all_watermarks.json").exists():
-        EMPATHY_WM = json.load(open(ew_dir / "all_watermarks.json"))
-        print(f"  Empathy Watermark: {len(EMPATHY_WM)} companies")
+    try:
+        ew_dir = DATA_DIR.parent / "empathy_watermark"
+        if (ew_dir / "all_watermarks.json").exists():
+            EMPATHY_WM = json.load(open(ew_dir / "all_watermarks.json"))
+            print(f"  Empathy Watermark: {len(EMPATHY_WM)} companies")
+    except Exception as e:
+        print(f"  Empathy Watermark: skipped ({e})")
 
     # Load HUMAN Consciousness
-    cc_dir = DATA_DIR.parent / "consumer_consciousness"
-    if (cc_dir / "benchmarks.json").exists():
-        CONSUMER_BENCH = json.load(open(cc_dir / "benchmarks.json"))
-        print(f"  HUMAN Consciousness: benchmarks loaded")
+    try:
+        cc_dir = DATA_DIR.parent / "consumer_consciousness"
+        if (cc_dir / "benchmarks.json").exists():
+            CONSUMER_BENCH = json.load(open(cc_dir / "benchmarks.json"))
+            print(f"  HUMAN Consciousness: benchmarks loaded")
+    except Exception as e:
+        print(f"  Consciousness: skipped ({e})")
 
     # Load HUMAN Wave
-    cb_dir = DATA_DIR.parent / "collective_bargaining"
-    if (cb_dir / "signals.json").exists():
-        COLLECTIVE = json.load(open(cb_dir / "signals.json"))
-        print(f"  HUMAN Wave: signals loaded")
+    try:
+        cb_dir = DATA_DIR.parent / "collective_bargaining"
+        if (cb_dir / "signals.json").exists():
+            COLLECTIVE = json.load(open(cb_dir / "signals.json"))
+            print(f"  HUMAN Wave: signals loaded")
+    except Exception as e:
+        print(f"  HUMAN Wave: skipped ({e})")
 
     # Load S&P 500 domain mappings
     sp500_domains = {}
@@ -988,7 +1012,7 @@ def moat_fortresses():
 def moat_vulnerable():
     """Companies most vulnerable to AI displacement."""
     limit = min(int(request.args.get("limit", 20)), 100)
-    vuln = [r for r in MOATS if r.get("moat_level") in ("thin", "none")]
+    vuln = [r for r in MOATS if r.get("moat_level") in ("vulnerable", "none")]
     return jsonify({"count": len(vuln), "results": vuln[:limit]})
 
 
