@@ -461,6 +461,10 @@ def collect_all(companies, keys, core=True, subsignals=True, extended=True):
         industry = company.get("industry", "")
         domain = company.get("domains", [""])[0] if company.get("domains") else ""
         
+        # Skip entries with no name and no useful ticker
+        if not name and not ticker:
+            continue
+        
         print(f"  [{i+1}/{total}] {name} ({ticker})")
         
         if core:
@@ -506,7 +510,8 @@ def collect_all(companies, keys, core=True, subsignals=True, extended=True):
                 # Save to subsignals dir
                 ss_dir = DATA_DIR / "subsignals"
                 ss_dir.mkdir(parents=True, exist_ok=True)
-                ss_file = ss_dir / f"{ticker or name.replace(' ','_')}.json"
+                safe_name = (ticker or name.replace(' ','_')).replace('/','_').replace('\\','_').replace(':','_').replace('*','_').replace('?','_').replace('"','_').replace('<','_').replace('>','_').replace('|','_')
+                ss_file = ss_dir / f"{safe_name}.json"
                 json.dump(ss, open(ss_file, "w"), indent=2)
                 count = sum(1 for v in ss.values() if v)
                 if count: print(f"    ✓ Subsignals: {count} sources")
@@ -516,7 +521,8 @@ def collect_all(companies, keys, core=True, subsignals=True, extended=True):
             if ext:
                 ext_dir = DATA_DIR / "extended"
                 ext_dir.mkdir(parents=True, exist_ok=True)
-                ext_file = ext_dir / f"{ticker or name.replace(' ','_')}.json"
+                safe_ext_name = (ticker or name.replace(' ','_')).replace('/','_').replace('\\','_').replace(':','_').replace('*','_').replace('?','_').replace('"','_').replace('<','_').replace('>','_').replace('|','_')
+                ext_file = ext_dir / f"{safe_ext_name}.json"
                 json.dump({ticker.upper(): ext} if ticker else {name: ext}, open(ext_file, "w"), indent=2)
                 count = sum(1 for v in ext.values() if v)
                 if count: print(f"    ✓ Extended: {count} sources")

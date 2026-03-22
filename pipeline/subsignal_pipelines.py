@@ -53,7 +53,7 @@ def fetch_cfpb(company_name, ticker):
             return json.load(open(cache_file))
     
     # Try mapped name first, then raw name
-    search_name = CFPB_COMPANY_MAP.get(company_name.lower().split()[0], company_name)
+    search_name = CFPB_COMPANY_MAP.get(company_name.lower().split()[0], company_name) if company_name.strip() else company_name
     
     try:
         params = {
@@ -518,6 +518,8 @@ def score_land(ticker, industry, epa_violations=0):
 
 def fetch_all_subsignals(company_name, ticker, domain=None, industry=None, revenue_b=None):
     """Fetch all 6 new sub-signal data sources for a company."""
+    if not company_name and not ticker:
+        return {}
     results = {}
     
     # 1. CFPB
