@@ -824,7 +824,7 @@ def list_grades():
 
 @app.route("/api/v1/grades/top")
 def top_grades():
-    limit = min(int(request.args.get("limit", 10)), 100)
+    limit = min(int(request.args.get("limit", 10)), 1000)
     results = []
     for i, c in enumerate(ALL_COMPANIES[:limit]):
         rec = dict(c)
@@ -835,7 +835,7 @@ def top_grades():
 
 @app.route("/api/v1/grades/bottom")
 def bottom_grades():
-    limit = min(int(request.args.get("limit", 10)), 100)
+    limit = min(int(request.args.get("limit", 10)), 1000)
     bottom = list(reversed(ALL_COMPANIES[-limit:]))
     results = []
     for i, c in enumerate(bottom):
