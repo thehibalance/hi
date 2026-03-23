@@ -988,11 +988,15 @@ def arbitrage_company(ticker):
 @app.route("/api/v1/moat")
 def moat_all():
     """All ethical moat results."""
-    level = request.args.get("level", "")  # fortress, strong, moderate, thin, none
-    limit = min(int(request.args.get("limit", 50)), 200)
+    level = request.args.get("level", "")
+    limit = min(int(request.args.get("limit", 50)), 1000)
     results = MOATS
     if level:
-        results = [r for r in results if r.get("moat_level") == level]
+        # Handle both old and new level names
+        aliases = {"developing": ["developing", "moderate"], "vulnerable": ["vulnerable", "thin"],
+                   "moderate": ["moderate", "developing"], "thin": ["thin", "vulnerable"]}
+        match_levels = aliases.get(level, [level])
+        results = [r for r in results if r.get("moat_level") in match_levels]
     return jsonify({
         "total": len(results),
         "metadata": MOATS_META,
