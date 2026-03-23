@@ -52,6 +52,12 @@ jobs:
             MODE="quarterly"
           fi
           
+          # Backup existing scores so we can merge after
+          if [ -f data/scores/all_scores.json ]; then
+            cp data/scores/all_scores.json data/scores/all_scores_backup.json
+            echo "📦 Backed up $(python3 -c "import json; print(len(json.load(open('data/scores/all_scores_backup.json'))))" ) existing companies"
+          fi
+          
           if [ "$MODE" = "quarterly" ]; then
             echo "🔄 Quarterly run — full refresh + threshold recalculation"
             python3 run_all.py --workers 8 --quarterly
@@ -62,6 +68,33 @@ jobs:
             echo "📊 Daily run — incremental collection"
             python3 run_all.py --workers 8 --incremental 24
           fi
+          
+          # Merge: keep existing scores, add/update new ones (never shrink)
+          if [ -f data/scores/all_scores_backup.json ] && [ -f data/scores/all_scores.json ]; then
+            python3 -c "
+import json
+backup = json.load(open('data/scores/all_scores_backup.json'))
+fresh = json.load(open('data/scores/all_scores.json'))
+# Index fresh by company name
+fresh_idx = {c.get('company','').lower(): c for c in fresh if c.get('company')}
+# Start with backup, update with fresh
+merged = {}
+for c in backup:
+    key = c.get('company','').lower()
+    if key: merged[key] = c
+for c in fresh:
+    key = c.get('company','').lower()
+    if key: merged[key] = c  # fresh overwrites backup
+result = list(merged.values())
+json.dump(result, open('data/scores/all_scores.json','w'), indent=2)
+print(f'📊 Merged: {len(backup)} existing + {len(fresh)} fresh = {len(result)} total (never shrinks)')
+"
+            rm data/scores/all_scores_backup.json
+          fi
+          
+          # Regenerate features from merged data
+          echo "🔄 Regenerating features from merged scores..."
+          python3 run_all.py --skip-collect --features-only
       
       - name: Commit updated data
         run: |
