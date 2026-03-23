@@ -1,0 +1,61 @@
+{
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "INTEL CORP",
+      "ticker": "INTC",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-03-18T17:15:16.906460",
+      "source": "CFPB"
+    }
+  },
+  "fec": {
+    "M.5": 70,
+    "raw": {
+      "company": "Intel Corp",
+      "ticker": "INTC",
+      "committees_found": 1,
+      "total_receipts": 282668.08,
+      "total_disbursements": 344176.99,
+      "fetched": "2026-03-20T09:19:06.379287",
+      "source": "FEC"
+    }
+  },
+  "hibp": {
+    "M.2": 50,
+    "raw": {
+      "company": "Intel Corp",
+      "ticker": "INTC",
+      "domain": "intel.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "Intelimost",
+          "date": "2019-03-10",
+          "pwn_count": 3073409,
+          "data_classes": [
+            "Email addresses",
+            "Passwords"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 3073409,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-03-20T09:19:06.811399",
+      "source": "HIBP"
+    }
+  },
+  "hardware": {
+    "A.4": 70,
+    "source": "iFixit"
+  },
+  "land": {
+    "A.3": 65,
+    "source": "Industry+EPA"
+  }
+}

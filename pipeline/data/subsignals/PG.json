@@ -1,0 +1,87 @@
+{
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "PROCTER & GAMBLE Co",
+      "ticker": "PG",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-03-18T17:04:34.310191",
+      "source": "CFPB"
+    }
+  },
+  "fec": {
+    "M.5": 85,
+    "raw": {
+      "company": "Procter & Gamble Co",
+      "ticker": "PG",
+      "committees_found": 2,
+      "total_receipts": 169522.83,
+      "total_disbursements": 78374.13,
+      "fetched": "2026-03-21T09:21:45.525036",
+      "source": "FEC"
+    }
+  },
+  "hibp": {
+    "M.2": 35,
+    "raw": {
+      "company": "Procter & Gamble Co",
+      "ticker": "PG",
+      "domain": "pg.com",
+      "breach_count": 3,
+      "breaches": [
+        {
+          "name": "MPGH",
+          "date": "2015-10-22",
+          "pwn_count": 3122898,
+          "data_classes": [
+            "Email addresses",
+            "IP addresses",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "OnRPG",
+          "date": "2016-07-01",
+          "pwn_count": 1047640,
+          "data_classes": [
+            "Email addresses",
+            "IP addresses",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "XPGameSaves",
+          "date": "2016-01-01",
+          "pwn_count": 890341,
+          "data_classes": [
+            "Email addresses",
+            "IP addresses",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 5060879,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-03-20T09:18:21.375040",
+      "source": "HIBP"
+    }
+  },
+  "hardware": {
+    "A.4": 55,
+    "source": "Industry"
+  },
+  "land": {
+    "A.3": 45,
+    "source": "Industry+EPA"
+  }
+}
