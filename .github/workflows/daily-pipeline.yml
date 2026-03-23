@@ -71,24 +71,7 @@ jobs:
           
           # Merge: keep existing scores, add/update new ones (never shrink)
           if [ -f data/scores/all_scores_backup.json ] && [ -f data/scores/all_scores.json ]; then
-            python3 -c "
-import json
-backup = json.load(open('data/scores/all_scores_backup.json'))
-fresh = json.load(open('data/scores/all_scores.json'))
-# Index fresh by company name
-fresh_idx = {c.get('company','').lower(): c for c in fresh if c.get('company')}
-# Start with backup, update with fresh
-merged = {}
-for c in backup:
-    key = c.get('company','').lower()
-    if key: merged[key] = c
-for c in fresh:
-    key = c.get('company','').lower()
-    if key: merged[key] = c  # fresh overwrites backup
-result = list(merged.values())
-json.dump(result, open('data/scores/all_scores.json','w'), indent=2)
-print(f'📊 Merged: {len(backup)} existing + {len(fresh)} fresh = {len(result)} total (never shrinks)')
-"
+            python3 merge_scores.py data/scores/all_scores_backup.json data/scores/all_scores.json data/scores/all_scores.json
             rm data/scores/all_scores_backup.json
           fi
           
