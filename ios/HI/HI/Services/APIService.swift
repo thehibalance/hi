@@ -3,28 +3,51 @@ import Foundation
 class APIService: ObservableObject {
     static let shared = APIService()
     private let base = "https://api.thehibalance.org/api/v1"
+    private let cache = CacheManager.shared
     
     @Published var stats: APIStats?
     @Published var isLoading = false
+    @Published var isOffline = false
     
     var goldThreshold: Double { stats?.gold_threshold ?? stats?.hi_balanced_threshold ?? 72 }
     
-    // MARK: - Generic fetch
-    private func fetch<T: Codable>(_ path: String) async throws -> T {
+    // MARK: - Generic fetch with cache
+    private func fetch<T: Codable>(_ path: String, cacheKey: String? = nil) async throws -> T {
+        // Try cache first
+        if let key = cacheKey, let cached: T = cache.load(T.self, key: key) {
+            return cached
+        }
+        
         guard let url = URL(string: base + path) else { throw URLError(.badURL) }
         let (data, _) = try await URLSession.shared.data(from: url)
-        return try JSONDecoder().decode(T.self, from: data)
+        let result = try JSONDecoder().decode(T.self, from: data)
+        
+        // Save to cache
+        if let key = cacheKey { cache.save(result, key: key) }
+        
+        await MainActor.run { isOffline = false }
+        return result
+    }
+    
+    // Fetch with offline fallback
+    private func fetchCached<T: Codable>(_ path: String, cacheKey: String) async -> T? {
+        do {
+            return try await fetch(path, cacheKey: cacheKey)
+        } catch {
+            await MainActor.run { isOffline = true }
+            // Return stale cache if network fails
+            return cache.load(T.self, key: cacheKey)
+        }
     }
     
     // MARK: - Stats
     func loadStats() async {
-        do {
-            let s: APIStats = try await fetch("/stats")
+        if let s: APIStats = await fetchCached("/stats", cacheKey: "stats") {
             await MainActor.run { self.stats = s }
-        } catch { print("Stats error: \(error)") }
+        }
     }
     
-    // MARK: - Search
+    // MARK: - Search (no cache — always live)
     func search(_ query: String) async -> [Company] {
         guard !query.isEmpty else { return [] }
         let q = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? query
@@ -36,72 +59,73 @@ class APIService: ObservableObject {
     
     // MARK: - Score by ticker
     func score(ticker: String) async -> Company? {
-        do { return try await fetch("/score/ticker/\(ticker)") }
-        catch { return nil }
+        do { return try await fetch("/score/ticker/\(ticker)", cacheKey: "score_\(ticker)") }
+        catch { return cache.load(Company.self, key: "score_\(ticker)") }
     }
     
     // MARK: - Score by domain
     func score(domain: String) async -> Company? {
-        do { return try await fetch("/score/\(domain)") }
-        catch { return nil }
+        do { return try await fetch("/score/\(domain)", cacheKey: "score_\(domain)") }
+        catch { return cache.load(Company.self, key: "score_\(domain)") }
     }
     
     // MARK: - Top companies
     func top(limit: Int = 100) async -> [Company] {
-        do {
-            let r: TopBottomResponse = try await fetch("/grades/top?limit=\(limit)")
+        if let r: TopBottomResponse = await fetchCached("/grades/top?limit=\(limit)", cacheKey: "top_\(limit)") {
             return r.results ?? []
-        } catch { return [] }
+        }
+        return []
     }
     
     // MARK: - Bottom companies
     func bottom(limit: Int = 50) async -> [Company] {
-        do {
-            let r: TopBottomResponse = try await fetch("/grades/bottom?limit=\(limit)")
+        if let r: TopBottomResponse = await fetchCached("/grades/bottom?limit=\(limit)", cacheKey: "bottom_\(limit)") {
             return r.results ?? []
-        } catch { return [] }
+        }
+        return []
     }
     
     // MARK: - Heartbeat
     func heartbeatPulse() async -> HeartbeatPulse? {
-        do { return try await fetch("/heartbeat/pulse") }
-        catch { return nil }
+        return await fetchCached("/heartbeat/pulse", cacheKey: "hb_pulse")
     }
     
     func heartbeatAlerts(limit: Int = 40) async -> [HeartbeatAlert] {
-        do {
-            let r: HeartbeatAlertsResponse = try await fetch("/heartbeat/alerts?limit=\(limit)")
+        if let r: HeartbeatAlertsResponse = await fetchCached("/heartbeat/alerts?limit=\(limit)", cacheKey: "hb_alerts") {
             return r.results ?? []
-        } catch { return [] }
+        }
+        return []
     }
     
     // MARK: - HUMAN 100
     func human100() async -> [Human100Entry] {
-        do {
-            let r: Human100Response = try await fetch("/human100")
+        if let r: Human100Response = await fetchCached("/human100", cacheKey: "human100") {
             return r.constituents ?? r.results ?? []
-        } catch { return [] }
+        }
+        return []
     }
     
     // MARK: - Shield / Moat
     func moat(limit: Int = 900) async -> MoatResponse? {
-        do { return try await fetch("/moat?limit=\(limit)") }
-        catch { return nil }
+        return await fetchCached("/moat?limit=\(limit)", cacheKey: "moat")
     }
     
     // MARK: - Lens / Arbitrage
     func arbitrage(limit: Int = 200) async -> ArbitrageResponse? {
-        do { return try await fetch("/arbitrage?limit=\(limit)") }
-        catch { return nil }
+        return await fetchCached("/arbitrage?limit=\(limit)", cacheKey: "arbitrage")
     }
     
     // MARK: - Contagion
     func contagion() async -> [ContagionEntry] {
-        do {
-            let r: ContagionResponse = try await fetch("/contagion")
+        if let r: ContagionResponse = await fetchCached("/contagion", cacheKey: "contagion") {
             return r.results ?? []
-        } catch { return [] }
+        }
+        return []
     }
+    
+    // MARK: - Cache info
+    func cacheAge(_ key: String) -> String? { cache.age(key: key) }
+    func clearCache() { cache.clearAll() }
     
     // MARK: - Color helpers
     static func scoreColor(_ score: Double) -> String {

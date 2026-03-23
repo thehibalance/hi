@@ -10,17 +10,21 @@ struct ContentView: View {
                 .tabItem { Label("Search", systemImage: "magnifyingglass") }
                 .tag(0)
             
+            WatchlistView()
+                .tabItem { Label("Watchlist", systemImage: "star.fill") }
+                .tag(1)
+            
             Human100View()
                 .tabItem { Label("HUMAN 100", systemImage: "chart.bar.fill") }
-                .tag(1)
+                .tag(2)
             
             FeaturesView()
                 .tabItem { Label("Features", systemImage: "square.grid.2x2.fill") }
-                .tag(2)
+                .tag(3)
             
             AboutView()
                 .tabItem { Label("About", systemImage: "info.circle.fill") }
-                .tag(3)
+                .tag(4)
         }
         .tint(.hiNavy)
     }

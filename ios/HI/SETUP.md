@@ -129,10 +129,77 @@ No API key needed. No authentication. Free.
 
 ## TestFlight
 
-1. In Xcode: Product → Archive
-2. Distribute → App Store Connect
-3. Go to appstoreconnect.apple.com → TestFlight
-4. Add testers → Start beta testing
+### First-Time Setup
+1. Log into [App Store Connect](https://appstoreconnect.apple.com)
+2. Click **My Apps** → **+** → **New App**
+3. Fill in:
+   - Platform: **iOS**
+   - Name: **HI. — Human Intelligence Grade**
+   - Primary Language: English
+   - Bundle ID: `com.morfinnovations.hi`
+   - SKU: `hi-ios-001`
+4. Save
+
+### Upload a Build
+1. In Xcode: **Product → Archive**
+2. Wait for build to complete
+3. Click **Distribute App** → **App Store Connect** → **Upload**
+4. Wait for processing (~10 min)
+
+### Create TestFlight Group
+1. In App Store Connect → Your App → **TestFlight** tab
+2. Click **+** next to Internal Testing
+3. Name: "HI. Beta Testers"
+4. Add testers by email (up to 100 internal, 10,000 external)
+5. Select the build → **Start Testing**
+
+### Beta Testing Checklist
+- [ ] App launches and shows search
+- [ ] Search returns results
+- [ ] Company detail loads all 5 dimensions
+- [ ] 10 gates display correctly
+- [ ] Gold companies show gold badge
+- [ ] Watchlist add/remove works
+- [ ] HUMAN 100 loads
+- [ ] Shield filters work (all tiers)
+- [ ] Lens filters work
+- [ ] Heartbeat shows pulse + alerts
+- [ ] Works offline (cached data)
+- [ ] About page links work
+
+### Running Tests
+```bash
+# Unit tests (from Xcode)
+Cmd+U
+
+# Or from command line:
+xcodebuild test \
+  -project HI.xcodeproj \
+  -scheme HI \
+  -destination 'platform=iOS Simulator,name=iPhone 15 Pro'
+```
+
+### Test Coverage
+| Test | What it verifies |
+|------|-----------------|
+| testCompanyDecoding | API JSON → Swift model |
+| testCompanyPartialDecoding | Missing fields handled |
+| testAlgoHarmDecoding | Harm index parsing |
+| testMoatResponseDecoding | Shield data parsing |
+| testScoreColors | Color thresholds (green/orange/red) |
+| testCacheSaveLoad | 24hr cache works |
+| testCacheFreshness | Expiry logic |
+| testFavoritesToggle | Add/remove favorites |
+| testRecents | Recently viewed tracking |
+| testLiveStats | API connectivity |
+| testLiveSearch | Search returns results |
+| testLiveScoreTicker | Ticker lookup works |
+| testLiveHuman100 | HUMAN 100 loads |
+| testAppLaunches | UI renders |
+| testTabsExist | All 5 tabs present |
+| testSearchFlow | Search → results → detail |
+| testFeaturesNavigation | Features → Shield works |
+| testFavoriteToggle | Star button toggles |
 
 ## App Store Submission
 

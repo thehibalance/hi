@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CompanyDetailView: View {
     @EnvironmentObject var api: APIService
+    @EnvironmentObject var favorites: FavoritesManager
     let company: Company
     @State private var fullData: Company?
     
@@ -36,10 +37,21 @@ struct CompanyDetailView: View {
         }
         .background(Color.hiBackground)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    favorites.toggle(c)
+                } label: {
+                    Image(systemName: favorites.isFavorite(c.ticker) ? "star.fill" : "star")
+                        .foregroundColor(favorites.isFavorite(c.ticker) ? .hiGold : .secondary)
+                }
+            }
+        }
         .task {
             if let ticker = company.ticker, !ticker.isEmpty {
                 fullData = await api.score(ticker: ticker)
             }
+            favorites.addRecent(c)
         }
     }
     
