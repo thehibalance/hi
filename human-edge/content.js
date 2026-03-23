@@ -10,6 +10,9 @@
 (async function() {
   'use strict';
 
+  // Logo image URL for panel header
+  const HI_LOGO_URL = typeof chrome !== 'undefined' && chrome.runtime ? chrome.runtime.getURL('icons/icon-128.png') : '';
+
   // Initialize database
   await HumanDB.init();
 
@@ -542,12 +545,12 @@ function openFullPanel(profile, filterResult, prefs) {
   panel.innerHTML = `
     <div class="human-panel__header">
       <div class="human-panel__back" id="panelBack" style="visibility:hidden">←</div>
-      <div class="human-panel__title">HI.</div>
+      <div class="human-panel__title"><img src="${HI_LOGO_URL}" alt="HI." style="height:28px;width:auto"></div>
       <div class="human-panel__close" id="panelClose">✕</div>
     </div>
 
     <div class="human-panel__company">
-      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px;line-height:1">HI.</span>' : profile.composite}</div>
+      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<img src="'+HI_LOGO_URL+'" alt="HI." style="height:32px;width:auto;filter:brightness(0) invert(1)">' : profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
         <div class="human-panel__tier" style="color: ${scoreColor}">HI Grade™${pulseDotHTML}</div>
@@ -643,7 +646,7 @@ function openFullPanel(profile, filterResult, prefs) {
     </div>
 
     <div class="human-panel__footer">
-      <div>Think human intelligence.</div>
+      <div style="display:flex;align-items:center;gap:6px;justify-content:center"><img src="${HI_LOGO_URL}" alt="HI." style="height:16px;width:auto"> Think human intelligence.</div>
       <div class="human-panel__footer-sub">thehibalance.org · The HI Balance</div>
     </div>
 
@@ -753,12 +756,12 @@ function openDetailPanel(profile, dim) {
   panel.innerHTML = `
     <div class="human-panel__header">
       <div class="human-panel__back" id="panelBack">← Back</div>
-      <div class="human-panel__title">HI.</div>
+      <div class="human-panel__title"><img src="${HI_LOGO_URL}" alt="HI." style="height:28px;width:auto"></div>
       <div class="human-panel__close" id="panelClose">✕</div>
     </div>
 
     <div class="human-panel__company">
-      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px;line-height:1">HI.</span>' : profile.composite}</div>
+      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<img src="'+HI_LOGO_URL+'" alt="HI." style="height:32px;width:auto;filter:brightness(0) invert(1)">' : profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
         <div class="human-panel__tier" style="color: ${scoreColor}">HI Grade™${pulseDotHTML}</div>
@@ -846,7 +849,7 @@ function openDetailPanel(profile, dim) {
     </div>
 
     <div class="human-panel__footer">
-      <div>Think human intelligence.</div>
+      <div style="display:flex;align-items:center;gap:6px;justify-content:center"><img src="${HI_LOGO_URL}" alt="HI." style="height:16px;width:auto"> Think human intelligence.</div>
       <div class="human-panel__footer-sub">thehibalance.org · The HI Balance</div>
     </div>
 
