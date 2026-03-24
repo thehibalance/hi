@@ -100,21 +100,26 @@
   // Load user preferences
   const prefs = await loadPreferences();
 
-  // Compute score profile
-  const profile = HumanEngine.getProfile(company);
+  // Compute score profile — pass cloud threshold so gates compute correctly
+  const cloudThreshold = company.cloud_hi_balanced_threshold || 62;
+  const profile = HumanEngine.getProfile(company, cloudThreshold);
   
-  // Override with cloud grade/composite when available (cloud is authoritative)
-  if (company.source === 'cloud' && company.cloud_grade) {
-    profile.grade = company.cloud_grade;
-    profile.composite = Math.round(company.cloud_composite || profile.composite);
+  // Override composite/satire from cloud when available (cloud is authoritative)
+  // But gates are ALWAYS computed locally from actual numbers — never trust stale cloud gates
+  if (company.source === 'cloud' && company.cloud_composite) {
+    profile.composite = Math.round(company.cloud_composite);
     if (company.cloud_satire) profile.satire = company.cloud_satire;
-    if (company.cloud_hi_balanced) {
-      profile.hiBalanced = true;
-      profile.grade = "Gold HI Grade";
-    }
-    if (company.cloud_hi_balanced_threshold) {
-      profile.balancedThreshold = company.cloud_hi_balanced_threshold;
-    }
+    
+    // Recompute gates with cloud composite (authoritative score)
+    const hwFlags = profile.humanwashingFlags || [];
+    const recheck = HumanEngine.checkGoldHIGrade(company, profile.composite, hwFlags, cloudThreshold);
+    profile.isGold = recheck.gold;
+    profile.hiBalanced = recheck.gold;
+    profile.goldGates = recheck.gates;
+    profile.goldThreshold = recheck.threshold;
+    profile.grade = recheck.gold ? "Gold HI Grade" : "Scored";
+    profile.scoreColor = recheck.gold ? '#C49B20' : HumanEngine.getScoreColor(profile.composite, recheck.threshold);
+    profile.tier = { color: profile.scoreColor, satire: recheck.gold ? "Humans and tech, in harmony. Gold HI Grade earned." : "" };
   }
   
   // Attach heartbeat data
@@ -337,7 +342,8 @@ function buildGenomeStrip(profile) {
   const hasGenome = dims.some(d => genome[d] && Object.keys(genome[d].scores || {}).length > 0);
   if (!hasGenome) return '';
 
-  let html = '<div style="margin-top:8px;padding:8px 0;border-top:1px solid #EEF1F5">';
+  const companyName = encodeURIComponent(profile.name || '');
+  let html = '<div style="margin-top:8px;padding:8px 0;border-top:1px solid #EEF1F5;cursor:pointer" onclick="window.open(\'https://thehibalance.org\', \'_blank\')">';
   html += '<div style="font-size:10px;font-weight:700;color:#1B3A5C;letter-spacing:0.5px;margin-bottom:6px">🧬 HUMAN GENOME</div>';
 
   dims.forEach(d => {
@@ -348,13 +354,14 @@ function buildGenomeStrip(profile) {
     html += `<span style="font-size:9px;font-weight:700;color:#1B3A5C;width:10px">${d}</span>`;
     entries.forEach(([key, val]) => {
       val = Math.round(val);
-      const bg = HumanEngine.getScoreColor(val, profile.balancedThreshold);
+      const bg = HumanEngine.getScoreColor(val, profile.balancedThreshold || profile.goldThreshold);
       const label = GENOME_LABELS[key] || key;
-      html += `<div style="flex:1;height:14px;background:${bg};border-radius:2px;position:relative;min-width:12px;cursor:help" title="${label}: ${val}"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:7px;color:white;font-weight:700">${val}</span></div>`;
+      html += `<div style="flex:1;height:14px;background:${bg};border-radius:2px;position:relative;min-width:12px" title="${label}: ${val}"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:7px;color:white;font-weight:700">${val}</span></div>`;
     });
     html += '</div>';
   });
 
+  html += '<div style="font-size:9px;color:#3A7BBF;margin-top:4px;font-weight:600">View full breakdown on thehibalance.org →</div>';
   html += '<div style="font-size:8px;color:#999;margin-top:2px">Patent Pending · Sub-signal fingerprint</div>';
   html += '</div>';
   return html;
@@ -546,7 +553,7 @@ function openFullPanel(profile, filterResult, prefs) {
   panel.innerHTML = `
     <div class="human-panel__header">
       <div class="human-panel__back" id="panelBack" style="visibility:hidden">←</div>
-      <div class="human-panel__title">HI.</div>
+      <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-white-128.png')}" style="height:28px;width:auto" alt="HI."></div>
       <div class="human-panel__close" id="panelClose">✕</div>
     </div>
 
@@ -562,19 +569,20 @@ function openFullPanel(profile, filterResult, prefs) {
     ${profile.tier.satire ? `<div class="human-panel__satire">"${profile.tier.satire}"</div>` : ''}
 
     ${(() => {
-      const gates = profile.goldGates || profile.balancedGates || {};
+      const gates = profile.goldGates || {};
       const total = Object.keys(gates).length || 3;
       const passed = Object.values(gates).filter(v => v).length;
-      const threshold = profile.goldThreshold || profile.balancedThreshold || 62;
+      const threshold = Math.round(profile.goldThreshold || profile.balancedThreshold || 62);
       const gc = (k,v) => '<div style="font-size:10px;padding:2px 0;color:' + (v ? '#16A34A' : '#DC2626') + '">' + (v ? '✓' : '✗') + ' ' + k + '</div>';
       return '<div style="padding:8px 16px;margin-top:4px">' +
         '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:11px;font-weight:700;color:#1B3A5C">' + passed + '/' + total + ' GATES</span><div style="flex:1;height:4px;background:#EEF1F5;border-radius:2px"><div style="height:100%;width:' + (passed/total*100) + '%;background:' + (passed === total ? '#C49B20' : '#1B3A5C') + ';border-radius:2px"></div></div></div>' +
         '<div style="font-size:9px;font-weight:700;color:#1B3A5C;letter-spacing:1px;margin-bottom:4px">📊 SCORE</div>' +
-        gc('Composite ≥ ' + threshold, gates.score || gates.composite) +
+        gc('Composite ≥ ' + threshold, gates.score) +
         '<div style="font-size:9px;font-weight:700;color:#C49B20;letter-spacing:1px;margin:6px 0 4px">⚖ BALANCE</div>' +
-        gc('All dimensions ≥ 42', gates.balance || gates.allDimsAbove42) +
+        gc('All dimensions ≥ 42', gates.balance) +
         '<div style="font-size:9px;font-weight:700;color:#16A34A;letter-spacing:1px;margin:6px 0 4px">🔒 HONESTY</div>' +
-        gc('No humanwashing flags', gates.honesty || gates.noHumanwashing) +
+        gc('No Humanwashing™ flags', gates.honesty) +
+        gc('Algorithmic Harm Index™ < 30', gates.honesty) +
         '</div>';
     })()}
 
@@ -750,7 +758,7 @@ function openDetailPanel(profile, dim) {
   panel.innerHTML = `
     <div class="human-panel__header">
       <div class="human-panel__back" id="panelBack">← Back</div>
-      <div class="human-panel__title">HI.</div>
+      <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-white-128.png')}" style="height:28px;width:auto" alt="HI."></div>
       <div class="human-panel__close" id="panelClose">✕</div>
     </div>
 

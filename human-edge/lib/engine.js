@@ -94,21 +94,32 @@ const HumanEngine = {
    *
    * Gate 1 — SCORE: Composite ≥ adaptive threshold (mean + 2σ, hard floor 55, ratchet up only)
    * Gate 2 — BALANCE: All 5 HUMAN dimensions ≥ 42
-   * Gate 3 — HONESTY: No active humanwashing flags
+   * Gate 3 — HONESTY: No Humanwashing™ flags AND Algorithmic Harm Index™ below 30
    *
-   * That's it. Score, balance, and honesty.
+   * Score, balance, and honesty.
    */
   checkGoldHIGrade(company, composite, hwFlags, marketStats) {
     const dims = this.DIMENSIONS.map(d => company[d] || 0);
     const belowCount = dims.filter(s => s < 42).length;
     
     // Adaptive threshold: mean + 2σ from market data, with hard floor and ratchet
-    const threshold = (marketStats && marketStats.hiBalancedThreshold) || 62;
+    // Accept threshold directly or from marketStats object
+    let threshold = 62;
+    if (typeof marketStats === 'number') {
+      threshold = marketStats;  // Direct threshold value
+    } else if (marketStats && marketStats.hiBalancedThreshold) {
+      threshold = marketStats.hiBalancedThreshold;
+    }
+    threshold = Math.round(threshold);  // Always whole numbers
+    
+    // Gate 3: Honesty — both Humanwashing™ and Algorithmic Harm Index™
+    const ahiScore = company.algorithmic_harm_score || company.ahi_score || 0;
+    const honesty = hwFlags.length === 0 && ahiScore < 30;
     
     const gates = {
       score: composite >= threshold,       // Gate 1: Score
       balance: belowCount === 0,           // Gate 2: Balance (all dims ≥ 42)
-      honesty: hwFlags.length === 0,       // Gate 3: Honesty (no humanwashing)
+      honesty: honesty,                    // Gate 3: Honesty (Humanwashing™ + AHI™)
     };
     
     const isGold = Object.values(gates).every(v => v);
