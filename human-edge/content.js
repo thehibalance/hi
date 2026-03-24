@@ -299,7 +299,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
       <div class="human-badge__dimensions">
         ${buildDimensionBars(profile.dimensions)}
       </div>
-      ${profile.tier.cappedFromCertified ? '<div class="human-badge__floor-warning">⚡ Scores 90+ but has not passed all 10 gates.</div>' : ''}
+      ${profile.tier.cappedFromCertified ? '<div class="human-badge__floor-warning">⚡ Scores 90+ but has not passed all 3 gates.</div>' : ''}
       ${floorWarning}
       ${hwFlags}
       ${profile.balance_floor ? `<div class="human-badge__decay human-badge__decay--warning">⚖ Balance Floor: ${['h','u','m','a','n'].filter(d => (profile.dimensions[d] || 0) < 42).length} Dimension${['h','u','m','a','n'].filter(d => (profile.dimensions[d] || 0) < 42).length > 1 ? 's' : ''} below 42. Floor triggered.</div>` : ''}
@@ -558,30 +558,23 @@ function openFullPanel(profile, filterResult, prefs) {
         <div class="human-panel__brand">Think human intelligence.</div>
       </div>
     </div>
-    ${profile.hiBalanced ? '<div style="padding:4px 16px;font-size:11px;color:#C49B20;font-weight:600">HI. All 10 gates passed</div><div style="padding:2px 16px;font-size:20px;font-weight:900;color:#C49B20">'+profile.composite+'</div>' : ''}
+    ${profile.hiBalanced ? '<div style="padding:4px 16px;font-size:11px;color:#C49B20;font-weight:600">HI. All 3 gates passed</div><div style="padding:2px 16px;font-size:20px;font-weight:900;color:#C49B20">'+profile.composite+'</div>' : ''}
     ${profile.tier.satire ? `<div class="human-panel__satire">"${profile.tier.satire}"</div>` : ''}
 
     ${(() => {
-      const gates = profile.balancedGates || {};
-      const total = Object.keys(gates).length || 10;
+      const gates = profile.goldGates || profile.balancedGates || {};
+      const total = Object.keys(gates).length || 3;
       const passed = Object.values(gates).filter(v => v).length;
-      const threshold = profile.balancedThreshold || 62;
+      const threshold = profile.goldThreshold || profile.balancedThreshold || 62;
       const gc = (k,v) => '<div style="font-size:10px;padding:2px 0;color:' + (v ? '#16A34A' : '#DC2626') + '">' + (v ? '✓' : '✗') + ' ' + k + '</div>';
       return '<div style="padding:8px 16px;margin-top:4px">' +
         '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:11px;font-weight:700;color:#1B3A5C">' + passed + '/' + total + ' GATES</span><div style="flex:1;height:4px;background:#EEF1F5;border-radius:2px"><div style="height:100%;width:' + (passed/total*100) + '%;background:' + (passed === total ? '#C49B20' : '#1B3A5C') + ';border-radius:2px"></div></div></div>' +
         '<div style="font-size:9px;font-weight:700;color:#1B3A5C;letter-spacing:1px;margin-bottom:4px">📊 SCORE</div>' +
-        gc('Composite ≥ ' + threshold, gates.composite) +
+        gc('Composite ≥ ' + threshold, gates.score || gates.composite) +
         '<div style="font-size:9px;font-weight:700;color:#C49B20;letter-spacing:1px;margin:6px 0 4px">⚖ BALANCE</div>' +
-        gc('All dimensions ≥ 42', gates.allDimsAbove42) +
-        '<div style="font-size:9px;font-weight:700;color:#16A34A;letter-spacing:1px;margin:6px 0 4px">🔒 8 HUMAN FEATURES</div>' +
-        gc('No humanwashing', gates.noHumanwashing) +
-        gc('Decay < 30', gates.decayBelow30) +
-        gc('Shield ≥ 50', gates.shieldAbove50) +
-        gc('No ESG washing', gates.noESGWashing) +
-        gc('Not negative leader', gates.notNegativeLeader) +
-        gc('No genome gaps', gates.noCriticalGaps) +
-        gc('Not under pressure', gates.notUnderPressure) +
-        gc('No critical alerts', gates.noActiveAlerts) +
+        gc('All dimensions ≥ 42', gates.balance || gates.allDimsAbove42) +
+        '<div style="font-size:9px;font-weight:700;color:#16A34A;letter-spacing:1px;margin:6px 0 4px">🔒 HONESTY</div>' +
+        gc('No humanwashing flags', gates.honesty || gates.noHumanwashing) +
         '</div>';
     })()}
 
@@ -855,7 +848,7 @@ function openDetailPanel(profile, dim) {
     </div>
 
     <div class="human-panel__disclaimer">
-      HI Balanced threshold is adaptive — recalculated quarterly as mean + 2 standard deviations. As companies improve, the bar rises. 10 gates in 3 categories. Scores are estimated from public data. Not financial or legal advice.
+      Gold HI Grade threshold is adaptive — recalculated quarterly as mean + 2 standard deviations. As companies improve, the bar rises. 3 gates: Score, Balance, Honesty. Scores are estimated from public data. Not financial or legal advice.
     </div>
   `;
 

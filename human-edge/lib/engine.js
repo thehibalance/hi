@@ -4,12 +4,12 @@
  * Pure deterministic logic for:
  *   - Computing composite HUMAN scores (HI Grades)
  *   - Applying the floor rule
- *   - Classifying scores into score-only + HI Balanced certification
+ *   - Gold HI Grade: 3 gates (score, balance, honesty)
  *   - Filtering companies against user thresholds
  *   - Detecting humanwashing flags (rule-based)
  * 
  * SPECIFICATION REFERENCE: HUMAN Methodology Spec v1.0
- * Governed by: The Deep Thought Foundation
+ * Governed by: The HI Balance
  * Brand: HI. — Think human intelligence.
  * 
  * ╔══════════════════════════════════════════════════════╗
@@ -27,15 +27,13 @@ const HumanEngine = {
   FLOOR_THRESHOLD: 10,     // If any dimension below this...
   FLOOR_CAP: 40,           // ...cap composite at this value
 
-  TIERS: [
-    { min: 0, max: 100, grade: "scored", name: "Scored", letter: "",
-      stars: "", color: "#1B3A5C", requiresVerification: false,
-      satire: "",
-      badge: "" },
-  ],
-
-  HI_BALANCED_COLOR: "#C49B20",
+  // Score-only system: every company gets a number 0-100.
+  // Gold HI Grade is earned by passing 3 gates. No letter grades.
+  GOLD_COLOR: "#C49B20",
   SCORE_COLOR: "#1B3A5C",
+
+  // Adaptive threshold defaults (overridden by market stats)
+  GOLD_HARD_FLOOR: 55,  // Threshold never drops below this
 
   DIMENSIONS: ['h', 'u', 'm', 'a', 'n'],
 
@@ -80,46 +78,47 @@ const HumanEngine = {
   // ═══ TIER CLASSIFICATION ═══
 
   /**
-   * Classify a composite score into an HI Grade tier.
-   * Companies scoring 90+ from public data are capped at "A" unless HI Balanced.
-   * @param {number} composite - The composite HUMAN score (0-100)
-   * @param {boolean} verified - Whether the company has completed HI Certification
-   * @returns {Object} tier object with grade, satire, badge, etc.
+   * Classify a composite score. Score-only system — no letter grades.
+   * Returns display info. Gold status is determined by checkGoldHIGrade().
    */
-  classifyTier(composite, verified = false) {
-    return { ...this.TIERS[0], cappedFromCertified: false };
+  classifyScore(composite) {
+    return {
+      composite,
+      color: this.getScoreColor(composite),
+    };
   },
 
   /**
-   * Check if a company passes all 10 HI Balanced gates.
-   * Adaptive threshold: mean + 2 SD, recalculated from market data.
+   * Check if a company earns Gold HI Grade.
+   * 3 gates, 3 categories. The data decides.
+   *
+   * Gate 1 — SCORE: Composite ≥ adaptive threshold (mean + 2σ, hard floor 55, ratchet up only)
+   * Gate 2 — BALANCE: All 5 HUMAN dimensions ≥ 42
+   * Gate 3 — HONESTY: No active humanwashing flags
+   *
+   * That's it. Score, balance, and honesty.
    */
-  checkHIBalanced(company, composite, hwFlags, marketStats) {
+  checkGoldHIGrade(company, composite, hwFlags, marketStats) {
     const dims = this.DIMENSIONS.map(d => company[d] || 0);
     const belowCount = dims.filter(s => s < 42).length;
     
-    // Default threshold if no market stats available
+    // Adaptive threshold: mean + 2σ from market data, with hard floor and ratchet
     const threshold = (marketStats && marketStats.hiBalancedThreshold) || 62;
     
     const gates = {
-      composite: composite >= threshold,
-      allDimsAbove42: belowCount === 0,
-      noHumanwashing: hwFlags.length === 0,
-      decayBelow30: (company.decay_index || 0) < 30,
-      shieldAbove50: (company.shield_score || 50) >= 50,
-      noESGWashing: !(company.esg_washing || false),
-      notNegativeLeader: !(company.negative_contagion_leader || false),
-      noCriticalGaps: !(company.critical_genome_gaps || false),
-      notUnderPressure: !(company.under_collective_pressure || false),
-      noActiveAlerts: (company.decay_level || 'stable') !== 'critical',
+      score: composite >= threshold,       // Gate 1: Score
+      balance: belowCount === 0,           // Gate 2: Balance (all dims ≥ 42)
+      honesty: hwFlags.length === 0,       // Gate 3: Honesty (no humanwashing)
     };
     
-    const passed = Object.values(gates).every(v => v);
-    return { balanced: passed, gates, threshold };
+    const isGold = Object.values(gates).every(v => v);
+    return { gold: isGold, gates, threshold };
   },
 
   /**
    * Get full HI Grade profile for a company.
+   * Score-only system: number 0-100, color-coded.
+   * Gold HI Grade earned by passing 3 gates.
    * @param {Object} company - Company object from database
    * @returns {Object} Complete score profile
    */
@@ -127,29 +126,16 @@ const HumanEngine = {
     const { composite, floorTriggered, floorDimension } = this.computeComposite(company);
     const hwFlags = this.detectHumanwashing(company);
 
-    // Balance floor rule: dimensions below 42
+    // Check Gold HI Grade (3 gates)
+    const goldCheck = this.checkGoldHIGrade(company, composite, hwFlags, marketStats);
+    const isGold = goldCheck.gold;
+    const scoreColor = isGold ? this.GOLD_COLOR : this.getScoreColor(composite, goldCheck.threshold);
+
+    // Balance info (for display — dimensions below 42)
     const scores = this.DIMENSIONS.map(d => company[d] || 0);
     const belowCount = scores.filter(s => s < 42).length;
     const minScore = Math.min(...scores);
     const minDim = this.DIMENSIONS[scores.indexOf(minScore)];
-    let balanceFloor = false;
-    let balanceDim = null;
-    let adjustedComposite = composite;
-    
-    if (belowCount >= 2) {
-      balanceFloor = true;
-      balanceDim = minDim;
-      adjustedComposite = Math.min(composite, 41);
-    } else if (belowCount === 1) {
-      balanceFloor = true;
-      balanceDim = minDim;
-      adjustedComposite = Math.min(composite, 49);
-    }
-
-    // Check HI Balanced gates
-    const balanced = this.checkHIBalanced(company, adjustedComposite, hwFlags, marketStats);
-    const isBalanced = balanced.certified;
-    const scoreColor = isBalanced ? this.HI_BALANCED_COLOR : this.getScoreColor(adjustedComposite, balanced.threshold);
 
     return {
       id: company.id,
@@ -157,19 +143,18 @@ const HumanEngine = {
       dimensions: {
         h: company.h, u: company.u, m: company.m, a: company.a, n: company.n
       },
-      composite: Math.round(adjustedComposite),
-      hiBalanced: isBalanced,
-      balancedGates: balanced.gates,
-      balancedThreshold: balanced.threshold,
-      grade: isBalanced ? "Gold HI Grade" : "scored",
-      letter: isBalanced ? "HI." : "",
+      composite,
+      isGold,
+      hiBalanced: isGold,  // backward compat for content.js / popup.js
+      goldGates: goldCheck.gates,
+      goldThreshold: goldCheck.threshold,
+      grade: isGold ? "Gold HI Grade" : "Scored",
       scoreColor,
-      tier: { color: scoreColor, satire: isBalanced ? "Humans and tech, in harmony. Gold HI Grade earned." : "" },
+      tier: { color: scoreColor, satire: isGold ? "Humans and tech, in harmony. Gold HI Grade earned." : "" },
       floorTriggered,
       floorDimension,
-      balanceFloor,
-      balanceDim,
-      balanceBelowCount: belowCount,
+      belowCount,
+      weakestDim: minDim,
       humanwashingFlags: hwFlags,
       confidence: company.confidence || "estimated",
       source: company.source || "local"
@@ -293,12 +278,13 @@ const HumanEngine = {
   // ═══ UTILITIES ═══
 
   /**
-   * Get the color for a score value (gradient from red to green).
+   * Get the color for a score value.
+   * Green = above Gold threshold, Yellow = above 42, Red = below 42.
    */
   getScoreColor(score, threshold) {
     const t = threshold || 62;
-    if (score >= t) return "#16A34A";   // Green — above threshold
-    if (score >= 42) return "#D97706";  // Yellow — room to grow
+    if (score >= t) return "#16A34A";   // Green — Gold territory
+    if (score >= 42) return "#D97706";  // Amber — balanced but not Gold
     return "#DC2626";                   // Red — out of balance
   },
 
