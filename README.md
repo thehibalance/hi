@@ -1,16 +1,24 @@
-# HI. — Think human intelligence.
+<p align="center">
+  <img src="human-edge/icons/icon-128.png" alt="HI." width="80">
+</p>
+
+<h1 align="center">Think human intelligence.</h1>
 
 > **Think human intelligence.** Every company gets a HI Grade™. Brands that empower humans score well. Brands that replace, divide, or addict them score poorly.
 
 *Built without AI to measure AI. 34 free data sources. 24 sub-signals. All covered without AI. The world's first edge-to-cloud ethical scoring framework.*
 
-**HI.** measures how human a company is across five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent. Every company gets a score from 0 to 100. Brands that pass all 3 gates earn **Gold HI Grade** — score, balance, and honesty.
+<p align="center">
+  <img src="human-edge/icons/icon-128.png" alt="HI." width="28" style="vertical-align:middle"> measures how human a company is across five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent. Every company gets a score from 0 to 100. Brands that pass all 3 gates earn <strong>Gold HI Grade</strong> — score, balance, and honesty.
+</p>
 
-🌐 [thehibalance.org](https://thehibalance.org) · 🏛 The HI Balance · 📄 Patent Pending · ™ HI Grade — Morf Innovations LLC
+<p align="center">
+🌐 <a href="https://thehibalance.org">thehibalance.org</a> · 🏛 The HI Balance · 📄 Patent Pending · ™ HI Grade — Morf Innovations LLC
+</p>
 
 ---
 
-## Gold HI Grade — 3 Gates
+## <img src="human-edge/icons/icon-128.png" alt="HI." width="28"> Gold HI Grade — 3 Gates
 
 Every company gets a score from 0 to 100. No letters. No tiers. Just the number.
 
@@ -59,7 +67,7 @@ Two checks. Both must pass:
 
 ---
 
-## What Makes HI. Different
+## What Makes <img src="human-edge/icons/icon-128.png" alt="HI." width="24" style="vertical-align:middle"> Different
 
 No other framework does what HI. does. Here's why.
 
@@ -199,7 +207,7 @@ HI. unifies all five dimensions into a single, consumer-facing framework with Hu
 
 ---
 
-## Live Now
+## <img src="human-edge/icons/icon-128.png" alt="HI." width="24"> Live Now
 
 - **Website**: [thehibalance.org](https://thehibalance.org) — Search 815+ brands, all 10 HUMAN features
 - **API**: [api.thehibalance.org](https://api.thehibalance.org/api/v1/stats) — Free public REST API (32 endpoints, Pro $49/mo, Enterprise $499/mo)
@@ -326,12 +334,12 @@ Base URL: `https://api.thehibalance.org` · Free · No auth required
 
 | Asset | Status |
 |-------|--------|
-| **Provisional Patent** | Filed at USPTO, priority date locked |
-| **HI Grade™** | Trademark filed (Class 9, 35, 42) |
-| **Humanwashing™** | Trademark filing |
-| **Algorithmic Harm Index™** | Trademark filing |
-| **Copyright** | Whitepaper registered at copyright.gov |
-| **Non-provisional patent** | Due by March 2027 |
+| **Provisional Patent** | Filed, priority date locked |
+| **HI Grade™** | Filed |
+| **Humanwashing™** | Filed |
+| **Algorithmic Harm Index™** | Filed |
+| **Copyright** | Registered |
+| **Non-provisional patent** | Due March 2027 |
 | **Open source** | Apache 2.0 — methodology is open, patent protects the method |
 
 ### What's Next
@@ -340,10 +348,14 @@ Base URL: `https://api.thehibalance.org` · Free · No auth required
 |------|----------|
 | iOS app (TestFlight → App Store) | 🔴 High |
 | Safari extension | 🔴 High |
-| Connect Railway to GitHub (full auto-deploy) | 🔴 High |
-| Chrome Web Store listing | 🔴 High |
+| Chrome Web Store (pending review) | 🔴 High |
+| Edge extension | 🔴 High |
+| Firefox extension | 🟡 Medium |
 | International data sources (Companies House, EDINET, EU CSRD) | 🟡 Medium |
 | AI Enhancement Layer | 🟡 Medium |
+| Interaction Scoring | 🟢 Future |
+| Advertisement Scoring | 🟢 Future |
+| AI Opportunity Discovery | 🟢 Future |
 | Creative work scoring | 🟢 Future |
 | AI agent detection | 🟢 Future |
 
@@ -351,6 +363,9 @@ Base URL: `https://api.thehibalance.org` · Free · No auth required
 
 *"We're not anti-AI. We're pro-balance. Brands that empower humans score well. Brands that replace, divide, or addict them score poorly."*
 
-**HI.** — Think human intelligence.
-
-[thehibalance.org](https://thehibalance.org) · The HI Balance · Patent Pending · HI Grade™ · Humanwashing™ · Algorithmic Harm Index™ · Morf Innovations LLC · @thehibalance
+<p align="center">
+  <img src="human-edge/icons/icon-128.png" alt="HI." width="48"><br>
+  <strong>Think human intelligence.</strong><br><br>
+  <a href="https://thehibalance.org">thehibalance.org</a> · The HI Balance · Patent Pending · HI Grade™ · Humanwashing™ · Algorithmic Harm Index™<br>
+  Morf Innovations LLC · @thehibalance
+</p>
