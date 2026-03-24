@@ -262,34 +262,26 @@ def save_threshold(threshold):
     }, open(THRESHOLD_FILE, "w"), indent=2)
 
 def check_hi_balanced(company, threshold):
-    """Check all 10 gates for Gold HI Grade status."""
+    """
+    Check 3 gates for Gold HI Grade status.
+    Gate 1 — SCORE: Composite ≥ adaptive threshold
+    Gate 2 — BALANCE: All 5 dimensions ≥ 42
+    Gate 3 — HONESTY: No Humanwashing™ flags AND Algorithmic Harm Index™ < 30
+    
+    Score, balance, and honesty. That's it.
+    """
     dims = [company.get("D_H", 0), company.get("D_U", 0), company.get("D_M", 0), company.get("D_A", 0), company.get("D_N", 0)]
     below_42 = sum(1 for d in dims if d < 42)
     
-    # Seed companies need real feature data to qualify — can't pass on defaults
-    is_seed = company.get("_source") == "seed" or company.get("confidence", "").startswith("Estimated from")
-    has_feature_data = any([
-        company.get("shield_score") is not None and company.get("shield_score") != 50,
-        company.get("decay_index") is not None and company.get("decay_index") != 0,
-        len(company.get("humanwashing_flags", [])) > 0,
-    ])
+    no_humanwashing = len(company.get("humanwashing_flags", [])) == 0
+    ahi_score = company.get("algorithmic_harm_score") or company.get("algo_harm_score") or 0
+    ahi_clean = ahi_score < 30
     
     gates = {
-        "composite": company.get("composite", 0) >= threshold,
-        "all_dims_above_42": below_42 == 0,
-        "no_humanwashing": len(company.get("humanwashing_flags", [])) == 0,
-        "decay_below_30": company.get("decay_index", 0) < 30,
-        "shield_above_50": company.get("shield_score", 50) >= 50,
-        "no_esg_washing": not company.get("esg_washing", False),
-        "not_negative_leader": not company.get("negative_contagion_leader", False),
-        "no_critical_gaps": not company.get("critical_genome_gaps", False),
-        "not_under_pressure": not company.get("under_collective_pressure", False),
-        "no_active_alerts": company.get("decay_level", "stable") != "critical",
+        "score": company.get("composite", 0) >= threshold,
+        "balance": below_42 == 0,
+        "honesty": no_humanwashing and ahi_clean,
     }
-    
-    # Seed companies without real feature data can't earn gold
-    if is_seed and not has_feature_data:
-        return False, gates
     
     return all(gates.values()), gates
 
@@ -324,6 +316,9 @@ def seed_to_record(s):
         "notes": s.get("notes", ""), "spec_version": "1.0.0",
         "industry": s["tags"][0] if s.get("tags") else "",
         "humanwashing_flags": [],
+        "algorithmic_harm_score": s.get("algorithmic_harm_score", 0),
+        "subsidiaries": s.get("subsidiaries", []),
+        "primary_contractors": s.get("primary_contractors", []),
         "key_signals": {
             "headcount": None, "headcount_change_pct": None,
             "revenue_per_employee": None, "displacement_signal": None,

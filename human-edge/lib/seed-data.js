@@ -6,7 +6,7 @@
  * NO AI WAS USED TO GENERATE THESE SCORES.
  * 
  * Methodology: HUMAN Framework v1.0
- * Governed by: The Nahum Foundation
+ * Governed by: The HI Balance
  */
 
 const SEED_COMPANIES = [
@@ -28,8 +28,19 @@ const SEED_COMPANIES = [
     "m": 38,
     "a": 55,
     "n": 42,
-    "notes": "High craft in hardware design, but aggressive AI adoption. Right-to-repair improvements. Renewable energy leadership offset by supply chain concerns.",
-    "confidence": "estimated"
+    "notes": "High craft in hardware design (H), but aggressive AI adoption in services. Right-to-repair improvements after years of resistance. Industry-leading renewable energy and privacy stance (A, N). Supply chain labor concerns in China (Foxconn, Pegatron) weaken M. Low algorithmic harm \u2014 no engagement-driven feed algorithms.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 18,
+    "subsidiaries": [
+      "Beats Electronics",
+      "Shazam",
+      "Claris"
+    ],
+    "primary_contractors": [
+      "Foxconn (manufacturing)",
+      "Pegatron (assembly)",
+      "TSMC (chips)"
+    ]
   },
   {
     "id": "google",
@@ -50,8 +61,22 @@ const SEED_COMPANIES = [
     "m": 28,
     "a": 40,
     "n": 32,
-    "notes": "Heavy AI displacement across products. Surveillance capitalism model. Strong renewable commitments but massive data center footprint.",
-    "confidence": "estimated"
+    "notes": "YouTube recommendation engine linked to radicalization pipelines and children's content concerns. Search ad model incentivizes engagement over accuracy. Strong AI research but displacing human decision-making at scale. DeepMind pursuing AGI with limited public safety governance. 12,000+ layoffs (2023) while increasing AI capex. Waymo represents augmentation \u2014 but core ad business is optimization-at-all-costs. CDP disclosure strong (A).",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 52,
+    "subsidiaries": [
+      "YouTube",
+      "DeepMind",
+      "Waymo",
+      "Verily",
+      "Google Cloud",
+      "Waze",
+      "Fitbit"
+    ],
+    "primary_contractors": [
+      "Cognizant (content moderation)",
+      "Accenture (ad review)"
+    ]
   },
   {
     "id": "microsoft",
@@ -73,8 +98,20 @@ const SEED_COMPANIES = [
     "m": 35,
     "a": 42,
     "n": 38,
-    "notes": "Major AI investment (Copilot, OpenAI). Decent worker programs. Carbon negative pledge but growing data center demand.",
-    "confidence": "estimated"
+    "notes": "Copilot branding across all products positions AI as augmentation \u2014 but 10,000+ layoffs concurrent with $13B OpenAI investment contradicts narrative. LinkedIn algorithm increasingly engagement-driven. GitHub Copilot raises open-source attribution ethics questions. Strong enterprise human accountability chains. Activision acquisition brings loot box / microtransaction concerns (M). Climate pledges strong but data center water usage growing (A).",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 22,
+    "subsidiaries": [
+      "LinkedIn",
+      "GitHub",
+      "Activision Blizzard",
+      "Nuance Communications",
+      "Minecraft (Mojang)"
+    ],
+    "primary_contractors": [
+      "Accenture (cloud services)",
+      "Infosys (support)"
+    ]
   },
   {
     "id": "amazon",
@@ -96,8 +133,23 @@ const SEED_COMPANIES = [
     "m": 25,
     "a": 30,
     "n": 20,
-    "notes": "Aggressive automation. Worker conditions criticized. Massive energy footprint from AWS.",
-    "confidence": "estimated"
+    "notes": "Dark patterns in Prime cancellation (documented by FTC). Warehouse worker conditions and surveillance algorithms under regulatory scrutiny. Alexa data collection concerns. Ring doorbell policing partnerships raise civil liberties issues. DSP contractor structure distances Amazon from delivery worker conditions. AWS dominance creates infrastructure dependency. Whole Foods acquisition maintained some human-centric operations. Mechanical Turk treats human intelligence as commodity.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 45,
+    "subsidiaries": [
+      "AWS",
+      "Whole Foods",
+      "Ring",
+      "Twitch",
+      "MGM",
+      "One Medical",
+      "Kuiper"
+    ],
+    "primary_contractors": [
+      "Delivery Service Partners (DSPs)",
+      "Flex drivers",
+      "Mechanical Turk workers"
+    ]
   },
   {
     "id": "meta",
@@ -119,8 +171,20 @@ const SEED_COMPANIES = [
     "m": 18,
     "a": 35,
     "n": 22,
-    "notes": "AI-driven content and moderation. Data ethics concerns. Addiction-by-design features. Mass layoffs while increasing AI spend.",
-    "confidence": "estimated"
+    "notes": "Content moderation outsourced to contractors with documented PTSD and poor working conditions. Instagram internal research (leaked 2021) showed platform worsens teen body image and mental health. Engagement algorithms amplify outrage, misinformation, and polarization \u2014 repeatedly documented by whistleblowers. 21,000+ layoffs (2022-2023) while investing $15B+ in Reality Labs. Customer support fully automated. WhatsApp end-to-end encryption is a positive transparency signal, but parent company data practices undermine trust.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 72,
+    "subsidiaries": [
+      "Instagram",
+      "WhatsApp",
+      "Reality Labs",
+      "Threads"
+    ],
+    "primary_contractors": [
+      "Accenture (content moderation)",
+      "Cognizant (content moderation)",
+      "Sama (AI training data)"
+    ]
   },
   {
     "id": "nvidia",
@@ -138,8 +202,13 @@ const SEED_COMPANIES = [
     "m": 52,
     "a": 35,
     "n": 48,
-    "notes": "High-skill engineering workforce. Enables AI displacement elsewhere but maintains deep human R&D.",
-    "confidence": "estimated"
+    "notes": "Dominant AI chip supplier \u2014 enables AI displacement across all industries but doesn't directly operate displacement algorithms. High craft in chip design (H). Strong employee satisfaction. Environmental cost from manufacturing and customer data center energy use partially attributed (A). Low direct algorithmic harm \u2014 hardware company, not platform.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 8,
+    "subsidiaries": [
+      "Mellanox Technologies",
+      "Arm (attempted, failed)"
+    ]
   },
   {
     "id": "tesla",
@@ -157,8 +226,14 @@ const SEED_COMPANIES = [
     "m": 30,
     "a": 58,
     "n": 25,
-    "notes": "Automation-heavy manufacturing. Customer service widely criticized. EV benefits offset by manufacturing impact.",
-    "confidence": "estimated"
+    "notes": "Autopilot/FSD safety record under NHTSA investigation. CEO social media behavior impacts M dimension. Factory worker safety incidents documented by OSHA. Strong renewable energy mission (A) offset by lithium mining supply chain. Optimus robot program explicitly designed to replace human labor. High automation in manufacturing reduces H. Direct sales model maintains some human touchpoints.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 28,
+    "subsidiaries": [
+      "Tesla Energy",
+      "Tesla Insurance",
+      "SolarCity"
+    ]
   },
   {
     "id": "netflix",
@@ -176,8 +251,9 @@ const SEED_COMPANIES = [
     "m": 42,
     "a": 35,
     "n": 40,
-    "notes": "Heavy AI in recommendations. Some original human content investment. Password sharing crackdown ethics.",
-    "confidence": "estimated"
+    "notes": "Recommendation algorithm drives binge behavior \u2014 autoplay, skip intro, continuous viewing designed to maximize watch time. Content algorithm increasingly shapes what gets produced (creative agency concern). Low workforce \u2014 high revenue per employee ratio suggests heavy automation. Strong creative investment in human storytelling offset by algorithmic content selection. No ad-driven engagement \u2014 subscription model is cleaner than ad-supported platforms.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 32
   },
   {
     "id": "oracle",
@@ -195,8 +271,13 @@ const SEED_COMPANIES = [
     "m": 30,
     "a": 38,
     "n": 32,
-    "notes": "Enterprise software. Aggressive licensing practices. Growing cloud/AI infrastructure.",
-    "confidence": "estimated"
+    "notes": "Enterprise software \u2014 low direct consumer algorithmic harm. Cerner acquisition positions Oracle in healthcare data with significant privacy implications. Aggressive cloud migration displacing on-premise IT workers. CEO compensation among highest in industry (M). Low transparency on AI integration in enterprise products.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 12,
+    "subsidiaries": [
+      "Cerner (healthcare IT)",
+      "NetSuite"
+    ]
   },
   {
     "id": "ibm",
@@ -214,8 +295,13 @@ const SEED_COMPANIES = [
     "m": 40,
     "a": 42,
     "n": 45,
-    "notes": "Long AI history (Watson). Consulting workforce maintains human element. Layoffs for AI replacement.",
-    "confidence": "estimated"
+    "notes": "WatsonX positioned as augmentation platform \u2014 'AI for business, not replacing business.' Publicly stated AI ethics principles. But quietly discontinued Watson Health after overpromising. Red Hat acquisition maintained open-source ethos. Historical workforce reductions masked as 'rebalancing.' Pioneer in AI ethics research but commercialization sometimes contradicts principles. Weather Company data collection raises privacy questions.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 15,
+    "subsidiaries": [
+      "Red Hat",
+      "The Weather Company"
+    ]
   },
   {
     "id": "intel",
@@ -272,8 +358,15 @@ const SEED_COMPANIES = [
     "m": 48,
     "a": 45,
     "n": 50,
-    "notes": "1-1-1 philanthropy model. AI integration growing. Decent worker benefits.",
-    "confidence": "estimated"
+    "notes": "Agentforce/Einstein AI positioned as human augmentation \u2014 copilot model. Public pledge that AI won't replace Salesforce employees (unverified long-term). Strong philanthropic model (1-1-1). But 8,000+ layoffs (2023) while launching AI products contradicts augmentation narrative. Slack acquisition maintained independent culture initially but integration increasing. High employee satisfaction historically but declining post-layoffs.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 14,
+    "subsidiaries": [
+      "Slack",
+      "Tableau",
+      "MuleSoft",
+      "Heroku"
+    ]
   },
   {
     "id": "adobe",
@@ -291,8 +384,14 @@ const SEED_COMPANIES = [
     "m": 40,
     "a": 42,
     "n": 38,
-    "notes": "Creative tools for humans but adding Firefly AI. Content Credentials (C2PA) positive for transparency.",
-    "confidence": "estimated"
+    "notes": "Firefly AI trained on licensed/owned content \u2014 ethical AI training model compared to competitors. Creative tools augment human creators rather than replacing them. But subscription pricing and dark pattern cancellation flows documented. Figma acquisition blocked by regulators (competition concerns). Strong creative community through Behance. Stock photo business threatened by own AI tools \u2014 tension between creator ecosystem and AI efficiency.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 10,
+    "subsidiaries": [
+      "Figma (attempted, blocked)",
+      "Frame.io",
+      "Behance"
+    ]
   },
   {
     "id": "spotify",
@@ -310,8 +409,9 @@ const SEED_COMPANIES = [
     "m": 30,
     "a": 38,
     "n": 35,
-    "notes": "AI playlists displacing human curators. Low artist royalty payments. Podcast layoffs.",
-    "confidence": "estimated"
+    "notes": "Recommendation algorithm drives discovery but also creates filter bubbles. Playlist algorithm increasingly determines which artists get heard \u2014 shifts power from human curators to machines. Low artist payment per stream (M). AI DJ feature replaces human radio DJs. Podcast push includes AI-generated content. Daniel Ek's comments about artists needing to produce more frequently reflect optimization-over-craft mindset.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 30
   },
   {
     "id": "uber",
@@ -330,8 +430,14 @@ const SEED_COMPANIES = [
     "m": 25,
     "a": 32,
     "n": 30,
-    "notes": "Gig worker model avoids employee protections. Pursuing autonomous vehicles. Surge pricing ethics.",
-    "confidence": "estimated"
+    "notes": "Surge pricing algorithm exploits high-demand situations. Driver classification as contractors distances company from labor protections. Algorithmic management of drivers \u2014 deactivation without human review, opaque rating systems. Uber Files leak revealed lobbying and regulatory evasion. Uber Eats dark kitchen model reduces restaurant human employment. Upfront pricing algorithm lacks transparency.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 40,
+    "subsidiaries": [
+      "Uber Eats",
+      "Postmates",
+      "Drizly"
+    ]
   },
   {
     "id": "airbnb",
@@ -349,8 +455,9 @@ const SEED_COMPANIES = [
     "m": 38,
     "a": 35,
     "n": 42,
-    "notes": "Enables individual hosts. Housing market impact concerns. Community impact debates.",
-    "confidence": "estimated"
+    "notes": "Pricing algorithm can manipulate host expectations. Platform displaces hotel workers (structural). But maintains human-to-human connection model at its core. Anti-discrimination policies improved after documented bias. Community impact concerns in housing markets. Relatively low algorithmic manipulation compared to social media platforms.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 20
   },
   {
     "id": "snapchat",
@@ -368,8 +475,9 @@ const SEED_COMPANIES = [
     "m": 32,
     "a": 35,
     "n": 28,
-    "notes": "AI-driven content. MyAI chatbot targeting young users. Disappearing messages raise transparency questions.",
-    "confidence": "estimated"
+    "notes": "Streaks feature gamifies daily engagement \u2014 designed for addiction, primarily targeting minors. Spotlight algorithm mimics TikTok engagement patterns. My AI chatbot for teens raises safety concerns. Snap Map location sharing has stalking implications. But ephemeral messaging model has some privacy benefits. AR features augment rather than replace human creativity.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 45
   },
   {
     "id": "tiktok",
@@ -387,8 +495,16 @@ const SEED_COMPANIES = [
     "m": 15,
     "a": 30,
     "n": 12,
-    "notes": "Highly addictive AI algorithm. Data privacy concerns. Displaces human-curated media.",
-    "confidence": "estimated"
+    "notes": "For You Page algorithm is the most potent engagement engine ever built \u2014 optimizes for watch time with no human editorial judgment. Documented negative effects on teen attention spans and mental health. Data governance concerns due to ByteDance/China relationship. Content moderation struggles with scale. Creator economy model pays creators but extracts disproportionate value. Algorithm determines cultural relevance \u2014 unprecedented power for a non-human system.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 68,
+    "subsidiaries": [
+      "CapCut",
+      "Lemon8"
+    ],
+    "primary_contractors": [
+      "ByteDance (parent, China-based)"
+    ]
   },
   {
     "id": "pinterest",
@@ -405,8 +521,9 @@ const SEED_COMPANIES = [
     "m": 48,
     "a": 38,
     "n": 42,
-    "notes": "Less toxic than peers. Supports human creators. Body image policy improvements.",
-    "confidence": "estimated"
+    "notes": "Historically lower algorithmic manipulation than other social platforms \u2014 intent-based rather than engagement-based. Body image concerns in early years addressed with policy changes. Shopping integration is transparent. Banned weight loss ads proactively. Workplace culture issues (discrimination lawsuit settled). Algorithm serves search intent rather than manufacturing engagement.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 22
   },
   {
     "id": "shopify",
@@ -424,8 +541,9 @@ const SEED_COMPANIES = [
     "m": 50,
     "a": 40,
     "n": 48,
-    "notes": "Empowers small human-run businesses. Some AI tools for merchants. Enables creator economy.",
-    "confidence": "estimated"
+    "notes": "Empowers small business owners \u2014 fundamental human-empowerment model. AI tools (Sidekick, Magic) positioned as merchant augmentation. But app ecosystem creates dependency. Laid off 20% of workforce (2023) citing AI as partial reason \u2014 contradicts augmentation messaging. Low direct algorithmic harm \u2014 facilitates commerce rather than manipulating behavior.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 8
   },
   {
     "id": "stripe",
@@ -462,8 +580,9 @@ const SEED_COMPANIES = [
     "m": 20,
     "a": 35,
     "n": 18,
-    "notes": "Skilled human analysts but surveillance applications. Government contracts raise ethical questions.",
-    "confidence": "estimated"
+    "notes": "Surveillance algorithms used by government agencies and law enforcement. Predictive policing contracts raise civil liberties concerns. ICE contract facilitated immigration enforcement. Military applications (Project Maven successor work). Alex Karp publicly defends government work as ethical obligation. High craft in engineering but applied to monitoring human populations. Low transparency on specific deployments.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 55
   },
   {
     "id": "zoom",
@@ -517,8 +636,9 @@ const SEED_COMPANIES = [
     "m": 25,
     "a": 22,
     "n": 20,
-    "notes": "Core product displaces human workers across industries. Massive compute footprint. Safety team departures.",
-    "confidence": "estimated"
+    "notes": "Building the most powerful AI systems in history \u2014 direct displacement potential across knowledge work. Rapid deployment pace concerns safety researchers (multiple departures). Capped-profit structure is novel but governance turbulence (board crisis 2023) raises accountability questions. GPT models increasingly capable of replacing human writers, coders, analysts. Some augmentation positioning (Copilot via Microsoft) but foundational technology enables displacement at scale. Charter claims 'broadly benefit humanity' but commercial incentives accelerating.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 28
   },
   {
     "id": "anthropic",
@@ -536,8 +656,9 @@ const SEED_COMPANIES = [
     "m": 48,
     "a": 28,
     "n": 42,
-    "notes": "Safety-focused AI. Constitutional AI approach. Still fundamentally an AI displacement company. Better ethics stance than peers.",
-    "confidence": "estimated"
+    "notes": "Constitutional AI approach represents genuine attempt at safety-first development. Responsible scaling policy is industry-leading. But still building systems that displace human knowledge work. B Corp certified (rare for AI company). Higher transparency than competitors on safety research. Slower deployment pace than OpenAI reflects caution. Claude positioned as assistant/augmentation rather than replacement \u2014 but capability growth may outpace positioning.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 15
   },
   {
     "id": "basecamp",
@@ -749,8 +870,17 @@ const SEED_COMPANIES = [
     "m": 32,
     "a": 28,
     "n": 30,
-    "notes": "Aggressive automation. Low worker pay history. Supply chain labor concerns.",
-    "confidence": "estimated"
+    "notes": "Largest private employer in the US \u2014 massive H dimension weight. Increasing self-checkout and automation in stores. Wages historically low but improving. Supply chain labor practices under scrutiny globally. Flipkart/India operations expand reach. Low algorithmic harm \u2014 retail, not platform. But worker surveillance technology increasing.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 18,
+    "subsidiaries": [
+      "Sam's Club",
+      "Flipkart",
+      "PhonePe"
+    ],
+    "primary_contractors": [
+      "Supply chain vendors (thousands)"
+    ]
   },
   {
     "id": "target",
@@ -766,8 +896,12 @@ const SEED_COMPANIES = [
     "m": 45,
     "a": 42,
     "n": 42,
-    "notes": "Better worker pay than Walmart. Community investment. Self-checkout expansion.",
-    "confidence": "estimated"
+    "notes": "Shipt acquisition maintains gig worker structure (contractor model). Store experience emphasizes human interaction more than competitors. DEI commitments strong but faced political backlash. Employee wages competitive. Algorithmic pricing and inventory management standard for retail. Circle loyalty program collects data but low manipulation.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 12,
+    "subsidiaries": [
+      "Shipt"
+    ]
   },
   {
     "id": "costco",
@@ -784,8 +918,9 @@ const SEED_COMPANIES = [
     "m": 72,
     "a": 48,
     "n": 55,
-    "notes": "Above-industry wages. Strong worker retention. Human customer service.",
-    "confidence": "estimated"
+    "notes": "Industry-leading employee wages and retention. Human-first retail model \u2014 minimal self-checkout, staffed departments, in-house bakery/meat cutting. Low algorithmic manipulation. Kirkland brand maintains quality focus over optimization. CEO pay ratio among lowest in retail. Membership model creates sustainable revenue without ad-driven engagement. Environmental practices improving. One of the strongest H and U scores in retail.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 5
   },
   {
     "id": "etsy",
@@ -1025,8 +1160,9 @@ const SEED_COMPANIES = [
     "m": 42,
     "a": 50,
     "n": 45,
-    "notes": "Human barista model but increasing automation. Union-busting controversies. Fair trade sourcing.",
-    "confidence": "estimated"
+    "notes": "Barista craft is genuine human skill. Mobile ordering reduces human interaction. Union-busting allegations severely impact U and M. Howard Schultz era emphasized human-centric culture \u2014 post-Schultz direction uncertain. Environmental commitments (reusable cups) improving A. Store algorithm optimizes labor scheduling \u2014 can feel dehumanizing to workers. Benefits historically strong (healthcare, tuition) but union tensions undermine narrative.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 10
   },
   {
     "id": "ben_jerry",
@@ -1048,7 +1184,7 @@ const SEED_COMPANIES = [
   },
   {
     "id": "nestle",
-    "name": "Nestlé",
+    "name": "Nestl\u00e9",
     "domains": [
       "nestle.com"
     ],
@@ -1080,8 +1216,9 @@ const SEED_COMPANIES = [
     "m": 32,
     "a": 28,
     "n": 35,
-    "notes": "Mixed labor record. Plastic pollution. Water usage concerns. Some sustainability efforts.",
-    "confidence": "estimated"
+    "notes": "Beverage manufacturing maintains human involvement. Marketing historically human-creative but increasing AI-generated campaigns. Environmental concerns from plastic waste (A). Water usage in drought-prone regions. Community investment programs strong. Low algorithmic harm \u2014 product company, not platform. Bottling partner model distances corporate from worker conditions. Strong brand storytelling tradition.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 8
   },
   {
     "id": "pepsi",
@@ -1099,8 +1236,14 @@ const SEED_COMPANIES = [
     "m": 35,
     "a": 32,
     "n": 38,
-    "notes": "Similar to Coca-Cola. Positive Water initiatives. Growing sustainability programs.",
-    "confidence": "estimated"
+    "notes": "Diversified food/beverage portfolio maintains manufacturing jobs. Frito-Lay factory conditions under scrutiny. Environmental commitments improving \u2014 water stewardship. Marketing increasingly AI-assisted but maintains human creative teams. Low algorithmic harm. CEO pay ratio moderate for industry. Community investment programs active.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 8,
+    "subsidiaries": [
+      "Frito-Lay",
+      "Quaker Oats",
+      "Gatorade"
+    ]
   },
   {
     "id": "mcdonalds",
@@ -1118,8 +1261,15 @@ const SEED_COMPANIES = [
     "m": 28,
     "a": 25,
     "n": 32,
-    "notes": "Automation in ordering. Franchise model. Low-wage workforce. Beef supply chain footprint.",
-    "confidence": "estimated"
+    "notes": "Franchise model distances corporate from worker conditions. Dynamic Yield acquisition brought AI-driven menu personalization. Drive-through AI ordering being tested \u2014 direct human displacement. Low craft (H) in food preparation. Worker wages and conditions vary dramatically by franchise. Strong brand but fundamentally optimizing humans out of the operation.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 22,
+    "subsidiaries": [
+      "Dynamic Yield (AI personalization)"
+    ],
+    "primary_contractors": [
+      "Franchise operators (95% of locations)"
+    ]
   },
   {
     "id": "chipotle",
@@ -1322,8 +1472,9 @@ const SEED_COMPANIES = [
     "m": 90,
     "a": 92,
     "n": 88,
-    "notes": "Earth ownership model. Repair program. Living wages. Environmental activism.",
-    "confidence": "estimated"
+    "notes": "Gold standard for ethical business. Transferred ownership to environmental trust. Fair Trade certified factories. Repair program extends product life (right-to-repair leader). Transparent supply chain. High craft in product design. Employee benefits exceptional. Low automation, high human involvement at every level. Environmental mission is core, not marketing. Minimal algorithmic anything \u2014 catalogs and stores, not feeds and algorithms.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 3
   },
   {
     "id": "eileen_fisher",
@@ -1377,8 +1528,9 @@ const SEED_COMPANIES = [
     "m": 35,
     "a": 42,
     "n": 38,
-    "notes": "Largely automated manufacturing. Supply chain labor history. Sustainability targets growing.",
-    "confidence": "estimated"
+    "notes": "Supply chain labor practices historically problematic but improved with transparency initiatives. High craft in design (H). SNKRS app uses scarcity algorithms but low overall harm. Strong athlete partnerships maintain human storytelling. DTC shift reduces retail worker jobs. Sustainability initiatives improving but still significant manufacturing footprint.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 12
   },
   {
     "id": "hm",
@@ -1544,8 +1696,14 @@ const SEED_COMPANIES = [
     "m": 30,
     "a": 38,
     "n": 35,
-    "notes": "Heavy AI adoption in trading. Regulatory fines history.",
-    "confidence": "estimated"
+    "notes": "AI trading algorithms raise market manipulation concerns. Chase app increasingly automated \u2014 human banker access declining. Strong institutional advisory maintains human judgment. Massive workforce but AI investment growing faster than headcount. CEO Jamie Dimon publicly vocal about AI transforming banking \u2014 unclear if augmentation or replacement focus. Regulatory compliance strong but fines history (M).",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 25,
+    "subsidiaries": [
+      "Chase",
+      "J.P. Morgan Asset Management",
+      "J.P. Morgan Wealth Management"
+    ]
   },
   {
     "id": "bofa",
@@ -1598,8 +1756,13 @@ const SEED_COMPANIES = [
     "m": 25,
     "a": 35,
     "n": 30,
-    "notes": "Elite human talent but growing AI. 1MDB scandal.",
-    "confidence": "estimated"
+    "notes": "Algorithmic trading pioneer \u2014 AI displacing human traders for decades. Marcus consumer banking experiment largely failed (human touch missing). Asset management maintains high human judgment. CEO pay among highest in finance. Strong talent pipeline but increasingly technical/AI focused. IPO advisory and M&A work is deeply human (high H in investment banking). Platform Solutions losses reflect difficulty of automated consumer finance.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 20,
+    "subsidiaries": [
+      "Marcus by Goldman Sachs",
+      "Goldman Sachs Asset Management"
+    ]
   },
   {
     "id": "vanguard",
@@ -1710,8 +1873,14 @@ const SEED_COMPANIES = [
     "m": 28,
     "a": 38,
     "n": 30,
-    "notes": "Talc powder lawsuits. Opioid litigation. Some good health access programs.",
-    "confidence": "estimated"
+    "notes": "Healthcare fundamentally human \u2014 high structural moat against AI displacement. Talc litigation severely impacts M. Strong R&D investment maintains human scientific craft. Medical device manufacturing requires human precision. Pharmaceutical research maintains human judgment in clinical decisions. Kenvue consumer health spin-off separates lower-moat operations. Environmental compliance improving.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 8,
+    "subsidiaries": [
+      "Janssen Pharmaceuticals",
+      "DePuy Synthes",
+      "Ethicon"
+    ]
   },
   {
     "id": "pfizer",
@@ -1728,8 +1897,9 @@ const SEED_COMPANIES = [
     "m": 38,
     "a": 35,
     "n": 35,
-    "notes": "COVID vaccine development. Drug pricing concerns.",
-    "confidence": "estimated"
+    "notes": "COVID vaccine development showcased human scientific achievement. AI used in drug discovery augments rather than replaces researchers. High craft in pharmaceutical science. Pricing practices (M) controversial \u2014 insulin, oncology drugs. Patent strategies extend monopolies. Strong regulatory compliance. Environmental footprint from manufacturing.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 8
   },
   {
     "id": "cvs",
@@ -1766,8 +1936,14 @@ const SEED_COMPANIES = [
     "m": 20,
     "a": 32,
     "n": 22,
-    "notes": "AI claim denials controversy. Record profits while denying care.",
-    "confidence": "estimated"
+    "notes": "Optum's nH Predict algorithm denied elderly patients care \u2014 documented by investigative journalism. Claims denial algorithms prioritize cost over patient outcomes. Change Healthcare acquisition creates data monopoly in health payments. Massive workforce but automating claims processing. CEO compensation among highest in any industry. Strong revenue growth but at what human cost. Healthcare should be the most human industry \u2014 UHG is automating it.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 42,
+    "subsidiaries": [
+      "Optum",
+      "UnitedHealthcare",
+      "Change Healthcare"
+    ]
   },
   {
     "id": "seventh_gen",
@@ -2006,8 +2182,18 @@ const SEED_COMPANIES = [
     "m": 40,
     "a": 38,
     "n": 35,
-    "notes": "Creative workforce. Theme park human cast members. IP protection aggressiveness.",
-    "confidence": "estimated"
+    "notes": "Theme parks are deeply human experiences \u2014 high craft, high empathy. Animation maintains human artistic tradition (Pixar, WDAS). But Disney+ algorithm follows Netflix model for content optimization. ESPN increasingly algorithmic. Massive layoffs (7,000+) while investing in streaming technology. Strong creative legacy but commercial pressure increasingly AI-driven. Worker conditions at parks improving but historically problematic.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 18,
+    "subsidiaries": [
+      "Pixar",
+      "Marvel",
+      "Lucasfilm",
+      "ESPN",
+      "Hulu",
+      "20th Century Studios",
+      "National Geographic"
+    ]
   },
   {
     "id": "nytimes",
@@ -2116,8 +2302,15 @@ const SEED_COMPANIES = [
     "m": 38,
     "a": 42,
     "n": 40,
-    "notes": "Massive AI push. 30K+ layoffs while investing in AI. Helps others automate.",
-    "confidence": "estimated"
+    "notes": "Content moderation contractor for major tech \u2014 workers exposed to traumatic content with documented mental health impacts. Simultaneously selling AI replacement solutions to clients while maintaining large human workforce. Consulting model is inherently human but increasingly AI-augmented. Strong DEI initiatives. Global workforce provides employment across developing markets. The tension: Accenture profits from both employing humans AND helping clients replace them.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 15,
+    "subsidiaries": [
+      "Avanade (joint venture with Microsoft)"
+    ],
+    "primary_contractors": [
+      "Content moderation workers for Meta, Google, TikTok"
+    ]
   },
   {
     "id": "att",
@@ -2133,8 +2326,14 @@ const SEED_COMPANIES = [
     "m": 32,
     "a": 35,
     "n": 28,
-    "notes": "Declining customer service quality. Chatbot-first support. Data breach history.",
-    "confidence": "estimated"
+    "notes": "Large workforce but steady automation of customer service. Closing retail stores displaces workers. 5G infrastructure investment maintains technical human roles. Union workforce provides some protection. Customer satisfaction historically low \u2014 automated support systems frustrate consumers. Data throttling and pricing practices (M). Rural broadband investment positive.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 15,
+    "subsidiaries": [
+      "Cricket Wireless",
+      "WarnerMedia (divested to WBD)",
+      "DirecTV (partial)"
+    ]
   },
   {
     "id": "verizon",
@@ -2150,8 +2349,14 @@ const SEED_COMPANIES = [
     "m": 35,
     "a": 38,
     "n": 32,
-    "notes": "Union workforce. Growing AI in customer service.",
-    "confidence": "estimated"
+    "notes": "Similar to AT&T \u2014 large workforce, steady automation. Customer service increasingly chatbot-driven. Network investment maintains engineering roles. Fios fiber provides genuine infrastructure value. Historical media acquisitions (Yahoo, AOL) were mismanaged. Customer data practices improved post-supercookie scandal.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 12,
+    "subsidiaries": [
+      "Tracfone",
+      "Visible",
+      "Yahoo/AOL (Verizon Media, divested)"
+    ]
   },
   {
     "id": "tmobile",
@@ -2897,8 +3102,9 @@ const SEED_COMPANIES = [
     "m": 12,
     "a": 30,
     "n": 15,
-    "notes": "Mass layoffs. Reduced content moderation. Bot proliferation. Transparency gutted.",
-    "confidence": "estimated"
+    "notes": "Post-acquisition (X/Musk): massive workforce reduction (80%+), trust and safety team gutted, verification system monetized undermining authenticity. Algorithm changes increased engagement-bait visibility. Advertiser exodus reflects brand safety concerns. Pre-acquisition: already had misinformation amplification issues. Blue check monetization is transparency regression.",
+    "confidence": "estimated",
+    "algorithmic_harm_score": 58
   },
   {
     "id": "lyft",
