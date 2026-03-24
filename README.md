@@ -4,52 +4,46 @@
 
 *Built without AI to measure AI. 34 free data sources. 24 sub-signals. All covered without AI. The world's first edge-to-cloud ethical scoring framework.*
 
-**HI.** measures how human a company is across five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent. Every company gets a score. Brands that pass all 10 gates earn **Gold HI Grade** — craft behind the work, empathy in the service, and humans in the loop.
+**HI.** measures how human a company is across five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent. Every company gets a score from 0 to 100. Brands that pass all 3 gates earn **Gold HI Grade** — score, balance, and honesty.
 
 🌐 [thehibalance.org](https://thehibalance.org) · 🏛 The HI Balance · 📄 Patent Pending · ™ HI Grade — Morf Innovations LLC
 
 ---
 
-## Gold HI Grade — 10 Gates · 3 Categories
+## Gold HI Grade — 3 Gates
 
 Every company gets a score from 0 to 100. No letters. No tiers. Just the number.
 
 Pass all three? Your score turns gold. The data decides.
 
-### 📊 Category 1: Score
+### 📊 Gate 1: Score
 
-The composite score must exceed the adaptive threshold — calculated as **mean + 2 standard deviations** of the entire scored market.
+The composite score must exceed the adaptive threshold — calculated as **mean + 2 standard deviations** of the entire scored market, rounded to a whole number.
 
 **This is a dynamic hybrid model.** The threshold recalculates quarterly as the market shifts. When companies improve, the bar rises. When the standard deviation tightens, the threshold moves. Companies force each other to be better. The math decides, not us.
 
 **Two failsafes protect the standard:**
 - **Hard floor:** The threshold never drops below 55 — a baseline minimum, non-negotiable
-- **Ratchet:** The threshold can only go UP, never down — once companies push it to 62, it stays at 62 even if they all decline. The bar only moves one direction.
+- **Ratchet:** The threshold can only go UP, never down — once companies push it to 65, it stays at 65 even if they all decline. The bar only moves one direction.
 
-*Current threshold: ~62 (Q1 2026)*
+*Current threshold: 65 (Q1 2026)*
 
-### ⚖ Category 2: Balance
+### ⚖ Gate 2: Balance
 
-All 5 HUMAN dimensions must score **≥ 42**. Any dimension below 42? No blind spots allowed. No exceptions.
+All 5 HUMAN dimensions must score **≥ 42**. Any dimension below 42? Not balanced. No exceptions.
 
 *42 — the answer to life, the universe, and everything. Also the minimum per dimension to earn gold.*
 
-### 🔒 Category 3: 8 HUMAN Features
+### 🔒 Gate 3: Honesty
 
-Every HUMAN feature acts as a gate. All 10 must pass:
+Two checks. Both must pass:
 
-1. **Composite ≥ threshold** — Score above the adaptive line
-2. **All dimensions ≥ 42** — No blind spots
-3. **No humanwashing flags** — HUMAN Watermark is clean
-4. **Decay index < 30** — HUMAN Decay shows stability
-5. **Shield score ≥ 50** — HUMAN Shield confirms AI resistance
-6. **No ESG washing** — HUMAN Lens confirms alignment
-7. **Not negative industry leader** — HUMAN Contagion is clean
-8. **No critical genome gaps** — HUMAN Genome has sufficient data
-9. **Not under collective pressure** — HUMAN Wave shows no red flags
-10. **No critical alerts** — HUMAN Heartbeat is stable
+- **No Humanwashing™ flags** — the company isn't performing human values it doesn't practice
+- **Algorithmic Harm Index™ < 30** — the company's algorithms aren't dividing, addicting, or manipulating people
 
-*The first certification that certifies itself. You can't buy it. You can't apply for it. The data proves it.*
+*Score, balance, and honesty. That's it. The first certification that certifies itself. You can't buy it. You can't apply for it. The data proves it.*
+
+---
 
 ## The HUMAN Framework
 
@@ -73,10 +67,10 @@ No other framework does what HI. does. Here's why.
 
 - **Five dimensions, one composite.** Human Consciousness, Understanding & Empathy, Moral & Ethical Conduct, Alive & Environmental, Natural Transparency. Equal weight. No single value outranks another. No other framework scores all five.
 - **24 sub-signals, all covered without AI.** Every sub-signal in the HUMAN methodology spec has a deterministic data source. 34 free, public, and government data sources including SEC EDGAR, EPA, CFPB, OSHA, FTC, EEOC, USPTO, FDA, DOL, FEC, CPSC, HIBP, iFixit, SBTi, GRI, and more. Zero AI. Zero black boxes.
-- **Humanwashing detection.** Revenue/employee ratio, headcount vs AI spend, disclosed vs detected AI usage. No ESG framework detects performative human involvement.
+- **Humanwashing™ detection.** Revenue/employee ratio, headcount vs AI spend, disclosed vs detected AI usage. No ESG framework detects performative human involvement.
 - **Simulated empathy detection.** Industry automation baselines, customer service channel analysis, employee culture signals. Nobody else distinguishes genuine human empathy from AI-simulated empathy.
 - **AI-specific environmental costs.** Training energy, inference energy, water cooling, rare earth extraction, e-waste, hardware lifecycle repairability. CDP and carbon tools don't isolate AI infrastructure costs.
-- **Algorithmic Harm Index.** Cross-cutting penalty for algorithms that divide, addict, or manipulate. Engagement algorithms that amplify outrage, loot boxes that target minors, dark patterns that exploit — they all reduce your score across H, U, M, and N simultaneously. No other framework penalizes algorithmic harm to human wellbeing.
+- **Algorithmic Harm Index™.** Cross-cutting penalty for algorithms that divide, addict, or manipulate. Engagement algorithms that amplify outrage, loot boxes that target minors, dark patterns that exploit — they all reduce your score across H, U, M, and N simultaneously. No other framework penalizes algorithmic harm to human wellbeing.
 
 ### The Architecture
 
@@ -94,6 +88,8 @@ No other framework does what HI. does. Here's why.
 - **Extension** — zero AI, zero tracking, zero phone-home
 
 ### The 10 HUMAN Features
+
+All 10 features inform the score. They are data systems, not gates. Gold HI Grade is earned through the 3 gates above.
 
 | Feature | What It Does | Why It Matters |
 |---------|-------------|----------------|
@@ -140,7 +136,7 @@ Every AI capability is a toggle. The edge node stays deterministic. The formula 
 | **Carbon Tools (CDP, Watershed)** | One dimension only. No consciousness, empathy, ethics, or transparency |
 | **Glassdoor / Indeed** | Employee sentiment, not ethical production scoring. No composite framework |
 
-HI. unifies all five dimensions into a single, consumer-facing framework with humanwashing detection, edge-to-cloud architecture, and a dynamic certification system.
+HI. unifies all five dimensions into a single, consumer-facing framework with Humanwashing™ detection, Algorithmic Harm Index™, edge-to-cloud architecture, and a dynamic certification system.
 
 ---
 
@@ -156,7 +152,7 @@ HI. unifies all five dimensions into a single, consumer-facing framework with hu
 │  • AI Toggle + Equalizer          │
 │  • Mini pill → full sidebar       │
 │  • Score / threshold display      │
-│  • 10 gates status                │
+│  • 3 gates computed locally       │
 │  • Offline: 206 seed + 315 API    │
 │  • Online: 815+ from cloud API    │
 │                                   │
@@ -171,7 +167,8 @@ HI. unifies all five dimensions into a single, consumer-facing framework with hu
 │  • 34 data pipelines              │
 │  • Dynamic hybrid threshold       │
 │  • 815+ companies                 │
-│  • 10 HUMAN gates (all live)      │
+│  • 10 HUMAN features (all live)   │
+│  • 3 gates for Gold HI Grade     │
 │  • Balance floor (42 per dim)     │
 │  • No AI. Pure math.              │
 │                                   │
@@ -219,11 +216,11 @@ hi/
 ├── human-edge/                  # Chrome browser extension (Manifest V3)
 │   ├── manifest.json            # Extension config
 │   ├── background.js            # Service worker + cloud sync
-│   ├── content.js               # Human silhouette pill + full panel + gates
+│   ├── content.js               # Human silhouette pill + full panel + 3 gates
 │   ├── content.css              # Pill + panel + dark mode
 │   └── lib/
 │       ├── seed-data.js         # 206 hand-scored companies
-│       ├── engine.js            # Deterministic engine + 10 gates
+│       ├── engine.js            # Deterministic engine + 3 gates (score, balance, honesty)
 │       └── db.js                # Database layer
 │
 ├── pipeline/                    # Cloud scoring pipeline
@@ -325,6 +322,18 @@ Base URL: `https://api.thehibalance.org` · Free · No auth required
 | `GET /api/v1/consciousness` | HUMAN Consciousness |
 | `GET /api/v1/collective` | HUMAN Wave |
 
+## Intellectual Property
+
+| Asset | Status |
+|-------|--------|
+| **Provisional Patent** | Filed at USPTO, priority date locked |
+| **HI Grade™** | Trademark filed (Class 9, 35, 42) |
+| **Humanwashing™** | Trademark filing |
+| **Algorithmic Harm Index™** | Trademark filing |
+| **Copyright** | Whitepaper registered at copyright.gov |
+| **Non-provisional patent** | Due by March 2027 |
+| **Open source** | Apache 2.0 — methodology is open, patent protects the method |
+
 ### What's Next
 
 | Item | Priority |
@@ -332,6 +341,7 @@ Base URL: `https://api.thehibalance.org` · Free · No auth required
 | iOS app (TestFlight → App Store) | 🔴 High |
 | Safari extension | 🔴 High |
 | Connect Railway to GitHub (full auto-deploy) | 🔴 High |
+| Chrome Web Store listing | 🔴 High |
 | International data sources (Companies House, EDINET, EU CSRD) | 🟡 Medium |
 | AI Enhancement Layer | 🟡 Medium |
 | Creative work scoring | 🟢 Future |
@@ -343,4 +353,4 @@ Base URL: `https://api.thehibalance.org` · Free · No auth required
 
 **HI.** — Think human intelligence.
 
-[thehibalance.org](https://thehibalance.org) · The HI Balance · Patent Pending · HI Grade™ Morf Innovations LLC · @thehibalance
+[thehibalance.org](https://thehibalance.org) · The HI Balance · Patent Pending · HI Grade™ · Humanwashing™ · Algorithmic Harm Index™ · Morf Innovations LLC · @thehibalance
