@@ -516,7 +516,7 @@ const API=location.hostname==='localhost'?'http://localhost:8080':'https://api.t
 const GC={"HI Balanced":"#C49B20","scored":"#1B3A5C"};
 const DI={H:{n:"Human Consciousness",i:"🧠",d:"Measures creative agency, craft, and whether humans meaningfully shape outcomes."},U:{n:"Understanding & Empathy",i:"💙",d:"Measures genuine care toward workers, customers, and communities."},M:{n:"Moral & Ethical Conduct",i:"⚖️",d:"Measures principled action — pricing, data, market behavior, CEO accountability, and leadership pay equity."},A:{n:"Alive & Environmental",i:"🌍",d:"Measures true environmental cost including AI energy, water, and hardware."},N:{n:"Natural Transparency",i:"🔍",d:"Measures honest disclosure about AI usage, impact, and labor practices."}};
 var hiT=62;function sc(s){if(s>=hiT)return"#16A34A";if(s>=42)return"#D97706";return"#DC2626"}
-function hiE(size){var s=size||18;if(s>=20){return'<span style="display:inline-flex;align-items:center;justify-content:center;width:'+s+'px;height:'+s+'px;border-radius:50%;background:#C49B20;flex-shrink:0;overflow:hidden"><img src="/logo-512-allwhite.png" alt="HI." style="height:'+(s*0.7)+'px;width:auto"></span>'}return'<span style="display:inline-flex;align-items:center;justify-content:center;width:'+s+'px;height:'+s+'px;border-radius:50%;background:#C49B20;color:white;font-size:'+(s*0.5)+'px;font-weight:900;letter-spacing:-0.5px;line-height:1;flex-shrink:0">hi</span>'}
+function hiE(size){var s=size||18;return'<span style="display:inline-flex;align-items:center;justify-content:center;width:'+s+'px;height:'+s+'px;border-radius:50%;background:linear-gradient(135deg,#C49B20,#D4AA30);color:white;font-size:'+(s*0.45)+'px;font-weight:900;letter-spacing:-0.5px;line-height:1;flex-shrink:0;box-shadow:0 1px '+(s*0.15)+'px rgba(196,155,32,0.3)">✦</span>'}
 function esc(s){return(s||'').replace(/'/g,"\\'")}
 const GRADES=[["Gold HI Grade","Adaptive (mean + 2 SD)","Passed all 10 gates. Score turns gold. The math decides, not us."],["Score","0-100","Every company gets a number. Navy is the default. Gold is earned."]];
 let stats=null,pulse=null;
@@ -561,7 +561,7 @@ function sig(l,v,n){var cls='signal-value';if(n!=null&&n>0)cls+=' pos';else if(n
 var hiThreshold=stats&&stats.hi_balanced_threshold?stats.hi_balanced_threshold:62;
 var dl=c.decay_level||'stable',di=c.decay_index||0;var pulseColor={'critical':'#DC2626','warning':'#DC2626','watch':'#D97706','stable':'#16A34A'};var decayDisplay='<span style="font-size:12px;font-weight:700;color:'+(pulseColor[dl]||'#16A34A')+';margin-left:8px;vertical-align:middle'+(dl==='critical'||dl==='warning'?';animation:blink 2s infinite':'')+'">♥'+di+'</span>';
 var scoreColor=isCertified?'#C49B20':sc(comp);
-var badgeContent=isCertified?'<img src="/logo-512-allwhite.png" alt="HI." style="height:48px;width:auto">':''+comp+'';
+var badgeContent=isCertified?'<span style="font-size:32px">✦</span><div style="font-size:11px;margin-top:2px">'+comp+'</div>':''+comp+'';
 var badgeStyle=isCertified?'background:#C49B20;border-radius:50%;width:80px;height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;flex-shrink:0;box-shadow:0 0 20px rgba(196,155,32,0.3)':'background:'+scoreColor+';font-size:'+fs+'px';
 var h='<span class="detail-back" onclick="goBack()">← Back</span><div class="detail-header"><div class="detail-badge" style="'+badgeStyle+'">'+badgeContent+'</div><div><div class="detail-name">'+(c.company||'')+'</div><div class="detail-tier" style="color:'+scoreColor+'">HI Grade™'+decayDisplay+'</div><div class="detail-meta-row">'+(c.ticker?'<span class="meta-tag">'+c.ticker+'</span>':'')+(c.industry?'<span class="meta-tag">'+c.industry+'</span>':'')+(c.sic_description?'<span class="meta-tag">'+c.sic_description+'</span>':'')+'</div></div></div>'+(isCertified?'<div style="padding:8px 16px;font-size:12px;color:#C49B20;font-weight:600">'+hiE(12)+' All 10 gates passed · '+comp+'</div>':'')+(sat?'<div class="detail-satire">"'+sat+'"</div>':'');
 var shareText=encodeURIComponent((c.company||'')+' has a HI Grade of '+(c.hi_balanced?'Gold · ':'')+comp+' ('+comp+'/100). Think human intelligence. thehibalance.org #HIGrade #ThinkHumanIntelligence');
@@ -571,19 +571,8 @@ h+='<div class="detail-composite"><div class="donut-wrap"><svg width="120" heigh
 // Gates section
 var isSeed=c._source==='seed'||((c.confidence||'').indexOf('Estimated from')===0)||((c.data_sources||[]).join(',').indexOf('News')>=0&&(c.data_sources||[]).join(',').indexOf('SEC')<0);
 var gateChecks=[["Composite ≥ "+hiThreshold,comp>=hiThreshold],["All dimensions ≥ 42",(c.D_H>=42&&c.D_U>=42&&c.D_M>=42&&c.D_A>=42&&c.D_N>=42)],["No humanwashing flags",!(c.humanwashing_flags&&c.humanwashing_flags.length)],["Decay index < 30",(c.decay_index||0)<30],["Shield score ≥ 50",(c.shield_score||50)>=50],["No ESG washing",!c.esg_washing],["Not negative industry leader",!c.negative_contagion_leader],["No critical genome gaps",!c.critical_genome_gaps],["Not under collective pressure",!c.under_collective_pressure],["No critical alerts",(c.decay_level||"stable")!=="critical"]];
-var gPassed=gateChecks.filter(function(g,i){return g[1]&&!seedGates[i]}).length;var gTotal=gateChecks.filter(function(g,i){return !seedGates[i]}).length;
-var seedGates=[
-false,
-false,
-!(c.humanwashing_flags!==undefined&&c.humanwashing_flags!==null),
-!(c.decay_index!==undefined&&c.decay_index!==null),
-!(c.shield_score!==undefined&&c.shield_score!==null),
-!(c.esg_washing!==undefined&&c.esg_washing!==null),
-!(c.negative_contagion_leader!==undefined&&c.negative_contagion_leader!==null),
-!(c.critical_genome_gaps!==undefined&&c.critical_genome_gaps!==null),
-!(c.under_collective_pressure!==undefined&&c.under_collective_pressure!==null),
-!(c.decay_level!==undefined&&c.decay_level!==null)
-];var hasAnyMissing=seedGates.some(function(g){return g});if(hasAnyMissing)isSeed=true;
+var gPassed=gateChecks.filter(function(g,i){return g[1]&&!seedGates[i]}).length;var gTotal=seedGates.filter(function(g){return !g}).length;
+var hasPipelineData=(c.data_sources||[]).length>=3;var seedGates=[false,false,!hasPipelineData,!hasPipelineData,!hasPipelineData,!hasPipelineData,!hasPipelineData,!hasPipelineData,!hasPipelineData,!hasPipelineData];if(!hasPipelineData)isSeed=true;
 h+='<div class="detail-section"><h3>'+gPassed+'/'+gTotal+' Gates verified'+(isCertified?' · '+hiE(14):'')+(isSeed?' · <span style="font-size:10px;color:var(--muted);font-weight:400">some gates need more data to verify</span>':'')+'</h3><div style="height:6px;background:#EEF1F5;border-radius:3px;margin-bottom:16px"><div style="height:100%;width:'+(gTotal>0?gPassed/gTotal*100:0)+'%;background:'+(isCertified?'#C49B20':'#1B3A5C')+';border-radius:3px;transition:width .3s"></div></div>';
 h+='<div style="margin-bottom:10px"><div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1px;margin-bottom:6px">📊 SCORE</div>';
 h+='<div style="display:flex;align-items:center;gap:8px;padding:4px 0;font-size:12px"><span style="color:'+(gateChecks[0][1]?'#16A34A':'#DC2626')+';font-size:14px">'+(gateChecks[0][1]?'✓':'✗')+'</span><span style="color:'+(gateChecks[0][1]?'#444':'#DC2626')+'">'+gateChecks[0][0]+'</span><span style="font-size:9px;color:var(--muted);margin-left:auto">dynamic · quarterly</span></div></div>';
