@@ -79,8 +79,8 @@
           "M.5": 40
         },
         "sources": [
-          "CFPB",
-          "FEC"
+          "FEC",
+          "CFPB"
         ]
       },
       "A": {
@@ -91,9 +91,9 @@
           "A.4": 55
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -210,8 +210,8 @@
           "M.5": 70
         },
         "sources": [
-          "CFPB",
-          "FEC"
+          "FEC",
+          "CFPB"
         ]
       },
       "A": {
@@ -222,9 +222,9 @@
           "A.4": 75
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -356,9 +356,9 @@
           "A.4": 75
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -601,9 +601,9 @@
           "A.4": 70
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -730,8 +730,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -855,9 +855,9 @@
           "A.4": 60
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -968,8 +968,8 @@
           "M.5": 55
         },
         "sources": [
-          "CFPB",
-          "FEC"
+          "FEC",
+          "CFPB"
         ]
       },
       "A": {
@@ -980,9 +980,9 @@
           "A.4": 50
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -1219,9 +1219,9 @@
           "A.4": 55
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -1261,16 +1261,16 @@
   },
   {
     "company": "Target Corporation",
-    "ticker": "TGT",
-    "industry": "retail",
-    "sic": "5331",
-    "sic_description": "Retail-Variety Stores",
-    "D_H": 56,
-    "D_U": 59,
-    "D_M": 61,
-    "D_A": 72,
-    "D_N": 72,
-    "composite": 64,
+    "ticker": "",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 68,
+    "D_U": 50,
+    "D_M": 73,
+    "D_A": 56,
+    "D_N": 52,
+    "composite": 60,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -1279,22 +1279,13 @@
     "confidence": "Estimated",
     "spec_version": "1.0.0",
     "data_sources": [
-      "BBB",
       "CDP",
-      "CFPB",
-      "FDA",
-      "GRI",
-      "Industry",
-      "Industry+EPA",
-      "Jobs",
-      "SBTi",
-      "SEC",
-      "SEC DEF 14A"
+      "Jobs"
     ],
-    "signal_coverage": "20/24 sub-signals with real data",
+    "signal_coverage": "15/24 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
-      "algo_harm_score": 21.0,
+      "algo_harm_score": 0,
       "penalties": {
         "H": 0,
         "U": 0,
@@ -1308,8 +1299,8 @@
       "H": {
         "scores": {
           "H.1": 90,
-          "H.2": 45,
-          "H.3": 45,
+          "H.2": 50,
+          "H.3": 50,
           "H.4": 50,
           "H.5": 90
         },
@@ -1319,15 +1310,13 @@
       },
       "U": {
         "scores": {
-          "U.1": 70.0,
+          "U.1": 50,
           "U.2": 50,
           "U.3": 50,
-          "U.4": 55,
+          "U.4": 50,
           "U.5": 50
         },
-        "sources": [
-          "CFPB"
-        ]
+        "sources": []
       },
       "M": {
         "scores": {
@@ -1337,21 +1326,17 @@
           "M.4": 70,
           "M.5": 60
         },
-        "sources": [
-          "CFPB"
-        ]
+        "sources": []
       },
       "A": {
         "scores": {
           "A.1": 70,
           "A.2": 45,
-          "A.3": 45,
-          "A.4": 65
+          "A.3": 50,
+          "A.4": 55
         },
         "sources": [
-          "CDP",
-          "Industry",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
@@ -1360,16 +1345,10 @@
           "N.2": 70,
           "N.3": 45,
           "N.4": 80,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
-          "CDP",
-          "SEC",
-          "BBB",
-          "FDA",
-          "SEC DEF 14A",
-          "GRI",
-          "SBTi"
+          "CDP"
         ]
       }
     },
@@ -1379,7 +1358,7 @@
       "revenue_per_employee": null,
       "displacement_signal": null,
       "ai_hiring_ratio": 0.02,
-      "glassdoor_rating": 3.5,
+      "glassdoor_rating": null,
       "cdp_climate": "B",
       "epa_violations": null
     },
@@ -1475,8 +1454,8 @@
           "A.4": 70
         },
         "sources": [
-          "iFixit",
-          "Industry+EPA"
+          "Industry+EPA",
+          "iFixit"
         ]
       },
       "N": {
@@ -1602,9 +1581,9 @@
           "A.4": 60
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -1823,8 +1802,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -1948,8 +1927,8 @@
           "A.4": 60
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -2186,8 +2165,8 @@
           "A.4": 60
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -2320,9 +2299,9 @@
           "A.4": 65
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -2450,8 +2429,8 @@
           "A.4": 70
         },
         "sources": [
-          "iFixit",
-          "Industry+EPA"
+          "Industry+EPA",
+          "iFixit"
         ]
       },
       "N": {
@@ -2679,9 +2658,9 @@
           "A.4": 65
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -2805,9 +2784,9 @@
           "A.4": 60
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -2926,8 +2905,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -3148,8 +3127,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -3259,8 +3238,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -3370,8 +3349,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -3481,8 +3460,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -3592,8 +3571,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -3814,8 +3793,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -3925,8 +3904,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4036,8 +4015,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4147,8 +4126,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4258,8 +4237,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4369,8 +4348,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4480,8 +4459,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4591,8 +4570,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4813,8 +4792,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4924,8 +4903,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -5042,8 +5021,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -5153,8 +5132,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -5264,8 +5243,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -5493,8 +5472,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -5604,8 +5583,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -5723,8 +5702,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -5834,8 +5813,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -5945,8 +5924,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -6278,8 +6257,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -6389,8 +6368,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -6500,8 +6479,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -6611,8 +6590,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -6833,8 +6812,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -6946,8 +6925,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -7057,8 +7036,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -7279,8 +7258,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -7390,8 +7369,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -7501,8 +7480,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -7619,8 +7598,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -7730,8 +7709,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -7952,8 +7931,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -8063,8 +8042,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -8174,8 +8153,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -8286,8 +8265,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -8398,8 +8377,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -8509,8 +8488,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -8620,8 +8599,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -8731,8 +8710,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -8953,8 +8932,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -9175,8 +9154,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -9286,8 +9265,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -9397,8 +9376,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -9508,8 +9487,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -9619,8 +9598,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -9735,8 +9714,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -9848,8 +9827,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -9966,8 +9945,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -10077,8 +10056,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -10189,8 +10168,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -10301,8 +10280,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -10525,8 +10504,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -10737,8 +10716,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -10848,8 +10827,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -11070,8 +11049,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -11295,8 +11274,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -11408,8 +11387,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -11520,8 +11499,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -11756,8 +11735,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -11877,8 +11856,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -12186,8 +12165,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -12507,8 +12486,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -12816,8 +12795,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -13444,8 +13423,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -13864,8 +13843,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -13976,8 +13955,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -14399,8 +14378,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -14510,8 +14489,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -14918,8 +14897,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -15531,8 +15510,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -15642,8 +15621,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -15756,8 +15735,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -15974,8 +15953,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -16283,8 +16262,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -16394,8 +16373,8 @@
           "A.4": 60
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -16505,8 +16484,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -16623,8 +16602,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -17031,8 +17010,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -17149,8 +17128,8 @@
           "A.4": 60
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -17458,8 +17437,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -17668,8 +17647,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -17989,8 +17968,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -18310,8 +18289,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -18539,8 +18518,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -18650,8 +18629,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -18868,8 +18847,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -18979,8 +18958,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -19090,8 +19069,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -19300,8 +19279,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -19411,8 +19390,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -19633,8 +19612,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -19744,8 +19723,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -19855,8 +19834,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -19966,8 +19945,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -20176,8 +20155,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -20287,8 +20266,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -20509,8 +20488,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -20719,8 +20698,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -20830,8 +20809,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -20941,8 +20920,8 @@
           "A.4": 60
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -21349,8 +21328,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -21460,8 +21439,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -21670,8 +21649,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -21991,8 +21970,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -22307,8 +22286,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -22517,8 +22496,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -22739,8 +22718,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -22858,8 +22837,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -22969,8 +22948,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -23080,8 +23059,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -23191,8 +23170,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -23408,8 +23387,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -23824,8 +23803,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -24034,8 +24013,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -24442,8 +24421,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -24553,8 +24532,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -24664,8 +24643,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -24775,8 +24754,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -25183,8 +25162,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -25294,8 +25273,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -25603,8 +25582,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -25714,8 +25693,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -25924,8 +25903,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -26233,8 +26212,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -26344,8 +26323,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -26555,8 +26534,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -26872,8 +26851,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -26983,8 +26962,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -27094,8 +27073,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -27205,8 +27184,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -27317,9 +27296,9 @@
           "A.4": 65
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -27438,8 +27417,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -27549,8 +27528,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -27660,8 +27639,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -27771,8 +27750,8 @@
           "A.4": 40
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -27988,8 +27967,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -28099,8 +28078,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -28210,8 +28189,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -28321,8 +28300,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -28432,8 +28411,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -28551,8 +28530,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -28662,8 +28641,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -28773,8 +28752,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -29101,8 +29080,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -29311,8 +29290,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -29719,8 +29698,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -30028,8 +30007,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -30238,8 +30217,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -30349,8 +30328,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -30468,8 +30447,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -30579,8 +30558,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -30888,8 +30867,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -31197,8 +31176,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -31308,8 +31287,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -31419,8 +31398,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -32230,8 +32209,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -32341,8 +32320,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -32650,8 +32629,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -32761,8 +32740,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -32872,8 +32851,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -33101,7 +33080,7 @@
   },
   {
     "company": "News Corp",
-    "ticker": "NWSA",
+    "ticker": "NWS",
     "industry": "media",
     "sic": "2711",
     "sic_description": "Newspapers: Publishing or  Publishing & Printing",
@@ -33478,8 +33457,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -33688,8 +33667,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -33799,8 +33778,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -34009,8 +33988,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -34126,8 +34105,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -34347,8 +34326,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -34861,8 +34840,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -34972,8 +34951,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -35182,8 +35161,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -35293,8 +35272,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -35404,8 +35383,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -35733,8 +35712,8 @@
           "A.4": 40
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -35950,8 +35929,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -36259,8 +36238,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -36470,8 +36449,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -36588,8 +36567,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -36699,8 +36678,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -36909,8 +36888,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -37020,8 +36999,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -37131,8 +37110,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -37353,8 +37332,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -37563,8 +37542,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -37676,8 +37655,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -37894,8 +37873,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -38116,8 +38095,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -38234,8 +38213,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -39056,8 +39035,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -39678,8 +39657,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -40680,8 +40659,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -43016,7 +42995,7 @@
   },
   {
     "company": "Honda Motor Co Ltd",
-    "ticker": "HNDAF",
+    "ticker": "HMC",
     "industry": "manufacturing",
     "sic": "3711",
     "sic_description": "Motor Vehicles & Passenger Car Bodies",
@@ -44483,8 +44462,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -46398,8 +46377,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -46905,8 +46884,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -48713,8 +48692,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -49936,8 +49915,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -50446,8 +50425,8 @@
           "A.4": 40
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -50682,8 +50661,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -51314,8 +51293,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -58321,7 +58300,7 @@
   },
   {
     "company": "Fox Corp",
-    "ticker": "FOXA",
+    "ticker": "FOX",
     "industry": "telecom",
     "sic": "4833",
     "sic_description": "Television Broadcasting Stations",
@@ -62477,7 +62456,7 @@
   },
   {
     "company": "Nintendo Co Ltd",
-    "ticker": "NTDOY",
+    "ticker": "NTDOF",
     "industry": "default",
     "sic": "",
     "sic_description": "",
@@ -66639,7 +66618,7 @@
   },
   {
     "company": "Sony Group Corp",
-    "ticker": "SONY",
+    "ticker": "SNEJF",
     "industry": "tech",
     "sic": "3651",
     "sic_description": "Household Audio & Video Equipment",
@@ -67526,8 +67505,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -68721,8 +68700,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -70527,8 +70506,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -70748,9 +70727,9 @@
           "A.4": 45
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -70888,9 +70867,9 @@
           "A.4": 40
         },
         "sources": [
+          "Industry+EPA",
           "iFixit",
-          "CDP",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
@@ -71131,8 +71110,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -71242,8 +71221,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -71357,8 +71336,8 @@
           "M.5": 85
         },
         "sources": [
-          "CFPB",
-          "FEC"
+          "FEC",
+          "CFPB"
         ]
       },
       "A": {
@@ -71369,9 +71348,9 @@
           "A.4": 60
         },
         "sources": [
+          "Industry+EPA",
           "iFixit",
-          "CDP",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
@@ -71720,9 +71699,9 @@
           "A.4": 50
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -71949,8 +71928,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -72062,8 +72041,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -72284,8 +72263,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -72395,8 +72374,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -72506,8 +72485,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -72617,8 +72596,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -72728,8 +72707,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -72839,8 +72818,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -73061,8 +73040,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -73404,9 +73383,9 @@
           "A.4": 70
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -73529,8 +73508,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -73556,7 +73535,14 @@
       "glassdoor_rating": 3.5,
       "cdp_climate": null,
       "epa_violations": null
-    }
+    },
+    "domains": [
+      "burtsbees.com"
+    ],
+    "tags": [
+      "personal care",
+      "natural"
+    ]
   },
   {
     "company": "Kinder Morgan Inc",
@@ -73640,8 +73626,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -73751,8 +73737,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -73876,9 +73862,9 @@
           "A.4": 50
         },
         "sources": [
+          "Industry+EPA",
           "iFixit",
-          "CDP",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
@@ -74014,9 +74000,9 @@
           "A.4": 55
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -74149,9 +74135,9 @@
           "A.4": 60
         },
         "sources": [
+          "Industry+EPA",
           "iFixit",
-          "CDP",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
@@ -74384,8 +74370,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -74497,8 +74483,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -74623,8 +74609,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -74742,8 +74728,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -74964,8 +74950,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -75083,9 +75069,9 @@
           "A.4": 45
         },
         "sources": [
+          "Industry+EPA",
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry"
         ]
       },
       "N": {
@@ -75210,8 +75196,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -75321,8 +75307,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -75438,8 +75424,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -75557,8 +75543,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -75668,8 +75654,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -75790,8 +75776,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -75910,8 +75896,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -76021,8 +76007,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -76132,8 +76118,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -76243,8 +76229,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -76354,8 +76340,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -76487,9 +76473,9 @@
           "A.4": 30
         },
         "sources": [
+          "Industry+EPA",
           "iFixit",
-          "CDP",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
@@ -76858,9 +76844,9 @@
           "A.4": 30
         },
         "sources": [
+          "Industry+EPA",
           "iFixit",
-          "CDP",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
@@ -84402,7 +84388,7 @@
       "tools",
       "manufacturing"
     ],
-    "notes": "US-manufactured multi-tools. 25-year warranty. Skilled craftspeople. Portland heritage.",
+    "notes": "US-manufactured multi-tools. 25-year warranty. Skilled craftspeople.",
     "_source": "seed"
   },
   {
@@ -84511,7 +84497,7 @@
       "outdoor",
       "heritage"
     ],
-    "notes": "US-manufactured since 1897. Lifetime guarantee. Heritage craft. Durable goods philosophy.",
+    "notes": "US-manufactured since 1897. Lifetime guarantee. Heritage craft.",
     "_source": "seed"
   },
   {
@@ -84619,7 +84605,7 @@
       "footwear",
       "manufacturing"
     ],
-    "notes": "US-manufactured work boots since 1905. Resoling and repair program. Multi-generational craft.",
+    "notes": "US-manufactured work boots since 1905. Resoling program. Multi-generational craft.",
     "_source": "seed"
   },
   {
@@ -84727,7 +84713,7 @@
       "housewares",
       "manufacturing"
     ],
-    "notes": "US-manufactured since 1921. Family-owned. 10-year warranty. Quality over planned obsolescence.",
+    "notes": "US-manufactured since 1921. Family-owned. 10-year warranty.",
     "_source": "seed"
   },
   {
@@ -84835,7 +84821,7 @@
       "housewares",
       "cookware"
     ],
-    "notes": "French artisan cookware since 1925. Hand-cast and hand-inspected. Lifetime warranty.",
+    "notes": "French artisan cookware since 1925. Hand-cast and hand-inspected.",
     "_source": "seed"
   },
   {
@@ -84940,9 +84926,10 @@
       "birkenstock.com"
     ],
     "tags": [
-      "footwear"
+      "footwear",
+      "manufacturing"
     ],
-    "notes": "German-manufactured since 1774. Cork and natural materials. Durable design. Heritage craft.",
+    "notes": "German-manufactured since 1774. Cork and natural materials. Heritage craft.",
     "_source": "seed"
   },
   {
@@ -86470,22 +86457,22 @@
     "_source": "seed"
   },
   {
-    "company": "Leatherman",
+    "company": "Tyson Foods",
     "ticker": "",
-    "industry": "manufacturing",
+    "industry": "food",
     "sic": "",
     "sic_description": "",
-    "D_H": 78,
-    "D_U": 65,
-    "D_M": 72,
-    "D_A": 55,
-    "D_N": 62,
-    "composite": 66,
+    "D_H": 35,
+    "D_U": 25,
+    "D_M": 20,
+    "D_A": 18,
+    "D_N": 22,
+    "composite": 24,
     "hi_grade": "scored",
     "satire": "",
-    "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
+    "floor_triggered": true,
+    "balance_floor": true,
+    "triggering_dimension": "A",
     "confidence": "Estimated from public reporting",
     "data_sources": [
       "News",
@@ -86502,11 +86489,11 @@
     "genome": {
       "H": {
         "scores": {
-          "H.1": 78,
-          "H.2": 78,
-          "H.3": 78,
-          "H.4": 78,
-          "H.5": 78
+          "H.1": 35,
+          "H.2": 35,
+          "H.3": 35,
+          "H.4": 35,
+          "H.5": 35
         },
         "sources": [
           "News",
@@ -86515,11 +86502,11 @@
       },
       "U": {
         "scores": {
-          "U.1": 65,
-          "U.2": 65,
-          "U.3": 65,
-          "U.4": 65,
-          "U.5": 65
+          "U.1": 25,
+          "U.2": 25,
+          "U.3": 25,
+          "U.4": 25,
+          "U.5": 25
         },
         "sources": [
           "News",
@@ -86528,11 +86515,11 @@
       },
       "M": {
         "scores": {
-          "M.1": 72,
-          "M.2": 72,
-          "M.3": 72,
-          "M.4": 72,
-          "M.5": 72
+          "M.1": 20,
+          "M.2": 20,
+          "M.3": 20,
+          "M.4": 20,
+          "M.5": 20
         },
         "sources": [
           "News",
@@ -86541,11 +86528,11 @@
       },
       "A": {
         "scores": {
-          "A.1": 55,
-          "A.2": 55,
-          "A.3": 55,
-          "A.4": 55,
-          "A.5": 55
+          "A.1": 18,
+          "A.2": 18,
+          "A.3": 18,
+          "A.4": 18,
+          "A.5": 18
         },
         "sources": [
           "Industry Data",
@@ -86554,11 +86541,11 @@
       },
       "N": {
         "scores": {
-          "N.1": 62,
-          "N.2": 62,
-          "N.3": 62,
-          "N.4": 62,
-          "N.5": 62
+          "N.1": 22,
+          "N.2": 22,
+          "N.3": 22,
+          "N.4": 22,
+          "N.5": 22
         },
         "sources": [
           "News",
@@ -86568,554 +86555,14 @@
     },
     "key_signals": {},
     "domains": [
-      "leatherman.com"
+      "tysonfoods.com"
     ],
     "tags": [
-      "tools",
-      "manufacturing"
+      "food",
+      "meat",
+      "agriculture"
     ],
-    "notes": "US-manufactured multi-tools. 25-year warranty. Skilled craftspeople.",
-    "_source": "seed"
-  },
-  {
-    "company": "Filson",
-    "ticker": "",
-    "industry": "retail",
-    "sic": "",
-    "sic_description": "",
-    "D_H": 80,
-    "D_U": 70,
-    "D_M": 72,
-    "D_A": 58,
-    "D_N": 65,
-    "composite": 69,
-    "hi_grade": "scored",
-    "satire": "",
-    "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
-    "confidence": "Estimated from public reporting",
-    "data_sources": [
-      "News",
-      "Company Reports",
-      "Industry Data"
-    ],
-    "signal_coverage": "Estimated from public reporting",
-    "humanwashing_flags": [],
-    "algo_harm": {
-      "has_harm": false,
-      "algo_harm_score": 0,
-      "flags": []
-    },
-    "genome": {
-      "H": {
-        "scores": {
-          "H.1": 80,
-          "H.2": 80,
-          "H.3": 80,
-          "H.4": 80,
-          "H.5": 80
-        },
-        "sources": [
-          "News",
-          "Company Reports"
-        ]
-      },
-      "U": {
-        "scores": {
-          "U.1": 70,
-          "U.2": 70,
-          "U.3": 70,
-          "U.4": 70,
-          "U.5": 70
-        },
-        "sources": [
-          "News",
-          "Industry Data"
-        ]
-      },
-      "M": {
-        "scores": {
-          "M.1": 72,
-          "M.2": 72,
-          "M.3": 72,
-          "M.4": 72,
-          "M.5": 72
-        },
-        "sources": [
-          "News",
-          "Company Reports"
-        ]
-      },
-      "A": {
-        "scores": {
-          "A.1": 58,
-          "A.2": 58,
-          "A.3": 58,
-          "A.4": 58,
-          "A.5": 58
-        },
-        "sources": [
-          "Industry Data",
-          "Company Reports"
-        ]
-      },
-      "N": {
-        "scores": {
-          "N.1": 65,
-          "N.2": 65,
-          "N.3": 65,
-          "N.4": 65,
-          "N.5": 65
-        },
-        "sources": [
-          "News",
-          "Company Reports"
-        ]
-      }
-    },
-    "key_signals": {},
-    "domains": [
-      "filson.com"
-    ],
-    "tags": [
-      "apparel",
-      "outdoor",
-      "heritage"
-    ],
-    "notes": "US-manufactured since 1897. Lifetime guarantee. Heritage craft.",
-    "_source": "seed"
-  },
-  {
-    "company": "Red Wing Shoes",
-    "ticker": "",
-    "industry": "retail",
-    "sic": "",
-    "sic_description": "",
-    "D_H": 82,
-    "D_U": 72,
-    "D_M": 75,
-    "D_A": 55,
-    "D_N": 68,
-    "composite": 70,
-    "hi_grade": "scored",
-    "satire": "",
-    "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
-    "confidence": "Estimated from public reporting",
-    "data_sources": [
-      "News",
-      "Company Reports",
-      "Industry Data"
-    ],
-    "signal_coverage": "Estimated from public reporting",
-    "humanwashing_flags": [],
-    "algo_harm": {
-      "has_harm": false,
-      "algo_harm_score": 0,
-      "flags": []
-    },
-    "genome": {
-      "H": {
-        "scores": {
-          "H.1": 82,
-          "H.2": 82,
-          "H.3": 82,
-          "H.4": 82,
-          "H.5": 82
-        },
-        "sources": [
-          "News",
-          "Company Reports"
-        ]
-      },
-      "U": {
-        "scores": {
-          "U.1": 72,
-          "U.2": 72,
-          "U.3": 72,
-          "U.4": 72,
-          "U.5": 72
-        },
-        "sources": [
-          "News",
-          "Industry Data"
-        ]
-      },
-      "M": {
-        "scores": {
-          "M.1": 75,
-          "M.2": 75,
-          "M.3": 75,
-          "M.4": 75,
-          "M.5": 75
-        },
-        "sources": [
-          "News",
-          "Company Reports"
-        ]
-      },
-      "A": {
-        "scores": {
-          "A.1": 55,
-          "A.2": 55,
-          "A.3": 55,
-          "A.4": 55,
-          "A.5": 55
-        },
-        "sources": [
-          "Industry Data",
-          "Company Reports"
-        ]
-      },
-      "N": {
-        "scores": {
-          "N.1": 68,
-          "N.2": 68,
-          "N.3": 68,
-          "N.4": 68,
-          "N.5": 68
-        },
-        "sources": [
-          "News",
-          "Company Reports"
-        ]
-      }
-    },
-    "key_signals": {},
-    "domains": [
-      "redwingshoes.com"
-    ],
-    "tags": [
-      "footwear",
-      "manufacturing"
-    ],
-    "notes": "US-manufactured work boots since 1905. Resoling program. Multi-generational craft.",
-    "_source": "seed"
-  },
-  {
-    "company": "Vitamix",
-    "ticker": "",
-    "industry": "manufacturing",
-    "sic": "",
-    "sic_description": "",
-    "D_H": 75,
-    "D_U": 68,
-    "D_M": 72,
-    "D_A": 55,
-    "D_N": 62,
-    "composite": 66,
-    "hi_grade": "scored",
-    "satire": "",
-    "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
-    "confidence": "Estimated from public reporting",
-    "data_sources": [
-      "News",
-      "Company Reports",
-      "Industry Data"
-    ],
-    "signal_coverage": "Estimated from public reporting",
-    "humanwashing_flags": [],
-    "algo_harm": {
-      "has_harm": false,
-      "algo_harm_score": 0,
-      "flags": []
-    },
-    "genome": {
-      "H": {
-        "scores": {
-          "H.1": 75,
-          "H.2": 75,
-          "H.3": 75,
-          "H.4": 75,
-          "H.5": 75
-        },
-        "sources": [
-          "News",
-          "Company Reports"
-        ]
-      },
-      "U": {
-        "scores": {
-          "U.1": 68,
-          "U.2": 68,
-          "U.3": 68,
-          "U.4": 68,
-          "U.5": 68
-        },
-        "sources": [
-          "News",
-          "Industry Data"
-        ]
-      },
-      "M": {
-        "scores": {
-          "M.1": 72,
-          "M.2": 72,
-          "M.3": 72,
-          "M.4": 72,
-          "M.5": 72
-        },
-        "sources": [
-          "News",
-          "Company Reports"
-        ]
-      },
-      "A": {
-        "scores": {
-          "A.1": 55,
-          "A.2": 55,
-          "A.3": 55,
-          "A.4": 55,
-          "A.5": 55
-        },
-        "sources": [
-          "Industry Data",
-          "Company Reports"
-        ]
-      },
-      "N": {
-        "scores": {
-          "N.1": 62,
-          "N.2": 62,
-          "N.3": 62,
-          "N.4": 62,
-          "N.5": 62
-        },
-        "sources": [
-          "News",
-          "Company Reports"
-        ]
-      }
-    },
-    "key_signals": {},
-    "domains": [
-      "vitamix.com"
-    ],
-    "tags": [
-      "housewares",
-      "manufacturing"
-    ],
-    "notes": "US-manufactured since 1921. Family-owned. 10-year warranty.",
-    "_source": "seed"
-  },
-  {
-    "company": "Le Creuset",
-    "ticker": "",
-    "industry": "default",
-    "sic": "",
-    "sic_description": "",
-    "D_H": 78,
-    "D_U": 65,
-    "D_M": 68,
-    "D_A": 55,
-    "D_N": 58,
-    "composite": 65,
-    "hi_grade": "scored",
-    "satire": "",
-    "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
-    "confidence": "Estimated from public reporting",
-    "data_sources": [
-      "News",
-      "Company Reports",
-      "Industry Data"
-    ],
-    "signal_coverage": "Estimated from public reporting",
-    "humanwashing_flags": [],
-    "algo_harm": {
-      "has_harm": false,
-      "algo_harm_score": 0,
-      "flags": []
-    },
-    "genome": {
-      "H": {
-        "scores": {
-          "H.1": 78,
-          "H.2": 78,
-          "H.3": 78,
-          "H.4": 78,
-          "H.5": 78
-        },
-        "sources": [
-          "News",
-          "Company Reports"
-        ]
-      },
-      "U": {
-        "scores": {
-          "U.1": 65,
-          "U.2": 65,
-          "U.3": 65,
-          "U.4": 65,
-          "U.5": 65
-        },
-        "sources": [
-          "News",
-          "Industry Data"
-        ]
-      },
-      "M": {
-        "scores": {
-          "M.1": 68,
-          "M.2": 68,
-          "M.3": 68,
-          "M.4": 68,
-          "M.5": 68
-        },
-        "sources": [
-          "News",
-          "Company Reports"
-        ]
-      },
-      "A": {
-        "scores": {
-          "A.1": 55,
-          "A.2": 55,
-          "A.3": 55,
-          "A.4": 55,
-          "A.5": 55
-        },
-        "sources": [
-          "Industry Data",
-          "Company Reports"
-        ]
-      },
-      "N": {
-        "scores": {
-          "N.1": 58,
-          "N.2": 58,
-          "N.3": 58,
-          "N.4": 58,
-          "N.5": 58
-        },
-        "sources": [
-          "News",
-          "Company Reports"
-        ]
-      }
-    },
-    "key_signals": {},
-    "domains": [
-      "lecreuset.com"
-    ],
-    "tags": [
-      "housewares",
-      "cookware"
-    ],
-    "notes": "French artisan cookware since 1925. Hand-cast and hand-inspected.",
-    "_source": "seed"
-  },
-  {
-    "company": "Birkenstock",
-    "ticker": "",
-    "industry": "retail",
-    "sic": "",
-    "sic_description": "",
-    "D_H": 72,
-    "D_U": 60,
-    "D_M": 62,
-    "D_A": 58,
-    "D_N": 55,
-    "composite": 61,
-    "hi_grade": "scored",
-    "satire": "",
-    "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
-    "confidence": "Estimated from public reporting",
-    "data_sources": [
-      "News",
-      "Company Reports",
-      "Industry Data"
-    ],
-    "signal_coverage": "Estimated from public reporting",
-    "humanwashing_flags": [],
-    "algo_harm": {
-      "has_harm": false,
-      "algo_harm_score": 0,
-      "flags": []
-    },
-    "genome": {
-      "H": {
-        "scores": {
-          "H.1": 72,
-          "H.2": 72,
-          "H.3": 72,
-          "H.4": 72,
-          "H.5": 72
-        },
-        "sources": [
-          "News",
-          "Company Reports"
-        ]
-      },
-      "U": {
-        "scores": {
-          "U.1": 60,
-          "U.2": 60,
-          "U.3": 60,
-          "U.4": 60,
-          "U.5": 60
-        },
-        "sources": [
-          "News",
-          "Industry Data"
-        ]
-      },
-      "M": {
-        "scores": {
-          "M.1": 62,
-          "M.2": 62,
-          "M.3": 62,
-          "M.4": 62,
-          "M.5": 62
-        },
-        "sources": [
-          "News",
-          "Company Reports"
-        ]
-      },
-      "A": {
-        "scores": {
-          "A.1": 58,
-          "A.2": 58,
-          "A.3": 58,
-          "A.4": 58,
-          "A.5": 58
-        },
-        "sources": [
-          "Industry Data",
-          "Company Reports"
-        ]
-      },
-      "N": {
-        "scores": {
-          "N.1": 55,
-          "N.2": 55,
-          "N.3": 55,
-          "N.4": 55,
-          "N.5": 55
-        },
-        "sources": [
-          "News",
-          "Company Reports"
-        ]
-      }
-    },
-    "key_signals": {},
-    "domains": [
-      "birkenstock.com"
-    ],
-    "tags": [
-      "footwear",
-      "manufacturing"
-    ],
-    "notes": "German-manufactured since 1774. Cork and natural materials. Heritage craft.",
+    "notes": "Worker safety issues. Environmental pollution. Animal welfare concerns. Large human workforce.",
     "_source": "seed"
   }
 ]
