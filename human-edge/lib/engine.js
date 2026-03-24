@@ -159,6 +159,7 @@ const HumanEngine = {
       hiBalanced: isGold,  // backward compat for content.js / popup.js
       goldGates: goldCheck.gates,
       goldThreshold: goldCheck.threshold,
+      balancedThreshold: goldCheck.threshold,  // backward compat alias
       grade: isGold ? "Gold HI Grade" : "Scored",
       scoreColor,
       tier: { color: scoreColor, satire: isGold ? "Humans and tech, in harmony. Gold HI Grade earned." : "" },

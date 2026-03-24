@@ -117,6 +117,7 @@
     profile.hiBalanced = recheck.gold;
     profile.goldGates = recheck.gates;
     profile.goldThreshold = recheck.threshold;
+    profile.balancedThreshold = recheck.threshold;  // backward compat
     profile.grade = recheck.gold ? "Gold HI Grade" : "Scored";
     profile.scoreColor = recheck.gold ? '#C49B20' : HumanEngine.getScoreColor(profile.composite, recheck.threshold);
     profile.tier = { color: profile.scoreColor, satire: recheck.gold ? "Humans and tech, in harmony. Gold HI Grade earned." : "" };
@@ -302,7 +303,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
     <div class="human-badge__details">
       <div class="human-badge__satire">"${profile.tier.satire}"</div>
       <div class="human-badge__dimensions">
-        ${buildDimensionBars(profile.dimensions)}
+        ${buildDimensionBars(profile.dimensions, profile.goldThreshold || profile.balancedThreshold || 62)}
       </div>
       ${profile.tier.cappedFromCertified ? '<div class="human-badge__floor-warning">⚡ Scores 90+ but has not passed all 3 gates.</div>' : ''}
       ${floorWarning}
@@ -367,10 +368,10 @@ function buildGenomeStrip(profile) {
   return html;
 }
 
-function buildDimensionBars(dimensions) {
+function buildDimensionBars(dimensions, threshold) {
   return HumanEngine.DIMENSIONS.map(dim => {
     const score = dimensions[dim] || 0;
-    const color = HumanEngine.getScoreColor(score, profile.balancedThreshold);
+    const color = HumanEngine.getScoreColor(score, threshold || 62);
     const label = dim.toUpperCase();
     const fullLabel = HumanEngine.getDimensionLabel(dim);
     return `
@@ -553,7 +554,7 @@ function openFullPanel(profile, filterResult, prefs) {
   panel.innerHTML = `
     <div class="human-panel__header">
       <div class="human-panel__back" id="panelBack" style="visibility:hidden">←</div>
-      <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-white-128.png')}" style="height:28px;width:auto" alt="HI."></div>
+      <div class="human-panel__title"><div style="background:#C49B20;border-radius:8px;padding:4px 10px;display:inline-flex;align-items:center"><img src="${chrome.runtime.getURL('icons/icon-white-128.png')}" style="height:36px;width:auto" alt="HI."></div></div>
       <div class="human-panel__close" id="panelClose">✕</div>
     </div>
 
@@ -640,11 +641,8 @@ function openFullPanel(profile, filterResult, prefs) {
       <span id="panelConnText">Checking connection...</span>
     </div>
 
-    <div style="display:flex;gap:8px;justify-content:center;padding:8px 16px;background:#F8FAFC;border-radius:8px;margin:8px 16px">
-      <span style="font-size:10px;font-weight:700;color:#1B3A5C;padding:4px 10px;background:white;border-radius:6px;border:1px solid #1B3A5C">Chrome ✓</span>
-      <span style="font-size:10px;font-weight:500;color:#999;padding:4px 10px">Safari · Soon</span>
-      <span style="font-size:10px;font-weight:500;color:#999;padding:4px 10px">Edge · Soon</span>
-      <span style="font-size:10px;font-weight:500;color:#999;padding:4px 10px">Firefox · Soon</span>
+    <div style="padding:12px 16px;text-align:center">
+      <a href="https://thehibalance.org" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--navy,#1B3A5C);color:white;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:0.5px">📱 Get the App · thehibalance.org</a>
     </div>
 
     <div class="human-panel__footer">
@@ -653,7 +651,7 @@ function openFullPanel(profile, filterResult, prefs) {
     </div>
 
     <div class="human-panel__disclaimer">
-      Gold HI Grade threshold (currently ${profile.balancedThreshold || 62}) is adaptive — recalculated quarterly. Scores are estimated from public data. Not financial or legal advice.
+      Gold HI Grade threshold (currently ${Math.round(profile.balancedThreshold || 62)}) is adaptive — recalculated quarterly as mean + 2 standard deviations. 3 gates: Score, Balance, Honesty. Scores are estimated from public data. Not financial or legal advice.
     </div>
   `;
 
@@ -758,7 +756,7 @@ function openDetailPanel(profile, dim) {
   panel.innerHTML = `
     <div class="human-panel__header">
       <div class="human-panel__back" id="panelBack">← Back</div>
-      <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-white-128.png')}" style="height:28px;width:auto" alt="HI."></div>
+      <div class="human-panel__title"><div style="background:#C49B20;border-radius:8px;padding:4px 10px;display:inline-flex;align-items:center"><img src="${chrome.runtime.getURL('icons/icon-white-128.png')}" style="height:36px;width:auto" alt="HI."></div></div>
       <div class="human-panel__close" id="panelClose">✕</div>
     </div>
 
