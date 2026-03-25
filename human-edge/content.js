@@ -55,7 +55,7 @@
         cloud_composite: d.composite || null,
         cloud_satire: d.satire || null,
         cloud_hi_balanced: d.hi_balanced || false,
-        cloud_hi_balanced_threshold: d.hi_balanced_threshold || 62,
+        cloud_hi_balanced_threshold: Math.round(d.hi_balanced_threshold || 62),
         decay_index: d.decay_index || 0,
         decay_level: d.decay_level || 'stable',
         decay_factors: d.decay_factors || [],
