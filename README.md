@@ -49,6 +49,17 @@ Two checks. Both must pass:
 
 *Score, balance, and honesty. That's it. The first certification that certifies itself. You can't buy it. You can't apply for it. The data proves it.*
 
+### HI Grade Scale
+
+| Color | Range | Meaning |
+|-------|-------|---------|
+| 🥇 Gold | ≥ threshold + 3 gates | Passed score, balance, and honesty. The data proves it. |
+| 🟢 Green | ≥ threshold | In Gold territory on score — but hasn't passed all 3 gates. |
+| 🟡 Amber | ≥ 42 | Balanced but below the Gold threshold. Room to improve. |
+| 🔴 Red | < 42 | Out of balance. At least one dimension is failing. |
+
+No letter grades. No tiers. Just the number and the color. Gold is earned, not assigned.
+
 ---
 
 ## The HUMAN Framework
