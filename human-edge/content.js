@@ -120,7 +120,8 @@
     profile.balancedThreshold = recheck.threshold;  // backward compat
     profile.grade = recheck.gold ? "Gold HI Grade" : "Scored";
     profile.scoreColor = recheck.gold ? '#C49B20' : HumanEngine.getScoreColor(profile.composite, recheck.threshold);
-    profile.tier = { color: profile.scoreColor, satire: recheck.gold ? "Passed all 3 gates. Score, balance, and honesty. The math decides, not us." : (profile.composite >= 80 ? "Almost gold. The humans are still in charge here." : profile.composite >= 60 ? "Not bad, not gold. Somewhere in the middle of the galaxy." : profile.composite >= 42 ? "42 — the minimum for balance. The answer was always 42." : profile.composite >= 20 ? "This score hangs in the air the way good intentions sometimes don't." : "DON'T PANIC. But maybe start asking questions.") };
+    const t = recheck.threshold || 62;
+    profile.tier = { color: profile.scoreColor, satire: recheck.gold ? "Passed all 3 gates. Score, balance, and honesty. The math decides, not us." : (profile.composite >= t ? "Almost gold. The humans are still in charge here." : profile.composite >= 42 ? "42 — the minimum for balance. The answer was always 42." : "DON'T PANIC. But maybe start asking questions.") };
   }
   
   // Attach heartbeat data
