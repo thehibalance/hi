@@ -95,7 +95,11 @@ def main():
         run(f"python3 human100_index.py --data {args.data} --output {args.output}/human100", "Step 6: HUMAN 100 Index")
     else:
         print("\n  ⏭ Step 6: HUMAN 100 not found, skipping")
-
+from validate_pipeline import validate_all
+    report = validate_all(data_dir=args.output)
+    if report.critical:
+        print("❌ BLOCKED — bad data detected, scores NOT published")
+        sys.exit(1)
     elapsed = round(time.time() - start, 1)
     print(f"\n{'═' * 60}")
     print(f"  ✓ Pipeline complete in {elapsed}s")
