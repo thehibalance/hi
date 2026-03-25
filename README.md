@@ -4,8 +4,6 @@
 
 <h1 align="center">Think human intelligence.</h1>
 
-> **Think human intelligence.** Every company gets a HI Grade™. Brands that empower humans score well. Brands that replace, divide, or addict them score poorly.
-
 *Built without AI to measure AI. 34 free data sources. 24 sub-signals. All covered without AI. The world's first edge-to-cloud ethical scoring framework.*
 
 <p align="center">
@@ -207,6 +205,35 @@ HI. unifies all five dimensions into a single, consumer-facing framework with Hu
 
 ---
 
+## Data Integrity — 3-Layer Validation
+
+Bad data in = bad scores out. The pipeline runs a 3-layer validation system that blocks publishing when data is compromised, corrupted, or suspicious. No score goes live without passing all three layers.
+
+### Layer 1: Input Validation
+
+Before scoring begins, every data point is checked for physical possibility. Dimension scores must be 0–100. Headcount can't be negative. Glassdoor ratings can't exceed 5.0. Revenue per employee can't be $50M. If a value fails, the pipeline flags it and uses the previous quarter's value instead.
+
+### Layer 2: Output Validation
+
+After scoring, before publishing: did any company's score move more than 15 points since last run? Is the distribution shape normal or did something collapse? Are known ethical leaders (Patagonia, Costco) scoring below 30? Are known problematic companies (Meta, TikTok) scoring above 85? If anything looks wrong, the pipeline blocks and waits for human review.
+
+### Layer 3: Source Cross-Referencing (MSSI)
+
+The Maximum Single-Source Impact rule: no single data source can move any sub-signal by more than 15 points. Every material score change requires corroboration from at least 2 independent source categories. A single bad API response, a coordinated Glassdoor review campaign, or a fabricated SEC filing can't unilaterally move a score. The data must agree across sources — or the change doesn't publish.
+
+```bash
+# Run validation standalone
+python3 validate_pipeline.py --data data
+
+# Run specific layers
+python3 validate_pipeline.py --layer 1 2
+
+# Strict mode (warnings also block)
+python3 validate_pipeline.py --strict
+```
+
+---
+
 ## <img src="human-edge/icons/icon-128.png" alt="HI." width="24"> Live Now
 
 - **Website**: [thehibalance.org](https://thehibalance.org) — Search 815+ brands, all 10 HUMAN features
@@ -238,6 +265,7 @@ hi/
 │   ├── merge_seed.py            # Merges private companies from seed data
 │   ├── feature_pipelines.py     # Shield, Contagion, Lens, Wave, Watermark
 │   ├── api_server.py            # REST API (Flask, 32 endpoints)
+│   ├── validate_pipeline.py     # 3-layer data validation (input, output, MSSI)
 │   ├── universe_tickers.py      # S&P 500 + Russell 1000 ticker universe
 │   ├── international_tickers.py # FTSE 100, DAX 40, CAC 40, Nikkei 225, global
 │   ├── sp500_domains.py         # Domain → company mapping for extension
@@ -360,8 +388,6 @@ Base URL: `https://api.thehibalance.org` · Free · No auth required
 | AI agent detection | 🟢 Future |
 
 ---
-
-*"We're not anti-AI. We're pro-balance. Brands that empower humans score well. Brands that replace, divide, or addict them score poorly."*
 
 <p align="center">
   <img src="human-edge/icons/icon-128.png" alt="HI." width="48"><br>
