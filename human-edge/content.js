@@ -559,7 +559,7 @@ function openFullPanel(profile, filterResult, prefs) {
     </div>
 
     <div class="human-panel__company">
-      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px;line-height:1">✦</span>' : profile.composite}</div>
+      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<img src="' + chrome.runtime.getURL('icons/icon-white-128.png') + '" style="height:36px;width:auto" alt="HI.">' : profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
         <div class="human-panel__tier" style="color: ${scoreColor}">HI Grade™${pulseDotHTML}</div>
@@ -761,7 +761,7 @@ function openDetailPanel(profile, dim) {
     </div>
 
     <div class="human-panel__company">
-      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px;line-height:1">✦</span>' : profile.composite}</div>
+      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<img src="' + chrome.runtime.getURL('icons/icon-white-128.png') + '" style="height:36px;width:auto" alt="HI.">' : profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
         <div class="human-panel__tier" style="color: ${scoreColor}">HI Grade™${pulseDotHTML}</div>
