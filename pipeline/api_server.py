@@ -312,7 +312,7 @@ def seed_to_record(s):
         "satire": "",
         "floor_triggered": min(dims) < 10,
         "balance_floor": balance_floor,
-        "confidence": "Estimated", "data_sources": 40["Manual Scoring"],
+        "confidence": "Estimated", "data_sources": ["Manual Scoring"],
         "notes": s.get("notes", ""), "spec_version": "1.0.0",
         "industry": s["tags"][0] if s.get("tags") else "",
         "humanwashing_flags": [],
