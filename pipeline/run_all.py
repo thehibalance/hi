@@ -70,6 +70,8 @@ def main():
             print("\n  ⏭ Step 1: Data collection skipped (--skip-collect)")
         # Step 1b: Government data (CFPB)
         run(f"python3 collect_gov_data.py --cfpb --output {args.output}/gov --subsignals {args.output}/subsignals", "Step 1b: CFPB Consumer Complaints")
+        # Step 1c: Extra government sources (FEC, CPSC, FDA, USPTO)
+        run(f"python3 collect_extra_sources.py --all --output {args.output}/gov --subsignals {args.output}/subsignals", "Step 1c: FEC + CPSC + FDA + USPTO")
         # Step 2: Run scoring engine
         run(f"python3 scoring_engine.py --output {args.data}", "Step 2: Scoring Engine (24 sub-signals + algo harm)")
     
