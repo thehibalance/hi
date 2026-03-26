@@ -43,6 +43,8 @@ jobs:
           NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
           ALPHA_VANTAGE_KEY: ${{ secrets.ALPHA_VANTAGE_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          DOL_API_KEY: ${{ secrets.DOL_API_KEY }}
+          DATAGOV_API_KEY: ${{ secrets.DATAGOV_API_KEY }}
         run: |
           cd pipeline
           MODE="${{ github.event.inputs.mode || 'daily' }}"
