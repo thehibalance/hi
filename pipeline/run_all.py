@@ -105,6 +105,8 @@ def main():
     if report.critical:
         print("❌ BLOCKED — bad data detected, scores NOT published")
         sys.exit(1)
+    # Step 8: History snapshot + price capture + backtest
+    run(f"python3 history_tracker.py --all --scores {args.data} --history {args.output}/history --prices-dir {args.output}/prices --output {args.output}", "Step 8: History + Prices + Backtest")
 
     elapsed = round(time.time() - start, 1)
     print(f"\n{'═' * 60}")
