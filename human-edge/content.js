@@ -688,6 +688,7 @@ function openFullPanel(profile, filterResult, prefs) {
   const panelToggleLabel = document.getElementById('panelToggleLabel');
   const panelToggleSub = document.getElementById('panelToggleSub');
 
+  if (panelToggle && panelToggleLabel && panelToggleSub) {
   loadPreferences().then(currentPrefs => {
     panelToggle.checked = currentPrefs.masterToggle;
     panelToggleLabel.textContent = currentPrefs.masterToggle ? 'Full View' : 'AI Filter Active';
@@ -734,6 +735,7 @@ function openFullPanel(profile, filterResult, prefs) {
     if (eq) eq.style.display = panelToggle.checked ? 'none' : 'block';
     try { chrome.storage.sync.set(currentPrefs); } catch (e) {}
   });
+  } // end if (panelToggle && panelToggleLabel && panelToggleSub)
   } catch(err) { console.error('HI. panel error:', err); }
 }
 
