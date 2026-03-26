@@ -1,6 +1,6 @@
 /**
  * HUMAN Score Seed Database v0.2.0
- * 206 companies across 120 categories
+ * 200 companies across 120 categories
  * 
  * All scores are ESTIMATED based on publicly available information.
  * NO AI WAS USED TO GENERATE THESE SCORES.

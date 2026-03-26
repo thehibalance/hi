@@ -4,7 +4,7 @@
 
 <h1 align="center">Think human intelligence.</h1>
 
-*Built without AI to measure AI. 34 free data sources. 24 sub-signals. All covered without AI. The world's first edge-to-cloud ethical scoring framework.*
+*Built without AI to measure AI. 40 free data sources. 24 sub-signals. All covered without AI. The world's first edge-to-cloud ethical scoring framework.*
 
 <p align="center">
   <img src="human-edge/icons/icon-128.png" alt="HI." width="28" style="vertical-align:middle"> measures how human a company is across five dimensions — the things AI can't be: conscious, empathetic, ethical, alive, and transparent. Every company gets a score from 0 to 100. Brands that pass all 3 gates earn <strong>Gold HI Grade</strong> — score, balance, and honesty.
@@ -93,7 +93,7 @@ No other framework does what HI. does. Here's why.
 
 - **Edge-to-cloud native.** A browser extension built on deterministic, human-engineered code (zero AI, zero black boxes) paired with a cloud scoring engine. No other scoring framework ships a consumer-side edge node.
 - **AI Toggle + Equalizer.** Consumers filter companies across all five dimensions. Strict mode hides AI-heavy companies. No other framework gives consumers this control.
-- **AI improves inputs, never the formula.** The AI Enhancement Layer sharpens 34 data sources — it never changes the scoring formula. Toggle OFF by default. The telescope gets sharper. It doesn't move the stars.
+- **AI improves inputs, never the formula.** The AI Enhancement Layer sharpens 40 data sources — it never changes the scoring formula. Toggle OFF by default. The telescope gets sharper. It doesn't move the stars.
 
 ### Security
 
@@ -170,7 +170,7 @@ HI. unifies all five dimensions into a single, consumer-facing framework with Hu
 │  • Mini pill → full sidebar       │
 │  • Score / threshold display      │
 │  • 3 gates computed locally       │
-│  • Offline: 206 seed + 315 API    │
+│  • Offline: 200 seed + 315 API    │
 │  • Online: 815+ from cloud API    │
 │                                   │
 └──────────┬────────────────────────┘
@@ -181,7 +181,7 @@ HI. unifies all five dimensions into a single, consumer-facing framework with Hu
 │     (Railway + GitHub Pages)      │
 │                                   │
 │  REST API (Flask, 32 endpoints)   │
-│  • 34 data pipelines              │
+│  • 40 data pipelines              │
 │  • Dynamic hybrid threshold       │
 │  • 815+ companies                 │
 │  • 10 HUMAN features (all live)   │
@@ -271,7 +271,7 @@ hi/
 │
 ├── pipeline/                    # Cloud scoring pipeline
 │   ├── run_all.py               # Single command: collect → score → merge → features
-│   ├── data_collector.py        # All 34 data sources (parallel, incremental)
+│   ├── data_collector.py        # All 40 data sources (parallel, incremental)
 │   ├── scoring_engine.py        # HUMAN scoring + adaptive threshold
 │   ├── merge_seed.py            # Merges private companies from seed data
 │   ├── feature_pipelines.py     # Shield, Contagion, Lens, Wave, Watermark
@@ -282,7 +282,7 @@ hi/
 │   ├── sp500_domains.py         # Domain → company mapping for extension
 │   ├── stripe_integration.py    # Stripe checkout + webhook handler
 │   ├── api_keys.py              # API key management + tiered rate limits
-│   └── [34 data pipelines]      # SEC, EPA, BLS, CDP, Finnhub, FMP, etc.
+│   └── [40 data pipelines]      # SEC, EPA, BLS, CDP, Finnhub, FMP, etc.
 │
 ├── docs/                        # Website (GitHub Pages)
 │   ├── index.html               # thehibalance.org
@@ -345,7 +345,7 @@ The pipeline runs automatically via GitHub Actions — no laptop required.
 | CAC 40 (France) | 48 |
 | Nikkei 225 (Japan) | 62 |
 | Global Majors | 64 |
-| Seed (private) | 206 |
+| Seed (private) | 200 |
 | **Total** | **~1,175 tickers → 815+ scored** |
 
 ## API

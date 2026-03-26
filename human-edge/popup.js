@@ -302,10 +302,10 @@
       if (resp && resp.connected) {
         el.textContent = `☁ Connected · ${resp.companies} companies · API live`;
       } else {
-        el.textContent = '📦 Local database · 206 companies';
+        el.textContent = '📦 Local database · 200 companies';
       }
     } catch (e) {
-      el.textContent = '📦 Local database · 206 companies';
+      el.textContent = '📦 Local database · 200 companies';
     }
   }
 

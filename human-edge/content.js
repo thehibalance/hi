@@ -883,11 +883,11 @@ function openDetailPanel(profile, dim) {
         text.textContent = `Connected · ${resp.companies||0} companies · API live`;
       } else {
         dot.style.color = '#D97706';
-        text.textContent = 'Offline · Using local database (206 companies)';
+        text.textContent = 'Offline · Using local database (200 companies)';
       }
     } catch (e) {
       dot.style.color = '#D97706';
-      text.textContent = 'Offline · Using local database (206 companies)';
+      text.textContent = 'Offline · Using local database (200 companies)';
     }
   })();
 
