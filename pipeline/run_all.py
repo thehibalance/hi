@@ -68,7 +68,8 @@ def main():
             run(f"python3 data_collector.py --all --data {args.output} --workers {args.workers}{inc_flag}", "Step 1: Data Collection (34 sources)")
         else:
             print("\n  ⏭ Step 1: Data collection skipped (--skip-collect)")
-        
+        # Step 1b: Government data (CFPB)
+        run(f"python3 collect_gov_data.py --cfpb --output {args.output}/gov --subsignals {args.output}/subsignals", "Step 1b: CFPB Consumer Complaints")
         # Step 2: Run scoring engine
         run(f"python3 scoring_engine.py --output {args.data}", "Step 2: Scoring Engine (24 sub-signals + algo harm)")
     
