@@ -1,81 +1,73 @@
 #!/usr/bin/env python3
 """
-HI. Data Collectors — OSHA + CFPB (using requests library)
+HI. Data Collectors — OSHA (filtered!) + CFPB
 Verified working endpoints March 2026.
+OSHA uses filter_object for server-side company filtering.
 """
-import json,os,sys,time,math,requests
+import json,os,sys,time,math,requests,urllib3
 from pathlib import Path
 from datetime import datetime,timedelta
 from collections import defaultdict
 
-TIMEOUT=60; RATE=0.3
+urllib3.disable_warnings()
+TIMEOUT=60; RATE=0.5
 
-COMPANY_PATTERNS={
-    "apple":["APPLE INC","APPLE COMPUTER"],"google":["ALPHABET","GOOGLE"],"microsoft":["MICROSOFT"],
-    "amazon":["AMAZON"],"meta":["META PLATFORMS","FACEBOOK"],"tesla":["TESLA"],
-    "walmart":["WAL-MART","WALMART"],"jpmorgan":["JPMORGAN","JP MORGAN","CHASE BANK"],
-    "johnson_johnson":["JOHNSON & JOHNSON","JOHNSON AND JOHNSON"],
-    "unitedhealth":["UNITEDHEALTH","UNITED HEALTH","OPTUM"],"starbucks":["STARBUCKS"],
-    "nike":["NIKE"],"costco":["COSTCO"],"target":["TARGET CORP","TARGET STORES"],
-    "att":["AT&T","ATT INC"],"verizon":["VERIZON"],"disney":["WALT DISNEY","DISNEY"],
-    "pepsico":["PEPSICO","PEPSI","FRITO-LAY"],"cocacola":["COCA-COLA","COCA COLA"],
-    "mcdonalds":["MCDONALD"],"uber":["UBER"],"netflix":["NETFLIX"],"adobe":["ADOBE"],
-    "salesforce":["SALESFORCE"],"ibm":["IBM","INTERNATIONAL BUSINESS MACHINES"],
-    "intel":["INTEL CORP","INTEL FAB"],"oracle":["ORACLE"],"accenture":["ACCENTURE"],"comcast":["COMCAST"],
-}
-
-def _match(name):
-    u=(name or"").upper()
-    for k,terms in COMPANY_PATTERNS.items():
-        for t in terms:
-            if t in u: return k
-    return None
-
-# ═══ OSHA ═══
+# ═══ OSHA — server-side filtered by company name ═══
 def collect_osha(output_dir):
-    print("\n  📋 OSHA Inspections (DOL API v4)")
+    print("\n  📋 OSHA Inspections (DOL API v4 — filtered)")
     print("  "+"─"*40)
     Path(output_dir).mkdir(parents=True,exist_ok=True)
     key=os.environ.get("DOL_API_KEY","")
     if not key:
         print("    ⚠ No DOL_API_KEY. export DOL_API_KEY=xxx");return {}
     
-    matched=defaultdict(list);offset=0;scanned=0
-    while offset<5000:
-        try:
-            r=requests.get("https://api.dol.gov/v4/get/OSHA/inspection/json",
-                params={"X-API-KEY":key,"limit":200,"offset":offset},timeout=TIMEOUT,verify=False)
-            data=r.json()
-        except Exception as e:
-            print(f"    Error at offset {offset}: {e}");break
-        if not data or'data'not in data or not data['data']:break
-        for rec in data['data']:
-            od=rec.get("open_date","")
-            if od and od[:4]>="2022":
-                k=_match(rec.get("estab_name",""))
-                if k:matched[k].append(rec)
-        scanned+=len(data['data'])
-        if len(data['data'])<200:break
-        offset+=200
-        time.sleep(RATE)
-        if offset%1000==0:print(f"    ...{scanned} scanned, {sum(len(v)for v in matched.values())} matched")
+    base="https://api.dol.gov/v4/get/OSHA/inspection/json"
     
-    print(f"    Scanned {scanned}, matched {len(matched)} companies")
+    searches={
+        "walmart":"WALMART","amazon":"AMAZON","starbucks":"STARBUCKS",
+        "mcdonalds":"MCDONALD","target":"TARGET","costco":"COSTCO",
+        "nike":"NIKE","disney":"DISNEY","tesla":"TESLA","ups":"UNITED PARCEL",
+        "fedex":"FEDEX","boeing":"BOEING","ford":"FORD MOTOR",
+        "home_depot":"HOME DEPOT","tyson":"TYSON","google":"GOOGLE",
+        "microsoft":"MICROSOFT","apple":"APPLE","meta":"META",
+        "jpmorgan":"JPMORGAN","comcast":"COMCAST","att":"AT&T",
+        "verizon":"VERIZON","pepsico":"PEPSICO","cocacola":"COCA-COLA",
+        "intel":"INTEL","ibm":"IBM","oracle":"ORACLE",
+        "unitedhealth":"UNITEDHEALTH","johnson_johnson":"JOHNSON & JOHNSON",
+    }
+    
     results={}
-    for k,insp in matched.items():
-        n=len(insp)
-        severe=sum(1 for i in insp if i.get("insp_type")in("A","M"))
-        complaints=sum(1 for i in insp if i.get("insp_type")=="B")
-        w=severe*15+complaints*5+(n-severe-complaints)
-        score=max(0,100-min(w,100))
-        results[k]={"company":k,"inspections":n,"severe":severe,"complaints":complaints,
-            "osha_score":score,"collected_at":datetime.now().isoformat(),"source":"api.dol.gov OSHA","maps_to":["M.3","A.3"]}
-        print(f"    {k}: {n} inspections (severe:{severe}) → score {score}")
+    for cid,search in searches.items():
+        try:
+            filt=json.dumps({"field":"estab_name","operator":"like","value":search})
+            r=requests.get(base,params={"X-API-KEY":key,"limit":200,"filter_object":filt,
+                "sort":"desc","sort_by":"open_date"},timeout=TIMEOUT,verify=False)
+            data=r.json()
+            records=data.get("data",[])
+            if not records:continue
+            
+            recent=[rec for rec in records if(rec.get("open_date","")or"")[:4]>="2020"]
+            n=len(recent)
+            if n==0:continue
+            
+            severe=sum(1 for i in recent if i.get("insp_type")in("A","M"))
+            complaints=sum(1 for i in recent if i.get("insp_type")=="B")
+            w=severe*15+complaints*5+(n-severe-complaints)
+            score=max(0,100-min(w,100))
+            
+            results[cid]={"company":cid,"inspections":n,"severe":severe,"complaints":complaints,
+                "osha_score":score,"collected_at":datetime.now().isoformat(),
+                "source":"api.dol.gov OSHA (filtered)","maps_to":["M.3","A.3"]}
+            print(f"    {cid}: {n} inspections since 2020 (severe:{severe}, complaints:{complaints}) → score {score}")
+            time.sleep(RATE)
+        except Exception as e:
+            print(f"    {cid}: error - {str(e)[:60]}")
+    
     json.dump(results,open(Path(output_dir)/"osha_violations.json","w"),indent=2,default=str)
     print(f"\n    ✓ OSHA: {len(results)} companies")
     return results
 
-# ═══ CFPB ═══
+# ═══ CFPB — search_term parameter ═══
 def collect_cfpb(output_dir):
     print("\n  📝 CFPB Consumer Complaints")
     print("  "+"─"*40)
@@ -92,7 +84,7 @@ def collect_cfpb(output_dir):
     for term in terms:
         try:
             r=requests.get(base,params={"search_term":term,"size":100,
-                "date_received_min":"2024-01-01","sort":"created_date_desc"},timeout=TIMEOUT,verify=False)
+                "date_received_min":"2024-01-01","sort":"created_date_desc"},timeout=TIMEOUT)
             data=r.json()
         except Exception as e:
             print(f"    {term}: error - {e}");continue
