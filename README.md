@@ -83,7 +83,7 @@ No other framework does what HI. does. Here's why.
 ### The Scoring
 
 - **Five dimensions, one composite.** Human Consciousness, Understanding & Empathy, Moral & Ethical Conduct, Alive & Environmental, Natural Transparency. Equal weight. No single value outranks another. No other framework scores all five.
-- **24 sub-signals, all covered without AI.** Every sub-signal in the HUMAN methodology spec has a deterministic data source. 34 free, public, and government data sources including SEC EDGAR, EPA, CFPB, OSHA, FTC, EEOC, USPTO, FDA, DOL, FEC, CPSC, HIBP, iFixit, SBTi, GRI, and more. Zero AI. Zero black boxes.
+- **24 sub-signals, all covered without AI.** Every sub-signal in the HUMAN methodology spec has a deterministic data source. 40 free, public, and government data sources including SEC EDGAR, EPA, CFPB, OSHA, FTC, EEOC, USPTO, FDA, DOL, FEC, CPSC, HIBP, iFixit, SBTi, GRI, and more. Zero AI. Zero black boxes.
 - **Humanwashing™ detection.** Revenue/employee ratio, headcount vs AI spend, disclosed vs detected AI usage. No ESG framework detects performative human involvement.
 - **Simulated empathy detection.** Industry automation baselines, customer service channel analysis, employee culture signals. Nobody else distinguishes genuine human empathy from AI-simulated empathy.
 - **AI-specific environmental costs.** Training energy, inference energy, water cooling, rare earth extraction, e-waste, hardware lifecycle repairability. CDP and carbon tools don't isolate AI infrastructure costs.
