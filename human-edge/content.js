@@ -483,6 +483,9 @@ const DIM_DESCRIPTIONS = {
  */
 function openFullPanel(profile, filterResult, prefs) {
   try {
+  // Guard: if extension was reloaded, context is invalid — bail silently
+  if (typeof chrome === 'undefined' || !chrome.runtime || !chrome.runtime.id) return;
+
   const existing = document.getElementById('human-detail-panel');
   if (existing) existing.remove();
 
@@ -743,6 +746,7 @@ function openFullPanel(profile, filterResult, prefs) {
  * Open the full detail panel — injected into the page.
  */
 function openDetailPanel(profile, dim) {
+  if (typeof chrome === 'undefined' || !chrome.runtime || !chrome.runtime.id) return;
   // Remove existing panel
   const existing = document.getElementById('human-detail-panel');
   if (existing) existing.remove();
