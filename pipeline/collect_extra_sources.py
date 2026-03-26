@@ -65,7 +65,7 @@ def collect_cpsc(output_dir):
     for cid,search in searches.items():
         try:
             r=requests.get("https://www.saferproducts.gov/RestWebServices/Recall",
-                params={"format":"json","RecallTitle":search},timeout=TIMEOUT)
+                params={"format":"json","Manufacturer":search},timeout=TIMEOUT)
             if r.status_code!=200:continue
             try: recalls=r.json()
             except: recalls=[]
