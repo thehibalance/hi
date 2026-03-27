@@ -14,12 +14,9 @@ struct ContentView: View {
             Human100View()
                 .tabItem { Label("HUMAN 100", systemImage: "chart.bar.fill") }
                 .tag(2)
-            FeaturesView()
-                .tabItem { Label("Features", systemImage: "square.grid.2x2.fill") }
-                .tag(3)
             AboutView()
                 .tabItem { Label("About", systemImage: "info.circle.fill") }
-                .tag(4)
+                .tag(3)
         }
         .tint(.hiNavy)
     }
