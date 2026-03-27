@@ -266,9 +266,9 @@ def check_hi_balanced(company, threshold):
     Check 3 gates for Gold HI Grade status.
     Gate 1 — SCORE: Composite ≥ adaptive threshold
     Gate 2 — BALANCE: All 5 dimensions ≥ 42
-    Gate 3 — HONESTY: No Humanwashing™ flags AND Algorithmic Harm Index™ < 30
+    Gate 3 — INTEGRITY: No Humanwashing™ flags AND Algorithmic Harm Index™ < 30
     
-    Score, balance, and honesty. That's it.
+    Score, balance, and integrity. That's it.
     """
     dims = [company.get("D_H", 0), company.get("D_U", 0), company.get("D_M", 0), company.get("D_A", 0), company.get("D_N", 0)]
     below_42 = sum(1 for d in dims if d < 42)
@@ -280,7 +280,7 @@ def check_hi_balanced(company, threshold):
     gates = {
         "score": company.get("composite", 0) >= threshold,
         "balance": below_42 == 0,
-        "honesty": no_humanwashing and ahi_clean,
+        "integrity": no_humanwashing and ahi_clean,
     }
     
     return all(gates.values()), gates

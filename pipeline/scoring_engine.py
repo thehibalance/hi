@@ -565,7 +565,7 @@ def compute_hi_certified_threshold(all_scores):
 
 
 def check_hi_certified(record, threshold):
-    """Check all 10 gates for HI Certified status."""
+    """Check all 3 gates for HI Certified status."""
     dims = [record.get("D_H", 0), record.get("D_U", 0), record.get("D_M", 0), record.get("D_A", 0), record.get("D_N", 0)]
     below_42 = sum(1 for d in dims if d < 42)
     gates = {
