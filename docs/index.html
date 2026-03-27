@@ -91,7 +91,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div style="font-size:13px;color:#555;line-height:1.5">All 5 dimensions above 42 · no blind spots</div>
 </div>
 <div style="padding:16px 20px;border-left:3px solid #16A34A">
-<div style="font-size:10px;font-weight:700;color:#16A34A;letter-spacing:1.5px;margin-bottom:6px">HONESTY</div>
+<div style="font-size:10px;font-weight:700;color:#16A34A;letter-spacing:1.5px;margin-bottom:6px">INTEGRITY</div>
 <div style="font-size:13px;color:#555;line-height:1.5">No Humanwashing™ flags · Algorithmic Harm Index™ below 30</div>
 </div>
 </div>
@@ -603,7 +603,7 @@ h+='<div style="display:flex;align-items:center;gap:8px;padding:4px 0;font-size:
 var g2noData=!gateChecks[1][2];
 h+='<div style="margin-bottom:10px"><div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1px;margin-bottom:6px">⚖ BALANCE</div>';
 h+='<div style="display:flex;align-items:center;gap:8px;padding:4px 0;font-size:12px"><span style="color:'+(g2noData?'#9CA3AF':(gateChecks[1][1]?'#16A34A':'#DC2626'))+';font-size:14px">'+(g2noData?'○':(gateChecks[1][1]?'✓':'✗'))+'</span><span style="color:'+(g2noData?'#9CA3AF':(gateChecks[1][1]?'#444':'#DC2626'))+'">'+gateChecks[1][0]+(g2noData?' · needs data':'')+'</span></div></div>';
-h+='<div><div style="font-size:10px;font-weight:700;color:#16A34A;letter-spacing:1px;margin-bottom:6px">🔒 HONESTY</div>';
+h+='<div><div style="font-size:10px;font-weight:700;color:#16A34A;letter-spacing:1px;margin-bottom:6px">🔒 INTEGRITY</div>';
 h+=gateChecks.slice(2).map(function(g,i){var noData=!g[2];var color=noData?'#9CA3AF':(g[1]?'#16A34A':'#DC2626');var icon=noData?'○':(g[1]?'✓':'✗');var label=noData?g[0]+' · needs data':g[0];return'<div style="display:flex;align-items:center;gap:8px;padding:3px 0;font-size:12px"><span style="color:'+color+';font-size:14px">'+icon+'</span><span style="color:'+(noData?'#9CA3AF':(g[1]?'#444':'#DC2626'))+'">'+label+'</span></div>'}).join('')+'</div></div>';
 h+='<div class="detail-section"><h3>HUMAN Dimensions</h3>'+fullDims+'</div>';
 // ═══ HUMAN GENOME — Feature ═══
