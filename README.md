@@ -114,7 +114,7 @@ All 10 features inform the score. They are data systems, not gates. Gold HI Grad
 | **HUMAN Decay** | Predicts score drops via trailing regression | CDI of -8/quarter = freefall. Leading indicator for investors |
 | **HUMAN Heartbeat** | Real-time monitoring from 6 feeds | Turns a periodic report into a living system |
 | **HUMAN Watermark** | Detects performative vs genuine empathy | Cross-references external signals against internal reality |
-| **HUMAN Contagion** | Measures ethical ripple through industries | When Amazon cuts 27k jobs, does the sector follow? |
+| **HUMAN Contagion** | Measures ethical ripple through industries | 
 | **HUMAN Shield** | AI displacement resistance — 6-component moat | Craft, empathy, ethics, transparency, human capital, AI resistance |
 | **HUMAN Consciousness** | Personal ethical footprint | All computation local. No purchasing data transmitted |
 | **HUMAN 100 Index** | ETF-licensable top 100 | Dual-weight: market cap + ethical score. Rebalanced quarterly |
