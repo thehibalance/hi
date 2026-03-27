@@ -616,7 +616,7 @@ def build_index():
     print(f"  HI Balanced threshold: {threshold} | {balanced_count} companies qualified")
     
     # Generate/refresh HUMAN 100 from live data (always use ALL_COMPANIES for freshness)
-    eligible = [c for c in ALL_COMPANIES if c.get("composite", 0) > 0 and not c.get("humanwashing_flags")]
+    eligible = [c for c in ALL_COMPANIES if c.get("composite", 0) > 0 and not c.get("humanwashing_flags") and c.get("ticker")]
     eligible.sort(key=lambda x: (x.get("hi_balanced", False), x.get("composite", 0)), reverse=True)
     HUMAN100 = []
     for rank, c in enumerate(eligible[:100], 1):
