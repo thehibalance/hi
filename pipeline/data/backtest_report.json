@@ -1,15 +1,68 @@
 {
-  "generated_at": "2026-03-27T08:18:13.445203",
-  "data_days": 1,
+  "generated_at": "2026-03-29T08:09:28.253443",
+  "data_days": 3,
+  "trading_days": 3,
+  "period": {
+    "start": "2026-03-27",
+    "end": "2026-03-29"
+  },
   "status": "accumulating",
-  "message": "Collecting data since 2026-03-27. Backtest available after 5+ trading days.",
+  "returns": {
+    "human100_total": -4.61,
+    "spy_total": -1.79,
+    "alpha": -2.82,
+    "human100_final_value": 95.39,
+    "spy_final_value": 98.21
+  },
+  "daily_returns": [
+    {
+      "date": "2026-03-27",
+      "human100_return": -0.948,
+      "spy_return": -1.79,
+      "alpha": 0.842,
+      "human100_companies": 100
+    },
+    {
+      "date": "2026-03-28",
+      "human100_return": -1.844,
+      "spy_return": 0,
+      "alpha": -1.844,
+      "human100_companies": 100
+    },
+    {
+      "date": "2026-03-29",
+      "human100_return": -1.892,
+      "spy_return": 0,
+      "alpha": -1.892,
+      "human100_companies": 100
+    }
+  ],
+  "cumulative_series": [
+    {
+      "date": "2026-03-27",
+      "human100_value": 99.05,
+      "spy_value": 98.21,
+      "alpha_cumulative": 0.84
+    },
+    {
+      "date": "2026-03-28",
+      "human100_value": 97.23,
+      "spy_value": 98.21,
+      "alpha_cumulative": -0.98
+    },
+    {
+      "date": "2026-03-29",
+      "human100_value": 95.39,
+      "spy_value": 98.21,
+      "alpha_cumulative": -2.82
+    }
+  ],
   "human100_composition": [
     {
       "rank": 1,
       "company": "Johnson & Johnson",
       "ticker": "JNJ",
       "composite": 72,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -17,7 +70,6 @@
       "company": "PepsiCo, Inc.",
       "ticker": "PEP",
       "composite": 69,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -25,7 +77,6 @@
       "company": "Starbucks Corporation",
       "ticker": "SBUX",
       "composite": 69,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -33,7 +84,6 @@
       "company": "Coca-Cola Co",
       "ticker": "KO",
       "composite": 67,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -41,7 +91,6 @@
       "company": "Bank of America Corporation",
       "ticker": "BAC",
       "composite": 65,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -49,7 +98,6 @@
       "company": "Procter & Gamble Co",
       "ticker": "PG",
       "composite": 65,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -57,7 +105,6 @@
       "company": "General Motors Co",
       "ticker": "GM",
       "composite": 64,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -65,7 +112,6 @@
       "company": "NextEra Energy, Inc.",
       "ticker": "NEE",
       "composite": 64,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -73,7 +119,6 @@
       "company": "Pfizer, Inc.",
       "ticker": "PFE",
       "composite": 64,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -81,7 +126,6 @@
       "company": "Intel Corp",
       "ticker": "INTC",
       "composite": 63,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -89,7 +133,6 @@
       "company": "Boeing Co",
       "ticker": "BA",
       "composite": 62,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -97,7 +140,6 @@
       "company": "CBRE Group Inc",
       "ticker": "CBRE",
       "composite": 62,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -105,7 +147,6 @@
       "company": "Costco Wholesale Corporation",
       "ticker": "COST",
       "composite": 62,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -113,7 +154,6 @@
       "company": "Huntington Ingalls Industries Inc",
       "ticker": "HII",
       "composite": 62,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -121,7 +161,6 @@
       "company": "McDonald's Corporation",
       "ticker": "MCD",
       "composite": 62,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -129,7 +168,6 @@
       "company": "Netflix Inc",
       "ticker": "NFLX",
       "composite": 62,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -137,7 +175,6 @@
       "company": "Walmart Inc.",
       "ticker": "WMT",
       "composite": 62,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -145,7 +182,6 @@
       "company": "Advanced Micro Devices Inc",
       "ticker": "AMD",
       "composite": 61,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -153,7 +189,6 @@
       "company": "Home Depot, Inc.",
       "ticker": "HD",
       "composite": 61,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -161,7 +196,6 @@
       "company": "Lockheed Martin Corporation",
       "ticker": "LMT",
       "composite": 61,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -169,7 +203,6 @@
       "company": "Air Products and Chemicals Inc",
       "ticker": "APD",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -177,7 +210,6 @@
       "company": "Albemarle Corp",
       "ticker": "ALB",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -185,7 +217,6 @@
       "company": "Allstate Corp",
       "ticker": "ALL",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -193,7 +224,6 @@
       "company": "Altria Group Inc",
       "ticker": "MO",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -201,7 +231,6 @@
       "company": "American International Group Inc",
       "ticker": "AIG",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -209,7 +238,6 @@
       "company": "American Express Co",
       "ticker": "AXP",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -217,7 +245,6 @@
       "company": "Aon PLC",
       "ticker": "AON",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -225,7 +252,6 @@
       "company": "Archer-Daniels-Midland Co",
       "ticker": "ADM",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -233,7 +259,6 @@
       "company": "Bank of New York Mellon Corp",
       "ticker": "BK",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -241,7 +266,6 @@
       "company": "BlackRock Inc",
       "ticker": "BLK",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -249,7 +273,6 @@
       "company": "Boston Beer Company Inc",
       "ticker": "SAM",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -257,7 +280,6 @@
       "company": "Bristol-Myers Squibb Co",
       "ticker": "BMY",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -265,7 +287,6 @@
       "company": "Campbell's Co",
       "ticker": "CPB",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -273,7 +294,6 @@
       "company": "Capital One Financial Corp",
       "ticker": "COF",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -281,7 +301,6 @@
       "company": "Celanese Corp",
       "ticker": "CE",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -289,7 +308,6 @@
       "company": "Centene Corp",
       "ticker": "CNC",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -297,7 +315,6 @@
       "company": "CF Industries Holdings Inc",
       "ticker": "CF",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -305,7 +322,6 @@
       "company": "Charles Schwab Corp",
       "ticker": "SCHW",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -313,7 +329,6 @@
       "company": "Chipotle Mexican Grill Inc",
       "ticker": "CMG",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -321,7 +336,6 @@
       "company": "Chubb Ltd",
       "ticker": "CB",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -329,7 +343,6 @@
       "company": "Church & Dwight Co Inc",
       "ticker": "CHD",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -337,7 +350,6 @@
       "company": "Cigna Group",
       "ticker": "CI",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -345,7 +357,6 @@
       "company": "Clorox Co",
       "ticker": "CLX",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -353,7 +364,6 @@
       "company": "CME Group Inc",
       "ticker": "CME",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -361,7 +371,6 @@
       "company": "Coinbase Global Inc",
       "ticker": "COIN",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -369,7 +378,6 @@
       "company": "Colgate-Palmolive Co",
       "ticker": "CL",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -377,7 +385,6 @@
       "company": "Conagra Brands Inc",
       "ticker": "CAG",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -385,7 +392,6 @@
       "company": "Constellation Brands Inc",
       "ticker": "STZ",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -393,7 +399,6 @@
       "company": "Darden Restaurants Inc",
       "ticker": "DRI",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -401,7 +406,6 @@
       "company": "Domino's Pizza Inc",
       "ticker": "DPZ",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -409,7 +413,6 @@
       "company": "Dow Inc",
       "ticker": "DOW",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -417,7 +420,6 @@
       "company": "Dupont De Nemours Inc",
       "ticker": "DD",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -425,7 +427,6 @@
       "company": "Elevance Health Inc",
       "ticker": "ELV",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -433,7 +434,6 @@
       "company": "Eli Lilly and Co",
       "ticker": "LLY",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -441,7 +441,6 @@
       "company": "Estee Lauder Companies Inc",
       "ticker": "EL",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -449,7 +448,6 @@
       "company": "HCA Healthcare Inc",
       "ticker": "HCA",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -457,7 +455,6 @@
       "company": "Hershey Co",
       "ticker": "HSY",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -465,7 +462,6 @@
       "company": "Hormel Foods Corp",
       "ticker": "HRL",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -473,7 +469,6 @@
       "company": "Humana Inc",
       "ticker": "HUM",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -481,7 +476,6 @@
       "company": "IDEXX Laboratories Inc",
       "ticker": "IDXX",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -489,7 +483,6 @@
       "company": "Intercontinental Exchange Inc",
       "ticker": "ICE",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -497,7 +490,6 @@
       "company": "Kraft Heinz Co",
       "ticker": "KHC",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -505,7 +497,6 @@
       "company": "Linde PLC",
       "ticker": "LIN",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -513,7 +504,6 @@
       "company": "McKesson Corp",
       "ticker": "MCK",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -521,7 +511,6 @@
       "company": "MetLife Inc",
       "ticker": "MET",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -529,7 +518,6 @@
       "company": "Molson Coors Beverage Co",
       "ticker": "TAP",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -537,7 +525,6 @@
       "company": "Mondelez International Inc",
       "ticker": "MDLZ",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -545,7 +532,6 @@
       "company": "Monster Beverage Corp",
       "ticker": "MNST",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -553,7 +539,6 @@
       "company": "Morgan Stanley",
       "ticker": "MS",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -561,7 +546,6 @@
       "company": "Mosaic Co",
       "ticker": "MOS",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -569,7 +553,6 @@
       "company": "Philip Morris International Inc",
       "ticker": "PM",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -577,7 +560,6 @@
       "company": "PNC Financial Services Group Inc",
       "ticker": "PNC",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -585,7 +567,6 @@
       "company": "PPG Industries Inc",
       "ticker": "PPG",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -593,7 +574,6 @@
       "company": "Prudential Financial Inc",
       "ticker": "PRU",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -601,7 +581,6 @@
       "company": "Regeneron Pharmaceuticals Inc",
       "ticker": "REGN",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -609,7 +588,6 @@
       "company": "State Street Corp",
       "ticker": "STT",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -617,7 +595,6 @@
       "company": "Sysco Corp",
       "ticker": "SYY",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -625,7 +602,6 @@
       "company": "Travelers Companies Inc",
       "ticker": "TRV",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -633,7 +609,6 @@
       "company": "Truist Financial Corp",
       "ticker": "TFC",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -641,7 +616,6 @@
       "company": "US Bancorp",
       "ticker": "USB",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -649,7 +623,6 @@
       "company": "Vertex Pharmaceuticals Inc",
       "ticker": "VRTX",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -657,7 +630,6 @@
       "company": "Visa Inc",
       "ticker": "V",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -665,7 +637,6 @@
       "company": "Wells Fargo & Co",
       "ticker": "WFC",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -673,7 +644,6 @@
       "company": "Yum! Brands Inc",
       "ticker": "YUM",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -681,7 +651,6 @@
       "company": "Zoetis Inc",
       "ticker": "ZTS",
       "composite": 60,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -689,7 +658,6 @@
       "company": "Abbott Laboratories",
       "ticker": "ABT",
       "composite": 59,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -697,7 +665,6 @@
       "company": "AbbVie Inc",
       "ticker": "ABBV",
       "composite": 59,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -705,7 +672,6 @@
       "company": "American Airlines Group Inc",
       "ticker": "AAL",
       "composite": 59,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -713,7 +679,6 @@
       "company": "Amgen Inc",
       "ticker": "AMGN",
       "composite": 59,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -721,7 +686,6 @@
       "company": "DXC Technology Co",
       "ticker": "DXC",
       "composite": 59,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -729,7 +693,6 @@
       "company": "Ecolab Inc",
       "ticker": "ECL",
       "composite": 59,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -737,7 +700,6 @@
       "company": "Gilead Sciences Inc",
       "ticker": "GILD",
       "composite": 59,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -745,7 +707,6 @@
       "company": "International Flavors & Fragrances Inc",
       "ticker": "IFF",
       "composite": 59,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -753,7 +714,6 @@
       "company": "J M Smucker Co",
       "ticker": "SJM",
       "composite": 59,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -761,7 +721,6 @@
       "company": "Mastercard Inc",
       "ticker": "MA",
       "composite": 59,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -769,7 +728,6 @@
       "company": "McCormick & Company Inc",
       "ticker": "MKC",
       "composite": 59,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -777,7 +735,6 @@
       "company": "Merck & Co Inc",
       "ticker": "MRK",
       "composite": 59,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -785,7 +742,6 @@
       "company": "Tyson Foods Inc",
       "ticker": "TSN",
       "composite": 59,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -793,7 +749,6 @@
       "company": "UnitedHealth Group Incorporated",
       "ticker": "UNH",
       "composite": 59,
-      "hi_grade": "scored",
       "gold": false
     },
     {
@@ -801,14 +756,29 @@
       "company": "Alexandria Real Estate Equities Inc",
       "ticker": "ARE",
       "composite": 58,
-      "hi_grade": "scored",
       "gold": false
+    }
+  ],
+  "top_performers": [
+    {
+      "ticker": "2026-03-27",
+      "alpha": 0.842
+    },
+    {
+      "ticker": "2026-03-28",
+      "alpha": -1.844
+    },
+    {
+      "ticker": "2026-03-29",
+      "alpha": -1.892
     }
   ],
   "benchmark": "SPY (S&P 500 ETF)",
   "methodology": {
     "portfolio": "Equal-weight top 100 by HI Grade composite",
     "rebalance": "Quarterly",
-    "eligibility": "Publicly traded, 2+ verified data sources, no humanwashing flags"
-  }
+    "eligibility": "Publicly traded, 2+ verified data sources",
+    "inception": "2026-03-27"
+  },
+  "disclaimer": "Backtested results are hypothetical and do not represent actual trading. Past performance does not guarantee future results. Not financial advice."
 }
