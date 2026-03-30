@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <em>Built without AI to measure AI. 40 free data sources. 24 sub-signals. Zero black boxes.</em>
+  <em>Built without AI to measure AI. 42 free data sources. 24 sub-signals. Zero black boxes.</em>
 </p>
 
 ---
@@ -52,7 +52,7 @@ The first certification that certifies itself. You can't buy it. You can't apply
 
 ## What Makes This Different
 
-- **24 sub-signals, zero AI.** 40 free public and government data sources: SEC EDGAR, CFPB, OSHA, FEC, CPSC, FDA, HIBP, iFixit, SBTi, GRI, and more.
+- **24 sub-signals, zero AI.** 42 free public and government data sources: SEC EDGAR, CFPB, OSHA, FEC, CPSC, FDA, HIBP, iFixit, SBTi, GRI, and more.
 - **Humanwashing™ detection.** Revenue/employee ratio, headcount vs AI spend, disclosed vs detected AI usage.
 - **Algorithmic Harm Index™.** Cross-cutting penalty for algorithms that divide, addict, or manipulate.
 - **H.5 Augmentation Bonus.** Companies that retrain, redeploy, and deploy AI as copilots are rewarded — not just penalized for displacement.
@@ -78,7 +78,7 @@ The first certification that certifies itself. You can't buy it. You can't apply
 ┌───────────────────────────────────┐
 │        DETERMINISTIC CLOUD        │
 │     (Railway + GitHub Pages)      │
-│  • 40 data pipelines              │
+│  • 42 data pipelines              │
 │  • 32 API endpoints               │
 │  • History tracker + backtest     │
 │  • No AI. Pure math.              │
