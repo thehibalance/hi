@@ -313,7 +313,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
       ${filterWarning}
       ${buildGenomeStrip(profile)}
       <div class="human-badge__pulse" id="human-badge-pulse"></div>
-      ${profile.source === 'cloud' ? '<div class="human-badge__source">☁ Live score from thehibalance.org</div>' : '<div class="human-badge__source">📦 Local database</div>'}
+      
       <div class="human-badge__disclaimer">Estimated from public data. Not financial or legal advice.</div>
     </div>
   `;
@@ -598,7 +598,7 @@ function openFullPanel(profile, filterResult, prefs) {
     ${pulseHTML ? `<div style="padding:0 16px">${pulseHTML}</div>` : ''}
 
     <div style="padding:0 16px;margin-top:8px">
-      ${profile.source === 'cloud' ? '<div style="font-size:9px;color:#999;text-align:center">☁ Live score from thehibalance.org</div>' : '<div style="font-size:9px;color:#999;text-align:center">📦 Local database</div>'}
+      
     </div>
 
     <div class="human-panel__toggle-section">
@@ -637,13 +637,17 @@ function openFullPanel(profile, filterResult, prefs) {
       <span id="panelConnText">Checking connection...</span>
     </div>
 
-    <div style="padding:12px 16px;text-align:center">
+    <div style="padding:8px 16px;text-align:center">
+      <div style="display:flex;align-items:center;justify-content:center;gap:4px;margin-bottom:8px">
+        <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#16A34A"></span>
+        <span id="hiPipelineCountdown" style="font-size:10px;font-family:monospace;color:#888">Connected · API live</span>
+      </div>
       <a href="https://apps.apple.com/app/hi/id6761270596" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--navy,#1B3A5C);color:white;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:0.5px">🍎 Get the App</a>
     </div>
 
-    <div class="human-panel__footer">
-      <div>Think human intelligence.</div>
-      <div class="human-panel__footer-sub">thehibalance.org · The HI Balance</div>
+    <div class="human-panel__footer" style="background:#1B3A5C;padding:12px 16px;border-radius:0 0 12px 12px">
+      <div style="font-size:13px;font-weight:700;color:#C49B20;letter-spacing:0.5px">Think human intelligence.</div>
+      <div style="font-size:11px;color:white;margin-top:4px;opacity:0.8">thehibalance.org · The HI Balance</div>
     </div>
 
     <div class="human-panel__disclaimer">
@@ -690,6 +694,25 @@ function openFullPanel(profile, filterResult, prefs) {
       }
     });
   });
+
+  // Pipeline countdown timer — counts to midnight CST
+  const countdownEl = document.getElementById('hiPipelineCountdown');
+  if (countdownEl) {
+    const updateCountdown = () => {
+      const now = new Date();
+      const cst = new Date(now.toLocaleString('en-US', { timeZone: 'America/Chicago' }));
+      const tomorrow = new Date(cst);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      tomorrow.setHours(0, 0, 0, 0);
+      const diff = Math.max(0, Math.floor((tomorrow - cst) / 1000));
+      const h = String(Math.floor(diff / 3600)).padStart(2, '0');
+      const m = String(Math.floor((diff % 3600) / 60)).padStart(2, '0');
+      const s = String(diff % 60).padStart(2, '0');
+      countdownEl.textContent = diff > 0 ? `Connected · API live · Next update: ${h}:${m}:${s}` : 'Connected · Updating now...';
+    };
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
 
   // Master toggle
   const panelToggle = document.getElementById('panelMasterToggle');
@@ -857,9 +880,9 @@ function openDetailPanel(profile, dim) {
       <span id="panelConnText">Checking connection...</span>
     </div>
 
-    <div class="human-panel__footer">
-      <div>Think human intelligence.</div>
-      <div class="human-panel__footer-sub">thehibalance.org · The HI Balance</div>
+    <div class="human-panel__footer" style="background:#1B3A5C;padding:12px 16px;border-radius:0 0 12px 12px">
+      <div style="font-size:13px;font-weight:700;color:#C49B20;letter-spacing:0.5px">Think human intelligence.</div>
+      <div style="font-size:11px;color:white;margin-top:4px;opacity:0.8">thehibalance.org · The HI Balance</div>
     </div>
 
     <div class="human-panel__disclaimer">
