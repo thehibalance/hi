@@ -843,13 +843,22 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         algo_flags = [f"AH: {f}" for f in algo_harm["flags"][:3]]  # Top 3 flags
         hw_flags.extend(algo_flags)
 
+    # Confidence tier based on real data sources
+    real_sources = [s for s in all_sources if s not in ["Defaults", "Manual Scoring", "Seed Estimate"]]
+    if len(real_sources) >= 5:
+        confidence = "Verified"
+    elif len(real_sources) >= 2:
+        confidence = "Estimated"
+    else:
+        confidence = "Baseline"
+
     return {
         "company": company_name, "ticker": ticker, "industry": industry, "sic": sic,
         "sic_description": sec_data.get("n_signals", {}).get("sic_description", "") if sec_data else "",
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": "Estimated", "spec_version": "1.0.0",
+        "confidence": confidence, "spec_version": "1.1.0",
         "data_sources": all_sources,
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
         "humanwashing_flags": hw_flags,
