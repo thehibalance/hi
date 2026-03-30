@@ -548,10 +548,10 @@ function openFullPanel(profile, filterResult, prefs) {
   }
 
   panel.innerHTML = `
-    <div class="human-panel__header" style="background:white !important;border-bottom:1px solid #eee">
-      <div class="human-panel__back" id="panelBack" style="visibility:hidden;color:#1B3A5C">←</div>
-      <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-128.png')}" style="height:40px;width:auto;border-radius:6px" alt="HI."></div>
-      <div class="human-panel__close" id="panelClose" style="color:#1B3A5C">✕</div>
+    <div class="human-panel__header" style="background:#1B3A5C !important;border-bottom:none">
+      <div class="human-panel__back" id="panelBack" style="visibility:hidden;color:#C49B20">←</div>
+      <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-white-128.png')}" style="height:40px;width:auto;border-radius:6px" alt="HI."></div>
+      <div class="human-panel__close" id="panelClose" style="color:white">✕</div>
     </div>
 
     <div class="human-panel__company">
@@ -756,10 +756,10 @@ function openDetailPanel(profile, dim) {
   const tierColor = profile.tier.color;
 
   panel.innerHTML = `
-    <div class="human-panel__header" style="background:white !important;border-bottom:1px solid #eee">
-      <div class="human-panel__back" id="panelBack" style="color:#1B3A5C">← Back</div>
-      <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-128.png')}" style="height:40px;width:auto;border-radius:6px" alt="HI."></div>
-      <div class="human-panel__close" id="panelClose" style="color:#1B3A5C">✕</div>
+    <div class="human-panel__header" style="background:#1B3A5C !important;border-bottom:none">
+      <div class="human-panel__back" id="panelBack" style="color:#C49B20">← Back</div>
+      <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-white-128.png')}" style="height:40px;width:auto;border-radius:6px" alt="HI."></div>
+      <div class="human-panel__close" id="panelClose" style="color:white">✕</div>
     </div>
 
     <div class="human-panel__company">
