@@ -502,11 +502,21 @@ def build_index():
             if norm: NORM_INDEX[norm] = c
             ALL_COMPANIES.append(c)
             
-            # Index by domain
+            # Index by domain — prefer company whose name matches the domain
             for d in c.get("domains", []):
                 d = d.lower().strip()
-                if d and d not in COMPANIES:
+                if not d: continue
+                if d not in COMPANIES:
                     COMPANIES[d] = c
+                else:
+                    # Domain conflict — prefer the company whose name matches
+                    base = d.split(".")[0].lower()
+                    existing_name = COMPANIES[d].get("company", "").lower()
+                    new_name = c.get("company", "").lower()
+                    if base in new_name and base not in existing_name:
+                        COMPANIES[d] = c
+                    elif len(c.get("data_sources", [])) > len(COMPANIES[d].get("data_sources", [])):
+                        COMPANIES[d] = c
 
     # Load seed database
     seed_candidates = [

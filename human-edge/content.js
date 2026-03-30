@@ -550,7 +550,7 @@ function openFullPanel(profile, filterResult, prefs) {
   panel.innerHTML = `
     <div class="human-panel__header" style="background:#1B3A5C !important;border-bottom:none">
       <div class="human-panel__back" id="panelBack" style="visibility:hidden;color:#C49B20">←</div>
-      <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-white-128.png')}" style="height:40px;width:auto;border-radius:6px" alt="HI."></div>
+      <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-128.png')}" style="height:40px;width:auto;border-radius:6px;filter:brightness(0) invert(1)" alt="HI."></div>
       <div class="human-panel__close" id="panelClose" style="color:white">✕</div>
     </div>
 
@@ -758,7 +758,7 @@ function openDetailPanel(profile, dim) {
   panel.innerHTML = `
     <div class="human-panel__header" style="background:#1B3A5C !important;border-bottom:none">
       <div class="human-panel__back" id="panelBack" style="color:#C49B20">← Back</div>
-      <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-white-128.png')}" style="height:40px;width:auto;border-radius:6px" alt="HI."></div>
+      <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-128.png')}" style="height:40px;width:auto;border-radius:6px;filter:brightness(0) invert(1)" alt="HI."></div>
       <div class="human-panel__close" id="panelClose" style="color:white">✕</div>
     </div>
 
