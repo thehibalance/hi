@@ -50,7 +50,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 .app-features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}.app-feat{text-align:center;padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light)}.app-feat-icon{font-size:36px;margin-bottom:10px}.app-feat-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px}.app-feat-desc{font-size:12px;color:#666}
 @media(max-width:768px){.feature-grid,.price-grid,.app-features{grid-template-columns:1fr}.nav-links{gap:8px;flex-wrap:wrap}}
 </style></head><body>
-<nav><div class="nav-inner"><div style="display:flex;align-items:center;gap:24px"><div class="nav-dropdown" style="padding:0"><span class="nav-brand" onclick="showPage('home')" style="position:relative;display:flex;align-items:center;gap:8px"><img src="/logo-512-white.png" alt="HI." style="height:32px;width:auto"></span><div class="nav-dd-menu" style="left:0;transform:none"><span class="nav-dd-item" onclick="showPage('app')">📱 HI App</span><span class="nav-dd-item" onclick="showPage('extension')">⬇ HI Extension</span><span class="nav-dd-item" onclick="showPage('api')">⚡ HI API</span></div></div><div class="nav-links">
+<nav><div class="nav-inner"><div style="display:flex;align-items:center;gap:24px"><div class="nav-dropdown" style="padding:0"><span class="nav-brand" onclick="showPage('home')" style="position:relative;display:flex;align-items:center;gap:8px"><img src="/logo-512-white.png" alt="HI." style="height:32px;width:auto"></span><div class="nav-dd-menu" style="left:0;transform:none"><span class="nav-dd-item" onclick="showPage('app')">📱 App</span><span class="nav-dd-item" onclick="showPage('extension')">🌐 Extension</span><span class="nav-dd-item" onclick="showPage('api')">⚡ API</span></div></div><div class="nav-links">
 <div class="nav-dropdown"><span class="nav-dd-trigger">HUMAN ▾</span><div class="nav-dd-menu"><span class="nav-dd-item" onclick="showPage('human100')">🏆 HUMAN 100 Index</span><span class="nav-dd-item" onclick="showPage('heartbeat')">♥ HUMAN Heartbeat</span><span class="nav-dd-item" onclick="showPage('decay')">💀 HUMAN Decay</span><span class="nav-dd-item" onclick="showPage('moat')">🛡 HUMAN Shield</span><span class="nav-dd-item" onclick="showPage('arbitrage')">🔍 HUMAN Lens</span><span class="nav-dd-item" onclick="showPage('genome')">🧬 HUMAN Genome</span><span class="nav-dd-item" onclick="showPage('contagion')">🌊 HUMAN Contagion</span><span class="nav-dd-item" onclick="showPage('watermark')">🔬 HUMAN Watermark</span><span class="nav-dd-item" onclick="showPage('wave')">📢 HUMAN Wave</span><span class="nav-dd-item" onclick="showPage('consciousness')">📊 HUMAN Consciousness</span></div></div>
 <span class="nav-link" id="nav-about" onclick="showPage('about')">About HI</span>
 <span class="nav-link" id="nav-contact" onclick="showPage('contact')">Contact HI</span>
@@ -147,8 +147,8 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 </div>
 
 <div style="display:flex;gap:16px;justify-content:center;margin-bottom:60px;flex-wrap:wrap">
-<button class="btn btn-secondary" onclick="showPage('extension')"><span class="btn-icon">⬇</span> Get the Extension</button>
-<button class="btn btn-secondary" onclick="showPage('app')"><span class="btn-icon">📱</span> Get the App</button>
+<button class="btn btn-secondary" onclick="window.open('https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg','_blank')"><span class="btn-icon">🌐</span> Add to Chrome</button>
+<button class="btn btn-secondary" onclick="window.open('https://apps.apple.com/app/hi/id6761270596','_blank')"><span class="btn-icon">🍎</span> Get the App</button>
 <button class="btn btn-secondary" onclick="showPage('api')"><span class="btn-icon">⚡</span> Get the API</button>
 </div>
 </div>
@@ -156,8 +156,9 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div id="page-detail" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px"><div class="detail" id="detailContent"></div></div>
 <div id="page-extension" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
 <div class="subpage">
-<h1>HI. Browser Extension <span style="font-size:14px;font-weight:600;color:#16A34A;background:#16A34A15;padding:4px 12px;border-radius:12px;vertical-align:middle">FREE</span></h1>
+<h1><img src="/logo-512-white.png" alt="HI." style="height:36px;vertical-align:middle;background:var(--navy);border-radius:8px;padding:4px 8px"> Browser Extension <span style="font-size:14px;font-weight:600;color:#16A34A;background:#16A34A15;padding:4px 12px;border-radius:12px;vertical-align:middle">FREE</span></h1>
 <p class="subpage-sub">See every company's HI Grade™ as you browse. Zero AI. Zero tracking. Pure transparency.</p>
+<div style="text-align:center;margin-bottom:24px"><button class="btn btn-primary" onclick="window.open('https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg','_blank')" style="font-size:16px;padding:14px 32px"><span class="btn-icon">🌐</span> Add to Chrome — Free</button></div>
 
 <div class="mockup-box">
 <div class="mockup-label">Extension Preview — pepsi.com</div>
@@ -196,33 +197,29 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div class="feature-card"><div class="feature-icon">☁️</div><div class="feature-title">Cloud + Local</div><div class="feature-desc">Works offline with a built-in database of 200+ seed companies. When connected, pulls live scores from the HI API for 815+ brands.</div></div>
 </div>
 
-<div style="text-align:center;margin-top:32px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap"><button class="btn btn-primary" onclick="window.open('https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg','_blank')" style="font-size:15px;padding:14px 28px"><span class="btn-icon">🌐</span> Add to Chrome — Free</button><button class="btn btn-secondary" style="opacity:0.5;cursor:not-allowed;pointer-events:none"><span class="btn-icon">🧭</span> Safari — Coming Soon</button></div>
+<div style="text-align:center;margin-top:32px"><button class="btn btn-secondary" style="opacity:0.5;cursor:not-allowed;pointer-events:none"><span class="btn-icon">🧭</span> Safari — Coming Soon</button></div>
 </div>
 </div>
 
 <div id="page-app" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
 <div class="subpage">
-<h1>HI. Mobile App <span style="font-size:14px;font-weight:600;color:#16A34A;background:#16A34A15;padding:4px 12px;border-radius:12px;vertical-align:middle">FREE</span></h1>
+<h1><img src="/logo-512-white.png" alt="HI." style="height:36px;vertical-align:middle;background:var(--navy);border-radius:8px;padding:4px 8px"> Mobile App <span style="font-size:14px;font-weight:600;color:#16A34A;background:#16A34A15;padding:4px 12px;border-radius:12px;vertical-align:middle">FREE</span></h1>
 <p class="subpage-sub">The HI Grade™ in your pocket. Available now on iOS.</p>
 
-<div class="app-teaser">
-<h2>Search. Score. Find the balance.</h2>
-<p>Score any company's humanity across five dimensions. Track the brands you care about. See the HUMAN 100 — the top 100 most human companies.</p>
 <div style="text-align:center;margin:24px 0">
 <a href="https://apps.apple.com/app/hi/id6761270596" target="_blank" style="text-decoration:none;display:inline-block"><div style="background:#000;border-radius:14px;padding:14px 32px;display:inline-flex;align-items:center;gap:12px;transition:transform .2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"><span style="font-size:28px">🍎</span><div style="text-align:left"><div style="font-size:10px;color:#aaa;letter-spacing:0.5px">Download on the</div><div style="font-size:18px;font-weight:700;color:#fff">App Store</div></div></div></a>
 </div>
-</div>
 
-<div class="app-features">
-<div class="app-feat"><div class="app-feat-icon">🔍</div><div class="app-feat-title">Company Search</div><div class="app-feat-desc">Search 827+ brands and see full HUMAN dimension breakdowns.</div></div>
-<div class="app-feat"><div class="app-feat-icon">🏆</div><div class="app-feat-title">HUMAN 100</div><div class="app-feat-desc">The top 100 most human public companies. Updated daily.</div></div>
-<div class="app-feat"><div class="app-feat-icon">⭐</div><div class="app-feat-title">Watchlist</div><div class="app-feat-desc">Track the companies you care about. See scores change over time.</div></div>
-<div class="app-feat"><div class="app-feat-icon">📊</div><div class="app-feat-title">3 Gates</div><div class="app-feat-desc">Score, Balance, Integrity — see exactly which gates each company passes.</div></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:24px">
+<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light)"><div style="font-size:24px;margin-bottom:8px">🔍</div><div style="font-weight:700;color:var(--navy);font-size:14px">Company Search</div><div style="font-size:12px;color:var(--muted);margin-top:4px">Search 827+ brands and see full HUMAN dimension breakdowns.</div></div>
+<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light)"><div style="font-size:24px;margin-bottom:8px">🏆</div><div style="font-weight:700;color:var(--navy);font-size:14px">HUMAN 100</div><div style="font-size:12px;color:var(--muted);margin-top:4px">The top 100 most human public companies. Updated daily.</div></div>
+<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light)"><div style="font-size:24px;margin-bottom:8px">⭐</div><div style="font-weight:700;color:var(--navy);font-size:14px">Watchlist</div><div style="font-size:12px;color:var(--muted);margin-top:4px">Track the companies you care about. See scores change over time.</div></div>
+<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light)"><div style="font-size:24px;margin-bottom:8px">🔒</div><div style="font-weight:700;color:var(--navy);font-size:14px">Score · Balance · Integrity</div><div style="font-size:12px;color:var(--muted);margin-top:4px">See exactly which of the 3 gates each company passes on its way to Gold.</div></div>
 </div>
 
 <div style="margin-top:32px;padding:24px;background:var(--white);border-radius:16px;border:1px solid var(--light)">
 <h3 style="font-family:'DM Serif Display';font-size:18px;color:var(--navy);margin-bottom:16px;text-align:center">Coming Next</h3>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
 <div style="text-align:center;padding:16px;background:#F8FAFC;border-radius:12px"><div style="font-size:24px;margin-bottom:8px">📱</div><div style="font-weight:700;color:var(--navy);font-size:13px">Barcode Scanner</div><div style="font-size:11px;color:var(--muted);margin-top:4px">Scan any product in-store</div></div>
 <div style="text-align:center;padding:16px;background:#F8FAFC;border-radius:12px"><div style="font-size:24px;margin-bottom:8px">📄</div><div style="font-weight:700;color:var(--navy);font-size:13px">Document Scanner</div><div style="font-size:11px;color:var(--muted);margin-top:4px">Know what you're signing</div></div>
 <div style="text-align:center;padding:16px;background:#F8FAFC;border-radius:12px"><div style="font-size:24px;margin-bottom:8px">📤</div><div style="font-weight:700;color:var(--navy);font-size:13px">Share Cards</div><div style="font-size:11px;color:var(--muted);margin-top:4px">Spread the balance</div></div>
@@ -240,7 +237,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 
 <div id="page-api" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
 <div class="subpage">
-<h1>HI. API</h1>
+<h1><img src="/logo-512-white.png" alt="HI." style="height:36px;vertical-align:middle;background:var(--navy);border-radius:8px;padding:4px 8px"> API</h1>
 <p class="subpage-sub">Integrate HI Grades™ into procurement platforms, investment tools, ESG dashboards, and consumer products.</p>
 
 <div class="about-card" style="text-align:center;border-left:4px solid var(--navy)">
@@ -475,7 +472,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div style="text-align:center;margin-top:24px;font-size:11px;color:var(--muted)">HUMAN Genome™ · Morf Innovations LLC</div>
 </div>
 </div>
-<div id="page-about" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px"><div class="about"><h1>About HI.</h1><p class="about-sub">Think human intelligence.</p>
+<div id="page-about" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px"><div class="about"><h1>About <img src="/logo-512-white.png" alt="HI." style="height:36px;vertical-align:middle;background:var(--navy);border-radius:8px;padding:4px 8px"></h1><p class="about-sub">Think human intelligence.</p>
 <div class="about-card"><p><strong>HI.</strong> measures the balance between <strong>Human Intelligence</strong> and <strong>Artificial Intelligence</strong> at every company. We score organizations across five dimensions — the things AI can't be: <strong>conscious, empathetic, ethical, alive, and transparent.</strong></p><p>Every company gets a <strong>HI Grade™</strong> — a score from 0 to 100. Pass all 3 gates — score, balance, and integrity — and you're <span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#C49B20;vertical-align:middle;overflow:hidden"><img src="/logo-512-white.png" alt="HI." style="height:14px;width:auto"></span> <strong style="color:#C49B20">gold HI Grade</strong> — the highest standard.</p><p><strong>We're not anti-AI. We're pro-balance.</strong> Brands that empower humans score well. Brands that replace, divide, or addict them score poorly. <strong style="color:#C49B20">We reward companies that use AI to empower their people.</strong></p></div>
 <div class="about-card"><h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">The HUMAN Framework</h3><div class="about-dim"><span class="about-dim-icon">🧠</span><div><div class="about-dim-name">H — Human Consciousness</div><div class="about-dim-desc">Creative agency, craft, accountability vs. AI automation</div></div></div><div class="about-dim"><span class="about-dim-icon">💙</span><div><div class="about-dim-name">U — Understanding & Empathy</div><div class="about-dim-desc">Genuine care vs. simulated empathy</div></div></div><div class="about-dim"><span class="about-dim-icon">⚖️</span><div><div class="about-dim-name">M — Moral & Ethical Conduct</div><div class="about-dim-desc">Principled action, CEO accountability vs. optimization-at-all-costs</div></div></div><div class="about-dim"><span class="about-dim-icon">🌍</span><div><div class="about-dim-name">A — Alive & Environmental</div><div class="about-dim-desc">True ecological cost including AI infrastructure</div></div></div><div class="about-dim"><span class="about-dim-icon">🔍</span><div><div class="about-dim-name">N — Natural Transparency</div><div class="about-dim-desc">Honest disclosure vs. humanwashing</div></div></div></div>
 <div class="about-card"><h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">📈 Dynamic Hybrid Scoring Model</h3><p>The gold threshold isn't a fixed number. It's <strong>mean + 2 standard deviations</strong> of every scored company — recalculated quarterly. <strong>Companies force each other to improve.</strong> Two failsafes: a hard floor (never below 55) and a ratchet (can only go up, never down). <strong>The math decides, not us.</strong></p></div>
