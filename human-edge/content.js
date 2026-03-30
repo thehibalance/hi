@@ -500,16 +500,16 @@ function openFullPanel(profile, filterResult, prefs) {
     const insights = buildDimInsights(d, profile);
     return `
       <div style="margin-bottom:12px">
-        <div class="human-panel__dim-row" style="cursor:pointer" onclick="var det=this.nextElementSibling;det.style.display=det.style.display==='block'?'none':'block'">
+        <div class="human-panel__dim-row human-dim-toggle" style="cursor:pointer" data-dim="${d}">
           <span class="human-panel__row-icon">${info.icon}</span>
           <span class="human-panel__row-label">${d.toUpperCase()}</span>
           <div class="human-panel__row-bar">
             <div class="human-panel__row-fill" style="width: ${s}%; background: ${c}"></div>
           </div>
           <span class="human-panel__row-score" style="color: ${c}">${s}</span>
-          <span style="font-size:10px;color:#999;margin-left:4px">▾</span>
+          <span class="human-dim-arrow" style="font-size:10px;color:#999;margin-left:4px">▾</span>
         </div>
-        <div style="display:none;padding:8px 12px;background:#f8f9fa;border-radius:0 0 8px 8px;margin-top:-2px">
+        <div class="human-dim-detail" style="display:none;padding:8px 12px;background:#f8f9fa;border-radius:0 0 8px 8px;margin-top:-2px">
           <div style="font-size:11px;color:#555;margin-bottom:6px">${info.what}</div>
           ${insights}
         </div>
@@ -677,6 +677,19 @@ function openFullPanel(profile, filterResult, prefs) {
 
   // Close panel
   document.getElementById('panelClose').addEventListener('click', () => panel.remove());
+
+  // Dimension expand/collapse toggles (CSP-safe, no inline onclick)
+  panel.querySelectorAll('.human-dim-toggle').forEach(row => {
+    row.addEventListener('click', () => {
+      const detail = row.nextElementSibling;
+      const arrow = row.querySelector('.human-dim-arrow');
+      if (detail) {
+        const isOpen = detail.style.display === 'block';
+        detail.style.display = isOpen ? 'none' : 'block';
+        if (arrow) arrow.textContent = isOpen ? '▾' : '▴';
+      }
+    });
+  });
 
   // Master toggle
   const panelToggle = document.getElementById('panelMasterToggle');
