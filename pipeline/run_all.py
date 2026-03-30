@@ -62,18 +62,27 @@ def main():
         return
 
     if not args.features_only:
-        # Step 1: Collect fresh data from all 34 sources
+        # Step 1: Collect fresh data from all 42 sources
         if not args.skip_collect:
             inc_flag = f" --incremental {args.incremental}" if args.incremental else ""
-            run(f"python3 data_collector.py --all --data {args.output} --workers {args.workers}{inc_flag}", "Step 1: Data Collection (34 sources)")
+            run(f"python3 data_collector.py --all --data {args.output} --workers {args.workers}{inc_flag}", "Step 1: Data Collection (42 sources)")
         else:
             print("\n  ⏭ Step 1: Data collection skipped (--skip-collect)")
-        # Step 1b: Government data (CFPB)
-        run(f"python3 collect_gov_data.py --cfpb --output {args.output}/gov --subsignals {args.output}/subsignals", "Step 1b: CFPB Consumer Complaints")
-         # Step 1c: Extra sources (FEC, CPSC, FDA, HIBP)
-        run(f"python3 collect_extra_sources.py --all --output {args.output}/gov --subsignals {args.output}/subsignals", "Step 1c: FEC + CPSC + FDA + HIBP")
+        # Step 1b: Government data (CFPB + OSHA)
+        run(f"python3 collect_gov_data.py --all --output {args.output}/gov --subsignals {args.output}/subsignals", "Step 1b: CFPB + OSHA (Government Data)")
+         # Step 1c: Extra sources (FEC, CPSC, FDA, EPA, Patents)
+        run(f"python3 collect_extra_sources.py --all --output {args.output}/gov --subsignals {args.output}/subsignals", "Step 1c: FEC + CPSC + FDA + EPA")
+        # Step 1d: Sub-signal scoring (HIBP, hardware, land)
+        if Path("subsignal_pipelines.py").exists():
+            run(f"python3 subsignal_pipelines.py", "Step 1d: Sub-Signal Scoring (HIBP, Hardware, Land)")
+        # Step 1e: Extended pipelines (OSHA, FTC, DOL, BBB, EEOC, Patents, FDA, Pay Ratio, Insider, GRI, SBTi, Charity)
+        if Path("extended_pipelines.py").exists():
+            run(f"python3 extended_pipelines.py", "Step 1e: Extended Pipelines (12 signals for 300+ companies)")
+        # Step 1f: B Corp + Charity Navigator
+        if Path("bcorp_charity_pipeline.py").exists():
+            run(f"python3 bcorp_charity_pipeline.py", "Step 1f: B Corp + Charity Navigator")
         # Step 2: Run scoring engine
-        run(f"python3 scoring_engine.py --output {args.data}", "Step 2: Scoring Engine (24 sub-signals + algo harm)")
+        run(f"python3 scoring_engine.py --output {args.data}", "Step 2: Scoring Engine (24 sub-signals, 42 sources)")
     
     # Step 3: Merge seed data (private companies)
     seed_path = Path("../human-edge/lib/seed-data.js")
@@ -97,7 +106,7 @@ def main():
     if Path("human100_index.py").exists():
         run(f"python3 human100_index.py --data {args.data} --output {args.output}/human100", "Step 6: HUMAN 100 Index")
     else:
-        print("\n  ⏭ Step 6: HUMAN 100 not found, skipinn")
+        print("\n  ⏭ Step 6: HUMAN 100 not found, skipping")
 
     # Step 7: Validate scores (3-layer defense))
     from validate_pipeline import validate_all    
