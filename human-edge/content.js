@@ -638,7 +638,7 @@ function openFullPanel(profile, filterResult, prefs) {
     </div>
 
     <div style="padding:12px 16px;text-align:center">
-      <a href="https://thehibalance.org" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--navy,#1B3A5C);color:white;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:0.5px">827+ companies · API live · thehibalance.org</a>
+      <a href="https://apps.apple.com/app/hi/id6761270596" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--navy,#1B3A5C);color:white;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:0.5px">🍎 Get the App</a>
     </div>
 
     <div class="human-panel__footer">
