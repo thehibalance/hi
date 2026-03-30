@@ -120,8 +120,7 @@
     profile.balancedThreshold = recheck.threshold;  // backward compat
     profile.grade = recheck.gold ? "Gold HI Grade" : "Scored";
     profile.scoreColor = recheck.gold ? '#C49B20' : HumanEngine.getScoreColor(profile.composite, recheck.threshold);
-    const t = recheck.threshold || 62;
-    profile.tier = { color: profile.scoreColor, satire: recheck.gold ? "Passed all 3 gates. Score, balance, and honesty. The math decides, not us." : (profile.composite >= t ? "Almost gold. The humans are still in charge here." : profile.composite >= 42 ? "42 — the minimum for balance. The answer was always 42." : "DON'T PANIC. But maybe start asking questions.") };
+    profile.tier = { color: profile.scoreColor, satire: recheck.gold ? "Humans and tech, in harmony. Gold HI Grade earned." : "" };
   }
   
   // Attach heartbeat data
@@ -190,12 +189,8 @@ function createBadge(profile, filterResult, prefs) {
     }
   });
 
-  // Dark mode on mini pill
-  try {
-    chrome.storage.local.get('darkMode', (r) => {
-      if (r.darkMode) { badge.classList.add('human-badge--dark'); }
-    });
-  } catch(e) {}
+  // Dark mode disabled
+  // try { chrome.storage.local.get('darkMode', ...); } catch(e) {}
 
   document.body.appendChild(badge);
 
@@ -483,9 +478,6 @@ const DIM_DESCRIPTIONS = {
  */
 function openFullPanel(profile, filterResult, prefs) {
   try {
-  // Guard: if extension was reloaded, context is invalid — bail silently
-  if (typeof chrome === 'undefined' || !chrome.runtime || !chrome.runtime.id) return;
-
   const existing = document.getElementById('human-detail-panel');
   if (existing) existing.remove();
 
@@ -556,14 +548,14 @@ function openFullPanel(profile, filterResult, prefs) {
   }
 
   panel.innerHTML = `
-    <div class="human-panel__header">
-      <div class="human-panel__back" id="panelBack" style="visibility:hidden">←</div>
+    <div class="human-panel__header" style="background:white !important;border-bottom:1px solid #eee">
+      <div class="human-panel__back" id="panelBack" style="visibility:hidden;color:#1B3A5C">←</div>
       <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-128.png')}" style="height:40px;width:auto;border-radius:6px" alt="HI."></div>
-      <div class="human-panel__close" id="panelClose">✕</div>
+      <div class="human-panel__close" id="panelClose" style="color:#1B3A5C">✕</div>
     </div>
 
     <div class="human-panel__company">
-      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<img src="' + chrome.runtime.getURL('icons/icon-white-128.png') + '" style="height:36px;width:auto" alt="HI.">' : profile.composite}</div>
+      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px;line-height:1">✦</span>' : profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
         <div class="human-panel__tier" style="color: ${scoreColor}">HI Grade™${pulseDotHTML}</div>
@@ -646,7 +638,7 @@ function openFullPanel(profile, filterResult, prefs) {
     </div>
 
     <div style="padding:12px 16px;text-align:center">
-      <a href="https://thehibalance.org" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--navy,#1B3A5C);color:white;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:0.5px">📱 Get the App · thehibalance.org</a>
+      <a href="https://thehibalance.org" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--navy,#1B3A5C);color:white;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:0.5px">827+ companies · API live · thehibalance.org</a>
     </div>
 
     <div class="human-panel__footer">
@@ -655,7 +647,7 @@ function openFullPanel(profile, filterResult, prefs) {
     </div>
 
     <div class="human-panel__disclaimer">
-      Gold HI Grade threshold (currently ${Math.round(profile.balancedThreshold || 62)}) is adaptive — recalculated quarterly as mean + 2 standard deviations. 3 gates: Score, Balance, Honesty. Scores are estimated from public data. Not financial or legal advice.
+      Gold HI Grade threshold (currently ${Math.round(profile.balancedThreshold || 62)}) is adaptive — recalculated quarterly as mean + 2 standard deviations. 3 gates: Score, Balance, Integrity. Scores are estimated from public data. Not financial or legal advice.
     </div>
   `;
 
@@ -691,7 +683,6 @@ function openFullPanel(profile, filterResult, prefs) {
   const panelToggleLabel = document.getElementById('panelToggleLabel');
   const panelToggleSub = document.getElementById('panelToggleSub');
 
-  if (panelToggle && panelToggleLabel && panelToggleSub) {
   loadPreferences().then(currentPrefs => {
     panelToggle.checked = currentPrefs.masterToggle;
     panelToggleLabel.textContent = currentPrefs.masterToggle ? 'Full View' : 'AI Filter Active';
@@ -738,7 +729,6 @@ function openFullPanel(profile, filterResult, prefs) {
     if (eq) eq.style.display = panelToggle.checked ? 'none' : 'block';
     try { chrome.storage.sync.set(currentPrefs); } catch (e) {}
   });
-  } // end if (panelToggle && panelToggleLabel && panelToggleSub)
   } catch(err) { console.error('HI. panel error:', err); }
 }
 
@@ -746,7 +736,6 @@ function openFullPanel(profile, filterResult, prefs) {
  * Open the full detail panel — injected into the page.
  */
 function openDetailPanel(profile, dim) {
-  if (typeof chrome === 'undefined' || !chrome.runtime || !chrome.runtime.id) return;
   // Remove existing panel
   const existing = document.getElementById('human-detail-panel');
   if (existing) existing.remove();
@@ -761,14 +750,14 @@ function openDetailPanel(profile, dim) {
   const tierColor = profile.tier.color;
 
   panel.innerHTML = `
-    <div class="human-panel__header">
-      <div class="human-panel__back" id="panelBack">← Back</div>
+    <div class="human-panel__header" style="background:white !important;border-bottom:1px solid #eee">
+      <div class="human-panel__back" id="panelBack" style="color:#1B3A5C">← Back</div>
       <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-128.png')}" style="height:40px;width:auto;border-radius:6px" alt="HI."></div>
-      <div class="human-panel__close" id="panelClose">✕</div>
+      <div class="human-panel__close" id="panelClose" style="color:#1B3A5C">✕</div>
     </div>
 
     <div class="human-panel__company">
-      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<img src="' + chrome.runtime.getURL('icons/icon-white-128.png') + '" style="height:36px;width:auto" alt="HI.">' : profile.composite}</div>
+      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px;line-height:1">✦</span>' : profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
         <div class="human-panel__tier" style="color: ${scoreColor}">HI Grade™${pulseDotHTML}</div>
@@ -861,7 +850,7 @@ function openDetailPanel(profile, dim) {
     </div>
 
     <div class="human-panel__disclaimer">
-      Gold HI Grade threshold is adaptive — recalculated quarterly as mean + 2 standard deviations. As companies improve, the bar rises. 3 gates: Score, Balance, Honesty. Scores are estimated from public data. Not financial or legal advice.
+      Gold HI Grade threshold is adaptive — recalculated quarterly as mean + 2 standard deviations. As companies improve, the bar rises. 3 gates: Score, Balance, Integrity. Scores are estimated from public data. Not financial or legal advice.
     </div>
   `;
 
@@ -883,11 +872,11 @@ function openDetailPanel(profile, dim) {
         text.textContent = `Connected · ${resp.companies||0} companies · API live`;
       } else {
         dot.style.color = '#D97706';
-        text.textContent = 'Offline · Using local database (200 companies)';
+        text.textContent = 'Offline · Using local database (206 companies)';
       }
     } catch (e) {
       dot.style.color = '#D97706';
-      text.textContent = 'Offline · Using local database (200 companies)';
+      text.textContent = 'Offline · Using local database (206 companies)';
     }
   })();
 
