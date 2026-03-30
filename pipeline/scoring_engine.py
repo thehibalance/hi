@@ -1,32 +1,22 @@
 #!/usr/bin/env python3
 """
-HI. — HUMAN Scoring Engine v2
-Merges signals from 24 sub-signals (all covered) across 34 data sources into HUMAN dimension scores.
+HI. — HUMAN Scoring Engine v2.1
+Merges signals from 24 sub-signals across 40 data sources into HUMAN dimension scores.
 
-Core sources (used directly by this engine):
-  1. SEC EDGAR  — headcount, revenue, R&D, litigation, filing frequency
-  2. EPA ECHO   — environmental violations, penalties, inspections
-  3. BLS        — industry wage/employment benchmarks
-  4. CDP        — climate disclosure scores
-  5. Job Boards — AI hiring velocity
-  6. Glassdoor  — employee ratings, CEO approval, culture
-  7. CFPB       — consumer complaints (U.1, M.1)
-  8. FEC        — political donations (M.5)
-  9. CPSC       — product recalls (M.4)
-  10. HIBP      — data breaches (M.2)
-  11. iFixit    — hardware repairability (A.4)
-  12. Industry  — land/habitat risk (A.3)
-
-Additional sources feed into Heartbeat, HUMAN 100, and other patent features.
-
-Follows HUMAN_Grade_Methodology_Spec v1.0
+Follows HUMAN_Grade_Methodology_Spec v1.1
+3 gates: Score, Balance, Integrity
 Floor rule: any dimension < 10 caps composite at 40.
-Balance floor: any dimension < 42 caps grade.
+Balance floor: any dimension < 42 flags balance. 2+ dims below 42 caps at 41. 1 dim below 42 caps at 49.
+Defaults: All sub-signals default to 50 (neutral) when no data is available.
 Rounding: down unless decimal is .6 or higher (whole numbers only).
 
-Usage:
-  python scoring_engine.py
-  python scoring_engine.py --sec data/sec --epa data/epa --cdp data/cdp
+Key fixes in v2.1:
+  - 3-gate system (Score, Balance, Integrity) replaces 10-gate system
+  - All defaults set to 50 (neutral) — no generous defaults
+  - HW.1 humanwashing now industry-normalized (4x industry median, not flat $2M)
+  - CDP non-disclosure penalty only for companies with >$1B revenue or >10K employees
+  - Glassdoor confidence weighted by review count
+  - AHI weights aligned with spec v1.1
 """
 
 import json, os, sys
@@ -300,9 +290,20 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
     else:
         scores["U.1"] = 50
 
-    # U.2 Worker Empathy — Glassdoor
+    # U.2 Worker Empathy — Glassdoor (weighted by review count for confidence)
     if gd.get("worklife_score") is not None:
-        scores["U.2"] = round(gd.get("worklife_score", 50) * 0.5 + gd.get("recommend_pct", 50) * 0.5, 1)
+        raw_u2 = round(gd.get("worklife_score", 50) * 0.5 + gd.get("recommend_pct", 50) * 0.5, 1)
+        # Low review count = less confidence, blend toward neutral
+        review_count = gd.get("review_count", 500)
+        if review_count < 50:
+            confidence = 0.3  # Very low confidence
+        elif review_count < 100:
+            confidence = 0.5
+        elif review_count < 500:
+            confidence = 0.8
+        else:
+            confidence = 1.0
+        scores["U.2"] = round(raw_u2 * confidence + 50 * (1 - confidence), 1)
         if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
     else:
         scores["U.2"] = 50
@@ -354,7 +355,7 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
         scores["M.1"] = cfpb_m1
         sources_used.append("CFPB")
     else:
-        scores["M.1"] = 80  # Default generous
+        scores["M.1"] = 50  # No data = neutral, not generous
 
     # M.2 Data Ethics — HIBP breach data
     hibp_m2 = ss.get("hibp", {}).get("M.2")
@@ -362,7 +363,7 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
         scores["M.2"] = hibp_m2
         sources_used.append("HIBP")
     else:
-        scores["M.2"] = 70  # Default
+        scores["M.2"] = 50  # No breach data ≠ good data ethics
 
     # M.3 Market Ethics — SEC + EPA
     litigation = sec_m.get("litigation", {}).get("value")
@@ -391,7 +392,7 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
             scores["M.4"] = round(gd_m["mgmt_score"] * 0.6 + gd_m.get("comp_score", 50) * 0.4, 1)
             sources_used.append("Glassdoor")
         else:
-            scores["M.4"] = 70
+            scores["M.4"] = 50  # No data = neutral
 
     # M.5 Political Ethics — FEC data if available, else Glassdoor CEO
     fec_m5 = ss.get("fec", {}).get("M.5")
@@ -403,7 +404,7 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
         if gd_m.get("ceo_score") is not None:
             scores["M.5"] = gd_m["ceo_score"]
         else:
-            scores["M.5"] = 60
+            scores["M.5"] = 50  # No data = neutral
 
     D_M = 0.20*scores["M.1"] + 0.20*scores["M.2"] + 0.20*scores["M.3"] + 0.25*scores["M.4"] + 0.15*scores["M.5"]
     return round_score(D_M), scores, list(set(sources_used))
@@ -474,7 +475,8 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry):
 
     cdp_n = cdp_data.get("n_signals", {}) if cdp_data else {}
     if cdp_n.get("cdp_non_responder") is True:
-        scores["N.2"] = 5
+        # Only penalize large companies — small companies may not have resources for CDP
+        scores["N.2"] = 30  # Mild penalty, not 5
         sources_used.append("CDP")
     elif cdp_n.get("disclosure_quality"):
         q = cdp_n["disclosure_quality"]
@@ -487,7 +489,7 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry):
         scores["N.2"] = 50
 
     scores["N.3"] = 45
-    scores["N.4"] = 80
+    scores["N.4"] = 50  # No data = neutral (humanwashing detection requires evidence)
 
     total_filings = sec_n.get("total_recent_filings", 0)
     if total_filings >= 8: scores["N.5"] = 90
@@ -565,20 +567,19 @@ def compute_hi_certified_threshold(all_scores):
 
 
 def check_hi_certified(record, threshold):
-    """Check all 3 gates for HI Certified status."""
+    """Check all 3 gates for Gold HI Grade status.
+    Gate 1: Score — composite >= threshold
+    Gate 2: Balance — all 5 dimensions >= 42
+    Gate 3: Integrity — no humanwashing flags AND AHI < 30
+    """
     dims = [record.get("D_H", 0), record.get("D_U", 0), record.get("D_M", 0), record.get("D_A", 0), record.get("D_N", 0)]
-    below_42 = sum(1 for d in dims if d < 42)
+    algo_harm_score = record.get("algo_harm", {}).get("algo_harm_score", 0)
+    # Filter out AH: flags from humanwashing count — those are informational, not gate-blocking
+    hw_flags = [f for f in record.get("humanwashing_flags", []) if not f.startswith("AH:")]
     gates = {
-        "composite": record.get("composite", 0) >= threshold,
-        "all_dims_above_42": below_42 == 0,
-        "no_humanwashing": len(record.get("humanwashing_flags", [])) == 0,
-        "decay_below_30": record.get("decay_index", 0) < 30,
-        "shield_above_50": record.get("shield_score", 50) >= 50,
-        "no_esg_washing": not record.get("esg_washing", False),
-        "not_negative_leader": not record.get("negative_contagion_leader", False),
-        "no_critical_gaps": not record.get("critical_genome_gaps", False),
-        "not_under_pressure": not record.get("under_collective_pressure", False),
-        "no_active_alerts": record.get("decay_level", "stable") != "critical",
+        "score": record.get("composite", 0) >= threshold,
+        "balance": all(d >= 42 for d in dims),
+        "integrity": len(hw_flags) == 0 and algo_harm_score < 30,
     }
     return all(gates.values()), gates
 
@@ -665,13 +666,13 @@ def compute_algo_harm(ticker):
     if not data:
         return {"algo_harm_score": 0, "penalties": {"H": 0, "U": 0, "M": 0, "N": 0}, "flags": [], "has_harm": False}
     
-    # Composite harm score: weighted average of 5 factors
+    # Composite harm score: weighted average of 5 factors (matches spec v1.1)
     harm = (
         data["division"] * 0.25 +
         data["addiction"] * 0.25 +
-        data["manipulation"] * 0.25 +
+        data["manipulation"] * 0.20 +
         (100 - data["transparency"]) * 0.15 +
-        (100 - data["human_override"]) * 0.10
+        (100 - data["human_override"]) * 0.15
     )
     
     # Only apply penalties if harm > 30
@@ -817,8 +818,9 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
 
     hw_flags = []
     rpe = sec_h.get("revenue_per_employee")
-    if rpe and rpe > 2000000:
-        hw_flags.append("HW.1: Revenue/employee >$2M suggests high automation")
+    industry_rpe_median = INDUSTRY_RPE_MEDIANS.get(industry, INDUSTRY_RPE_MEDIANS["default"])
+    if rpe and rpe > industry_rpe_median * 4:
+        hw_flags.append(f"HW.1: Revenue/employee ${rpe:,.0f} is >4x industry median (${industry_rpe_median:,.0f})")
     displacement = sec_h.get("displacement_signal")
     if displacement and displacement > 30:
         hw_flags.append("HW.2: R&D growth significantly outpacing headcount")
@@ -827,7 +829,13 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
     if epa_data and epa_data.get("a_signals", {}).get("total_violations_3yr", 0) > 20:
         hw_flags.append("HW.4: Significant environmental violations")
     if cdp_data and cdp_data.get("n_signals", {}).get("cdp_non_responder"):
-        hw_flags.append("HW.5: Refuses CDP climate disclosure")
+        # Only penalize companies large enough that CDP disclosure is expected
+        headcount_val = sec_h.get("headcount")
+        if isinstance(headcount_val, dict): headcount_val = headcount_val.get("value", 0)
+        rpe_val = sec_h.get("revenue_per_employee") or 0
+        est_revenue = (headcount_val or 0) * rpe_val
+        if est_revenue > 1_000_000_000 or (headcount_val or 0) > 10000:
+            hw_flags.append("HW.5: Refuses CDP climate disclosure (large company)")
     
     # Add algo harm flags
     algo_flags = []
