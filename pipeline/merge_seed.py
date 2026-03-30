@@ -222,9 +222,9 @@ def seed_to_pipeline(seed_entry):
         "floor_triggered": balance_floor,
         "balance_floor": balance_floor,
         "triggering_dimension": triggering,
-        "confidence": "Estimated from public reporting",
+        "confidence": "Baseline", "spec_version": "1.1.0",
         "data_sources": ["Manual Scoring"],
-        "signal_coverage": "Estimated from public reporting",
+        "signal_coverage": "0/24 sub-signals — seed estimate",
         "humanwashing_flags": hw_flags,
         "algo_harm": {"has_harm": False, "algo_harm_score": 0, "flags": []},
         "genome": {
