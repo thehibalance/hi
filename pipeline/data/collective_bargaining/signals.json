@@ -18,11 +18,11 @@
       "dimension": "U",
       "name": "Understanding & Empathy",
       "average": 52,
-      "below_threshold_count": 769,
-      "below_threshold_pct": 94.2,
-      "failing_pct": 94.2,
+      "below_threshold_count": 768,
+      "below_threshold_pct": 94.1,
+      "failing_pct": 94.1,
       "stdev": 7.4,
-      "pressure_score": 53.7,
+      "pressure_score": 53.6,
       "status": "critical",
       "threshold": 64.6
     },
@@ -33,20 +33,20 @@
       "below_threshold_count": 51,
       "below_threshold_pct": 6.2,
       "failing_pct": 6.2,
-      "stdev": 8.8,
-      "pressure_score": 17.9,
+      "stdev": 8.6,
+      "pressure_score": 17.8,
       "status": "stable",
       "threshold": 64.6
     },
     "A": {
       "dimension": "A",
       "name": "Alive & Environmental",
-      "average": 52,
-      "below_threshold_count": 776,
-      "below_threshold_pct": 95.1,
-      "failing_pct": 95.1,
-      "stdev": 7.7,
-      "pressure_score": 54.2,
+      "average": 51,
+      "below_threshold_count": 775,
+      "below_threshold_pct": 95.0,
+      "failing_pct": 95.0,
+      "stdev": 8.0,
+      "pressure_score": 54.4,
       "status": "critical",
       "threshold": 64.6
     },
@@ -54,11 +54,11 @@
       "dimension": "N",
       "name": "Natural Transparency",
       "average": 58,
-      "below_threshold_count": 756,
-      "below_threshold_pct": 92.6,
-      "failing_pct": 92.6,
+      "below_threshold_count": 753,
+      "below_threshold_pct": 92.3,
+      "failing_pct": 92.3,
       "stdev": 8.1,
-      "pressure_score": 50.6,
+      "pressure_score": 50.5,
       "status": "critical",
       "threshold": 64.6
     }
@@ -67,7 +67,7 @@
     {
       "industry": "tech",
       "company_count": 245,
-      "average_composite": 54.8,
+      "average_composite": 54.7,
       "worst_dimension": "H",
       "worst_dimension_avg": 46.8,
       "humanwashing_flags": 21,
@@ -89,18 +89,6 @@
       "status": "warning"
     },
     {
-      "industry": "retail",
-      "company_count": 70,
-      "average_composite": 57.6,
-      "worst_dimension": "A",
-      "worst_dimension_avg": 53.8,
-      "humanwashing_flags": 3,
-      "algo_harm_companies": 1,
-      "below_threshold_dimensions": 243,
-      "pressure_score": 34.0,
-      "status": "warning"
-    },
-    {
       "industry": "telecom",
       "company_count": 13,
       "average_composite": 55.3,
@@ -113,9 +101,21 @@
       "status": "warning"
     },
     {
+      "industry": "retail",
+      "company_count": 70,
+      "average_composite": 57.9,
+      "worst_dimension": "H",
+      "worst_dimension_avg": 54.1,
+      "humanwashing_flags": 3,
+      "algo_harm_companies": 1,
+      "below_threshold_dimensions": 240,
+      "pressure_score": 33.8,
+      "status": "warning"
+    },
+    {
       "industry": "finance",
       "company_count": 93,
-      "average_composite": 57.5,
+      "average_composite": 57.4,
       "worst_dimension": "U",
       "worst_dimension_avg": 49.5,
       "humanwashing_flags": 2,
@@ -139,25 +139,25 @@
     {
       "industry": "media",
       "company_count": 10,
-      "average_composite": 61.1,
+      "average_composite": 60.5,
       "worst_dimension": "A",
-      "worst_dimension_avg": 50.1,
+      "worst_dimension_avg": 46.5,
       "humanwashing_flags": 2,
       "algo_harm_companies": 1,
       "below_threshold_dimensions": 31,
-      "pressure_score": 31.6,
+      "pressure_score": 31.8,
       "status": "warning"
     },
     {
       "industry": "food",
       "company_count": 55,
-      "average_composite": 59.8,
+      "average_composite": 59.9,
       "worst_dimension": "A",
       "worst_dimension_avg": 56.4,
       "humanwashing_flags": 1,
       "algo_harm_companies": 0,
-      "below_threshold_dimensions": 195,
-      "pressure_score": 29.6,
+      "below_threshold_dimensions": 193,
+      "pressure_score": 29.5,
       "status": "stable"
     },
     {
@@ -187,9 +187,9 @@
     {
       "industry": "healthcare",
       "company_count": 65,
-      "average_composite": 59.0,
+      "average_composite": 58.9,
       "worst_dimension": "A",
-      "worst_dimension_avg": 54.3,
+      "worst_dimension_avg": 54.1,
       "humanwashing_flags": 0,
       "algo_harm_companies": 0,
       "below_threshold_dimensions": 252,
@@ -210,6 +210,6 @@
     }
   ],
   "market_status": "healthy",
-  "most_pressured_dimension": "H",
+  "most_pressured_dimension": "A",
   "most_pressured_industry": "tech"
 }
