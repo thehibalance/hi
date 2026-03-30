@@ -632,11 +632,6 @@ function openFullPanel(profile, filterResult, prefs) {
       }).join('')}
     </div>
 
-    <div class="human-panel__connection" id="panelConnection">
-      <span class="human-panel__connection-dot" id="panelConnDot">●</span>
-      <span id="panelConnText">Checking connection...</span>
-    </div>
-
     <div style="padding:8px 16px;text-align:center">
       <div style="display:flex;align-items:center;justify-content:center;gap:4px;margin-bottom:8px">
         <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#16A34A"></span>
@@ -645,39 +640,14 @@ function openFullPanel(profile, filterResult, prefs) {
       <a href="https://apps.apple.com/app/hi/id6761270596" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--navy,#1B3A5C);color:white;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:0.5px">🍎 Get the App</a>
     </div>
 
-    <div class="human-panel__footer" style="background:#1B3A5C;padding:12px 16px;border-radius:0 0 12px 12px">
-      <div style="font-size:13px;font-weight:700;color:#C49B20;letter-spacing:0.5px">Think human intelligence.</div>
-      <div style="font-size:11px;color:white;margin-top:4px;opacity:0.8">thehibalance.org · The HI Balance</div>
-    </div>
-
-    <div class="human-panel__disclaimer">
-      Gold HI Grade threshold (currently ${Math.round(profile.balancedThreshold || 62)}) is adaptive — recalculated quarterly as mean + 2 standard deviations. 3 gates: Score, Balance, Integrity. Scores are estimated from public data. Not financial or legal advice.
+    <div style="background:#1B3A5C;padding:14px 16px;border-radius:0 0 12px 12px">
+      <div style="font-size:13px;font-weight:700;color:#C49B20;letter-spacing:0.5px;text-align:center">Think human intelligence.</div>
+      <div style="font-size:11px;color:white;margin-top:4px;opacity:0.8;text-align:center">thehibalance.org · The HI Balance</div>
+      <div style="font-size:8px;color:#5A7A9A;margin-top:8px;line-height:1.4;text-align:center">Gold HI Grade threshold (currently ${Math.round(profile.balancedThreshold || 62)}) is adaptive — recalculated quarterly. 3 gates: Score, Balance, Integrity. Scores estimated from public data. Not financial or legal advice.</div>
     </div>
   `;
 
   document.body.appendChild(panel);
-
-  // Connection status
-  (async () => {
-    const dot = document.getElementById('panelConnDot');
-    const text = document.getElementById('panelConnText');
-    if (!dot || !text) return;
-    try {
-      const resp = await new Promise((resolve) => {
-        chrome.runtime.sendMessage({ type: 'CHECK_CONNECTION' }, (r) => resolve(r));
-      });
-      if (resp && resp.connected) {
-        dot.style.color = '#1a7a3a';
-        text.textContent = `Connected · ${resp.companies||0} companies · API live`;
-      } else {
-        dot.style.color = '#D97706';
-        text.textContent = 'Offline · Using local database';
-      }
-    } catch (e) {
-      dot.style.color = '#D97706';
-      text.textContent = 'Offline · Using local database';
-    }
-  })();
 
   // Close panel
   document.getElementById('panelClose').addEventListener('click', () => panel.remove());
@@ -875,46 +845,14 @@ function openDetailPanel(profile, dim) {
       <div class="human-panel__results" id="panelResults"></div>
     </div>
 
-    <div class="human-panel__connection" id="panelConnection">
-      <span class="human-panel__connection-dot" id="panelConnDot">●</span>
-      <span id="panelConnText">Checking connection...</span>
-    </div>
-
-    <div class="human-panel__footer" style="background:#1B3A5C;padding:12px 16px;border-radius:0 0 12px 12px">
-      <div style="font-size:13px;font-weight:700;color:#C49B20;letter-spacing:0.5px">Think human intelligence.</div>
-      <div style="font-size:11px;color:white;margin-top:4px;opacity:0.8">thehibalance.org · The HI Balance</div>
-    </div>
-
-    <div class="human-panel__disclaimer">
-      Gold HI Grade threshold is adaptive — recalculated quarterly as mean + 2 standard deviations. As companies improve, the bar rises. 3 gates: Score, Balance, Integrity. Scores are estimated from public data. Not financial or legal advice.
+    <div style="background:#1B3A5C;padding:14px 16px;border-radius:0 0 12px 12px">
+      <div style="font-size:13px;font-weight:700;color:#C49B20;letter-spacing:0.5px;text-align:center">Think human intelligence.</div>
+      <div style="font-size:11px;color:white;margin-top:4px;opacity:0.8;text-align:center">thehibalance.org · The HI Balance</div>
+      <div style="font-size:8px;color:#5A7A9A;margin-top:8px;line-height:1.4;text-align:center">Gold HI Grade threshold is adaptive — recalculated quarterly. 3 gates: Score, Balance, Integrity. Scores estimated from public data. Not financial or legal advice.</div>
     </div>
   `;
 
   document.body.appendChild(panel);
-
-  // ═══ CONNECTION STATUS ═══
-  (async () => {
-    const dot = document.getElementById('panelConnDot');
-    const text = document.getElementById('panelConnText');
-    if (!dot || !text) return;
-
-    try {
-      const resp = await new Promise((resolve) => {
-        chrome.runtime.sendMessage({ type: 'CHECK_CONNECTION' }, (r) => resolve(r));
-      });
-
-      if (resp && resp.connected) {
-        dot.style.color = '#1a7a3a';
-        text.textContent = `Connected · ${resp.companies||0} companies · API live`;
-      } else {
-        dot.style.color = '#D97706';
-        text.textContent = 'Offline · Using local database (206 companies)';
-      }
-    } catch (e) {
-      dot.style.color = '#D97706';
-      text.textContent = 'Offline · Using local database (206 companies)';
-    }
-  })();
 
   // Event listeners
   document.getElementById('panelClose').addEventListener('click', () => panel.remove());
