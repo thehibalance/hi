@@ -550,11 +550,11 @@ def compute_composite(D_H, D_U, D_M, D_A, D_N):
     return round_score(composite), floor_triggered, balance_floor_triggered, triggering_dimension
 
 def get_hi_grade(composite, verified=False):
-    """Score-only system. All companies return 'scored'. HI Certified is checked separately."""
+    """Score-only system. All companies return 'scored'. Gold HI Grade is checked separately."""
     return "scored", ""
 
 
-def compute_hi_certified_threshold(all_scores):
+def compute_gold_threshold(all_scores):
     """Adaptive threshold: mean + 2 SD of all composites."""
     composites = [s.get("composite", 0) for s in all_scores if s.get("composite", 0) > 0]
     if len(composites) < 10:

@@ -577,9 +577,9 @@ function openFullPanel(profile, filterResult, prefs) {
         gc('Composite ≥ ' + threshold, gates.score) +
         '<div style="font-size:9px;font-weight:700;color:#C49B20;letter-spacing:1px;margin:6px 0 4px">⚖ BALANCE</div>' +
         gc('All dimensions ≥ 42', gates.balance) +
-        '<div style="font-size:9px;font-weight:700;color:#16A34A;letter-spacing:1px;margin:6px 0 4px">🔒 HONESTY</div>' +
-        gc('No Humanwashing™ flags', gates.honesty) +
-        gc('Algorithmic Harm Index™ < 30', gates.honesty) +
+        '<div style="font-size:9px;font-weight:700;color:#16A34A;letter-spacing:1px;margin:6px 0 4px">🔒 INTEGRITY</div>' +
+        gc('No Humanwashing™ flags', gates.integrity) +
+        gc('Algorithmic Harm Index™ < 30', gates.integrity) +
         '</div>';
     })()}
 

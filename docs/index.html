@@ -91,7 +91,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div style="font-size:13px;color:#555;line-height:1.5">All 5 dimensions above 42 · no blind spots</div>
 </div>
 <div style="padding:16px 20px;border-left:3px solid #16A34A">
-<div style="font-size:10px;font-weight:700;color:#16A34A;letter-spacing:1.5px;margin-bottom:6px">HONESTY</div>
+<div style="font-size:10px;font-weight:700;color:#16A34A;letter-spacing:1.5px;margin-bottom:6px">INTEGRITY</div>
 <div style="font-size:13px;color:#555;line-height:1.5">No Humanwashing™ flags · Algorithmic Harm Index™ below 30</div>
 </div>
 </div>
@@ -193,8 +193,8 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div class="feature-card"><div class="feature-icon">📊</div><div class="feature-title">Five Dimensions</div><div class="feature-desc">Click any dimension bar to open a full detail panel with sub-signals, descriptions, and the complete HUMAN breakdown.</div></div>
 <div class="feature-card"><div class="feature-icon">🎛️</div><div class="feature-title">Equalizer</div><div class="feature-desc">Set your own thresholds per dimension. Care most about environmental impact? Slide A up. The extension filters companies that don't meet your standards.</div></div>
 <div class="feature-card"><div class="feature-icon">🔒</div><div class="feature-title">Zero AI. Zero Tracking.</div><div class="feature-desc">The extension runs entirely on deterministic logic. No machine learning, no data collection, no phone-home. Your browsing stays private.</div></div>
-<div class="feature-card"><div class="feature-icon">🔎</div><div class="feature-title">Search Any Company</div><div class="feature-desc">Search 815+ brands directly from the extension. Find scores, compare companies, and make informed decisions without leaving the page.</div></div>
-<div class="feature-card"><div class="feature-icon">☁️</div><div class="feature-title">Cloud + Local</div><div class="feature-desc">Works offline with a built-in database of 200+ seed companies. When connected, pulls live scores from the HI API for 815+ brands.</div></div>
+<div class="feature-card"><div class="feature-icon">🔎</div><div class="feature-title">Search Any Company</div><div class="feature-desc">Search 827+ brands directly from the extension. Find scores, compare companies, and make informed decisions without leaving the page.</div></div>
+<div class="feature-card"><div class="feature-icon">☁️</div><div class="feature-title">Cloud + Local</div><div class="feature-desc">Works offline with a built-in database of 200+ seed companies. When connected, pulls live scores from the HI API for 827+ brands.</div></div>
 </div>
 
 <div style="text-align:center;margin-top:32px"><button class="btn btn-secondary" style="opacity:0.5;cursor:not-allowed;pointer-events:none"><span class="btn-icon">🧭</span> Safari — Coming Soon</button></div>
@@ -241,7 +241,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <p class="subpage-sub">Integrate HI Grades™ into procurement platforms, investment tools, ESG dashboards, and consumer products.</p>
 
 <div class="about-card" style="text-align:center;border-left:4px solid var(--navy)">
-<p style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px">815+ brands · 40 data sources · 32 endpoints</p>
+<p style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px">827+ brands · 40 data sources · 32 endpoints</p>
 <p style="margin:0;color:var(--muted)">HUMAN Heartbeat · HUMAN Genome · HUMAN 100 Index · HUMAN Lens · Real-time decay detection</p>
 </div>
 
@@ -606,7 +606,7 @@ h+='<div style="display:flex;align-items:center;gap:8px;padding:4px 0;font-size:
 var g2noData=!gateChecks[1][2];
 h+='<div style="margin-bottom:10px"><div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1px;margin-bottom:6px">⚖ BALANCE</div>';
 h+='<div style="display:flex;align-items:center;gap:8px;padding:4px 0;font-size:12px"><span style="color:'+(g2noData?'#9CA3AF':(gateChecks[1][1]?'#16A34A':'#DC2626'))+';font-size:14px">'+(g2noData?'○':(gateChecks[1][1]?'✓':'✗'))+'</span><span style="color:'+(g2noData?'#9CA3AF':(gateChecks[1][1]?'#444':'#DC2626'))+'">'+gateChecks[1][0]+(g2noData?' · needs data':'')+'</span></div></div>';
-h+='<div><div style="font-size:10px;font-weight:700;color:#16A34A;letter-spacing:1px;margin-bottom:6px">🔒 HONESTY</div>';
+h+='<div><div style="font-size:10px;font-weight:700;color:#16A34A;letter-spacing:1px;margin-bottom:6px">🔒 INTEGRITY</div>';
 h+=gateChecks.slice(2).map(function(g,i){var noData=!g[2];var color=noData?'#9CA3AF':(g[1]?'#16A34A':'#DC2626');var icon=noData?'○':(g[1]?'✓':'✗');var label=noData?g[0]+' · needs data':g[0];return'<div style="display:flex;align-items:center;gap:8px;padding:3px 0;font-size:12px"><span style="color:'+color+';font-size:14px">'+icon+'</span><span style="color:'+(noData?'#9CA3AF':(g[1]?'#444':'#DC2626'))+'">'+label+'</span></div>'}).join('')+'</div></div>';
 h+='<div class="detail-section"><h3>HUMAN Dimensions</h3>'+fullDims+'</div>';
 // ═══ HUMAN GENOME — Feature ═══
