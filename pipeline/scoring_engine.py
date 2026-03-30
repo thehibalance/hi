@@ -732,6 +732,82 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
             pass
     
     if ext:
+        # ═══ UPGRADE HARDCODED SUB-SIGNALS WITH REAL DATA ═══
+        
+        # H.4 CEO Accountability — use pay ratio + insider trading
+        pay = ext.get("pay_ratio", {})
+        pay_ratio = pay.get("ratio")
+        if pay_ratio is not None:
+            if pay_ratio > 500: h_detail["H.4"] = 20
+            elif pay_ratio > 300: h_detail["H.4"] = 35
+            elif pay_ratio > 200: h_detail["H.4"] = 45
+            elif pay_ratio > 100: h_detail["H.4"] = 55
+            elif pay_ratio > 50: h_detail["H.4"] = 70
+            else: h_detail["H.4"] = 85
+            if "SEC DEF 14A" not in h_src: h_src.append("SEC DEF 14A")
+        insider_adj = ext.get("insider", {}).get("M.3_adj", 0)
+        if insider_adj != 0:
+            h_detail["H.4"] = clamp(h_detail["H.4"] + insider_adj)
+            if "SEC Form 4" not in h_src: h_src.append("SEC Form 4")
+        
+        # U.5 Moral Courage — use charity (IRS 990) + BBB
+        charity_adj = ext.get("charity", {}).get("U.5_adj", 0)
+        bbb_score = ext.get("bbb", {}).get("score")
+        if charity_adj != 0 or bbb_score is not None:
+            u5 = 50
+            if charity_adj > 0: u5 = clamp(u5 + charity_adj * 3)
+            if bbb_score is not None: u5 = round(u5 * 0.6 + bbb_score * 0.4)
+            u_detail["U.5"] = round(clamp(u5), 1)
+            if charity_adj != 0 and "IRS 990" not in u_src: u_src.append("IRS 990")
+            if bbb_score is not None and "BBB" not in u_src: u_src.append("BBB")
+        
+        # N.1 AI Disclosure — use GRI alignment + SBTi as transparency proxies
+        gri_adj = ext.get("gri", {}).get("N.2_adj", 0)
+        sbti_adj = ext.get("sbti", {}).get("A.1_adj", 0)
+        if gri_adj != 0 or sbti_adj != 0:
+            n1 = 40
+            if gri_adj > 0: n1 = clamp(n1 + 20)  # GRI aligned = more transparent
+            if sbti_adj > 0: n1 = clamp(n1 + 15)  # SBTi target = more transparent
+            n_detail["N.1"] = round(clamp(n1), 1)
+            if "GRI" not in n_src: n_src.append("GRI")
+        
+        # N.3 Labor Auditability — use OSHA inspections + DOL data
+        osha_score = ext.get("osha", {}).get("score")
+        dol_score = ext.get("dol", {}).get("score")
+        if osha_score is not None or dol_score is not None:
+            n3 = 45
+            if osha_score is not None:
+                # More OSHA inspections = more auditable (govt is watching)
+                n3 = round(osha_score * 0.4 + n3 * 0.6)
+            if dol_score is not None:
+                n3 = round(dol_score * 0.3 + n3 * 0.7)
+            n_detail["N.3"] = round(clamp(n3), 1)
+            if "OSHA" not in n_src: n_src.append("OSHA")
+            if dol_score is not None and "DOL" not in n_src: n_src.append("DOL")
+        
+        # N.4 Humanwashing Detection — compute from inputs we already have
+        rpe = sec_h.get("revenue_per_employee")
+        displacement = sec_h.get("displacement_signal")
+        ai_ratio = job_data.get("h_signals", {}).get("ai_ratio") if job_data else None
+        n4 = 50  # Start neutral
+        if rpe and rpe > INDUSTRY_RPE_MEDIANS.get(industry, 350000) * 3:
+            n4 -= 20  # High automation signal
+        if displacement is not None and displacement > 20:
+            n4 -= 15  # Active displacement
+        if ai_ratio is not None and ai_ratio > 0.35:
+            n4 -= 10  # AI-dominated hiring
+        ftc_n4 = ext.get("ftc", {}).get("N.4")
+        if ftc_n4 is not None:
+            n4 = round(n4 * 0.6 + ftc_n4 * 0.4)
+        n_detail["N.4"] = round(clamp(n4), 1)
+        
+        # ═══ RECALCULATE DIMENSIONS from updated sub-signals ═══
+        D_H = round_score(0.25*h_detail["H.1"] + 0.20*h_detail["H.2"] + 0.20*h_detail["H.3"] + 0.15*h_detail["H.4"] + 0.20*h_detail["H.5"])
+        D_U = round_score(0.25*u_detail["U.1"] + 0.25*u_detail["U.2"] + 0.20*u_detail["U.3"] + 0.15*u_detail["U.4"] + 0.15*u_detail["U.5"])
+        D_N = round_score(0.25*n_detail["N.1"] + 0.20*n_detail["N.2"] + 0.20*n_detail["N.3"] + 0.20*n_detail["N.4"] + 0.15*n_detail["N.5"])
+        
+        # ═══ THEN APPLY EXTENDED ADJUSTMENTS on top ═══
+        
         # OSHA → U.2 blend
         osha_score = ext.get("osha", {}).get("score")
         if osha_score is not None:
