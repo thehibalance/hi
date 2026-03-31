@@ -224,7 +224,7 @@ def seed_to_pipeline(seed_entry):
         "triggering_dimension": triggering,
         "confidence": "Baseline", "spec_version": "1.1.0",
         "data_sources": ["Public Reporting"],
-        "signal_coverage": "0/24 sub-signals — seed estimate",
+        "signal_coverage": "0/24 sub-signals — estimated from public reporting",
         "humanwashing_flags": hw_flags,
         "algo_harm": {"has_harm": False, "algo_harm_score": 0, "flags": []},
         "genome": {
