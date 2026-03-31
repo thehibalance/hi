@@ -920,7 +920,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         hw_flags.extend(algo_flags)
 
     # Confidence tier based on real data sources
-    real_sources = [s for s in all_sources if s not in ["Defaults", "Manual Scoring", "Seed Estimate"]]
+    real_sources = [s for s in all_sources if s not in ["Defaults", "Manual Scoring", "Seed Estimate", "Public Reporting"]]
     if len(real_sources) >= 5:
         confidence = "Verified"
     elif len(real_sources) >= 2:

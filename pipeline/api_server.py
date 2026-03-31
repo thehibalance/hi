@@ -221,7 +221,7 @@ def compute_hi_balanced_threshold(companies):
     composites = [c.get("composite", 0) for c in companies 
                   if c.get("composite", 0) > 0 
                   and c.get("data_sources") 
-                  and c.get("data_sources") != ["Manual Scoring"]]
+                  and c.get("data_sources") not in [["Manual Scoring"], ["Public Reporting"]]]
     if len(composites) < 10:
         composites = [c.get("composite", 0) for c in companies if c.get("composite", 0) > 0]
     if len(composites) < 10:
@@ -312,8 +312,8 @@ def seed_to_record(s):
         "satire": "",
         "floor_triggered": min(dims) < 10,
         "balance_floor": balance_floor,
-        "confidence": "Estimated", "data_sources": ["Manual Scoring"],
-        "notes": s.get("notes", ""), "spec_version": "1.0.0",
+        "confidence": "Baseline", "data_sources": ["Public Reporting"],
+        "notes": s.get("notes", ""), "spec_version": "1.1.0",
         "industry": s["tags"][0] if s.get("tags") else "",
         "humanwashing_flags": [],
         "algorithmic_harm_score": s.get("algorithmic_harm_score", 0),
@@ -873,7 +873,7 @@ def stats():
         "humanwashing_flagged": sum(1 for c in ALL_COMPANIES if c.get("humanwashing_flags")),
         "floor_rule_triggered": sum(1 for c in ALL_COMPANIES if c.get("floor_triggered")),
         "balance_floor_triggered": sum(1 for c in ALL_COMPANIES if c.get("balance_floor")),
-        "data_sources": 42,
+        "data_sources": 40,
         "spec_version": "1.0.0",
         "brand": {
             "name": "HI.", "tagline": "Find the HI balance.",
