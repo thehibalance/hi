@@ -630,6 +630,9 @@ def build_index():
     balanced_count = 0
     for c in ALL_COMPANIES:
         passed, gates = check_hi_balanced(c, threshold)
+        # Pending companies cannot earn Gold — must have real data
+        if c.get("score_status") == "pending":
+            passed = False
         c["hi_balanced"] = passed
         c["hi_balanced_gates"] = gates
         c["hi_balanced_threshold"] = threshold
@@ -887,7 +890,7 @@ def stats():
         "humanwashing_flagged": sum(1 for c in ALL_COMPANIES if c.get("humanwashing_flags")),
         "floor_rule_triggered": sum(1 for c in ALL_COMPANIES if c.get("floor_triggered")),
         "balance_floor_triggered": sum(1 for c in ALL_COMPANIES if c.get("balance_floor")),
-        "data_sources": 42,
+        "data_sources": 40,
         "spec_version": "1.0.0",
         "brand": {
             "name": "HI.", "tagline": "Find the HI balance.",
