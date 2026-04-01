@@ -269,7 +269,7 @@ def score_h_dimension(sec_h, job_data, bls_data, industry):
         else:
             scores["H.5"] = 50
 
-    D_H = 0.25*scores["H.1"] + 0.20*scores["H.2"] + 0.20*scores["H.3"] + 0.15*scores["H.4"] + 0.20*scores["H.5"]
+    D_H = 0.20*scores["H.1"] + 0.20*scores["H.2"] + 0.20*scores["H.3"] + 0.20*scores["H.4"] + 0.20*scores["H.5"]
     return round_score(D_H), scores, list(set(sources_used))
 
 
@@ -340,7 +340,7 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
     # U.5 Moral Courage — placeholder
     scores["U.5"] = 50
 
-    D_U = 0.25*scores["U.1"] + 0.25*scores["U.2"] + 0.20*scores["U.3"] + 0.15*scores["U.4"] + 0.15*scores["U.5"]
+    D_U = 0.20*scores["U.1"] + 0.20*scores["U.2"] + 0.20*scores["U.3"] + 0.20*scores["U.4"] + 0.20*scores["U.5"]
     return round_score(D_U), scores, sources_used
 
 
@@ -406,7 +406,7 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
         else:
             scores["M.5"] = 50  # No data = neutral
 
-    D_M = 0.20*scores["M.1"] + 0.20*scores["M.2"] + 0.20*scores["M.3"] + 0.25*scores["M.4"] + 0.15*scores["M.5"]
+    D_M = 0.20*scores["M.1"] + 0.20*scores["M.2"] + 0.20*scores["M.3"] + 0.20*scores["M.4"] + 0.20*scores["M.5"]
     return round_score(D_M), scores, list(set(sources_used))
 
 
@@ -464,7 +464,16 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None):
             hw_defaults = {"tech": 40, "telecom": 45, "manufacturing": 50, "default": 55}
             scores["A.4"] = hw_defaults.get(industry, 55)
 
-    D_A = 0.30*scores["A.1"] + 0.25*scores["A.2"] + 0.20*scores["A.3"] + 0.25*scores["A.4"]
+    # A.5 Resource Stewardship — CDP forests + industry baseline
+    if cdp_a.get("cdp_forests_score") is not None and scores["A.4"] != cdp_a.get("cdp_forests_score"):
+        scores["A.5"] = cdp_a["cdp_forests_score"]
+        if "CDP" not in sources_used: sources_used.append("CDP")
+    else:
+        rs_defaults = {"food": 40, "manufacturing": 45, "retail": 50, "energy": 35,
+                       "tech": 60, "finance": 65, "healthcare": 55, "default": 50}
+        scores["A.5"] = rs_defaults.get(industry, 50)
+
+    D_A = 0.20*scores["A.1"] + 0.20*scores["A.2"] + 0.20*scores["A.3"] + 0.20*scores["A.4"] + 0.20*scores["A.5"]
     return round_score(D_A), scores, list(set(sources_used))
 
 
@@ -507,7 +516,7 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry):
     if "Large Accelerated" in str(sec_n.get("category", "")):
         scores["N.5"] = min(100, scores["N.5"] + 5)
 
-    D_N = 0.25*scores["N.1"] + 0.20*scores["N.2"] + 0.20*scores["N.3"] + 0.20*scores["N.4"] + 0.15*scores["N.5"]
+    D_N = 0.20*scores["N.1"] + 0.20*scores["N.2"] + 0.20*scores["N.3"] + 0.20*scores["N.4"] + 0.20*scores["N.5"]
     return round_score(D_N), scores, sources_used
 
 
@@ -802,9 +811,9 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         n_detail["N.4"] = round(clamp(n4), 1)
         
         # ═══ RECALCULATE DIMENSIONS from updated sub-signals ═══
-        D_H = round_score(0.25*h_detail["H.1"] + 0.20*h_detail["H.2"] + 0.20*h_detail["H.3"] + 0.15*h_detail["H.4"] + 0.20*h_detail["H.5"])
-        D_U = round_score(0.25*u_detail["U.1"] + 0.25*u_detail["U.2"] + 0.20*u_detail["U.3"] + 0.15*u_detail["U.4"] + 0.15*u_detail["U.5"])
-        D_N = round_score(0.25*n_detail["N.1"] + 0.20*n_detail["N.2"] + 0.20*n_detail["N.3"] + 0.20*n_detail["N.4"] + 0.15*n_detail["N.5"])
+        D_H = round_score(0.20*h_detail["H.1"] + 0.20*h_detail["H.2"] + 0.20*h_detail["H.3"] + 0.20*h_detail["H.4"] + 0.20*h_detail["H.5"])
+        D_U = round_score(0.20*u_detail["U.1"] + 0.20*u_detail["U.2"] + 0.20*u_detail["U.3"] + 0.20*u_detail["U.4"] + 0.20*u_detail["U.5"])
+        D_N = round_score(0.20*n_detail["N.1"] + 0.20*n_detail["N.2"] + 0.20*n_detail["N.3"] + 0.20*n_detail["N.4"] + 0.20*n_detail["N.5"])
         
         # ═══ THEN APPLY EXTENDED ADJUSTMENTS on top ═══
         
