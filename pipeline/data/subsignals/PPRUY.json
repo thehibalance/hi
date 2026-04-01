@@ -13,6 +13,44 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 30,
+    "raw": {
+      "company": "Kering SA",
+      "ticker": "PPRUY",
+      "domain": "ring.com",
+      "breach_count": 2,
+      "breaches": [
+        {
+          "name": "Taringa",
+          "date": "2017-08-01",
+          "pwn_count": 27971100,
+          "data_classes": [
+            "Email addresses",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "Teespring",
+          "date": "2020-04-01",
+          "pwn_count": 8234193,
+          "data_classes": [
+            "Email addresses",
+            "Geographic locations",
+            "Names",
+            "Social media profiles"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 36205293,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-03-23T08:52:25.356710",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 55,
     "source": "Industry"
