@@ -603,6 +603,20 @@ def build_index():
 
     ALL_COMPANIES.sort(key=lambda x: x.get("composite", 0), reverse=True)
     
+    # Add score_status: "verified" (5+ real), "estimated" (1-4 real), "pending" (seed only)
+    BASELINE_SOURCES = {"Defaults", "Manual Scoring", "Seed Estimate", "Public Reporting"}
+    for c in ALL_COMPANIES:
+        real = [s for s in c.get("data_sources", []) if s not in BASELINE_SOURCES]
+        if len(real) >= 5:
+            c["score_status"] = "verified"
+        elif len(real) >= 1:
+            c["score_status"] = "estimated"
+        else:
+            c["score_status"] = "pending"
+    
+    pending_count = sum(1 for c in ALL_COMPANIES if c.get("score_status") == "pending")
+    print(f"  Score status: {len(ALL_COMPANIES) - pending_count} active, {pending_count} pending verification")
+    
     # Compute HI Balanced threshold
     # Daily: use saved threshold. Quarterly: recalculate.
     saved = load_saved_threshold()
