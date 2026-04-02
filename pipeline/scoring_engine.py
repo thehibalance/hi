@@ -277,6 +277,13 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
     scores = {}
     sources_used = []
     gd = glassdoor_data.get("u_signals", {}) if glassdoor_data else {}
+    # Normalize Glassdoor field names (1-5 scale → 0-100)
+    if gd.get("overall_rating") is not None and gd.get("overall_score") is None:
+        gd["overall_score"] = round(gd["overall_rating"] * 20, 1)
+        gd["culture_score"] = round(gd.get("culture_rating", 3.0) * 20, 1)
+        gd["worklife_score"] = round(gd.get("work_life_rating", gd.get("overall_rating", 3.0)) * 20, 1)
+        gd["recommend_pct"] = gd.get("recommend_pct", round(gd["overall_rating"] * 15, 1))
+        gd["review_count"] = gd.get("review_count", 500)
     ss = subsignals or {}
 
     # U.1 Customer Empathy — CFPB data if available, else Glassdoor
@@ -381,28 +388,32 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
     if litigation: sources_used.append("SEC")
     if epa_penalties > 0 or epa_actions > 0: sources_used.append("EPA")
 
-    # M.4 Product Ethics — CPSC recalls if available, else Glassdoor
+    # M.4 Product Ethics — CPSC recalls if available, else Glassdoor as proxy
     cpsc_m4 = ss.get("cpsc", {}).get("M.4")
     if cpsc_m4 is not None:
         scores["M.4"] = cpsc_m4
         sources_used.append("CPSC")
     else:
-        gd_m = glassdoor_data.get("m_signals", {}) if glassdoor_data else {}
-        if gd_m.get("mgmt_score") is not None:
-            scores["M.4"] = round(gd_m["mgmt_score"] * 0.6 + gd_m.get("comp_score", 50) * 0.4, 1)
+        gd_u = glassdoor_data.get("u_signals", {}) if glassdoor_data else {}
+        overall = gd_u.get("overall_rating")
+        if overall is not None:
+            # Use overall rating as management/product proxy (1-5 → 0-100)
+            scores["M.4"] = round(overall * 20, 1)
             sources_used.append("Glassdoor")
         else:
             scores["M.4"] = 50  # No data = neutral
 
-    # M.5 Political Ethics — FEC data if available, else Glassdoor CEO
+    # M.5 Political Ethics — FEC data if available, else Glassdoor CEO approval
     fec_m5 = ss.get("fec", {}).get("M.5")
     if fec_m5 is not None:
         scores["M.5"] = fec_m5
         sources_used.append("FEC")
     else:
-        gd_m = glassdoor_data.get("m_signals", {}) if glassdoor_data else {}
-        if gd_m.get("ceo_score") is not None:
-            scores["M.5"] = gd_m["ceo_score"]
+        gd_u = glassdoor_data.get("u_signals", {}) if glassdoor_data else {}
+        ceo = gd_u.get("ceo_approval")
+        if ceo is not None:
+            scores["M.5"] = round(ceo, 1)  # Already 0-100
+            if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
         else:
             scores["M.5"] = 50  # No data = neutral
 
