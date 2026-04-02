@@ -180,7 +180,7 @@ def find_match(company_name, ticker, index):
 
 # ── Dimension Scoring ─────────────────────────────────────────────────
 
-def score_h_dimension(sec_h, job_data, bls_data, industry):
+def score_h_dimension(sec_h, job_data, bls_data, industry, glassdoor_data=None):
     scores = {}
     sources_used = []
 
@@ -249,7 +249,14 @@ def score_h_dimension(sec_h, job_data, bls_data, industry):
     scores["H.3"] = round(h3, 1)
     sources_used.extend([s for s in h3_sources if s not in sources_used])
     
-    scores["H.4"] = 50
+    # H.4 CEO Accountability — Glassdoor CEO approval if available
+    gd_h = glassdoor_data.get("u_signals", {}) if glassdoor_data else {}
+    ceo_approval = gd_h.get("ceo_approval")
+    if ceo_approval is not None:
+        scores["H.4"] = round(ceo_approval, 1)  # Already 0-100
+        if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
+    else:
+        scores["H.4"] = 50
 
     displacement = sec_h.get("displacement_signal")
     job_trend = job_data.get("h_signals", {}).get("ai_hiring_trend") if job_data else None
@@ -344,8 +351,15 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
     
     scores["U.4"] = round(clamp(u4), 1)
 
-    # U.5 Moral Courage — placeholder
-    scores["U.5"] = 50
+    # U.5 Moral Courage — Glassdoor culture + overall as proxy
+    if gd.get("culture_score") is not None and gd.get("overall_score") is not None:
+        scores["U.5"] = round(gd["culture_score"] * 0.6 + gd["overall_score"] * 0.4, 1)
+        if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
+    elif gd.get("overall_score") is not None:
+        scores["U.5"] = gd["overall_score"]
+        if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
+    else:
+        scores["U.5"] = 50
 
     D_U = 0.20*scores["U.1"] + 0.20*scores["U.2"] + 0.20*scores["U.3"] + 0.20*scores["U.4"] + 0.20*scores["U.5"]
     return round_score(D_U), scores, sources_used
@@ -488,7 +502,7 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None):
     return round_score(D_A), scores, list(set(sources_used))
 
 
-def score_n_dimension(sec_n, cdp_data, epa_data, industry):
+def score_n_dimension(sec_n, cdp_data, epa_data, industry, sec_h=None, job_data=None):
     scores = {}
     sources_used = []
     scores["N.1"] = 40
@@ -509,7 +523,24 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry):
         scores["N.2"] = 50
 
     scores["N.3"] = 45
-    scores["N.4"] = 50  # No data = neutral (humanwashing detection requires evidence)
+    
+    # N.4 Humanwashing Detection — compute for ALL companies from available data
+    sec_h = sec_h or {}
+    n4 = 50
+    n4_has_data = False
+    rpe = sec_h.get("revenue_per_employee")
+    displacement = sec_h.get("displacement_signal")
+    ai_ratio = job_data.get("h_signals", {}).get("ai_ratio") if job_data else None
+    if rpe and rpe > INDUSTRY_RPE_MEDIANS.get(industry, 350000) * 3:
+        n4 -= 20; n4_has_data = True
+    if displacement is not None and displacement > 20:
+        n4 -= 15; n4_has_data = True
+    if ai_ratio is not None and ai_ratio > 0.35:
+        n4 -= 10; n4_has_data = True
+    # If we have any SEC data at all, this is real not default
+    if rpe is not None or displacement is not None:
+        n4_has_data = True
+    scores["N.4"] = round(clamp(n4), 1)
 
     total_filings = sec_n.get("total_recent_filings", 0)
     if total_filings >= 8: scores["N.5"] = 90
@@ -733,11 +764,11 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
     sec_n = sec_data.get("n_signals", {}) if sec_data else {}
     sec_u = sec_data.get("u_signals", {}) if sec_data else {}
 
-    D_H, h_detail, h_src = score_h_dimension(sec_h, job_data, bls_data, industry)
+    D_H, h_detail, h_src = score_h_dimension(sec_h, job_data, bls_data, industry, glassdoor_data=glassdoor_data)
     D_U, u_detail, u_src = score_u_dimension(sec_u, glassdoor_data, industry, ss)
     D_M, m_detail, m_src = score_m_dimension(sec_m, epa_data, glassdoor_data, industry, ss)
     D_A, a_detail, a_src = score_a_dimension(sec_data.get("a_signals", {}) if sec_data else {}, epa_data, cdp_data, industry, ss)
-    D_N, n_detail, n_src = score_n_dimension(sec_n, cdp_data, epa_data, industry)
+    D_N, n_detail, n_src = score_n_dimension(sec_n, cdp_data, epa_data, industry, sec_h=sec_h, job_data=job_data)
 
     # ═══ EXTENDED SIGNALS (sources 23-34) ═══
     # Load extended pipeline data and apply adjustments
@@ -805,21 +836,10 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
             if "OSHA" not in n_src: n_src.append("OSHA")
             if dol_score is not None and "DOL" not in n_src: n_src.append("DOL")
         
-        # N.4 Humanwashing Detection — compute from inputs we already have
-        rpe = sec_h.get("revenue_per_employee")
-        displacement = sec_h.get("displacement_signal")
-        ai_ratio = job_data.get("h_signals", {}).get("ai_ratio") if job_data else None
-        n4 = 50  # Start neutral
-        if rpe and rpe > INDUSTRY_RPE_MEDIANS.get(industry, 350000) * 3:
-            n4 -= 20  # High automation signal
-        if displacement is not None and displacement > 20:
-            n4 -= 15  # Active displacement
-        if ai_ratio is not None and ai_ratio > 0.35:
-            n4 -= 10  # AI-dominated hiring
+        # N.4 Humanwashing Detection — FTC blend (base computation now in score_n_dimension)
         ftc_n4 = ext.get("ftc", {}).get("N.4")
         if ftc_n4 is not None:
-            n4 = round(n4 * 0.6 + ftc_n4 * 0.4)
-        n_detail["N.4"] = round(clamp(n4), 1)
+            n_detail["N.4"] = round(clamp(n_detail["N.4"] * 0.6 + ftc_n4 * 0.4), 1)
         
         # ═══ RECALCULATE DIMENSIONS from updated sub-signals ═══
         D_H = round_score(0.20*h_detail["H.1"] + 0.20*h_detail["H.2"] + 0.20*h_detail["H.3"] + 0.20*h_detail["H.4"] + 0.20*h_detail["H.5"])
