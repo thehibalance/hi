@@ -1015,6 +1015,46 @@ def main():
     print(f"  Glassdoor:  {len(gd_records)} companies")
 
     sec_idx = index_by_company(sec_records)
+    
+    # Enrich CDP and Jobs records with tickers from SEC (they have short names, no tickers)
+    for records in [cdp_records, job_records]:
+        for r in records:
+            if not r.get("ticker"):
+                name = r.get("company", "")
+                match = find_match(name, "", sec_idx)
+                if match and match.get("ticker"):
+                    r["ticker"] = match["ticker"]
+    
+    enriched_cdp = sum(1 for r in cdp_records if r.get("ticker"))
+    enriched_jobs = sum(1 for r in job_records if r.get("ticker"))
+    print(f"  CDP enriched: {enriched_cdp}/{len(cdp_records)} with tickers")
+    print(f"  Jobs enriched: {enriched_jobs}/{len(job_records)} with tickers")
+    
+    # Load HIBP breach data from individual files into subsignals
+    hibp_dir = Path("data/subsignals")
+    hibp_count = 0
+    ss_file = hibp_dir / "all_subsignals.json"
+    all_subsignals = json.load(open(ss_file)) if ss_file.exists() else {}
+    for f in hibp_dir.glob("hibp_*.json"):
+        if " 2" in f.name: continue  # Skip duplicates
+        try:
+            hd = json.load(open(f))
+            t = hd.get("ticker", "")
+            if t and len(t) <= 5:
+                breach_count = hd.get("breach_count", 0)
+                if t not in all_subsignals: all_subsignals[t] = {}
+                # Score: 0 breaches = 80, 1-2 = 60, 3-5 = 40, 6+ = 20
+                if breach_count == 0: m2 = 80
+                elif breach_count <= 2: m2 = 60
+                elif breach_count <= 5: m2 = 40
+                else: m2 = 20
+                all_subsignals[t]["hibp"] = {"M.2": m2, "breach_count": breach_count}
+                hibp_count += 1
+        except: pass
+    if hibp_count:
+        json.dump(all_subsignals, open(ss_file, "w"), indent=2)
+        print(f"  HIBP: {hibp_count} companies merged into subsignals")
+    
     epa_idx = index_by_company(epa_records)
     cdp_idx = index_by_company(cdp_records)
     job_idx = index_by_company(job_records)
