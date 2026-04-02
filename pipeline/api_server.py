@@ -601,7 +601,9 @@ def build_index():
             print(f"  Seed data: {seed_added} added, {seed_skipped} skipped (already scored)")
             break
 
-    ALL_COMPANIES.sort(key=lambda x: x.get("composite", 0), reverse=True)
+    # Sort: verified first, then estimated, then pending. Within each tier, by composite desc.
+    status_priority = {"verified": 0, "estimated": 1, "pending": 2}
+    ALL_COMPANIES.sort(key=lambda x: (status_priority.get(x.get("score_status", "pending"), 2), -x.get("composite", 0)))
     
     # Add score_status: "verified" (5+ real), "estimated" (1-4 real), "pending" (seed only)
     BASELINE_SOURCES = {"Defaults", "Manual Scoring", "Seed Estimate", "Public Reporting"}
@@ -890,8 +892,8 @@ def stats():
         "humanwashing_flagged": sum(1 for c in ALL_COMPANIES if c.get("humanwashing_flags")),
         "floor_rule_triggered": sum(1 for c in ALL_COMPANIES if c.get("floor_triggered")),
         "balance_floor_triggered": sum(1 for c in ALL_COMPANIES if c.get("balance_floor")),
-        "data_sources": 42,
-        "spec_version": "1.1.0",
+        "data_sources": 40,
+        "spec_version": "1.0.0",
         "brand": {
             "name": "HI.", "tagline": "Find the HI balance.",
             "domain": "thehibalance.org", "foundation": "The HI Balance",
