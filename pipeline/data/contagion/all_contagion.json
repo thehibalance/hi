@@ -60,7 +60,7 @@
     "dimension_gaps": {
       "H": 4.7,
       "U": -24.4,
-      "M": -44.2,
+      "M": -44.3,
       "A": -21.0,
       "N": -35.0
     },
@@ -152,7 +152,7 @@
     "dimension_gaps": {
       "H": -5.3,
       "U": -17.4,
-      "M": -26.2,
+      "M": -26.3,
       "A": -24.0,
       "N": -15.0
     },
@@ -221,7 +221,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": -17.4,
-      "M": -28.2,
+      "M": -28.3,
       "A": -19.0,
       "N": -13.0
     },
@@ -359,7 +359,7 @@
     "dimension_gaps": {
       "H": 0.7,
       "U": 1.6,
-      "M": 2.8,
+      "M": 2.7,
       "A": 28.0,
       "N": 25.0
     },
@@ -419,16 +419,16 @@
     "industry": "energy",
     "composite": 63,
     "industry_average": 52,
-    "gap_from_industry": 11.5,
+    "gap_from_industry": 11.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 11.5,
+    "contagion_magnitude": 11.4,
     "is_positive_leader": true,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 9.6,
       "U": 0.4,
-      "M": 5.4,
+      "M": 5.3,
       "A": 13.6,
       "N": 7.7
     },
@@ -497,7 +497,7 @@
     "dimension_gaps": {
       "H": 17.7,
       "U": 5.6,
-      "M": 8.8,
+      "M": 8.7,
       "A": 3.0,
       "N": 15.0
     },
@@ -773,7 +773,7 @@
     "dimension_gaps": {
       "H": 7.7,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": 13.0,
       "N": 7.0
     },
@@ -796,7 +796,7 @@
     "dimension_gaps": {
       "H": 2.7,
       "U": -9.4,
-      "M": -1.2,
+      "M": -1.3,
       "A": 14.0,
       "N": 21.0
     },
@@ -920,52 +920,6 @@
     "industry_peer_count": 10
   },
   {
-    "company": "Shell PLC",
-    "ticker": "SHEL",
-    "industry": "energy",
-    "composite": 56,
-    "industry_average": 52,
-    "gap_from_industry": 4.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 4.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": -0.6,
-      "M": 1.4,
-      "A": 2.6,
-      "N": -0.3
-    },
-    "worst_dimension": "U",
-    "best_dimension": "A",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Huntington Ingalls Industries Inc",
-    "ticker": "HII",
-    "industry": "manufacturing",
-    "composite": 62,
-    "industry_average": 58,
-    "gap_from_industry": 4.4,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 4.4,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 15.6,
-      "U": 1.1,
-      "M": 4.8,
-      "A": -0.3,
-      "N": -1.5
-    },
-    "worst_dimension": "N",
-    "best_dimension": "H",
-    "industry_peer_count": 33
-  },
-  {
     "company": "DXC Technology Co",
     "ticker": "DXC",
     "industry": "tech",
@@ -987,6 +941,75 @@
     "worst_dimension": "M",
     "best_dimension": "H",
     "industry_peer_count": 247
+  },
+  {
+    "company": "Shell PLC",
+    "ticker": "SHEL",
+    "industry": "energy",
+    "composite": 56,
+    "industry_average": 52,
+    "gap_from_industry": 4.4,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 4.4,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": -0.6,
+      "M": 1.3,
+      "A": 2.6,
+      "N": -0.3
+    },
+    "worst_dimension": "U",
+    "best_dimension": "A",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Exxon Mobil Corporation",
+    "ticker": "XOM",
+    "industry": "energy",
+    "composite": 56,
+    "industry_average": 52,
+    "gap_from_industry": 4.4,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 4.4,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": -0.6,
+      "M": 1.3,
+      "A": 2.6,
+      "N": -0.3
+    },
+    "worst_dimension": "U",
+    "best_dimension": "A",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Huntington Ingalls Industries Inc",
+    "ticker": "HII",
+    "industry": "manufacturing",
+    "composite": 62,
+    "industry_average": 58,
+    "gap_from_industry": 4.3,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 4.3,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 15.6,
+      "U": 1.1,
+      "M": 4.6,
+      "A": -0.3,
+      "N": -1.5
+    },
+    "worst_dimension": "N",
+    "best_dimension": "H",
+    "industry_peer_count": 33
   },
   {
     "company": "Costco Wholesale Corporation",
@@ -1151,7 +1174,7 @@
   },
   {
     "company": "News Corp",
-    "ticker": "NWS",
+    "ticker": "NWSA",
     "industry": "media",
     "composite": 57,
     "industry_average": 61,
@@ -1201,16 +1224,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1224,16 +1247,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1247,16 +1270,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1270,16 +1293,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -6.6,
+      "M": -6.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1293,16 +1316,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1316,16 +1339,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1339,16 +1362,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1362,16 +1385,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1385,16 +1408,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1408,16 +1431,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1431,16 +1454,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1454,16 +1477,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1477,16 +1500,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1500,16 +1523,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1523,16 +1546,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1546,16 +1569,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1569,16 +1592,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1592,16 +1615,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1615,16 +1638,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1638,39 +1661,16 @@
     "industry": "energy",
     "composite": 55,
     "industry_average": 52,
-    "gap_from_industry": 3.5,
+    "gap_from_industry": 3.4,
     "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
+    "contagion_magnitude": 3.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.4,
       "U": -0.6,
-      "M": -4.6,
-      "A": 2.6,
-      "N": -0.3
-    },
-    "worst_dimension": "M",
-    "best_dimension": "A",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Exxon Mobil Corporation",
-    "ticker": "XOM",
-    "industry": "energy",
-    "composite": 55,
-    "industry_average": 52,
-    "gap_from_industry": 3.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 3.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": -0.6,
-      "M": -4.6,
+      "M": -4.7,
       "A": 2.6,
       "N": -0.3
     },
@@ -1716,7 +1716,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 11.8,
+      "M": 11.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -1739,7 +1739,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 11.8,
+      "M": 11.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -1762,7 +1762,7 @@
     "dimension_gaps": {
       "H": 2.7,
       "U": 0.6,
-      "M": 11.8,
+      "M": 11.7,
       "A": 5.0,
       "N": -5.0
     },
@@ -1863,6 +1863,811 @@
     "industry_peer_count": 55
   },
   {
+    "company": "Ameren Corp",
+    "ticker": "AEE",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "American Electric Power Company Inc",
+    "ticker": "AEP",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "American Water Works Co Inc",
+    "ticker": "AWK",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Atmos Energy Corp",
+    "ticker": "ATO",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Chevron Corporation",
+    "ticker": "CVX",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 12.6,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -20.4,
+      "N": 8.7
+    },
+    "worst_dimension": "A",
+    "best_dimension": "H",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "CMS Energy Corp",
+    "ticker": "CMS",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "ConocoPhillips",
+    "ticker": "COP",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 0.6,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -6.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Consolidated Edison Inc",
+    "ticker": "ED",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Coterra Energy Inc",
+    "ticker": "CTRA",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Devon Energy Corp",
+    "ticker": "DVN",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Diamondback Energy Inc",
+    "ticker": "FANG",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Dominion Energy Inc",
+    "ticker": "D",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "DTE Energy Co",
+    "ticker": "DTE",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Duke Energy Corp",
+    "ticker": "DUK",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "EOG Resources Inc",
+    "ticker": "EOG",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Eversource Energy",
+    "ticker": "ES",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Exelon Corp",
+    "ticker": "EXC",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "FirstEnergy Corp",
+    "ticker": "FE",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Halliburton Co",
+    "ticker": "HAL",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 8.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Kinder Morgan Inc",
+    "ticker": "KMI",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Marathon Petroleum Corp",
+    "ticker": "MPC",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Occidental Petroleum Corp",
+    "ticker": "OXY",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "ONEOK Inc",
+    "ticker": "OKE",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Phillips 66",
+    "ticker": "PSX",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Public Service Enterprise Group Inc",
+    "ticker": "PEG",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Republic Services Inc",
+    "ticker": "RSG",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Sempra",
+    "ticker": "SRE",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Slb NV",
+    "ticker": "SLB",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Southern Co",
+    "ticker": "SO",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Targa Resources Corp",
+    "ticker": "TRGP",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Valero Energy Corp",
+    "ticker": "VLO",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Waste Management Inc",
+    "ticker": "WM",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "WEC Energy Group Inc",
+    "ticker": "WEC",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Williams Companies Inc",
+    "ticker": "WMB",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Xcel Energy Inc",
+    "ticker": "XEL",
+    "industry": "energy",
+    "composite": 49,
+    "industry_average": 52,
+    "gap_from_industry": -2.6,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.4,
+      "U": 0.4,
+      "M": 2.3,
+      "A": -1.4,
+      "N": -0.3
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
     "company": "T-Mobile US Inc",
     "ticker": "TMUS",
     "industry": "telecom",
@@ -1886,811 +2691,6 @@
     "industry_peer_count": 13
   },
   {
-    "company": "Ameren Corp",
-    "ticker": "AEE",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "American Electric Power Company Inc",
-    "ticker": "AEP",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "American Water Works Co Inc",
-    "ticker": "AWK",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Atmos Energy Corp",
-    "ticker": "ATO",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Chevron Corporation",
-    "ticker": "CVX",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 12.6,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -20.4,
-      "N": 8.7
-    },
-    "worst_dimension": "A",
-    "best_dimension": "H",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "CMS Energy Corp",
-    "ticker": "CMS",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "ConocoPhillips",
-    "ticker": "COP",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 0.6,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -6.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Consolidated Edison Inc",
-    "ticker": "ED",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Coterra Energy Inc",
-    "ticker": "CTRA",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Devon Energy Corp",
-    "ticker": "DVN",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Diamondback Energy Inc",
-    "ticker": "FANG",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Dominion Energy Inc",
-    "ticker": "D",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "DTE Energy Co",
-    "ticker": "DTE",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Duke Energy Corp",
-    "ticker": "DUK",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "EOG Resources Inc",
-    "ticker": "EOG",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Eversource Energy",
-    "ticker": "ES",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Exelon Corp",
-    "ticker": "EXC",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "FirstEnergy Corp",
-    "ticker": "FE",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Halliburton Co",
-    "ticker": "HAL",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 8.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Kinder Morgan Inc",
-    "ticker": "KMI",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Marathon Petroleum Corp",
-    "ticker": "MPC",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Occidental Petroleum Corp",
-    "ticker": "OXY",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "ONEOK Inc",
-    "ticker": "OKE",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Phillips 66",
-    "ticker": "PSX",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Public Service Enterprise Group Inc",
-    "ticker": "PEG",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Republic Services Inc",
-    "ticker": "RSG",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Sempra",
-    "ticker": "SRE",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Slb NV",
-    "ticker": "SLB",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Southern Co",
-    "ticker": "SO",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Targa Resources Corp",
-    "ticker": "TRGP",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Valero Energy Corp",
-    "ticker": "VLO",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Waste Management Inc",
-    "ticker": "WM",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "WEC Energy Group Inc",
-    "ticker": "WEC",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Williams Companies Inc",
-    "ticker": "WMB",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
-    "company": "Xcel Energy Inc",
-    "ticker": "XEL",
-    "industry": "energy",
-    "composite": 49,
-    "industry_average": 52,
-    "gap_from_industry": -2.5,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.4,
-      "U": 0.4,
-      "M": 2.4,
-      "A": -1.4,
-      "N": -0.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 58
-  },
-  {
     "company": "Allstate Corp",
     "ticker": "ALL",
     "industry": "finance",
@@ -2705,7 +2705,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -2728,7 +2728,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -2751,7 +2751,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -2774,7 +2774,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -2797,7 +2797,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -2820,7 +2820,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -2843,7 +2843,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -2866,7 +2866,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -2889,7 +2889,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -2912,7 +2912,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -2935,7 +2935,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -2958,7 +2958,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -2981,7 +2981,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -3004,7 +3004,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -3027,7 +3027,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -3050,7 +3050,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -3073,7 +3073,7 @@
     "dimension_gaps": {
       "H": -1.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -3096,7 +3096,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -3119,7 +3119,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -3142,7 +3142,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -3165,7 +3165,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -3188,7 +3188,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -3211,12 +3211,35 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 5.8,
+      "M": 5.7,
       "A": 5.0,
       "N": -0.0
     },
     "worst_dimension": "H",
     "best_dimension": "M",
+    "industry_peer_count": 94
+  },
+  {
+    "company": "JPMorgan Chase & Co",
+    "ticker": "JPM",
+    "industry": "finance",
+    "composite": 60,
+    "industry_average": 58,
+    "gap_from_industry": 2.3,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 2.3,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -0.3,
+      "U": 7.6,
+      "M": 4.7,
+      "A": -2.0,
+      "N": -0.0
+    },
+    "worst_dimension": "A",
+    "best_dimension": "U",
     "industry_peer_count": 94
   },
   {
@@ -4039,7 +4062,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -7.2,
+      "M": -7.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -4062,7 +4085,7 @@
     "dimension_gaps": {
       "H": -1.3,
       "U": -1.4,
-      "M": -3.2,
+      "M": -3.3,
       "A": -2.0,
       "N": -1.0
     },
@@ -4187,7 +4210,7 @@
   },
   {
     "company": "Fox Corp",
-    "ticker": "FOX",
+    "ticker": "FOXA",
     "industry": "telecom",
     "composite": 55,
     "industry_average": 57,
@@ -4352,7 +4375,7 @@
     "industry": "manufacturing",
     "composite": 31,
     "industry_average": 58,
-    "gap_from_industry": -26.6,
+    "gap_from_industry": -26.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 1.3,
     "is_positive_leader": false,
@@ -4361,7 +4384,7 @@
     "dimension_gaps": {
       "H": -31.4,
       "U": -37.9,
-      "M": -33.2,
+      "M": -33.4,
       "A": -18.3,
       "N": -11.5
     },
@@ -4414,29 +4437,6 @@
     "worst_dimension": "M",
     "best_dimension": "H",
     "industry_peer_count": 247
-  },
-  {
-    "company": "JPMorgan Chase & Co",
-    "ticker": "JPM",
-    "industry": "finance",
-    "composite": 59,
-    "industry_average": 58,
-    "gap_from_industry": 1.3,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 1.3,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -0.3,
-      "U": 7.6,
-      "M": -1.2,
-      "A": -2.0,
-      "N": -0.0
-    },
-    "worst_dimension": "A",
-    "best_dimension": "U",
-    "industry_peer_count": 94
   },
   {
     "company": "King Arthur Baking",
@@ -5456,7 +5456,7 @@
     "industry": "manufacturing",
     "composite": 75,
     "industry_average": 58,
-    "gap_from_industry": 17.4,
+    "gap_from_industry": 17.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.9,
     "is_positive_leader": false,
@@ -5465,7 +5465,7 @@
     "dimension_gaps": {
       "H": 29.6,
       "U": 14.1,
-      "M": 12.8,
+      "M": 12.6,
       "A": 15.7,
       "N": 15.5
     },
@@ -6224,7 +6224,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6247,7 +6247,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6270,7 +6270,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6293,7 +6293,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6316,7 +6316,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6339,7 +6339,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6362,7 +6362,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6385,7 +6385,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6408,7 +6408,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6431,7 +6431,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6454,7 +6454,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6477,7 +6477,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6500,7 +6500,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6523,7 +6523,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6546,7 +6546,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6569,7 +6569,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6592,7 +6592,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6615,7 +6615,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6638,7 +6638,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6661,7 +6661,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6684,7 +6684,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6707,7 +6707,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6730,7 +6730,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6753,7 +6753,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6776,7 +6776,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6799,7 +6799,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6822,7 +6822,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6845,7 +6845,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6868,7 +6868,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6891,7 +6891,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6914,7 +6914,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6937,7 +6937,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6960,7 +6960,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -6983,7 +6983,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7006,7 +7006,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7029,7 +7029,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7052,7 +7052,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7075,7 +7075,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7098,7 +7098,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7121,7 +7121,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7144,7 +7144,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7167,7 +7167,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7190,7 +7190,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7213,7 +7213,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7236,7 +7236,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7259,7 +7259,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7282,7 +7282,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7305,7 +7305,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7328,7 +7328,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7351,7 +7351,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7374,7 +7374,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7397,7 +7397,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7420,7 +7420,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7443,7 +7443,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7466,7 +7466,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -2.0,
       "N": -0.0
     },
@@ -7489,7 +7489,7 @@
     "dimension_gaps": {
       "H": 4.7,
       "U": 0.6,
-      "M": -1.2,
+      "M": -1.3,
       "A": -14.0,
       "N": 3.0
     },
@@ -8009,7 +8009,7 @@
     "industry": "manufacturing",
     "composite": 66,
     "industry_average": 58,
-    "gap_from_industry": 8.4,
+    "gap_from_industry": 8.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.4,
     "is_positive_leader": false,
@@ -8018,7 +8018,7 @@
     "dimension_gaps": {
       "H": 22.6,
       "U": 4.1,
-      "M": 4.8,
+      "M": 4.6,
       "A": 5.7,
       "N": 5.5
     },
@@ -8032,7 +8032,7 @@
     "industry": "manufacturing",
     "composite": 66,
     "industry_average": 58,
-    "gap_from_industry": 8.4,
+    "gap_from_industry": 8.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.4,
     "is_positive_leader": false,
@@ -8041,7 +8041,7 @@
     "dimension_gaps": {
       "H": 19.6,
       "U": 7.1,
-      "M": 4.8,
+      "M": 4.6,
       "A": 5.7,
       "N": 5.5
     },
@@ -8124,7 +8124,7 @@
     "industry": "manufacturing",
     "composite": 63,
     "industry_average": 58,
-    "gap_from_industry": 5.4,
+    "gap_from_industry": 5.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
@@ -8133,7 +8133,7 @@
     "dimension_gaps": {
       "H": 0.6,
       "U": 1.1,
-      "M": 4.8,
+      "M": 4.6,
       "A": 2.7,
       "N": 16.5
     },
@@ -8202,7 +8202,7 @@
     "dimension_gaps": {
       "H": -8.3,
       "U": 0.6,
-      "M": 0.8,
+      "M": 0.7,
       "A": 5.0,
       "N": -0.0
     },
@@ -8248,7 +8248,7 @@
     "dimension_gaps": {
       "H": -0.3,
       "U": 0.6,
-      "M": 0.8,
+      "M": 0.7,
       "A": -2.0,
       "N": -0.0
     },
@@ -9017,7 +9017,7 @@
   },
   {
     "company": "Nintendo Co Ltd",
-    "ticker": "NTDOF",
+    "ticker": "NTDOY",
     "industry": "default",
     "composite": 49,
     "industry_average": 54,
@@ -9711,7 +9711,7 @@
     "industry": "manufacturing",
     "composite": 62,
     "industry_average": 58,
-    "gap_from_industry": 4.4,
+    "gap_from_industry": 4.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -9720,7 +9720,7 @@
     "dimension_gaps": {
       "H": 1.6,
       "U": 1.1,
-      "M": -0.2,
+      "M": -0.4,
       "A": 11.7,
       "N": 6.5
     },
@@ -9757,7 +9757,7 @@
     "industry": "manufacturing",
     "composite": 62,
     "industry_average": 58,
-    "gap_from_industry": 4.4,
+    "gap_from_industry": 4.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -9766,7 +9766,7 @@
     "dimension_gaps": {
       "H": 0.6,
       "U": 1.1,
-      "M": 10.8,
+      "M": 10.6,
       "A": 4.7,
       "N": 2.5
     },
@@ -13115,7 +13115,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -13124,7 +13124,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -13230,7 +13230,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -13239,7 +13239,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -13667,7 +13667,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -13676,7 +13676,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -13686,11 +13686,11 @@
   },
   {
     "company": "Honda Motor Co Ltd",
-    "ticker": "HMC",
+    "ticker": "HNDAF",
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -13699,7 +13699,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -13851,7 +13851,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -13860,7 +13860,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -13874,7 +13874,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -13883,7 +13883,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -13943,7 +13943,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -13952,7 +13952,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -13989,7 +13989,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -13998,7 +13998,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -14012,7 +14012,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -14021,7 +14021,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -14127,7 +14127,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -14136,7 +14136,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -14196,7 +14196,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -14205,7 +14205,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -14242,7 +14242,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -14251,7 +14251,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -14357,7 +14357,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -14366,7 +14366,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -14426,7 +14426,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -14435,7 +14435,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -14449,7 +14449,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -14458,7 +14458,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -14587,7 +14587,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -14596,7 +14596,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -14633,7 +14633,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -14642,7 +14642,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": -2.2,
+      "M": -2.4,
       "A": -1.3,
       "N": -1.5
     },
@@ -14787,29 +14787,6 @@
     "worst_dimension": "N",
     "best_dimension": "U",
     "industry_peer_count": 247
-  },
-  {
-    "company": "Ford Motor Co",
-    "ticker": "F",
-    "industry": "manufacturing",
-    "composite": 56,
-    "industry_average": 58,
-    "gap_from_industry": -1.6,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.1,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -2.4,
-      "U": 0.1,
-      "M": -2.2,
-      "A": -1.3,
-      "N": -1.5
-    },
-    "worst_dimension": "H",
-    "best_dimension": "U",
-    "industry_peer_count": 33
   },
   {
     "company": "Target Corporation",
@@ -15346,7 +15323,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 58,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -15355,7 +15332,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 1.1,
-      "M": 4.8,
+      "M": 4.6,
       "A": -0.3,
       "N": -1.5
     },
@@ -15415,7 +15392,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 58,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -15424,7 +15401,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 1.1,
-      "M": 4.8,
+      "M": 4.6,
       "A": -0.3,
       "N": -1.5
     },
@@ -15484,7 +15461,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 58,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -15493,7 +15470,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 1.1,
-      "M": 4.8,
+      "M": 4.6,
       "A": -0.3,
       "N": -1.5
     },
@@ -15507,7 +15484,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 58,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -15516,7 +15493,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 1.1,
-      "M": 4.8,
+      "M": 4.6,
       "A": -0.3,
       "N": -1.5
     },
@@ -15576,7 +15553,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 58,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -15585,7 +15562,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 1.1,
-      "M": 4.8,
+      "M": 4.6,
       "A": -0.3,
       "N": -1.5
     },
@@ -15852,7 +15829,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 58,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -15861,7 +15838,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": 3.8,
+      "M": 3.6,
       "A": -1.3,
       "N": -1.5
     },
@@ -15875,7 +15852,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 58,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -15884,7 +15861,7 @@
     "dimension_gaps": {
       "H": -2.4,
       "U": 0.1,
-      "M": 3.8,
+      "M": 3.6,
       "A": -1.3,
       "N": -1.5
     },
@@ -18263,7 +18240,7 @@
   },
   {
     "company": "Sony Group Corp",
-    "ticker": "SNEJF",
+    "ticker": "SONY",
     "industry": "tech",
     "composite": 55,
     "industry_average": 56,
@@ -18380,9 +18357,9 @@
     "company": "Taiwan Semiconductor Manufacturing Co Ltd",
     "ticker": "TSM",
     "industry": "tech",
-    "composite": 55,
+    "composite": 56,
     "industry_average": 56,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": 0.4,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -18391,12 +18368,12 @@
     "dimension_gaps": {
       "H": -0.7,
       "U": 0.8,
-      "M": -1.7,
+      "M": 4.3,
       "A": -1.5,
       "N": -0.8
     },
-    "worst_dimension": "M",
-    "best_dimension": "U",
+    "worst_dimension": "A",
+    "best_dimension": "M",
     "industry_peer_count": 247
   },
   {
@@ -18812,5 +18789,28 @@
     "worst_dimension": "M",
     "best_dimension": "U",
     "industry_peer_count": 247
+  },
+  {
+    "company": "Ford Motor Co",
+    "ticker": "F",
+    "industry": "manufacturing",
+    "composite": 58,
+    "industry_average": 58,
+    "gap_from_industry": 0.3,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.0,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -2.4,
+      "U": 0.1,
+      "M": 3.6,
+      "A": -1.3,
+      "N": -1.5
+    },
+    "worst_dimension": "H",
+    "best_dimension": "M",
+    "industry_peer_count": 33
   }
 ]
