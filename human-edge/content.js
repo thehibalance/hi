@@ -132,6 +132,17 @@
   profile.key_signals = company.key_signals || {};
   profile.genome = company.genome || {};
   profile.data_sources = company.data_sources || [];
+  
+  // Detect pending (seed) companies — show gray
+  const SEED_SOURCES = ['Defaults', 'Manual Scoring', 'Seed Estimate', 'Public Reporting'];
+  profile.isPending = company.score_status === 'pending' || 
+    (profile.data_sources.length === 1 && SEED_SOURCES.includes(profile.data_sources[0])) ||
+    (profile.data_sources.length === 0);
+  if (profile.isPending) {
+    profile.scoreColor = '#999';
+    profile.hiBalanced = false;
+    profile.isGold = false;
+  }
 
   // Apply filter
   const filterResult = HumanEngine.applyFilter(company, prefs);
@@ -209,7 +220,7 @@ function createBadge(profile, filterResult, prefs) {
  */
 function buildMiniHTML(profile) {
   const threshold = profile.balancedThreshold || 62;
-  const scoreColor = HumanEngine.getScoreColor(profile.composite, threshold);
+  const scoreColor = profile.isPending ? '#999' : HumanEngine.getScoreColor(profile.composite, threshold);
   const decayLevel = profile.decay_level || 'stable';
   
   // Human silhouette path
@@ -262,7 +273,7 @@ function buildMiniHTML(profile) {
  * Build the badge HTML content.
  */
 function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
-  const scoreColor = HumanEngine.getScoreColor(profile.composite, profile.balancedThreshold);
+  const scoreColor = profile.isPending ? "#999" : HumanEngine.getScoreColor(profile.composite, profile.balancedThreshold);
   const tierColor = profile.tier.color;
   const confidenceBadge = profile.confidence === 'estimated' 
     ? '<span class="human-badge__confidence">EST</span>' 
@@ -485,7 +496,7 @@ function openFullPanel(profile, filterResult, prefs) {
   panel.id = 'human-detail-panel';
   panel.className = 'human-panel';
 
-  const scoreColor = profile.hiBalanced ? '#C49B20' : HumanEngine.getScoreColor(profile.composite, profile.balancedThreshold);
+  const scoreColor = profile.isPending ? "#999" : profile.hiBalanced ? "#C49B20" : HumanEngine.getScoreColor(profile.composite, profile.balancedThreshold);
   const pulseColors = {'critical':'#DC2626','warning':'#DC2626','watch':'#D97706','stable':'#16A34A'};
   const pulseColor = pulseColors[profile.decay_level] || '#16A34A';
   const pulseDotHTML = profile.decay_index > 0 
@@ -558,7 +569,7 @@ function openFullPanel(profile, filterResult, prefs) {
       <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px;line-height:1">✦</span>' : profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
-        <div class="human-panel__tier" style="color: ${scoreColor}">HI Grade™${pulseDotHTML}</div>
+        <div class="human-panel__tier" style="color: ${scoreColor}">${profile.isPending ? "Pending Verification" : "HI Grade™"}${pulseDotHTML}</div>
         <div class="human-panel__brand">Think human intelligence.</div>
       </div>
     </div>
@@ -766,7 +777,7 @@ function openDetailPanel(profile, dim) {
       <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px;line-height:1">✦</span>' : profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
-        <div class="human-panel__tier" style="color: ${scoreColor}">HI Grade™${pulseDotHTML}</div>
+        <div class="human-panel__tier" style="color: ${scoreColor}">${profile.isPending ? "Pending Verification" : "HI Grade™"}${pulseDotHTML}</div>
         <div class="human-panel__brand">Think human intelligence.</div>
       </div>
     </div>
@@ -934,12 +945,15 @@ function openDetailPanel(profile, dim) {
     const results = HumanDB.searchByName(q);
     searchResults.innerHTML = results.slice(0, 6).map(c => {
       const p = HumanEngine.getProfile(c);
-      const col = HumanEngine.getScoreColor(p.composite, p.balancedThreshold);
+      const SEED = ['Defaults', 'Manual Scoring', 'Seed Estimate', 'Public Reporting'];
+      const ds = c.data_sources || [];
+      const pend = c.score_status === 'pending' || (ds.length === 1 && SEED.includes(ds[0])) || ds.length === 0;
+      const col = pend ? '#999' : HumanEngine.getScoreColor(p.composite, p.balancedThreshold);
       return `
-        <div class="human-panel__result">
+        <div class="human-panel__result"${pend ? ' style="opacity:0.6"' : ''}>
           <span class="human-panel__result-score" style="color: ${col}">${p.composite}</span>
-          <span class="human-panel__result-name">${p.name}</span>
-          <span class="human-panel__result-grade" style="color: ${p.tier.color}">${p.grade}</span>
+          <span class="human-panel__result-name">${p.name}${pend ? ' <span style="font-size:9px;color:#999">· pending</span>' : ''}</span>
+          <span class="human-panel__result-grade" style="color: ${col}">${pend ? 'Pending' : p.grade}</span>
         </div>
       `;
     }).join('') || '<div class="human-panel__result"><span class="human-panel__result-name" style="color:#aaa">No results</span></div>';
