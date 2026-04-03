@@ -83,7 +83,7 @@
     reqBadge.className = 'human-badge human-badge--mini';
     reqBadge.innerHTML = `
       <div class="human-badge__mini" style="padding:0;background:transparent !important;border:none !important;box-shadow:none !important;cursor:pointer">
-        <svg width="56" height="66" viewBox="0 0 68 80" style="filter:drop-shadow(0 2px 6px rgba(0,0,0,0.2))">
+        <svg width="56" height="70" viewBox="0 -4 68 88" style="filter:drop-shadow(0 2px 6px rgba(0,0,0,0.2))">
           <path d="M24,0 C30,-3 38,-3 44,0 C52,4 54,12 54,20 C54,30 46,38 34,38 C22,38 14,30 14,20 C14,12 16,4 24,0 Z M4,66 C4,48 16,40 34,40 C52,40 64,48 64,66 L64,72 C64,74 62,76 60,76 L8,76 C6,76 4,74 4,72 Z" fill="white" stroke="#1B3A5C" stroke-width="2"/>
           <text x="34" y="24" text-anchor="middle" fill="#1B3A5C" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="12" font-weight="900">HI.</text>
           <text x="34" y="62" text-anchor="middle" fill="#1B3A5C" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="16" font-weight="700">?</text>
@@ -195,6 +195,7 @@ function createBadge(profile, filterResult, prefs) {
 
   // Click mini pill to open full panel
   badge.addEventListener('click', (e) => {
+    if (badge._wasDragged) { badge._wasDragged = false; return; }
     if (badge.classList.contains('human-badge--mini')) {
       openFullPanel(profile, filterResult, prefs);
     }
@@ -204,6 +205,60 @@ function createBadge(profile, filterResult, prefs) {
   // try { chrome.storage.local.get('darkMode', ...); } catch(e) {}
 
   document.body.appendChild(badge);
+
+  // ═══ DRAGGABLE BADGE ═══
+  // Load saved position
+  try {
+    const saved = localStorage.getItem('hi_badge_pos');
+    if (saved) {
+      const pos = JSON.parse(saved);
+      badge.style.bottom = 'auto';
+      badge.style.left = Math.min(pos.x, window.innerWidth - 60) + 'px';
+      badge.style.top = Math.min(pos.y, window.innerHeight - 70) + 'px';
+    }
+  } catch(e) {}
+
+  let dragStartX, dragStartY, badgeStartX, badgeStartY, isDragging = false;
+  
+  badge.addEventListener('mousedown', (e) => {
+    if (e.target.closest('.human-panel')) return;
+    isDragging = false;
+    dragStartX = e.clientX;
+    dragStartY = e.clientY;
+    const rect = badge.getBoundingClientRect();
+    badgeStartX = rect.left;
+    badgeStartY = rect.top;
+    
+    const onMove = (e2) => {
+      const dx = e2.clientX - dragStartX;
+      const dy = e2.clientY - dragStartY;
+      if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+        isDragging = true;
+        badge.style.bottom = 'auto';
+        badge.style.left = Math.max(0, Math.min(badgeStartX + dx, window.innerWidth - 60)) + 'px';
+        badge.style.top = Math.max(0, Math.min(badgeStartY + dy, window.innerHeight - 70)) + 'px';
+        badge.style.transition = 'none';
+      }
+    };
+    
+    const onUp = () => {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+      badge.style.transition = '';
+      if (isDragging) {
+        badge._wasDragged = true;
+        try {
+          localStorage.setItem('hi_badge_pos', JSON.stringify({
+            x: parseInt(badge.style.left),
+            y: parseInt(badge.style.top)
+          }));
+        } catch(e) {}
+      }
+    };
+    
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+  });
 
   // Fetch ecosystem pulse (for panel use later)
   try {
@@ -247,7 +302,7 @@ function buildMiniHTML(profile) {
     // Gold: centered HI. across whole shape, gentle glow
     return `
       <div class="human-badge__mini" style="padding:0;background:transparent !important;border:none !important;box-shadow:none !important">
-        <svg width="56" height="66" viewBox="0 0 68 80" style="animation:gold-glow 3s ease-in-out infinite;filter:drop-shadow(0 2px 8px rgba(196,155,32,0.4))">
+        <svg width="56" height="70" viewBox="0 -4 68 88" style="animation:gold-glow 3s ease-in-out infinite;filter:drop-shadow(0 2px 8px rgba(196,155,32,0.4))">
           <path d="${silhouette}" fill="#C49B20"/>
           <text x="34" y="48" text-anchor="middle" fill="white" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="22" font-weight="900" letter-spacing="-1">HI.</text>
         </svg>
@@ -258,7 +313,7 @@ function buildMiniHTML(profile) {
   // Regular: score in head, pulsing heart in torso
   return `
     <div class="human-badge__mini" style="padding:0;background:transparent !important;border:none !important;box-shadow:none !important">
-      <svg width="56" height="66" viewBox="0 0 68 80" style="filter:drop-shadow(0 2px 8px ${fillColor}40)">
+      <svg width="56" height="70" viewBox="0 -4 68 88" style="filter:drop-shadow(0 2px 8px ${fillColor}40)">
         <path d="${silhouette}" fill="${fillColor}"/>
         <text x="34" y="24" text-anchor="middle" fill="white" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="15" font-weight="900">${profile.composite}</text>
         <g style="animation:${heartAnim};transform-origin:34px 58px">
