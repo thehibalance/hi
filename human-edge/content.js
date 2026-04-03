@@ -736,7 +736,7 @@ function openFullPanel(profile, filterResult, prefs) {
       </div>
     </div>
 
-    <div style="background:#1B3A5C;padding:12px 16px;border-radius:0 0 12px 12px">
+    <div style="background:#1B3A5C;padding:12px 16px;border-radius:0 0 14px 14px">
       <div style="display:flex;justify-content:center;gap:12px;margin-bottom:8px">
         <a href="https://thehibalance.org" target="_blank" style="font-size:10px;font-weight:600;color:#C49B20;text-decoration:none">🌐 thehibalance.org</a>
         <a href="https://apps.apple.com/app/hi/id6761270596" target="_blank" style="font-size:10px;font-weight:600;color:#C49B20;text-decoration:none">🍎 iOS App</a>
@@ -943,7 +943,7 @@ function openDetailPanel(profile, dim) {
       <div class="human-panel__results" id="panelResults"></div>
     </div>
 
-    <div style="background:#1B3A5C;padding:14px 16px;border-radius:0 0 12px 12px">
+    <div style="background:#1B3A5C;padding:14px 16px;border-radius:0 0 14px 14px">
       <div style="font-size:13px;font-weight:700;color:#C49B20;letter-spacing:0.5px;text-align:center">Think human intelligence.</div>
       <div style="font-size:11px;color:white;margin-top:4px;opacity:0.8;text-align:center">thehibalance.org · The HI Balance</div>
       <div style="font-size:8px;color:#5A7A9A;margin-top:8px;line-height:1.4;text-align:center">Gold HI Grade threshold is adaptive — recalculated quarterly. 3 gates: Score, Balance, Integrity. Scores estimated from public data. Not financial or legal advice.</div>
