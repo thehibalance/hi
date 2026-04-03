@@ -601,10 +601,6 @@ def build_index():
             print(f"  Seed data: {seed_added} added, {seed_skipped} skipped (already scored)")
             break
 
-    # Sort: verified first, then estimated, then pending. Within each tier, by composite desc.
-    status_priority = {"verified": 0, "estimated": 1, "pending": 2}
-    ALL_COMPANIES.sort(key=lambda x: (status_priority.get(x.get("score_status", "pending"), 2), -x.get("composite", 0)))
-    
     # Add score_status: "verified" (5+ real), "estimated" (1-4 real), "pending" (seed only)
     BASELINE_SOURCES = {"Defaults", "Manual Scoring", "Seed Estimate", "Public Reporting"}
     for c in ALL_COMPANIES:
@@ -618,6 +614,10 @@ def build_index():
     
     pending_count = sum(1 for c in ALL_COMPANIES if c.get("score_status") == "pending")
     print(f"  Score status: {len(ALL_COMPANIES) - pending_count} active, {pending_count} pending verification")
+
+    # Sort: verified first, then estimated, then pending. Within each tier, by composite desc.
+    status_priority = {"verified": 0, "estimated": 1, "pending": 2}
+    ALL_COMPANIES.sort(key=lambda x: (status_priority.get(x.get("score_status", "pending"), 2), -x.get("composite", 0)))
     
     # Compute HI Balanced threshold
     # Daily: use saved threshold. Quarterly: recalculate.
@@ -892,7 +892,7 @@ def stats():
         "humanwashing_flagged": sum(1 for c in ALL_COMPANIES if c.get("humanwashing_flags")),
         "floor_rule_triggered": sum(1 for c in ALL_COMPANIES if c.get("floor_triggered")),
         "balance_floor_triggered": sum(1 for c in ALL_COMPANIES if c.get("balance_floor")),
-        "data_sources": 42,
+        "data_sources": 40,
         "spec_version": "1.0.0",
         "brand": {
             "name": "HI.", "tagline": "Find the HI balance.",
