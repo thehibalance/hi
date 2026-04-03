@@ -658,22 +658,24 @@ function openFullPanel(profile, filterResult, prefs) {
   }
 
   panel.innerHTML = `
-    <div class="human-panel__header" style="background:#1B3A5C !important;border-bottom:none">
-      <div class="human-panel__back" id="panelBack" style="visibility:hidden;color:#C49B20">←</div>
-      <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-128.png')}" style="height:40px;width:auto;border-radius:6px;filter:brightness(0) invert(1)" alt="HI."></div>
-      <div class="human-panel__close" id="panelClose" style="color:white">✕</div>
+    <div style="background:#1B3A5C;padding:12px 16px;border-radius:12px 12px 0 0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <img src="${chrome.runtime.getURL('icons/icon-128.png')}" style="height:28px;width:auto;filter:brightness(0) invert(1)" alt="hi.">
+        <div id="panelClose" style="color:white;font-size:18px;cursor:pointer;padding:4px 8px">✕</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="${profile.hiBalanced ? 'background:#C49B20;border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3)' : 'background:'+scoreColor+'20;border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center'}">
+          <span style="font-size:24px;font-weight:900;color:${profile.hiBalanced ? 'white' : scoreColor}">${profile.hiBalanced ? '✦' : profile.composite}</span>
+        </div>
+        <div style="flex:1">
+          <div style="font-size:15px;font-weight:700;color:white">${profile.name}</div>
+          <div style="font-size:11px;color:${scoreColor};font-weight:600">${profile.isPending ? 'Pending Verification' : profile.hiBalanced ? 'Gold HI Grade™' : 'HI Grade™'}${pulseDotHTML}</div>
+        </div>
+      </div>
+      ${profile.hiBalanced ? '<div style="font-size:11px;color:#C49B20;font-weight:600;margin-top:8px">✦ All 3 gates passed · '+profile.composite+'</div>' : ''}
     </div>
 
-    <div class="human-panel__company">
-      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px;line-height:1">✦</span>' : profile.composite}</div>
-      <div>
-        <div class="human-panel__name">${profile.name}</div>
-        <div class="human-panel__tier" style="color: ${scoreColor}">${profile.isPending ? "Pending Verification" : "HI Grade™"}${pulseDotHTML}</div>
-        <div class="human-panel__brand">Think human intelligence.</div>
-      </div>
-    </div>
-    ${profile.hiBalanced ? '<div style="padding:4px 16px;font-size:11px;color:#C49B20;font-weight:600">HI. All 3 gates passed</div><div style="padding:2px 16px;font-size:20px;font-weight:900;color:#C49B20">'+profile.composite+'</div>' : ''}
-    ${profile.tier.satire ? `<div class="human-panel__satire">"${profile.tier.satire}"</div>` : ''}
+    <div style="background:#F5F7FA;padding:0">
 
     ${(() => {
       const gates = profile.goldGates || {};
@@ -681,37 +683,27 @@ function openFullPanel(profile, filterResult, prefs) {
       const passed = Object.values(gates).filter(v => v).length;
       const threshold = Math.round(profile.goldThreshold || profile.balancedThreshold || 62);
       const gc = (k,v) => '<div style="font-size:10px;padding:2px 0;color:' + (v ? '#16A34A' : '#DC2626') + '">' + (v ? '✓' : '✗') + ' ' + k + '</div>';
-      return '<div style="padding:8px 16px;margin-top:4px">' +
-        '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:11px;font-weight:700;color:#1B3A5C">' + passed + '/' + total + ' GATES</span><div style="flex:1;height:4px;background:#EEF1F5;border-radius:2px"><div style="height:100%;width:' + (passed/total*100) + '%;background:' + (passed === total ? '#C49B20' : '#1B3A5C') + ';border-radius:2px"></div></div></div>' +
-        '<div style="font-size:9px;font-weight:700;color:#1B3A5C;letter-spacing:1px;margin-bottom:4px">📊 SCORE</div>' +
+      return '<div style="padding:10px 16px;background:white;margin:8px;border-radius:8px">' +
+        '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><span style="font-size:10px;font-weight:700;color:#1B3A5C">' + passed + '/' + total + ' GATES</span><div style="flex:1;height:3px;background:#EEF1F5;border-radius:2px"><div style="height:100%;width:' + (passed/total*100) + '%;background:' + (passed === total ? '#C49B20' : '#1B3A5C') + ';border-radius:2px"></div></div></div>' +
         gc('Composite ≥ ' + threshold, gates.score) +
-        '<div style="font-size:9px;font-weight:700;color:#C49B20;letter-spacing:1px;margin:6px 0 4px">⚖ BALANCE</div>' +
         gc('All dimensions ≥ 42', gates.balance) +
-        '<div style="font-size:9px;font-weight:700;color:#16A34A;letter-spacing:1px;margin:6px 0 4px">🔒 INTEGRITY</div>' +
-        gc('No Humanwashing™ flags', gates.integrity) +
-        gc('Algorithmic Harm Index™ < 30', gates.integrity) +
+        gc('No Humanwashing™ & AHI < 30', gates.integrity) +
         '</div>';
     })()}
 
-    <div style="padding:0 16px">
-      <div style="font-size:11px;font-weight:700;color:#1B3A5C;letter-spacing:0.5px;margin-bottom:8px">DIMENSIONS</div>
+    <div style="padding:4px 16px 0">
+      <div style="font-size:10px;font-weight:700;color:#1B3A5C;letter-spacing:0.5px;margin:8px 0 6px">HUMAN DIMENSIONS</div>
       ${allDimsHTML}
     </div>
 
     ${floorHTML ? `<div style="padding:0 16px">${floorHTML}</div>` : ''}
     ${decayHTML ? `<div style="padding:0 16px">${decayHTML}</div>` : ''}
 
-    <div style="padding:8px 16px;text-align:center">
-      <a href="https://thehibalance.org" target="_blank" style="font-size:11px;font-weight:600;color:#1B3A5C;text-decoration:none">View full breakdown on thehibalance.org →</a>
+    ${pulseHTML ? `<div style="padding:4px 16px">${pulseHTML}</div>` : ''}
+
     </div>
 
-    ${pulseHTML ? `<div style="padding:0 16px">${pulseHTML}</div>` : ''}
-
-    <div style="padding:0 16px;margin-top:8px">
-      
-    </div>
-
-    <div class="human-panel__toggle-section">
+    <div class="human-panel__toggle-section" style="background:white;margin:0;border-top:1px solid #EEF1F5">
       <div class="human-panel__toggle-row">
         <div>
           <div class="human-panel__toggle-label" id="panelToggleLabel">Full View</div>
@@ -747,13 +739,14 @@ function openFullPanel(profile, filterResult, prefs) {
         <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#16A34A"></span>
         <span id="hiPipelineCountdown" style="font-size:10px;font-family:monospace;color:#888">Connected · API live</span>
       </div>
-      <a href="https://apps.apple.com/app/hi/id6761270596" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--navy,#1B3A5C);color:white;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:0.5px">🍎 Get the App</a>
     </div>
 
-    <div style="background:#1B3A5C;padding:14px 16px;border-radius:0 0 12px 12px">
-      <div style="font-size:13px;font-weight:700;color:#C49B20;letter-spacing:0.5px;text-align:center">Think human intelligence.</div>
-      <div style="font-size:11px;color:white;margin-top:4px;opacity:0.8;text-align:center">thehibalance.org · The HI Balance</div>
-      <div style="font-size:8px;color:#5A7A9A;margin-top:8px;line-height:1.4;text-align:center">Gold HI Grade threshold (currently ${Math.round(profile.balancedThreshold || 62)}) is adaptive — recalculated quarterly. 3 gates: Score, Balance, Integrity. Scores estimated from public data. Not financial or legal advice.</div>
+    <div style="background:#1B3A5C;padding:12px 16px;border-radius:0 0 12px 12px">
+      <div style="display:flex;justify-content:center;gap:12px;margin-bottom:8px">
+        <a href="https://thehibalance.org" target="_blank" style="font-size:10px;font-weight:600;color:#C49B20;text-decoration:none">🌐 thehibalance.org</a>
+        <a href="https://apps.apple.com/app/hi/id6761270596" target="_blank" style="font-size:10px;font-weight:600;color:#C49B20;text-decoration:none">🍎 iOS App</a>
+      </div>
+      <div style="font-size:8px;color:#5A7A9A;line-height:1.4;text-align:center">Scores estimated from public data. Not financial or legal advice. Gold threshold: ${Math.round(profile.balancedThreshold || 62)}.</div>
     </div>
   `;
 
