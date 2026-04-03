@@ -377,7 +377,6 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
           ${profile.decay_factors.map(f => `<div style="font-size:10px;margin-top:4px;padding-left:14px;position:relative"><span style="position:absolute;left:0">›</span>${f}</div>`).join('')}
         </div>` : ''}
       ${filterWarning}
-      ${buildGenomeStrip(profile)}
       <div class="human-badge__pulse" id="human-badge-pulse"></div>
       
       <div class="human-badge__disclaimer">Estimated from public data. Not financial or legal advice.</div>
@@ -558,14 +557,62 @@ function openFullPanel(profile, filterResult, prefs) {
     ? `<span style="font-size:12px;font-weight:700;color:${pulseColor};margin-left:8px${profile.decay_level==='critical'||profile.decay_level==='warning'?';animation:blink 2s infinite':''}">♥${profile.decay_index}</span>`
     : `<span style="font-size:12px;color:#16A34A;margin-left:8px">♥</span>`;
 
-  // Build all dimensions with inline insights
+  // Sub-signal labels matching website/app
+  const SUB_LABELS = {
+    'H.1':'Creative Agency','H.2':'Craft & Knowledge','H.3':'Decision Depth','H.4':'CEO Accountability','H.5':'Displacement Trajectory',
+    'U.1':'Customer Empathy','U.2':'Worker Empathy','U.3':'Relational Integrity','U.4':'Simulated Empathy','U.5':'Moral Courage',
+    'M.1':'Pricing Ethics','M.2':'Data Ethics','M.3':'Market Ethics','M.4':'Product Ethics','M.5':'Political Ethics',
+    'A.1':'Energy & Carbon','A.2':'Water','A.3':'Land & Habitat','A.4':'Hardware Lifecycle','A.5':'Resource Stewardship',
+    'N.1':'AI Disclosure','N.2':'Environmental Reporting','N.3':'Labor Auditability','N.4':'Humanwashing Detection','N.5':'Disclosure Completeness'
+  };
+  const SUB_KEYS = {h:['H.1','H.2','H.3','H.4','H.5'],u:['U.1','U.2','U.3','U.4','U.5'],m:['M.1','M.2','M.3','M.4','M.5'],a:['A.1','A.2','A.3','A.4','A.5'],n:['N.1','N.2','N.3','N.4','N.5']};
+  const SEED_SRC = ['Defaults','Manual Scoring','Seed Estimate','Public Reporting'];
+
+  // Build all dimensions with expandable sub-signal bars
   const allDimsHTML = HumanEngine.DIMENSIONS.map(d => {
     const s = profile.dimensions[d] || 0;
-    const c = HumanEngine.getScoreColor(s, profile.balancedThreshold);
+    const c = profile.isPending ? '#999' : HumanEngine.getScoreColor(s, profile.balancedThreshold);
     const info = DIM_DESCRIPTIONS[d];
-    const insights = buildDimInsights(d, profile);
+    const genome = profile.genome || {};
+    const dd = genome[d.toUpperCase()] || {};
+    const dimSources = (dd.sources || []);
+    let subScores = dd.scores || {};
+    
+    // Fill from dimension score if genome empty
+    if (!Object.keys(subScores).length) {
+      (SUB_KEYS[d] || []).forEach(k => { subScores[k] = s; });
+    }
+    
+    const isSeed = profile.isPending || dimSources.some(s => SEED_SRC.includes(s)) || 
+      (Object.values(subScores).length > 1 && new Set(Object.values(subScores).map(Math.round)).size === 1 && !dimSources.length);
+    
+    let realCount = 0;
+    if (!isSeed) {
+      Object.values(subScores).forEach(v => { if (Math.round(v) < 45 || Math.round(v) > 55) realCount++; });
+    }
+    
+    const subBarsHTML = (SUB_KEYS[d] || []).map(k => {
+      const v = Math.round(subScores[k] || 50);
+      const lbl = SUB_LABELS[k] || k;
+      const isDef = isSeed || (v >= 45 && v <= 55 && !dimSources.length);
+      const barCol = isDef ? '#ccc' : HumanEngine.getScoreColor(v, profile.balancedThreshold || 62);
+      const txtCol = isDef ? '#999' : barCol;
+      return `<div style="display:flex;align-items:center;gap:6px;padding:2px 0">
+        <span style="font-size:9px;font-weight:700;font-family:monospace;color:#999;width:24px;text-align:right">${k}</span>
+        <div style="flex:1">
+          <div style="display:flex;justify-content:space-between"><span style="font-size:10px;color:${isDef?'#999':'#333'}">${lbl}</span><span style="font-size:10px;font-weight:700;color:${txtCol}">${v}</span></div>
+          <div style="height:3px;background:#EEF1F5;border-radius:2px;margin-top:1px"><div style="height:100%;width:${v}%;background:${barCol};border-radius:2px"></div></div>
+        </div>
+      </div>`;
+    }).join('');
+    
+    const covLabel = isSeed ? 'Estimated' : realCount >= 4 ? 'Strong data' : realCount >= 2 ? 'Partial' : realCount > 0 ? 'Limited' : 'Needs data';
+    const covColor = isSeed ? '#92400E' : realCount >= 4 ? '#16A34A' : '#D97706';
+    const covBg = isSeed ? '#F3F0E8' : realCount >= 4 ? '#DCF5E7' : '#FFF3E0';
+    const covHTML = `<div style="display:flex;align-items:center;gap:6px;margin-top:4px"><span style="font-size:8px;font-weight:600;color:${covColor};padding:2px 6px;border-radius:4px;background:${covBg}">${realCount}/${Object.keys(subScores).length} · ${covLabel}</span>${dimSources.length ? `<span style="font-size:8px;color:#999">${dimSources.join(' · ')}</span>` : ''}</div>`;
+
     return `
-      <div style="margin-bottom:12px">
+      <div style="margin-bottom:8px">
         <div class="human-panel__dim-row human-dim-toggle" style="cursor:pointer" data-dim="${d}">
           <span class="human-panel__row-icon">${info.icon}</span>
           <span class="human-panel__row-label">${d.toUpperCase()}</span>
@@ -576,14 +623,11 @@ function openFullPanel(profile, filterResult, prefs) {
           <span class="human-dim-arrow" style="font-size:10px;color:#999;margin-left:4px">▾</span>
         </div>
         <div class="human-dim-detail" style="display:none;padding:8px 12px;background:#f8f9fa;border-radius:0 0 8px 8px;margin-top:-2px">
-          <div style="font-size:11px;color:#555;margin-bottom:6px">${info.what}</div>
-          ${insights}
+          ${subBarsHTML}
+          ${covHTML}
         </div>
       </div>`;
   }).join('');
-
-  // Genome strip
-  const genomeHTML = buildGenomeStrip(profile);
 
   // Heartbeat/decay section
   let decayHTML = '';
@@ -657,8 +701,8 @@ function openFullPanel(profile, filterResult, prefs) {
     ${floorHTML ? `<div style="padding:0 16px">${floorHTML}</div>` : ''}
     ${decayHTML ? `<div style="padding:0 16px">${decayHTML}</div>` : ''}
 
-    <div style="padding:0 16px">
-      ${genomeHTML}
+    <div style="padding:8px 16px;text-align:center">
+      <a href="https://thehibalance.org" target="_blank" style="font-size:11px;font-weight:600;color:#1B3A5C;text-decoration:none">View full breakdown on thehibalance.org →</a>
     </div>
 
     ${pulseHTML ? `<div style="padding:0 16px">${pulseHTML}</div>` : ''}
