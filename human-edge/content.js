@@ -299,12 +299,13 @@ function buildMiniHTML(profile) {
   const fillColor = profile.hiBalanced ? '#C49B20' : scoreColor;
   
   if (profile.hiBalanced) {
-    // Gold: centered HI. across whole shape, gentle glow
+    // Gold: score in head, star in torso, golden glow
     return `
       <div class="human-badge__mini" style="padding:0;background:transparent !important;border:none !important;box-shadow:none !important">
         <svg width="56" height="70" viewBox="0 -4 68 88" style="animation:gold-glow 3s ease-in-out infinite;filter:drop-shadow(0 2px 8px rgba(196,155,32,0.4))">
           <path d="${silhouette}" fill="#C49B20"/>
-          <text x="34" y="48" text-anchor="middle" fill="white" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="22" font-weight="900" letter-spacing="-1">HI.</text>
+          <text x="34" y="24" text-anchor="middle" fill="white" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="15" font-weight="900">${profile.composite}</text>
+          <text x="34" y="64" text-anchor="middle" fill="white" font-size="18">★</text>
         </svg>
       </div>
     `;
@@ -665,14 +666,13 @@ function openFullPanel(profile, filterResult, prefs) {
     </div>
 
     <div class="human-panel__company" style="background:white">
-      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px;line-height:1">✦</span>' : profile.composite}</div>
+      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:28px;font-weight:900' : 'color:'+scoreColor+';font-size:36px'}">${profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
-        <div class="human-panel__tier" style="color: ${scoreColor}">${profile.isPending ? "Pending Verification" : "HI Grade™"}${pulseDotHTML}</div>
-        <div class="human-panel__brand">Think human intelligence.</div>
+        <div class="human-panel__tier" style="color: ${scoreColor}">${profile.isPending ? "Pending Verification" : profile.hiBalanced ? "★ Gold HI Grade™" : "HI Grade™"}${pulseDotHTML}</div>
       </div>
     </div>
-    ${profile.hiBalanced ? '<div style="padding:4px 16px;font-size:11px;color:#C49B20;font-weight:600;background:white">✦ All 3 gates passed</div><div style="padding:2px 16px;font-size:20px;font-weight:900;color:#C49B20;background:white">'+profile.composite+'</div>' : ''}
+    ${profile.hiBalanced ? '<div style="padding:4px 16px;font-size:11px;color:#C49B20;font-weight:600;background:white">★ All 3 gates passed</div>' : ''}
 
     <div style="background:white;padding:8px 16px">
     ${(() => {
@@ -861,7 +861,7 @@ function openDetailPanel(profile, dim) {
     </div>
 
     <div class="human-panel__company">
-      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:36px' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<span style="font-size:28px;font-weight:900;letter-spacing:-1px;line-height:1">✦</span>' : profile.composite}</div>
+      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:28px;font-weight:900' : 'color:'+scoreColor+';font-size:36px'}">${profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
         <div class="human-panel__tier" style="color: ${scoreColor}">${profile.isPending ? "Pending Verification" : "HI Grade™"}${pulseDotHTML}</div>
