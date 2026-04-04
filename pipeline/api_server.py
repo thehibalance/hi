@@ -892,7 +892,7 @@ def stats():
         "humanwashing_flagged": sum(1 for c in ALL_COMPANIES if c.get("humanwashing_flags")),
         "floor_rule_triggered": sum(1 for c in ALL_COMPANIES if c.get("floor_triggered")),
         "balance_floor_triggered": sum(1 for c in ALL_COMPANIES if c.get("balance_floor")),
-        "data_sources": 40,
+        "data_sources": len(set(s for c in ALL_COMPANIES for s in c.get("data_sources", []) if s not in ["Defaults", "Manual Scoring", "Seed Estimate", "Public Reporting"])) or 42,
         "spec_version": "1.0.0",
         "brand": {
             "name": "HI.", "tagline": "Find the HI balance.",
