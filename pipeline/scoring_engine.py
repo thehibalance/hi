@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 HI. — HUMAN Scoring Engine v2.1
-Merges signals from 24 sub-signals across 40 data sources into HUMAN dimension scores.
+Merges signals from 25 sub-signals across 42 data sources into HUMAN dimension scores.
 
 Follows HUMAN_Grade_Methodology_Spec v1.1
 3 gates: Score, Balance, Integrity
