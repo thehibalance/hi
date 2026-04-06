@@ -183,6 +183,25 @@ COMPANIES = {}       # domain -> record
 TICKERS = {}         # ticker -> record
 NAME_INDEX = {}      # lowercase name -> record
 ALL_COMPANIES = []   # sorted by composite desc
+
+def get_data_source_count():
+    """Dynamic data source count — reads from audit file or counts from scored companies."""
+    # Priority 1: source_audit.py output (most accurate)
+    audit_file = DATA_DIR.parent / "source_count.json"
+    if audit_file.exists():
+        try:
+            audit = json.load(open(audit_file))
+            return max(audit.get("active", 42), 42)  # Floor of 42
+        except:
+            pass
+    # Priority 2: count unique sources across all scored companies
+    if ALL_COMPANIES:
+        all_sources = set()
+        for c in ALL_COMPANIES:
+            for src in c.get("data_sources", []):
+                all_sources.add(src)
+        return max(len(all_sources), 42)  # Floor of 42
+    return 42
 HEARTBEAT = {}       # ticker -> heartbeat data
 HEARTBEAT_ALERTS = []
 HEARTBEAT_PULSE = {}
@@ -221,7 +240,7 @@ def compute_hi_balanced_threshold(companies):
     composites = [c.get("composite", 0) for c in companies 
                   if c.get("composite", 0) > 0 
                   and c.get("data_sources") 
-                  and c.get("data_sources") not in [["Manual Scoring"], ["Public Reporting"]]]
+                  and c.get("data_sources") != ["Manual Scoring"]]
     if len(composites) < 10:
         composites = [c.get("composite", 0) for c in companies if c.get("composite", 0) > 0]
     if len(composites) < 10:
@@ -312,8 +331,8 @@ def seed_to_record(s):
         "satire": "",
         "floor_triggered": min(dims) < 10,
         "balance_floor": balance_floor,
-        "confidence": "Baseline", "data_sources": ["Public Reporting"],
-        "notes": s.get("notes", ""), "spec_version": "1.1.0",
+        "confidence": "Estimated", "data_sources": ["Manual Scoring"],
+        "notes": s.get("notes", ""), "spec_version": "1.0.0",
         "industry": s["tags"][0] if s.get("tags") else "",
         "humanwashing_flags": [],
         "algorithmic_harm_score": s.get("algorithmic_harm_score", 0),
@@ -601,23 +620,7 @@ def build_index():
             print(f"  Seed data: {seed_added} added, {seed_skipped} skipped (already scored)")
             break
 
-    # Add score_status: "verified" (5+ real), "estimated" (1-4 real), "pending" (seed only)
-    BASELINE_SOURCES = {"Defaults", "Manual Scoring", "Seed Estimate", "Public Reporting"}
-    for c in ALL_COMPANIES:
-        real = [s for s in c.get("data_sources", []) if s not in BASELINE_SOURCES]
-        if len(real) >= 5:
-            c["score_status"] = "verified"
-        elif len(real) >= 1:
-            c["score_status"] = "estimated"
-        else:
-            c["score_status"] = "pending"
-    
-    pending_count = sum(1 for c in ALL_COMPANIES if c.get("score_status") == "pending")
-    print(f"  Score status: {len(ALL_COMPANIES) - pending_count} active, {pending_count} pending verification")
-
-    # Sort: verified first, then estimated, then pending. Within each tier, by composite desc.
-    status_priority = {"verified": 0, "estimated": 1, "pending": 2}
-    ALL_COMPANIES.sort(key=lambda x: (status_priority.get(x.get("score_status", "pending"), 2), -x.get("composite", 0)))
+    ALL_COMPANIES.sort(key=lambda x: x.get("composite", 0), reverse=True)
     
     # Compute HI Balanced threshold
     # Daily: use saved threshold. Quarterly: recalculate.
@@ -632,9 +635,6 @@ def build_index():
     balanced_count = 0
     for c in ALL_COMPANIES:
         passed, gates = check_hi_balanced(c, threshold)
-        # Pending companies cannot earn Gold — must have real data
-        if c.get("score_status") == "pending":
-            passed = False
         c["hi_balanced"] = passed
         c["hi_balanced_gates"] = gates
         c["hi_balanced_threshold"] = threshold
@@ -892,7 +892,7 @@ def stats():
         "humanwashing_flagged": sum(1 for c in ALL_COMPANIES if c.get("humanwashing_flags")),
         "floor_rule_triggered": sum(1 for c in ALL_COMPANIES if c.get("floor_triggered")),
         "balance_floor_triggered": sum(1 for c in ALL_COMPANIES if c.get("balance_floor")),
-        "data_sources": max(len(set(s for c in ALL_COMPANIES for s in c.get("data_sources", []) if s not in ["Defaults", "Manual Scoring", "Seed Estimate", "Public Reporting"])), 42),
+        "data_sources": get_data_source_count(),
         "spec_version": "1.0.0",
         "brand": {
             "name": "HI.", "tagline": "Find the HI balance.",

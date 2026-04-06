@@ -180,7 +180,7 @@ def find_match(company_name, ticker, index):
 
 # ── Dimension Scoring ─────────────────────────────────────────────────
 
-def score_h_dimension(sec_h, job_data, bls_data, industry, glassdoor_data=None):
+def score_h_dimension(sec_h, job_data, bls_data, industry):
     scores = {}
     sources_used = []
 
@@ -249,14 +249,7 @@ def score_h_dimension(sec_h, job_data, bls_data, industry, glassdoor_data=None):
     scores["H.3"] = round(h3, 1)
     sources_used.extend([s for s in h3_sources if s not in sources_used])
     
-    # H.4 CEO Accountability — Glassdoor CEO approval if available
-    gd_h = glassdoor_data.get("u_signals", {}) if glassdoor_data else {}
-    ceo_approval = gd_h.get("ceo_approval")
-    if ceo_approval is not None:
-        scores["H.4"] = round(ceo_approval, 1)  # Already 0-100
-        if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
-    else:
-        scores["H.4"] = 50
+    scores["H.4"] = 50
 
     displacement = sec_h.get("displacement_signal")
     job_trend = job_data.get("h_signals", {}).get("ai_hiring_trend") if job_data else None
@@ -276,7 +269,7 @@ def score_h_dimension(sec_h, job_data, bls_data, industry, glassdoor_data=None):
         else:
             scores["H.5"] = 50
 
-    D_H = 0.20*scores["H.1"] + 0.20*scores["H.2"] + 0.20*scores["H.3"] + 0.20*scores["H.4"] + 0.20*scores["H.5"]
+    D_H = 0.25*scores["H.1"] + 0.20*scores["H.2"] + 0.20*scores["H.3"] + 0.15*scores["H.4"] + 0.20*scores["H.5"]
     return round_score(D_H), scores, list(set(sources_used))
 
 
@@ -284,13 +277,6 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
     scores = {}
     sources_used = []
     gd = glassdoor_data.get("u_signals", {}) if glassdoor_data else {}
-    # Normalize Glassdoor field names (1-5 scale → 0-100)
-    if gd.get("overall_rating") is not None and gd.get("overall_score") is None:
-        gd["overall_score"] = round(gd["overall_rating"] * 20, 1)
-        gd["culture_score"] = round(gd.get("culture_rating", 3.0) * 20, 1)
-        gd["worklife_score"] = round(gd.get("work_life_rating", gd.get("overall_rating", 3.0)) * 20, 1)
-        gd["recommend_pct"] = gd.get("recommend_pct", round(gd["overall_rating"] * 15, 1))
-        gd["review_count"] = gd.get("review_count", 500)
     ss = subsignals or {}
 
     # U.1 Customer Empathy — CFPB data if available, else Glassdoor
@@ -351,17 +337,10 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
     
     scores["U.4"] = round(clamp(u4), 1)
 
-    # U.5 Moral Courage — Glassdoor culture + overall as proxy
-    if gd.get("culture_score") is not None and gd.get("overall_score") is not None:
-        scores["U.5"] = round(gd["culture_score"] * 0.6 + gd["overall_score"] * 0.4, 1)
-        if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
-    elif gd.get("overall_score") is not None:
-        scores["U.5"] = gd["overall_score"]
-        if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
-    else:
-        scores["U.5"] = 50
+    # U.5 Moral Courage — placeholder
+    scores["U.5"] = 50
 
-    D_U = 0.20*scores["U.1"] + 0.20*scores["U.2"] + 0.20*scores["U.3"] + 0.20*scores["U.4"] + 0.20*scores["U.5"]
+    D_U = 0.25*scores["U.1"] + 0.25*scores["U.2"] + 0.20*scores["U.3"] + 0.15*scores["U.4"] + 0.15*scores["U.5"]
     return round_score(D_U), scores, sources_used
 
 
@@ -402,36 +381,32 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
     if litigation: sources_used.append("SEC")
     if epa_penalties > 0 or epa_actions > 0: sources_used.append("EPA")
 
-    # M.4 Product Ethics — CPSC recalls if available, else Glassdoor as proxy
+    # M.4 Product Ethics — CPSC recalls if available, else Glassdoor
     cpsc_m4 = ss.get("cpsc", {}).get("M.4")
     if cpsc_m4 is not None:
         scores["M.4"] = cpsc_m4
         sources_used.append("CPSC")
     else:
-        gd_u = glassdoor_data.get("u_signals", {}) if glassdoor_data else {}
-        overall = gd_u.get("overall_rating")
-        if overall is not None:
-            # Use overall rating as management/product proxy (1-5 → 0-100)
-            scores["M.4"] = round(overall * 20, 1)
+        gd_m = glassdoor_data.get("m_signals", {}) if glassdoor_data else {}
+        if gd_m.get("mgmt_score") is not None:
+            scores["M.4"] = round(gd_m["mgmt_score"] * 0.6 + gd_m.get("comp_score", 50) * 0.4, 1)
             sources_used.append("Glassdoor")
         else:
             scores["M.4"] = 50  # No data = neutral
 
-    # M.5 Political Ethics — FEC data if available, else Glassdoor CEO approval
+    # M.5 Political Ethics — FEC data if available, else Glassdoor CEO
     fec_m5 = ss.get("fec", {}).get("M.5")
     if fec_m5 is not None:
         scores["M.5"] = fec_m5
         sources_used.append("FEC")
     else:
-        gd_u = glassdoor_data.get("u_signals", {}) if glassdoor_data else {}
-        ceo = gd_u.get("ceo_approval")
-        if ceo is not None:
-            scores["M.5"] = round(ceo, 1)  # Already 0-100
-            if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
+        gd_m = glassdoor_data.get("m_signals", {}) if glassdoor_data else {}
+        if gd_m.get("ceo_score") is not None:
+            scores["M.5"] = gd_m["ceo_score"]
         else:
             scores["M.5"] = 50  # No data = neutral
 
-    D_M = 0.20*scores["M.1"] + 0.20*scores["M.2"] + 0.20*scores["M.3"] + 0.20*scores["M.4"] + 0.20*scores["M.5"]
+    D_M = 0.20*scores["M.1"] + 0.20*scores["M.2"] + 0.20*scores["M.3"] + 0.25*scores["M.4"] + 0.15*scores["M.5"]
     return round_score(D_M), scores, list(set(sources_used))
 
 
@@ -489,20 +464,11 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None):
             hw_defaults = {"tech": 40, "telecom": 45, "manufacturing": 50, "default": 55}
             scores["A.4"] = hw_defaults.get(industry, 55)
 
-    # A.5 Resource Stewardship — CDP forests + industry baseline
-    if cdp_a.get("cdp_forests_score") is not None and scores["A.4"] != cdp_a.get("cdp_forests_score"):
-        scores["A.5"] = cdp_a["cdp_forests_score"]
-        if "CDP" not in sources_used: sources_used.append("CDP")
-    else:
-        rs_defaults = {"food": 40, "manufacturing": 45, "retail": 50, "energy": 35,
-                       "tech": 60, "finance": 65, "healthcare": 55, "default": 50}
-        scores["A.5"] = rs_defaults.get(industry, 50)
-
-    D_A = 0.20*scores["A.1"] + 0.20*scores["A.2"] + 0.20*scores["A.3"] + 0.20*scores["A.4"] + 0.20*scores["A.5"]
+    D_A = 0.30*scores["A.1"] + 0.25*scores["A.2"] + 0.20*scores["A.3"] + 0.25*scores["A.4"]
     return round_score(D_A), scores, list(set(sources_used))
 
 
-def score_n_dimension(sec_n, cdp_data, epa_data, industry, sec_h=None, job_data=None):
+def score_n_dimension(sec_n, cdp_data, epa_data, industry):
     scores = {}
     sources_used = []
     scores["N.1"] = 40
@@ -523,24 +489,7 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry, sec_h=None, job_data=
         scores["N.2"] = 50
 
     scores["N.3"] = 45
-    
-    # N.4 Humanwashing Detection — compute for ALL companies from available data
-    sec_h = sec_h or {}
-    n4 = 50
-    n4_has_data = False
-    rpe = sec_h.get("revenue_per_employee")
-    displacement = sec_h.get("displacement_signal")
-    ai_ratio = job_data.get("h_signals", {}).get("ai_ratio") if job_data else None
-    if rpe and rpe > INDUSTRY_RPE_MEDIANS.get(industry, 350000) * 3:
-        n4 -= 20; n4_has_data = True
-    if displacement is not None and displacement > 20:
-        n4 -= 15; n4_has_data = True
-    if ai_ratio is not None and ai_ratio > 0.35:
-        n4 -= 10; n4_has_data = True
-    # If we have any SEC data at all, this is real not default
-    if rpe is not None or displacement is not None:
-        n4_has_data = True
-    scores["N.4"] = round(clamp(n4), 1)
+    scores["N.4"] = 50  # No data = neutral (humanwashing detection requires evidence)
 
     total_filings = sec_n.get("total_recent_filings", 0)
     if total_filings >= 8: scores["N.5"] = 90
@@ -558,7 +507,7 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry, sec_h=None, job_data=
     if "Large Accelerated" in str(sec_n.get("category", "")):
         scores["N.5"] = min(100, scores["N.5"] + 5)
 
-    D_N = 0.20*scores["N.1"] + 0.20*scores["N.2"] + 0.20*scores["N.3"] + 0.20*scores["N.4"] + 0.20*scores["N.5"]
+    D_N = 0.25*scores["N.1"] + 0.20*scores["N.2"] + 0.20*scores["N.3"] + 0.20*scores["N.4"] + 0.15*scores["N.5"]
     return round_score(D_N), scores, sources_used
 
 
@@ -764,11 +713,11 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
     sec_n = sec_data.get("n_signals", {}) if sec_data else {}
     sec_u = sec_data.get("u_signals", {}) if sec_data else {}
 
-    D_H, h_detail, h_src = score_h_dimension(sec_h, job_data, bls_data, industry, glassdoor_data=glassdoor_data)
+    D_H, h_detail, h_src = score_h_dimension(sec_h, job_data, bls_data, industry)
     D_U, u_detail, u_src = score_u_dimension(sec_u, glassdoor_data, industry, ss)
     D_M, m_detail, m_src = score_m_dimension(sec_m, epa_data, glassdoor_data, industry, ss)
     D_A, a_detail, a_src = score_a_dimension(sec_data.get("a_signals", {}) if sec_data else {}, epa_data, cdp_data, industry, ss)
-    D_N, n_detail, n_src = score_n_dimension(sec_n, cdp_data, epa_data, industry, sec_h=sec_h, job_data=job_data)
+    D_N, n_detail, n_src = score_n_dimension(sec_n, cdp_data, epa_data, industry)
 
     # ═══ EXTENDED SIGNALS (sources 23-34) ═══
     # Load extended pipeline data and apply adjustments
@@ -783,71 +732,6 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
             pass
     
     if ext:
-        # ═══ UPGRADE HARDCODED SUB-SIGNALS WITH REAL DATA ═══
-        
-        # H.4 CEO Accountability — use pay ratio + insider trading
-        pay = ext.get("pay_ratio", {})
-        pay_ratio = pay.get("ratio")
-        if pay_ratio is not None:
-            if pay_ratio > 500: h_detail["H.4"] = 20
-            elif pay_ratio > 300: h_detail["H.4"] = 35
-            elif pay_ratio > 200: h_detail["H.4"] = 45
-            elif pay_ratio > 100: h_detail["H.4"] = 55
-            elif pay_ratio > 50: h_detail["H.4"] = 70
-            else: h_detail["H.4"] = 85
-            if "SEC DEF 14A" not in h_src: h_src.append("SEC DEF 14A")
-        insider_adj = ext.get("insider", {}).get("M.3_adj", 0)
-        if insider_adj != 0:
-            h_detail["H.4"] = clamp(h_detail["H.4"] + insider_adj)
-            if "SEC Form 4" not in h_src: h_src.append("SEC Form 4")
-        
-        # U.5 Moral Courage — use charity (IRS 990) + BBB
-        charity_adj = ext.get("charity", {}).get("U.5_adj", 0)
-        bbb_score = ext.get("bbb", {}).get("score")
-        if charity_adj != 0 or bbb_score is not None:
-            u5 = 50
-            if charity_adj > 0: u5 = clamp(u5 + charity_adj * 3)
-            if bbb_score is not None: u5 = round(u5 * 0.6 + bbb_score * 0.4)
-            u_detail["U.5"] = round(clamp(u5), 1)
-            if charity_adj != 0 and "IRS 990" not in u_src: u_src.append("IRS 990")
-            if bbb_score is not None and "BBB" not in u_src: u_src.append("BBB")
-        
-        # N.1 AI Disclosure — use GRI alignment + SBTi as transparency proxies
-        gri_adj = ext.get("gri", {}).get("N.2_adj", 0)
-        sbti_adj = ext.get("sbti", {}).get("A.1_adj", 0)
-        if gri_adj != 0 or sbti_adj != 0:
-            n1 = 40
-            if gri_adj > 0: n1 = clamp(n1 + 20)  # GRI aligned = more transparent
-            if sbti_adj > 0: n1 = clamp(n1 + 15)  # SBTi target = more transparent
-            n_detail["N.1"] = round(clamp(n1), 1)
-            if "GRI" not in n_src: n_src.append("GRI")
-        
-        # N.3 Labor Auditability — use OSHA inspections + DOL data
-        osha_score = ext.get("osha", {}).get("score")
-        dol_score = ext.get("dol", {}).get("score")
-        if osha_score is not None or dol_score is not None:
-            n3 = 45
-            if osha_score is not None:
-                # More OSHA inspections = more auditable (govt is watching)
-                n3 = round(osha_score * 0.4 + n3 * 0.6)
-            if dol_score is not None:
-                n3 = round(dol_score * 0.3 + n3 * 0.7)
-            n_detail["N.3"] = round(clamp(n3), 1)
-            if "OSHA" not in n_src: n_src.append("OSHA")
-            if dol_score is not None and "DOL" not in n_src: n_src.append("DOL")
-        
-        # N.4 Humanwashing Detection — FTC blend (base computation now in score_n_dimension)
-        ftc_n4 = ext.get("ftc", {}).get("N.4")
-        if ftc_n4 is not None:
-            n_detail["N.4"] = round(clamp(n_detail["N.4"] * 0.6 + ftc_n4 * 0.4), 1)
-        
-        # ═══ RECALCULATE DIMENSIONS from updated sub-signals ═══
-        D_H = round_score(0.20*h_detail["H.1"] + 0.20*h_detail["H.2"] + 0.20*h_detail["H.3"] + 0.20*h_detail["H.4"] + 0.20*h_detail["H.5"])
-        D_U = round_score(0.20*u_detail["U.1"] + 0.20*u_detail["U.2"] + 0.20*u_detail["U.3"] + 0.20*u_detail["U.4"] + 0.20*u_detail["U.5"])
-        D_N = round_score(0.20*n_detail["N.1"] + 0.20*n_detail["N.2"] + 0.20*n_detail["N.3"] + 0.20*n_detail["N.4"] + 0.20*n_detail["N.5"])
-        
-        # ═══ THEN APPLY EXTENDED ADJUSTMENTS on top ═══
-        
         # OSHA → U.2 blend
         osha_score = ext.get("osha", {}).get("score")
         if osha_score is not None:
@@ -912,6 +796,69 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         # Charity → U.5
         D_U = clamp(D_U + ext.get("charity", {}).get("U.5_adj", 0))
         if ext.get("charity", {}).get("U.5_adj", 0) != 0 and "IRS 990" not in n_src: n_src.append("IRS 990")
+        
+        # ═══ CONSOLIDATED STANDALONE SOURCES (via consolidate_sources.py) ═══
+        
+        # FMP Revenue Growth → M adjustment
+        fmp_growth = ext.get("fmp_growth", {})
+        D_M = clamp(D_M + fmp_growth.get("M_adj", 0))
+        if fmp_growth.get("M_adj", 0) != 0 and "FMP" not in h_src + m_src: m_src.append("FMP")
+        
+        # FMP R&D → H.5 adjustment
+        fmp_rd = ext.get("fmp_rd", {})
+        D_H = clamp(D_H + fmp_rd.get("H.5_adj", 0))
+        if fmp_rd.get("H.5_adj", 0) != 0 and "FMP" not in h_src: h_src.append("FMP")
+        
+        # FMP Headcount Change → H.1 adjustment
+        fmp_hc = ext.get("fmp_headcount", {})
+        D_H = clamp(D_H + fmp_hc.get("H.1_adj", 0))
+        if fmp_hc.get("H.1_adj", 0) != 0 and "FMP" not in h_src: h_src.append("FMP")
+        
+        # Finnhub ESG → A.1, U.2, N.2 adjustments
+        fh_esg = ext.get("finnhub_esg", {})
+        D_A = clamp(D_A + fh_esg.get("A.1_adj", 0))
+        D_U = clamp(D_U + fh_esg.get("U.2_adj", 0))
+        D_N = clamp(D_N + fh_esg.get("N.2_adj", 0))
+        if any(fh_esg.get(k, 0) != 0 for k in ["A.1_adj", "U.2_adj", "N.2_adj"]):
+            if "Finnhub" not in n_src: n_src.append("Finnhub")
+        
+        # Layoffs.fyi → H.1 penalty
+        layoffs = ext.get("layoffs", {})
+        D_H = clamp(D_H + layoffs.get("H.1_adj", 0))
+        if layoffs.get("H.1_adj", 0) != 0 and "Layoffs.fyi" not in h_src: h_src.append("Layoffs.fyi")
+        
+        # WARN Act → H.1 penalty
+        warn = ext.get("warn", {})
+        D_H = clamp(D_H + warn.get("H.1_adj", 0))
+        if warn.get("H.1_adj", 0) != 0 and "WARN Act" not in h_src: h_src.append("WARN Act")
+        
+        # CEO Accountability → M.3 adjustment
+        ceo = ext.get("ceo", {})
+        D_M = clamp(D_M + ceo.get("M.3_adj", 0))
+        if ceo.get("M.3_adj", 0) != 0 and "CEO Pipeline" not in m_src: m_src.append("CEO Pipeline")
+        
+        # SEC 8-K → N.1 adjustment (more filings = more transparent)
+        sec8k = ext.get("sec_8k", {})
+        D_N = clamp(D_N + sec8k.get("N.1_adj", 0))
+        if sec8k.get("N.1_adj", 0) != 0 and "SEC 8-K" not in n_src: n_src.append("SEC 8-K")
+        
+        # OpenCorporates → N.3 adjustment (subsidiary complexity)
+        oc = ext.get("opencorporates", {})
+        D_N = clamp(D_N + oc.get("N.3_adj", 0))
+        if oc.get("N.3_adj", 0) != 0 and "OpenCorporates" not in n_src: n_src.append("OpenCorporates")
+        
+        # NewsAPI Decay → small negative adjustment for companies with critical/high risk news
+        newsapi = ext.get("newsapi", {})
+        decay_adj = newsapi.get("decay_adj", 0)
+        if decay_adj != 0:
+            # Spread decay penalty across all dimensions equally
+            per_dim = decay_adj / 5
+            D_H = clamp(D_H + per_dim)
+            D_U = clamp(D_U + per_dim)
+            D_M = clamp(D_M + per_dim)
+            D_A = clamp(D_A + per_dim)
+            D_N = clamp(D_N + per_dim)
+            if "NewsAPI" not in n_src: n_src.append("NewsAPI")
     
     # ═══ ALGORITHMIC HARM INDEX — Cross-cutting penalty ═══
     algo_harm = compute_algo_harm(ticker)
@@ -959,22 +906,13 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         algo_flags = [f"AH: {f}" for f in algo_harm["flags"][:3]]  # Top 3 flags
         hw_flags.extend(algo_flags)
 
-    # Confidence tier based on real data sources
-    real_sources = [s for s in all_sources if s not in ["Defaults", "Manual Scoring", "Seed Estimate", "Public Reporting"]]
-    if len(real_sources) >= 5:
-        confidence = "Verified"
-    elif len(real_sources) >= 2:
-        confidence = "Estimated"
-    else:
-        confidence = "Baseline"
-
     return {
         "company": company_name, "ticker": ticker, "industry": industry, "sic": sic,
         "sic_description": sec_data.get("n_signals", {}).get("sic_description", "") if sec_data else "",
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": confidence, "spec_version": "1.1.0",
+        "confidence": "Estimated", "spec_version": "1.0.0",
         "data_sources": all_sources,
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
         "humanwashing_flags": hw_flags,
@@ -1035,46 +973,6 @@ def main():
     print(f"  Glassdoor:  {len(gd_records)} companies")
 
     sec_idx = index_by_company(sec_records)
-    
-    # Enrich CDP and Jobs records with tickers from SEC (they have short names, no tickers)
-    for records in [cdp_records, job_records]:
-        for r in records:
-            if not r.get("ticker"):
-                name = r.get("company", "")
-                match = find_match(name, "", sec_idx)
-                if match and match.get("ticker"):
-                    r["ticker"] = match["ticker"]
-    
-    enriched_cdp = sum(1 for r in cdp_records if r.get("ticker"))
-    enriched_jobs = sum(1 for r in job_records if r.get("ticker"))
-    print(f"  CDP enriched: {enriched_cdp}/{len(cdp_records)} with tickers")
-    print(f"  Jobs enriched: {enriched_jobs}/{len(job_records)} with tickers")
-    
-    # Load HIBP breach data from individual files into subsignals
-    hibp_dir = Path("data/subsignals")
-    hibp_count = 0
-    ss_file = hibp_dir / "all_subsignals.json"
-    all_subsignals = json.load(open(ss_file)) if ss_file.exists() else {}
-    for f in hibp_dir.glob("hibp_*.json"):
-        if " 2" in f.name: continue  # Skip duplicates
-        try:
-            hd = json.load(open(f))
-            t = hd.get("ticker", "")
-            if t and len(t) <= 5:
-                breach_count = hd.get("breach_count", 0)
-                if t not in all_subsignals: all_subsignals[t] = {}
-                # Score: 0 breaches = 80, 1-2 = 60, 3-5 = 40, 6+ = 20
-                if breach_count == 0: m2 = 80
-                elif breach_count <= 2: m2 = 60
-                elif breach_count <= 5: m2 = 40
-                else: m2 = 20
-                all_subsignals[t]["hibp"] = {"M.2": m2, "breach_count": breach_count}
-                hibp_count += 1
-        except: pass
-    if hibp_count:
-        json.dump(all_subsignals, open(ss_file, "w"), indent=2)
-        print(f"  HIBP: {hibp_count} companies merged into subsignals")
-    
     epa_idx = index_by_company(epa_records)
     cdp_idx = index_by_company(cdp_records)
     job_idx = index_by_company(job_records)
