@@ -362,7 +362,10 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
         scores["U.1"] = round(gd.get("overall_score", 50) * 0.5 + gd.get("culture_score", 50) * 0.5, 1)
         sources_used.append("Glassdoor")
     else:
-        scores["U.1"] = 50
+        u1_defaults = {"healthcare": 62, "food": 60, "retail": 55, "manufacturing": 52,
+                       "finance": 45, "tech": 48, "energy": 45, "telecom": 40,
+                       "media": 52, "defense": 48, "auto": 50, "default": 50}
+        scores["U.1"] = u1_defaults.get(industry, 50)
 
     # U.2 Worker Empathy — Glassdoor (weighted by review count for confidence)
     if gd.get("worklife_score") is not None:
@@ -387,14 +390,26 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
         scores["U.2"] = clamp(raw_u2)
         if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
     else:
-        scores["U.2"] = 50
+        u2_defaults = {"healthcare": 65, "food": 58, "retail": 48, "manufacturing": 52,
+                       "finance": 50, "tech": 55, "energy": 45, "telecom": 42,
+                       "media": 50, "defense": 48, "auto": 50, "default": 50}
+        scores["U.2"] = u2_defaults.get(industry, 50)
 
     # U.3 Relational Integrity — Glassdoor culture
     if gd.get("culture_score") is not None:
         scores["U.3"] = gd["culture_score"]
         if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
     else:
-        scores["U.3"] = 50
+        # DEI/HRC data or industry defaults
+        dei_u3 = ss.get("dei", {}).get("U.3") or ss.get("hrc", {}).get("U.3")
+        if dei_u3 is not None:
+            scores["U.3"] = clamp(dei_u3)
+            sources_used.append("DEI/HRC")
+        else:
+            u3_defaults = {"healthcare": 60, "food": 55, "retail": 52, "manufacturing": 48,
+                           "finance": 50, "tech": 52, "energy": 42, "telecom": 45,
+                           "media": 55, "defense": 40, "auto": 48, "default": 50}
+            scores["U.3"] = u3_defaults.get(industry, 50)
 
     # U.4 Simulated Empathy Detection — deterministic heuristic
     # Proxy: Glassdoor ratings + industry automation baseline + worker empathy signals
