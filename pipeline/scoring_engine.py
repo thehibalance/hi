@@ -279,6 +279,14 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
     gd = glassdoor_data.get("u_signals", {}) if glassdoor_data else {}
     ss = subsignals or {}
 
+    # Normalize Glassdoor fields: overall_rating (1-5) → overall_score (0-100)
+    if gd.get("overall_rating") is not None and gd.get("overall_score") is None:
+        gd["overall_score"] = round(gd["overall_rating"] * 20, 1)
+    if gd.get("culture_rating") is not None and gd.get("culture_score") is None:
+        gd["culture_score"] = round(gd["culture_rating"] * 20, 1)
+    if gd.get("ceo_approval") is not None and gd.get("ceo_score") is None:
+        gd["ceo_score"] = gd["ceo_approval"]  # Already 0-100
+
     # U.1 Customer Empathy — CFPB data if available, else Glassdoor
     cfpb_u1 = ss.get("cfpb", {}).get("U.1")
     if cfpb_u1 is not None:
@@ -388,8 +396,12 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
         sources_used.append("CPSC")
     else:
         gd_m = glassdoor_data.get("m_signals", {}) if glassdoor_data else {}
-        if gd_m.get("mgmt_score") is not None:
-            scores["M.4"] = round(gd_m["mgmt_score"] * 0.6 + gd_m.get("comp_score", 50) * 0.4, 1)
+        gd_u = glassdoor_data.get("u_signals", {}) if glassdoor_data else {}
+        # Normalize: rating (1-5) → score (0-100)
+        mgmt = gd_m.get("mgmt_score") or (round(gd_u.get("overall_rating", 0) * 20, 1) if gd_u.get("overall_rating") else None)
+        comp = gd_m.get("comp_score") or (round(gd_u.get("culture_rating", 0) * 20, 1) if gd_u.get("culture_rating") else None)
+        if mgmt is not None:
+            scores["M.4"] = round(mgmt * 0.6 + (comp or 50) * 0.4, 1)
             sources_used.append("Glassdoor")
         else:
             scores["M.4"] = 50  # No data = neutral
@@ -401,8 +413,11 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
         sources_used.append("FEC")
     else:
         gd_m = glassdoor_data.get("m_signals", {}) if glassdoor_data else {}
-        if gd_m.get("ceo_score") is not None:
-            scores["M.5"] = gd_m["ceo_score"]
+        gd_u = glassdoor_data.get("u_signals", {}) if glassdoor_data else {}
+        ceo = gd_m.get("ceo_score") or gd_u.get("ceo_approval")
+        if ceo is not None:
+            scores["M.5"] = ceo
+            if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
         else:
             scores["M.5"] = 50  # No data = neutral
 
