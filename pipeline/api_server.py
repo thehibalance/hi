@@ -282,12 +282,13 @@ def save_threshold(threshold):
 
 def check_hi_balanced(company, threshold):
     """
-    Check 3 gates for Gold HI Grade status.
+    Check 4 gates for Gold HI Grade status.
     Gate 1 — SCORE: Composite ≥ adaptive threshold
     Gate 2 — BALANCE: All 5 dimensions ≥ 42
     Gate 3 — INTEGRITY: No Humanwashing™ flags AND Algorithmic Harm Index™ < 30
+    Gate 4 — VERIFICATION: 5+ real data sources (blocks seed/pending)
     
-    Score, balance, and integrity. That's it.
+    Score, balance, integrity, verification. The moat.
     """
     dims = [company.get("D_H", 0), company.get("D_U", 0), company.get("D_M", 0), company.get("D_A", 0), company.get("D_N", 0)]
     below_42 = sum(1 for d in dims if d < 42)
@@ -296,10 +297,25 @@ def check_hi_balanced(company, threshold):
     ahi_score = company.get("algorithmic_harm_score") or company.get("algo_harm_score") or 0
     ahi_clean = ahi_score < 30
     
+    # Gate 4: Verification — must have 5+ real data sources
+    # Excludes "Defaults", "Manual Scoring", "Public Reporting" as they aren't real external sources
+    real_sources = [s for s in company.get("data_sources", []) 
+                    if s not in ("Defaults", "Manual Scoring", "Public Reporting")]
+    verified = len(real_sources) >= 5
+    
+    # Assign score_status for display purposes
+    if verified:
+        company["score_status"] = "verified"
+    elif len(real_sources) >= 1:
+        company["score_status"] = "estimated"
+    else:
+        company["score_status"] = "pending"
+    
     gates = {
         "score": company.get("composite", 0) >= threshold,
         "balance": below_42 == 0,
         "integrity": no_humanwashing and ahi_clean,
+        "verification": verified,
     }
     
     return all(gates.values()), gates
