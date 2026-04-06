@@ -749,7 +749,7 @@ def compute_composite(D_H, D_U, D_M, D_A, D_N):
     return round_score(composite), floor_triggered, balance_floor_triggered, triggering_dimension
 
 def get_hi_grade(composite, verified=False):
-    """Score-only system. All companies return 'scored'. Gold HI Grade is checked separately."""
+    """Score-only system. All companies return 'scored'. Gold HI Grade is checked separately via 4-gate system."""
     return "scored", ""
 
 
@@ -1123,7 +1123,9 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": "Estimated", "spec_version": "1.0.0",
+        "confidence": "Verified" if real_count >= 20 else "Estimated" if real_count >= 10 else "Pending",
+        "score_status": "verified" if real_count >= 20 else "estimated" if real_count >= 10 else "pending",
+        "spec_version": "1.0.0",
         "data_sources": all_sources,
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
         "humanwashing_flags": hw_flags,
