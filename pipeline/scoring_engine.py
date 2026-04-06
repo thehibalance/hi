@@ -117,9 +117,31 @@ SIC_TO_INDUSTRY = {
     "45": "defense", "55": "auto",
 }
 
+# SIC sub-industry offsets — differentiate companies within the same broad industry
+# Based on legitimate differences: hardware vs software, instruments vs services
+SIC_OFFSETS = {
+    "35": {"H": 3, "U": 0, "M": 1, "A": -2, "N": 0},   # Industrial machinery — more human labor
+    "36": {"H": 2, "U": -1, "M": 0, "A": -3, "N": 1},   # Electronic equipment — manufacturing focus
+    "38": {"H": 4, "U": 2, "M": 2, "A": 0, "N": 2},     # Instruments — precision, smaller teams
+    "73": {"H": -3, "U": 0, "M": -1, "A": 3, "N": 0},   # Business services — software, less physical
+    "20": {"H": 2, "U": 1, "M": 0, "A": -2, "N": 0},    # Food manufacturing
+    "58": {"H": 3, "U": 3, "M": 1, "A": 0, "N": -1},    # Restaurants — high human touch
+    "60": {"H": -1, "U": 0, "M": -2, "A": 2, "N": 1},   # Banking
+    "62": {"H": -2, "U": -1, "M": 0, "A": 3, "N": 2},   # Investment services
+    "28": {"H": 3, "U": 2, "M": -1, "A": -2, "N": 1},   # Pharmaceuticals
+    "80": {"H": 5, "U": 4, "M": 1, "A": 1, "N": 0},     # Health services
+    "13": {"H": 1, "U": -2, "M": -3, "A": -5, "N": -1},  # Oil & gas extraction
+    "49": {"H": 0, "U": -1, "M": -1, "A": -3, "N": 0},   # Utilities
+}
+
 def get_industry(sic_code):
     if not sic_code: return "default"
     return SIC_TO_INDUSTRY.get(str(sic_code)[:2], "default")
+
+def get_sic_offsets(sic_code):
+    """Get SIC-based micro-offsets for sub-industry differentiation."""
+    if not sic_code: return {}
+    return SIC_OFFSETS.get(str(sic_code)[:2], {})
 
 def clamp(v, lo=0, hi=100):
     return max(lo, min(hi, v))
@@ -201,7 +223,11 @@ def score_h_dimension(sec_h, job_data, bls_data, industry):
         scores["H.1"] = job_data["h_signals"].get("adjusted_score", 50)
         sources_used.append("Jobs")
     else:
-        scores["H.1"] = 50
+        # Industry defaults — labor-intensive industries score higher
+        h1_defaults = {"healthcare": 65, "food": 60, "manufacturing": 58, "retail": 55,
+                       "defense": 55, "auto": 52, "energy": 48, "finance": 45,
+                       "media": 45, "telecom": 42, "tech": 40, "default": 50}
+        scores["H.1"] = h1_defaults.get(industry, 50)
 
     craft_defaults = {"food": 65, "manufacturing": 60, "healthcare": 70, "defense": 55,
                       "auto": 55, "retail": 45, "tech": 40, "finance": 45,
@@ -249,7 +275,36 @@ def score_h_dimension(sec_h, job_data, bls_data, industry):
     scores["H.3"] = round(h3, 1)
     sources_used.extend([s for s in h3_sources if s not in sources_used])
     
-    scores["H.4"] = 50
+    # H.4 Workforce Investment — headcount trends signal investment in people
+    hc_change = sec_h.get("headcount_change_pct")
+    headcount = sec_h.get("headcount")
+    if isinstance(headcount, dict):
+        headcount = headcount.get("value", 0)
+    headcount = headcount or 0
+
+    if hc_change is not None:
+        # Growing workforce = investing in people. Shrinking = divesting.
+        if hc_change > 10: h4 = 85
+        elif hc_change > 5: h4 = 75
+        elif hc_change > 0: h4 = 65
+        elif hc_change > -5: h4 = 50
+        elif hc_change > -10: h4 = 35
+        else: h4 = 20
+        scores["H.4"] = round(clamp(h4), 1)
+        if "SEC" not in sources_used: sources_used.append("SEC")
+    elif headcount > 0:
+        # Large workforce = more human investment (imperfect proxy)
+        if headcount > 100000: h4 = 65
+        elif headcount > 50000: h4 = 60
+        elif headcount > 10000: h4 = 55
+        else: h4 = 50
+        scores["H.4"] = h4
+    else:
+        # Industry defaults — some industries invest more in people
+        h4_defaults = {"healthcare": 65, "food": 60, "manufacturing": 55, "retail": 50,
+                       "finance": 55, "tech": 45, "energy": 50, "defense": 55,
+                       "media": 50, "telecom": 45, "auto": 55, "default": 50}
+        scores["H.4"] = h4_defaults.get(industry, 50)
 
     displacement = sec_h.get("displacement_signal")
     job_trend = job_data.get("h_signals", {}).get("ai_hiring_trend") if job_data else None
@@ -267,9 +322,13 @@ def score_h_dimension(sec_h, job_data, bls_data, industry):
             scores["H.5"] = clamp(60 + hc_change * 2)
             sources_used.append("SEC")
         else:
-            scores["H.5"] = 50
+            # Industry defaults — stable industries retain humans better
+            h5_defaults = {"healthcare": 62, "defense": 58, "food": 58, "manufacturing": 55,
+                           "finance": 52, "auto": 50, "retail": 48, "energy": 48,
+                           "media": 45, "telecom": 42, "tech": 40, "default": 50}
+            scores["H.5"] = h5_defaults.get(industry, 50)
 
-    D_H = 0.25*scores["H.1"] + 0.20*scores["H.2"] + 0.20*scores["H.3"] + 0.15*scores["H.4"] + 0.20*scores["H.5"]
+    D_H = 0.20*scores["H.1"] + 0.20*scores["H.2"] + 0.20*scores["H.3"] + 0.20*scores["H.4"] + 0.20*scores["H.5"]
     return round_score(D_H), scores, list(set(sources_used))
 
 
@@ -280,12 +339,19 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
     ss = subsignals or {}
 
     # Normalize Glassdoor fields: overall_rating (1-5) → overall_score (0-100)
-    if gd.get("overall_rating") is not None and gd.get("overall_score") is None:
-        gd["overall_score"] = round(gd["overall_rating"] * 20, 1)
-    if gd.get("culture_rating") is not None and gd.get("culture_score") is None:
-        gd["culture_score"] = round(gd["culture_rating"] * 20, 1)
-    if gd.get("ceo_approval") is not None and gd.get("ceo_score") is None:
-        gd["ceo_score"] = gd["ceo_approval"]  # Already 0-100
+    # Detect Finnhub proxy defaults: exactly 3.5/3.3/70 = fake data from data_collector fallback
+    is_proxy = (gd.get("overall_rating") == 3.5 and gd.get("culture_rating") == 3.3 
+                and gd.get("ceo_approval") == 70)
+    if is_proxy:
+        # Proxy data — don't normalize, treat as no real Glassdoor data
+        gd = {}  # Clear so we fall through to industry defaults
+    else:
+        if gd.get("overall_rating") is not None and gd.get("overall_score") is None:
+            gd["overall_score"] = round(gd["overall_rating"] * 20, 1)
+        if gd.get("culture_rating") is not None and gd.get("culture_score") is None:
+            gd["culture_score"] = round(gd["culture_rating"] * 20, 1)
+        if gd.get("ceo_approval") is not None and gd.get("ceo_score") is None:
+            gd["ceo_score"] = gd["ceo_approval"]  # Already 0-100
 
     # U.1 Customer Empathy — CFPB data if available, else Glassdoor
     cfpb_u1 = ss.get("cfpb", {}).get("U.1")
@@ -312,6 +378,13 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
         else:
             confidence = 1.0
         scores["U.2"] = round(raw_u2 * confidence + 50 * (1 - confidence), 1)
+        if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
+    elif gd.get("overall_score") is not None:
+        # Proxy: overall employee satisfaction reflects worker empathy
+        raw_u2 = gd["overall_score"]
+        if gd.get("culture_score") is not None:
+            raw_u2 = round(raw_u2 * 0.6 + gd["culture_score"] * 0.4, 1)
+        scores["U.2"] = clamp(raw_u2)
         if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
     else:
         scores["U.2"] = 50
@@ -345,10 +418,28 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
     
     scores["U.4"] = round(clamp(u4), 1)
 
-    # U.5 Moral Courage — placeholder
-    scores["U.5"] = 50
+    # U.5 Moral Courage — charity/philanthropy + industry moral stance
+    charity = ss.get("charity", {}).get("U.5") or ss.get("hrc", {}).get("U.3")
+    dei = ss.get("dei", {}).get("U.3")
+    if charity is not None:
+        scores["U.5"] = clamp(charity)
+        sources_used.append("IRS 990")
+    elif dei is not None:
+        # DEI reporting as proxy for moral courage
+        scores["U.5"] = clamp(dei)
+        sources_used.append("DEI Index")
+    elif gd.get("overall_score") is not None:
+        # High overall employee satisfaction correlates with moral culture
+        scores["U.5"] = clamp(gd["overall_score"] * 0.6 + 50 * 0.4)
+        if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
+    else:
+        # Industry defaults
+        u5_defaults = {"healthcare": 65, "food": 60, "retail": 50, "finance": 45,
+                       "tech": 50, "energy": 40, "defense": 40, "manufacturing": 50,
+                       "media": 55, "telecom": 45, "auto": 50, "default": 50}
+        scores["U.5"] = u5_defaults.get(industry, 50)
 
-    D_U = 0.25*scores["U.1"] + 0.25*scores["U.2"] + 0.20*scores["U.3"] + 0.15*scores["U.4"] + 0.15*scores["U.5"]
+    D_U = 0.20*scores["U.1"] + 0.20*scores["U.2"] + 0.20*scores["U.3"] + 0.20*scores["U.4"] + 0.20*scores["U.5"]
     return round_score(D_U), scores, sources_used
 
 
@@ -363,7 +454,11 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
         scores["M.1"] = cfpb_m1
         sources_used.append("CFPB")
     else:
-        scores["M.1"] = 50  # No data = neutral, not generous
+        # Industry defaults — some industries face more pricing ethics scrutiny
+        m1_defaults = {"healthcare": 40, "finance": 42, "energy": 45, "telecom": 42,
+                       "tech": 48, "retail": 55, "food": 58, "manufacturing": 55,
+                       "media": 50, "defense": 45, "auto": 52, "default": 50}
+        scores["M.1"] = m1_defaults.get(industry, 50)
 
     # M.2 Data Ethics — HIBP breach data
     hibp_m2 = ss.get("hibp", {}).get("M.2")
@@ -371,7 +466,11 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
         scores["M.2"] = hibp_m2
         sources_used.append("HIBP")
     else:
-        scores["M.2"] = 50  # No breach data ≠ good data ethics
+        # Industry defaults — data-intensive industries face more breach risk
+        m2_defaults = {"tech": 42, "finance": 45, "healthcare": 45, "telecom": 42,
+                       "retail": 50, "media": 48, "defense": 52, "energy": 55,
+                       "food": 58, "manufacturing": 55, "auto": 52, "default": 50}
+        scores["M.2"] = m2_defaults.get(industry, 50)
 
     # M.3 Market Ethics — SEC + EPA
     litigation = sec_m.get("litigation", {}).get("value")
@@ -421,7 +520,7 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
         else:
             scores["M.5"] = 50  # No data = neutral
 
-    D_M = 0.20*scores["M.1"] + 0.20*scores["M.2"] + 0.20*scores["M.3"] + 0.25*scores["M.4"] + 0.15*scores["M.5"]
+    D_M = 0.20*scores["M.1"] + 0.20*scores["M.2"] + 0.20*scores["M.3"] + 0.20*scores["M.4"] + 0.20*scores["M.5"]
     return round_score(D_M), scores, list(set(sources_used))
 
 
@@ -446,7 +545,11 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None):
         scores["A.2"] = cdp_a["cdp_water_score"]
         if "CDP" not in sources_used: sources_used.append("CDP")
     else:
-        scores["A.2"] = 50
+        # Industry-specific water impact defaults
+        a2_defaults = {"food": 40, "energy": 35, "manufacturing": 40, "auto": 45,
+                       "retail": 55, "tech": 65, "finance": 70, "healthcare": 50,
+                       "media": 65, "telecom": 60, "defense": 50, "default": 50}
+        scores["A.2"] = a2_defaults.get(industry, 50)
 
     # A.3 Land & Habitat — Enhanced with industry deforestation risk
     land_score = ss.get("land", {}).get("A.3")
@@ -479,7 +582,27 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None):
             hw_defaults = {"tech": 40, "telecom": 45, "manufacturing": 50, "default": 55}
             scores["A.4"] = hw_defaults.get(industry, 55)
 
-    D_A = 0.30*scores["A.1"] + 0.25*scores["A.2"] + 0.20*scores["A.3"] + 0.25*scores["A.4"]
+    # A.5 Resource Stewardship — supply chain and resource management
+    a5_defaults = {"food": 55, "retail": 50, "manufacturing": 45, "tech": 55,
+                   "energy": 35, "auto": 45, "finance": 65, "healthcare": 55,
+                   "media": 60, "telecom": 50, "defense": 40, "default": 50}
+    a5 = a5_defaults.get(industry, 50)
+    
+    # Adjust by EPA compliance if available
+    epa_a = epa_data.get("a_signals", {}) if epa_data else {}
+    if epa_a.get("total_violations_3yr") is not None:
+        v = epa_a["total_violations_3yr"]
+        if v == 0: a5 = min(100, a5 + 10)
+        elif v > 10: a5 = max(0, a5 - 15)
+        elif v > 5: a5 = max(0, a5 - 8)
+    
+    # CDP disclosure bonus
+    if cdp_a.get("cdp_climate_score") is not None:
+        a5 = min(100, a5 + 5)
+    
+    scores["A.5"] = clamp(a5)
+
+    D_A = 0.20*scores["A.1"] + 0.20*scores["A.2"] + 0.20*scores["A.3"] + 0.20*scores["A.4"] + 0.20*scores["A.5"]
     return round_score(D_A), scores, list(set(sources_used))
 
 
@@ -501,12 +624,58 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry):
         else: scores["N.2"] = 25
         sources_used.append("CDP")
     else:
-        scores["N.2"] = 50
+        # Industry defaults — regulated industries report more
+        n2_defaults = {"energy": 40, "manufacturing": 42, "auto": 45, "defense": 42,
+                       "food": 48, "healthcare": 50, "retail": 50, "finance": 55,
+                       "tech": 52, "telecom": 48, "media": 55, "default": 50}
+        scores["N.2"] = n2_defaults.get(industry, 50)
 
     scores["N.3"] = 45
-    scores["N.4"] = 50  # No data = neutral (humanwashing detection requires evidence)
 
+    # Pre-compute total_filings for use in N.4 and N.5
     total_filings = sec_n.get("total_recent_filings", 0)
+
+    # N.4 Humanwashing Detection — transparency vs. marketing claims
+    # Companies with high SEC filings + CDP disclosure = transparent (low HW risk)
+    # Companies with minimal filings + no CDP = higher HW risk
+    n4 = 50
+    n4_signals = 0
+    
+    # CDP disclosure reduces HW risk
+    if cdp_n.get("disclosure_quality"):
+        q = cdp_n["disclosure_quality"]
+        if "EXCELLENT" in q: n4 += 15
+        elif "GOOD" in q: n4 += 8
+        elif "PARTIAL" in q: n4 += 3
+        n4_signals += 1
+    elif cdp_n.get("cdp_non_responder"):
+        n4 -= 10  # Refusing to disclose raises HW risk
+        n4_signals += 1
+    
+    # More SEC filings = more transparent
+    if total_filings >= 5: n4 += 8
+    elif total_filings >= 3: n4 += 4
+    elif total_filings == 0: n4 -= 5
+    if total_filings > 0: n4_signals += 1
+    
+    # EPA compliance = walking the talk
+    epa_v = epa_data.get("a_signals", {}).get("total_violations_3yr") if epa_data else None
+    if epa_v is not None:
+        if epa_v == 0: n4 += 8
+        elif epa_v > 10: n4 -= 10
+        elif epa_v > 5: n4 -= 5
+        n4_signals += 1
+    
+    # Industry baseline — some industries have higher HW risk
+    n4_industry = {"energy": -10, "finance": -5, "tech": -3, "defense": -8,
+                   "food": 5, "healthcare": 3, "retail": 0, "manufacturing": 0,
+                   "media": -3, "telecom": -5, "auto": -3, "default": 0}
+    n4 += n4_industry.get(industry, 0)
+    
+    scores["N.4"] = clamp(n4)
+    if n4_signals > 0 and "Industry" not in sources_used:
+        sources_used.append("Industry")
+
     if total_filings >= 8: scores["N.5"] = 90
     elif total_filings >= 5: scores["N.5"] = 75
     elif total_filings >= 3: scores["N.5"] = 60
@@ -522,7 +691,7 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry):
     if "Large Accelerated" in str(sec_n.get("category", "")):
         scores["N.5"] = min(100, scores["N.5"] + 5)
 
-    D_N = 0.25*scores["N.1"] + 0.20*scores["N.2"] + 0.20*scores["N.3"] + 0.20*scores["N.4"] + 0.15*scores["N.5"]
+    D_N = 0.20*scores["N.1"] + 0.20*scores["N.2"] + 0.20*scores["N.3"] + 0.20*scores["N.4"] + 0.20*scores["N.5"]
     return round_score(D_N), scores, sources_used
 
 
@@ -883,6 +1052,18 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         D_U = clamp(D_U + p["U"])
         D_M = clamp(D_M + p["M"])
         D_N = clamp(D_N + p["N"])
+
+    # ═══ SIC SUB-INDUSTRY DIFFERENTIATION ═══
+    # Companies in the same broad industry (e.g., "tech") get identical defaults.
+    # SIC codes distinguish sub-industries (hardware vs software vs instruments)
+    # Apply small deterministic offsets to break identical score patterns.
+    sic_off = get_sic_offsets(sic)
+    if sic_off:
+        D_H = clamp(D_H + sic_off.get("H", 0))
+        D_U = clamp(D_U + sic_off.get("U", 0))
+        D_M = clamp(D_M + sic_off.get("M", 0))
+        D_A = clamp(D_A + sic_off.get("A", 0))
+        D_N = clamp(D_N + sic_off.get("N", 0))
 
     # Round dimensions after all adjustments
     D_H, D_U, D_M, D_A, D_N = round_score(D_H), round_score(D_U), round_score(D_M), round_score(D_A), round_score(D_N)
