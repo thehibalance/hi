@@ -235,6 +235,7 @@ def fetch_sec(company_name, ticker):
         "m_signals": {
             "litigation": {"value": 0},
             "rd_expense": result.get("rd_expense", 0),
+            "revenue": result.get("revenue", 0),  # Stored so downstream merge can compute RPE
         },
         "n_signals": {
             "total_recent_filings": result.get("total_recent_filings", 0),
@@ -347,19 +348,61 @@ def fetch_finnhub(ticker, finnhub_key):
 # ═══════════════════════════════════════════════════════════════════════
 
 def fetch_fmp(ticker, fmp_key):
-    """Fetch FMP financial data."""
+    """Fetch FMP financial data.
+    
+    Note: FMP deprecated /api/v3/profile/{ticker} in August 2025.
+    Now uses /stable/profile?symbol={ticker} which returns the same fields.
+    """
     if not fmp_key or not ticker:
         return None
-    data = safe_get(f"https://financialmodelingprep.com/api/v3/profile/{ticker}", params={"apikey": fmp_key})
+    data = safe_get(f"https://financialmodelingprep.com/stable/profile",
+                    params={"symbol": ticker, "apikey": fmp_key})
     if data and isinstance(data, list) and len(data) > 0:
         p = data[0]
         return {
-            "market_cap": p.get("mktCap", 0),
+            "market_cap": p.get("marketCap", 0),
             "employees": p.get("fullTimeEmployees", 0),
             "industry": p.get("industry", ""),
             "sector": p.get("sector", ""),
             "price": p.get("price", 0),
         }
+    return None
+
+
+def fetch_yfinance(ticker):
+    """Fetch headcount + revenue from Yahoo Finance via yfinance library.
+    
+    Free, no API key, no rate limits as aggressive as FMP. Reliably returns
+    fullTimeEmployees and totalRevenue for the vast majority of US listed
+    companies. This is the primary fallback when SEC XBRL doesn't have
+    employee data (which is most companies — SEC tagging is voluntary).
+    """
+    if not ticker:
+        return None
+    try:
+        import yfinance as yf
+    except ImportError:
+        # yfinance not installed; caller will fall back to other sources
+        return None
+    
+    try:
+        t = yf.Ticker(ticker)
+        info = t.info or {}
+        employees = info.get("fullTimeEmployees")
+        revenue = info.get("totalRevenue")
+        
+        # Only return a result if we have at least one useful field
+        if employees or revenue:
+            return {
+                "employees": employees if employees else None,
+                "revenue": revenue if revenue else None,
+                "sector": info.get("sector", ""),
+                "industry": info.get("industry", ""),
+            }
+    except Exception:
+        # yfinance can throw various errors (network, parsing, ticker not found)
+        # Silently return None and let caller try other sources
+        pass
     return None
 
 
@@ -492,15 +535,52 @@ def collect_one(company, keys, core, subsignals, extended, data_dir, incremental
             if gd:
                 result["glassdoor"] = gd
         
-        if fmp_key and ticker:
-            fmp = fetch_fmp(ticker, fmp_key)
-            if fmp and result.get("sec"):
-                sec_data = result["sec"]
-                if not sec_data.get("h_signals", {}).get("headcount") and fmp.get("employees"):
-                    sec_data["h_signals"]["headcount"] = {"value": fmp["employees"]}
-                    rev = sec_data.get("m_signals", {}).get("revenue", 0)
-                    if rev and fmp["employees"]:
-                        sec_data["h_signals"]["revenue_per_employee"] = round(rev / fmp["employees"])
+        # ─── HEADCOUNT + REVENUE FALLBACK CHAIN ───────────────────────────
+        # SEC XBRL rarely has tagged employee counts (voluntary disclosure).
+        # Chain: SEC primary → Yahoo Finance (free) → FMP (paid) → leave None
+        # We try to populate BOTH headcount and revenue from whichever source
+        # provides them, then compute revenue_per_employee at the end.
+        if result.get("sec"):
+            sec_data = result["sec"]
+            h_sigs = sec_data.setdefault("h_signals", {})
+            m_sigs = sec_data.setdefault("m_signals", {})
+            
+            # Extract current state from SEC fetch
+            current_hc = h_sigs.get("headcount")
+            if isinstance(current_hc, dict):
+                current_hc = current_hc.get("value")
+            current_rev = m_sigs.get("revenue", 0)
+            
+            need_hc = not current_hc
+            need_rev = not current_rev
+            
+            # Fallback 1: Yahoo Finance (free, no key)
+            if need_hc or need_rev:
+                yf_data = fetch_yfinance(ticker)
+                if yf_data:
+                    if need_hc and yf_data.get("employees"):
+                        h_sigs["headcount"] = {"value": yf_data["employees"]}
+                        current_hc = yf_data["employees"]
+                        need_hc = False
+                    if need_rev and yf_data.get("revenue"):
+                        m_sigs["revenue"] = yf_data["revenue"]
+                        current_rev = yf_data["revenue"]
+                        need_rev = False
+            
+            # Fallback 2: FMP (paid, requires key)
+            if (need_hc or need_rev) and fmp_key and ticker:
+                fmp = fetch_fmp(ticker, fmp_key)
+                if fmp:
+                    if need_hc and fmp.get("employees"):
+                        h_sigs["headcount"] = {"value": fmp["employees"]}
+                        current_hc = fmp["employees"]
+                        need_hc = False
+                    # FMP profile doesn't include revenue; that field stays missing
+            
+            # Compute revenue_per_employee from whatever we have
+            if current_hc and current_rev:
+                h_sigs["revenue_per_employee"] = round(current_rev / current_hc)
+        # ──────────────────────────────────────────────────────────────────
     
     if subsignals:
         ss = fetch_subsignals(name, ticker, domain, industry)

@@ -339,8 +339,9 @@ def score_h_dimension(sec_h, job_data, bls_data, industry):
                            "media": 45, "telecom": 42, "tech": 40, "default": 50}
             scores["H.5"] = h5_defaults.get(industry, 50)
 
-    D_H = 0.20*scores["H.1"] + 0.20*scores["H.2"] + 0.20*scores["H.3"] + 0.20*scores["H.4"] + 0.20*scores["H.5"]
-    return round_score(D_H), scores, list(set(sources_used))
+    # Stage 1 refactor: dimension formula now lives in compute_dimension_from_subsignals().
+    # Return only sub-signals + sources. The orchestrator computes D_H from sub-signals.
+    return scores, list(set(sources_used))
 
 
 def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
@@ -465,8 +466,8 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
                        "media": 55, "telecom": 45, "auto": 50, "default": 50}
         scores["U.5"] = u5_defaults.get(industry, 50)
 
-    D_U = 0.20*scores["U.1"] + 0.20*scores["U.2"] + 0.20*scores["U.3"] + 0.20*scores["U.4"] + 0.20*scores["U.5"]
-    return round_score(D_U), scores, sources_used
+    # Stage 1 refactor: dimension formula now lives in compute_dimension_from_subsignals().
+    return scores, sources_used
 
 
 def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None):
@@ -529,7 +530,13 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
             scores["M.4"] = round(mgmt * 0.6 + (comp or 50) * 0.4, 1)
             sources_used.append("Glassdoor")
         else:
-            scores["M.4"] = 50  # No data = neutral
+            # Industry-normalized baseline for product ethics
+            # Industries with more consumer-facing product risk score lower
+            m4_defaults = {"healthcare": 38, "food": 42, "auto": 42, "defense": 42,
+                           "manufacturing": 45, "energy": 48, "retail": 48,
+                           "tech": 55, "media": 55, "telecom": 55, "finance": 58,
+                           "default": 48}
+            scores["M.4"] = m4_defaults.get(industry, 48)
 
     # M.5 Political Ethics — FEC data if available, else Glassdoor CEO
     fec_m5 = ss.get("fec", {}).get("M.5")
@@ -544,10 +551,15 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
             scores["M.5"] = ceo
             if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
         else:
-            scores["M.5"] = 50  # No data = neutral
+            # Industry-normalized baseline for political/leadership ethics
+            # Industries with heavier political spending or lobbying score lower
+            m5_defaults = {"defense": 35, "energy": 40, "finance": 42, "tech": 48,
+                           "telecom": 45, "healthcare": 45, "auto": 48, "media": 48,
+                           "manufacturing": 50, "retail": 50, "food": 52, "default": 48}
+            scores["M.5"] = m5_defaults.get(industry, 48)
 
-    D_M = 0.20*scores["M.1"] + 0.20*scores["M.2"] + 0.20*scores["M.3"] + 0.20*scores["M.4"] + 0.20*scores["M.5"]
-    return round_score(D_M), scores, list(set(sources_used))
+    # Stage 1 refactor: dimension formula now lives in compute_dimension_from_subsignals().
+    return scores, list(set(sources_used))
 
 
 def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None):
@@ -593,7 +605,13 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None):
             else: scores["A.3"] = 15
             sources_used.append("EPA")
         else:
-            scores["A.3"] = 50
+            # Industry-normalized baseline for land/habitat impact
+            # Extraction and agriculture-heavy industries score lower
+            a3_defaults = {"energy": 30, "food": 40, "manufacturing": 42,
+                           "defense": 40, "auto": 45, "retail": 55,
+                           "healthcare": 55, "telecom": 60, "media": 65,
+                           "tech": 65, "finance": 72, "default": 55}
+            scores["A.3"] = a3_defaults.get(industry, 55)
 
     # A.4 Hardware Lifecycle — iFixit + industry data
     hw_score = ss.get("hardware", {}).get("A.4")
@@ -628,14 +646,44 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None):
     
     scores["A.5"] = clamp(a5)
 
-    D_A = 0.20*scores["A.1"] + 0.20*scores["A.2"] + 0.20*scores["A.3"] + 0.20*scores["A.4"] + 0.20*scores["A.5"]
-    return round_score(D_A), scores, list(set(sources_used))
+    # Stage 1 refactor: dimension formula now lives in compute_dimension_from_subsignals().
+    return scores, list(set(sources_used))
 
 
 def score_n_dimension(sec_n, cdp_data, epa_data, industry):
     scores = {}
     sources_used = []
-    scores["N.1"] = 40
+    
+    # Pre-compute SEC fields used across N sub-signals
+    total_filings = sec_n.get("total_recent_filings", 0) if sec_n else 0
+    sec_category = str(sec_n.get("category", "")) if sec_n else ""
+    
+    # ─── N.1 Base Transparency / Filing Frequency ─────────────────────────
+    # Industry-normalized baseline: regulated industries have higher filing expectations
+    n1_defaults = {"finance": 55, "healthcare": 52, "energy": 50, "defense": 48,
+                   "tech": 45, "telecom": 45, "manufacturing": 45, "auto": 45,
+                   "media": 42, "food": 42, "retail": 40, "default": 45}
+    n1 = n1_defaults.get(industry, 45)
+    
+    # Filing frequency from SEC (real signal) — more filings = more transparent
+    if total_filings >= 10:
+        n1 += 20
+    elif total_filings >= 5:
+        n1 += 12
+    elif total_filings >= 3:
+        n1 += 6
+    elif total_filings == 0:
+        n1 -= 10
+    
+    # Accelerated filer status = more rigorous filing requirements
+    if "Large Accelerated" in sec_category:
+        n1 += 8
+    elif "Accelerated" in sec_category:
+        n1 += 4
+    
+    scores["N.1"] = clamp(n1)
+    if total_filings > 0 or sec_category:
+        if "SEC" not in sources_used: sources_used.append("SEC")
 
     cdp_n = cdp_data.get("n_signals", {}) if cdp_data else {}
     if cdp_n.get("cdp_non_responder") is True:
@@ -656,10 +704,28 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry):
                        "tech": 52, "telecom": 48, "media": 55, "default": 50}
         scores["N.2"] = n2_defaults.get(industry, 50)
 
-    scores["N.3"] = 45
+    # ─── N.3 Corporate Structure Transparency ─────────────────────────────
+    # Base: industry baseline (complex industries = lower base)
+    # Signal: Large Accelerated filers are typically multinationals with more
+    # complex subsidiary structures (harder to trace); smaller filers are simpler.
+    n3_defaults = {"finance": 40, "energy": 40, "tech": 42, "defense": 42,
+                   "telecom": 42, "healthcare": 45, "auto": 45, "manufacturing": 45,
+                   "media": 45, "retail": 48, "food": 48, "default": 45}
+    n3 = n3_defaults.get(industry, 45)
+    
+    if "Large Accelerated" in sec_category:
+        n3 -= 5  # Large multinationals = complex structures
+    elif "Accelerated" in sec_category:
+        n3 -= 2
+    elif sec_category:
+        n3 += 3  # Smaller filers = simpler structure = more traceable
+    
+    scores["N.3"] = clamp(n3)
+    if sec_category:
+        if "SEC" not in sources_used: sources_used.append("SEC")
 
-    # Pre-compute total_filings for use in N.4 and N.5
-    total_filings = sec_n.get("total_recent_filings", 0)
+    # Pre-compute total_filings for use in N.4 and N.5 (already computed at top)
+    # total_filings and sec_category defined at start of function
 
     # N.4 Humanwashing Detection — transparency vs. marketing claims
     # Companies with high SEC filings + CDP disclosure = transparent (low HW risk)
@@ -717,8 +783,8 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry):
     if "Large Accelerated" in str(sec_n.get("category", "")):
         scores["N.5"] = min(100, scores["N.5"] + 5)
 
-    D_N = 0.20*scores["N.1"] + 0.20*scores["N.2"] + 0.20*scores["N.3"] + 0.20*scores["N.4"] + 0.20*scores["N.5"]
-    return round_score(D_N), scores, sources_used
+    # Stage 1 refactor: dimension formula now lives in compute_dimension_from_subsignals().
+    return scores, sources_used
 
 
 def round_score(val):
@@ -728,34 +794,47 @@ def round_score(val):
     return int(math.ceil(val)) if remainder >= 0.6 else int(math.floor(val))
 
 
+def compute_dimension_from_subsignals(detail, prefix):
+    """
+    Compute a HUMAN dimension score from its 5 sub-signals using equal 0.20 weighting.
+    
+    This is the SINGLE source of truth for sub-signals → dimension math.
+    Every dimension follows the same formula: sum of 5 sub-signals × 0.20 each.
+    
+    Defaults missing sub-signals to 50 (neutral) per the v2.1 spec.
+    
+    Args:
+        detail: dict mapping sub-signal keys (e.g. "H.1") to their scores
+        prefix: dimension letter ("H", "U", "M", "A", "N")
+    """
+    keys = [f"{prefix}.{i}" for i in range(1, 6)]
+    raw = sum(detail.get(k, 50) for k in keys) * 0.20
+    return round_score(raw)
+
+
 def compute_composite(D_H, D_U, D_M, D_A, D_N):
+    """
+    Compute composite score as honest arithmetic mean of 5 dimensions.
+    
+    After Apr 2026 balance-floor redesign: composite is NEVER capped. The
+    balance check moves entirely into the Gold gate (check_hi_certified),
+    where a company with any dimension below 42 fails the balance gate but
+    still sees its real composite score. This aligns with the framework's
+    "no hidden math" principle — the math stays visible, the gates do the
+    gatekeeping.
+    
+    Returns composite + informational flags. Flags do NOT modify composite,
+    they're passed through so the API consumer and Gold gate can use them.
+    """
     composite = (D_H + D_U + D_M + D_A + D_N) / 5
-    floor_triggered = False
-    balance_floor_triggered = False
-    triggering_dimension = None
     dims = {"H": D_H, "U": D_U, "M": D_M, "A": D_A, "N": D_N}
     min_dim = min(dims.values())
     below_42 = sum(1 for v in dims.values() if v < 42)
     
-    # Hard floor: any dimension < 10 caps composite at 40
-    if min_dim < 10:
-        composite = min(composite, 40)
-        floor_triggered = True
-        triggering_dimension = min(dims, key=dims.get)
-    
-    # Balance floor: 2+ dimensions below 42 = F (cap at 41)
-    elif below_42 >= 2:
-        balance_floor_triggered = True
-        triggering_dimension = min(dims, key=dims.get)
-        if composite > 41:
-            composite = 41.0
-    
-    # Balance floor: 1 dimension below 42 = D cap (cap at 49)
-    elif below_42 == 1:
-        balance_floor_triggered = True
-        triggering_dimension = min(dims, key=dims.get)
-        if composite > 49:
-            composite = 49.0
+    # Informational flags only — NO composite capping
+    floor_triggered = min_dim < 10
+    balance_floor_triggered = below_42 >= 1
+    triggering_dimension = min(dims, key=dims.get) if (floor_triggered or balance_floor_triggered) else None
     
     return round_score(composite), floor_triggered, balance_floor_triggered, triggering_dimension
 
@@ -904,6 +983,14 @@ def compute_algo_harm(ticker):
 def score_company(company_name, ticker="", sec_data=None, epa_data=None,
                   bls_data=None, cdp_data=None, job_data=None, glassdoor_data=None,
                   subsignal_data=None):
+    # ─── DEBUG INSTRUMENTATION (temporary, remove after audit) ──────────
+    DEBUG_TICKERS = {"AAPL", "TSLA"}
+    _dbg = ticker.upper() in DEBUG_TICKERS
+    def _checkpoint(label, dh, du, dm, da, dn):
+        if _dbg:
+            print(f"[DBG {ticker.upper()}] {label:30s} H={dh:6.1f} U={du:6.1f} M={dm:6.1f} A={da:6.1f} N={dn:6.1f}")
+    # ────────────────────────────────────────────────────────────────────
+    
     sic = sec_data.get("n_signals", {}).get("sic", "") if sec_data else ""
     industry = get_industry(sic)
     
@@ -923,11 +1010,32 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
     sec_n = sec_data.get("n_signals", {}) if sec_data else {}
     sec_u = sec_data.get("u_signals", {}) if sec_data else {}
 
-    D_H, h_detail, h_src = score_h_dimension(sec_h, job_data, bls_data, industry)
-    D_U, u_detail, u_src = score_u_dimension(sec_u, glassdoor_data, industry, ss)
-    D_M, m_detail, m_src = score_m_dimension(sec_m, epa_data, glassdoor_data, industry, ss)
-    D_A, a_detail, a_src = score_a_dimension(sec_data.get("a_signals", {}) if sec_data else {}, epa_data, cdp_data, industry, ss)
-    D_N, n_detail, n_src = score_n_dimension(sec_n, cdp_data, epa_data, industry)
+    h_detail, h_src = score_h_dimension(sec_h, job_data, bls_data, industry)
+    u_detail, u_src = score_u_dimension(sec_u, glassdoor_data, industry, ss)
+    m_detail, m_src = score_m_dimension(sec_m, epa_data, glassdoor_data, industry, ss)
+    a_detail, a_src = score_a_dimension(sec_data.get("a_signals", {}) if sec_data else {}, epa_data, cdp_data, industry, ss)
+    n_detail, n_src = score_n_dimension(sec_n, cdp_data, epa_data, industry)
+
+    # ═══ Stage 1 refactor: SINGLE source of truth for dimension math ═══
+    # All dimensions are now computed from sub-signals via the same helper.
+    # This produces identical math to the previous (5 separate formulas inside
+    # each dimension function), but lives in one place so the contract is:
+    #   D_X = sum(X.1..X.5) * 0.20
+    # Anything that wants to change a dimension score must do so through sub-signals.
+    D_H = compute_dimension_from_subsignals(h_detail, "H")
+    D_U = compute_dimension_from_subsignals(u_detail, "U")
+    D_M = compute_dimension_from_subsignals(m_detail, "M")
+    D_A = compute_dimension_from_subsignals(a_detail, "A")
+    D_N = compute_dimension_from_subsignals(n_detail, "N")
+
+    if _dbg:
+        print(f"\n[DBG {ticker.upper()}] === industry={industry} sic={sic} ===")
+        print(f"[DBG {ticker.upper()}] H sub-signals: {h_detail}")
+        print(f"[DBG {ticker.upper()}] U sub-signals: {u_detail}")
+        print(f"[DBG {ticker.upper()}] M sub-signals: {m_detail}")
+        print(f"[DBG {ticker.upper()}] A sub-signals: {a_detail}")
+        print(f"[DBG {ticker.upper()}] N sub-signals: {n_detail}")
+    _checkpoint("01 after dimension funcs", D_H, D_U, D_M, D_A, D_N)
 
     # ═══ EXTENDED SIGNALS (sources 23-34) ═══
     # Load extended pipeline data and apply adjustments
@@ -942,142 +1050,243 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
             pass
     
     if ext:
-        # OSHA → U.2 blend
+        # OSHA → blends INTO U.2 (Worker Empathy: workplace safety/conditions)
         osha_score = ext.get("osha", {}).get("score")
         if osha_score is not None:
-            D_U = round_score(D_U * 0.85 + osha_score * 0.15)
-            if "OSHA" not in n_src: n_src.append("OSHA")
+            u_detail["U.2"] = clamp(u_detail.get("U.2", 50) * 0.85 + osha_score * 0.15)
+            if "OSHA" not in u_src: u_src.append("OSHA")
         
-        # DOL wages → U.2 blend
+        # DOL wages → blends INTO U.2 (Worker Empathy: wage fairness)
         dol_score = ext.get("dol", {}).get("score")
         if dol_score is not None:
-            D_U = round_score(D_U * 0.9 + dol_score * 0.1)
-            if "DOL" not in n_src: n_src.append("DOL")
+            u_detail["U.2"] = clamp(u_detail.get("U.2", 50) * 0.9 + dol_score * 0.1)
+            if "DOL" not in u_src: u_src.append("DOL")
         
-        # BBB → U.1 blend (into U dimension)
+        # BBB → blends INTO U.1 (Customer Empathy: complaint handling)
         bbb_score = ext.get("bbb", {}).get("score")
         if bbb_score is not None:
-            D_U = round_score(D_U * 0.9 + bbb_score * 0.1)
-            if "BBB" not in n_src: n_src.append("BBB")
+            u_detail["U.1"] = clamp(u_detail.get("U.1", 50) * 0.9 + bbb_score * 0.1)
+            if "BBB" not in u_src: u_src.append("BBB")
         
-        # FTC → M.2 + N.4
+        # Refresh D_U from updated sub-signals
+        D_U = compute_dimension_from_subsignals(u_detail, "U")
+        _checkpoint("02 after OSHA/DOL/BBB", D_H, D_U, D_M, D_A, D_N)
+        
+        # FTC → blends INTO M.2 (Data Ethics) and N.4 (Humanwashing detection)
         ftc = ext.get("ftc", {})
         if ftc.get("M.2") is not None:
-            D_M = round_score(D_M * 0.9 + ftc["M.2"] * 0.1)
-            if "FTC" not in n_src: n_src.append("FTC")
+            m_detail["M.2"] = clamp(m_detail.get("M.2", 50) * 0.9 + ftc["M.2"] * 0.1)
+            if "FTC" not in m_src: m_src.append("FTC")
         if ftc.get("N.4") is not None:
-            D_N = round_score(D_N * 0.9 + ftc["N.4"] * 0.1)
+            n_detail["N.4"] = clamp(n_detail.get("N.4", 50) * 0.9 + ftc["N.4"] * 0.1)
+            if "FTC" not in n_src: n_src.append("FTC")
         
-        # EEOC → U.2 + M.3 adjustments
+        # EEOC → adds INTO U.2 (Worker Empathy: discrimination) and M.3 (Market Behavior: ethics)
         eeoc = ext.get("eeoc", {})
-        D_U = clamp(D_U + eeoc.get("U.2_adj", 0))
-        D_M = clamp(D_M + eeoc.get("M.3_adj", 0))
-        if eeoc.get("U.2_adj", 0) != 0 and "EEOC" not in n_src: n_src.append("EEOC")
+        if eeoc.get("U.2_adj", 0) != 0:
+            u_detail["U.2"] = clamp(u_detail.get("U.2", 50) + eeoc["U.2_adj"])
+            if "EEOC" not in u_src: u_src.append("EEOC")
+        if eeoc.get("M.3_adj", 0) != 0:
+            m_detail["M.3"] = clamp(m_detail.get("M.3", 50) + eeoc["M.3_adj"])
+            if "EEOC" not in m_src: m_src.append("EEOC")
         
-        # USPTO patents → H.3 + H.5 adjustments
+        # Refresh D_U, D_M, D_N from updated sub-signals
+        D_U = compute_dimension_from_subsignals(u_detail, "U")
+        D_M = compute_dimension_from_subsignals(m_detail, "M")
+        D_N = compute_dimension_from_subsignals(n_detail, "N")
+        
+        # USPTO patents → adds INTO H.3 (Decision depth) and H.5 (R&D-like signals)
         patents = ext.get("patents", {})
-        D_H = clamp(D_H + patents.get("H.3_adj", 0) + patents.get("H.5_adj", 0))
-        if patents.get("H.3_adj", 0) != 0 and "USPTO" not in n_src: n_src.append("USPTO")
+        if patents.get("H.3_adj", 0) != 0:
+            h_detail["H.3"] = clamp(h_detail.get("H.3", 50) + patents["H.3_adj"])
+            if "USPTO" not in h_src: h_src.append("USPTO")
+        if patents.get("H.5_adj", 0) != 0:
+            h_detail["H.5"] = clamp(h_detail.get("H.5", 50) + patents["H.5_adj"])
+            if "USPTO" not in h_src: h_src.append("USPTO")
         
-        # FDA → M.4 blend
+        # FDA → blends INTO M.4 (Product safety / consumer harm)
         fda_score = ext.get("fda", {}).get("score")
         if fda_score is not None:
-            D_M = round_score(D_M * 0.9 + fda_score * 0.1)
-            if "FDA" not in n_src: n_src.append("FDA")
+            m_detail["M.4"] = clamp(m_detail.get("M.4", 50) * 0.9 + fda_score * 0.1)
+            if "FDA" not in m_src: m_src.append("FDA")
         
-        # Pay ratio → M.3 + H.4
+        # Refresh D_H, D_M after FTC/EEOC/USPTO/FDA group
+        D_H = compute_dimension_from_subsignals(h_detail, "H")
+        D_M = compute_dimension_from_subsignals(m_detail, "M")
+        _checkpoint("03 after FTC/EEOC/USPTO/FDA", D_H, D_U, D_M, D_A, D_N)
+        
+        # Pay ratio → adds INTO M.3 (CEO accountability) and H.4 (Headcount/labor structure)
         pay = ext.get("pay_ratio", {})
-        D_M = clamp(D_M + pay.get("M.3_adj", 0))
-        D_H = clamp(D_H + pay.get("H.4_adj", 0))
-        if pay.get("ratio") and "SEC DEF 14A" not in n_src: n_src.append("SEC DEF 14A")
+        if pay.get("M.3_adj", 0) != 0:
+            m_detail["M.3"] = clamp(m_detail.get("M.3", 50) + pay["M.3_adj"])
+            if "SEC DEF 14A" not in m_src: m_src.append("SEC DEF 14A")
+        if pay.get("H.4_adj", 0) != 0:
+            h_detail["H.4"] = clamp(h_detail.get("H.4", 50) + pay["H.4_adj"])
+            if "SEC DEF 14A" not in h_src: h_src.append("SEC DEF 14A")
         
-        # Insider trading → M.3
-        D_M = clamp(D_M + ext.get("insider", {}).get("M.3_adj", 0))
-        if ext.get("insider", {}).get("M.3_adj", 0) != 0 and "SEC Form 4" not in n_src: n_src.append("SEC Form 4")
+        # Insider trading → adds INTO M.3 (Market behavior / ethics)
+        insider = ext.get("insider", {})
+        if insider.get("M.3_adj", 0) != 0:
+            m_detail["M.3"] = clamp(m_detail.get("M.3", 50) + insider["M.3_adj"])
+            if "SEC Form 4" not in m_src: m_src.append("SEC Form 4")
         
-        # GRI → N.2
-        D_N = clamp(D_N + ext.get("gri", {}).get("N.2_adj", 0))
-        if ext.get("gri", {}).get("N.2_adj", 0) != 0 and "GRI" not in n_src: n_src.append("GRI")
+        # GRI → adds INTO N.2 (Disclosure quality / sustainability reporting)
+        gri = ext.get("gri", {})
+        if gri.get("N.2_adj", 0) != 0:
+            n_detail["N.2"] = clamp(n_detail.get("N.2", 50) + gri["N.2_adj"])
+            if "GRI" not in n_src: n_src.append("GRI")
         
-        # SBTi → A.1
-        D_A = clamp(D_A + ext.get("sbti", {}).get("A.1_adj", 0))
-        if ext.get("sbti", {}).get("A.1_adj", 0) != 0 and "SBTi" not in n_src: n_src.append("SBTi")
+        # SBTi → adds INTO A.1 (Climate / emissions targets)
+        sbti = ext.get("sbti", {})
+        if sbti.get("A.1_adj", 0) != 0:
+            a_detail["A.1"] = clamp(a_detail.get("A.1", 50) + sbti["A.1_adj"])
+            if "SBTi" not in a_src: a_src.append("SBTi")
         
-        # Charity → U.5
-        D_U = clamp(D_U + ext.get("charity", {}).get("U.5_adj", 0))
-        if ext.get("charity", {}).get("U.5_adj", 0) != 0 and "IRS 990" not in n_src: n_src.append("IRS 990")
+        # Charity → adds INTO U.5 (Moral courage / philanthropy)
+        charity = ext.get("charity", {})
+        if charity.get("U.5_adj", 0) != 0:
+            u_detail["U.5"] = clamp(u_detail.get("U.5", 50) + charity["U.5_adj"])
+            if "IRS 990" not in u_src: u_src.append("IRS 990")
+        
+        # Refresh all dimensions touched by pay/insider/GRI/SBTi/charity
+        D_H = compute_dimension_from_subsignals(h_detail, "H")
+        D_U = compute_dimension_from_subsignals(u_detail, "U")
+        D_M = compute_dimension_from_subsignals(m_detail, "M")
+        D_A = compute_dimension_from_subsignals(a_detail, "A")
+        D_N = compute_dimension_from_subsignals(n_detail, "N")
+        _checkpoint("04 after pay/insider/GRI/SBTi/charity", D_H, D_U, D_M, D_A, D_N)
         
         # ═══ CONSOLIDATED STANDALONE SOURCES (via consolidate_sources.py) ═══
         
-        # FMP Revenue Growth → M adjustment
+        # FMP Revenue Growth → adds INTO M.5 (Leadership pay equity / executive performance)
+        # Note: original code attributed only to "M adjustment" without specifying sub-signal.
+        # Routed to M.5 because revenue growth quality reflects leadership performance.
         fmp_growth = ext.get("fmp_growth", {})
-        D_M = clamp(D_M + fmp_growth.get("M_adj", 0))
-        if fmp_growth.get("M_adj", 0) != 0 and "FMP" not in h_src + m_src: m_src.append("FMP")
+        if fmp_growth.get("M_adj", 0) != 0:
+            m_detail["M.5"] = clamp(m_detail.get("M.5", 50) + fmp_growth["M_adj"])
+            if "FMP" not in m_src: m_src.append("FMP")
         
-        # FMP R&D → H.5 adjustment
+        # FMP R&D → adds INTO H.5 (Innovation / human craft investment)
         fmp_rd = ext.get("fmp_rd", {})
-        D_H = clamp(D_H + fmp_rd.get("H.5_adj", 0))
-        if fmp_rd.get("H.5_adj", 0) != 0 and "FMP" not in h_src: h_src.append("FMP")
+        if fmp_rd.get("H.5_adj", 0) != 0:
+            h_detail["H.5"] = clamp(h_detail.get("H.5", 50) + fmp_rd["H.5_adj"])
+            if "FMP" not in h_src: h_src.append("FMP")
         
-        # FMP Headcount Change → H.1 adjustment
+        # FMP Headcount Change → adds INTO H.1 (Revenue per employee / human density)
         fmp_hc = ext.get("fmp_headcount", {})
-        D_H = clamp(D_H + fmp_hc.get("H.1_adj", 0))
-        if fmp_hc.get("H.1_adj", 0) != 0 and "FMP" not in h_src: h_src.append("FMP")
+        if fmp_hc.get("H.1_adj", 0) != 0:
+            h_detail["H.1"] = clamp(h_detail.get("H.1", 50) + fmp_hc["H.1_adj"])
+            if "FMP" not in h_src: h_src.append("FMP")
         
-        # Finnhub ESG → A.1, U.2, N.2 adjustments
+        # Finnhub ESG → adds INTO A.1 (Climate), U.2 (Worker), N.2 (Disclosure)
         fh_esg = ext.get("finnhub_esg", {})
-        D_A = clamp(D_A + fh_esg.get("A.1_adj", 0))
-        D_U = clamp(D_U + fh_esg.get("U.2_adj", 0))
-        D_N = clamp(D_N + fh_esg.get("N.2_adj", 0))
-        if any(fh_esg.get(k, 0) != 0 for k in ["A.1_adj", "U.2_adj", "N.2_adj"]):
+        if fh_esg.get("A.1_adj", 0) != 0:
+            a_detail["A.1"] = clamp(a_detail.get("A.1", 50) + fh_esg["A.1_adj"])
+            if "Finnhub" not in a_src: a_src.append("Finnhub")
+        if fh_esg.get("U.2_adj", 0) != 0:
+            u_detail["U.2"] = clamp(u_detail.get("U.2", 50) + fh_esg["U.2_adj"])
+            if "Finnhub" not in u_src: u_src.append("Finnhub")
+        if fh_esg.get("N.2_adj", 0) != 0:
+            n_detail["N.2"] = clamp(n_detail.get("N.2", 50) + fh_esg["N.2_adj"])
             if "Finnhub" not in n_src: n_src.append("Finnhub")
         
-        # Layoffs.fyi → H.1 penalty
+        # Layoffs.fyi → adds INTO H.1 (Revenue per employee / workforce stability)
         layoffs = ext.get("layoffs", {})
-        D_H = clamp(D_H + layoffs.get("H.1_adj", 0))
-        if layoffs.get("H.1_adj", 0) != 0 and "Layoffs.fyi" not in h_src: h_src.append("Layoffs.fyi")
+        if layoffs.get("H.1_adj", 0) != 0:
+            h_detail["H.1"] = clamp(h_detail.get("H.1", 50) + layoffs["H.1_adj"])
+            if "Layoffs.fyi" not in h_src: h_src.append("Layoffs.fyi")
         
-        # WARN Act → H.1 penalty
+        # WARN Act → adds INTO H.1 (Revenue per employee / workforce stability)
         warn = ext.get("warn", {})
-        D_H = clamp(D_H + warn.get("H.1_adj", 0))
-        if warn.get("H.1_adj", 0) != 0 and "WARN Act" not in h_src: h_src.append("WARN Act")
+        if warn.get("H.1_adj", 0) != 0:
+            h_detail["H.1"] = clamp(h_detail.get("H.1", 50) + warn["H.1_adj"])
+            if "WARN Act" not in h_src: h_src.append("WARN Act")
         
-        # CEO Accountability → M.3 adjustment
+        # CEO Accountability → adds INTO M.3 (Market behavior / leadership ethics)
         ceo = ext.get("ceo", {})
-        D_M = clamp(D_M + ceo.get("M.3_adj", 0))
-        if ceo.get("M.3_adj", 0) != 0 and "CEO Pipeline" not in m_src: m_src.append("CEO Pipeline")
+        if ceo.get("M.3_adj", 0) != 0:
+            m_detail["M.3"] = clamp(m_detail.get("M.3", 50) + ceo["M.3_adj"])
+            if "CEO Pipeline" not in m_src: m_src.append("CEO Pipeline")
         
-        # SEC 8-K → N.1 adjustment (more filings = more transparent)
+        # SEC 8-K → adds INTO N.1 (Filing frequency / transparency)
         sec8k = ext.get("sec_8k", {})
-        D_N = clamp(D_N + sec8k.get("N.1_adj", 0))
-        if sec8k.get("N.1_adj", 0) != 0 and "SEC 8-K" not in n_src: n_src.append("SEC 8-K")
+        if sec8k.get("N.1_adj", 0) != 0:
+            n_detail["N.1"] = clamp(n_detail.get("N.1", 50) + sec8k["N.1_adj"])
+            if "SEC 8-K" not in n_src: n_src.append("SEC 8-K")
         
-        # OpenCorporates → N.3 adjustment (subsidiary complexity)
+        # OpenCorporates → adds INTO N.3 (Subsidiary complexity / corporate transparency)
         oc = ext.get("opencorporates", {})
-        D_N = clamp(D_N + oc.get("N.3_adj", 0))
-        if oc.get("N.3_adj", 0) != 0 and "OpenCorporates" not in n_src: n_src.append("OpenCorporates")
+        if oc.get("N.3_adj", 0) != 0:
+            n_detail["N.3"] = clamp(n_detail.get("N.3", 50) + oc["N.3_adj"])
+            if "OpenCorporates" not in n_src: n_src.append("OpenCorporates")
         
-        # NewsAPI Decay → small negative adjustment for companies with critical/high risk news
-        newsapi = ext.get("newsapi", {})
-        decay_adj = newsapi.get("decay_adj", 0)
-        if decay_adj != 0:
-            # Spread decay penalty across all dimensions equally
-            per_dim = decay_adj / 5
-            D_H = clamp(D_H + per_dim)
-            D_U = clamp(D_U + per_dim)
-            D_M = clamp(D_M + per_dim)
-            D_A = clamp(D_A + per_dim)
-            D_N = clamp(D_N + per_dim)
-            if "NewsAPI" not in n_src: n_src.append("NewsAPI")
+        # Refresh ALL dimensions after the consolidated standalone block
+        D_H = compute_dimension_from_subsignals(h_detail, "H")
+        D_U = compute_dimension_from_subsignals(u_detail, "U")
+        D_M = compute_dimension_from_subsignals(m_detail, "M")
+        D_A = compute_dimension_from_subsignals(a_detail, "A")
+        D_N = compute_dimension_from_subsignals(n_detail, "N")
+        _checkpoint("05 after FMP/Finnhub/Layoffs/CEO/8K", D_H, D_U, D_M, D_A, D_N)
+        
+        # ─────────────────────────────────────────────────────────────────────
+        # NewsAPI Decay penalty REMOVED 2026-04-07.
+        # Reason: The same NewsAPI signal is already surfaced publicly via the
+        # Heartbeat / Decay Index feature. Applying it ALSO as a hidden
+        # per-dimension penalty was double-counting the same data. It also
+        # spread one signal across all 5 HUMAN dimensions equally, which made
+        # category-blind attributions (e.g. an autopilot story would lower
+        # Worker Empathy by the same amount it lowered Environmental).
+        #
+        # NewsAPI continues to power the Decay Index feature in feature_pipelines.py.
+        # This block is preserved as a comment so the reasoning lives in the code.
+        #
+        # ORIGINAL CODE:
+        # newsapi = ext.get("newsapi", {})
+        # decay_adj = newsapi.get("decay_adj", 0)
+        # if decay_adj != 0:
+        #     # Spread decay penalty across all dimensions equally
+        #     per_dim = decay_adj / 5
+        #     D_H = clamp(D_H + per_dim)
+        #     D_U = clamp(D_U + per_dim)
+        #     D_M = clamp(D_M + per_dim)
+        #     D_A = clamp(D_A + per_dim)
+        #     D_N = clamp(D_N + per_dim)
+        #     if "NewsAPI" not in n_src: n_src.append("NewsAPI")
+        # ─────────────────────────────────────────────────────────────────────
     
+    # ═══ DIMENSION AUDIT TRAIL — capture raw state before cross-cutting adjustments ═══
+    # After sub-signal updates from Stage 2, D_X represents the "raw" dimension value
+    # computed purely from sub-signals. Any further adjustments (AHI, SIC) are tracked
+    # as visible entries in the audit trail so end-to-end math is reconstructable.
+    D_H_raw = round_score(D_H)
+    D_U_raw = round_score(D_U)
+    D_M_raw = round_score(D_M)
+    D_A_raw = round_score(D_A)
+    D_N_raw = round_score(D_N)
+    dim_adjustments = {"H": [], "U": [], "M": [], "A": [], "N": []}
+
     # ═══ ALGORITHMIC HARM INDEX — Cross-cutting penalty ═══
+    # Design: penalties only fire when composite harm score exceeds the 30 threshold
+    # (set in compute_algo_harm). Scores 0-30 are informational only.
+    # Stage 3 adds audit trail tracking for every non-zero penalty.
     algo_harm = compute_algo_harm(ticker)
     if algo_harm["has_harm"]:
-        p = algo_harm["penalties"]
-        D_H = clamp(D_H + p["H"])
-        D_U = clamp(D_U + p["U"])
-        D_M = clamp(D_M + p["M"])
-        D_N = clamp(D_N + p["N"])
+        p = algo_harm.get("penalties", {})
+        if p.get("H", 0) != 0:
+            dim_adjustments["H"].append({"source": "AHI", "delta": p["H"], "reason": "Algorithmic Harm Index"})
+            D_H = clamp(D_H + p["H"])
+        if p.get("U", 0) != 0:
+            dim_adjustments["U"].append({"source": "AHI", "delta": p["U"], "reason": "Algorithmic Harm Index"})
+            D_U = clamp(D_U + p["U"])
+        if p.get("M", 0) != 0:
+            dim_adjustments["M"].append({"source": "AHI", "delta": p["M"], "reason": "Algorithmic Harm Index"})
+            D_M = clamp(D_M + p["M"])
+        if p.get("N", 0) != 0:
+            dim_adjustments["N"].append({"source": "AHI", "delta": p["N"], "reason": "Algorithmic Harm Index"})
+            D_N = clamp(D_N + p["N"])
+    if _dbg:
+        print(f"[DBG {ticker.upper()}] AHI: has_harm={algo_harm.get('has_harm')} score={algo_harm.get('algo_harm_score')} penalties={algo_harm.get('penalties')}")
+    _checkpoint("06 after AHI", D_H, D_U, D_M, D_A, D_N)
 
     # ═══ SIC SUB-INDUSTRY DIFFERENTIATION ═══
     # Companies in the same broad industry (e.g., "tech") get identical defaults.
@@ -1085,14 +1294,26 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
     # Apply small deterministic offsets to break identical score patterns.
     sic_off = get_sic_offsets(sic)
     if sic_off:
+        for dim_letter in ["H", "U", "M", "A", "N"]:
+            offset = sic_off.get(dim_letter, 0)
+            if offset != 0:
+                dim_adjustments[dim_letter].append({
+                    "source": "SIC offset",
+                    "delta": offset,
+                    "reason": f"Sub-industry differentiation (SIC {sic})"
+                })
         D_H = clamp(D_H + sic_off.get("H", 0))
         D_U = clamp(D_U + sic_off.get("U", 0))
         D_M = clamp(D_M + sic_off.get("M", 0))
         D_A = clamp(D_A + sic_off.get("A", 0))
         D_N = clamp(D_N + sic_off.get("N", 0))
+    if _dbg:
+        print(f"[DBG {ticker.upper()}] SIC offsets: {sic_off}")
+    _checkpoint("07 after SIC offsets", D_H, D_U, D_M, D_A, D_N)
 
     # Round dimensions after all adjustments
     D_H, D_U, D_M, D_A, D_N = round_score(D_H), round_score(D_U), round_score(D_M), round_score(D_A), round_score(D_N)
+    _checkpoint("08 final after rounding", D_H, D_U, D_M, D_A, D_N)
 
     composite, floor_triggered, balance_floor_triggered, triggering_dim = compute_composite(D_H, D_U, D_M, D_A, D_N)
     grade, satire = get_hi_grade(composite)
@@ -1134,6 +1355,13 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "company": company_name, "ticker": ticker, "industry": industry, "sic": sic,
         "sic_description": sec_data.get("n_signals", {}).get("sic_description", "") if sec_data else "",
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
+        "dimension_adjustments": {
+            "H": {"raw": D_H_raw, "final": D_H, "adjustments": dim_adjustments["H"]},
+            "U": {"raw": D_U_raw, "final": D_U, "adjustments": dim_adjustments["U"]},
+            "M": {"raw": D_M_raw, "final": D_M, "adjustments": dim_adjustments["M"]},
+            "A": {"raw": D_A_raw, "final": D_A, "adjustments": dim_adjustments["A"]},
+            "N": {"raw": D_N_raw, "final": D_N, "adjustments": dim_adjustments["N"]},
+        },
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
         "confidence": "Verified" if real_source_count >= 5 else "Estimated" if real_source_count >= 1 else "Pending",
