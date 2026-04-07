@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-HI. — HUMAN Scoring Engine v2.1
+HI. — HUMAN Scoring Engine v2.3
 Merges signals from 25 sub-signals across 42 data sources into HUMAN dimension scores.
 
 Follows HUMAN_Grade_Methodology_Spec v1.1
@@ -10,7 +10,18 @@ Balance floor: any dimension < 42 flags balance. 2+ dims below 42 caps at 41. 1 
 Defaults: All sub-signals default to 50 (neutral) when no data is available.
 Rounding: down unless decimal is .6 or higher (whole numbers only).
 
-Key fixes in v2.1:
+Key fixes in v2.3:
+  - Glassdoor field normalization: overall_rating (1–5) → overall_score (0–100)
+  - Glassdoor proxy detection (3.5/3.3/70 default pattern) cleared before scoring
+  - Sub-signal defaults eliminated for H.4, U.2, U.3, U.5, N.4, A.2 (industry defaults instead)
+  - Industry-specific defaults added for H.1, H.5, M.1, M.2, N.2, U.1
+  - A.5 Resource Stewardship added to A dimension formula
+  - All dimension weights equalized to 5 × 0.20 = 1.0 per spec
+  - SIC sub-industry offsets break identical-score clusters within broad industries
+  - Dynamic confidence (verified / estimated / pending) computed from sub-signal coverage
+  - Data confidence is a separate signal from the 3 gates, not a fourth gate
+
+Key fixes in v2.1 (prior):
   - 3-gate system (Score, Balance, Integrity) replaces 10-gate system
   - All defaults set to 50 (neutral) — no generous defaults
   - HW.1 humanwashing now industry-normalized (4x industry median, not flat $2M)
@@ -1086,6 +1097,8 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
     composite, floor_triggered, balance_floor_triggered, triggering_dim = compute_composite(D_H, D_U, D_M, D_A, D_N)
     grade, satire = get_hi_grade(composite)
     all_sources = sorted(set(h_src + u_src + m_src + a_src + n_src)) or ["Defaults"]
+    # Real source count for confidence — matches api_server's verification rule
+    real_source_count = len([s for s in all_sources if s not in ("Defaults", "Manual Scoring", "Public Reporting")])
 
     all_details = {**h_detail, **u_detail, **m_detail, **a_detail, **n_detail}
     real_count = sum(1 for v in all_details.values() if v != 50)
@@ -1123,8 +1136,8 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": "Verified" if real_count >= 20 else "Estimated" if real_count >= 10 else "Pending",
-        "score_status": "verified" if real_count >= 20 else "estimated" if real_count >= 10 else "pending",
+        "confidence": "Verified" if real_source_count >= 5 else "Estimated" if real_source_count >= 1 else "Pending",
+        "score_status": "verified" if real_source_count >= 5 else "estimated" if real_source_count >= 1 else "pending",
         "spec_version": "1.0.0",
         "data_sources": all_sources,
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
