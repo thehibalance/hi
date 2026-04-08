@@ -983,14 +983,6 @@ def compute_algo_harm(ticker):
 def score_company(company_name, ticker="", sec_data=None, epa_data=None,
                   bls_data=None, cdp_data=None, job_data=None, glassdoor_data=None,
                   subsignal_data=None):
-    # ─── DEBUG INSTRUMENTATION (temporary, remove after audit) ──────────
-    DEBUG_TICKERS = {"AAPL", "TSLA"}
-    _dbg = ticker.upper() in DEBUG_TICKERS
-    def _checkpoint(label, dh, du, dm, da, dn):
-        if _dbg:
-            print(f"[DBG {ticker.upper()}] {label:30s} H={dh:6.1f} U={du:6.1f} M={dm:6.1f} A={da:6.1f} N={dn:6.1f}")
-    # ────────────────────────────────────────────────────────────────────
-    
     sic = sec_data.get("n_signals", {}).get("sic", "") if sec_data else ""
     industry = get_industry(sic)
     
@@ -1028,15 +1020,6 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
     D_A = compute_dimension_from_subsignals(a_detail, "A")
     D_N = compute_dimension_from_subsignals(n_detail, "N")
 
-    if _dbg:
-        print(f"\n[DBG {ticker.upper()}] === industry={industry} sic={sic} ===")
-        print(f"[DBG {ticker.upper()}] H sub-signals: {h_detail}")
-        print(f"[DBG {ticker.upper()}] U sub-signals: {u_detail}")
-        print(f"[DBG {ticker.upper()}] M sub-signals: {m_detail}")
-        print(f"[DBG {ticker.upper()}] A sub-signals: {a_detail}")
-        print(f"[DBG {ticker.upper()}] N sub-signals: {n_detail}")
-    _checkpoint("01 after dimension funcs", D_H, D_U, D_M, D_A, D_N)
-
     # ═══ EXTENDED SIGNALS (sources 23-34) ═══
     # Load extended pipeline data and apply adjustments
     ext = {}
@@ -1070,7 +1053,6 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         
         # Refresh D_U from updated sub-signals
         D_U = compute_dimension_from_subsignals(u_detail, "U")
-        _checkpoint("02 after OSHA/DOL/BBB", D_H, D_U, D_M, D_A, D_N)
         
         # FTC → blends INTO M.2 (Data Ethics) and N.4 (Humanwashing detection)
         ftc = ext.get("ftc", {})
@@ -1113,7 +1095,6 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         # Refresh D_H, D_M after FTC/EEOC/USPTO/FDA group
         D_H = compute_dimension_from_subsignals(h_detail, "H")
         D_M = compute_dimension_from_subsignals(m_detail, "M")
-        _checkpoint("03 after FTC/EEOC/USPTO/FDA", D_H, D_U, D_M, D_A, D_N)
         
         # Pay ratio → adds INTO M.3 (CEO accountability) and H.4 (Headcount/labor structure)
         pay = ext.get("pay_ratio", {})
@@ -1154,7 +1135,6 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         D_M = compute_dimension_from_subsignals(m_detail, "M")
         D_A = compute_dimension_from_subsignals(a_detail, "A")
         D_N = compute_dimension_from_subsignals(n_detail, "N")
-        _checkpoint("04 after pay/insider/GRI/SBTi/charity", D_H, D_U, D_M, D_A, D_N)
         
         # ═══ CONSOLIDATED STANDALONE SOURCES (via consolidate_sources.py) ═══
         
@@ -1226,7 +1206,6 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         D_M = compute_dimension_from_subsignals(m_detail, "M")
         D_A = compute_dimension_from_subsignals(a_detail, "A")
         D_N = compute_dimension_from_subsignals(n_detail, "N")
-        _checkpoint("05 after FMP/Finnhub/Layoffs/CEO/8K", D_H, D_U, D_M, D_A, D_N)
         
         # ─────────────────────────────────────────────────────────────────────
         # NewsAPI Decay penalty REMOVED 2026-04-07.
@@ -1284,9 +1263,6 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         if p.get("N", 0) != 0:
             dim_adjustments["N"].append({"source": "AHI", "delta": p["N"], "reason": "Algorithmic Harm Index"})
             D_N = clamp(D_N + p["N"])
-    if _dbg:
-        print(f"[DBG {ticker.upper()}] AHI: has_harm={algo_harm.get('has_harm')} score={algo_harm.get('algo_harm_score')} penalties={algo_harm.get('penalties')}")
-    _checkpoint("06 after AHI", D_H, D_U, D_M, D_A, D_N)
 
     # ═══ SIC SUB-INDUSTRY DIFFERENTIATION ═══
     # Companies in the same broad industry (e.g., "tech") get identical defaults.
@@ -1307,13 +1283,9 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         D_M = clamp(D_M + sic_off.get("M", 0))
         D_A = clamp(D_A + sic_off.get("A", 0))
         D_N = clamp(D_N + sic_off.get("N", 0))
-    if _dbg:
-        print(f"[DBG {ticker.upper()}] SIC offsets: {sic_off}")
-    _checkpoint("07 after SIC offsets", D_H, D_U, D_M, D_A, D_N)
 
     # Round dimensions after all adjustments
     D_H, D_U, D_M, D_A, D_N = round_score(D_H), round_score(D_U), round_score(D_M), round_score(D_A), round_score(D_N)
-    _checkpoint("08 final after rounding", D_H, D_U, D_M, D_A, D_N)
 
     composite, floor_triggered, balance_floor_triggered, triggering_dim = compute_composite(D_H, D_U, D_M, D_A, D_N)
     grade, satire = get_hi_grade(composite)

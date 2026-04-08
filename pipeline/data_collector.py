@@ -44,17 +44,25 @@ def load_key(name):
     return None
 
 
-def safe_get(url, params=None, headers=None, timeout=15):
-    """Rate-limited GET with error handling."""
+def safe_get(url, params=None, headers=None, timeout=15, _retry_count=0):
+    """Rate-limited GET with bounded retry.
+    
+    Previously had an infinite retry loop on 429 that could deadlock threads
+    when a daily quota was exhausted. Now caps at 2 retries total, then returns
+    None and lets the caller fall back gracefully.
+    """
     time.sleep(RATE_LIMIT_PAUSE)
     try:
         r = requests.get(url, params=params, headers=headers, timeout=timeout)
         if r.status_code == 200:
             return r.json()
         elif r.status_code == 429:
-            print(f"    Rate limited, waiting 60s...")
+            if _retry_count >= 2:
+                # Give up and let caller handle None — don't block the thread forever
+                return None
+            print(f"    Rate limited, waiting 60s (retry {_retry_count + 1}/2)...")
             time.sleep(60)
-            return safe_get(url, params, headers, timeout)
+            return safe_get(url, params, headers, timeout, _retry_count + 1)
         else:
             return None
     except Exception as e:
@@ -116,6 +124,10 @@ def load_company_list():
 # ═══════════════════════════════════════════════════════════════════════
 
 SEC_HEADERS = {"User-Agent": "HI Score Bot hi@thehibalance.org", "Accept": "application/json"}
+
+# Module-level circuit breaker flag for Finnhub daily quota exhaustion.
+# When True, fetch_finnhub short-circuits to (None, None) without network calls.
+_FINNHUB_EXHAUSTED = False
 
 def fetch_sec(company_name, ticker):
     """Fetch SEC EDGAR data: 10-K headcount, revenue, R&D, filings."""
@@ -314,33 +326,50 @@ def fetch_bls_benchmarks():
 # ═══════════════════════════════════════════════════════════════════════
 
 def fetch_finnhub(ticker, finnhub_key):
-    """Fetch Finnhub ESG scores + company profile as Glassdoor proxy."""
+    """Fetch Finnhub ESG scores. Returns (esg, None).
+    
+    Note: Previously returned a fake Glassdoor proxy with hardcoded 3.5/3.3/70
+    ratings, which was a stub that was never completed. The scoring engine
+    already detects this proxy signature and clears it (score_u_dimension
+    lines 355-359), so removing it here is a no-op on actual scores but:
+      1. Saves Finnhub API quota (free tier = 60 calls/min + daily cap)
+      2. Eliminates misleading fake data in raw SEC records
+      3. Makes the U dimension's fallback to CFPB/DEI/industry defaults
+         explicit instead of going through a scoring-engine workaround
+    
+    Circuit breaker: once a 429 is observed, subsequent calls short-circuit
+    to (None, None) without attempting the network call. This prevents the
+    collection from wasting hours retrying an exhausted daily quota.
+    
+    Real Glassdoor replacement (paid Finnhub tier, Comparably, Indeed scraping,
+    or equivalent) is a post-launch v1.1 task.
+    """
+    global _FINNHUB_EXHAUSTED
+    if _FINNHUB_EXHAUSTED:
+        return None, None
     if not finnhub_key or not ticker:
         return None, None
     
-    # ESG scores
+    # ESG scores — real data, keep
     esg = safe_get(f"https://finnhub.io/api/v1/stock/esg", params={"symbol": ticker, "token": finnhub_key})
     
-    # Company profile (includes industry, market cap)
-    profile = safe_get(f"https://finnhub.io/api/v1/stock/profile2", params={"symbol": ticker, "token": finnhub_key})
+    # If the ESG call returned None AND we haven't already tripped the breaker,
+    # it might be a rate-limit. Verify with a cheap HEAD check before tripping.
+    if esg is None:
+        try:
+            import requests
+            r = requests.head(f"https://finnhub.io/api/v1/stock/esg",
+                              params={"symbol": ticker, "token": finnhub_key}, timeout=5)
+            if r.status_code == 429:
+                _FINNHUB_EXHAUSTED = True
+                print(f"    ⚠ Finnhub daily quota exhausted — skipping for rest of run")
+        except Exception:
+            pass
     
-    glassdoor_proxy = None
-    if profile:
-        # Use Finnhub peer comparison as Glassdoor proxy
-        glassdoor_proxy = {
-            "company": profile.get("name", ""), "ticker": ticker,
-            "u_signals": {
-                "overall_rating": 3.5,  # Default, enriched by actual Glassdoor if available
-                "culture_rating": 3.3,
-                "ceo_approval": 70,
-            },
-            "m_signals": {
-                "market_cap": profile.get("marketCapitalization", 0),
-                "industry": profile.get("finnhubIndustry", ""),
-            },
-        }
-    
-    return esg, glassdoor_proxy
+    return esg, None
+
+
+# ═══════════════════════════════════════════════════════════════════════
 
 
 # ═══════════════════════════════════════════════════════════════════════
