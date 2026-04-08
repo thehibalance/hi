@@ -12,8 +12,6 @@ Built without AI to measure AI. **42 free public data sources. 25 sub-signals. Z
 
 🏛 The HI Balance · 📄 Patent Pending · ™ HI Grade — Morf Innovations LLC
 
-**🚀 Public launch: Earth Day, April 22, 2026** — one year to the day from when HI began.
-
 ---
 
 ## The Fifth Element
@@ -323,7 +321,6 @@ curl https://api.thehibalance.org/api/v1/score/ticker/AAPL
 | Humanwashing™ | Common law |
 | Algorithmic Harm Index™ | Common law |
 | "Human kind?"™ | Trademark pending |
-| HiUMAN Kaind (children's book) | Copyright registered |
 | HUMAN Grade Spec v1.0 whitepaper | Copyright registered |
 | Open source | Apache 2.0 |
 
@@ -333,7 +330,6 @@ curl https://api.thehibalance.org/api/v1/score/ticker/AAPL
 
 | Capability | Status |
 |---|---|
-| Public launch (Earth Day 2026) | April 22, 2026 |
 | 30-day backtest visualization (HUMAN 100 vs S&P 500) | In progress (14/30 days captured) |
 | Phone extension (App Intents + Shortcuts) | Coming soon |
 | Safari extension | Coming soon |
