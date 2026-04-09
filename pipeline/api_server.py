@@ -280,56 +280,269 @@ def save_threshold(threshold):
         "type": "quarterly"
     }, open(THRESHOLD_FILE, "w"), indent=2)
 
-def check_hi_balanced(company, threshold):
+# ============================================================
+# Path X: verification + integrity helpers
+# ============================================================
+
+REAL_SOURCE_EXCLUDE = {
+    "Defaults",
+    "Manual Scoring",
+    "Public Reporting",
+    "Seed Estimate",
+    "Industry",
+    "Industry+EPA",
+}
+
+
+def load_stability_history(days=7):
     """
-    Check 3 gates for Gold HI Grade status, plus data confidence requirement.
-    Gate 1 — SCORE: Composite ≥ adaptive threshold
-    Gate 2 — BALANCE: All 5 dimensions ≥ 42
-    Gate 3 — INTEGRITY: No Humanwashing™ flags AND Algorithmic Harm Index™ == 0 AND Heartbeat ≤ watch
-    
-    Plus: data confidence (5+ real sources required for Gold, but shown as
-    a separate "Verified / Estimated / Pending" signal — not a public gate).
-    
-    Score, balance, honesty. The moat is the combination.
+    Load the most recent N days of composite scores from pipeline/data/history/.
+
+    Returns a dict keyed by uppercase ticker, mapping to a list of composite
+    scores (most-recent-first). Missing tickers return empty list on lookup.
     """
-    dims = [company.get("D_H", 0), company.get("D_U", 0), company.get("D_M", 0), company.get("D_A", 0), company.get("D_N", 0)]
-    below_42 = sum(1 for d in dims if d < 42)
-    
-    no_humanwashing = len(company.get("humanwashing_flags", [])) == 0
-    # AHI: correct nested path (was silently reading non-existent top-level fields)
-    ahi_score = (company.get("algo_harm") or {}).get("algo_harm_score", 0) or 0
-    # Zero tolerance: AHI distribution is effectively binary in v1.0 (799 at 0, 19 above 10)
-    ahi_clean = ahi_score == 0
-    # Heartbeat decay gate: integrity is momentum, not a snapshot
-    decay_level = company.get("decay_level", "stable")
-    decay_clean = decay_level in ("stable", "watch")
-    
-    # Data confidence — required for Gold but exposed as score_status, not a gate
-    # Excludes "Defaults", "Manual Scoring", "Public Reporting" as they aren't real external sources
-    real_sources = [s for s in company.get("data_sources", []) 
-                    if s not in ("Defaults", "Manual Scoring", "Public Reporting")]
-    verified = len(real_sources) >= 5
-    
-    # Assign score_status for display purposes (separate from gates)
-    if verified:
-        company["score_status"] = "verified"
-    elif len(real_sources) >= 1:
-        company["score_status"] = "estimated"
-    else:
-        company["score_status"] = "pending"
-    
-    # Public-facing: 3 gates only
-    gates = {
-        "score": company.get("composite", 0) >= threshold,
-        "balance": below_42 == 0,
-        "integrity": no_humanwashing and ahi_clean and decay_clean,
+    import json as _json
+    history_dir = Path("data/history")
+    if not history_dir.exists():
+        return {}
+
+    files = sorted(
+        [f for f in history_dir.glob("*.json") if f.name != "index.json"],
+        reverse=True,
+    )[:days]
+
+    history = {}
+    for f in files:
+        try:
+            with open(f) as fh:
+                data = _json.load(fh)
+            if not isinstance(data, list):
+                continue
+            for c in data:
+                ticker = (c.get("ticker") or "").upper()
+                if ticker:
+                    history.setdefault(ticker, []).append(c.get("composite", 0) or 0)
+        except Exception:
+            continue
+
+    return history
+
+
+def is_publishable(company):
+    """
+    Verified gate: company has enough real data to publish a score.
+
+    Criteria (both must pass):
+      1. 5+ real data sources overall
+      2. Every H/U/M/A/N dimension has at least 1 real source in its genome
+
+    Returns (publishable: bool, reason: str).
+    """
+    data_sources = company.get("data_sources", []) or []
+    real_sources = [s for s in data_sources if s not in REAL_SOURCE_EXCLUDE]
+
+    if len(real_sources) < 5:
+        return False, f"Only {len(real_sources)} verified sources (need 5+)"
+
+    genome = company.get("genome", {}) or {}
+    missing = []
+    for dim in ("H", "U", "M", "A", "N"):
+        dim_sources = (genome.get(dim) or {}).get("sources", []) or []
+        dim_real = [s for s in dim_sources if s not in REAL_SOURCE_EXCLUDE]
+        if not dim_real:
+            missing.append(dim)
+
+    if missing:
+        plural = "s" if len(missing) > 1 else ""
+        return False, f"No verified data for dimension{plural}: {', '.join(missing)}"
+
+    return True, "publishable"
+
+
+def apply_integrity_adjustments(company):
+    """
+    Apply behavioral signal penalties as dimensional adjustments.
+
+    Replaces the old Gate 3 integrity check. Signals that used to be gates
+    now flow into the dimensions where they conceptually belong:
+
+      humanwashing flags   -> N penalty (performative virtue detector)
+      decay warning        -> affected-dim penalty based on factor keywords
+      decay critical       -> stronger affected-dim penalty
+      AHI                  -> already flows via scoring_engine.py
+
+    After adjustments, the composite is recomputed and the balance floor
+    cap is re-applied so below-42 dims trigger the composite cap at 49
+    (below 10 triggers cap at 40).
+
+    Mutates company in place. Records the adjustments under 'integrity_adjustments'
+    for the audit trail.
+    """
+    adjustments = []
+    original_dims = {
+        "H": company.get("D_H", 0) or 0,
+        "U": company.get("D_U", 0) or 0,
+        "M": company.get("D_M", 0) or 0,
+        "A": company.get("D_A", 0) or 0,
+        "N": company.get("D_N", 0) or 0,
     }
-    
-    # Gold requires all 3 gates AND verified data confidence.
-    # Pending/Estimated companies can still pass all 3 gates but won't earn Gold.
-    passed = all(gates.values()) and verified
-    
-    return passed, gates
+
+    # --- Humanwashing -> N dimension ---
+    hw_flags = company.get("humanwashing_flags", []) or []
+    if hw_flags:
+        n_penalty = min(len(hw_flags) * 12, 50)
+        company["D_N"] = max(0, int(company.get("D_N", 0) - n_penalty))
+        adjustments.append({
+            "dim": "N",
+            "penalty": -n_penalty,
+            "reason": f"{len(hw_flags)} humanwashing flag(s)",
+        })
+
+    # --- Decay factors -> affected dimensions ---
+    decay_level = (company.get("decay_level") or "stable").lower()
+    decay_index = company.get("decay_index", 0) or 0
+    decay_factors = company.get("decay_factors", []) or []
+
+    if decay_level == "warning":
+        base_penalty = min(decay_index * 1.5, 40)
+    elif decay_level == "critical":
+        base_penalty = min(decay_index * 2.0, 60)
+    else:
+        base_penalty = 0  # stable and watch: no penalty
+
+    if base_penalty > 0 and decay_factors:
+        # Track which dims already penalized so we cap at one decay penalty per dim
+        dim_hit = set()
+        for factor in decay_factors:
+            f = (factor or "").lower()
+            affected_dim = None
+            if "layoff" in f:
+                affected_dim = "H"  # H.5 displacement trajectory
+            elif "ai pivot" in f or "ai acceleration" in f or "aggressive ai" in f:
+                affected_dim = "H"  # H.5 displacement trajectory
+            elif "ethic" in f or "legal" in f:
+                affected_dim = "M"  # M.3 / M.4 market/product ethics
+            elif "ceo accountability" in f:
+                affected_dim = "M"  # M.3 CEO accountability
+            elif "fraud" in f or "scandal" in f:
+                affected_dim = "M"
+            elif "environment" in f or "epa" in f or "spill" in f:
+                affected_dim = "A"
+
+            if affected_dim and affected_dim not in dim_hit:
+                dim_hit.add(affected_dim)
+                key = f"D_{affected_dim}"
+                old_val = company.get(key, 0) or 0
+                new_val = max(0, int(old_val - base_penalty))
+                company[key] = new_val
+                adjustments.append({
+                    "dim": affected_dim,
+                    "penalty": -int(base_penalty),
+                    "reason": factor,
+                })
+
+    # --- Record adjustments for audit trail ---
+    if adjustments:
+        company["integrity_adjustments"] = adjustments
+        company["dims_before_integrity"] = original_dims
+
+        # Recompute composite from adjusted dims
+        dims = [
+            company.get("D_H", 0),
+            company.get("D_U", 0),
+            company.get("D_M", 0),
+            company.get("D_A", 0),
+            company.get("D_N", 0),
+        ]
+        new_composite = sum(dims) / 5
+
+        # Re-apply balance floor cap (mirrors seed_to_record and scoring_engine)
+        below_42 = sum(1 for d in dims if d < 42)
+        if min(dims) < 10:
+            new_composite = min(new_composite, 40)
+        if below_42 >= 2:
+            new_composite = min(new_composite, 41)
+            company["balance_floor"] = True
+        elif below_42 == 1:
+            new_composite = min(new_composite, 49)
+            company["balance_floor"] = True
+
+        company["composite"] = round(new_composite)
+
+    return adjustments
+
+
+def check_stability(company, threshold, stability_history):
+    """
+    Stable gate: composite has been >= threshold for all days in window.
+    Grandfathered: if <7 days of history exist, auto-pass with reason.
+    """
+    ticker = (company.get("ticker") or "").upper()
+    history = stability_history.get(ticker, [])
+
+    if len(history) < 7:
+        return True, f"Grandfathered ({len(history)} days of history)"
+
+    window = history[:7]
+    all_above = all((c or 0) >= threshold for c in window)
+    if all_above:
+        return True, "7d stable"
+
+    min_val = min(window)
+    return False, f"Dipped to {min_val:.0f} in trailing 7d"
+
+
+def check_hi_balanced(company, threshold, stability_history=None):
+    """
+    Check 3 gates for HI Gold status.
+
+    Gate 1 - HUMAN    composite >= adaptive threshold
+                      (balance enforced implicitly via balance_floor cap
+                      applied by scoring_engine and apply_integrity_adjustments)
+    Gate 2 - VERIFIED 5+ real sources AND per-dimension coverage
+    Gate 3 - STABLE   composite >= threshold for trailing 7 days
+
+    Integrity (humanwashing, AHI, decay) is NOT a gate anymore. It flows
+    into the dimensions as continuous penalties applied before this gate
+    check runs (see apply_integrity_adjustments).
+
+    The dimensions ARE the audit trail.
+    """
+    # Verified gate (checked first - if pending, no score published)
+    publishable, verify_reason = is_publishable(company)
+    if not publishable:
+        company["score_status"] = "pending"
+        company["pending_reason"] = verify_reason
+        return False, {
+            "human": False,
+            "verified": False,
+            "stable": False,
+            "verified_reason": verify_reason,
+        }
+
+    company["score_status"] = "verified"
+    company.pop("pending_reason", None)
+
+    # HUMAN gate (composite threshold - balance implicit via cap)
+    composite = company.get("composite", 0) or 0
+    human_pass = composite >= threshold
+
+    # STABLE gate (trailing 7-day maintenance)
+    if stability_history is not None:
+        stable_pass, stable_reason = check_stability(company, threshold, stability_history)
+    else:
+        stable_pass = True
+        stable_reason = "No history loaded"
+
+    gates = {
+        "human": human_pass,
+        "verified": True,
+        "stable": stable_pass,
+        "stable_reason": stable_reason,
+    }
+
+    return (human_pass and stable_pass), gates
+
 
 SATIRES = {
     "scored": "",
@@ -660,8 +873,17 @@ def build_index():
         save_threshold(threshold)
         print(f"  {'Quarterly recalculated' if getattr(app, '_quarterly_mode', False) else 'Initial'} threshold: {threshold}")
     balanced_count = 0
+    # Path X: load stability history once for all gate checks
+    STABILITY_HISTORY = load_stability_history(days=7)
+    print(f"  Stability history: {len(STABILITY_HISTORY)} tickers with trailing data")
+
     for c in ALL_COMPANIES:
-        passed, gates = check_hi_balanced(c, threshold)
+        # Apply integrity adjustments (humanwashing + decay -> dimensions)
+        # AHI already applied by scoring_engine.py
+        apply_integrity_adjustments(c)
+
+        # Check 3 gates: HUMAN, Verified, Stable
+        passed, gates = check_hi_balanced(c, threshold, STABILITY_HISTORY)
         c["hi_balanced"] = passed
         c["hi_balanced_gates"] = gates
         c["hi_balanced_threshold"] = threshold

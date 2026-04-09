@@ -145,9 +145,120 @@ SIC_OFFSETS = {
     "49": {"H": 0, "U": -1, "M": -1, "A": -3, "N": 0},   # Utilities
 }
 
+# ============================================================
+# Path X audit: SIC classification + industry percentile lookup
+# ============================================================
+# 3-digit SIC prefix overrides take precedence over the 2-digit
+# SIC_TO_INDUSTRY mapping. Used to fix specific misclassifications
+# caught during the April 9 math audit.
+
+SIC_PREFIX_OVERRIDES = {
+    "104": "energy",         # Gold & silver mining (Barrick Gold GOLD)
+    "108": "energy",         # Metal mining services
+    "122": "energy",         # Coal mining
+    "131": "energy",         # Crude petroleum & natural gas
+    "287": "manufacturing",  # Agricultural chemicals (CF Industries)
+    "512": "healthcare",     # Pharma wholesale (McKesson MCK, Cencora COR)
+}
+
+# Industry RPE P90 thresholds — distributional, self-updating.
+# Lazy-loaded from data/scores/all_scores.json at first use.
+# Falls back to baked defaults when file missing or industry has
+# too few samples.
+
+INDUSTRY_PERCENTILES = None  # populated on first call to get_industry_p90
+
+MIN_INDUSTRY_SAMPLE = 20  # need at least this many to use industry-specific P90
+
+# Baked fallback — derived from live data on 2026-04-09 (n=818 companies).
+# Used when data/scores/all_scores.json is missing or industry has <20 samples.
+INDUSTRY_P90_FALLBACK = {
+    "tech":          1214000,
+    "retail":        1056000,
+    "finance":       2875000,
+    "healthcare":    1489000,
+    "energy":        7114000,
+    "manufacturing": 3858000,
+    "food":          4420000,
+    "telecom":       2455000,
+    "defense":        615000,
+    "media":         1500000,   # conservative estimate, low n in current data
+    "auto":          1500000,   # conservative estimate, low n in current data
+    "default":       3422000,
+}
+
+
+def _load_industry_percentiles():
+    """
+    Load industry RPE distributions from the most recent scoring run.
+    Populates INDUSTRY_PERCENTILES global. Silent fallback if data missing.
+    """
+    global INDUSTRY_PERCENTILES
+    INDUSTRY_PERCENTILES = {}
+
+    import json as _json
+    import statistics as _stats
+    from collections import defaultdict as _defaultdict
+
+    scores_path = Path("data/scores/all_scores.json")
+    if not scores_path.exists():
+        return
+
+    try:
+        with open(scores_path) as _fh:
+            all_scores = _json.load(_fh)
+    except Exception:
+        return
+
+    by_industry = _defaultdict(list)
+    for c in all_scores:
+        ks = c.get("key_signals") or {}
+        rpe = ks.get("revenue_per_employee") or 0
+        ind = c.get("industry") or "default"
+        if rpe and rpe > 0:
+            by_industry[ind].append(rpe)
+
+    for ind, rpes in by_industry.items():
+        if len(rpes) < MIN_INDUSTRY_SAMPLE:
+            continue
+        rpes_sorted = sorted(rpes)
+        n = len(rpes_sorted)
+        INDUSTRY_PERCENTILES[ind] = {
+            "median": _stats.median(rpes),
+            "p75":    rpes_sorted[int(n * 0.75)],
+            "p90":    rpes_sorted[int(n * 0.90)],
+            "p95":    rpes_sorted[int(n * 0.95)],
+            "n":      n,
+        }
+
+
+def get_industry_p90(industry):
+    """
+    Return the P90 RPE threshold for an industry.
+    Lazy-loads live distributions on first call.
+    Falls back to baked defaults if industry is too small or data is missing.
+    """
+    global INDUSTRY_PERCENTILES
+    if INDUSTRY_PERCENTILES is None:
+        _load_industry_percentiles()
+
+    if industry in INDUSTRY_PERCENTILES:
+        return INDUSTRY_PERCENTILES[industry]["p90"]
+
+    return INDUSTRY_P90_FALLBACK.get(industry, INDUSTRY_P90_FALLBACK["default"])
+
+
 def get_industry(sic_code):
-    if not sic_code: return "default"
-    return SIC_TO_INDUSTRY.get(str(sic_code)[:2], "default")
+    """
+    Map SIC code to industry bucket.
+    Checks 3-digit prefix overrides first, falls back to 2-digit mapping.
+    """
+    if not sic_code:
+        return "default"
+    sic_str = str(sic_code)
+    if len(sic_str) >= 3 and sic_str[:3] in SIC_PREFIX_OVERRIDES:
+        return SIC_PREFIX_OVERRIDES[sic_str[:3]]
+    return SIC_TO_INDUSTRY.get(sic_str[:2], "default")
 
 def get_sic_offsets(sic_code):
     """Get SIC-based micro-offsets for sub-industry differentiation."""
@@ -1298,9 +1409,12 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
 
     hw_flags = []
     rpe = sec_h.get("revenue_per_employee")
-    industry_rpe_median = INDUSTRY_RPE_MEDIANS.get(industry, INDUSTRY_RPE_MEDIANS["default"])
-    if rpe and rpe > industry_rpe_median * 4:
-        hw_flags.append(f"HW.1: Revenue/employee ${rpe:,.0f} is >4x industry median (${industry_rpe_median:,.0f})")
+    # Path X audit: use distributional P90 instead of arbitrary 4x median.
+    # A company is flagged only if its RPE exceeds the 90th percentile of
+    # its industry — top 10% extraction, consistent across industries.
+    industry_p90 = get_industry_p90(industry)
+    if rpe and rpe > industry_p90:
+        hw_flags.append(f"HW.1: Revenue/employee ${rpe:,.0f} exceeds industry P90 (${industry_p90:,.0f})")
     displacement = sec_h.get("displacement_signal")
     if displacement and displacement > 30:
         hw_flags.append("HW.2: R&D growth significantly outpacing headcount")
