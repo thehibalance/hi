@@ -140,9 +140,9 @@
           "M.5": 71
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "SEC DEF 14A",
           "FMP"
@@ -158,8 +158,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
           "Industry+EPA",
+          "Industry",
           "SBTi"
         ]
       },
@@ -338,9 +338,9 @@
           "M.5": 69
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "EEOC",
           "FDA",
           "FMP"
@@ -356,8 +356,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
           "Industry+EPA",
+          "Industry",
           "SBTi"
         ]
       },
@@ -541,10 +541,10 @@
           "M.5": 42
         },
         "sources": [
-          "HIBP",
           "FEC",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "FMP"
         ]
@@ -559,8 +559,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
           "Industry+EPA",
+          "Industry",
           "SBTi"
         ]
       },
@@ -733,10 +733,10 @@
           "M.5": 71
         },
         "sources": [
-          "HIBP",
           "FEC",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "SEC DEF 14A",
           "FMP"
@@ -752,8 +752,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
           "Industry+EPA",
+          "Industry",
           "SBTi"
         ]
       },
@@ -871,9 +871,7 @@
       "SEC"
     ],
     "signal_coverage": "25/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $694,294 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -921,8 +919,8 @@
           "M.5": 71
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
+          "HIBP",
           "FMP"
         ]
       },
@@ -1115,9 +1113,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -1131,8 +1129,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -1300,8 +1298,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -1482,9 +1480,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -1497,8 +1495,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -1659,9 +1657,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -1674,8 +1672,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -1831,9 +1829,9 @@
           "M.5": 71
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FTC",
           "EEOC",
           "FDA",
@@ -1851,8 +1849,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
           "Industry+EPA",
+          "Industry",
           "SBTi"
         ]
       },
@@ -1981,7 +1979,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,904,113 is >4x industry median ($500,000)"
+      "HW.1: Revenue/employee $2,904,113 exceeds industry P90 ($1,214,106)"
     ],
     "algo_harm": {
       "algo_harm_score": 22.0,
@@ -2038,10 +2036,10 @@
           "M.5": 87
         },
         "sources": [
-          "HIBP",
           "FEC",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FTC",
           "EEOC",
           "FDA",
@@ -2059,8 +2057,8 @@
         },
         "sources": [
           "CDP",
-          "iFixit",
           "Industry+EPA",
+          "iFixit",
           "SBTi"
         ]
       },
@@ -2245,8 +2243,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -2419,8 +2417,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -2576,9 +2574,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -2591,8 +2589,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -2777,8 +2775,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -2919,9 +2917,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "SEC DEF 14A"
         ]
@@ -2936,8 +2934,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -3060,7 +3058,9 @@
       "iFixit"
     ],
     "signal_coverage": "23/25 sub-signals with real data",
-    "humanwashing_flags": [],
+    "humanwashing_flags": [
+      "HW.1: Revenue/employee $1,339,706 exceeds industry P90 ($1,214,106)"
+    ],
     "algo_harm": {
       "algo_harm_score": 26.2,
       "penalties": {
@@ -3115,9 +3115,9 @@
           "M.5": 74
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FTC",
           "EEOC",
           "FDA",
@@ -3134,8 +3134,8 @@
         },
         "sources": [
           "CDP",
-          "iFixit",
           "Industry+EPA",
+          "iFixit",
           "SBTi"
         ]
       },
@@ -3288,9 +3288,9 @@
           "M.5": 74
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "FMP"
         ]
@@ -3304,8 +3304,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -3486,8 +3486,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -3647,9 +3647,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -3662,8 +3662,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -3849,8 +3849,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4019,8 +4019,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4191,8 +4191,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4328,9 +4328,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -4343,8 +4343,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4505,9 +4505,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -4520,8 +4520,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4669,9 +4669,9 @@
           "M.5": 72
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "FMP"
         ]
@@ -4686,8 +4686,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4831,9 +4831,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -4846,8 +4846,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4998,9 +4998,9 @@
           "M.5": 67
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "SEC DEF 14A",
           "FMP"
@@ -5016,8 +5016,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
           "Industry+EPA",
+          "Industry",
           "SBTi"
         ]
       },
@@ -5191,9 +5191,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FTC",
           "FDA",
           "SEC DEF 14A"
@@ -5209,8 +5209,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -5377,8 +5377,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -5559,8 +5559,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -5899,8 +5899,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -6039,9 +6039,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -6055,8 +6055,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -6234,9 +6234,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "EEOC",
           "FDA",
           "SEC DEF 14A"
@@ -6252,8 +6252,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
           "Industry+EPA",
+          "Industry",
           "SBTi"
         ]
       },
@@ -6421,8 +6421,8 @@
           "M.5": 71
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
+          "HIBP",
           "FMP"
         ]
       },
@@ -6613,8 +6613,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -6787,8 +6787,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -6961,8 +6961,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -7132,9 +7132,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "SEC DEF 14A"
         ]
@@ -7148,8 +7148,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
           "Industry+EPA",
+          "Industry",
           "SBTi"
         ]
       },
@@ -7339,8 +7339,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -7489,8 +7489,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -7639,8 +7639,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -7757,9 +7757,7 @@
       "SEC"
     ],
     "signal_coverage": "23/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,166,698 is >4x industry median ($250,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -7821,8 +7819,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -7989,8 +7987,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -8107,9 +8105,7 @@
       "SEC"
     ],
     "signal_coverage": "23/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,289,653 is >4x industry median ($250,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -8171,8 +8167,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -8511,8 +8507,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -8677,9 +8673,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -8692,8 +8688,8 @@
           "A.5": 55
         },
         "sources": [
-          "iFixit",
           "Industry+EPA",
+          "iFixit",
           "SBTi"
         ]
       },
@@ -8881,8 +8877,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -9041,8 +9037,8 @@
           "M.5": 60
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
+          "HIBP",
           "FMP"
         ]
       },
@@ -9218,9 +9214,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "SEC DEF 14A",
           "SEC Form 4"
@@ -9235,8 +9231,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -9394,8 +9390,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -9571,9 +9567,9 @@
           "M.5": 73
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "FMP"
         ]
@@ -9588,8 +9584,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -9743,8 +9739,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -9913,8 +9909,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -10031,9 +10027,7 @@
       "SEC"
     ],
     "signal_coverage": "23/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,384,800 is >4x industry median ($250,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -10095,8 +10089,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -10184,7 +10178,7 @@
     ],
     "signal_coverage": "24/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,973,473 is >4x industry median ($600,000)"
+      "HW.1: Revenue/employee $2,973,473 exceeds industry P90 ($2,875,136)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -10247,8 +10241,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -10404,9 +10398,9 @@
           "M.5": 72
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "FMP"
         ]
@@ -10420,8 +10414,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -10769,8 +10763,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -10908,9 +10902,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "EEOC",
           "FDA"
         ]
@@ -10924,8 +10918,8 @@
           "A.5": 40
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -11081,8 +11075,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -11257,8 +11251,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -11739,8 +11733,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -11909,8 +11903,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -12085,8 +12079,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -12235,8 +12229,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -12405,8 +12399,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -12741,8 +12735,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -12917,8 +12911,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -13233,8 +13227,8 @@
           "A.5": 40
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -13403,8 +13397,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -13540,9 +13534,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -13555,8 +13549,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -13732,8 +13726,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -13902,8 +13896,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -14065,9 +14059,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -14080,8 +14074,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -14222,9 +14216,9 @@
           "M.5": 73
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "FMP"
         ]
@@ -14238,8 +14232,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -14414,8 +14408,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -14504,7 +14498,9 @@
       "SEC"
     ],
     "signal_coverage": "22/25 sub-signals with real data",
-    "humanwashing_flags": [],
+    "humanwashing_flags": [
+      "HW.1: Revenue/employee $615,184 exceeds industry P90 ($615,000)"
+    ],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -14552,9 +14548,9 @@
           "M.5": 71
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "FMP"
         ]
@@ -14568,8 +14564,8 @@
           "A.5": 40
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -14751,8 +14747,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -14921,8 +14917,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -15071,8 +15067,8 @@
           "A.5": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -15247,8 +15243,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -15423,8 +15419,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -15562,9 +15558,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "SEC DEF 14A"
         ]
@@ -15578,8 +15574,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -15870,7 +15866,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,107,706 is >4x industry median ($400,000)",
+      "HW.1: Revenue/employee $2,107,706 exceeds industry P90 ($1,500,000)",
       "AH: Autoplay next episode",
       "AH: Algorithmic thumbnails personalized to maximize clicks"
     ],
@@ -15928,9 +15924,9 @@
           "M.5": 75
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FTC",
           "FDA",
           "SEC DEF 14A",
@@ -15946,8 +15942,8 @@
           "A.5": 60
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -16106,8 +16102,8 @@
           "A.5": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -16249,8 +16245,8 @@
           "M.5": 49
         },
         "sources": [
-          "HIBP",
           "CFPB",
+          "HIBP",
           "FDA",
           "SEC DEF 14A",
           "FMP"
@@ -16265,8 +16261,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
           "Industry+EPA",
+          "Industry",
           "SBTi"
         ]
       },
@@ -16443,8 +16439,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -16778,8 +16774,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -16954,8 +16950,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -17111,9 +17107,9 @@
           "M.5": 71
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "FMP"
         ]
@@ -17127,8 +17123,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -17280,8 +17276,8 @@
           "A.5": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -17594,8 +17590,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -17762,8 +17758,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -18074,8 +18070,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -18190,9 +18186,7 @@
       "SEC"
     ],
     "signal_coverage": "22/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,057,279 is >4x industry median ($250,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -18252,8 +18246,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -18394,9 +18388,9 @@
           "M.5": 72
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "FMP"
         ]
@@ -18410,8 +18404,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
           "Industry+EPA",
+          "Industry",
           "SBTi"
         ]
       },
@@ -18510,7 +18504,7 @@
     ],
     "signal_coverage": "25/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,633,680 is >4x industry median ($200,000)"
+      "HW.1: Revenue/employee $1,633,680 exceeds industry P90 ($1,055,678)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -18559,9 +18553,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -18575,8 +18569,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -18754,8 +18748,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -19065,9 +19059,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -19080,8 +19074,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -19264,8 +19258,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -19434,8 +19428,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -19603,8 +19597,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -19637,18 +19631,18 @@
   {
     "company": "Mosaic Co",
     "ticker": "MOS",
-    "industry": "healthcare",
+    "industry": "manufacturing",
     "sic": "2870",
     "sic_description": "Agricultural Chemicals",
-    "D_H": 56,
-    "D_U": 67,
-    "D_M": 69,
-    "D_A": 53,
-    "D_N": 65,
+    "D_H": 52,
+    "D_U": 56,
+    "D_M": 71,
+    "D_A": 47,
+    "D_N": 62,
     "dimension_adjustments": {
       "H": {
-        "raw": 53,
-        "final": 56,
+        "raw": 49,
+        "final": 52,
         "adjustments": [
           {
             "source": "SIC offset",
@@ -19658,8 +19652,8 @@
         ]
       },
       "U": {
-        "raw": 65,
-        "final": 67,
+        "raw": 54,
+        "final": 56,
         "adjustments": [
           {
             "source": "SIC offset",
@@ -19669,8 +19663,8 @@
         ]
       },
       "M": {
-        "raw": 70,
-        "final": 69,
+        "raw": 72,
+        "final": 71,
         "adjustments": [
           {
             "source": "SIC offset",
@@ -19680,8 +19674,8 @@
         ]
       },
       "A": {
-        "raw": 55,
-        "final": 53,
+        "raw": 49,
+        "final": 47,
         "adjustments": [
           {
             "source": "SIC offset",
@@ -19691,8 +19685,8 @@
         ]
       },
       "N": {
-        "raw": 64,
-        "final": 65,
+        "raw": 61,
+        "final": 62,
         "adjustments": [
           {
             "source": "SIC offset",
@@ -19702,7 +19696,7 @@
         ]
       }
     },
-    "composite": 62,
+    "composite": 58,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -19720,9 +19714,7 @@
       "SEC"
     ],
     "signal_coverage": "23/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,033,746 is >4x industry median ($250,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -19737,11 +19729,11 @@
     "genome": {
       "H": {
         "scores": {
-          "H.1": 15.719528781731682,
-          "H.2": 70,
-          "H.3": 62.3,
+          "H.1": 18.86343453807802,
+          "H.2": 60,
+          "H.3": 58.7,
           "H.4": 55,
-          "H.5": 62
+          "H.5": 55
         },
         "sources": [
           "SEC"
@@ -19750,10 +19742,10 @@
       "U": {
         "scores": {
           "U.1": 70.0,
-          "U.2": 65,
-          "U.3": 60,
-          "U.4": 65,
-          "U.5": 65
+          "U.2": 52,
+          "U.3": 48,
+          "U.4": 50,
+          "U.5": 50
         },
         "sources": [
           "CFPB"
@@ -19762,7 +19754,7 @@
       "M": {
         "scores": {
           "M.1": 80,
-          "M.2": 45,
+          "M.2": 55,
           "M.3": 85,
           "M.4": 70.06,
           "M.5": 70
@@ -19775,23 +19767,23 @@
       },
       "A": {
         "scores": {
-          "A.1": 55,
-          "A.2": 50,
+          "A.1": 45,
+          "A.2": 40,
           "A.3": 60,
           "A.4": 55,
-          "A.5": 55
+          "A.5": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
         "scores": {
-          "N.1": 72,
-          "N.2": 50,
+          "N.1": 65,
+          "N.2": 42,
           "N.3": 48,
-          "N.4": 61,
+          "N.4": 58,
           "N.5": 90
         },
         "sources": [
@@ -19937,10 +19929,10 @@
           "M.5": 55
         },
         "sources": [
-          "HIBP",
           "FEC",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -19954,8 +19946,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -20139,8 +20131,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -20309,8 +20301,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -20455,8 +20447,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -20950,8 +20942,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -21101,9 +21093,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -21116,8 +21108,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -21282,8 +21274,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -21472,8 +21464,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -21607,8 +21599,8 @@
           "M.5": 71
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
+          "HIBP",
           "FMP"
         ]
       },
@@ -21778,8 +21770,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -21951,9 +21943,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -21966,8 +21958,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -22090,9 +22082,7 @@
       "SEC"
     ],
     "signal_coverage": "22/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,232,975 is >4x industry median ($250,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -22152,8 +22142,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -22336,9 +22326,9 @@
           "M.5": 74
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FTC",
           "EEOC",
           "FDA",
@@ -22356,8 +22346,8 @@
         },
         "sources": [
           "CDP",
-          "iFixit",
           "Industry+EPA",
+          "iFixit",
           "SBTi"
         ]
       },
@@ -22994,8 +22984,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -23594,9 +23584,7 @@
       "SEC"
     ],
     "signal_coverage": "22/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,311,413 is >4x industry median ($250,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -23640,8 +23628,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -23827,18 +23815,18 @@
   {
     "company": "CF Industries Holdings Inc",
     "ticker": "CF",
-    "industry": "healthcare",
+    "industry": "manufacturing",
     "sic": "2870",
     "sic_description": "Agricultural Chemicals",
-    "D_H": 51,
-    "D_U": 67,
-    "D_M": 69,
-    "D_A": 53,
-    "D_N": 65,
+    "D_H": 47,
+    "D_U": 56,
+    "D_M": 71,
+    "D_A": 47,
+    "D_N": 62,
     "dimension_adjustments": {
       "H": {
-        "raw": 48,
-        "final": 51,
+        "raw": 44,
+        "final": 47,
         "adjustments": [
           {
             "source": "SIC offset",
@@ -23848,8 +23836,8 @@
         ]
       },
       "U": {
-        "raw": 65,
-        "final": 67,
+        "raw": 54,
+        "final": 56,
         "adjustments": [
           {
             "source": "SIC offset",
@@ -23859,8 +23847,8 @@
         ]
       },
       "M": {
-        "raw": 70,
-        "final": 69,
+        "raw": 72,
+        "final": 71,
         "adjustments": [
           {
             "source": "SIC offset",
@@ -23870,8 +23858,8 @@
         ]
       },
       "A": {
-        "raw": 55,
-        "final": 53,
+        "raw": 49,
+        "final": 47,
         "adjustments": [
           {
             "source": "SIC offset",
@@ -23881,8 +23869,8 @@
         ]
       },
       "N": {
-        "raw": 64,
-        "final": 65,
+        "raw": 61,
+        "final": 62,
         "adjustments": [
           {
             "source": "SIC offset",
@@ -23892,7 +23880,7 @@
         ]
       }
     },
-    "composite": 61,
+    "composite": 57,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -23910,9 +23898,7 @@
       "SEC"
     ],
     "signal_coverage": "22/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,286,552 is >4x industry median ($250,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -23927,11 +23913,11 @@
     "genome": {
       "H": {
         "scores": {
-          "H.1": 7.106770368659886,
-          "H.2": 70,
-          "H.3": 53.3,
+          "H.1": 8.528124442391862,
+          "H.2": 60,
+          "H.3": 48.9,
           "H.4": 50,
-          "H.5": 62
+          "H.5": 55
         },
         "sources": [
           "SEC"
@@ -23940,10 +23926,10 @@
       "U": {
         "scores": {
           "U.1": 70.0,
-          "U.2": 65,
-          "U.3": 60,
-          "U.4": 65,
-          "U.5": 65
+          "U.2": 52,
+          "U.3": 48,
+          "U.4": 50,
+          "U.5": 50
         },
         "sources": [
           "CFPB"
@@ -23952,7 +23938,7 @@
       "M": {
         "scores": {
           "M.1": 80,
-          "M.2": 45,
+          "M.2": 55,
           "M.3": 85,
           "M.4": 70.06,
           "M.5": 70
@@ -23965,23 +23951,23 @@
       },
       "A": {
         "scores": {
-          "A.1": 55,
-          "A.2": 50,
+          "A.1": 45,
+          "A.2": 40,
           "A.3": 60,
           "A.4": 55,
-          "A.5": 55
+          "A.5": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
         "scores": {
-          "N.1": 72,
-          "N.2": 50,
+          "N.1": 65,
+          "N.2": 42,
           "N.3": 48,
-          "N.4": 61,
+          "N.4": 58,
           "N.5": 90
         },
         "sources": [
@@ -24118,8 +24104,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -24286,8 +24272,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -24437,8 +24423,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -24944,8 +24930,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -25108,8 +25094,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -25272,8 +25258,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -25442,8 +25428,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -25719,7 +25705,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,731,941 is >4x industry median ($250,000)"
+      "HW.1: Revenue/employee $1,731,941 exceeds industry P90 ($1,489,025)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -25780,8 +25766,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -26571,8 +26557,8 @@
           "A.5": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -27179,8 +27165,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -27347,8 +27333,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -27517,8 +27503,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -27663,8 +27649,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -27827,8 +27813,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -28252,9 +28238,7 @@
       "SEC"
     ],
     "signal_coverage": "25/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $712,629 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -28300,9 +28284,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -28315,8 +28299,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -28650,8 +28634,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -28796,8 +28780,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -29590,8 +29574,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -29754,8 +29738,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -30220,8 +30204,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -30532,8 +30516,8 @@
           "A.5": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -30678,8 +30662,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -30811,6 +30795,7 @@
     ],
     "signal_coverage": "24/25 sub-signals with real data",
     "humanwashing_flags": [
+      "HW.1: Revenue/employee $1,250,882 exceeds industry P90 ($1,214,106)",
       "AH: BNPL algorithms target financially vulnerable"
     ],
     "algo_harm": {
@@ -30864,9 +30849,9 @@
           "M.5": 71
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FTC",
           "FDA",
           "FMP"
@@ -30881,8 +30866,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -31036,8 +31021,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -31210,8 +31195,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -31574,7 +31559,7 @@
     "sic_description": "Finance Services",
     "D_H": 68,
     "D_U": 45,
-    "D_M": 62,
+    "D_M": 64,
     "D_A": 65,
     "D_N": 63,
     "dimension_adjustments": {
@@ -31589,8 +31574,8 @@
         "adjustments": []
       },
       "M": {
-        "raw": 62,
-        "final": 62,
+        "raw": 64,
+        "final": 64,
         "adjustments": []
       },
       "A": {
@@ -31614,6 +31599,7 @@
     "score_status": "estimated",
     "spec_version": "1.0.0",
     "data_sources": [
+      "FMP",
       "Glassdoor",
       "Industry",
       "SEC"
@@ -31660,10 +31646,11 @@
           "M.2": 45,
           "M.3": 85,
           "M.4": 68.4,
-          "M.5": 70
+          "M.5": 80
         },
         "sources": [
-          "Glassdoor"
+          "Glassdoor",
+          "FMP"
         ]
       },
       "A": {
@@ -31839,8 +31826,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -32441,8 +32428,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -32580,9 +32567,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -32595,8 +32582,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -32747,8 +32734,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -32917,8 +32904,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -33526,9 +33513,9 @@
           "M.5": 71
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FTC",
           "FDA",
           "FMP"
@@ -33543,8 +33530,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -33667,7 +33654,7 @@
     ],
     "signal_coverage": "22/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,875,203 is >4x industry median ($250,000)"
+      "HW.1: Revenue/employee $1,875,203 exceeds industry P90 ($1,489,025)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -33728,8 +33715,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -34170,8 +34157,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -34452,8 +34439,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -34556,9 +34543,7 @@
       "SEC"
     ],
     "signal_coverage": "25/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,302,441 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -34618,8 +34603,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -34764,8 +34749,8 @@
           "A.5": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -35094,8 +35079,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -35198,9 +35183,7 @@
       "SEC"
     ],
     "signal_coverage": "24/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $734,147 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -35260,8 +35243,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -35424,8 +35407,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -35800,9 +35783,7 @@
       "SEC"
     ],
     "signal_coverage": "25/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $682,993 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -35862,8 +35843,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -36189,8 +36170,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -36625,8 +36606,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -36949,8 +36930,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -37119,8 +37100,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -37303,8 +37284,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -37408,9 +37389,7 @@
       "SEC"
     ],
     "signal_coverage": "25/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $611,000 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -37470,8 +37449,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -37574,9 +37553,7 @@
       "SEC"
     ],
     "signal_coverage": "25/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $891,755 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -37636,8 +37613,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -37936,8 +37913,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -38580,8 +38557,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -38884,8 +38861,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -39343,8 +39320,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -39523,8 +39500,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -39787,9 +39764,7 @@
       "SEC"
     ],
     "signal_coverage": "25/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $607,233 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -39849,8 +39824,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -40000,8 +39975,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -40181,8 +40156,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -40345,8 +40320,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -40769,8 +40744,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -40914,8 +40889,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -41095,8 +41070,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -41199,9 +41174,7 @@
       "SEC"
     ],
     "signal_coverage": "25/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $687,704 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -41261,8 +41234,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -41543,8 +41516,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -41849,8 +41822,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -42013,8 +41986,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -42177,8 +42150,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -42263,9 +42236,7 @@
       "SEC"
     ],
     "signal_coverage": "25/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,017,667 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -42325,8 +42296,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -42471,8 +42442,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -42606,9 +42577,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "EEOC",
           "FDA"
         ]
@@ -42622,8 +42593,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -42959,8 +42930,8 @@
           "A.5": 55
         },
         "sources": [
-          "iFixit",
           "Industry+EPA",
+          "iFixit",
           "SBTi"
         ]
       },
@@ -43207,9 +43178,7 @@
       "SEC"
     ],
     "signal_coverage": "24/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $4,149,661 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -43269,8 +43238,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -43600,9 +43569,9 @@
           "M.5": 71
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FTC",
           "FDA",
           "FMP"
@@ -43617,8 +43586,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -44057,9 +44026,7 @@
       "SEC"
     ],
     "signal_coverage": "22/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,000,079 is >4x industry median ($250,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -44145,42 +44112,42 @@
   {
     "company": "Cardinal Health Inc",
     "ticker": "CAH",
-    "industry": "food",
+    "industry": "healthcare",
     "sic": "5122",
     "sic_description": "Wholesale-Drugs, Proprietaries & Druggists' Sundries",
-    "D_H": 48,
-    "D_U": 63,
-    "D_M": 71,
-    "D_A": 51,
-    "D_N": 63,
+    "D_H": 52,
+    "D_U": 65,
+    "D_M": 69,
+    "D_A": 53,
+    "D_N": 64,
     "dimension_adjustments": {
       "H": {
-        "raw": 48,
-        "final": 48,
+        "raw": 52,
+        "final": 52,
         "adjustments": []
       },
       "U": {
-        "raw": 63,
-        "final": 63,
+        "raw": 65,
+        "final": 65,
         "adjustments": []
       },
       "M": {
-        "raw": 71,
-        "final": 71,
+        "raw": 69,
+        "final": 69,
         "adjustments": []
       },
       "A": {
-        "raw": 51,
-        "final": 51,
+        "raw": 53,
+        "final": 53,
         "adjustments": []
       },
       "N": {
-        "raw": 63,
-        "final": 63,
+        "raw": 64,
+        "final": 64,
         "adjustments": []
       }
     },
-    "composite": 59,
+    "composite": 61,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -44197,9 +44164,9 @@
       "Industry+EPA",
       "SEC"
     ],
-    "signal_coverage": "25/25 sub-signals with real data",
+    "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $3,861,408 is >4x industry median ($150,000)"
+      "HW.1: Revenue/employee $3,861,408 exceeds industry P90 ($1,489,025)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -44215,11 +44182,11 @@
     "genome": {
       "H": {
         "scores": {
-          "H.1": 2.5249857046963182,
-          "H.2": 65,
-          "H.3": 56.2,
+          "H.1": 4.208309507827197,
+          "H.2": 70,
+          "H.3": 61.9,
           "H.4": 60,
-          "H.5": 58
+          "H.5": 62
         },
         "sources": [
           "SEC"
@@ -44228,10 +44195,10 @@
       "U": {
         "scores": {
           "U.1": 70.0,
-          "U.2": 58,
-          "U.3": 55,
-          "U.4": 70,
-          "U.5": 60
+          "U.2": 65,
+          "U.3": 60,
+          "U.4": 65,
+          "U.5": 65
         },
         "sources": [
           "CFPB"
@@ -44240,7 +44207,7 @@
       "M": {
         "scores": {
           "M.1": 80,
-          "M.2": 58,
+          "M.2": 45,
           "M.3": 85,
           "M.4": 64.06,
           "M.5": 70
@@ -44254,22 +44221,22 @@
       "A": {
         "scores": {
           "A.1": 55,
-          "A.2": 40,
+          "A.2": 50,
           "A.3": 30,
           "A.4": 75,
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
         "scores": {
-          "N.1": 62,
-          "N.2": 48,
-          "N.3": 51,
-          "N.4": 63,
+          "N.1": 72,
+          "N.2": 50,
+          "N.3": 48,
+          "N.4": 61,
           "N.5": 90
         },
         "sources": [
@@ -44346,9 +44313,7 @@
       "SEC"
     ],
     "signal_coverage": "23/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,520,442 is >4x industry median ($600,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -44408,8 +44373,8 @@
           "A.5": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -44998,8 +44963,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -45165,8 +45130,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -45387,9 +45352,7 @@
       "SEC"
     ],
     "signal_coverage": "24/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $722,477 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -45449,8 +45412,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -45595,8 +45558,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -45727,7 +45690,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $12,435,044 is >4x industry median ($250,000)"
+      "HW.1: Revenue/employee $12,435,044 exceeds industry P90 ($1,489,025)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -46090,9 +46053,9 @@
           "M.5": 71
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "FMP"
         ]
@@ -46106,8 +46069,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -46215,9 +46178,7 @@
       "SEC"
     ],
     "signal_coverage": "25/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,280,392 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -46416,8 +46377,8 @@
           "A.5": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -46530,7 +46491,7 @@
     ],
     "signal_coverage": "22/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $3,301,681 is >4x industry median ($250,000)"
+      "HW.1: Revenue/employee $3,301,681 exceeds industry P90 ($1,489,025)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -46688,9 +46649,7 @@
       "SEC"
     ],
     "signal_coverage": "25/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $666,244 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -46750,8 +46709,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -46914,8 +46873,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -47172,9 +47131,7 @@
       "SEC"
     ],
     "signal_coverage": "24/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,115,825 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -47234,8 +47191,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -47558,8 +47515,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -47866,42 +47823,42 @@
   {
     "company": "McKesson Corp",
     "ticker": "MCK",
-    "industry": "food",
+    "industry": "healthcare",
     "sic": "5122",
     "sic_description": "Wholesale-Drugs, Proprietaries & Druggists' Sundries",
-    "D_H": 46,
-    "D_U": 63,
-    "D_M": 73,
-    "D_A": 51,
-    "D_N": 63,
+    "D_H": 49,
+    "D_U": 65,
+    "D_M": 70,
+    "D_A": 53,
+    "D_N": 64,
     "dimension_adjustments": {
       "H": {
-        "raw": 46,
-        "final": 46,
+        "raw": 49,
+        "final": 49,
         "adjustments": []
       },
       "U": {
-        "raw": 63,
-        "final": 63,
+        "raw": 65,
+        "final": 65,
         "adjustments": []
       },
       "M": {
-        "raw": 73,
-        "final": 73,
+        "raw": 70,
+        "final": 70,
         "adjustments": []
       },
       "A": {
-        "raw": 51,
-        "final": 51,
+        "raw": 53,
+        "final": 53,
         "adjustments": []
       },
       "N": {
-        "raw": 63,
-        "final": 63,
+        "raw": 64,
+        "final": 64,
         "adjustments": []
       }
     },
-    "composite": 59,
+    "composite": 60,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -47918,9 +47875,9 @@
       "Industry+EPA",
       "SEC"
     ],
-    "signal_coverage": "25/25 sub-signals with real data",
+    "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $9,254,837 is >4x industry median ($150,000)"
+      "HW.1: Revenue/employee $9,254,837 exceeds industry P90 ($1,489,025)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -47936,11 +47893,11 @@
     "genome": {
       "H": {
         "scores": {
-          "H.1": 1.0535031573219495,
-          "H.2": 65,
-          "H.3": 50.5,
+          "H.1": 1.7558385955365825,
+          "H.2": 70,
+          "H.3": 55.8,
           "H.4": 55,
-          "H.5": 58
+          "H.5": 62
         },
         "sources": [
           "SEC"
@@ -47949,10 +47906,10 @@
       "U": {
         "scores": {
           "U.1": 70.0,
-          "U.2": 58,
-          "U.3": 55,
-          "U.4": 70,
-          "U.5": 60
+          "U.2": 65,
+          "U.3": 60,
+          "U.4": 65,
+          "U.5": 65
         },
         "sources": [
           "CFPB"
@@ -47961,7 +47918,7 @@
       "M": {
         "scores": {
           "M.1": 80,
-          "M.2": 58,
+          "M.2": 45,
           "M.3": 85,
           "M.4": 70.06,
           "M.5": 70
@@ -47975,22 +47932,22 @@
       "A": {
         "scores": {
           "A.1": 55,
-          "A.2": 40,
+          "A.2": 50,
           "A.3": 30,
           "A.4": 75,
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
         "scores": {
-          "N.1": 62,
-          "N.2": 48,
-          "N.3": 51,
-          "N.4": 63,
+          "N.1": 72,
+          "N.2": 50,
+          "N.3": 48,
+          "N.4": 61,
           "N.5": 90
         },
         "sources": [
@@ -48375,9 +48332,7 @@
       "SEC"
     ],
     "signal_coverage": "24/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,236,797 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -48437,8 +48392,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -48473,15 +48428,15 @@
     "industry": "tech",
     "sic": "3663",
     "sic_description": "Radio & Tv Broadcasting & Communications Equipment",
-    "D_H": 68,
+    "D_H": 70,
     "D_U": 48,
     "D_M": 63,
     "D_A": 52,
     "D_N": 62,
     "dimension_adjustments": {
       "H": {
-        "raw": 66,
-        "final": 68,
+        "raw": 68,
+        "final": 70,
         "adjustments": [
           {
             "source": "SIC offset",
@@ -48539,6 +48494,7 @@
     "score_status": "estimated",
     "spec_version": "1.0.0",
     "data_sources": [
+      "FMP",
       "Glassdoor",
       "Industry",
       "SEC"
@@ -48563,10 +48519,11 @@
           "H.2": 40,
           "H.3": 92,
           "H.4": 60,
-          "H.5": 40
+          "H.5": 49
         },
         "sources": [
-          "SEC"
+          "SEC",
+          "FMP"
         ]
       },
       "U": {
@@ -48761,8 +48718,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -49660,8 +49617,8 @@
           "M.5": 80
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
+          "HIBP",
           "FMP"
         ]
       },
@@ -50087,9 +50044,7 @@
       "SEC"
     ],
     "signal_coverage": "22/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,489,025 is >4x industry median ($250,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -50306,8 +50261,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -50599,9 +50554,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -50614,8 +50569,8 @@
           "A.5": 40
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -50767,8 +50722,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -51310,7 +51265,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $129,281,039 is >4x industry median ($300,000)"
+      "HW.1: Revenue/employee $129,281,039 exceeds industry P90 ($3,858,366)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -51358,8 +51313,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -51563,9 +51518,9 @@
           "M.5": 75
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "FMP"
         ]
@@ -51579,8 +51534,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -51751,8 +51706,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -52229,8 +52184,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -52547,8 +52502,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -52711,8 +52666,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -53422,9 +53377,7 @@
       "SEC"
     ],
     "signal_coverage": "25/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,262,627 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -53647,8 +53600,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -54243,8 +54196,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -54993,8 +54946,8 @@
           "A.5": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -55139,8 +55092,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -55240,9 +55193,7 @@
       "SEC"
     ],
     "signal_coverage": "25/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $668,332 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -55606,9 +55557,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -55621,8 +55572,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -56083,8 +56034,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -56229,8 +56180,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -56825,8 +56776,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -58345,8 +58296,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -58491,8 +58442,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -59271,8 +59222,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -59435,8 +59386,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -59599,8 +59550,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -59745,8 +59696,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -60051,8 +60002,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -60208,9 +60159,9 @@
           "M.5": 80
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "FMP"
         ]
@@ -60224,8 +60175,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -60396,8 +60347,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -60720,9 +60671,9 @@
           "M.5": 75
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "FMP"
         ]
@@ -60736,8 +60687,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -62153,15 +62104,15 @@
     "industry": "manufacturing",
     "sic": "3711",
     "sic_description": "Motor Vehicles & Passenger Car Bodies",
-    "D_H": 63,
+    "D_H": 65,
     "D_U": 50,
     "D_M": 72,
     "D_A": 44,
     "D_N": 61,
     "dimension_adjustments": {
       "H": {
-        "raw": 63,
-        "final": 63,
+        "raw": 65,
+        "final": 65,
         "adjustments": []
       },
       "U": {
@@ -62191,10 +62142,11 @@
     "floor_triggered": false,
     "balance_floor": false,
     "triggering_dimension": null,
-    "confidence": "Estimated",
-    "score_status": "estimated",
+    "confidence": "Verified",
+    "score_status": "verified",
     "spec_version": "1.0.0",
     "data_sources": [
+      "FMP",
       "Glassdoor",
       "HIBP",
       "Industry",
@@ -62220,10 +62172,11 @@
           "H.2": 60,
           "H.3": 80.9,
           "H.4": 55,
-          "H.5": 55
+          "H.5": 65
         },
         "sources": [
-          "SEC"
+          "SEC",
+          "FMP"
         ]
       },
       "U": {
@@ -62242,11 +62195,12 @@
           "M.2": 80,
           "M.3": 85,
           "M.4": 68.4,
-          "M.5": 70
+          "M.5": 73
         },
         "sources": [
+          "Glassdoor",
           "HIBP",
-          "Glassdoor"
+          "FMP"
         ]
       },
       "A": {
@@ -62870,8 +62824,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -63023,9 +62977,9 @@
           "M.5": 79
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "FMP"
         ]
@@ -63039,8 +62993,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -63451,7 +63405,7 @@
     ],
     "signal_coverage": "22/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,455,143 is >4x industry median ($500,000)"
+      "HW.1: Revenue/employee $2,455,143 exceeds industry P90 ($2,455,000)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -63500,9 +63454,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -63515,8 +63469,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -63805,8 +63759,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -64135,8 +64089,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -64299,8 +64253,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -64617,8 +64571,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -64763,8 +64717,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -64850,9 +64804,7 @@
       "SEC"
     ],
     "signal_coverage": "21/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,055,678 is >4x industry median ($200,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -64898,9 +64850,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -64913,8 +64865,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -66009,8 +65961,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -66309,8 +66261,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -66411,7 +66363,7 @@
     ],
     "signal_coverage": "24/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $23,980,384 is >4x industry median ($150,000)"
+      "HW.1: Revenue/employee $23,980,384 exceeds industry P90 ($4,420,274)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -66632,42 +66584,42 @@
   {
     "company": "Cencora Inc",
     "ticker": "COR",
-    "industry": "food",
+    "industry": "healthcare",
     "sic": "5122",
     "sic_description": "Wholesale-Drugs, Proprietaries & Druggists' Sundries",
-    "D_H": 46,
-    "D_U": 61,
-    "D_M": 68,
-    "D_A": 49,
-    "D_N": 63,
+    "D_H": 49,
+    "D_U": 63,
+    "D_M": 62,
+    "D_A": 54,
+    "D_N": 64,
     "dimension_adjustments": {
       "H": {
-        "raw": 46,
-        "final": 46,
-        "adjustments": []
-      },
-      "U": {
-        "raw": 61,
-        "final": 61,
-        "adjustments": []
-      },
-      "M": {
-        "raw": 68,
-        "final": 68,
-        "adjustments": []
-      },
-      "A": {
         "raw": 49,
         "final": 49,
         "adjustments": []
       },
-      "N": {
+      "U": {
         "raw": 63,
         "final": 63,
         "adjustments": []
+      },
+      "M": {
+        "raw": 62,
+        "final": 62,
+        "adjustments": []
+      },
+      "A": {
+        "raw": 54,
+        "final": 54,
+        "adjustments": []
+      },
+      "N": {
+        "raw": 64,
+        "final": 64,
+        "adjustments": []
       }
     },
-    "composite": 57,
+    "composite": 58,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -66681,9 +66633,9 @@
       "Industry",
       "SEC"
     ],
-    "signal_coverage": "25/25 sub-signals with real data",
+    "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $5,578,158 is >4x industry median ($150,000)"
+      "HW.1: Revenue/employee $5,578,158 exceeds industry P90 ($1,489,025)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -66699,11 +66651,11 @@
     "genome": {
       "H": {
         "scores": {
-          "H.1": 1.7478888192123636,
-          "H.2": 65,
-          "H.3": 50.8,
+          "H.1": 2.913148032020606,
+          "H.2": 70,
+          "H.3": 56.3,
           "H.4": 55,
-          "H.5": 58
+          "H.5": 62
         },
         "sources": [
           "SEC"
@@ -66711,18 +66663,18 @@
       },
       "U": {
         "scores": {
-          "U.1": 60,
-          "U.2": 58,
-          "U.3": 55,
-          "U.4": 70,
-          "U.5": 60
+          "U.1": 62,
+          "U.2": 65,
+          "U.3": 60,
+          "U.4": 65,
+          "U.5": 65
         },
         "sources": []
       },
       "M": {
         "scores": {
-          "M.1": 58,
-          "M.2": 58,
+          "M.1": 40,
+          "M.2": 45,
           "M.3": 85,
           "M.4": 68.4,
           "M.5": 70
@@ -66734,8 +66686,8 @@
       "A": {
         "scores": {
           "A.1": 55,
-          "A.2": 40,
-          "A.3": 40,
+          "A.2": 50,
+          "A.3": 55,
           "A.4": 55,
           "A.5": 55
         },
@@ -66743,10 +66695,10 @@
       },
       "N": {
         "scores": {
-          "N.1": 62,
-          "N.2": 48,
-          "N.3": 51,
-          "N.4": 63,
+          "N.1": 72,
+          "N.2": 50,
+          "N.3": 48,
+          "N.4": 61,
           "N.5": 90
         },
         "sources": [
@@ -66895,8 +66847,8 @@
         },
         "sources": [
           "CDP",
-          "Industry",
           "Industry+EPA",
+          "Industry",
           "SBTi"
         ]
       },
@@ -67026,8 +66978,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -67190,8 +67142,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -67779,8 +67731,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -68077,6 +68029,7 @@
     ],
     "signal_coverage": "25/25 sub-signals with real data",
     "humanwashing_flags": [
+      "HW.1: Revenue/employee $1,610,911 exceeds industry P90 ($1,214,106)",
       "AH: YouTube autoplay radicalization pipeline",
       "AH: Kids content algorithm failures"
     ],
@@ -68135,9 +68088,9 @@
           "M.5": 75
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FTC",
           "EEOC",
           "FDA",
@@ -68154,8 +68107,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
           "Industry+EPA",
+          "Industry",
           "SBTi"
         ]
       },
@@ -69175,8 +69128,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -69321,8 +69274,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -69508,47 +69461,47 @@
   {
     "company": "Newmont Corporation",
     "ticker": "NEM",
-    "industry": "default",
+    "industry": "energy",
     "sic": "1040",
     "sic_description": "Gold and Silver Ores",
-    "D_H": 45,
-    "D_U": 54,
-    "D_M": 71,
-    "D_A": 51,
-    "D_N": 62,
+    "D_H": 61,
+    "D_U": 49,
+    "D_M": 72,
+    "D_A": 41,
+    "D_N": 58,
     "dimension_adjustments": {
       "H": {
-        "raw": 45,
-        "final": 45,
+        "raw": 61,
+        "final": 61,
         "adjustments": []
       },
       "U": {
-        "raw": 54,
-        "final": 54,
+        "raw": 49,
+        "final": 49,
         "adjustments": []
       },
       "M": {
-        "raw": 71,
-        "final": 71,
+        "raw": 72,
+        "final": 72,
         "adjustments": []
       },
       "A": {
-        "raw": 51,
-        "final": 51,
+        "raw": 41,
+        "final": 41,
         "adjustments": []
       },
       "N": {
-        "raw": 62,
-        "final": 62,
+        "raw": 58,
+        "final": 58,
         "adjustments": []
       }
     },
-    "composite": 57,
+    "composite": 56,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
+    "balance_floor": true,
+    "triggering_dimension": "A",
     "confidence": "Verified",
     "score_status": "verified",
     "spec_version": "1.0.0",
@@ -69560,7 +69513,7 @@
       "Industry+EPA",
       "SEC"
     ],
-    "signal_coverage": "13/25 sub-signals with real data",
+    "signal_coverage": "22/25 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -69576,11 +69529,11 @@
     "genome": {
       "H": {
         "scores": {
-          "H.1": 17.562536138295517,
+          "H.1": 75.26801202126649,
           "H.2": 50,
-          "H.3": 53.1,
+          "H.3": 79.7,
           "H.4": 55,
-          "H.5": 50
+          "H.5": 48
         },
         "sources": [
           "SEC"
@@ -69589,10 +69542,10 @@
       "U": {
         "scores": {
           "U.1": 70.0,
-          "U.2": 50,
-          "U.3": 50,
+          "U.2": 45,
+          "U.3": 42,
           "U.4": 50,
-          "U.5": 50
+          "U.5": 40
         },
         "sources": [
           "CFPB"
@@ -69601,7 +69554,7 @@
       "M": {
         "scores": {
           "M.1": 80,
-          "M.2": 50,
+          "M.2": 55,
           "M.3": 85,
           "M.4": 70.06,
           "M.5": 70
@@ -69614,23 +69567,23 @@
       },
       "A": {
         "scores": {
-          "A.1": 50,
-          "A.2": 50,
+          "A.1": 30,
+          "A.2": 35,
           "A.3": 50,
           "A.4": 55,
-          "A.5": 50
+          "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
         "scores": {
-          "N.1": 65,
-          "N.2": 50,
-          "N.3": 48,
-          "N.4": 58,
+          "N.1": 70,
+          "N.2": 40,
+          "N.3": 43,
+          "N.4": 48,
           "N.5": 90
         },
         "sources": [
@@ -69901,8 +69854,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -70521,8 +70474,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -71208,9 +71161,7 @@
       "SEC"
     ],
     "signal_coverage": "24/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $4,420,274 is >4x industry median ($150,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -71995,8 +71946,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -72143,8 +72094,8 @@
           "A.5": 40
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -72461,8 +72412,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -72547,9 +72498,7 @@
       "SEC"
     ],
     "signal_coverage": "20/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $811,855 is >4x industry median ($200,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -72609,8 +72558,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -72847,7 +72796,7 @@
     ],
     "signal_coverage": "22/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,641,965 is >4x industry median ($400,000)"
+      "HW.1: Revenue/employee $1,641,965 exceeds industry P90 ($1,500,000)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -73065,8 +73014,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -73151,9 +73100,7 @@
       "SEC"
     ],
     "signal_coverage": "12/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,057,583 is >4x industry median ($350,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -73213,8 +73160,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -73377,8 +73324,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -73813,8 +73760,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -74679,8 +74626,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -74843,8 +74790,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -74994,8 +74941,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
           "Industry+EPA",
+          "Industry",
           "SBTi"
         ]
       },
@@ -75159,8 +75106,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -75245,9 +75192,7 @@
       "SEC"
     ],
     "signal_coverage": "12/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $3,156,000 is >4x industry median ($350,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -75307,8 +75252,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -75393,9 +75338,7 @@
       "SEC"
     ],
     "signal_coverage": "13/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,472,659 is >4x industry median ($350,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -75455,8 +75398,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -75737,8 +75680,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -76037,8 +75980,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -76183,8 +76126,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -76353,8 +76296,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -76517,8 +76460,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -76651,8 +76594,8 @@
           "M.5": 69
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
+          "HIBP",
           "FMP"
         ]
       },
@@ -76992,8 +76935,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -77451,9 +77394,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -77466,8 +77409,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -77574,7 +77517,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $13,188,765 is >4x industry median ($600,000)"
+      "HW.1: Revenue/employee $13,188,765 exceeds industry P90 ($2,875,136)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -77893,8 +77836,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -78013,9 +77956,7 @@
       "SEC"
     ],
     "signal_coverage": "22/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,875,136 is >4x industry median ($600,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -78586,9 +78527,7 @@
       "SEC"
     ],
     "signal_coverage": "13/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,731,676 is >4x industry median ($350,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -78648,8 +78587,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -79052,7 +78991,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $38,780,770 is >4x industry median ($600,000)"
+      "HW.1: Revenue/employee $38,780,770 exceeds industry P90 ($2,875,136)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -79592,7 +79531,7 @@
     "sic_description": "Motor Vehicles & Passenger Car Bodies",
     "D_H": 57,
     "D_U": 50,
-    "D_M": 67,
+    "D_M": 68,
     "D_A": 44,
     "D_N": 61,
     "dimension_adjustments": {
@@ -79607,8 +79546,8 @@
         "adjustments": []
       },
       "M": {
-        "raw": 67,
-        "final": 67,
+        "raw": 68,
+        "final": 68,
         "adjustments": []
       },
       "A": {
@@ -79632,6 +79571,7 @@
     "score_status": "estimated",
     "spec_version": "1.0.0",
     "data_sources": [
+      "FMP",
       "Glassdoor",
       "Industry",
       "SEC"
@@ -79656,9 +79596,11 @@
           "H.2": 60,
           "H.3": 55,
           "H.4": 55,
-          "H.5": 55
+          "H.5": 59
         },
-        "sources": []
+        "sources": [
+          "FMP"
+        ]
       },
       "U": {
         "scores": {
@@ -79676,10 +79618,11 @@
           "M.2": 55,
           "M.3": 85,
           "M.4": 68.4,
-          "M.5": 70
+          "M.5": 79
         },
         "sources": [
-          "Glassdoor"
+          "Glassdoor",
+          "FMP"
         ]
       },
       "A": {
@@ -79806,6 +79749,7 @@
     ],
     "signal_coverage": "24/25 sub-signals with real data",
     "humanwashing_flags": [
+      "HW.1: Revenue/employee $1,450,524 exceeds industry P90 ($1,214,106)",
       "HW.3: AI roles dominate job postings (>35%)"
     ],
     "algo_harm": {
@@ -79855,9 +79799,9 @@
           "M.5": 80
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "FMP"
         ]
@@ -79872,8 +79816,8 @@
         },
         "sources": [
           "CDP",
-          "iFixit",
           "Industry+EPA",
+          "iFixit",
           "SBTi"
         ]
       },
@@ -79916,23 +79860,23 @@
   {
     "company": "OR Royalties Inc",
     "ticker": "OR",
-    "industry": "default",
+    "industry": "energy",
     "sic": "1040",
     "sic_description": "Gold and Silver Ores",
-    "D_H": 50,
-    "D_U": 50,
+    "D_H": 49,
+    "D_U": 44,
     "D_M": 65,
-    "D_A": 52,
-    "D_N": 62,
+    "D_A": 37,
+    "D_N": 58,
     "dimension_adjustments": {
       "H": {
-        "raw": 50,
-        "final": 50,
+        "raw": 49,
+        "final": 49,
         "adjustments": []
       },
       "U": {
-        "raw": 50,
-        "final": 50,
+        "raw": 44,
+        "final": 44,
         "adjustments": []
       },
       "M": {
@@ -79941,22 +79885,22 @@
         "adjustments": []
       },
       "A": {
-        "raw": 52,
-        "final": 52,
+        "raw": 37,
+        "final": 37,
         "adjustments": []
       },
       "N": {
-        "raw": 62,
-        "final": 62,
+        "raw": 58,
+        "final": 58,
         "adjustments": []
       }
     },
-    "composite": 56,
+    "composite": 51,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
+    "balance_floor": true,
+    "triggering_dimension": "A",
     "confidence": "Estimated",
     "score_status": "estimated",
     "spec_version": "1.0.0",
@@ -79965,7 +79909,7 @@
       "Industry",
       "SEC"
     ],
-    "signal_coverage": "9/25 sub-signals with real data",
+    "signal_coverage": "21/25 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -79981,28 +79925,28 @@
     "genome": {
       "H": {
         "scores": {
-          "H.1": 50,
+          "H.1": 48,
           "H.2": 50,
           "H.3": 50,
           "H.4": 50,
-          "H.5": 50
+          "H.5": 48
         },
         "sources": []
       },
       "U": {
         "scores": {
-          "U.1": 50,
-          "U.2": 50,
-          "U.3": 50,
+          "U.1": 45,
+          "U.2": 45,
+          "U.3": 42,
           "U.4": 50,
-          "U.5": 50
+          "U.5": 40
         },
         "sources": []
       },
       "M": {
         "scores": {
-          "M.1": 50,
-          "M.2": 50,
+          "M.1": 45,
+          "M.2": 55,
           "M.3": 85,
           "M.4": 68.4,
           "M.5": 70
@@ -80013,20 +79957,20 @@
       },
       "A": {
         "scores": {
-          "A.1": 50,
-          "A.2": 50,
-          "A.3": 55,
+          "A.1": 30,
+          "A.2": 35,
+          "A.3": 30,
           "A.4": 55,
-          "A.5": 50
+          "A.5": 35
         },
         "sources": []
       },
       "N": {
         "scores": {
-          "N.1": 65,
-          "N.2": 50,
-          "N.3": 48,
-          "N.4": 58,
+          "N.1": 70,
+          "N.2": 40,
+          "N.3": 43,
+          "N.4": 48,
           "N.5": 90
         },
         "sources": [
@@ -80103,9 +80047,7 @@
       "SEC"
     ],
     "signal_coverage": "23/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,356,270 is >4x industry median ($300,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -80165,8 +80107,8 @@
           "A.5": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -80251,9 +80193,7 @@
       "SEC"
     ],
     "signal_coverage": "19/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $923,599 is >4x industry median ($200,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -80313,8 +80253,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -80559,9 +80499,7 @@
       "SEC"
     ],
     "signal_coverage": "12/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,863,479 is >4x industry median ($350,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -80621,8 +80559,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -80785,8 +80723,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -80871,9 +80809,7 @@
       "SEC"
     ],
     "signal_coverage": "12/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,660,921 is >4x industry median ($350,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -80933,8 +80869,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -81233,8 +81169,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -81551,8 +81487,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -81637,9 +81573,7 @@
       "SEC"
     ],
     "signal_coverage": "12/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,825,431 is >4x industry median ($350,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -81699,8 +81633,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -82035,8 +81969,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -82199,8 +82133,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -82579,7 +82513,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $30,141,699 is >4x industry median ($600,000)"
+      "HW.1: Revenue/employee $30,141,699 exceeds industry P90 ($2,875,136)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -82825,8 +82759,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -83687,8 +83621,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -84375,8 +84309,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -84615,7 +84549,7 @@
     ],
     "signal_coverage": "12/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $5,869,504 is >4x industry median ($350,000)"
+      "HW.1: Revenue/employee $5,869,504 exceeds industry P90 ($3,421,586)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -84676,8 +84610,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -84780,7 +84714,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $7,931,106 is >4x industry median ($500,000)"
+      "HW.1: Revenue/employee $7,931,106 exceeds industry P90 ($1,214,106)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -84825,8 +84759,8 @@
           "M.5": 72
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
+          "HIBP",
           "FMP"
         ]
       },
@@ -85145,8 +85079,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -85253,7 +85187,7 @@
     ],
     "signal_coverage": "22/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $5,316,612 is >4x industry median ($600,000)"
+      "HW.1: Revenue/employee $5,316,612 exceeds industry P90 ($2,875,136)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -85698,9 +85632,7 @@
       "SEC"
     ],
     "signal_coverage": "19/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $818,984 is >4x industry median ($200,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -86360,8 +86292,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -86471,7 +86403,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,069,151 is >4x industry median ($500,000)"
+      "HW.1: Revenue/employee $2,069,151 exceeds industry P90 ($1,214,106)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -86532,8 +86464,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -87068,8 +87000,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -87657,8 +87589,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -87957,8 +87889,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -88275,8 +88207,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -88631,7 +88563,7 @@
     ],
     "signal_coverage": "20/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,454,539 is >4x industry median ($200,000)"
+      "HW.1: Revenue/employee $1,454,539 exceeds industry P90 ($1,055,678)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -89061,7 +88993,9 @@
       "SEC"
     ],
     "signal_coverage": "22/25 sub-signals with real data",
-    "humanwashing_flags": [],
+    "humanwashing_flags": [
+      "HW.1: Revenue/employee $1,529,320 exceeds industry P90 ($1,214,106)"
+    ],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -89121,8 +89055,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -89229,7 +89163,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $76,451,459 is >4x industry median ($600,000)"
+      "HW.1: Revenue/employee $76,451,459 exceeds industry P90 ($2,875,136)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -89551,7 +89485,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $75,004,294 is >4x industry median ($600,000)"
+      "HW.1: Revenue/employee $75,004,294 exceeds industry P90 ($2,875,136)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -89689,7 +89623,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $92,085,428 is >4x industry median ($600,000)"
+      "HW.1: Revenue/employee $92,085,428 exceeds industry P90 ($2,875,136)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -89990,7 +89924,7 @@
     ],
     "signal_coverage": "12/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $7,498,149 is >4x industry median ($350,000)"
+      "HW.1: Revenue/employee $7,498,149 exceeds industry P90 ($3,421,586)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -90051,8 +89985,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -90336,8 +90270,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -90890,8 +90824,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -91552,9 +91486,7 @@
       "SEC"
     ],
     "signal_coverage": "12/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $3,245,878 is >4x industry median ($350,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -91694,7 +91626,7 @@
     ],
     "signal_coverage": "12/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $128,999,571 is >4x industry median ($350,000)"
+      "HW.1: Revenue/employee $128,999,571 exceeds industry P90 ($3,421,586)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -91755,8 +91687,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -92037,8 +91969,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -92124,7 +92056,7 @@
     ],
     "signal_coverage": "12/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $9,323,027 is >4x industry median ($350,000)"
+      "HW.1: Revenue/employee $9,323,027 exceeds industry P90 ($3,421,586)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -92185,8 +92117,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -92485,8 +92417,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -93533,8 +93465,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -93634,7 +93566,7 @@
     ],
     "signal_coverage": "12/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $4,405,000 is >4x industry median ($350,000)"
+      "HW.1: Revenue/employee $4,405,000 exceeds industry P90 ($3,421,586)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -93771,9 +93703,7 @@
       "SEC"
     ],
     "signal_coverage": "11/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $3,421,586 is >4x industry median ($350,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -93909,9 +93839,7 @@
       "SEC"
     ],
     "signal_coverage": "11/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,912,418 is >4x industry median ($350,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -94048,7 +93976,7 @@
     ],
     "signal_coverage": "19/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,318,200 is >4x industry median ($200,000)"
+      "HW.1: Revenue/employee $1,318,200 exceeds industry P90 ($1,055,678)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -94186,7 +94114,7 @@
     ],
     "signal_coverage": "19/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $9,713,976 is >4x industry median ($200,000)"
+      "HW.1: Revenue/employee $9,713,976 exceeds industry P90 ($1,055,678)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -94324,7 +94252,7 @@
     ],
     "signal_coverage": "22/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $109,879,876 is >4x industry median ($300,000)"
+      "HW.1: Revenue/employee $109,879,876 exceeds industry P90 ($3,858,366)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -94461,9 +94389,7 @@
       "SEC"
     ],
     "signal_coverage": "11/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $1,410,016 is >4x industry median ($350,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -94834,8 +94760,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -95444,7 +95370,7 @@
     ],
     "signal_coverage": "25/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,548,228 is >4x industry median ($500,000)",
+      "HW.1: Revenue/employee $2,548,228 exceeds industry P90 ($1,214,106)",
       "HW.3: AI roles dominate job postings (>35%)",
       "AH: Instagram teen mental health crisis",
       "AH: Engagement algorithm amplifies outrage",
@@ -95506,9 +95432,9 @@
           "M.5": 77
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FTC",
           "EEOC",
           "FDA",
@@ -95526,8 +95452,8 @@
         },
         "sources": [
           "CDP",
-          "iFixit",
           "Industry+EPA",
+          "iFixit",
           "SBTi"
         ]
       },
@@ -95784,7 +95710,7 @@
     ],
     "signal_coverage": "11/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $9,742,482 is >4x industry median ($350,000)"
+      "HW.1: Revenue/employee $9,742,482 exceeds industry P90 ($3,421,586)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -96002,8 +95928,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -97314,7 +97240,7 @@
     ],
     "signal_coverage": "11/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $7,611,129 is >4x industry median ($350,000)"
+      "HW.1: Revenue/employee $7,611,129 exceeds industry P90 ($3,421,586)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -97477,7 +97403,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $49,528,057 is >4x industry median ($500,000)"
+      "HW.1: Revenue/employee $49,528,057 exceeds industry P90 ($1,214,106)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -97522,8 +97448,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -97624,7 +97550,7 @@
     ],
     "signal_coverage": "11/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $8,298,574 is >4x industry median ($350,000)"
+      "HW.1: Revenue/employee $8,298,574 exceeds industry P90 ($3,421,586)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -97842,8 +97768,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -97944,7 +97870,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $3,951,822 is >4x industry median ($500,000)"
+      "HW.1: Revenue/employee $3,951,822 exceeds industry P90 ($1,214,106)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -98100,7 +98026,7 @@
     ],
     "signal_coverage": "22/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $2,102,468 is >4x industry median ($500,000)"
+      "HW.1: Revenue/employee $2,102,468 exceeds industry P90 ($1,214,106)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -98261,7 +98187,9 @@
       "SEC"
     ],
     "signal_coverage": "22/25 sub-signals with real data",
-    "humanwashing_flags": [],
+    "humanwashing_flags": [
+      "HW.1: Revenue/employee $1,313,792 exceeds industry P90 ($1,214,106)"
+    ],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -98422,7 +98350,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $6,091,149 is >4x industry median ($500,000)"
+      "HW.1: Revenue/employee $6,091,149 exceeds industry P90 ($1,214,106)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -98579,7 +98507,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $3,853,105 is >4x industry median ($500,000)"
+      "HW.1: Revenue/employee $3,853,105 exceeds industry P90 ($1,214,106)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -98738,7 +98666,7 @@
     ],
     "signal_coverage": "22/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $3,602,964 is >4x industry median ($500,000)"
+      "HW.1: Revenue/employee $3,602,964 exceeds industry P90 ($1,214,106)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -99247,8 +99175,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -99428,9 +99356,9 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA"
         ]
       },
@@ -99443,8 +99371,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -99687,9 +99615,7 @@
       "SEC"
     ],
     "signal_coverage": "22/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $3,655,054 is >4x industry median ($300,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -99980,7 +99906,7 @@
     ],
     "signal_coverage": "11/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $13,764,348 is >4x industry median ($350,000)"
+      "HW.1: Revenue/employee $13,764,348 exceeds industry P90 ($3,421,586)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -100177,8 +100103,8 @@
           "A.5": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -100281,7 +100207,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $117,277,717 is >4x industry median ($500,000)"
+      "HW.1: Revenue/employee $117,277,717 exceeds industry P90 ($1,214,106)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -100437,7 +100363,7 @@
     ],
     "signal_coverage": "22/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $4,497,772 is >4x industry median ($500,000)"
+      "HW.1: Revenue/employee $4,497,772 exceeds industry P90 ($1,214,106)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -100655,8 +100581,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -100738,9 +100664,7 @@
       "SEC"
     ],
     "signal_coverage": "22/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $3,858,366 is >4x industry median ($300,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -100917,8 +100841,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -101054,8 +100978,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -101191,8 +101115,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -101483,8 +101407,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -101576,7 +101500,7 @@
     ],
     "signal_coverage": "22/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $7,198,595 is >4x industry median ($1,500,000)"
+      "HW.1: Revenue/employee $7,198,595 exceeds industry P90 ($7,113,529)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -101637,8 +101561,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -101761,8 +101685,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -101898,8 +101822,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -102087,8 +102011,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -102174,7 +102098,7 @@
     ],
     "signal_coverage": "22/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $11,698,333 is >4x industry median ($1,500,000)"
+      "HW.1: Revenue/employee $11,698,333 exceeds industry P90 ($7,113,529)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -102235,8 +102159,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -102513,8 +102437,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -102629,7 +102553,7 @@
     ],
     "signal_coverage": "22/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $9,657,417 is >4x industry median ($500,000)"
+      "HW.1: Revenue/employee $9,657,417 exceeds industry P90 ($1,214,106)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -102864,9 +102788,9 @@
           "M.5": 73
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FDA",
           "FMP"
         ]
@@ -102880,8 +102804,8 @@
           "A.5": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -103011,8 +102935,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -103131,7 +103055,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $11,877,660 is >4x industry median ($500,000)"
+      "HW.1: Revenue/employee $11,877,660 exceeds industry P90 ($1,214,106)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -103833,7 +103757,7 @@
     ],
     "signal_coverage": "24/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $5,309,960 is >4x industry median ($500,000)"
+      "HW.1: Revenue/employee $5,309,960 exceeds industry P90 ($2,455,000)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -105039,8 +104963,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -108583,8 +108507,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -108996,9 +108920,9 @@
           "M.5": 69
         },
         "sources": [
-          "HIBP",
           "Glassdoor",
           "CFPB",
+          "HIBP",
           "FTC",
           "EEOC",
           "FDA",
@@ -109017,8 +108941,8 @@
         },
         "sources": [
           "CDP",
-          "iFixit",
           "Industry+EPA",
+          "iFixit",
           "SBTi"
         ]
       },
@@ -109372,7 +109296,7 @@
     ],
     "signal_coverage": "21/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $11,848,646 is >4x industry median ($1,500,000)"
+      "HW.1: Revenue/employee $11,848,646 exceeds industry P90 ($7,113,529)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -109433,8 +109357,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -110377,8 +110301,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -110493,9 +110417,7 @@
       "SEC"
     ],
     "signal_coverage": "21/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $6,935,455 is >4x industry median ($1,500,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -110555,8 +110477,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -110731,8 +110653,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -110847,9 +110769,7 @@
       "SEC"
     ],
     "signal_coverage": "21/25 sub-signals with real data",
-    "humanwashing_flags": [
-      "HW.1: Revenue/employee $7,113,529 is >4x industry median ($1,500,000)"
-    ],
+    "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
       "penalties": {
@@ -110909,8 +110829,8 @@
           "A.5": 35
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -111153,7 +111073,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $26,503,773 is >4x industry median ($500,000)"
+      "HW.1: Revenue/employee $26,503,773 exceeds industry P90 ($1,214,106)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -111365,8 +111285,8 @@
           "M.5": 70
         },
         "sources": [
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -112691,7 +112611,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $11,517,604 is >4x industry median ($1,500,000)"
+      "HW.1: Revenue/employee $11,517,604 exceeds industry P90 ($7,113,529)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -112859,7 +112779,7 @@
     ],
     "signal_coverage": "23/25 sub-signals with real data",
     "humanwashing_flags": [
-      "HW.1: Revenue/employee $9,199,874 is >4x industry median ($1,500,000)"
+      "HW.1: Revenue/employee $9,199,874 exceeds industry P90 ($7,113,529)"
     ],
     "algo_harm": {
       "algo_harm_score": 0,
