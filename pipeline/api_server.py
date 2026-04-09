@@ -285,7 +285,7 @@ def check_hi_balanced(company, threshold):
     Check 3 gates for Gold HI Grade status, plus data confidence requirement.
     Gate 1 — SCORE: Composite ≥ adaptive threshold
     Gate 2 — BALANCE: All 5 dimensions ≥ 42
-    Gate 3 — INTEGRITY: No Humanwashing™ flags AND Algorithmic Harm Index™ < 30
+    Gate 3 — INTEGRITY: No Humanwashing™ flags AND Algorithmic Harm Index™ == 0 AND Heartbeat ≤ watch
     
     Plus: data confidence (5+ real sources required for Gold, but shown as
     a separate "Verified / Estimated / Pending" signal — not a public gate).
@@ -296,8 +296,13 @@ def check_hi_balanced(company, threshold):
     below_42 = sum(1 for d in dims if d < 42)
     
     no_humanwashing = len(company.get("humanwashing_flags", [])) == 0
-    ahi_score = company.get("algorithmic_harm_score") or company.get("algo_harm_score") or 0
-    ahi_clean = ahi_score < 30
+    # AHI: correct nested path (was silently reading non-existent top-level fields)
+    ahi_score = (company.get("algo_harm") or {}).get("algo_harm_score", 0) or 0
+    # Zero tolerance: AHI distribution is effectively binary in v1.0 (799 at 0, 19 above 10)
+    ahi_clean = ahi_score == 0
+    # Heartbeat decay gate: integrity is momentum, not a snapshot
+    decay_level = company.get("decay_level", "stable")
+    decay_clean = decay_level in ("stable", "watch")
     
     # Data confidence — required for Gold but exposed as score_status, not a gate
     # Excludes "Defaults", "Manual Scoring", "Public Reporting" as they aren't real external sources
@@ -317,7 +322,7 @@ def check_hi_balanced(company, threshold):
     gates = {
         "score": company.get("composite", 0) >= threshold,
         "balance": below_42 == 0,
-        "integrity": no_humanwashing and ahi_clean,
+        "integrity": no_humanwashing and ahi_clean and decay_clean,
     }
     
     # Gold requires all 3 gates AND verified data confidence.

@@ -69,6 +69,25 @@ def compute_human100():
         if grade == "F":
             excluded.append({"company": name, "ticker": ticker, "reason": f"Grade F ({composite})"})
             continue
+        # Integrity gate: no active humanwashing flags (matches Gold gating)
+        hw_flags = c.get("humanwashing_flags", [])
+        if hw_flags:
+            first_flag = (hw_flags[0][:60] if isinstance(hw_flags[0], str) else "flagged")
+            excluded.append({"company": name, "ticker": ticker, "reason": f"Humanwashing: {first_flag}"})
+            continue
+        # Integrity gate: AHI == 0 (zero tolerance)
+        ah = c.get("algo_harm") or {}
+        ahi = (ah.get("algo_harm_score", 0) if isinstance(ah, dict) else 0) or 0
+        if ahi > 0:
+            excluded.append({"company": name, "ticker": ticker, "reason": f"AHI {ahi}"})
+            continue
+        # Integrity gate: Heartbeat decay stable or watch
+        hb = heartbeats.get(ticker.upper(), {})
+        dl = hb.get("decay_level", "stable")
+        if dl in ("warning", "critical"):
+            di = hb.get("decay_index", 0)
+            excluded.append({"company": name, "ticker": ticker, "reason": f"Decay {dl} ({di})"})
+            continue
 
         eligible.append(c)
 
