@@ -1,8 +1,17 @@
 {
   "source": "FRED",
   "fetched": ".",
-  "series_count": 13,
+  "series_count": 14,
   "benchmarks": {
+    "avg_hourly_earnings": {
+      "series_id": "CES0500000003",
+      "latest_value": 37.38,
+      "latest_date": "2026-03-01",
+      "oldest_value": 36.12,
+      "oldest_date": "2025-04-01",
+      "change_pct": 3.49,
+      "observations": 12
+    },
     "employment_cost_index": {
       "series_id": "ECIWAG",
       "latest_value": 176.233,
@@ -122,6 +131,7 @@
     }
   },
   "derived": {
+    "productivity_wage_gap": 4.73,
     "labor_market_strength": 1.9
   }
 }
