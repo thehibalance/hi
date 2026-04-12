@@ -521,6 +521,7 @@ def build_index():
     # Daily: use saved threshold. Quarterly: recalculate.
     # Gate A: fixed threshold, strict per-dimension verified gate.
     threshold = GOLD_THRESHOLD
+    balanced_count = 0
     for c in ALL_COMPANIES:
         passed, gates = check_gold(c, threshold)
         c["gold"] = passed
@@ -530,10 +531,8 @@ def build_index():
         c["hi_balanced_gates"] = gates
         c["hi_balanced_threshold"] = threshold
         if passed:
-            c["hi_grade"] = "scored"
-            c["satire"] = ""
             balanced_count += 1
-    print(f"  HI Balanced threshold: {threshold} | {balanced_count} companies qualified")
+    print(f"  Gold HI Grade threshold: {threshold} | {balanced_count} companies qualified")
     
     # Generate/refresh HUMAN 100 from live data (always use ALL_COMPANIES for freshness)
     eligible = [c for c in ALL_COMPANIES if c.get("composite", 0) > 0 and not c.get("humanwashing_flags") and c.get("ticker")]
