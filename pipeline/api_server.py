@@ -183,25 +183,6 @@ COMPANIES = {}       # domain -> record
 TICKERS = {}         # ticker -> record
 NAME_INDEX = {}      # lowercase name -> record
 ALL_COMPANIES = []   # sorted by composite desc
-
-def get_data_source_count():
-    """Dynamic data source count — reads from audit file or counts from scored companies."""
-    # Priority 1: source_audit.py output (most accurate)
-    audit_file = DATA_DIR.parent / "source_count.json"
-    if audit_file.exists():
-        try:
-            audit = json.load(open(audit_file))
-            return max(audit.get("active", 42), 42)  # Floor of 42
-        except:
-            pass
-    # Priority 2: count unique sources across all scored companies
-    if ALL_COMPANIES:
-        all_sources = set()
-        for c in ALL_COMPANIES:
-            for src in c.get("data_sources", []):
-                all_sources.add(src)
-        return max(len(all_sources), 42)  # Floor of 42
-    return 42
 HEARTBEAT = {}       # ticker -> heartbeat data
 HEARTBEAT_ALERTS = []
 HEARTBEAT_PULSE = {}
@@ -222,352 +203,26 @@ def get_grade(score):
     """Score-only system. Returns 'HI Balanced' or 'scored'."""
     return "scored"
 
-THRESHOLD_FLOOR = 55  # Hard minimum — never drops below this
-THRESHOLD_HIGH_WATER = THRESHOLD_FLOOR  # In-memory ratchet (persists per deploy)
+# Gate A patch (Earth Day launch): threshold infrastructure removed.
+# Gold HI Grade is now a strict per-dimension gate, fixed at 60, with
+# verification required on every dimension. See scoring_engine.check_gold.
+from scoring_engine import check_gold
+GOLD_THRESHOLD = 60
 
-def compute_hi_balanced_threshold(companies):
-    """
-    Adaptive threshold: mean + 2 SD of pipeline-scored composites.
-    
-    Failsafes:
-    1. Hard floor: never below THRESHOLD_FLOOR (55)
-    2. Ratchet: can only go UP, never down (persisted to file)
-    
-    Only recalculates when --quarterly flag is passed.
-    Daily runs use the saved threshold.
-    """
-    global THRESHOLD_HIGH_WATER
-    composites = [c.get("composite", 0) for c in companies 
-                  if c.get("composite", 0) > 0 
-                  and c.get("data_sources") 
-                  and c.get("data_sources") != ["Manual Scoring"]]
-    if len(composites) < 10:
-        composites = [c.get("composite", 0) for c in companies if c.get("composite", 0) > 0]
-    if len(composites) < 10:
-        return 62  # Default
-    import math
-    mean = sum(composites) / len(composites)
-    variance = sum((x - mean) ** 2 for x in composites) / len(composites)
-    stdev = math.sqrt(variance)
-    computed = round(mean + 2 * stdev, 1)
-    
-    # Failsafe 1: Hard floor
-    computed = max(computed, THRESHOLD_FLOOR)
-    
-    # Failsafe 2: Ratchet — can only go up
-    THRESHOLD_HIGH_WATER = max(computed, THRESHOLD_HIGH_WATER)
-    
-    return THRESHOLD_HIGH_WATER
-
-THRESHOLD_FILE = Path("data/threshold.json")
-
-def load_saved_threshold():
-    """Load the last quarterly threshold from file."""
-    if THRESHOLD_FILE.exists():
-        try:
-            data = json.load(open(THRESHOLD_FILE))
-            return data.get("threshold", 62)
-        except:
-            pass
-    return None
-
-def save_threshold(threshold):
-    """Save the quarterly threshold to file."""
-    THRESHOLD_FILE.parent.mkdir(parents=True, exist_ok=True)
-    json.dump({
-        "threshold": threshold,
-        "updated": datetime.now().isoformat(),
-        "type": "quarterly"
-    }, open(THRESHOLD_FILE, "w"), indent=2)
-
-# ============================================================
-# Path X: verification + integrity helpers
-# ============================================================
-
-REAL_SOURCE_EXCLUDE = {
-    "Defaults",
-    "Manual Scoring",
-    "Public Reporting",
-    "Seed Estimate",
-    "Industry",
-    "Industry+EPA",
-}
-
-
-def load_stability_history(days=7):
-    """
-    Load the most recent N days of composite scores from pipeline/data/history/.
-
-    Returns a dict keyed by uppercase ticker, mapping to a list of composite
-    scores (most-recent-first). Missing tickers return empty list on lookup.
-    """
-    import json as _json
-    history_dir = Path("data/history")
-    if not history_dir.exists():
-        return {}
-
-    files = sorted(
-        [f for f in history_dir.glob("*.json") if f.name != "index.json"],
-        reverse=True,
-    )[:days]
-
-    history = {}
-    for f in files:
-        try:
-            with open(f) as fh:
-                data = _json.load(fh)
-            if not isinstance(data, list):
-                continue
-            for c in data:
-                ticker = (c.get("ticker") or "").upper()
-                if ticker:
-                    history.setdefault(ticker, []).append(c.get("composite", 0) or 0)
-        except Exception:
-            continue
-
-    return history
-
-
-def is_publishable(company):
-    """
-    Verified gate: company has enough real data to publish a score.
-
-    Criteria (both must pass):
-      1. 5+ real data sources overall
-      2. Every H/U/M/A/N dimension has at least 1 real source in its genome
-
-    Returns (publishable: bool, reason: str).
-    """
-    data_sources = company.get("data_sources", []) or []
-    real_sources = [s for s in data_sources if s not in REAL_SOURCE_EXCLUDE]
-
-    if len(real_sources) < 5:
-        return False, f"Only {len(real_sources)} verified sources (need 5+)"
-
-    genome = company.get("genome", {}) or {}
-    missing = []
-    for dim in ("H", "U", "M", "A", "N"):
-        dim_sources = (genome.get(dim) or {}).get("sources", []) or []
-        dim_real = [s for s in dim_sources if s not in REAL_SOURCE_EXCLUDE]
-        if not dim_real:
-            missing.append(dim)
-
-    if missing:
-        plural = "s" if len(missing) > 1 else ""
-        return False, f"No verified data for dimension{plural}: {', '.join(missing)}"
-
-    return True, "publishable"
-
-
-def apply_integrity_adjustments(company):
-    """
-    Apply behavioral signal penalties as dimensional adjustments.
-
-    Replaces the old Gate 3 integrity check. Signals that used to be gates
-    now flow into the dimensions where they conceptually belong:
-
-      humanwashing flags   -> N penalty (performative virtue detector)
-      decay warning        -> affected-dim penalty based on factor keywords
-      decay critical       -> stronger affected-dim penalty
-      AHI                  -> already flows via scoring_engine.py
-
-    After adjustments, the composite is recomputed and the balance floor
-    cap is re-applied so below-42 dims trigger the composite cap at 49
-    (below 10 triggers cap at 40).
-
-    Mutates company in place. Records the adjustments under 'integrity_adjustments'
-    for the audit trail.
-    """
-    adjustments = []
-    original_dims = {
-        "H": company.get("D_H", 0) or 0,
-        "U": company.get("D_U", 0) or 0,
-        "M": company.get("D_M", 0) or 0,
-        "A": company.get("D_A", 0) or 0,
-        "N": company.get("D_N", 0) or 0,
-    }
-
-    # --- Humanwashing -> N dimension ---
-    hw_flags = company.get("humanwashing_flags", []) or []
-    if hw_flags:
-        n_penalty = min(len(hw_flags) * 12, 50)
-        company["D_N"] = max(0, int(company.get("D_N", 0) - n_penalty))
-        adjustments.append({
-            "dim": "N",
-            "penalty": -n_penalty,
-            "reason": f"{len(hw_flags)} humanwashing flag(s)",
-        })
-
-    # --- Decay factors -> affected dimensions ---
-    decay_level = (company.get("decay_level") or "stable").lower()
-    decay_index = company.get("decay_index", 0) or 0
-    decay_factors = company.get("decay_factors", []) or []
-
-    if decay_level == "warning":
-        base_penalty = min(decay_index * 1.5, 40)
-    elif decay_level == "critical":
-        base_penalty = min(decay_index * 2.0, 60)
-    else:
-        base_penalty = 0  # stable and watch: no penalty
-
-    if base_penalty > 0 and decay_factors:
-        # Track which dims already penalized so we cap at one decay penalty per dim
-        dim_hit = set()
-        for factor in decay_factors:
-            f = (factor or "").lower()
-            affected_dim = None
-            if "layoff" in f:
-                affected_dim = "H"  # H.5 displacement trajectory
-            elif "ai pivot" in f or "ai acceleration" in f or "aggressive ai" in f:
-                affected_dim = "H"  # H.5 displacement trajectory
-            elif "ethic" in f or "legal" in f:
-                affected_dim = "M"  # M.3 / M.4 market/product ethics
-            elif "ceo accountability" in f:
-                affected_dim = "M"  # M.3 CEO accountability
-            elif "fraud" in f or "scandal" in f:
-                affected_dim = "M"
-            elif "environment" in f or "epa" in f or "spill" in f:
-                affected_dim = "A"
-
-            if affected_dim and affected_dim not in dim_hit:
-                dim_hit.add(affected_dim)
-                key = f"D_{affected_dim}"
-                old_val = company.get(key, 0) or 0
-                new_val = max(0, int(old_val - base_penalty))
-                company[key] = new_val
-                adjustments.append({
-                    "dim": affected_dim,
-                    "penalty": -int(base_penalty),
-                    "reason": factor,
-                })
-
-    # --- Record adjustments for audit trail ---
-    if adjustments:
-        company["integrity_adjustments"] = adjustments
-        company["dims_before_integrity"] = original_dims
-
-        # Recompute composite from adjusted dims
-        dims = [
-            company.get("D_H", 0),
-            company.get("D_U", 0),
-            company.get("D_M", 0),
-            company.get("D_A", 0),
-            company.get("D_N", 0),
-        ]
-        new_composite = sum(dims) / 5
-
-        # Re-apply balance floor cap (mirrors seed_to_record and scoring_engine)
-        below_42 = sum(1 for d in dims if d < 42)
-        if min(dims) < 10:
-            new_composite = min(new_composite, 40)
-        if below_42 >= 2:
-            new_composite = min(new_composite, 41)
-            company["balance_floor"] = True
-        elif below_42 == 1:
-            new_composite = min(new_composite, 49)
-            company["balance_floor"] = True
-
-        company["composite"] = round(new_composite)
-
-    return adjustments
-
-
-def check_stability(company, threshold, stability_history):
-    """
-    Stable gate: composite has been >= threshold for all days in window.
-    Grandfathered: if <7 days of history exist, auto-pass with reason.
-    """
-    ticker = (company.get("ticker") or "").upper()
-    history = stability_history.get(ticker, [])
-
-    if len(history) < 7:
-        return True, f"Grandfathered ({len(history)} days of history)"
-
-    window = history[:7]
-    all_above = all((c or 0) >= threshold for c in window)
-    if all_above:
-        return True, "7d stable"
-
-    min_val = min(window)
-    return False, f"Dipped to {min_val:.0f} in trailing 7d"
-
-
-def check_hi_balanced(company, threshold, stability_history=None):
-    """
-    Check 3 gates for HI Gold status.
-
-    Gate 1 - HUMAN    composite >= adaptive threshold
-                      (balance enforced implicitly via balance_floor cap
-                      applied by scoring_engine and apply_integrity_adjustments)
-    Gate 2 - VERIFIED 5+ real sources AND per-dimension coverage
-    Gate 3 - STABLE   composite >= threshold for trailing 7 days
-
-    Integrity (humanwashing, AHI, decay) is NOT a gate anymore. It flows
-    into the dimensions as continuous penalties applied before this gate
-    check runs (see apply_integrity_adjustments).
-
-    The dimensions ARE the audit trail.
-    """
-    # Verified gate (checked first - if pending, no score published)
-    publishable, verify_reason = is_publishable(company)
-    if not publishable:
-        company["score_status"] = "pending"
-        company["pending_reason"] = verify_reason
-        return False, {
-            "human": False,
-            "verified": False,
-            "stable": False,
-            "verified_reason": verify_reason,
-        }
-
-    company["score_status"] = "verified"
-    company.pop("pending_reason", None)
-
-    # HUMAN gate (composite threshold - balance implicit via cap)
-    composite = company.get("composite", 0) or 0
-    human_pass = composite >= threshold
-
-    # STABLE gate (trailing 7-day maintenance)
-    if stability_history is not None:
-        stable_pass, stable_reason = check_stability(company, threshold, stability_history)
-    else:
-        stable_pass = True
-        stable_reason = "No history loaded"
-
-    gates = {
-        "human": human_pass,
-        "verified": True,
-        "stable": stable_pass,
-        "stable_reason": stable_reason,
-    }
-
-    return (human_pass and stable_pass), gates
-
-
-SATIRES = {
-    "scored": "",
-}
+SATIRES = {"scored": ""}
 
 
 def seed_to_record(s):
     composite = round((s["h"] + s["u"] + s["m"] + s["a"] + s["n"]) / 5)
     dims = [s["h"], s["u"], s["m"], s["a"], s["n"]]
-    below_42 = sum(1 for d in dims if d < 42)
     if min(dims) < 10:
         composite = min(composite, 40.0)
-    # Balance floor: 2+ below 42 = cap 41, 1 below 42 = cap 49
-    balance_floor = False
-    if below_42 >= 2:
-        composite = min(composite, 41)
-        balance_floor = True
-    elif below_42 == 1:
-        composite = min(composite, 49)
-        balance_floor = True
+    balance_floor = False  # retired under Gate A; kept False for response shape
     return {
         "company": s["name"], "ticker": None,
         "domains": s.get("domains", []), "tags": s.get("tags", []),
         "D_H": s["h"], "D_U": s["u"], "D_M": s["m"], "D_A": s["a"], "D_N": s["n"],
-        "composite": composite, "hi_grade": "scored", "hi_balanced": False,
+        "composite": composite, "hi_grade": "scored", "gold": False, "hi_balanced": False,
         "satire": "",
         "floor_triggered": min(dims) < 10,
         "balance_floor": balance_floor,
@@ -864,26 +519,13 @@ def build_index():
     
     # Compute HI Balanced threshold
     # Daily: use saved threshold. Quarterly: recalculate.
-    saved = load_saved_threshold()
-    if saved and not getattr(app, '_quarterly_mode', False):
-        threshold = saved
-        print(f"  Using saved quarterly threshold: {threshold}")
-    else:
-        threshold = compute_hi_balanced_threshold(ALL_COMPANIES)
-        save_threshold(threshold)
-        print(f"  {'Quarterly recalculated' if getattr(app, '_quarterly_mode', False) else 'Initial'} threshold: {threshold}")
-    balanced_count = 0
-    # Path X: load stability history once for all gate checks
-    STABILITY_HISTORY = load_stability_history(days=7)
-    print(f"  Stability history: {len(STABILITY_HISTORY)} tickers with trailing data")
-
+    # Gate A: fixed threshold, strict per-dimension verified gate.
+    threshold = GOLD_THRESHOLD
     for c in ALL_COMPANIES:
-        # Apply integrity adjustments (humanwashing + decay -> dimensions)
-        # AHI already applied by scoring_engine.py
-        apply_integrity_adjustments(c)
-
-        # Check 3 gates: HUMAN, Verified, Stable
-        passed, gates = check_hi_balanced(c, threshold, STABILITY_HISTORY)
+        passed, gates = check_gold(c, threshold)
+        c["gold"] = passed
+        c["gates"] = gates
+        # Back-compat aliases (remove after v1.0.1 client hotfix lands):
         c["hi_balanced"] = passed
         c["hi_balanced_gates"] = gates
         c["hi_balanced_threshold"] = threshold
@@ -1127,8 +769,8 @@ def stats():
 
     composites = [c["composite"] for c in ALL_COMPANIES if c.get("composite")]
     avg = round(sum(composites) / len(composites)) if composites else 0
-    threshold = load_saved_threshold() or compute_hi_balanced_threshold(ALL_COMPANIES)
-    certified_count = sum(1 for c in ALL_COMPANIES if c.get("hi_balanced"))
+    threshold = GOLD_THRESHOLD
+    certified_count = sum(1 for c in ALL_COMPANIES if c.get("gold"))
 
     return jsonify({
         "total_companies": len(ALL_COMPANIES),
@@ -1141,7 +783,7 @@ def stats():
         "humanwashing_flagged": sum(1 for c in ALL_COMPANIES if c.get("humanwashing_flags")),
         "floor_rule_triggered": sum(1 for c in ALL_COMPANIES if c.get("floor_triggered")),
         "balance_floor_triggered": sum(1 for c in ALL_COMPANIES if c.get("balance_floor")),
-        "data_sources": get_data_source_count(),
+        "data_sources": 40,
         "spec_version": "1.0.0",
         "brand": {
             "name": "HI.", "tagline": "Find the HI balance.",
