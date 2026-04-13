@@ -203,8 +203,10 @@ def seed_to_pipeline(seed_entry):
         dim_labels = ["H", "U", "M", "A", "N"]
         triggering = dim_labels[dims.index(min(dims))]
     
-    # HI Balanced check (simplified — full 10 gates checked later by API)
-    hi_balanced = composite >= 64.6 and not balance_floor
+    # HI Balanced — not set here; api_server::check_hi_balanced computes this at serve time
+    # against the current threshold (previous hardcoded threshold removed as part of
+    # threshold-drift fix per AUDIT_TRAIL.md Pass 2B).
+    hi_balanced = False  # will be recomputed at query time by api_server.check_hi_balanced
     
     # Humanwashing flags
     hw_flags = []
@@ -218,21 +220,25 @@ def seed_to_pipeline(seed_entry):
         "D_H": h, "D_U": u, "D_M": m, "D_A": a, "D_N": n,
         "composite": composite,
         "hi_grade": "scored",
+        "hi_balanced": hi_balanced,
         "satire": "",
         "floor_triggered": balance_floor,
         "balance_floor": balance_floor,
         "triggering_dimension": triggering,
-        "confidence": "Baseline", "spec_version": "1.1.0",
-        "data_sources": ["Public Reporting"],
-        "signal_coverage": "0/24 sub-signals — estimated from public data",
+        "confidence": "Estimated from public reporting",
+        "data_sources": ["Manual Scoring"],
+        "signal_coverage": "Estimated from public reporting",
         "humanwashing_flags": hw_flags,
         "algo_harm": {"has_harm": False, "algo_harm_score": 0, "flags": []},
+        # Genome matches v1.0.2 signal schema: H.4, U.5, N.1, N.3, N.4 removed.
+        # Seed entries have no sub-signal granularity — all sub-signals equal dimension score,
+        # and genome is explicitly labeled "Seed Estimate" so frontend can display accordingly.
         "genome": {
-            "H": {"scores": {"H.1": h, "H.2": h, "H.3": h, "H.4": h, "H.5": h}, "sources": ["Public Reporting"]},
-            "U": {"scores": {"U.1": u, "U.2": u, "U.3": u, "U.4": u, "U.5": u}, "sources": ["Public Reporting"]},
-            "M": {"scores": {"M.1": m, "M.2": m, "M.3": m, "M.4": m, "M.5": m}, "sources": ["Public Reporting"]},
-            "A": {"scores": {"A.1": a, "A.2": a, "A.3": a, "A.4": a, "A.5": a}, "sources": ["Public Reporting"]},
-            "N": {"scores": {"N.1": n, "N.2": n, "N.3": n, "N.4": n, "N.5": n}, "sources": ["Public Reporting"]},
+            "H": {"scores": {"H.1": h, "H.2": h, "H.3": h, "H.5": h}, "sources": ["Seed Estimate"]},
+            "U": {"scores": {"U.1": u, "U.2": u, "U.3": u, "U.4": u}, "sources": ["Seed Estimate"]},
+            "M": {"scores": {"M.1": m, "M.2": m, "M.3": m, "M.4": m, "M.5": m}, "sources": ["Seed Estimate"]},
+            "A": {"scores": {"A.1": a, "A.2": a, "A.3": a, "A.4": a}, "sources": ["Seed Estimate"]},
+            "N": {"scores": {"N.2": n, "N.5": n}, "sources": ["Seed Estimate"]},
         },
         "key_signals": {},
         "domains": seed_entry.get("domains", []),

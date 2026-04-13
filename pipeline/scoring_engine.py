@@ -178,6 +178,94 @@ def find_match(company_name, ticker, index):
     return None
 
 
+# ── HRC & DEI data (Pass 2D Tier 0 wiring per API_SHOPPING_LIST) ──────
+# Authoritative external sources for U.3 Relational Integrity:
+#   HRC Corporate Equality Index — LGBTQ+ workplace inclusion
+#   Disability:IN Disability Equality Index — disability workplace inclusion
+
+_HRC_INDEX = None  # {ticker: cei_score, ...}  # lazy-loaded
+_DEI_INDEX = None  # {ticker: dei_score, ...}  # lazy-loaded
+_HRC_NAME_INDEX = None
+_DEI_NAME_INDEX = None
+
+def _load_inclusion_data():
+    """Load HRC and DEI score indexes from pipeline output. Idempotent."""
+    global _HRC_INDEX, _DEI_INDEX, _HRC_NAME_INDEX, _DEI_NAME_INDEX
+    if _HRC_INDEX is not None and _DEI_INDEX is not None:
+        return
+    _HRC_INDEX, _DEI_INDEX = {}, {}
+    _HRC_NAME_INDEX, _DEI_NAME_INDEX = {}, {}
+    
+    # HRC
+    hrc_path = Path("data/hrc/all_companies.json")
+    if hrc_path.exists():
+        try:
+            for r in json.load(open(hrc_path)):
+                t = (r.get("ticker") or "").upper().strip()
+                n = (r.get("company") or "").lower().strip()
+                if t: _HRC_INDEX[t] = r.get("cei_score")
+                if n: _HRC_NAME_INDEX[n] = r.get("cei_score")
+        except Exception:
+            pass
+    
+    # DEI
+    dei_path = Path("data/dei/all_companies.json")
+    if dei_path.exists():
+        try:
+            for r in json.load(open(dei_path)):
+                t = (r.get("ticker") or "").upper().strip()
+                n = (r.get("company") or "").lower().strip()
+                if t: _DEI_INDEX[t] = r.get("dei_score")
+                if n: _DEI_NAME_INDEX[n] = r.get("dei_score")
+        except Exception:
+            pass
+
+
+def _get_hrc_score(ticker, company_name):
+    _load_inclusion_data()
+    if ticker and ticker.upper() in _HRC_INDEX:
+        return _HRC_INDEX[ticker.upper()]
+    if company_name:
+        return _HRC_NAME_INDEX.get(company_name.lower().strip())
+    return None
+
+
+def _get_dei_score(ticker, company_name):
+    _load_inclusion_data()
+    if ticker and ticker.upper() in _DEI_INDEX:
+        return _DEI_INDEX[ticker.upper()]
+    if company_name:
+        return _DEI_NAME_INDEX.get(company_name.lower().strip())
+    return None
+
+
+def _score_from_inclusion_tier(tier_score):
+    """Map HRC CEI / DEI score to U.3 contribution using tier structure.
+    
+    HRC tiers (per HRC methodology):
+      100 = Equality 100 Award (top)
+      90-99 = high performer
+      80-89 = notable improvement
+      <80 = participant but behind
+    
+    DEI tiers: score 100, 90, or 80 are publicly listed tiers.
+    
+    Rubric ladder for U.3 contribution (each tier grounded in source tier):
+      100 → 85  (Equality 100 / Best Place to Work)
+      90-99 → 75
+      80-89 → 65
+      60-79 → 50 (baseline for participants)
+      <60 → 40
+    """
+    if tier_score is None:
+        return None
+    if tier_score >= 100: return 85
+    if tier_score >= 90: return 75
+    if tier_score >= 80: return 65
+    if tier_score >= 60: return 50
+    return 40
+
+
 # ── Dimension Scoring ─────────────────────────────────────────────────
 
 def score_h_dimension(sec_h, job_data, bls_data, industry):
@@ -248,8 +336,6 @@ def score_h_dimension(sec_h, job_data, bls_data, industry):
     
     scores["H.3"] = round(h3, 1)
     sources_used.extend([s for s in h3_sources if s not in sources_used])
-    
-    scores["H.4"] = 50
 
     displacement = sec_h.get("displacement_signal")
     job_trend = job_data.get("h_signals", {}).get("ai_hiring_trend") if job_data else None
@@ -269,11 +355,13 @@ def score_h_dimension(sec_h, job_data, bls_data, industry):
         else:
             scores["H.5"] = 50
 
-    D_H = 0.25*scores["H.1"] + 0.20*scores["H.2"] + 0.20*scores["H.3"] + 0.15*scores["H.4"] + 0.20*scores["H.5"]
+    # v1.0.2 renormalization: H.4 removed. Weights scaled proportionally from
+    # {H.1:0.25, H.2:0.20, H.3:0.20, H.5:0.20} total 0.85 → /0.85 to sum to 1.00.
+    D_H = 0.294*scores["H.1"] + 0.235*scores["H.2"] + 0.235*scores["H.3"] + 0.235*scores["H.5"]
     return round_score(D_H), scores, list(set(sources_used))
 
 
-def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
+def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=None, company_name=None):
     scores = {}
     sources_used = []
     gd = glassdoor_data.get("u_signals", {}) if glassdoor_data else {}
@@ -308,8 +396,30 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
     else:
         scores["U.2"] = 50
 
-    # U.3 Relational Integrity — Glassdoor culture
-    if gd.get("culture_score") is not None:
+    # U.3 Relational Integrity — authoritative inclusion sources (HRC CEI, DEI) blend with Glassdoor.
+    # Per API_SHOPPING_LIST Pass 2D T0.1/T0.2: HRC is the recognized US authority on LGBTQ+
+    # workplace inclusion; Disability:IN DEI is recognized for disability inclusion. Both use
+    # published methodology. Ladder maps tier structure → U.3 contribution (see _score_from_inclusion_tier).
+    hrc_raw = _get_hrc_score(ticker, company_name)
+    dei_raw = _get_dei_score(ticker, company_name)
+    hrc_contrib = _score_from_inclusion_tier(hrc_raw)
+    dei_contrib = _score_from_inclusion_tier(dei_raw)
+    inclusion_signals = [s for s in (hrc_contrib, dei_contrib) if s is not None]
+    
+    if inclusion_signals:
+        # Authoritative signals present — average them for U.3.
+        u3 = round(sum(inclusion_signals) / len(inclusion_signals), 1)
+        if hrc_contrib is not None and "HRC CEI" not in sources_used:
+            sources_used.append("HRC CEI")
+        if dei_contrib is not None and "Disability:IN DEI" not in sources_used:
+            sources_used.append("Disability:IN DEI")
+        # Optional: blend in Glassdoor as tertiary signal at low weight (self-report corroboration)
+        if gd.get("culture_score") is not None:
+            u3 = round(u3 * 0.85 + gd["culture_score"] * 0.15, 1)
+            if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
+        scores["U.3"] = u3
+    elif gd.get("culture_score") is not None:
+        # Fallback to Glassdoor alone (self-reported, weakest source)
         scores["U.3"] = gd["culture_score"]
         if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
     else:
@@ -337,10 +447,9 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None):
     
     scores["U.4"] = round(clamp(u4), 1)
 
-    # U.5 Moral Courage — placeholder
-    scores["U.5"] = 50
-
-    D_U = 0.25*scores["U.1"] + 0.25*scores["U.2"] + 0.20*scores["U.3"] + 0.15*scores["U.4"] + 0.15*scores["U.5"]
+    # v1.0.2 renormalization: U.5 removed. Weights scaled proportionally from
+    # {U.1:0.25, U.2:0.25, U.3:0.20, U.4:0.15} total 0.85 → /0.85 to sum to 1.00.
+    D_U = 0.294*scores["U.1"] + 0.294*scores["U.2"] + 0.235*scores["U.3"] + 0.176*scores["U.4"]
     return round_score(D_U), scores, sources_used
 
 
@@ -471,7 +580,8 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None):
 def score_n_dimension(sec_n, cdp_data, epa_data, industry):
     scores = {}
     sources_used = []
-    scores["N.1"] = 40
+    # v1.0.2 removed N.1 (Narrative Integrity), N.3 (Stakeholder Engagement), N.4 (Narrative Courage).
+    # Only N.2 (Reporting Quality via CDP) and N.5 (Filing Discipline via SEC) remain.
 
     cdp_n = cdp_data.get("n_signals", {}) if cdp_data else {}
     if cdp_n.get("cdp_non_responder") is True:
@@ -487,9 +597,6 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry):
         sources_used.append("CDP")
     else:
         scores["N.2"] = 50
-
-    scores["N.3"] = 45
-    scores["N.4"] = 50  # No data = neutral (humanwashing detection requires evidence)
 
     total_filings = sec_n.get("total_recent_filings", 0)
     if total_filings >= 8: scores["N.5"] = 90
@@ -507,7 +614,12 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry):
     if "Large Accelerated" in str(sec_n.get("category", "")):
         scores["N.5"] = min(100, scores["N.5"] + 5)
 
-    D_N = 0.25*scores["N.1"] + 0.20*scores["N.2"] + 0.20*scores["N.3"] + 0.20*scores["N.4"] + 0.15*scores["N.5"]
+    # v1.0.2 renormalization: N.1, N.3, N.4 removed. Weights scaled from
+    # {N.2:0.20, N.5:0.15} total 0.35 → /0.35 to sum to 1.00.
+    # NOTE: N dimension now heavily depends on just two signals. Pass 3 rubric
+    # authoring should consider whether D_N needs additional grounded signals
+    # (e.g., DSA transparency, 12b-25 late filings per API_SHOPPING_LIST T1.1, T1.3).
+    D_N = 0.571*scores["N.2"] + 0.429*scores["N.5"]
     return round_score(D_N), scores, sources_used
 
 
@@ -554,44 +666,54 @@ def get_hi_grade(composite, verified=False):
     return "scored", ""
 
 
-def check_gold(record, threshold=60):
+THRESHOLD_FLOOR = 55  # Matches api_server.THRESHOLD_FLOOR. Hard minimum — never below this.
+# v1.0.2 adaptive threshold: mean + 2 SD of pipeline-scored composites only (seed excluded).
+# v1.0.2 changelog §1 supersedes this with fixed per-dimension threshold grounded in rubric;
+# Pass 3 rubric authoring required before that migration. Until then, this is the operative
+# threshold computation. MUST match api_server.compute_hi_balanced_threshold to avoid drift.
+
+
+def compute_gold_threshold(all_scores):
     """
-    Strict HUMAN Verified gate for Gold HI Grade status.
-
-    Gold requires:
-      - All 5 HUMAN dimensions (H, U, M, A, N) >= 60
-      - All 5 dimensions verified by at least one real data source
-        (not industry defaults)
-
-    HW, AHI, and PHI penalties already flow into the dimensions, so there
-    are no separate integrity gates. If a company's harms are real, a
-    dimension fails directly.
-
-    Returns: (passed: bool, gates: dict)
+    Adaptive threshold: mean + 2 SD of PIPELINE-scored composites (excludes seed/Manual Scoring).
+    Hard floor THRESHOLD_FLOOR (55). Matches api_server.compute_hi_balanced_threshold.
+    
+    Note: Pending v1.0.2 big patch per changelog §1, which will replace this adaptive threshold
+    with a fixed rubric-grounded threshold anchored around 60–65.
     """
-    dims = {
-        "H": record.get("D_H", 0),
-        "U": record.get("D_U", 0),
-        "M": record.get("D_M", 0),
-        "A": record.get("D_A", 0),
-        "N": record.get("D_N", 0),
-    }
-    score_pass = {k: v >= threshold for k, v in dims.items()}
+    composites = [s.get("composite", 0) for s in all_scores
+                  if s.get("composite", 0) > 0
+                  and s.get("data_sources")
+                  and s.get("data_sources") != ["Manual Scoring"]]
+    # Fallback to all composites if too few pipeline-scored companies
+    if len(composites) < 10:
+        composites = [s.get("composite", 0) for s in all_scores if s.get("composite", 0) > 0]
+    if len(composites) < 10:
+        return max(62, THRESHOLD_FLOOR)
+    import math
+    mean = sum(composites) / len(composites)
+    variance = sum((x - mean) ** 2 for x in composites) / len(composites)
+    stdev = math.sqrt(variance)
+    computed = round(mean + 2 * stdev, 1)
+    return max(computed, THRESHOLD_FLOOR)
 
-    genome = record.get("genome", {}) or {}
-    verified = {}
-    for dim in ("H", "U", "M", "A", "N"):
-        sources = (genome.get(dim, {}) or {}).get("sources", []) or []
-        real_sources = [s for s in sources if s and s != "Defaults"]
-        verified[dim] = len(real_sources) > 0
 
+def check_hi_certified(record, threshold):
+    """Check all 3 gates for Gold HI Grade status.
+    Gate 1: Score — composite >= threshold
+    Gate 2: Balance — all 5 dimensions >= 42
+    Gate 3: Integrity — no humanwashing flags AND AHI < 30
+    """
+    dims = [record.get("D_H", 0), record.get("D_U", 0), record.get("D_M", 0), record.get("D_A", 0), record.get("D_N", 0)]
+    algo_harm_score = record.get("algo_harm", {}).get("algo_harm_score", 0)
+    # Filter out AH: flags from humanwashing count — those are informational, not gate-blocking
+    hw_flags = [f for f in record.get("humanwashing_flags", []) if not f.startswith("AH:")]
     gates = {
-        "score": all(score_pass.values()),
-        "verified": all(verified.values()),
-        "score_per_dim": score_pass,
-        "verified_per_dim": verified,
+        "score": record.get("composite", 0) >= threshold,
+        "balance": all(d >= 42 for d in dims),
+        "integrity": len(hw_flags) == 0 and algo_harm_score < 30,
     }
-    return gates["score"] and gates["verified"], gates
+    return all(gates.values()), gates
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -724,7 +846,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
     sec_u = sec_data.get("u_signals", {}) if sec_data else {}
 
     D_H, h_detail, h_src = score_h_dimension(sec_h, job_data, bls_data, industry)
-    D_U, u_detail, u_src = score_u_dimension(sec_u, glassdoor_data, industry, ss)
+    D_U, u_detail, u_src = score_u_dimension(sec_u, glassdoor_data, industry, ss, ticker=ticker, company_name=company_name)
     D_M, m_detail, m_src = score_m_dimension(sec_m, epa_data, glassdoor_data, industry, ss)
     D_A, a_detail, a_src = score_a_dimension(sec_data.get("a_signals", {}) if sec_data else {}, epa_data, cdp_data, industry, ss)
     D_N, n_detail, n_src = score_n_dimension(sec_n, cdp_data, epa_data, industry)
@@ -760,13 +882,11 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
             D_U = round_score(D_U * 0.9 + bbb_score * 0.1)
             if "BBB" not in n_src: n_src.append("BBB")
         
-        # FTC → M.2 + N.4
+        # FTC → M.2 only (N.4 removed in v1.0.2; deceptive-practices signal deferred to Pass 3)
         ftc = ext.get("ftc", {})
         if ftc.get("M.2") is not None:
             D_M = round_score(D_M * 0.9 + ftc["M.2"] * 0.1)
             if "FTC" not in n_src: n_src.append("FTC")
-        if ftc.get("N.4") is not None:
-            D_N = round_score(D_N * 0.9 + ftc["N.4"] * 0.1)
         
         # EEOC → U.2 + M.3 adjustments
         eeoc = ext.get("eeoc", {})
@@ -785,10 +905,10 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
             D_M = round_score(D_M * 0.9 + fda_score * 0.1)
             if "FDA" not in n_src: n_src.append("FDA")
         
-        # Pay ratio → M.3 + H.4
+        # Pay ratio → M.3 only (H.4 removed in v1.0.2; H.4_adj no longer applied)
+        # Pay ratio as H-dimension signal deferred to Pass 3 rubric authoring.
         pay = ext.get("pay_ratio", {})
         D_M = clamp(D_M + pay.get("M.3_adj", 0))
-        D_H = clamp(D_H + pay.get("H.4_adj", 0))
         if pay.get("ratio") and "SEC DEF 14A" not in n_src: n_src.append("SEC DEF 14A")
         
         # Insider trading → M.3
@@ -803,9 +923,9 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         D_A = clamp(D_A + ext.get("sbti", {}).get("A.1_adj", 0))
         if ext.get("sbti", {}).get("A.1_adj", 0) != 0 and "SBTi" not in n_src: n_src.append("SBTi")
         
-        # Charity → U.5
-        D_U = clamp(D_U + ext.get("charity", {}).get("U.5_adj", 0))
-        if ext.get("charity", {}).get("U.5_adj", 0) != 0 and "IRS 990" not in n_src: n_src.append("IRS 990")
+        # Charity adjustment removed in v1.0.2 — U.5 removed, and charity pipeline
+        # uses editorial curator labels ("high"/"medium"/"low"/"none") per Pass 2A.
+        # Will be reintroduced post-Pass-3 if grounded moral-courage signal exists.
     
     # ═══ ALGORITHMIC HARM INDEX — Cross-cutting penalty ═══
     algo_harm = compute_algo_harm(ticker)

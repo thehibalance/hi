@@ -122,7 +122,7 @@ def fetch_ftc(company_name, ticker):
     return FTC_ACTIONS.get(ticker.upper())
 
 def score_ftc(data):
-    if not data: return {"M.2": None, "N.4": None}
+    if not data: return {"M.2": None}
     count = data.get("count", 0)
     penalty = data.get("penalty_m", 0)
     
@@ -136,15 +136,10 @@ def score_ftc(data):
     else:
         m2 = 85
     
-    # N.4 Humanwashing/deceptive — deceptive practices
-    if data.get("deceptive"):
-        if count >= 3: n4 = 30
-        elif count >= 1: n4 = 50
-        else: n4 = 60
-    else:
-        n4 = 85
-    
-    return {"M.2": m2, "N.4": n4}
+    # N.4 deceptive-practices signal removed in v1.0.2. FTC deceptive-practices
+    # data still available in the raw record; reassignment to M.3 Market Ethics
+    # or new N-dimension home deferred to Pass 3 rubric authoring.
+    return {"M.2": m2}
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -370,7 +365,7 @@ PAY_RATIOS = {
 
 def score_pay_ratio(ticker):
     ratio = PAY_RATIOS.get(ticker.upper())
-    if ratio is None: return {"M.3_adj": 0, "H.4_adj": 0}
+    if ratio is None: return {"M.3_adj": 0}
     
     # Lower ratio = more equitable
     if ratio < 50: m3_adj = 10
@@ -380,10 +375,9 @@ def score_pay_ratio(ticker):
     elif ratio < 1000: m3_adj = -10
     else: m3_adj = -15
     
-    # H.4 Accountability — extreme ratios suggest disconnected leadership
-    h4_adj = m3_adj  # Same direction
-    
-    return {"M.3_adj": m3_adj, "H.4_adj": h4_adj, "ratio": ratio, "source": "SEC DEF 14A"}
+    # Note: H.4 removed in v1.0.2; H.4_adj no longer emitted.
+    # Pay-ratio-as-H signal deferred to Pass 3 rubric authoring.
+    return {"M.3_adj": m3_adj, "ratio": ratio, "source": "SEC DEF 14A"}
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -543,7 +537,9 @@ def fetch_all_extended(company_name, ticker, domain=None, industry=None):
     results["insider"] = {"M.3_adj": score_insider(ticker), "source": "SEC Form 4"}
     results["gri"] = {"N.2_adj": score_gri(ticker), "source": "GRI"}
     results["sbti"] = {"A.1_adj": score_sbti(ticker), "source": "SBTi"}
-    results["charity"] = {"U.5_adj": score_charity(ticker), "source": "IRS 990"}
+    # Charity adjustment removed in v1.0.2 — U.5 removed + curator labels not authoritative.
+    # Score still computed and logged for observability; not applied to any dimension.
+    results["charity"] = {"raw_score": score_charity(ticker), "source": "IRS 990", "note": "informational only, not applied to scoring in v1.0.2"}
     
     return results
 

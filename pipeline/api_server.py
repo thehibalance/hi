@@ -203,43 +203,154 @@ def get_grade(score):
     """Score-only system. Returns 'HI Balanced' or 'scored'."""
     return "scored"
 
-# Gate A patch (Earth Day launch): threshold infrastructure removed.
-# Gold HI Grade is now a strict per-dimension gate, fixed at 60, with
-# verification required on every dimension. See scoring_engine.check_gold.
-from scoring_engine import check_gold
-GOLD_THRESHOLD = 60
+THRESHOLD_FLOOR = 55  # Hard minimum — never drops below this
+THRESHOLD_HIGH_WATER = THRESHOLD_FLOOR  # In-memory ratchet (persists per deploy)
 
-SATIRES = {"scored": ""}
+def compute_hi_balanced_threshold(companies):
+    """
+    Adaptive threshold: mean + 2 SD of pipeline-scored composites.
+    
+    Failsafes:
+    1. Hard floor: never below THRESHOLD_FLOOR (55)
+    2. Ratchet: can only go UP, never down (persisted to file)
+    
+    Only recalculates when --quarterly flag is passed.
+    Daily runs use the saved threshold.
+    """
+    global THRESHOLD_HIGH_WATER
+    composites = [c.get("composite", 0) for c in companies 
+                  if c.get("composite", 0) > 0 
+                  and c.get("data_sources") 
+                  and c.get("data_sources") != ["Manual Scoring"]]
+    if len(composites) < 10:
+        composites = [c.get("composite", 0) for c in companies if c.get("composite", 0) > 0]
+    if len(composites) < 10:
+        return 62  # Default
+    import math
+    mean = sum(composites) / len(composites)
+    variance = sum((x - mean) ** 2 for x in composites) / len(composites)
+    stdev = math.sqrt(variance)
+    computed = round(mean + 2 * stdev, 1)
+    
+    # Failsafe 1: Hard floor
+    computed = max(computed, THRESHOLD_FLOOR)
+    
+    # Failsafe 2: Ratchet — can only go up
+    THRESHOLD_HIGH_WATER = max(computed, THRESHOLD_HIGH_WATER)
+    
+    return THRESHOLD_HIGH_WATER
+
+THRESHOLD_FILE = Path("data/threshold.json")
+
+def load_saved_threshold():
+    """Load the last quarterly threshold from file."""
+    if THRESHOLD_FILE.exists():
+        try:
+            data = json.load(open(THRESHOLD_FILE))
+            return data.get("threshold", 62)
+        except:
+            pass
+    return None
+
+def save_threshold(threshold):
+    """Save the quarterly threshold to file."""
+    THRESHOLD_FILE.parent.mkdir(parents=True, exist_ok=True)
+    json.dump({
+        "threshold": threshold,
+        "updated": datetime.now().isoformat(),
+        "type": "quarterly"
+    }, open(THRESHOLD_FILE, "w"), indent=2)
+
+def check_hi_balanced(company, threshold):
+    """
+    Check 3 gates for Gold HI Grade status.
+    Gate 1 — SCORE: Composite ≥ adaptive threshold
+    Gate 2 — BALANCE: All 5 dimensions ≥ 42
+    Gate 3 — INTEGRITY: No Humanwashing™ flags AND Algorithmic Harm Index™ < 30
+    
+    Score, balance, and integrity. That's it.
+    """
+    dims = [company.get("D_H", 0), company.get("D_U", 0), company.get("D_M", 0), company.get("D_A", 0), company.get("D_N", 0)]
+    below_42 = sum(1 for d in dims if d < 42)
+    
+    # Filter AH: prefix flags — they are informational (AHI is already captured
+    # separately via ahi_score < 30 check below). This matches scoring_engine.check_hi_certified.
+    hw_flags_blocking = [f for f in company.get("humanwashing_flags", []) if not f.startswith("AH:")]
+    no_humanwashing = len(hw_flags_blocking) == 0
+    ahi_score = company.get("algorithmic_harm_score") or company.get("algo_harm_score") or 0
+    ahi_clean = ahi_score < 30
+    
+    gates = {
+        "score": company.get("composite", 0) >= threshold,
+        "balance": below_42 == 0,
+        "integrity": no_humanwashing and ahi_clean,
+    }
+    
+    return all(gates.values()), gates
+
+SATIRES = {
+    "scored": "",
+}
 
 
 def seed_to_record(s):
-    composite = round((s["h"] + s["u"] + s["m"] + s["a"] + s["n"]) / 5)
-    dims = [s["h"], s["u"], s["m"], s["a"], s["n"]]
-    if min(dims) < 10:
-        composite = min(composite, 40.0)
-    balance_floor = False  # retired under Gate A; kept False for response shape
-    return {
-        "company": s["name"], "ticker": None,
-        "domains": s.get("domains", []), "tags": s.get("tags", []),
-        "D_H": s["h"], "D_U": s["u"], "D_M": s["m"], "D_A": s["a"], "D_N": s["n"],
-        "composite": composite, "hi_grade": "scored", "gold": False, "hi_balanced": False,
-        "satire": "",
-        "floor_triggered": min(dims) < 10,
-        "balance_floor": balance_floor,
-        "confidence": "Estimated", "data_sources": ["Manual Scoring"],
-        "notes": s.get("notes", ""), "spec_version": "1.0.0",
-        "industry": s["tags"][0] if s.get("tags") else "",
-        "humanwashing_flags": [],
-        "algorithmic_harm_score": s.get("algorithmic_harm_score", 0),
-        "subsidiaries": s.get("subsidiaries", []),
-        "primary_contractors": s.get("primary_contractors", []),
-        "key_signals": {
-            "headcount": None, "headcount_change_pct": None,
-            "revenue_per_employee": None, "displacement_signal": None,
-            "ai_hiring_ratio": None, "glassdoor_rating": None,
-            "cdp_climate": None, "epa_violations": None,
-        },
-    }
+    """
+    Convert a seed-data.js entry to pipeline-compatible record.
+    
+    Delegates to merge_seed.seed_to_pipeline as single source of truth,
+    then backfills api_server-specific fields. Fixes Pass 2B dual-seed-loader drift.
+    """
+    try:
+        from merge_seed import seed_to_pipeline
+        record = seed_to_pipeline(s)
+    except Exception:
+        # Fallback to inline minimal record if merge_seed import fails
+        composite = round((s["h"] + s["u"] + s["m"] + s["a"] + s["n"]) / 5)
+        dims = [s["h"], s["u"], s["m"], s["a"], s["n"]]
+        below_42 = sum(1 for d in dims if d < 42)
+        if min(dims) < 10:
+            composite = min(composite, 40.0)
+        elif below_42 >= 2:
+            composite = min(composite, 41)
+        elif below_42 == 1:
+            composite = min(composite, 49)
+        record = {
+            "company": s["name"], "ticker": None,
+            "domains": s.get("domains", []), "tags": s.get("tags", []),
+            "D_H": s["h"], "D_U": s["u"], "D_M": s["m"], "D_A": s["a"], "D_N": s["n"],
+            "composite": composite, "hi_grade": "scored",
+            "floor_triggered": min(dims) < 10,
+            "balance_floor": below_42 > 0,
+            "triggering_dimension": None,
+            "confidence": "Estimated from public reporting",
+            "data_sources": ["Manual Scoring"],
+            "humanwashing_flags": [],
+            "algo_harm": {"has_harm": False, "algo_harm_score": 0, "flags": []},
+            "genome": {
+                "H": {"scores": {"H.1": s["h"], "H.2": s["h"], "H.3": s["h"], "H.5": s["h"]}, "sources": ["Seed Estimate"]},
+                "U": {"scores": {"U.1": s["u"], "U.2": s["u"], "U.3": s["u"], "U.4": s["u"]}, "sources": ["Seed Estimate"]},
+                "M": {"scores": {"M.1": s["m"], "M.2": s["m"], "M.3": s["m"], "M.4": s["m"], "M.5": s["m"]}, "sources": ["Seed Estimate"]},
+                "A": {"scores": {"A.1": s["a"], "A.2": s["a"], "A.3": s["a"], "A.4": s["a"]}, "sources": ["Seed Estimate"]},
+                "N": {"scores": {"N.2": s["n"], "N.5": s["n"]}, "sources": ["Seed Estimate"]},
+            },
+            "notes": s.get("notes", ""),
+            "_source": "seed",
+        }
+    
+    # Backfill api_server-specific fields that merge_seed doesn't emit
+    record.setdefault("hi_balanced", False)  # recomputed at serve time by check_hi_balanced
+    record.setdefault("satire", "")
+    record.setdefault("spec_version", "1.0.2")
+    record.setdefault("algorithmic_harm_score", s.get("algorithmic_harm_score", 0))
+    record.setdefault("subsidiaries", s.get("subsidiaries", []))
+    record.setdefault("primary_contractors", s.get("primary_contractors", []))
+    record.setdefault("key_signals", {
+        "headcount": None, "headcount_change_pct": None,
+        "revenue_per_employee": None, "displacement_signal": None,
+        "ai_hiring_ratio": None, "glassdoor_rating": None,
+        "cdp_climate": None, "epa_violations": None,
+    })
+    return record
 
 
 def normalize_name(name):
@@ -519,20 +630,25 @@ def build_index():
     
     # Compute HI Balanced threshold
     # Daily: use saved threshold. Quarterly: recalculate.
-    # Gate A: fixed threshold, strict per-dimension verified gate.
-    threshold = GOLD_THRESHOLD
+    saved = load_saved_threshold()
+    if saved and not getattr(app, '_quarterly_mode', False):
+        threshold = saved
+        print(f"  Using saved quarterly threshold: {threshold}")
+    else:
+        threshold = compute_hi_balanced_threshold(ALL_COMPANIES)
+        save_threshold(threshold)
+        print(f"  {'Quarterly recalculated' if getattr(app, '_quarterly_mode', False) else 'Initial'} threshold: {threshold}")
     balanced_count = 0
     for c in ALL_COMPANIES:
-        passed, gates = check_gold(c, threshold)
-        c["gold"] = passed
-        c["gates"] = gates
-        # Back-compat aliases (remove after v1.0.1 client hotfix lands):
+        passed, gates = check_hi_balanced(c, threshold)
         c["hi_balanced"] = passed
         c["hi_balanced_gates"] = gates
         c["hi_balanced_threshold"] = threshold
         if passed:
+            c["hi_grade"] = "scored"
+            c["satire"] = ""
             balanced_count += 1
-    print(f"  Gold HI Grade threshold: {threshold} | {balanced_count} companies qualified")
+    print(f"  HI Balanced threshold: {threshold} | {balanced_count} companies qualified")
     
     # Generate/refresh HUMAN 100 from live data (always use ALL_COMPANIES for freshness)
     eligible = [c for c in ALL_COMPANIES if c.get("composite", 0) > 0 and not c.get("humanwashing_flags") and c.get("ticker")]
@@ -768,8 +884,8 @@ def stats():
 
     composites = [c["composite"] for c in ALL_COMPANIES if c.get("composite")]
     avg = round(sum(composites) / len(composites)) if composites else 0
-    threshold = GOLD_THRESHOLD
-    certified_count = sum(1 for c in ALL_COMPANIES if c.get("gold"))
+    threshold = load_saved_threshold() or compute_hi_balanced_threshold(ALL_COMPANIES)
+    certified_count = sum(1 for c in ALL_COMPANIES if c.get("hi_balanced"))
 
     return jsonify({
         "total_companies": len(ALL_COMPANIES),
