@@ -1,7 +1,7 @@
 {
   "source": "FRED",
   "fetched": ".",
-  "series_count": 14,
+  "series_count": 11,
   "benchmarks": {
     "avg_hourly_earnings": {
       "series_id": "CES0500000003",
@@ -57,24 +57,6 @@
       "change_pct": -1.01,
       "observations": 12
     },
-    "quits_rate": {
-      "series_id": "JTSQUR",
-      "latest_value": 1.9,
-      "latest_date": "2026-02-01",
-      "oldest_value": 2.2,
-      "oldest_date": "2025-03-01",
-      "change_pct": -13.64,
-      "observations": 12
-    },
-    "labor_productivity": {
-      "series_id": "OPHNFB",
-      "latest_value": 119.338,
-      "latest_date": "2025-10-01",
-      "oldest_value": 110.269,
-      "oldest_date": "2023-01-01",
-      "change_pct": 8.22,
-      "observations": 12
-    },
     "real_gdp_per_capita": {
       "series_id": "A939RX0Q048SBEA",
       "latest_value": 70249.0,
@@ -119,19 +101,7 @@
       "oldest_date": "2025-03-01",
       "change_pct": 1.5,
       "observations": 12
-    },
-    "capacity_utilization": {
-      "series_id": "TCU",
-      "latest_value": 76.2946,
-      "latest_date": "2026-02-01",
-      "oldest_value": 76.1318,
-      "oldest_date": "2025-03-01",
-      "change_pct": 0.21,
-      "observations": 12
     }
   },
-  "derived": {
-    "productivity_wage_gap": 4.73,
-    "labor_market_strength": 1.9
-  }
+  "derived": {}
 }
