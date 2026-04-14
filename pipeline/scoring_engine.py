@@ -188,6 +188,14 @@ _DEI_INDEX = None  # {ticker: dei_score, ...}  # lazy-loaded
 _HRC_NAME_INDEX = None
 _DEI_NAME_INDEX = None
 
+# ── B Corp data (Pass 3 Tier 0 wiring — certification-grounded) ──────
+# B Lab Certified B Corporations: authoritative third-party social/environmental
+# performance verification. B Impact score >=80 required for certification.
+# Maps to: M.5 (Stakeholder Governance), U.3 (Relational Integrity), A.4 (Product Lifecycle)
+_BCORP_INDEX = None  # {ticker: record, ...}
+_BCORP_NAME_INDEX = None  # {name_lower: record, ...}
+
+
 def _load_inclusion_data():
     """Load HRC and DEI score indexes from pipeline output. Idempotent."""
     global _HRC_INDEX, _DEI_INDEX, _HRC_NAME_INDEX, _DEI_NAME_INDEX
@@ -219,6 +227,56 @@ def _load_inclusion_data():
                 if n: _DEI_NAME_INDEX[n] = r.get("dei_score")
         except Exception:
             pass
+
+
+def _load_bcorp_data():
+    """Load B Corp certification index from pipeline output. Idempotent."""
+    global _BCORP_INDEX, _BCORP_NAME_INDEX
+    if _BCORP_INDEX is not None:
+        return
+    _BCORP_INDEX, _BCORP_NAME_INDEX = {}, {}
+    
+    bcorp_path = Path("data/bcorp/all_companies.json")
+    if bcorp_path.exists():
+        try:
+            for r in json.load(open(bcorp_path)):
+                t = (r.get("ticker") or "").upper().strip()
+                n = (r.get("company") or "").lower().strip()
+                if t: _BCORP_INDEX[t] = r
+                if n: _BCORP_NAME_INDEX[n] = r
+        except Exception:
+            pass
+
+
+def _get_bcorp_record(ticker, company_name):
+    """Return B Corp record for a company if certified, else None."""
+    _load_bcorp_data()
+    if ticker and ticker.upper() in _BCORP_INDEX:
+        return _BCORP_INDEX[ticker.upper()]
+    if company_name:
+        return _BCORP_NAME_INDEX.get(company_name.lower().strip())
+    return None
+
+
+def _score_from_bcorp(record):
+    """Map B Corp tier → sub-signal contribution.
+    
+    B Impact Assessment ladder (per B Lab methodology):
+      130+ (elite, top ~5% of B Corps)     → 90
+      100-129 (strong)                     → 80
+      80-99 (certified, entry-level)       → 70
+      certified without public score       → 65 (minimum credible certification)
+    
+    Non-certified companies return None — no signal from B Corp for them.
+    """
+    if not record or not record.get("bcorp_certified"):
+        return None
+    score = record.get("bcorp_score")
+    tier = record.get("bcorp_tier", "certified_unscored")
+    if tier == "elite" or (score and score >= 130): return 90
+    if tier == "strong" or (score and score >= 100): return 80
+    if tier == "certified" or (score and score >= 80): return 70
+    return 65  # certified_unscored or defensive fallback
 
 
 def _get_hrc_score(ticker, company_name):
@@ -396,15 +454,18 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=N
     else:
         scores["U.2"] = 50
 
-    # U.3 Relational Integrity — authoritative inclusion sources (HRC CEI, DEI) blend with Glassdoor.
-    # Per API_SHOPPING_LIST Pass 2D T0.1/T0.2: HRC is the recognized US authority on LGBTQ+
-    # workplace inclusion; Disability:IN DEI is recognized for disability inclusion. Both use
-    # published methodology. Ladder maps tier structure → U.3 contribution (see _score_from_inclusion_tier).
+    # U.3 Relational Integrity — authoritative inclusion sources (HRC CEI, DEI, B Corp) blend with Glassdoor.
+    # Per API_SHOPPING_LIST Pass 2D T0.1/T0.2/T0.5: HRC is the recognized US authority on LGBTQ+
+    # workplace inclusion; Disability:IN DEI for disability inclusion; B Corp certification
+    # includes a Workers + Community assessment that's a broader inclusion signal. All use
+    # published methodology. Ladder maps tier structure → U.3 contribution.
     hrc_raw = _get_hrc_score(ticker, company_name)
     dei_raw = _get_dei_score(ticker, company_name)
+    bcorp_record = _get_bcorp_record(ticker, company_name)
     hrc_contrib = _score_from_inclusion_tier(hrc_raw)
     dei_contrib = _score_from_inclusion_tier(dei_raw)
-    inclusion_signals = [s for s in (hrc_contrib, dei_contrib) if s is not None]
+    bcorp_contrib = _score_from_bcorp(bcorp_record)
+    inclusion_signals = [s for s in (hrc_contrib, dei_contrib, bcorp_contrib) if s is not None]
     
     if inclusion_signals:
         # Authoritative signals present — average them for U.3.
@@ -413,6 +474,8 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=N
             sources_used.append("HRC CEI")
         if dei_contrib is not None and "Disability:IN DEI" not in sources_used:
             sources_used.append("Disability:IN DEI")
+        if bcorp_contrib is not None and "B Corp" not in sources_used:
+            sources_used.append("B Corp")
         # Optional: blend in Glassdoor as tertiary signal at low weight (self-report corroboration)
         if gd.get("culture_score") is not None:
             u3 = round(u3 * 0.85 + gd["culture_score"] * 0.15, 1)
@@ -453,7 +516,7 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=N
     return round_score(D_U), scores, sources_used
 
 
-def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None):
+def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None, ticker=None, company_name=None):
     scores = {}
     sources_used = []
     ss = subsignals or {}
@@ -503,9 +566,21 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
         else:
             scores["M.4"] = 50  # No data = neutral
 
-    # M.5 Political Ethics — FEC data if available, else Glassdoor CEO
+    # M.5 Stakeholder Governance — B Corp legal structure is the strongest signal (literally
+    # defined by stakeholder-centric fiduciary duty). If certified B Corp, use that. Fall back
+    # to FEC political ethics, then Glassdoor CEO score.
+    bcorp_m5 = None
+    bcorp_record = _get_bcorp_record(ticker, company_name)
+    if bcorp_record and bcorp_record.get("bcorp_certified"):
+        bcorp_m5 = _score_from_bcorp(bcorp_record)
+    
     fec_m5 = ss.get("fec", {}).get("M.5")
-    if fec_m5 is not None:
+    
+    if bcorp_m5 is not None:
+        # B Corp is the definitional signal for M.5 stakeholder governance
+        scores["M.5"] = bcorp_m5
+        if "B Corp" not in sources_used: sources_used.append("B Corp")
+    elif fec_m5 is not None:
         scores["M.5"] = fec_m5
         sources_used.append("FEC")
     else:
@@ -519,7 +594,7 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
     return round_score(D_M), scores, list(set(sources_used))
 
 
-def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None):
+def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None, ticker=None, company_name=None):
     scores = {}
     sources_used = []
     ss = subsignals or {}
@@ -560,14 +635,21 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None):
         else:
             scores["A.3"] = 50
 
-    # A.4 Hardware Lifecycle — iFixit + industry data
+    # A.4 Product Lifecycle — iFixit hardware scores (strongest), then B Corp certification
+    # (B Impact Environment assessment), then CDP forests, then industry default.
     hw_score = ss.get("hardware", {}).get("A.4")
     if hw_score is not None:
         scores["A.4"] = hw_score
         hw_src = ss.get("hardware", {}).get("source", "iFixit")
         if hw_src not in sources_used: sources_used.append(hw_src)
     else:
-        if cdp_a.get("cdp_forests_score") is not None:
+        # B Corp certification includes Environment sub-assessment covering product lifecycle
+        bcorp_record = _get_bcorp_record(ticker, company_name)
+        bcorp_a4 = _score_from_bcorp(bcorp_record)
+        if bcorp_a4 is not None:
+            scores["A.4"] = bcorp_a4
+            if "B Corp" not in sources_used: sources_used.append("B Corp")
+        elif cdp_a.get("cdp_forests_score") is not None:
             scores["A.4"] = cdp_a["cdp_forests_score"]
         else:
             hw_defaults = {"tech": 40, "telecom": 45, "manufacturing": 50, "default": 55}
@@ -866,8 +948,8 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
 
     D_H, h_detail, h_src = score_h_dimension(sec_h, job_data, bls_data, industry)
     D_U, u_detail, u_src = score_u_dimension(sec_u, glassdoor_data, industry, ss, ticker=ticker, company_name=company_name)
-    D_M, m_detail, m_src = score_m_dimension(sec_m, epa_data, glassdoor_data, industry, ss)
-    D_A, a_detail, a_src = score_a_dimension(sec_data.get("a_signals", {}) if sec_data else {}, epa_data, cdp_data, industry, ss)
+    D_M, m_detail, m_src = score_m_dimension(sec_m, epa_data, glassdoor_data, industry, ss, ticker=ticker, company_name=company_name)
+    D_A, a_detail, a_src = score_a_dimension(sec_data.get("a_signals", {}) if sec_data else {}, epa_data, cdp_data, industry, ss, ticker=ticker, company_name=company_name)
     D_N, n_detail, n_src = score_n_dimension(sec_n, cdp_data, epa_data, industry)
 
     # ═══ EXTENDED SIGNALS (sources 23-34) ═══
