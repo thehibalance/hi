@@ -203,90 +203,76 @@ def get_grade(score):
     """Score-only system. Returns 'HI Balanced' or 'scored'."""
     return "scored"
 
-THRESHOLD_FLOOR = 55  # Hard minimum — never drops below this
-THRESHOLD_HIGH_WATER = THRESHOLD_FLOOR  # In-memory ratchet (persists per deploy)
+# v1.1.0: Adaptive threshold removed. Gold HI Grade is now per-dimension (≥60 each)
+# + per-dimension evidence + decay momentum. See scoring_engine.check_hi_certified.
+# Shims kept below for backward compat with any caller still passing thresholds.
+
+GOLD_DIM_THRESHOLD = 60
+GOLD_DECAY_BLOCKING = {"warning", "critical"}
+THRESHOLD_FLOOR = GOLD_DIM_THRESHOLD  # legacy alias
+THRESHOLD_HIGH_WATER = GOLD_DIM_THRESHOLD  # legacy alias
 
 def compute_hi_balanced_threshold(companies):
-    """
-    Adaptive threshold: mean + 2 SD of pipeline-scored composites.
-    
-    Failsafes:
-    1. Hard floor: never below THRESHOLD_FLOOR (55)
-    2. Ratchet: can only go UP, never down (persisted to file)
-    
-    Only recalculates when --quarterly flag is passed.
-    Daily runs use the saved threshold.
-    """
-    global THRESHOLD_HIGH_WATER
-    composites = [c.get("composite", 0) for c in companies 
-                  if c.get("composite", 0) > 0 
-                  and c.get("data_sources") 
-                  and c.get("data_sources") != ["Manual Scoring"]]
-    if len(composites) < 10:
-        composites = [c.get("composite", 0) for c in companies if c.get("composite", 0) > 0]
-    if len(composites) < 10:
-        return 62  # Default
-    import math
-    mean = sum(composites) / len(composites)
-    variance = sum((x - mean) ** 2 for x in composites) / len(composites)
-    stdev = math.sqrt(variance)
-    computed = round(mean + 2 * stdev, 1)
-    
-    # Failsafe 1: Hard floor
-    computed = max(computed, THRESHOLD_FLOOR)
-    
-    # Failsafe 2: Ratchet — can only go up
-    THRESHOLD_HIGH_WATER = max(computed, THRESHOLD_HIGH_WATER)
-    
-    return THRESHOLD_HIGH_WATER
+    """DEPRECATED in v1.1.0. Returns GOLD_DIM_THRESHOLD for backward compat.
+    Old callers expecting an adaptive threshold should be migrated."""
+    return GOLD_DIM_THRESHOLD
 
 THRESHOLD_FILE = Path("data/threshold.json")
 
 def load_saved_threshold():
-    """Load the last quarterly threshold from file."""
-    if THRESHOLD_FILE.exists():
-        try:
-            data = json.load(open(THRESHOLD_FILE))
-            return data.get("threshold", 62)
-        except:
-            pass
-    return None
+    """DEPRECATED. Returns GOLD_DIM_THRESHOLD."""
+    return GOLD_DIM_THRESHOLD
 
 def save_threshold(threshold):
-    """Save the quarterly threshold to file."""
-    THRESHOLD_FILE.parent.mkdir(parents=True, exist_ok=True)
-    json.dump({
-        "threshold": threshold,
-        "updated": datetime.now().isoformat(),
-        "type": "quarterly"
-    }, open(THRESHOLD_FILE, "w"), indent=2)
+    """DEPRECATED. No-op in v1.1.0."""
+    pass
 
-def check_hi_balanced(company, threshold):
+def check_hi_balanced(company, threshold=None):
+    """Gold HI Grade per v1.1.0:
+      Gate 1 — DIMENSIONS: All 5 dims ≥ 60
+      Gate 2 — EVIDENCE:   Each dim has ≥1 real (non-Seed) data source
+      Gate 3 — MOMENTUM:   decay_level not in {warning, critical}
+    
+    `threshold` arg ignored (kept for backward-compat with old callers).
+    Mirrors scoring_engine.check_hi_certified.
     """
-    Check 3 gates for Gold HI Grade status.
-    Gate 1 — SCORE: Composite ≥ adaptive threshold
-    Gate 2 — BALANCE: All 5 dimensions ≥ 42
-    Gate 3 — INTEGRITY: No Humanwashing™ flags AND Algorithmic Harm Index™ < 30
-    
-    Score, balance, and integrity. That's it.
-    """
-    dims = [company.get("D_H", 0), company.get("D_U", 0), company.get("D_M", 0), company.get("D_A", 0), company.get("D_N", 0)]
-    below_42 = sum(1 for d in dims if d < 42)
-    
-    # Filter AH: prefix flags — they are informational (AHI is already captured
-    # separately via ahi_score < 30 check below). This matches scoring_engine.check_hi_certified.
-    hw_flags_blocking = [f for f in company.get("humanwashing_flags", []) if not f.startswith("AH:")]
-    no_humanwashing = len(hw_flags_blocking) == 0
-    ahi_score = company.get("algorithmic_harm_score") or company.get("algo_harm_score") or 0
-    ahi_clean = ahi_score < 30
-    
-    gates = {
-        "score": company.get("composite", 0) >= threshold,
-        "balance": below_42 == 0,
-        "integrity": no_humanwashing and ahi_clean,
+    dims = {
+        "H": company.get("D_H", 0),
+        "U": company.get("D_U", 0),
+        "M": company.get("D_M", 0),
+        "A": company.get("D_A", 0),
+        "N": company.get("D_N", 0),
     }
     
-    return all(gates.values()), gates
+    # Gate 1: each dim ≥ 60
+    dim_pass = {k: v >= GOLD_DIM_THRESHOLD for k, v in dims.items()}
+    gate_dimensions = all(dim_pass.values())
+    
+    # Gate 2: each dim has ≥1 real source (Seed Estimate excluded)
+    genome = company.get("genome", {})
+    evidence_pass = {}
+    for dim_key in "HUMAN":
+        sources = genome.get(dim_key, {}).get("sources", [])
+        real = [s for s in sources if s and s != "Seed Estimate"]
+        evidence_pass[dim_key] = len(real) >= 1
+    gate_evidence = all(evidence_pass.values())
+    
+    # Gate 3: decay momentum (api_server has decay attached at index time)
+    decay_level = company.get("decay_level", "stable")
+    gate_momentum = decay_level not in GOLD_DECAY_BLOCKING
+    
+    gates = {
+        "dimensions": gate_dimensions,
+        "evidence": gate_evidence,
+        "momentum": gate_momentum,
+        "_detail": {
+            "dim_pass": dim_pass,
+            "evidence_pass": evidence_pass,
+            "decay_level": decay_level,
+        }
+    }
+    
+    return all([gate_dimensions, gate_evidence, gate_momentum]), gates
 
 SATIRES = {
     "scored": "",

@@ -631,89 +631,108 @@ def round_score(val):
 
 
 def compute_composite(D_H, D_U, D_M, D_A, D_N):
+    """v1.1.0: composite is the simple mean of the five HUMAN dimensions.
+    
+    Floors removed in v1.1.0 — Gold HI Grade eligibility is now determined per-dimension
+    by check_hi_certified (each dim ≥ 60). Composite is purely a display number for users
+    who want a single quick gauge; it does not gate anything.
+    
+    Return signature preserved for backward compatibility with callers expecting a 4-tuple,
+    but the 2nd/3rd/4th elements are always False/False/None now.
+    """
     composite = (D_H + D_U + D_M + D_A + D_N) / 5
-    floor_triggered = False
-    balance_floor_triggered = False
-    triggering_dimension = None
-    dims = {"H": D_H, "U": D_U, "M": D_M, "A": D_A, "N": D_N}
-    min_dim = min(dims.values())
-    below_42 = sum(1 for v in dims.values() if v < 42)
-    
-    # Hard floor: any dimension < 10 caps composite at 40
-    if min_dim < 10:
-        composite = min(composite, 40)
-        floor_triggered = True
-        triggering_dimension = min(dims, key=dims.get)
-    
-    # Balance floor: 2+ dimensions below 42 = F (cap at 41)
-    elif below_42 >= 2:
-        balance_floor_triggered = True
-        triggering_dimension = min(dims, key=dims.get)
-        if composite > 41:
-            composite = 41.0
-    
-    # Balance floor: 1 dimension below 42 = D cap (cap at 49)
-    elif below_42 == 1:
-        balance_floor_triggered = True
-        triggering_dimension = min(dims, key=dims.get)
-        if composite > 49:
-            composite = 49.0
-    
-    return round_score(composite), floor_triggered, balance_floor_triggered, triggering_dimension
+    return round_score(composite), False, False, None
 
 def get_hi_grade(composite, verified=False):
     """Score-only system. All companies return 'scored'. Gold HI Grade is checked separately."""
     return "scored", ""
 
 
-THRESHOLD_FLOOR = 55  # Matches api_server.THRESHOLD_FLOOR. Hard minimum — never below this.
-# v1.0.2 adaptive threshold: mean + 2 SD of pipeline-scored composites only (seed excluded).
-# v1.0.2 changelog §1 supersedes this with fixed per-dimension threshold grounded in rubric;
-# Pass 3 rubric authoring required before that migration. Until then, this is the operative
-# threshold computation. MUST match api_server.compute_hi_balanced_threshold to avoid drift.
+# ═══════════════════════════════════════════════════════════════════════
+# GOLD HI GRADE GATE — v1.1.0 simplified rule
+# ═══════════════════════════════════════════════════════════════════════
+# Single rule: All 5 HUMAN dimensions ≥ 60, each backed by ≥1 real data source,
+# AND no active warning/critical decay alert.
+#
+# v1.0.x had: composite threshold + balance floor + integrity gate (3 gates with
+# adaptive threshold, ratchet, etc.). v1.1.0 supersedes all of that.
+#
+# Why simplified: humanwashing and algorithmic harm are absorbed *into* dimension
+# scores via sub-signal pipelines (M.2 catches data-ethics violations, U.4 catches
+# manipulative empathy, etc.), so they no longer need a separate gate. Decay
+# remains a separate gate because it captures real-time signals that backward-
+# looking dimension data can't see fast enough (Oracle layoffs ≠ caught by
+# annual SEC filings).
+
+GOLD_DIM_THRESHOLD = 60   # Each HUMAN dimension must score ≥ 60
+GOLD_DECAY_BLOCKING = {"warning", "critical"}  # decay levels that block Gold
 
 
-def compute_gold_threshold(all_scores):
-    """
-    Adaptive threshold: mean + 2 SD of PIPELINE-scored composites (excludes seed/Manual Scoring).
-    Hard floor THRESHOLD_FLOOR (55). Matches api_server.compute_hi_balanced_threshold.
+def check_hi_certified(record, decay_data=None):
+    """Check Gold HI Grade eligibility per v1.1.0 rule.
     
-    Note: Pending v1.0.2 big patch per changelog §1, which will replace this adaptive threshold
-    with a fixed rubric-grounded threshold anchored around 60–65.
+    Returns (is_gold, gates_dict) where gates_dict reports per-gate pass/fail
+    for use in audit drill-downs.
+    
+    Gate 1 — DIMENSIONS: All 5 dims (H/U/M/A/N) ≥ GOLD_DIM_THRESHOLD (60)
+    Gate 2 — EVIDENCE:   Each dim has ≥1 real data source (not Seed/default)
+    Gate 3 — MOMENTUM:   decay_level not in GOLD_DECAY_BLOCKING (warning/critical)
     """
-    composites = [s.get("composite", 0) for s in all_scores
-                  if s.get("composite", 0) > 0
-                  and s.get("data_sources")
-                  and s.get("data_sources") != ["Manual Scoring"]]
-    # Fallback to all composites if too few pipeline-scored companies
-    if len(composites) < 10:
-        composites = [s.get("composite", 0) for s in all_scores if s.get("composite", 0) > 0]
-    if len(composites) < 10:
-        return max(62, THRESHOLD_FLOOR)
-    import math
-    mean = sum(composites) / len(composites)
-    variance = sum((x - mean) ** 2 for x in composites) / len(composites)
-    stdev = math.sqrt(variance)
-    computed = round(mean + 2 * stdev, 1)
-    return max(computed, THRESHOLD_FLOOR)
-
-
-def check_hi_certified(record, threshold):
-    """Check all 3 gates for Gold HI Grade status.
-    Gate 1: Score — composite >= threshold
-    Gate 2: Balance — all 5 dimensions >= 42
-    Gate 3: Integrity — no humanwashing flags AND AHI < 30
-    """
-    dims = [record.get("D_H", 0), record.get("D_U", 0), record.get("D_M", 0), record.get("D_A", 0), record.get("D_N", 0)]
-    algo_harm_score = record.get("algo_harm", {}).get("algo_harm_score", 0)
-    # Filter out AH: flags from humanwashing count — those are informational, not gate-blocking
-    hw_flags = [f for f in record.get("humanwashing_flags", []) if not f.startswith("AH:")]
-    gates = {
-        "score": record.get("composite", 0) >= threshold,
-        "balance": all(d >= 42 for d in dims),
-        "integrity": len(hw_flags) == 0 and algo_harm_score < 30,
+    dims = {
+        "H": record.get("D_H", 0),
+        "U": record.get("D_U", 0),
+        "M": record.get("D_M", 0),
+        "A": record.get("D_A", 0),
+        "N": record.get("D_N", 0),
     }
-    return all(gates.values()), gates
+    
+    # Gate 1: every dim ≥ 60
+    dim_pass = {k: v >= GOLD_DIM_THRESHOLD for k, v in dims.items()}
+    gate_dimensions = all(dim_pass.values())
+    
+    # Gate 2: every dim has ≥1 real source
+    # Real source = anything that's NOT just ["Seed Estimate"] or empty.
+    # Manual Scoring (seed) records explicitly fail this gate — Gold requires
+    # pipeline-verified evidence per the B2B "no black boxes" claim.
+    genome = record.get("genome", {})
+    evidence_pass = {}
+    for dim_key in "HUMAN":
+        sources = genome.get(dim_key, {}).get("sources", [])
+        # Exclude Seed Estimate and require at least one real source
+        real = [s for s in sources if s and s != "Seed Estimate"]
+        evidence_pass[dim_key] = len(real) >= 1
+    gate_evidence = all(evidence_pass.values())
+    
+    # Gate 3: decay momentum check
+    decay_level = "stable"  # default if no decay data
+    if decay_data:
+        decay_level = decay_data.get("decay_level", "stable")
+    elif record.get("decay_level"):
+        decay_level = record.get("decay_level")
+    gate_momentum = decay_level not in GOLD_DECAY_BLOCKING
+    
+    gates = {
+        "dimensions": gate_dimensions,
+        "evidence": gate_evidence,
+        "momentum": gate_momentum,
+        "_detail": {
+            "dim_pass": dim_pass,
+            "evidence_pass": evidence_pass,
+            "decay_level": decay_level,
+        }
+    }
+    
+    return all([gate_dimensions, gate_evidence, gate_momentum]), gates
+
+
+# Legacy threshold function — kept as no-op shim for any caller that hasn't
+# migrated to check_hi_certified yet. v1.1.0 has no adaptive threshold;
+# Gold is determined per-company by the 3-gate rule above.
+def compute_gold_threshold(all_scores):
+    """DEPRECATED in v1.1.0. Returns GOLD_DIM_THRESHOLD for backward compat.
+    Old callers expecting a composite threshold should be migrated to check_hi_certified."""
+    return GOLD_DIM_THRESHOLD
+
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -973,13 +992,13 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         algo_flags = [f"AH: {f}" for f in algo_harm["flags"][:3]]  # Top 3 flags
         hw_flags.extend(algo_flags)
 
-    return {
+    record = {
         "company": company_name, "ticker": ticker, "industry": industry, "sic": sic,
         "sic_description": sec_data.get("n_signals", {}).get("sic_description", "") if sec_data else "",
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": "Estimated", "spec_version": "1.0.0",
+        "confidence": "Estimated", "spec_version": "1.1.0",
         "data_sources": all_sources,
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
         "humanwashing_flags": hw_flags,
@@ -1002,6 +1021,15 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
             "epa_violations": epa_data.get("a_signals", {}).get("total_violations_3yr") if epa_data else None,
         },
     }
+    
+    # Compute Gold HI Grade per v1.1.0 rule. Decay data isn't available at record-build
+    # time (engine runs before heartbeat_monitor); api_server attaches decay and re-evaluates
+    # at serve time. Engine writes Gold based on dimensions+evidence only; momentum gate
+    # passes by default and api_server may flip it to False if decay is warning/critical.
+    is_gold, gates = check_hi_certified(record, decay_data=None)
+    record["hi_balanced"] = is_gold
+    record["hi_balanced_gates"] = gates  # for audit drill-down per AUDIT_TRAIL §2
+    return record
 
 
 def main():
