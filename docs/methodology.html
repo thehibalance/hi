@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Methodology · The math behind being human kind.</title>
+<meta name="description" content="HI Grade methodology v1.1.0. How we score every company on how they treat people. No AI, no black boxes, just math and data.">
+<meta property="og:title" content="HI Grade Methodology · The math behind being human kind.">
+<meta property="og:description" content="The balance between Human Intelligence and Artificial Intelligence — measured without AI.">
+<style>
+  :root {
+    --navy: #1B3A5C;
+    --navy-dark: #0F1A2E;
+    --slate: #2E5E8E;
+    --sky: #3A7BBF;
+    --gold: #C49B20;
+    --gold-light: #E5C44A;
+    --gold-bg: #FDF7E3;
+    --ink: #1a1a1a;
+    --muted: #6B7280;
+    --soft: #F7F8FA;
+    --line: #E5E7EB;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    background: #fff;
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--navy-dark);
+    border-bottom: 3px solid var(--sky);
+    padding: 14px 0;
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px; color: #fff;
+    text-decoration: none; letter-spacing: 1px;
+  }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-link {
+    color: #8899AA; font-size: 13px; font-weight: 500;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+  }
+  .nav-link.active, .nav-link:hover {
+    color: #fff; border-bottom-color: var(--sky);
+  }
+  .nav-tagline {
+    color: #5A7A9A; font-size: 11px; letter-spacing: 1.5px;
+    font-weight: 500; text-transform: uppercase;
+  }
+
+  .hero {
+    padding: 64px 24px 48px;
+    max-width: 860px; margin: 0 auto;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    color: var(--gold); text-transform: uppercase;
+    background: var(--gold-bg);
+    padding: 4px 12px; border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(34px, 5vw, 52px);
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .hero-lead {
+    font-size: 19px; color: var(--muted);
+    max-width: 640px; margin: 0 auto;
+    font-weight: 400;
+  }
+  .version-tag {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 12px; color: var(--muted);
+    letter-spacing: 1px;
+  }
+  .version-tag .badge {
+    display: inline-block;
+    background: var(--soft); color: var(--navy);
+    padding: 2px 10px; border-radius: 4px;
+    font-weight: 700; margin-right: 6px;
+  }
+
+  .layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+  }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .toc { display: none; }
+  }
+
+  .toc {
+    position: sticky;
+    top: 80px;
+    align-self: start;
+    font-size: 13px;
+    padding-top: 48px;
+  }
+  .toc-title {
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .toc ol { list-style: none; counter-reset: toc; }
+  .toc li {
+    counter-increment: toc;
+    padding: 6px 0;
+    border-left: 2px solid var(--line);
+    padding-left: 12px;
+    margin-left: 0;
+  }
+  .toc li::before {
+    content: counter(toc) ". ";
+    color: var(--muted);
+    font-weight: 600;
+    margin-right: 2px;
+  }
+  .toc a {
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+  .toc a:hover { color: var(--gold); }
+
+  .content {
+    padding: 48px 0 96px;
+    max-width: 720px;
+  }
+  .content h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    color: var(--navy);
+    margin-top: 64px;
+    margin-bottom: 18px;
+    line-height: 1.2;
+    scroll-margin-top: 100px;
+  }
+  .content h2:first-child { margin-top: 0; }
+  .content h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-top: 36px;
+    margin-bottom: 12px;
+  }
+  .content h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-top: 28px;
+    margin-bottom: 8px;
+  }
+  .content p {
+    margin-bottom: 18px;
+    color: var(--ink);
+  }
+  .content strong { color: var(--navy); font-weight: 700; }
+  .content em { color: var(--muted); font-style: italic; }
+  .content ul, .content ol {
+    margin-bottom: 20px;
+    padding-left: 24px;
+  }
+  .content li { margin-bottom: 8px; }
+  .content a {
+    color: var(--sky);
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+  .content a:hover { border-bottom-color: var(--sky); }
+  .content blockquote {
+    border-left: 3px solid var(--gold);
+    padding: 4px 0 4px 20px;
+    margin: 24px 0;
+    color: var(--navy);
+    font-style: italic;
+    font-size: 18px;
+  }
+  .content code {
+    background: var(--soft);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: ui-monospace, 'SF Mono', monospace;
+    font-size: 14px;
+    color: var(--navy);
+  }
+
+  .pullquote {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    line-height: 1.3;
+    color: var(--navy);
+    margin: 40px 0;
+    padding: 24px 0;
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    text-align: center;
+    font-style: italic;
+  }
+
+  .dim-card {
+    background: linear-gradient(135deg, #fff 0%, var(--soft) 100%);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 16px 0;
+  }
+  .dim-label {
+    display: inline-block;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    font-family: 'DM Serif Display', serif;
+    margin-right: 12px;
+    vertical-align: top;
+  }
+  .dim-content { display: inline-block; width: calc(100% - 60px); vertical-align: top; }
+  .dim-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .dim-question {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .callout {
+    background: var(--gold-bg);
+    border: 1px solid #E8D785;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    font-size: 15px;
+    color: #5F4A08;
+  }
+  .callout strong { color: #3D2F04; }
+
+  .tld {
+    background: var(--navy);
+    color: #fff;
+    padding: 32px;
+    border-radius: 12px;
+    margin: 40px 0;
+    text-align: center;
+  }
+  .tld-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+  }
+  .tld p { color: rgba(255,255,255,0.9); font-size: 17px; }
+
+  .subsignal-grid {
+    background: var(--soft);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 16px 0;
+  }
+  .subsignal-grid h4 {
+    margin-top: 0; margin-bottom: 10px;
+    color: var(--navy);
+    font-size: 15px;
+  }
+  .subsignal-grid ul {
+    list-style: none; padding: 0;
+    margin: 0;
+  }
+  .subsignal-grid li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+    margin: 0;
+  }
+  .subsignal-grid li:last-child { border-bottom: none; }
+  .subsignal-grid li strong {
+    display: inline-block;
+    background: #fff;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 8px;
+    font-family: ui-monospace, monospace;
+    color: var(--navy);
+    border: 1px solid var(--line);
+  }
+
+  .gate-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+  @media (max-width: 720px) {
+    .gate-grid { grid-template-columns: 1fr; }
+  }
+  .gate-card {
+    background: #fff;
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .gate-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .gate-title {
+    font-weight: 800;
+    color: var(--navy);
+    font-size: 16px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .gate-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .footer-meta {
+    background: var(--soft);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 40px 0;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+  }
+  .footer-meta strong { color: var(--navy); }
+
+  .site-footer {
+    background: var(--navy-dark);
+    color: #B4BFCC;
+    padding: 40px 24px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .site-footer a { color: var(--gold-light); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">hi.</a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/sources.html" class="nav-link">Sources</a>
+      <a href="/methodology.html" class="nav-link active">Methodology</a>
+      <a href="/#about" class="nav-link">About</a>
+      <a href="/#contact" class="nav-link">Say hi</a>
+    </div>
+    <span class="nav-tagline">HUMAN KIND?</span>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Methodology</div>
+  <h1 class="hero-title">The math behind being human kind.</h1>
+  <p class="hero-lead">
+    How HI Grade scores every company on how they treat people. The balance between Artificial Intelligence and Human Intelligence &mdash; measured without AI.
+  </p>
+  <div class="version-tag">
+    <span class="badge">v1.1.0</span>
+    April 2026 · Apache 2.0 · <a href="https://github.com/thehibalance/hi/blob/main/METHODOLOGY.md" style="color: var(--muted);">View on GitHub</a>
+  </div>
+</div>
+
+<div class="layout">
+
+  <aside class="toc">
+    <div class="toc-title">Sections</div>
+    <ol>
+      <li><a href="#why">Why HI Grade exists</a></li>
+      <li><a href="#framework">The HUMAN framework</a></li>
+      <li><a href="#subsignals">The 19 sub-signals</a></li>
+      <li><a href="#gold">Gold HI Grade gates</a></li>
+      <li><a href="#balance">AI-HI Balance principle</a></li>
+      <li><a href="#indexes">Humanwashing, AHI, PHI</a></li>
+      <li><a href="#sources">The 42 data sources</a></li>
+      <li><a href="#limits">What we measure (and don't)</a></li>
+      <li><a href="#verify">Open source &amp; verify</a></li>
+    </ol>
+  </aside>
+
+  <article class="content">
+
+    <!-- Section 1 -->
+    <section id="why">
+      <h2>1. Why HI Grade exists</h2>
+      <p>HI Grade started with a question on Earth Day 2025: <strong>if AI is changing everything, who's measuring what we're losing?</strong></p>
+      <p>Not just jobs. The craft behind the work. The empathy in the service. The humans in the loop. The balance between what AI handles and what humans still do.</p>
+      <p>HI Grade exists to measure that balance.</p>
+
+      <div class="pullquote">
+        The balance between Artificial Intelligence and Human Intelligence &mdash; measured without AI.
+      </div>
+
+      <p>Every other ESG framework now uses large language models to summarize reports, classify sentiment, and generate scores. We don't. HI Grade uses deterministic math on public data. SEC filings. EPA violations. Government datasets. Third-party certifications. Every sub-signal is a published threshold applied to a public number. <strong>No sentiment analysis in scoring. No neural networks making judgments. No hallucinations.</strong></p>
+
+      <p><strong>Edge to cloud, no black boxes &mdash; just math and data.</strong></p>
+      <p>The code is open source. The data is public. The math is reproducible. Run it yourself and get the same answer we got.</p>
+
+      <p><strong>The name encodes the question.</strong> Is it <code>hi</code> &mdash; a greeting? Or <code>HI</code> &mdash; Human Intelligence? That's what HI Grade asks of every company: as AI reshapes what they build and how they serve, how much human is left in the final thing you experience?</p>
+
+      <h3>What ESG got wrong</h3>
+      <p>MSCI famously rated ExxonMobil higher than Tesla on environmental factors. Sustainalytics rates tobacco companies on "governance practices" rather than the product they sell. The largest ESG providers charge companies millions to be rated &mdash; a pay-to-play system that biases toward those who can afford the fees.</p>
+      <p>Those frameworks were built before ChatGPT. Before AI could write your customer service emails, make your hiring decisions, and compose the ads you see. Before it became possible for a company to cut 40% of its workforce, replace them with algorithms, and keep marketing itself as "human-first."</p>
+      <p>HI Grade measures the thing ESG missed: <strong>is there still a human in there?</strong></p>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="framework">
+      <h2>2. The HUMAN framework</h2>
+      <p>HI Grade scores companies across five dimensions. Together they spell HUMAN:</p>
+
+      <div class="dim-card">
+        <span class="dim-label">H</span>
+        <div class="dim-content">
+          <div class="dim-title">Human Consciousness</div>
+          <div class="dim-question">Does the company value and invest in its people as people?</div>
+          <p style="margin-bottom: 0; font-size: 15px;">Measures workforce investment, craft depth, human decision depth (are humans still making decisions or just approving what algorithms decided?), and human augmentation balance. <strong>High scorers</strong> invest in skill development, keep humans in leadership. <strong>Low scorers</strong> have revenue-per-employee anomalies (humanwashing flag), mass layoffs without transition, automation without oversight.</p>
+        </div>
+      </div>
+
+      <div class="dim-card">
+        <span class="dim-label">U</span>
+        <div class="dim-content">
+          <div class="dim-title">Understanding &amp; Empathy</div>
+          <div class="dim-question">Does the company actually care about the people it serves?</div>
+          <p style="margin-bottom: 0; font-size: 15px;">Measures customer empathy (complaint resolution, support accessibility), worker empathy (employee sentiment, wage fairness, workplace safety), relational integrity (treatment of underrepresented groups), simulated empathy detection (can you tell if a "personal" interaction is AI-generated?). <strong>High scorers</strong>: strong complaint resolution, HRC recognition, accessibility commitments. <strong>Low scorers</strong>: high complaint density, worker discrimination findings, scripted "empathy."</p>
+        </div>
+      </div>
+
+      <div class="dim-card">
+        <span class="dim-label">M</span>
+        <div class="dim-content">
+          <div class="dim-title">Morals &amp; Ethics</div>
+          <div class="dim-question">Does the company do right by markets, customers, data, and democracy?</div>
+          <p style="margin-bottom: 0; font-size: 15px;">Covers pricing, data, market, product, and political ethics. <strong>High scorers</strong>: clean regulatory records, few breaches, transparent political activity, Fair Trade/B Corp certifications, stakeholder governance. <strong>Low scorers</strong>: major enforcement actions, data breaches affecting millions, extreme partisan concentration, product recall histories.</p>
+        </div>
+      </div>
+
+      <div class="dim-card">
+        <span class="dim-label">A</span>
+        <div class="dim-content">
+          <div class="dim-title">Alive &amp; Environmental</div>
+          <div class="dim-question">Does the company treat the living planet as a stakeholder?</div>
+          <p style="margin-bottom: 0; font-size: 15px;">Measures energy/emissions (CDP Climate, Climate Neutral, SBTi), water stewardship (CDP Water), land/habitat (USDA Organic, CDP Forests, deforestation risk), product lifecycle (iFixit, B Corp Environment, Fair Trade). <strong>High scorers</strong>: verified emissions data, third-party certifications, products designed for longevity. <strong>Low scorers</strong>: EPA enforcement, non-disclosure, planned obsolescence.</p>
+        </div>
+      </div>
+
+      <div class="dim-card">
+        <span class="dim-label">N</span>
+        <div class="dim-content">
+          <div class="dim-title">Natural Transparency</div>
+          <div class="dim-question">Can you actually see what the company is doing?</div>
+          <p style="margin-bottom: 0; font-size: 15px;">Measures whether disclosures, filings, and reporting are thorough enough to verify. Covers reporting quality (GRI compliance, SEC filing transparency) and filing volume. <strong>High scorers</strong>: file everything required plus voluntary disclosures (GRI, CDP, SBTi), rarely restate, strong audit trails. <strong>Low scorers</strong>: restatement histories, late filings, minimal voluntary disclosure.</p>
+        </div>
+      </div>
+
+      <h3>Why these five</h3>
+      <p>Every dimension asks the same underlying question in a different form: <strong>where has AI &mdash; or any form of scale-over-humanity &mdash; crossed the line from augmenting humans to replacing them without acknowledgment?</strong></p>
+      <ul>
+        <li><strong>H</strong> asks: Are the people still here, still valued, still deciding?</li>
+        <li><strong>U</strong> asks: Is the care real, or simulated?</li>
+        <li><strong>M</strong> asks: Who's accountable when the algorithm makes a mistake?</li>
+        <li><strong>A</strong> asks: Is efficiency hiding environmental or social cost?</li>
+        <li><strong>N</strong> asks: Can you verify any of it?</li>
+      </ul>
+      <p>A company can score well on all five while being deeply AI-enabled. <strong>That's the point.</strong> HI Grade measures <em>balance</em>, not AI absence.</p>
+    </section>
+
+    <!-- Section 3 -->
+    <section id="subsignals">
+      <h2>3. The 19 sub-signals</h2>
+      <p>Each HUMAN dimension is computed from 2-5 sub-signals. The current v1.1.0 engine scores <strong>19 sub-signals</strong>. Five additional sub-signals (H.4, N.1, N.3, N.4, U.5) are defined in the spec but not yet scored &mdash; they're in active development for v1.2+.</p>
+
+      <div class="subsignal-grid">
+        <h4>H &mdash; Human Consciousness (4 sub-signals)</h4>
+        <ul>
+          <li><strong>H.1</strong> Workforce Valuation &mdash; Revenue-per-employee vs. BLS industry median. Humanwashing flag above 4× median.</li>
+          <li><strong>H.2</strong> Craft &mdash; BLS wage data vs. national average, weighted by industry and certifications.</li>
+          <li><strong>H.3</strong> Human Decision Depth &mdash; SEC headcount, R&amp;D per employee, CEO pay ratio.</li>
+          <li><strong>H.5</strong> Human Augmentation Index &mdash; AI displacement from SEC filings, news, headcount changes. <em>The AI-balance signal.</em></li>
+        </ul>
+      </div>
+
+      <div class="subsignal-grid">
+        <h4>U &mdash; Understanding &amp; Empathy (4 sub-signals)</h4>
+        <ul>
+          <li><strong>U.1</strong> Customer Empathy &mdash; CFPB complaint volume per revenue, resolution rates, BBB ratings.</li>
+          <li><strong>U.2</strong> Worker Empathy &mdash; Glassdoor ratings, OSHA violation severity, DOL wage/hour enforcement, BLS wages.</li>
+          <li><strong>U.3</strong> Relational Integrity &mdash; HRC Corporate Equality Index, Disability:IN DEI, EEOC charges, B Corp certification.</li>
+          <li><strong>U.4</strong> Simulated Empathy Detection &mdash; Glassdoor culture vs. industry baseline for AI-scripted interaction signal.</li>
+        </ul>
+      </div>
+
+      <div class="subsignal-grid">
+        <h4>M &mdash; Morals &amp; Ethics (5 sub-signals)</h4>
+        <ul>
+          <li><strong>M.1</strong> Pricing Ethics &mdash; CFPB pricing-related complaints normalized to revenue.</li>
+          <li><strong>M.2</strong> Data Ethics &mdash; Have I Been Pwned breach history, records exposed, frequency.</li>
+          <li><strong>M.3</strong> Market Ethics &mdash; SEC litigation, EPA penalties, Fair Trade, USDA Organic (federal supply-chain verification).</li>
+          <li><strong>M.4</strong> Product Ethics &mdash; CPSC recalls, FDA warning letters, NHTSA investigations, Glassdoor management.</li>
+          <li><strong>M.5</strong> Stakeholder Governance &mdash; B Corp (legal stakeholder structure), 1% for the Planet (revenue pledge), FEC donations, IRS 990.</li>
+        </ul>
+      </div>
+
+      <div class="subsignal-grid">
+        <h4>A &mdash; Alive &amp; Environmental (4 sub-signals)</h4>
+        <ul>
+          <li><strong>A.1</strong> Energy &amp; Emissions &mdash; CDP Climate, Climate Neutral certification, 1% for the Planet, SBTi.</li>
+          <li><strong>A.2</strong> Water &mdash; CDP Water Security, EPA water violations.</li>
+          <li><strong>A.3</strong> Land &amp; Habitat &mdash; USDA Organic (federal soil/chemicals standard), CDP Forests, industry deforestation risk, EPA violations.</li>
+          <li><strong>A.4</strong> Product Lifecycle &mdash; iFixit Repairability, B Corp Environment, Fair Trade, USDA Organic, Climate Neutral footprint.</li>
+        </ul>
+      </div>
+
+      <div class="subsignal-grid">
+        <h4>N &mdash; Natural Transparency (2 sub-signals)</h4>
+        <ul>
+          <li><strong>N.2</strong> Reporting Quality &mdash; GRI Sustainability compliance, SEC filing transparency, restatement history.</li>
+          <li><strong>N.5</strong> Filing Volume &mdash; Total SEC filings, OpenCorporates registry depth, disclosure completeness.</li>
+        </ul>
+      </div>
+
+      <div class="callout">
+        <strong>Want the exact thresholds?</strong> The <a href="https://github.com/thehibalance/hi/blob/main/RUBRIC.md" style="color: #5F4A08; font-weight: 600;">technical rubric on GitHub</a> shows the full scoring ladder per sub-signal, the data source backing each, and whether the ladder is <strong>grounded</strong> (derived from an authoritative source) or <strong>editorial</strong> (chosen by HI Grade with documented reasoning). We label each honestly.
+      </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section id="gold">
+      <h2>4. Gold HI Grade &mdash; the v1.1.0 gate</h2>
+      <p>A Gold HI Grade is the highest recognition HI Grade awards. It signals that a company has achieved balanced, documented, and currently-maintained performance across all five HUMAN dimensions.</p>
+      <p><strong>Gold status is earned algorithmically, not purchased.</strong></p>
+
+      <h3>The three gates</h3>
+      <p>A company earns Gold when it passes <strong>all three</strong> gates:</p>
+
+      <div class="gate-grid">
+        <div class="gate-card">
+          <div class="gate-num">1</div>
+          <div class="gate-title">Dimensions</div>
+          <div class="gate-desc">All 5 HUMAN dimensions score <strong>60 or higher</strong>. No single weak dimension allowed.</div>
+        </div>
+        <div class="gate-card">
+          <div class="gate-num">2</div>
+          <div class="gate-title">Evidence</div>
+          <div class="gate-desc">Each dimension has <strong>at least one real public source</strong>. Industry defaults don't count.</div>
+        </div>
+        <div class="gate-card">
+          <div class="gate-num">3</div>
+          <div class="gate-title">Momentum</div>
+          <div class="gate-desc">Not in <strong>warning or critical decay</strong> based on 90-day trailing signals.</div>
+        </div>
+      </div>
+
+      <h4>Why dimensions (not just a composite)</h4>
+      <p>A company with H=72, U=71, M=68, A=70, N=59 <strong>fails</strong> Gold. The 59 on Natural Transparency disqualifies regardless of strength elsewhere. This prevents companies from averaging away a dimensional failure. Ethics violations matter more than aggregate strength.</p>
+
+      <h4>Why evidence matters</h4>
+      <p>A company cannot earn Gold on industry defaults alone. If H.1 for a company defaults to the industry median because we have no SEC data, no job-board data, and no HRC data, that dimension fails the evidence gate &mdash; even if the default happens to be 75. Acceptable sources include SEC, EPA, BLS, CDP, Glassdoor, HRC, Disability:IN, B Corp, Fair Trade, USDA Organic, Climate Neutral, 1% for the Planet, and the 30+ other sources in the pipeline.</p>
+
+      <h4>Why momentum &mdash; the Oracle problem</h4>
+      <p>When Oracle executed mass layoffs in early 2025, their backward-looking SEC filings still showed the pre-layoff workforce. A scoring system that only read last-quarter's 10-K would have given Oracle a high H score the day they cut 40% of US employees. HI Grade's momentum gate catches this in real time by monitoring news, 8-K filings, WARN Act notices, and other decay signals across a 90-day rolling window.</p>
+
+      <h3>How a score is computed</h3>
+      <p>At the highest level:</p>
+      <ol>
+        <li><strong>Collection</strong> &mdash; Every night, pipelines pull data from 42 public sources</li>
+        <li><strong>Sub-signal scoring</strong> &mdash; Each sub-signal applies its published ladder to produce a 0-100 score</li>
+        <li><strong>Dimension aggregation</strong> &mdash; Sub-signals within a dimension are weighted and summed</li>
+        <li><strong>Composite calculation</strong> &mdash; Dimensions are weighted and averaged</li>
+        <li><strong>Gate evaluation</strong> &mdash; The three Gold gates check dimensions, evidence, and momentum independently</li>
+        <li><strong>Decay monitoring</strong> &mdash; The Heartbeat system continuously watches for momentum changes</li>
+      </ol>
+      <p>The full weighting matrix is published in the <a href="https://github.com/thehibalance/hi">source code on GitHub</a>.</p>
+    </section>
+
+    <!-- Section 5 -->
+    <section id="balance">
+      <h2>5. The AI-HI Balance principle</h2>
+
+      <p><strong>Every ESG framework was built before ChatGPT.</strong></p>
+      <p>They measure environment, governance, social practices &mdash; but none of them measure what happens when a company replaces its humans with algorithms and keeps marketing to you like the humans are still there.</p>
+
+      <div class="pullquote">HI Grade measures that.</div>
+
+      <h3>What "balance" means</h3>
+      <p>HI Grade is not anti-AI. A company can use AI extensively &mdash; for coding, for logistics, for customer service, for operations &mdash; and still earn a Gold HI Grade.</p>
+      <p>What HI Grade penalizes is <strong>imbalance</strong>: using AI to scale operations while claiming craft, replacing humans without transparency, removing people from decisions that affect other people, and hiding the AI boundary from customers.</p>
+      <p>The balance we measure has three components:</p>
+      <ol>
+        <li><strong>Transparency</strong> &mdash; Does the company tell you what's AI-driven and what's human?</li>
+        <li><strong>Craft preservation</strong> &mdash; Are humans still making the judgment calls that require human judgment?</li>
+        <li><strong>Displacement accountability</strong> &mdash; When AI replaces work, does the company invest in the displaced workers, or just pocket the savings?</li>
+      </ol>
+
+      <h3>Measured without AI</h3>
+      <p>HI Grade uses no AI in the scoring pipeline.</p>
+      <ul>
+        <li>No large language models summarizing ESG reports</li>
+        <li>No neural networks classifying sentiment</li>
+        <li>No machine learning inferring "good" or "bad"</li>
+        <li>No AI-generated ratings of any kind</li>
+      </ul>
+      <p>Every score is a deterministic computation on public data. Run the same code on the same data and get the same answer. No hallucinations. No probabilistic judgments. Every decision traceable.</p>
+      <p>We do use AI to help <em>build</em> the system &mdash; to write Python, draft documentation, and test edge cases. We don't use AI to <em>judge</em> any company. The distinction matters: LLMs are excellent for engineering work and explanation, and untrustworthy for the kind of consistent, auditable, high-stakes judgments ESG ratings require.</p>
+      <p>This is a deliberate architectural choice. The entire value proposition of HI Grade is <strong>reproducibility and trust</strong>. An LLM-generated score cannot be reproduced exactly, cannot be audited line-by-line, and cannot defend itself against "why did you rate us that way?" in a regulatory or legal context. <strong>Math and data can.</strong></p>
+
+      <h3>Edge to cloud, no black boxes</h3>
+      <p>Every piece of the HI Grade system is open:</p>
+      <ul>
+        <li>The scoring engine runs on Railway &mdash; you can see the commit hash that produced any score</li>
+        <li>The website runs on GitHub Pages &mdash; the entire static site is in the repo</li>
+        <li>The Chrome extension and iOS app hit the same public API every user can hit</li>
+        <li>The data pipelines are open source</li>
+        <li>The methodology &mdash; this document &mdash; is in the repo</li>
+      </ul>
+      <p>There is no proprietary model. There is no "secret sauce." There is no black box.</p>
+      <p>If you disagree with a company's score, you can: read the data we used, read the code that computed it, propose a change via GitHub, and if you're right, we'll update the system.</p>
+    </section>
+
+    <!-- Section 6 -->
+    <section id="indexes">
+      <h2>6. Humanwashing, AHI, and PHI</h2>
+      <p>HI Grade identifies three specific patterns that reveal AI-HI imbalance. Each is a detection system that flows into the dimension scores.</p>
+
+      <h3>Humanwashing™</h3>
+      <p><strong>The practice of selling human craft while operating algorithmically.</strong> A company markets itself as handcrafted, personal, or artisanal &mdash; but their revenue-per-employee suggests most of the actual output comes from automation.</p>
+      <p><strong>How we detect it:</strong> Revenue-per-employee (RPE) compared to the BLS industry median for the company's SIC code. A company at 1-2× its industry median is normal. A company at 4× or more triggers the humanwashing flag.</p>
+      <p><strong>Why it matters:</strong> If a coffee brand sells its product with stories of farmers and small roasters, but their RPE is 8× the industry median, something doesn't add up. Either the "handcrafted" story is aspirational marketing covering extensive automation, or the company is extracting value at a rate that the "small, human" narrative disguises.</p>
+      <p><strong>How it flows:</strong> The humanwashing flag penalizes H.1 (Workforce Valuation) directly. A flagged company cannot earn a high H.1 score no matter what other signals are present.</p>
+
+      <h3>Algorithmic Harm Index (AHI)</h3>
+      <p><strong>Measures the scale at which a company's algorithmic decisions affect humans.</strong> A platform that makes 1,000 automated moderation decisions per day has far lower AHI than one making 10 million. More decisions at algorithmic scale means more opportunities for systemic harm.</p>
+      <p><strong>How we detect it:</strong> User base size, decision volume (where disclosed), complaint volume per million users (CFPB + BBB where applicable), algorithmic failure mode severity.</p>
+      <p><strong>Why it matters:</strong> A bank's credit-decisioning algorithm affects one person at a time. A social media content-moderation algorithm affects billions at a time. Both can have bugs. AHI adjusts for the blast radius.</p>
+      <p><strong>How it flows:</strong> AHI penalties flow into M.3 (Market Ethics) and U.4 (Simulated Empathy Detection), proportional to scale and disclosure.</p>
+
+      <h3>Product Harm Index (PHI)</h3>
+      <p><strong>Measures physical or digital safety failures of a company's products.</strong> Recalls, warning letters, breach disclosures, safety violations.</p>
+      <p><strong>How we detect it:</strong> CPSC recalls (physical products), FDA warning letters (regulated products), NHTSA investigations (vehicles), HIBP breach records (digital products), EPA violations (environmental products).</p>
+      <p><strong>Why it matters:</strong> Product quality is a proxy for how seriously a company takes its obligation to the humans using its products.</p>
+      <p><strong>How it flows:</strong> PHI penalizes M.4 (Product Ethics) directly, weighted by severity.</p>
+
+      <h3>Why three separate systems</h3>
+      <p>Each system measures a different surface:</p>
+      <ul>
+        <li><strong>Humanwashing</strong> &mdash; the <em>narrative</em> the company tells</li>
+        <li><strong>AHI</strong> &mdash; the <em>algorithmic scale</em> they operate at</li>
+        <li><strong>PHI</strong> &mdash; the <em>physical/digital harm</em> they cause</li>
+      </ul>
+      <p>A company can be clean on all three. Many are. A company can be compromised on just one and still have a serious issue to address. These are not the only signals in HI Grade, but they are the most direct measures of AI-HI imbalance and harm scale.</p>
+    </section>
+
+    <!-- Section 7 -->
+    <section id="sources">
+      <h2>7. The 42 data sources</h2>
+      <p>Every HI Grade is computed from 42 public data sources across five categories:</p>
+      <ul>
+        <li><strong>13 government &amp; federal agencies</strong> (SEC, EPA, BLS, CFPB, FEC, FDA, FTC, CPSC, OSHA, DOL, EEOC, NHTSA, USPTO) &mdash; refreshed nightly</li>
+        <li><strong>7 financial &amp; corporate sources</strong> (Yahoo Finance, Finnhub, FMP, FRED, OpenCorporates, NewsAPI, CEO monitoring) &mdash; live API</li>
+        <li><strong>17 public datasets</strong> (Glassdoor, HRC CEI, Disability:IN DEI, CDP Climate/Water/Forests, GRI, SBTi, IRS 990, WARN Act, iFixit, BBB, HIBP, Alpha Vantage, layoff tracking, industry deforestation risk, industry RPE medians) &mdash; quarterly refresh</li>
+        <li><strong>5 certification partners</strong> (B Corp, Fair Trade USA/International, USDA Organic, Climate Neutral, 1% for the Planet) &mdash; quarterly manual review</li>
+        <li><strong>10 computed aggregates</strong> (RPE, headcount change, R&amp;D per employee, CEO pay ratio, insider trading patterns, filing transparency, patent flow, political donation concentration, consumer complaint density, safety violation severity) &mdash; computed nightly from the above</li>
+      </ul>
+      <p>The complete list &mdash; with sub-signal mapping, refresh cadence, and coverage per source &mdash; is at <a href="/sources.html">thehibalance.org/sources</a>.</p>
+      <p><strong>No proprietary databases. No purchased ratings. No pay-to-play access. Every source is independent of HI Grade's funding or commercial relationships.</strong></p>
+    </section>
+
+    <!-- Section 8 -->
+    <section id="limits">
+      <h2>8. What we measure vs. what we don't</h2>
+      <p><em>This section exists because credibility requires honesty about limitations.</em></p>
+
+      <h3>Coverage</h3>
+      <p>HI Grade currently scores <strong>817 companies</strong>. The coverage is skewed toward:</p>
+      <ul>
+        <li>Public US companies with SEC filings (high coverage)</li>
+        <li>Major consumer brands (high coverage)</li>
+        <li>Companies with third-party certifications (high coverage)</li>
+        <li>Private companies without certifications (limited coverage)</li>
+        <li>Non-US companies without US-traded stock (limited coverage)</li>
+      </ul>
+      <p>If you search for a company and don't find them, it's usually because the data isn't there yet &mdash; not because they're unrateable.</p>
+
+      <h3>Data freshness</h3>
+      <p>Refresh cadence varies by source:</p>
+      <ul>
+        <li>Government data (SEC, EPA, BLS) &mdash; nightly</li>
+        <li>Public datasets (HRC, CDP, GRI) &mdash; quarterly</li>
+        <li>Third-party certifications &mdash; quarterly manual review (API wiring planned post-launch)</li>
+        <li>Heartbeat/decay signals &mdash; throughout the day from news sources</li>
+      </ul>
+      <p>This means a score reflects the current best-available data, but some slow-moving signals may take up to 90 days to appear in scoring.</p>
+
+      <h3>What we don't score (yet)</h3>
+      <ul>
+        <li>Board composition (planned v1.2)</li>
+        <li>Supply chain depth beyond certified partners (planned v1.2)</li>
+        <li>Real-time AI usage disclosure (planned v1.2)</li>
+        <li>Geopolitical exposure (not planned)</li>
+        <li>Short-term stock performance (<em>intentionally excluded</em> &mdash; HI Grade is not a financial signal)</li>
+      </ul>
+
+      <h3>What we refuse to do</h3>
+      <ul>
+        <li>Accept payment from companies for ratings, higher scores, or data access</li>
+        <li>Use AI-generated content in scoring</li>
+        <li>Keep our methodology private or proprietary</li>
+        <li>Refuse to correct verified mistakes</li>
+        <li>Score any company we cannot defend publicly</li>
+      </ul>
+      <p>If a company believes their HI Grade is wrong, they can <a href="/#contact">request a review</a> with documented evidence. If they're right, we update the score and disclose the change.</p>
+
+      <div class="tld">
+        <div class="tld-title">What we promise</div>
+        <p>Methodology transparency. Source transparency. Code transparency. Error correction. No pay-to-play. Ever.</p>
+      </div>
+    </section>
+
+    <!-- Section 9 -->
+    <section id="verify">
+      <h2>9. Open source and how to verify</h2>
+      <p>HI Grade is built to be verified.</p>
+
+      <h3>GitHub repository</h3>
+      <p><a href="https://github.com/thehibalance/hi"><strong>github.com/thehibalance/hi</strong></a> &mdash; the complete system, Apache 2.0 licensed</p>
+      <p>You can:</p>
+      <ul>
+        <li>Read the scoring engine (<code>pipeline/scoring_engine.py</code>)</li>
+        <li>Read each data pipeline (<code>pipeline/*_pipeline.py</code>)</li>
+        <li>Review the technical rubric (<code>RUBRIC.md</code>)</li>
+        <li>File issues for bugs, improvements, or disagreements</li>
+        <li>Fork the repo and run the entire pipeline on your own infrastructure</li>
+      </ul>
+
+      <h3>API</h3>
+      <p><a href="https://api.thehibalance.org"><strong>api.thehibalance.org</strong></a> &mdash; the same API every user interface hits</p>
+      <p>Query any company score, view sub-signal breakdowns, and see the data sources that produced each signal. All endpoints are public. Rate-limited for free use, with higher tiers for institutional users.</p>
+
+      <h3>Contact</h3>
+      <p>Questions, feedback, disagreements: <a href="mailto:hi@thehibalance.org">hi@thehibalance.org</a></p>
+      <p>Request a company be scored: <a href="/#contact">thehibalance.org/#contact</a></p>
+      <p>Found a bug: <a href="https://github.com/thehibalance/hi/issues">github.com/thehibalance/hi/issues</a></p>
+    </section>
+
+    <div class="footer-meta">
+      <p><strong>HI Grade Methodology v1.1.0</strong></p>
+      <p>Published April 2026 · Apache 2.0 · <a href="https://github.com/thehibalance/hi/blob/main/METHODOLOGY.md">Read on GitHub</a></p>
+      <p style="margin-top: 8px; font-size: 11px;">© Morf Innovations LLC. HI Grade™, Humanwashing™, Algorithmic Harm Index™, Product Harm Index™ and related marks are trademarks of Morf Innovations LLC. Patent pending.</p>
+      <p style="margin-top: 8px; font-size: 11px;"><em>HI Grade is estimated from public data. Not financial, legal, or investment advice. Not affiliated with or endorsed by any company scored.</em></p>
+    </div>
+
+  </article>
+</div>
+
+<footer class="site-footer">
+  <p><strong>The HI Balance</strong> · thehibalance.org · Human kind?</p>
+  <p style="margin-top: 8px; opacity: 0.7; font-size: 12px;">Measured with math and data. Not AI.</p>
+</footer>
+
+</body>
+</html>
