@@ -202,6 +202,27 @@ _BCORP_NAME_INDEX = None  # {name_lower: record, ...}
 _FAIRTRADE_INDEX = None
 _FAIRTRADE_NAME_INDEX = None
 
+# ── USDA Organic data (Pass 3 Tier 0 wiring — federal agricultural certification) ──
+# USDA Organic: federal standard for organic food/fiber/livestock. No synthetic
+# inputs, no GMOs, soil health requirements, documented traceability.
+# Maps to: A.3 (Land & Habitat), A.4 (Product Lifecycle), M.3 (Market Ethics)
+_USDA_ORGANIC_INDEX = None
+_USDA_ORGANIC_NAME_INDEX = None
+
+# ── Climate Neutral data (Pass 3 Tier 0 wiring — carbon accounting certification) ──
+# Climate Neutral / The Climate Label: annual measurement + offset of cradle-to-customer
+# greenhouse gas emissions (Scope 1, 2, 3) with reduction plans.
+# Maps to: A.1 (Energy & Emissions), A.4 (Product Lifecycle)
+_CLIMATE_NEUTRAL_INDEX = None
+_CLIMATE_NEUTRAL_NAME_INDEX = None
+
+# ── 1% for the Planet data (Pass 3 Tier 0 wiring — revenue-bound environmental commitment) ──
+# 1% for the Planet: members pledge 1%+ of annual revenue to environmental nonprofits,
+# verified annually. Founded by Patagonia's Yvon Chouinard in 2002.
+# Maps to: A.1 (Energy & Emissions), M.5 (Stakeholder Governance)
+_ONE_PERCENT_INDEX = None
+_ONE_PERCENT_NAME_INDEX = None
+
 
 def _load_inclusion_data():
     """Load HRC and DEI score indexes from pipeline output. Idempotent."""
@@ -332,6 +353,143 @@ def _score_from_fairtrade(record):
     if tier == "partial": return 70
     if tier == "licensed": return 65
     return 65
+
+
+def _load_usda_organic_data():
+    """Load USDA Organic certification index from pipeline output. Idempotent."""
+    global _USDA_ORGANIC_INDEX, _USDA_ORGANIC_NAME_INDEX
+    if _USDA_ORGANIC_INDEX is not None:
+        return
+    _USDA_ORGANIC_INDEX, _USDA_ORGANIC_NAME_INDEX = {}, {}
+    
+    usda_path = Path("data/usda_organic/all_companies.json")
+    if usda_path.exists():
+        try:
+            for r in json.load(open(usda_path)):
+                t = (r.get("ticker") or "").upper().strip()
+                n = (r.get("company") or "").lower().strip()
+                if t: _USDA_ORGANIC_INDEX[t] = r
+                if n: _USDA_ORGANIC_NAME_INDEX[n] = r
+        except Exception:
+            pass
+
+
+def _get_usda_organic_record(ticker, company_name):
+    """Return USDA Organic record for a company if certified, else None."""
+    _load_usda_organic_data()
+    if ticker and ticker.upper() in _USDA_ORGANIC_INDEX:
+        return _USDA_ORGANIC_INDEX[ticker.upper()]
+    if company_name:
+        return _USDA_ORGANIC_NAME_INDEX.get(company_name.lower().strip())
+    return None
+
+
+def _score_from_usda_organic(record):
+    """Map USDA Organic tier → sub-signal contribution.
+    
+    Tier ladder:
+      100_percent (entire company/product organic)     → 85
+      made_with (70-94% organic)                       → 70
+      ingredients (specific ingredients organic)       → 60
+    
+    Non-certified return None.
+    """
+    if not record or not record.get("usda_organic_certified"):
+        return None
+    tier = record.get("usda_organic_tier", "ingredients")
+    if tier == "100_percent": return 85
+    if tier == "made_with": return 70
+    if tier == "ingredients": return 60
+    return 60
+
+
+def _load_climate_neutral_data():
+    """Load Climate Neutral certification index. Idempotent."""
+    global _CLIMATE_NEUTRAL_INDEX, _CLIMATE_NEUTRAL_NAME_INDEX
+    if _CLIMATE_NEUTRAL_INDEX is not None:
+        return
+    _CLIMATE_NEUTRAL_INDEX, _CLIMATE_NEUTRAL_NAME_INDEX = {}, {}
+    
+    cn_path = Path("data/climate_neutral/all_companies.json")
+    if cn_path.exists():
+        try:
+            for r in json.load(open(cn_path)):
+                t = (r.get("ticker") or "").upper().strip()
+                n = (r.get("company") or "").lower().strip()
+                if t: _CLIMATE_NEUTRAL_INDEX[t] = r
+                if n: _CLIMATE_NEUTRAL_NAME_INDEX[n] = r
+        except Exception:
+            pass
+
+
+def _get_climate_neutral_record(ticker, company_name):
+    """Return Climate Neutral record if certified, else None."""
+    _load_climate_neutral_data()
+    if ticker and ticker.upper() in _CLIMATE_NEUTRAL_INDEX:
+        return _CLIMATE_NEUTRAL_INDEX[ticker.upper()]
+    if company_name:
+        return _CLIMATE_NEUTRAL_NAME_INDEX.get(company_name.lower().strip())
+    return None
+
+
+def _score_from_climate_neutral(record):
+    """Climate Neutral gives a single certification tier (not scored sub-tiers like B Corp).
+    Currently-certified → 80, lapsed → 65 (was certified, monitor).
+    """
+    if not record or not record.get("climate_neutral_certified"):
+        return None
+    status = record.get("status", "certified")
+    if status == "certified": return 80
+    if status == "lapsed": return 65
+    return 80
+
+
+def _load_one_percent_data():
+    """Load 1% for the Planet membership index. Idempotent."""
+    global _ONE_PERCENT_INDEX, _ONE_PERCENT_NAME_INDEX
+    if _ONE_PERCENT_INDEX is not None:
+        return
+    _ONE_PERCENT_INDEX, _ONE_PERCENT_NAME_INDEX = {}, {}
+    
+    op_path = Path("data/one_percent/all_companies.json")
+    if op_path.exists():
+        try:
+            for r in json.load(open(op_path)):
+                t = (r.get("ticker") or "").upper().strip()
+                n = (r.get("company") or "").lower().strip()
+                if t: _ONE_PERCENT_INDEX[t] = r
+                if n: _ONE_PERCENT_NAME_INDEX[n] = r
+        except Exception:
+            pass
+
+
+def _get_one_percent_record(ticker, company_name):
+    """Return 1% for the Planet record if member, else None."""
+    _load_one_percent_data()
+    if ticker and ticker.upper() in _ONE_PERCENT_INDEX:
+        return _ONE_PERCENT_INDEX[ticker.upper()]
+    if company_name:
+        return _ONE_PERCENT_NAME_INDEX.get(company_name.lower().strip())
+    return None
+
+
+def _score_from_one_percent(record):
+    """1% for the Planet tier → sub-signal contribution.
+    
+    Full-company membership is structurally strongest (all revenue subject to pledge).
+    Brand-level is specific brand only. Product line is single product minimum.
+    
+      full_company   → 80
+      brand_level    → 70
+      product_line   → 60
+    """
+    if not record or not record.get("one_percent_member"):
+        return None
+    tier = record.get("tier", "full_company")
+    if tier == "full_company": return 80
+    if tier == "brand_level": return 70
+    if tier == "product_line": return 60
+    return 70
 
 
 def _get_hrc_score(ticker, company_name):
@@ -609,16 +767,23 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
     elif total_legal > 0: legal_m3 = 75
     else: legal_m3 = 85
 
-    # Fair Trade positive signal
+    # Fair Trade positive signal + USDA Organic (federal third-party supply-chain verification)
     ft_record = _get_fairtrade_record(ticker, company_name)
     ft_m3 = _score_from_fairtrade(ft_record)
+    usda_record = _get_usda_organic_record(ticker, company_name)
+    usda_m3 = _score_from_usda_organic(usda_record)
+    
+    # Gather positive certifications
+    positive_signals = [s for s in (ft_m3, usda_m3) if s is not None]
 
-    if ft_m3 is not None:
-        # Average positive Fair Trade evidence with legal-penalty baseline.
-        # High legal penalties should still drag down a Fair Trade partial — a company
-        # with $100M+ in penalties but Fair Trade coffee isn't "ethical at scale"
-        scores["M.3"] = round((legal_m3 + ft_m3) / 2, 1)
-        if "Fair Trade" not in sources_used: sources_used.append("Fair Trade")
+    if positive_signals:
+        # Average positive certification evidence, then blend with legal-penalty baseline.
+        # Weight positive signals at 60%, legal at 40% — legal penalties can still drag
+        # down a company with cert partials ($100M+ penalties matters even with Fair Trade coffee).
+        cert_avg = sum(positive_signals) / len(positive_signals)
+        scores["M.3"] = round(cert_avg * 0.6 + legal_m3 * 0.4, 1)
+        if ft_m3 is not None and "Fair Trade" not in sources_used: sources_used.append("Fair Trade")
+        if usda_m3 is not None and "USDA Organic" not in sources_used: sources_used.append("USDA Organic")
     else:
         scores["M.3"] = legal_m3
 
@@ -638,20 +803,26 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
         else:
             scores["M.4"] = 50  # No data = neutral
 
-    # M.5 Stakeholder Governance — B Corp legal structure is the strongest signal (literally
-    # defined by stakeholder-centric fiduciary duty). If certified B Corp, use that. Fall back
-    # to FEC political ethics, then Glassdoor CEO score.
+    # M.5 Stakeholder Governance — B Corp legal structure is strongest (stakeholder-centric
+    # fiduciary duty). 1% for the Planet is secondary (revenue-bound environmental pledge
+    # signals structural stakeholder alignment). Both average if present. Fall back to FEC,
+    # then Glassdoor CEO score.
     bcorp_m5 = None
-    bcorp_record = _get_bcorp_record(ticker, company_name)
-    if bcorp_record and bcorp_record.get("bcorp_certified"):
-        bcorp_m5 = _score_from_bcorp(bcorp_record)
+    bcorp_record_m5 = _get_bcorp_record(ticker, company_name)
+    if bcorp_record_m5 and bcorp_record_m5.get("bcorp_certified"):
+        bcorp_m5 = _score_from_bcorp(bcorp_record_m5)
     
+    op_record_m5 = _get_one_percent_record(ticker, company_name)
+    op_m5 = _score_from_one_percent(op_record_m5)
+    
+    stakeholder_signals = [s for s in (bcorp_m5, op_m5) if s is not None]
     fec_m5 = ss.get("fec", {}).get("M.5")
     
-    if bcorp_m5 is not None:
-        # B Corp is the definitional signal for M.5 stakeholder governance
-        scores["M.5"] = bcorp_m5
-        if "B Corp" not in sources_used: sources_used.append("B Corp")
+    if stakeholder_signals:
+        # Average certification evidence for stakeholder governance
+        scores["M.5"] = round(sum(stakeholder_signals) / len(stakeholder_signals), 1)
+        if bcorp_m5 is not None and "B Corp" not in sources_used: sources_used.append("B Corp")
+        if op_m5 is not None and "1% for the Planet" not in sources_used: sources_used.append("1% for the Planet")
     elif fec_m5 is not None:
         scores["M.5"] = fec_m5
         sources_used.append("FEC")
@@ -672,10 +843,32 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None, tick
     ss = subsignals or {}
     cdp_a = cdp_data.get("a_signals", {}) if cdp_data else {}
 
-    # A.1 Energy — CDP climate
+    # A.1 Energy & Emissions — CDP climate (strongest), then certification-grounded
+    # signals (Climate Neutral = measured + offset emissions; 1% for the Planet = revenue
+    # pledge to environmental causes), then industry default.
+    cn_record = _get_climate_neutral_record(ticker, company_name)
+    cn_a1 = _score_from_climate_neutral(cn_record)
+    op_record = _get_one_percent_record(ticker, company_name)
+    op_a1 = _score_from_one_percent(op_record)
+    env_signals = [s for s in (cn_a1, op_a1) if s is not None]
+    
     if cdp_a.get("cdp_climate_score") is not None:
-        scores["A.1"] = cdp_a["cdp_climate_score"]
+        # CDP is authoritative — use it, optionally blend with cert signals if present
+        cdp_score = cdp_a["cdp_climate_score"]
+        if env_signals:
+            # Weight CDP at 70%, certs at 30% (CDP is more specific to emissions; certs are
+            # positive commitments but don't guarantee actual reduction achievement)
+            scores["A.1"] = round(cdp_score * 0.7 + (sum(env_signals) / len(env_signals)) * 0.3, 1)
+            if cn_a1 is not None and "Climate Neutral" not in sources_used: sources_used.append("Climate Neutral")
+            if op_a1 is not None and "1% for the Planet" not in sources_used: sources_used.append("1% for the Planet")
+        else:
+            scores["A.1"] = cdp_score
         sources_used.append("CDP")
+    elif env_signals:
+        # No CDP data but certifications present — use their average
+        scores["A.1"] = round(sum(env_signals) / len(env_signals), 1)
+        if cn_a1 is not None and "Climate Neutral" not in sources_used: sources_used.append("Climate Neutral")
+        if op_a1 is not None and "1% for the Planet" not in sources_used: sources_used.append("1% for the Planet")
     else:
         defaults = {"energy": 30, "manufacturing": 45, "tech": 50, "finance": 65,
                     "healthcare": 55, "retail": 50, "food": 55, "media": 60,
@@ -689,9 +882,22 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None, tick
     else:
         scores["A.2"] = 50
 
-    # A.3 Land & Habitat — Enhanced with industry deforestation risk
+    # A.3 Land & Habitat — USDA Organic is strongest signal (soil health + no synthetic chemicals
+    # is literally the A.3 definition), then industry+EPA sub-signal, then EPA violations.
+    usda_record = _get_usda_organic_record(ticker, company_name)
+    usda_a3 = _score_from_usda_organic(usda_record)
     land_score = ss.get("land", {}).get("A.3")
-    if land_score is not None:
+    
+    if usda_a3 is not None:
+        # If we also have the industry/EPA sub-signal, blend for a more nuanced score
+        if land_score is not None:
+            scores["A.3"] = round(usda_a3 * 0.7 + land_score * 0.3, 1)
+            sources_used.append("USDA Organic")
+            if "Industry+EPA" not in sources_used: sources_used.append("Industry+EPA")
+        else:
+            scores["A.3"] = usda_a3
+            sources_used.append("USDA Organic")
+    elif land_score is not None:
         scores["A.3"] = land_score
         sources_used.append("Industry+EPA")
     else:
@@ -708,24 +914,30 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None, tick
             scores["A.3"] = 50
 
     # A.4 Product Lifecycle — iFixit hardware scores (strongest), then certification-grounded
-    # signals (B Corp Environment + Fair Trade product traceability), then CDP forests, then default.
+    # signals (B Corp Environment + Fair Trade + USDA Organic + Climate Neutral), then CDP forests, then default.
     hw_score = ss.get("hardware", {}).get("A.4")
     if hw_score is not None:
         scores["A.4"] = hw_score
         hw_src = ss.get("hardware", {}).get("source", "iFixit")
         if hw_src not in sources_used: sources_used.append(hw_src)
     else:
-        # Certification signals: B Corp Environment + Fair Trade traceability
+        # Certification signals: B Corp Environment + Fair Trade traceability + USDA Organic + Climate Neutral
         bcorp_record = _get_bcorp_record(ticker, company_name)
         bcorp_a4 = _score_from_bcorp(bcorp_record)
         ft_record = _get_fairtrade_record(ticker, company_name)
         ft_a4 = _score_from_fairtrade(ft_record)
-        cert_signals = [s for s in (bcorp_a4, ft_a4) if s is not None]
+        usda_record_a4 = _get_usda_organic_record(ticker, company_name)
+        usda_a4 = _score_from_usda_organic(usda_record_a4)
+        cn_record_a4 = _get_climate_neutral_record(ticker, company_name)
+        cn_a4 = _score_from_climate_neutral(cn_record_a4)
+        cert_signals = [s for s in (bcorp_a4, ft_a4, usda_a4, cn_a4) if s is not None]
         
         if cert_signals:
             scores["A.4"] = round(sum(cert_signals) / len(cert_signals), 1)
             if bcorp_a4 is not None and "B Corp" not in sources_used: sources_used.append("B Corp")
             if ft_a4 is not None and "Fair Trade" not in sources_used: sources_used.append("Fair Trade")
+            if usda_a4 is not None and "USDA Organic" not in sources_used: sources_used.append("USDA Organic")
+            if cn_a4 is not None and "Climate Neutral" not in sources_used: sources_used.append("Climate Neutral")
         elif cdp_a.get("cdp_forests_score") is not None:
             scores["A.4"] = cdp_a["cdp_forests_score"]
         else:
