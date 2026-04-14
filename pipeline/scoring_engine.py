@@ -195,6 +195,13 @@ _DEI_NAME_INDEX = None
 _BCORP_INDEX = None  # {ticker: record, ...}
 _BCORP_NAME_INDEX = None  # {name_lower: record, ...}
 
+# ── Fair Trade data (Pass 3 Tier 0 wiring — supply chain integrity) ──
+# Fair Trade USA + Fairtrade International: rigorous supply chain certification
+# ensuring fair compensation, safe working conditions, and traceability.
+# Maps to: M.3 (Market Ethics — supply chain), A.4 (Product Lifecycle)
+_FAIRTRADE_INDEX = None
+_FAIRTRADE_NAME_INDEX = None
+
 
 def _load_inclusion_data():
     """Load HRC and DEI score indexes from pipeline output. Idempotent."""
@@ -277,6 +284,54 @@ def _score_from_bcorp(record):
     if tier == "strong" or (score and score >= 100): return 80
     if tier == "certified" or (score and score >= 80): return 70
     return 65  # certified_unscored or defensive fallback
+
+
+def _load_fairtrade_data():
+    """Load Fair Trade certification index from pipeline output. Idempotent."""
+    global _FAIRTRADE_INDEX, _FAIRTRADE_NAME_INDEX
+    if _FAIRTRADE_INDEX is not None:
+        return
+    _FAIRTRADE_INDEX, _FAIRTRADE_NAME_INDEX = {}, {}
+    
+    ft_path = Path("data/fairtrade/all_companies.json")
+    if ft_path.exists():
+        try:
+            for r in json.load(open(ft_path)):
+                t = (r.get("ticker") or "").upper().strip()
+                n = (r.get("company") or "").lower().strip()
+                if t: _FAIRTRADE_INDEX[t] = r
+                if n: _FAIRTRADE_NAME_INDEX[n] = r
+        except Exception:
+            pass
+
+
+def _get_fairtrade_record(ticker, company_name):
+    """Return Fair Trade record for a company if certified, else None."""
+    _load_fairtrade_data()
+    if ticker and ticker.upper() in _FAIRTRADE_INDEX:
+        return _FAIRTRADE_INDEX[ticker.upper()]
+    if company_name:
+        return _FAIRTRADE_NAME_INDEX.get(company_name.lower().strip())
+    return None
+
+
+def _score_from_fairtrade(record):
+    """Map Fair Trade tier → sub-signal contribution.
+    
+    Tier ladder (matching Fair Trade USA partner categories):
+      full (entire company or 100% product line certified)   → 85
+      partial (specific product lines certified)             → 70
+      licensed (documented sourcing program)                 → 65
+    
+    Non-certified companies return None.
+    """
+    if not record or not record.get("fairtrade_certified"):
+        return None
+    tier = record.get("fairtrade_tier", "partial")
+    if tier == "full": return 85
+    if tier == "partial": return 70
+    if tier == "licensed": return 65
+    return 65
 
 
 def _get_hrc_score(ticker, company_name):
@@ -537,18 +592,35 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
     else:
         scores["M.2"] = 50  # No breach data ≠ good data ethics
 
-    # M.3 Market Ethics — SEC + EPA
+    # M.3 Market Ethics — SEC + EPA legal penalties (downward signal) blended with
+    # Fair Trade certification (positive supply-chain evidence). Fair Trade is the
+    # strongest positive M.3 signal available — certifies fair compensation, safe
+    # working conditions, and traceability.
     litigation = sec_m.get("litigation", {}).get("value")
     epa_penalties = epa_data.get("m_signals", {}).get("total_penalties", 0) if epa_data else 0
     epa_actions = epa_data.get("m_signals", {}).get("formal_actions", 0) if epa_data else 0
     total_legal = (litigation or 0) + epa_penalties
 
-    if total_legal > 1000000000: scores["M.3"] = 20
-    elif total_legal > 100000000: scores["M.3"] = 40
-    elif total_legal > 10000000: scores["M.3"] = 55
-    elif total_legal > 1000000: scores["M.3"] = 65
-    elif total_legal > 0: scores["M.3"] = 75
-    else: scores["M.3"] = 85
+    # Legal-penalty-based score (downward)
+    if total_legal > 1000000000: legal_m3 = 20
+    elif total_legal > 100000000: legal_m3 = 40
+    elif total_legal > 10000000: legal_m3 = 55
+    elif total_legal > 1000000: legal_m3 = 65
+    elif total_legal > 0: legal_m3 = 75
+    else: legal_m3 = 85
+
+    # Fair Trade positive signal
+    ft_record = _get_fairtrade_record(ticker, company_name)
+    ft_m3 = _score_from_fairtrade(ft_record)
+
+    if ft_m3 is not None:
+        # Average positive Fair Trade evidence with legal-penalty baseline.
+        # High legal penalties should still drag down a Fair Trade partial — a company
+        # with $100M+ in penalties but Fair Trade coffee isn't "ethical at scale"
+        scores["M.3"] = round((legal_m3 + ft_m3) / 2, 1)
+        if "Fair Trade" not in sources_used: sources_used.append("Fair Trade")
+    else:
+        scores["M.3"] = legal_m3
 
     if litigation: sources_used.append("SEC")
     if epa_penalties > 0 or epa_actions > 0: sources_used.append("EPA")
@@ -635,20 +707,25 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None, tick
         else:
             scores["A.3"] = 50
 
-    # A.4 Product Lifecycle — iFixit hardware scores (strongest), then B Corp certification
-    # (B Impact Environment assessment), then CDP forests, then industry default.
+    # A.4 Product Lifecycle — iFixit hardware scores (strongest), then certification-grounded
+    # signals (B Corp Environment + Fair Trade product traceability), then CDP forests, then default.
     hw_score = ss.get("hardware", {}).get("A.4")
     if hw_score is not None:
         scores["A.4"] = hw_score
         hw_src = ss.get("hardware", {}).get("source", "iFixit")
         if hw_src not in sources_used: sources_used.append(hw_src)
     else:
-        # B Corp certification includes Environment sub-assessment covering product lifecycle
+        # Certification signals: B Corp Environment + Fair Trade traceability
         bcorp_record = _get_bcorp_record(ticker, company_name)
         bcorp_a4 = _score_from_bcorp(bcorp_record)
-        if bcorp_a4 is not None:
-            scores["A.4"] = bcorp_a4
-            if "B Corp" not in sources_used: sources_used.append("B Corp")
+        ft_record = _get_fairtrade_record(ticker, company_name)
+        ft_a4 = _score_from_fairtrade(ft_record)
+        cert_signals = [s for s in (bcorp_a4, ft_a4) if s is not None]
+        
+        if cert_signals:
+            scores["A.4"] = round(sum(cert_signals) / len(cert_signals), 1)
+            if bcorp_a4 is not None and "B Corp" not in sources_used: sources_used.append("B Corp")
+            if ft_a4 is not None and "Fair Trade" not in sources_used: sources_used.append("Fair Trade")
         elif cdp_a.get("cdp_forests_score") is not None:
             scores["A.4"] = cdp_a["cdp_forests_score"]
         else:
