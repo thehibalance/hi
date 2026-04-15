@@ -84,7 +84,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <style>.ex-pill{display:inline-block;padding:5px 12px;margin:3px 4px;font-size:12px;color:var(--navy);background:#F5F7FA;border-radius:20px;cursor:pointer;font-weight:600;transition:all .15s}.ex-pill:hover{background:var(--navy);color:#fff;transform:translateY(-1px)}</style>
 
 <!-- Did You Know -->
-<div id="dykPanel" style="max-width:680px;margin:0 auto 22px;background:linear-gradient(135deg,#FAF8F2,#F8FAFC);border:1px solid #E8E2D0;border-radius:14px;padding:18px 22px;cursor:pointer;transition:all .25s" onclick="dykClick()" onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.06)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+<div id="dykPanel" style="max-width:680px;margin:0 auto 22px;background:linear-gradient(135deg,#FAF8F2,#F8FAFC);border:1px solid #E8E2D0;border-radius:14px;padding:18px 22px;cursor:pointer;transition:all .25s;position:relative" onclick="dykClick()" onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.06)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
 <div style="display:flex;align-items:flex-start;gap:14px">
 <div id="dykIcon" style="font-size:24px;line-height:1;flex-shrink:0;margin-top:2px">💡</div>
 <div style="flex:1;min-width:0">
@@ -92,7 +92,16 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div id="dykText" style="font-size:14px;color:var(--navy);line-height:1.45;font-weight:500">Loading...</div>
 </div>
 </div>
-<div id="dykDots" style="display:flex;gap:5px;justify-content:center;margin-top:14px"></div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid #E8E2D0">
+<div id="dykDots" style="display:flex;gap:5px;align-items:center"></div>
+<div style="display:flex;gap:6px;align-items:center">
+<span style="font-size:9px;color:var(--muted);font-weight:600;letter-spacing:0.8px;text-transform:uppercase;margin-right:2px">Share</span>
+<span class="dyk-share" onclick="event.stopPropagation();dykShareX()" title="Post on X" style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#000;color:#fff;font-size:11px;cursor:pointer;font-weight:700">𝕏</span>
+<span class="dyk-share" onclick="event.stopPropagation();dykShareLinkedIn()" title="Share on LinkedIn" style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#0A66C2;color:#fff;font-size:11px;cursor:pointer;font-weight:700">in</span>
+<span class="dyk-share" onclick="event.stopPropagation();dykShareThreads()" title="Share on Threads" style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#000;color:#fff;font-size:13px;cursor:pointer;font-weight:700">@</span>
+<span class="dyk-share" onclick="event.stopPropagation();dykCopy(this)" title="Copy text" style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#F5F7FA;color:var(--navy);font-size:11px;cursor:pointer;font-weight:700;border:1px solid #E0E0E0">⧉</span>
+</div>
+</div>
 </div>
 
 <!-- Compare prompts -->
@@ -1021,13 +1030,13 @@ document.addEventListener('click',function(e){if(!e.target.closest('.search-inpu
 
 // ─── DID YOU KNOW rotating consumer hook ──────────────────────────────
 var _dykFacts = [
-  {icon:'\u{1F947}', text:'<strong>Coca-Cola earned Gold HI Grade.</strong> Recycling commitments, fair worker pay, mini-cans for choice. Surprised? See the receipts \u2192', action:function(){loadC('KO','Coca-Cola Company')}},
-  {icon:'\u26A0\uFE0F', text:'<strong>Johnson &amp; Johnson scored 0 in Moral &amp; Ethical Conduct.</strong> Documented harm from talc settlements. ESG gives them a pass \u2014 HI Grade does not. See the data \u2192', action:function(){loadC('JNJ','Johnson &amp; Johnson')}},
-  {icon:'\u{1F947}', text:'<strong>Patagonia earned Gold algorithmically.</strong> All 5 HUMAN dimensions verified. No badge bought. No marketing department involved. See the proof \u2192', action:function(){loadC('','Patagonia')}},
-  {icon:'\u23F1\uFE0F', text:'<strong>Starbucks scored 73 \u2014 but didn\u2019t earn Gold.</strong> The Heartbeat caught labor news in the last 90 days. The Momentum gate held the line. See why \u2192', action:function(){loadC('SBUX','Starbucks Corporation')}},
-  {icon:'\u{1F947}', text:'<strong>Ford Motor Company earned Gold HI Grade.</strong> Mass-market auto can clear the gates. Workforce investment, transparent reporting, no critical decay. See how \u2192', action:function(){loadC('F','Ford Motor Company')}},
-  {icon:'\u26A1', text:'<strong>Meta scored 49 on HI Grade. ESG rates them 62.</strong> The 13-point gap is algorithmic harm at scale \u2014 something ESG doesn\u2019t measure. See the gap \u2192', action:function(){loadC('META','Meta Platforms, Inc.')}},
-  {icon:'\u{1F50D}', text:'<strong>Out of 441 companies scored, only 4 earned Gold HI Grade.</strong> Coca-Cola, NextEra Energy, Patagonia, and Ford. The bar is high on purpose. See the list \u2192', action:function(){showPage('human100')}}
+  {icon:'\u{1F947}', text:'<strong>Coca-Cola earned Gold HI Grade.</strong> Recycling commitments, fair worker pay, mini-cans for choice. Surprised? See the receipts \u2192', shareText:'Coca-Cola earned Gold HI Grade. Recycling commitments, fair worker pay, mini-cans for choice. Surprised? See the receipts at thehibalance.org', action:function(){loadC('KO','Coca-Cola Company')}},
+  {icon:'\u26A0\uFE0F', text:'<strong>Johnson &amp; Johnson scored 0 in Moral &amp; Ethical Conduct.</strong> Documented harm from talc settlements. ESG gives them a pass \u2014 HI Grade does not. See the data \u2192', shareText:'Johnson & Johnson scored 0/100 on Moral & Ethical Conduct. Documented harm from talc settlements. ESG passes them. HI Grade does not. thehibalance.org', action:function(){loadC('JNJ','Johnson &amp; Johnson')}},
+  {icon:'\u{1F947}', text:'<strong>Patagonia earned Gold algorithmically.</strong> All 5 HUMAN dimensions verified. No badge bought. No marketing department involved. See the proof \u2192', shareText:'Patagonia earned Gold HI Grade \u2014 algorithmically. All 5 HUMAN dimensions verified. No badge bought. The data decides. thehibalance.org', action:function(){loadC('','Patagonia')}},
+  {icon:'\u23F1\uFE0F', text:'<strong>Starbucks scored 73 \u2014 but didn\u2019t earn Gold.</strong> The Heartbeat caught labor news in the last 90 days. The Momentum gate held the line. See why \u2192', shareText:'Starbucks scored 73 on HI Grade \u2014 but didn\u2019t earn Gold. The 90-day Heartbeat caught labor news. The Momentum gate held the line. thehibalance.org', action:function(){loadC('SBUX','Starbucks Corporation')}},
+  {icon:'\u{1F947}', text:'<strong>Ford Motor Company earned Gold HI Grade.</strong> Mass-market auto can clear the gates. Workforce investment, transparent reporting, no critical decay. See how \u2192', shareText:'Ford Motor Company earned Gold HI Grade. A mass-market automaker cleared all 5 HUMAN dimensions. Workforce investment, transparent reporting, no critical decay. thehibalance.org', action:function(){loadC('F','Ford Motor Company')}},
+  {icon:'\u26A1', text:'<strong>Meta scored 49 on HI Grade. ESG rates them 62.</strong> The 13-point gap is algorithmic harm at scale \u2014 something ESG doesn\u2019t measure. See the gap \u2192', shareText:'Meta scored 49 on HI Grade. ESG rates them 62. The 13-point gap is algorithmic harm at scale \u2014 something ESG doesn\u2019t measure. thehibalance.org', action:function(){loadC('META','Meta Platforms, Inc.')}},
+  {icon:'\u{1F50D}', text:'<strong>Out of 441 companies scored, only 4 earned Gold HI Grade.</strong> Coca-Cola, NextEra Energy, Patagonia, and Ford. The bar is high on purpose. See the list \u2192', shareText:'Out of 441 companies scored, only 4 earned Gold HI Grade: Coca-Cola, NextEra Energy, Patagonia, and Ford. The bar is high on purpose. thehibalance.org', action:function(){showPage('human100')}}
 ];
 var _dykIdx = 0, _dykTimer = null;
 function _dykRender(){
@@ -1040,6 +1049,12 @@ function _dykRender(){
 function _dykNext(){ _dykIdx = (_dykIdx + 1) % _dykFacts.length; _dykRender(); }
 function dykClick(){ var f = _dykFacts[_dykIdx]; if(f && f.action) f.action(); }
 function _dykStart(){ _dykRender(); if(_dykTimer) clearInterval(_dykTimer); _dykTimer = setInterval(_dykNext, 8000); }
+
+function _dykCurrent(){ return _dykFacts[_dykIdx] || _dykFacts[0]; }
+function dykShareX(){ var f=_dykCurrent(); var t=encodeURIComponent(f.shareText+' #HIGrade #HumanKind'); window.open('https://twitter.com/intent/tweet?text='+t,'_blank'); }
+function dykShareLinkedIn(){ var f=_dykCurrent(); var u=encodeURIComponent('https://thehibalance.org'); var t=encodeURIComponent(f.shareText); window.open('https://www.linkedin.com/sharing/share-offsite/?url='+u+'&summary='+t,'_blank'); }
+function dykShareThreads(){ var f=_dykCurrent(); var t=encodeURIComponent(f.shareText+' #HIGrade'); window.open('https://www.threads.net/intent/post?text='+t,'_blank'); }
+function dykCopy(btn){ var f=_dykCurrent(); var ok=function(){ var orig=btn.innerHTML; btn.innerHTML='\u2713'; btn.style.background='#16A34A'; btn.style.color='#fff'; setTimeout(function(){ btn.innerHTML=orig; btn.style.background='#F5F7FA'; btn.style.color='var(--navy)'; }, 1400); }; if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(f.shareText).then(ok).catch(function(){}); } else { var ta=document.createElement('textarea'); ta.value=f.shareText; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');ok();}catch(e){} document.body.removeChild(ta); } }
 // Pick a random starting fact so visits look fresh
 _dykIdx = Math.floor(Math.random() * _dykFacts.length);
 
