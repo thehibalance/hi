@@ -12,15 +12,13 @@
       "source": "USPTO"
     },
     "fda": {
-      "score": 25,
+      "score": 85,
       "raw": {
-        "company": "",
+        "company": "Tesla",
         "ticker": "TSLA",
-        "recalls": 100,
-        "class_i": 8,
-        "class_ii": 83,
-        "source": "FDA",
-        "fetched": "2026-03-22T21:58:10.836534"
+        "recalls": 0,
+        "class_i": 0,
+        "source": "FDA"
       },
       "source": "FDA"
     },
@@ -31,7 +29,6 @@
     },
     "ftc": {
       "M.2": 65,
-      "N.4": 50,
       "source": "FTC"
     },
     "eeoc": {
@@ -41,7 +38,6 @@
     },
     "pay_ratio": {
       "M.3_adj": -15,
-      "H.4_adj": -15,
       "ratio": 11000,
       "source": "SEC DEF 14A"
     },
@@ -62,8 +58,9 @@
       "source": "SBTi"
     },
     "charity": {
-      "U.5_adj": -10,
-      "source": "IRS 990"
+      "raw_score": -10,
+      "source": "IRS 990",
+      "note": "informational only, not applied to scoring in v1.0.2"
     }
   }
 }

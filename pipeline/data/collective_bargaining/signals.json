@@ -1,5 +1,5 @@
 {
-  "market_average": 57.6,
+  "market_average": 57.4,
   "total_companies": 439,
   "dimension_pressure": {
     "H": {
@@ -29,12 +29,12 @@
     "M": {
       "dimension": "M",
       "name": "Moral & Ethical Conduct",
-      "average": 62,
-      "below_threshold_count": 166,
-      "below_threshold_pct": 37.8,
-      "failing_pct": 37.8,
-      "stdev": 12.8,
-      "pressure_score": 33.0,
+      "average": 61,
+      "below_threshold_count": 173,
+      "below_threshold_pct": 39.4,
+      "failing_pct": 39.4,
+      "stdev": 14.1,
+      "pressure_score": 34.2,
       "status": "warning",
       "threshold": 64.6
     },
@@ -67,13 +67,37 @@
     {
       "industry": "tech",
       "company_count": 126,
-      "average_composite": 55.5,
+      "average_composite": 55.4,
       "worst_dimension": "H",
       "worst_dimension_avg": 47.6,
-      "humanwashing_flags": 21,
+      "humanwashing_flags": 23,
       "algo_harm_companies": 8,
-      "below_threshold_dimensions": 405,
+      "below_threshold_dimensions": 406,
       "pressure_score": 47.8,
+      "status": "warning"
+    },
+    {
+      "industry": "healthcare",
+      "company_count": 35,
+      "average_composite": 58.8,
+      "worst_dimension": "A",
+      "worst_dimension_avg": 54.4,
+      "humanwashing_flags": 11,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 118,
+      "pressure_score": 39.0,
+      "status": "warning"
+    },
+    {
+      "industry": "default",
+      "company_count": 62,
+      "average_composite": 58.2,
+      "worst_dimension": "H",
+      "worst_dimension_avg": 52.0,
+      "humanwashing_flags": 7,
+      "algo_harm_companies": 1,
+      "below_threshold_dimensions": 192,
+      "pressure_score": 37.7,
       "status": "warning"
     },
     {
@@ -89,18 +113,6 @@
       "status": "warning"
     },
     {
-      "industry": "default",
-      "company_count": 62,
-      "average_composite": 58.4,
-      "worst_dimension": "H",
-      "worst_dimension_avg": 52.0,
-      "humanwashing_flags": 5,
-      "algo_harm_companies": 1,
-      "below_threshold_dimensions": 192,
-      "pressure_score": 35.6,
-      "status": "warning"
-    },
-    {
       "industry": "retail",
       "company_count": 54,
       "average_composite": 58.1,
@@ -110,6 +122,42 @@
       "algo_harm_companies": 1,
       "below_threshold_dimensions": 161,
       "pressure_score": 33.8,
+      "status": "warning"
+    },
+    {
+      "industry": "manufacturing",
+      "company_count": 13,
+      "average_composite": 60.8,
+      "worst_dimension": "A",
+      "worst_dimension_avg": 52.3,
+      "humanwashing_flags": 5,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 33,
+      "pressure_score": 33.2,
+      "status": "warning"
+    },
+    {
+      "industry": "food",
+      "company_count": 45,
+      "average_composite": 61.3,
+      "worst_dimension": "A",
+      "worst_dimension_avg": 58.4,
+      "humanwashing_flags": 5,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 128,
+      "pressure_score": 33.0,
+      "status": "warning"
+    },
+    {
+      "industry": "finance",
+      "company_count": 38,
+      "average_composite": 56.8,
+      "worst_dimension": "H",
+      "worst_dimension_avg": 49.3,
+      "humanwashing_flags": 2,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 135,
+      "pressure_score": 31.8,
       "status": "warning"
     },
     {
@@ -134,54 +182,6 @@
       "algo_harm_companies": 0,
       "below_threshold_dimensions": 24,
       "pressure_score": 29.9,
-      "status": "stable"
-    },
-    {
-      "industry": "healthcare",
-      "company_count": 35,
-      "average_composite": 59.6,
-      "worst_dimension": "A",
-      "worst_dimension_avg": 54.4,
-      "humanwashing_flags": 1,
-      "algo_harm_companies": 0,
-      "below_threshold_dimensions": 115,
-      "pressure_score": 29.7,
-      "status": "stable"
-    },
-    {
-      "industry": "finance",
-      "company_count": 38,
-      "average_composite": 57.0,
-      "worst_dimension": "H",
-      "worst_dimension_avg": 49.3,
-      "humanwashing_flags": 0,
-      "algo_harm_companies": 0,
-      "below_threshold_dimensions": 134,
-      "pressure_score": 29.7,
-      "status": "stable"
-    },
-    {
-      "industry": "manufacturing",
-      "company_count": 13,
-      "average_composite": 61.6,
-      "worst_dimension": "A",
-      "worst_dimension_avg": 52.3,
-      "humanwashing_flags": 0,
-      "algo_harm_companies": 0,
-      "below_threshold_dimensions": 32,
-      "pressure_score": 27.9,
-      "status": "stable"
-    },
-    {
-      "industry": "food",
-      "company_count": 45,
-      "average_composite": 61.7,
-      "worst_dimension": "A",
-      "worst_dimension_avg": 58.4,
-      "humanwashing_flags": 0,
-      "algo_harm_companies": 0,
-      "below_threshold_dimensions": 127,
-      "pressure_score": 27.8,
       "status": "stable"
     },
     {

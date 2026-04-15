@@ -1,53 +1,10 @@
 {
-  "cfpb": {
-    "U.1": 70.0,
-    "M.1": 80,
-    "raw": {
-      "company": "HP Inc",
-      "ticker": "HPQ",
-      "total_complaints_3yr": 0,
-      "products": {},
-      "timely_responses": 0,
-      "timely_rate": 0.0,
-      "fetched": "2026-03-23T08:52:15.693229",
-      "source": "CFPB"
-    }
-  },
-  "hibp": {
-    "M.2": 60,
-    "raw": {
-      "company": "HP Inc",
-      "ticker": "HPQ",
-      "domain": "hp.com",
-      "breach_count": 1,
-      "breaches": [
-        {
-          "name": "PHPFreaks",
-          "date": "2015-10-27",
-          "pwn_count": 173891,
-          "data_classes": [
-            "Dates of birth",
-            "Email addresses",
-            "IP addresses",
-            "Passwords",
-            "Usernames",
-            "Website activity"
-          ],
-          "is_verified": true
-        }
-      ],
-      "total_records_exposed": 173891,
-      "sensitive_data_exposed": true,
-      "fetched": "2026-03-23T08:52:16.423409",
-      "source": "HIBP"
-    }
-  },
   "hardware": {
     "A.4": 70,
     "source": "iFixit"
   },
   "land": {
-    "A.3": 65,
+    "A.3": 50,
     "source": "Industry+EPA"
   }
 }
