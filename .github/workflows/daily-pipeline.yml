@@ -22,20 +22,22 @@ jobs:
   score:
     runs-on: ubuntu-latest
     timeout-minutes: 60
-    
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-      
+        with:
+          fetch-depth: 0
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      
+
       - name: Install dependencies
         run: |
           pip install -r pipeline/requirements.txt
-      
+
       - name: Run pipeline
         env:
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
@@ -48,59 +50,91 @@ jobs:
         run: |
           cd pipeline
           MODE="${{ github.event.inputs.mode || 'daily' }}"
-          
-          # Quarterly on schedule: check if it's the 1st of Jan/Apr/Jul/Oct
+
           if [ "${{ github.event.schedule }}" = "0 7 1 1,4,7,10 *" ]; then
             MODE="quarterly"
           fi
-          
-          # Backup existing scores so we can merge after
+
           if [ -f data/scores/all_scores.json ]; then
             cp data/scores/all_scores.json data/scores/all_scores_backup.json
-            echo "📦 Backed up $(python3 -c "import json; print(len(json.load(open('data/scores/all_scores_backup.json'))))" ) existing companies"
+            echo "Backed up $(python3 -c "import json; print(len(json.load(open('data/scores/all_scores_backup.json'))))" ) existing companies"
           fi
-          
+
           if [ "$MODE" = "quarterly" ]; then
-            echo "🔄 Quarterly run — full refresh + threshold recalculation"
+            echo "Quarterly run"
             python3 run_all.py --workers 8 --quarterly
           elif [ "$MODE" = "features-only" ]; then
-            echo "⚡ Features only — skip collection"
+            echo "Features only"
             python3 run_all.py --skip-collect --features-only
           else
-            echo "📊 Daily run — incremental collection"
+            echo "Daily run"
             python3 run_all.py --workers 8 --incremental 24
           fi
-          
-          # Merge: keep existing scores, add/update new ones (never shrink)
+
           if [ -f data/scores/all_scores_backup.json ] && [ -f data/scores/all_scores.json ]; then
             python3 merge_scores.py data/scores/all_scores_backup.json data/scores/all_scores.json data/scores/all_scores.json
             rm data/scores/all_scores_backup.json
           fi
-          
-          # Regenerate features from merged data
-          echo "🔄 Regenerating features from merged scores..."
+
+          echo "Regenerating features from merged scores"
           python3 run_all.py --skip-collect --features-only
-      
-      - name: Commit updated data
+
+      - name: Commit and push updated data
         run: |
+          set -e
           git config --local user.email "action@github.com"
           git config --local user.name "HI. Pipeline Bot"
-          git pull --rebase origin main || true
-          git add -f pipeline/data/
-          git diff --staged --quiet || git commit -m "Daily pipeline: $(date +%Y-%m-%d) · $(cat pipeline/data/scores/all_scores.json | python3 -c 'import sys,json; print(len(json.load(sys.stdin)))') companies"
-          git push origin main || git push origin main --force-with-lease
-      
+
+          # Ignore case-sensitivity ghost files (macOS-created lowercase variants)
+          git update-index --assume-unchanged pipeline/data/subsignals/ups.json 2>/dev/null || true
+          git update-index --assume-unchanged pipeline/data/subsignals/UPS.json 2>/dev/null || true
+
+          # Stage everything we generated this run BEFORE attempting rebase
+          # This way, anything modified is staged and rebase has nothing to complain about
+          git add -A pipeline/data/
+
+          # Build the commit message
+          COMPANY_COUNT=$(python3 -c 'import json; print(len(json.load(open("pipeline/data/scores/all_scores.json"))))')
+          COMMIT_MSG="Daily pipeline: $(date +%Y-%m-%d) · ${COMPANY_COUNT} companies"
+
+          # Only commit if there are staged changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git commit -m "$COMMIT_MSG"
+
+          # Now rebase onto remote with retry logic
+          # Up to 3 attempts to handle race conditions with concurrent pushes
+          for attempt in 1 2 3; do
+            echo "Push attempt $attempt"
+            git fetch origin main
+            if git rebase origin/main; then
+              if git push origin main; then
+                echo "Push successful on attempt $attempt"
+                exit 0
+              else
+                echo "Push rejected, retrying"
+              fi
+            else
+              echo "Rebase conflict, aborting and retrying"
+              git rebase --abort || true
+            fi
+            sleep 5
+          done
+
+          echo "Push failed after 3 attempts"
+          exit 1
+
       - name: Deploy to Railway
         if: success()
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
-          # Copy pipeline files to hi-api structure
           mkdir -p deploy
           cp -r pipeline/data deploy/
           cp pipeline/*.py deploy/
           cp pipeline/requirements.txt deploy/
           cp pipeline/Procfile deploy/ 2>/dev/null || true
           echo "Pipeline data ready for Railway deployment"
-          # Note: For auto-deploy, connect Railway to this repo's hi-api branch
-          # Or use Railway CLI: npm install -g @railway/cli && railway up
