@@ -8,7 +8,7 @@ Built without AI to measure AI. **42 free public data sources. 19 active sub-sig
 
 **HI Grade** measures how human a company is across five dimensions — the things AI can't replace: consciousness, empathy, ethics, environment, and transparency. Every company gets a score from 0 to 100. Brands that pass all 3 gates — with verified data — earn **Gold HI Grade**.
 
-🌐 [thehibalance.org](https://thehibalance.org) · 📖 [Methodology](https://thehibalance.org/methodology) · 📊 [Sources](https://thehibalance.org/sources) · 📡 [API](https://api.thehibalance.org)
+🌐 [thehibalance.org](https://thehibalance.org) · 📖 [Methodology](https://thehibalance.org/#methodology) · 📊 [Sources](https://thehibalance.org/#sources) · 📡 [API](https://api.thehibalance.org)
 
 🏛 The HI Balance · 📄 Patent Pending · ™ HI Grade — Morf Innovations LLC
 
@@ -74,7 +74,7 @@ Five dimensions of humanity. Each measures something AI can't replace.
 
 Five additional sub-signals (H.4, N.1, N.3, N.4, U.5) are spec'd but not yet scored — in development for v1.2+. Every active sub-signal is computed deterministically from public data. The published methodology spec matches the code exactly.
 
-📖 **[Read the full methodology →](https://thehibalance.org/methodology)**
+📖 **[Read the full methodology →](https://thehibalance.org/#methodology)**
 
 ---
 
@@ -125,7 +125,7 @@ Pending companies show neutral scores across all surfaces. Scores may change sig
 
 **Zero AI. Zero pay-to-play. Zero self-reporting. All free, public, and auditable.**
 
-📊 **[See all 42 sources →](https://thehibalance.org/sources)**
+📊 **[See all 42 sources →](https://thehibalance.org/#sources)**
 
 ### 13 Government Sources (refreshed nightly)
 
@@ -321,7 +321,7 @@ curl https://api.thehibalance.org/api/v1/search?q=patagonia
 
 **Human kind?**
 
-[thehibalance.org](https://thehibalance.org) · iOS App · Chrome Extension · [Methodology](https://thehibalance.org/methodology) · [Sources](https://thehibalance.org/sources)
+[thehibalance.org](https://thehibalance.org) · iOS App · Chrome Extension · [Methodology](https://thehibalance.org/#methodology) · [Sources](https://thehibalance.org/#sources)
 
 The HI Balance · Patent Pending · HI Grade™ · Humanwashing™ · Algorithmic Harm Index™
 Morf Innovations LLC · [@thehibalance](https://twitter.com/thehibalance)

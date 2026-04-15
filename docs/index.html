@@ -57,105 +57,77 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <span class="nav-link" id="nav-about" onclick="showPage('about')">About</span>
 <span class="nav-link" id="nav-contact" onclick="showPage('contact')">Say hi</span>
 </div></div><span class="nav-tagline">HUMAN KIND?</span></div></nav>
-<div id="page-home" class="page" style="max-width:1000px;margin:0 auto;padding:0 24px">
-<div class="hero"><img src="/logo-512.png" alt="hi." style="height:160px;width:auto;margin-bottom:16px"><p>Human kind?<br><span style="font-size:14px;color:var(--navy);font-weight:600">The fifth check before every decision.</span></p></div>
-<div class="stats" id="statsRow"></div>
-<div id="hiCountdown" style="text-align:center;padding:4px 0 12px;display:flex;align-items:center;justify-content:center;gap:4px"><span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#16A34A"></span><span id="hiCountdownText" style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);letter-spacing:0.3px">Connected · API live</span></div>
-<div id="homePulse" style="display:none"></div>
+<div id="page-home" class="page" style="max-width:960px;margin:0 auto;padding:0 24px">
 
-<div style="max-width:700px;margin:0 auto 60px">
-<div style="display:flex;gap:16px;flex-wrap:wrap">
-<div style="flex:1;min-width:200px;position:relative"><input class="search-input" id="searchInput" placeholder="Search any company..." oninput="doSearch(this.value)"><div class="search-results" id="searchResults"></div></div>
-<div style="align-self:center;font-size:13px;color:var(--muted);font-weight:500">vs</div>
-<div style="flex:1;min-width:200px;position:relative"><input class="search-input" id="cmpSearch2" placeholder="Compare with..." oninput="cmpDoSearch(2,this.value)"><div class="search-results" id="cmpResults2"></div></div>
-</div>
-<div style="display:flex;gap:16px;margin-top:16px;flex-wrap:wrap" id="homeCompareCards">
-<div id="cmpCard1" style="flex:1;min-width:200px"></div>
-<div id="cmpCard2" style="flex:1;min-width:200px"></div>
-</div>
-<div id="cmpDimCompare" style="margin-top:8px"></div>
+<!-- Hero -->
+<div class="hero" style="padding:80px 0 40px"><img src="/logo-512.png" alt="hi." style="height:140px;width:auto;margin-bottom:20px"><p style="font-size:22px;color:var(--navy);font-weight:600;margin:0">Human kind?</p><p style="font-size:15px;color:var(--muted);margin-top:10px;font-weight:400;letter-spacing:0.3px">The fifth check before every decision.</p></div>
+
+<!-- Stats -->
+<div class="stats" id="statsRow" style="margin-bottom:36px"></div>
+<div id="hiCountdown" style="text-align:center;padding:0 0 50px;display:flex;align-items:center;justify-content:center;gap:6px"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#16A34A"></span><span id="hiCountdownText" style="font-size:10px;font-family:'DM Mono',monospace;color:var(--muted);letter-spacing:0.4px">Connected · API live</span></div>
+
+<!-- Search (single, primary action) -->
+<div style="max-width:600px;margin:0 auto 24px;position:relative">
+<input class="search-input" id="searchInput" placeholder="Search any company..." oninput="doSearch(this.value)" style="padding:20px 26px;font-size:17px;border-radius:18px">
+<div class="search-results" id="searchResults"></div>
 </div>
 
-<div id="goldLabel" style="text-align:center;margin-bottom:6px"><span style="font-size:10px;font-weight:600;color:#C49B20;letter-spacing:3px;text-transform:uppercase">The Gold Standard</span></div>
+<!-- Compare link (real compare lives on /compare page) -->
+<div style="text-align:center;margin-bottom:60px">
+<span onclick="showPage('compare')" style="font-size:13px;color:var(--muted);cursor:pointer;font-weight:500;border-bottom:1px dashed var(--muted);padding-bottom:1px">Compare two companies →</span>
+</div>
+
+<!-- Gold ticker -->
+<div id="goldLabel" style="text-align:center;margin-bottom:8px"><span style="font-size:10px;font-weight:600;color:#C49B20;letter-spacing:3px;text-transform:uppercase">The Gold Standard</span></div>
 <div id="hiBalancedTicker" style="overflow:hidden;white-space:nowrap;padding:14px 0;margin-bottom:80px;border-top:1px solid #C49B2020;border-bottom:1px solid #C49B2020"><div id="tickerContent" style="display:inline-block;animation:ticker 60s linear infinite"></div></div>
 <style>@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}</style>
 
-<div style="display:flex;gap:48px;flex-wrap:wrap;margin-bottom:80px">
-<div style="flex:1;min-width:300px">
-<h2 style="font-family:'DM Serif Display';font-size:28px;color:var(--navy);margin-bottom:8px">The HI Grade™</h2>
-<p style="color:var(--muted);font-size:14px;margin-bottom:24px;line-height:1.6">Brands scored on the things AI can't replace — craft, empathy, ethics, environment, and transparency.</p>
-<div style="display:flex;flex-direction:column;gap:16px">
-<div style="padding:16px 20px;border-left:3px solid var(--navy)">
-<div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1.5px;margin-bottom:6px">SCORE</div>
-<div style="font-size:13px;color:#555;line-height:1.5">All five HUMAN dimensions score <strong style="color:var(--navy)">60+</strong> · verified by real public data</div>
+<!-- HUMAN dimensions teaser -->
+<div style="text-align:center;margin-bottom:16px"><div style="font-size:10px;font-weight:600;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px">What HI Grade Measures</div><h2 style="font-family:'DM Serif Display';font-size:32px;color:var(--navy);margin:0;line-height:1.2">Five things AI can't replace.</h2></div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:32px 0 20px;cursor:pointer" onclick="showPage('methodology')" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+<div style="text-align:center;padding:20px 8px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:32px;color:#C49B20;line-height:1;margin-bottom:8px">H</div><div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:0.5px;text-transform:uppercase">Consciousness</div></div>
+<div style="text-align:center;padding:20px 8px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:32px;color:#C49B20;line-height:1;margin-bottom:8px">U</div><div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:0.5px;text-transform:uppercase">Empathy</div></div>
+<div style="text-align:center;padding:20px 8px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:32px;color:#C49B20;line-height:1;margin-bottom:8px">M</div><div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:0.5px;text-transform:uppercase">Ethics</div></div>
+<div style="text-align:center;padding:20px 8px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:32px;color:#C49B20;line-height:1;margin-bottom:8px">A</div><div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:0.5px;text-transform:uppercase">Environment</div></div>
+<div style="text-align:center;padding:20px 8px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:32px;color:#C49B20;line-height:1;margin-bottom:8px">N</div><div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:0.5px;text-transform:uppercase">Transparency</div></div>
 </div>
-<div style="padding:16px 20px;border-left:3px solid #C49B20">
-<div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1.5px;margin-bottom:6px">BALANCE</div>
-<div style="font-size:13px;color:#555;line-height:1.5">All 5 dimensions above 42 · no blind spots</div>
+<div style="text-align:center;margin-bottom:80px"><span onclick="showPage('methodology')" style="font-size:13px;color:var(--sky);font-weight:600;cursor:pointer">How does HI Grade work? →</span></div>
+
+<!-- Apps row -->
+<div style="text-align:center;margin-bottom:16px"><div style="font-size:10px;font-weight:600;color:var(--muted);letter-spacing:3px;text-transform:uppercase">Take HI Grade Anywhere</div></div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:80px">
+<div style="padding:24px 16px;text-align:center;background:var(--white);border:1px solid var(--light);border-radius:14px;cursor:pointer;transition:all .2s" onclick="window.open('https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg','_blank')" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.06)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'"><div style="font-size:32px;margin-bottom:8px">🌐</div><div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">Chrome Extension</div><div style="font-size:11px;color:var(--muted)">See HI Grades as you browse</div></div>
+<div style="padding:24px 16px;text-align:center;background:var(--white);border:1px solid var(--light);border-radius:14px;cursor:pointer;transition:all .2s" onclick="window.open('https://apps.apple.com/app/hi/id6761270596','_blank')" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.06)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'"><div style="font-size:32px;margin-bottom:8px">🍎</div><div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">iOS App</div><div style="font-size:11px;color:var(--muted)">HI Grade in your pocket</div></div>
+<div style="padding:24px 16px;text-align:center;background:var(--white);border:1px solid var(--light);border-radius:14px;cursor:pointer;transition:all .2s" onclick="showPage('api')" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.06)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'"><div style="font-size:32px;margin-bottom:8px">⚡</div><div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">Free API</div><div style="font-size:11px;color:var(--muted)">Build with HI Grade</div></div>
 </div>
-<div style="padding:16px 20px;border-left:3px solid #16A34A">
-<div style="font-size:10px;font-weight:700;color:#16A34A;letter-spacing:1.5px;margin-bottom:6px">INTEGRITY</div>
-<div style="font-size:13px;color:#555;line-height:1.5">Penalties from Humanwashing™, Algorithmic Harm Index™, and Product Harm Index™ flow into the dimension scores</div>
+
+<!-- Two CTAs -->
+<div style="text-align:center;margin-bottom:24px"><h2 style="font-family:'DM Serif Display';font-size:28px;color:var(--navy);margin:0">Get Involved</h2></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:80px">
+
+<!-- Request a HI Grade -->
+<div style="background:var(--white);border:1px solid var(--light);border-radius:16px;padding:28px">
+<div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1.5px;margin-bottom:8px">REQUEST A HI GRADE</div>
+<div style="font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.5">Don't see a brand you care about? Tell us and we'll add it.</div>
+<input id="reqCompany" placeholder="Company name..." style="width:100%;padding:12px 14px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit;margin-bottom:8px;box-sizing:border-box">
+<input id="reqEmail" placeholder="Email (optional)" style="width:100%;padding:12px 14px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit;margin-bottom:12px;box-sizing:border-box">
+<button onclick="submitRequest()" style="width:100%;padding:12px;background:var(--navy);color:white;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s">Request</button>
+<div id="reqSuccess" style="display:none;margin-top:10px;color:#16A34A;font-weight:600;font-size:11px">✓ Request submitted.</div>
+<div id="reqError" style="display:none;margin-top:10px;color:#DC2626;font-size:11px">Please enter a company name.</div>
 </div>
-</div>
-<div style="padding:20px;background:linear-gradient(135deg,#C49B2010,#C49B2005);border-radius:16px;text-align:center;margin-top:16px"><div style="font-size:18px;color:#C49B20;font-weight:700;letter-spacing:1px"><span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#C49B20;vertical-align:middle;overflow:hidden"><img src="/logo-512-white.png" alt="hi." style="height:20px;width:auto"></span> GOLD HI GRADE&#8482;</div><div style="font-size:12px;color:#92400E;margin-top:8px">Strict HUMAN Verified. Five dimensions. All score 60. All sourced. The data decides.</div></div>
-</div>
-<div style="flex:1;min-width:300px">
-<h2 style="font-family:'DM Serif Display';font-size:28px;color:var(--navy);margin-bottom:8px">Get Involved</h2>
-<p style="color:var(--muted);font-size:14px;margin-bottom:24px;line-height:1.6">Explore the data. Request a score. Or improve yours.</p>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
-<div style="padding:20px;text-align:center;cursor:pointer;border-radius:12px;transition:background .2s" onmouseover="this.style.background='#F5F7FA'" onmouseout="this.style.background='transparent'" onclick="showPage('decay')">
-<div style="font-size:24px;margin-bottom:8px">💀</div>
-<div style="font-weight:700;color:var(--navy);font-size:12px">Decay Index</div>
-<div style="font-size:10px;color:var(--muted);margin-top:4px">See which companies are getting worse</div>
-</div>
-<div style="padding:20px;text-align:center;cursor:pointer;border-radius:12px;transition:background .2s" onmouseover="this.style.background='#F5F7FA'" onmouseout="this.style.background='transparent'" onclick="showPage('heartbeat')">
-<div style="font-size:24px;margin-bottom:8px">♥</div>
-<div style="font-weight:700;color:var(--navy);font-size:12px">Heartbeat</div>
-<div style="font-size:10px;color:var(--muted);margin-top:4px">Is the market healthy right now?</div>
-</div>
-<div style="padding:20px;text-align:center;cursor:pointer;border-radius:12px;transition:background .2s" onmouseover="this.style.background='#F5F7FA'" onmouseout="this.style.background='transparent'" onclick="showPage('wave')">
-<div style="font-size:24px;margin-bottom:8px">🌊</div>
-<div style="font-weight:700;color:var(--navy);font-size:12px">Wave</div>
-<div style="font-size:10px;color:var(--muted);margin-top:4px">Which industries are under pressure?</div>
-</div>
-<div style="padding:20px;text-align:center;cursor:pointer;border-radius:12px;transition:background .2s" onmouseover="this.style.background='#F5F7FA'" onmouseout="this.style.background='transparent'" onclick="showPage('moat')">
-<div style="font-size:24px;margin-bottom:8px">🏰</div>
-<div style="font-weight:700;color:var(--navy);font-size:12px">Shield</div>
-<div style="font-size:10px;color:var(--muted);margin-top:4px">Which companies can't be replaced by AI?</div>
-</div>
-</div>
-<div style="margin-bottom:16px">
-<div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1.5px;margin-bottom:10px">REQUEST A HI GRADE</div>
-<div style="display:flex;gap:8px;flex-wrap:wrap">
-<input id="reqCompany" placeholder="Company name..." style="flex:1;min-width:120px;padding:12px 16px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit">
-<input id="reqEmail" placeholder="Email (optional)" style="flex:1;min-width:120px;padding:12px 16px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit">
-<button onclick="submitRequest()" style="padding:12px 20px;background:var(--navy);color:white;border:none;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s">Request</button>
-</div>
-<div id="reqSuccess" style="display:none;margin-top:8px;color:#16A34A;font-weight:600;font-size:11px">✓ Request submitted.</div>
-<div id="reqError" style="display:none;margin-top:8px;color:#DC2626;font-size:11px">Please enter a company name.</div>
-</div>
-<div>
-<div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1.5px;margin-bottom:10px">ARE YOU A COMPANY?</div>
-<div style="font-size:12px;color:var(--muted);margin-bottom:10px">Think your score is wrong? Want to improve it? Talk to us.</div>
-<div style="font-size:11px;color:#C49B20;margin-bottom:10px">Earn gold HI Grade status → license the badge for your website, packaging, and job listings.</div>
-<div style="display:flex;gap:8px;flex-wrap:wrap">
-<input id="companyContactName" placeholder="Company name..." style="flex:1;min-width:120px;padding:12px 16px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit">
-<input id="companyContactEmail" placeholder="Work email..." style="flex:1;min-width:120px;padding:12px 16px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit">
-<button onclick="submitCompanyContact()" style="padding:12px 20px;background:#C49B20;color:white;border:none;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s">Reach Out</button>
-</div>
-<div id="companyContactSuccess" style="display:none;margin-top:8px;color:#16A34A;font-weight:600;font-size:11px">✓ We'll reach out within 48 hours.</div>
-</div>
+
+<!-- Are you a company? -->
+<div style="background:var(--white);border:1px solid #C49B2030;border-radius:16px;padding:28px">
+<div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1.5px;margin-bottom:8px">ARE YOU A COMPANY?</div>
+<div style="font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.5">Want to understand or improve your HI Grade? Talk to us.</div>
+<input id="companyContactName" placeholder="Company name..." style="width:100%;padding:12px 14px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit;margin-bottom:8px;box-sizing:border-box">
+<input id="companyContactEmail" placeholder="Work email..." style="width:100%;padding:12px 14px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit;margin-bottom:12px;box-sizing:border-box">
+<button onclick="submitCompanyContact()" style="width:100%;padding:12px;background:#C49B20;color:white;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s">Reach Out</button>
+<div id="companyContactSuccess" style="display:none;margin-top:10px;color:#16A34A;font-weight:600;font-size:11px">✓ We'll reach out within 48 hours.</div>
 </div>
 </div>
 
-<div style="display:flex;gap:16px;justify-content:center;margin-bottom:60px;flex-wrap:wrap">
-<button class="btn btn-secondary" onclick="window.open('https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg','_blank')"><span class="btn-icon">🌐</span> Add to Chrome</button>
-<button class="btn btn-secondary" onclick="window.open('https://apps.apple.com/app/hi/id6761270596','_blank')"><span class="btn-icon">🍎</span> Get the App</button>
-<button class="btn btn-secondary" onclick="showPage('api')"><span class="btn-icon">⚡</span> Get the API</button>
 </div>
-</div>
-</div> 
 <div id="page-detail" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px"><div class="detail" id="detailContent"></div></div>
 <div id="page-extension" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
 <div class="subpage">
@@ -831,7 +803,6 @@ async function loadC(ticker,name){try{var c=null;if(ticker){var r=await fetch(AP
 function renderDet(c){var comp=Math.round(c.composite||0);var isCertified=(c.gold||c.hi_balanced)||false;var isPending=c.score_status==='pending'||(c.data_sources&&c.data_sources.length===1&&['Defaults','Manual Scoring','Seed Estimate','Public Reporting'].indexOf(c.data_sources[0])>=0);var gc=isPending?'#999':isCertified?'#C49B20':sc(comp);var fs=36,ks=c.key_signals||{};var R=52,circ=2*Math.PI*R,dash=(comp/100)*circ,gap=circ-dash;
 var sat=getSatire(c)
 var hasDims=c.D_H!=null;
-var miniDims=hasDims?['H','U','M','A','N'].map(function(d){var s=c['D_'+d]||0,i=DI[d];return'<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px"><span style="font-size:14px">'+i.i+'</span><span style="font-size:11px;font-weight:700;color:var(--navy);width:12px">'+d+'</span><div style="flex:1;height:6px;background:#EEF1F5;border-radius:3px;overflow:hidden"><div style="height:100%;width:'+s+'%;background:'+sc(s)+';border-radius:3px"></div></div><span style="font-size:11px;font-weight:700;color:'+sc(s)+';width:24px;text-align:right">'+s+'</span></div>'}).join(''):'';
 // Build insight text for each dimension based on available data
 function dimInsights(d,c){var ks=c.key_signals||{},g=c.genome||{},ins=[];var dd=g[d]||{},scores=dd.scores||{},srcs=dd.sources||[];
 if(d==='H'){
@@ -870,7 +841,7 @@ var h='<span class="detail-back" onclick="goBack()">← Back</span>'+pendingBann
 var shareText=encodeURIComponent((c.company||'')+' has a HI Grade of '+((c.gold||c.hi_balanced)?'Gold · ':'')+comp+' ('+comp+'/100). Human kind? thehibalance.org #HIGrade #HumanKind');
 var shareUrl=encodeURIComponent('https://thehibalance.org');
 h+='<div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;align-items:center"><span style="font-size:11px;color:var(--muted)">Share:</span><a href="https://twitter.com/intent/tweet?text='+shareText+'" target="_blank" style="padding:6px 14px;border-radius:6px;font-size:11px;font-weight:600;background:#000;color:#fff;text-decoration:none;cursor:pointer">𝕏 Post</a><a href="https://www.linkedin.com/sharing/share-offsite/?url='+shareUrl+'" target="_blank" style="padding:6px 14px;border-radius:6px;font-size:11px;font-weight:600;background:#0A66C2;color:#fff;text-decoration:none;cursor:pointer">LinkedIn</a><a href="https://threads.net/intent/post?text='+shareText+'" target="_blank" style="padding:6px 14px;border-radius:6px;font-size:11px;font-weight:600;background:#000;color:#fff;text-decoration:none;cursor:pointer">Threads</a><span id="copyShareBtn" style="padding:6px 14px;border-radius:6px;font-size:11px;font-weight:600;background:var(--navy);color:#fff;cursor:pointer">Copy</span></div>';
-h+='<div class="detail-composite"><div class="donut-wrap"><svg width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="'+R+'" fill="none" stroke="#EEF1F5" stroke-width="10"/><circle cx="60" cy="60" r="'+R+'" fill="none" stroke="'+scoreColor+'" stroke-width="10" stroke-dasharray="'+dash+' '+gap+'" stroke-linecap="round"/></svg><span class="donut-score" style="color:'+scoreColor+'">'+comp+'</span></div><div class="composite-details"><div class="composite-grade" style="color:'+scoreColor+'">'+(isCertified?hiE(14)+' HI Grade™':'HI Grade™')+'</div>'+miniDims+'</div></div>';
+h+='<div class="detail-composite"><div class="donut-wrap"><svg width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="'+R+'" fill="none" stroke="#EEF1F5" stroke-width="10"/><circle cx="60" cy="60" r="'+R+'" fill="none" stroke="'+scoreColor+'" stroke-width="10" stroke-dasharray="'+dash+' '+gap+'" stroke-linecap="round"/></svg><span class="donut-score" style="color:'+scoreColor+'">'+comp+'</span></div><div class="composite-details"><div class="composite-grade" style="color:'+scoreColor+'">'+(isCertified?hiE(14)+' HI Grade™':'HI Grade™')+'</div>''</div></div>';
 var dlc={'critical':'#DC2626','warning':'#DC2626','watch':'#D97706','stable':'#16A34A'};
 if(dl!=='stable'&&di>0){h+='<div class="hw-section" style="background:'+(dl==='critical'?'#FEE2E2':dl==='warning'?'#FEF3C7':'#FFF7ED')+';border-color:'+(dlc[dl]||'#ccc')+'"><h3 style="color:'+(dlc[dl]||'var(--navy)')+'">♥ Heartbeat: '+(dl.charAt(0).toUpperCase()+dl.slice(1))+' (Decay: '+di+')</h3>'+(c.decay_factors||[]).map(function(f){return'<div class="hw-flag" style="color:#444">'+f+'</div>'}).join('')+'</div>'}
 if(c.humanwashing_flags&&c.humanwashing_flags.length>0)h+='<div class="hw-section"><h3>⚑ Humanwashing Flags</h3>'+c.humanwashing_flags.map(function(f){return'<div class="hw-flag">'+f+'</div>'}).join('')+'</div>';
@@ -996,6 +967,19 @@ function cmpRenderCard(slot,c){if(!c)return;var pend=c.score_status==='pending'|
 function cmpRenderCompare(){var a=cmpData[1],b=cmpData[2];if(!a||!b)return;var pa=a.score_status==='pending'||(a.data_sources&&a.data_sources.length===1&&['Defaults','Manual Scoring','Seed Estimate','Public Reporting'].indexOf(a.data_sources[0])>=0);var pb=b.score_status==='pending'||(b.data_sources&&b.data_sources.length===1&&['Defaults','Manual Scoring','Seed Estimate','Public Reporting'].indexOf(b.data_sources[0])>=0);function sca(v){return pa?'#999':sc(v)}function scb(v){return pb?'#999':sc(v)}var el=document.getElementById('cmpDimCompare');var dims=[{k:'D_H',l:'H \u2014 Human Consciousness',i:'\ud83e\udde0'},{k:'D_U',l:'U \u2014 Understanding & Empathy',i:'\ud83d\udc99'},{k:'D_M',l:'M \u2014 Moral & Ethical Conduct',i:'\u2696\ufe0f'},{k:'D_A',l:'A \u2014 Alive & Environmental',i:'\ud83c\udf0d'},{k:'D_N',l:'N \u2014 Natural Transparency',i:'\ud83d\udd0d'}];el.innerHTML='<h2 class="section-title" style="font-size:18px">Dimension Comparison</h2>'+dims.map(function(d){var va=a[d.k]||0,vb=b[d.k]||0;var diff=va-vb;return'<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f0f0f0"><span style="font-size:16px;width:24px">'+d.i+'</span><div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--navy)">'+d.l+'</div><div style="display:flex;gap:8px;align-items:center;margin-top:4px"><div style="flex:1;height:8px;background:#EEF1F5;border-radius:4px;overflow:hidden;direction:rtl"><div style="height:100%;width:'+va+'%;background:'+sca(va)+';border-radius:4px"></div></div><span style="font-size:13px;font-weight:800;color:'+sca(va)+';width:30px;text-align:right">'+va+'</span><span style="font-size:10px;color:var(--muted);width:40px;text-align:center">'+(diff>0?'+'+diff:diff<0?diff:'=')+'</span><span style="font-size:13px;font-weight:800;color:'+scb(vb)+';width:30px">'+vb+'</span><div style="flex:1;height:8px;background:#EEF1F5;border-radius:4px;overflow:hidden"><div style="height:100%;width:'+vb+'%;background:'+scb(vb)+';border-radius:4px"></div></div></div></div></div>'}).join('')+'<div style="display:flex;justify-content:space-between;margin-top:16px;padding:12px 16px;background:#F8FAFC;border-radius:8px"><div style="text-align:center"><div style="font-size:24px;font-weight:900;color:var(--navy)">'+a.composite+'</div><div style="font-size:11px;color:var(--muted)">'+(a.company||'').split(' ').slice(0,2).join(' ')+'</div></div><div style="text-align:center;align-self:center;font-size:13px;color:var(--muted)">vs</div><div style="text-align:center"><div style="font-size:24px;font-weight:900;color:var(--navy)">'+b.composite+'</div><div style="font-size:11px;color:var(--muted)">'+(b.company||'').split(' ').slice(0,2).join(' ')+'</div></div></div>'}
 document.addEventListener('click',function(e){if(!e.target.closest('.search-input')&&!e.target.closest('.search-results')){var r1=document.getElementById('searchResults');if(r1)r1.className='search-results';var r2=document.getElementById('cmpResults2');if(r2)r2.className='search-results'}});
 init();
+
+// Hash-based routing for direct links (e.g., /#methodology, /#sources, /#about)
+function _hashRoute(){
+  var h = (location.hash||'').replace('#','').trim();
+  if (!h) return;
+  var validPages = ['home','detail','about','contact','extension','app','api','heartbeat','human100','arbitrage','moat','compare','contagion','watermark','consciousness','wave','decay','genome','methodology','sources'];
+  if (validPages.indexOf(h) >= 0) {
+    showPage(h);
+  }
+}
+window.addEventListener('load', _hashRoute);
+window.addEventListener('hashchange', _hashRoute);
+
 </script>
 </body>
 </html>
