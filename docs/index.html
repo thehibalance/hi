@@ -66,16 +66,45 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div class="stats" id="statsRow" style="margin-bottom:36px"></div>
 <div id="hiCountdown" style="text-align:center;padding:0 0 50px;display:flex;align-items:center;justify-content:center;gap:6px"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#16A34A"></span><span id="hiCountdownText" style="font-size:10px;font-family:'DM Mono',monospace;color:var(--muted);letter-spacing:0.4px">Connected · API live</span></div>
 
-<!-- Search (single, primary action) -->
-<div style="max-width:600px;margin:0 auto 24px;position:relative">
+<!-- Search -->
+<div style="max-width:600px;margin:0 auto 12px;position:relative">
 <input class="search-input" id="searchInput" placeholder="Search any company..." oninput="doSearch(this.value)" style="padding:20px 26px;font-size:17px;border-radius:18px">
 <div class="search-results" id="searchResults"></div>
 </div>
 
-<!-- Compare link (real compare lives on /compare page) -->
-<div style="text-align:center;margin-bottom:60px">
-<span onclick="showPage('compare')" style="font-size:13px;color:var(--muted);cursor:pointer;font-weight:500;border-bottom:1px dashed var(--muted);padding-bottom:1px">Compare two companies →</span>
+<!-- Example pills -->
+<div style="text-align:center;max-width:700px;margin:0 auto 22px;padding:0 20px">
+<span style="font-size:10px;color:var(--muted);margin-right:6px;font-weight:700;letter-spacing:1px;text-transform:uppercase">Try:</span>
+<span class="ex-pill" onclick="loadC('KO','Coca-Cola Company')">Coca-Cola</span>
+<span class="ex-pill" onclick="loadC('','Patagonia')">Patagonia</span>
+<span class="ex-pill" onclick="loadC('JNJ','Johnson &amp; Johnson')">J&amp;J</span>
+<span class="ex-pill" onclick="loadC('META','Meta Platforms, Inc.')">Meta</span>
+<span class="ex-pill" onclick="loadC('SBUX','Starbucks Corporation')">Starbucks</span>
 </div>
+<style>.ex-pill{display:inline-block;padding:5px 12px;margin:3px 4px;font-size:12px;color:var(--navy);background:#F5F7FA;border-radius:20px;cursor:pointer;font-weight:600;transition:all .15s}.ex-pill:hover{background:var(--navy);color:#fff;transform:translateY(-1px)}</style>
+
+<!-- Did You Know -->
+<div id="dykPanel" style="max-width:680px;margin:0 auto 22px;background:linear-gradient(135deg,#FAF8F2,#F8FAFC);border:1px solid #E8E2D0;border-radius:14px;padding:18px 22px;cursor:pointer;transition:all .25s" onclick="dykClick()" onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.06)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+<div style="display:flex;align-items:flex-start;gap:14px">
+<div id="dykIcon" style="font-size:24px;line-height:1;flex-shrink:0;margin-top:2px">💡</div>
+<div style="flex:1;min-width:0">
+<div style="font-size:9px;font-weight:700;color:#C49B20;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:4px">Did you know</div>
+<div id="dykText" style="font-size:14px;color:var(--navy);line-height:1.45;font-weight:500">Loading...</div>
+</div>
+</div>
+<div id="dykDots" style="display:flex;gap:5px;justify-content:center;margin-top:14px"></div>
+</div>
+
+<!-- Compare prompts -->
+<div style="text-align:center;max-width:700px;margin:0 auto 60px;padding:0 20px">
+<span style="font-size:10px;color:var(--muted);margin-right:6px;font-weight:700;letter-spacing:1px;text-transform:uppercase">Or compare:</span>
+<span class="cmp-pill" onclick="quickCompare('','Patagonia','','The North Face')">Patagonia vs North Face</span>
+<span class="cmp-pill" onclick="quickCompare('COST','Costco Wholesale Corporation','WMT','Walmart Inc.')">Costco vs Walmart</span>
+<span class="cmp-pill" onclick="quickCompare('AAPL','Apple Inc.','','Samsung')">Apple vs Samsung</span>
+<span class="cmp-pill" onclick="quickCompare('KO','Coca-Cola Company','PEP','PepsiCo, Inc.')">Coke vs Pepsi</span>
+<span class="cmp-pill" onclick="showPage('compare')">+ Custom compare</span>
+</div>
+<style>.cmp-pill{display:inline-block;padding:5px 12px;margin:3px 4px;font-size:12px;color:var(--muted);background:transparent;border:1px solid #E0E0E0;border-radius:20px;cursor:pointer;font-weight:500;transition:all .15s}.cmp-pill:hover{border-color:var(--navy);color:var(--navy);transform:translateY(-1px)}</style>
 
 <!-- Gold ticker -->
 <div id="goldLabel" style="text-align:center;margin-bottom:8px"><span style="font-size:10px;font-weight:600;color:#C49B20;letter-spacing:3px;text-transform:uppercase">The Gold Standard</span></div>
@@ -85,11 +114,11 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <!-- HUMAN dimensions teaser -->
 <div style="text-align:center;margin-bottom:16px"><div style="font-size:10px;font-weight:600;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px">What HI Grade Measures</div><h2 style="font-family:'DM Serif Display';font-size:32px;color:var(--navy);margin:0;line-height:1.2">Five things AI can't replace.</h2></div>
 <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:32px 0 20px;cursor:pointer" onclick="showPage('methodology')" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-<div style="text-align:center;padding:20px 8px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:32px;color:#C49B20;line-height:1;margin-bottom:8px">H</div><div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:0.5px;text-transform:uppercase">Consciousness</div></div>
-<div style="text-align:center;padding:20px 8px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:32px;color:#C49B20;line-height:1;margin-bottom:8px">U</div><div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:0.5px;text-transform:uppercase">Empathy</div></div>
-<div style="text-align:center;padding:20px 8px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:32px;color:#C49B20;line-height:1;margin-bottom:8px">M</div><div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:0.5px;text-transform:uppercase">Ethics</div></div>
-<div style="text-align:center;padding:20px 8px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:32px;color:#C49B20;line-height:1;margin-bottom:8px">A</div><div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:0.5px;text-transform:uppercase">Environment</div></div>
-<div style="text-align:center;padding:20px 8px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:32px;color:#C49B20;line-height:1;margin-bottom:8px">N</div><div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:0.5px;text-transform:uppercase">Transparency</div></div>
+<div style="text-align:center;padding:22px 10px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:36px;color:#C49B20;line-height:1;margin-bottom:10px">H</div><div style="font-size:11px;font-weight:700;color:var(--navy);line-height:1.3"><strong style="color:#C49B20">H</strong>uman<br>Consciousness</div></div>
+<div style="text-align:center;padding:22px 10px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:36px;color:#C49B20;line-height:1;margin-bottom:10px">U</div><div style="font-size:11px;font-weight:700;color:var(--navy);line-height:1.3"><strong style="color:#C49B20">U</strong>nderstanding<br>&amp; Empathy</div></div>
+<div style="text-align:center;padding:22px 10px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:36px;color:#C49B20;line-height:1;margin-bottom:10px">M</div><div style="font-size:11px;font-weight:700;color:var(--navy);line-height:1.3"><strong style="color:#C49B20">M</strong>oral &amp;<br>Ethical Conduct</div></div>
+<div style="text-align:center;padding:22px 10px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:36px;color:#C49B20;line-height:1;margin-bottom:10px">A</div><div style="font-size:11px;font-weight:700;color:var(--navy);line-height:1.3"><strong style="color:#C49B20">A</strong>live &amp;<br>Environmental</div></div>
+<div style="text-align:center;padding:22px 10px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:36px;color:#C49B20;line-height:1;margin-bottom:10px">N</div><div style="font-size:11px;font-weight:700;color:var(--navy);line-height:1.3"><strong style="color:#C49B20">N</strong>atural<br>Transparency</div></div>
 </div>
 <div style="text-align:center;margin-bottom:80px"><span onclick="showPage('methodology')" style="font-size:13px;color:var(--sky);font-weight:600;cursor:pointer">How does HI Grade work? →</span></div>
 
@@ -989,6 +1018,43 @@ async function cmpSelect(slot,ticker,name){var inputId='cmpSearch'+slot;var resu
 function cmpRenderCard(slot,c){if(!c)return;var pend=c.score_status==='pending'||(c.data_sources&&c.data_sources.length===1&&['Defaults','Manual Scoring','Seed Estimate','Public Reporting'].indexOf(c.data_sources[0])>=0);var gc=pend?'#999':((c.gold||c.hi_balanced)?'#C49B20':sc(c.composite))||'#666';var el=document.getElementById('cmpCard'+slot);el.innerHTML='<div style="background:white;border-radius:12px;border:1px solid #eee;padding:20px;text-align:center"><div style="font-size:48px;font-weight:900;color:'+gc+'">'+c.composite+'</div><div style="font-size:11px;font-weight:700;color:'+gc+'">'+((c.gold||c.hi_balanced)?hiE(14)+' HI Grade™':pend?'Pending Verification':'HI Grade™')+' · '+c.composite+'</div><div style="font-size:16px;font-weight:700;color:var(--navy);margin-top:8px">'+(c.company||'')+'</div>'+(c.industry?'<div style="font-size:11px;color:var(--muted)">'+c.industry+'</div>':'')+'<div style="display:flex;gap:6px;justify-content:center;margin-top:12px">'+['D_H','D_U','D_M','D_A','D_N'].map(function(d){var v=c[d]||0;var l=d.replace('D_','');return'<div style="text-align:center"><div style="font-size:16px;font-weight:800;color:'+sc(v)+'">'+v+'</div><div style="font-size:9px;color:var(--muted)">'+l+'</div></div>'}).join('')+'</div><div style="margin-top:12px"><a onclick="loadC(\''+esc(c.ticker||'')+'\',\''+esc(c.company||'')+'\')" style="font-size:11px;font-weight:600;color:var(--navy);cursor:pointer">View Details →</a></div></div>'}
 function cmpRenderCompare(){var a=cmpData[1],b=cmpData[2];if(!a||!b)return;var pa=a.score_status==='pending'||(a.data_sources&&a.data_sources.length===1&&['Defaults','Manual Scoring','Seed Estimate','Public Reporting'].indexOf(a.data_sources[0])>=0);var pb=b.score_status==='pending'||(b.data_sources&&b.data_sources.length===1&&['Defaults','Manual Scoring','Seed Estimate','Public Reporting'].indexOf(b.data_sources[0])>=0);function sca(v){return pa?'#999':sc(v)}function scb(v){return pb?'#999':sc(v)}var el=document.getElementById('cmpDimCompare');var dims=[{k:'D_H',l:'H \u2014 Human Consciousness',i:'\ud83e\udde0'},{k:'D_U',l:'U \u2014 Understanding & Empathy',i:'\ud83d\udc99'},{k:'D_M',l:'M \u2014 Moral & Ethical Conduct',i:'\u2696\ufe0f'},{k:'D_A',l:'A \u2014 Alive & Environmental',i:'\ud83c\udf0d'},{k:'D_N',l:'N \u2014 Natural Transparency',i:'\ud83d\udd0d'}];el.innerHTML='<h2 class="section-title" style="font-size:18px">Dimension Comparison</h2>'+dims.map(function(d){var va=a[d.k]||0,vb=b[d.k]||0;var diff=va-vb;return'<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f0f0f0"><span style="font-size:16px;width:24px">'+d.i+'</span><div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--navy)">'+d.l+'</div><div style="display:flex;gap:8px;align-items:center;margin-top:4px"><div style="flex:1;height:8px;background:#EEF1F5;border-radius:4px;overflow:hidden;direction:rtl"><div style="height:100%;width:'+va+'%;background:'+sca(va)+';border-radius:4px"></div></div><span style="font-size:13px;font-weight:800;color:'+sca(va)+';width:30px;text-align:right">'+va+'</span><span style="font-size:10px;color:var(--muted);width:40px;text-align:center">'+(diff>0?'+'+diff:diff<0?diff:'=')+'</span><span style="font-size:13px;font-weight:800;color:'+scb(vb)+';width:30px">'+vb+'</span><div style="flex:1;height:8px;background:#EEF1F5;border-radius:4px;overflow:hidden"><div style="height:100%;width:'+vb+'%;background:'+scb(vb)+';border-radius:4px"></div></div></div></div></div>'}).join('')+'<div style="display:flex;justify-content:space-between;margin-top:16px;padding:12px 16px;background:#F8FAFC;border-radius:8px"><div style="text-align:center"><div style="font-size:24px;font-weight:900;color:var(--navy)">'+a.composite+'</div><div style="font-size:11px;color:var(--muted)">'+(a.company||'').split(' ').slice(0,2).join(' ')+'</div></div><div style="text-align:center;align-self:center;font-size:13px;color:var(--muted)">vs</div><div style="text-align:center"><div style="font-size:24px;font-weight:900;color:var(--navy)">'+b.composite+'</div><div style="font-size:11px;color:var(--muted)">'+(b.company||'').split(' ').slice(0,2).join(' ')+'</div></div></div>'}
 document.addEventListener('click',function(e){if(!e.target.closest('.search-input')&&!e.target.closest('.search-results')){var r1=document.getElementById('searchResults');if(r1)r1.className='search-results';var r2=document.getElementById('cmpResults2');if(r2)r2.className='search-results';var r3=document.getElementById('cmpResults1');if(r3)r3.className='search-results'}});
+
+// ─── DID YOU KNOW rotating consumer hook ──────────────────────────────
+var _dykFacts = [
+  {icon:'\u{1F947}', text:'<strong>Coca-Cola earned Gold HI Grade.</strong> Recycling commitments, fair worker pay, mini-cans for choice. Surprised? See the receipts \u2192', action:function(){loadC('KO','Coca-Cola Company')}},
+  {icon:'\u26A0\uFE0F', text:'<strong>Johnson &amp; Johnson scored 0 in Moral &amp; Ethical Conduct.</strong> Documented harm from talc settlements. ESG gives them a pass \u2014 HI Grade does not. See the data \u2192', action:function(){loadC('JNJ','Johnson &amp; Johnson')}},
+  {icon:'\u{1F947}', text:'<strong>Patagonia earned Gold algorithmically.</strong> All 5 HUMAN dimensions verified. No badge bought. No marketing department involved. See the proof \u2192', action:function(){loadC('','Patagonia')}},
+  {icon:'\u23F1\uFE0F', text:'<strong>Starbucks scored 73 \u2014 but didn\u2019t earn Gold.</strong> The Heartbeat caught labor news in the last 90 days. The Momentum gate held the line. See why \u2192', action:function(){loadC('SBUX','Starbucks Corporation')}},
+  {icon:'\u{1F947}', text:'<strong>Ford Motor Company earned Gold HI Grade.</strong> Mass-market auto can clear the gates. Workforce investment, transparent reporting, no critical decay. See how \u2192', action:function(){loadC('F','Ford Motor Company')}},
+  {icon:'\u26A1', text:'<strong>Meta scored 49 on HI Grade. ESG rates them 62.</strong> The 13-point gap is algorithmic harm at scale \u2014 something ESG doesn\u2019t measure. See the gap \u2192', action:function(){loadC('META','Meta Platforms, Inc.')}},
+  {icon:'\u{1F50D}', text:'<strong>Out of 441 companies scored, only 4 earned Gold HI Grade.</strong> Coca-Cola, NextEra Energy, Patagonia, and Ford. The bar is high on purpose. See the list \u2192', action:function(){showPage('human100')}}
+];
+var _dykIdx = 0, _dykTimer = null;
+function _dykRender(){
+  var f = _dykFacts[_dykIdx];
+  var el = document.getElementById('dykText'); if(el) el.innerHTML = f.text;
+  var ic = document.getElementById('dykIcon'); if(ic) ic.textContent = f.icon;
+  var dots = document.getElementById('dykDots');
+  if(dots) dots.innerHTML = _dykFacts.map(function(_,i){return '<span style="width:6px;height:6px;border-radius:50%;background:'+(i===_dykIdx?'#C49B20':'#E5E7EB')+';transition:background .25s"></span>'}).join('');
+}
+function _dykNext(){ _dykIdx = (_dykIdx + 1) % _dykFacts.length; _dykRender(); }
+function dykClick(){ var f = _dykFacts[_dykIdx]; if(f && f.action) f.action(); }
+function _dykStart(){ _dykRender(); if(_dykTimer) clearInterval(_dykTimer); _dykTimer = setInterval(_dykNext, 8000); }
+// Pick a random starting fact so visits look fresh
+_dykIdx = Math.floor(Math.random() * _dykFacts.length);
+
+// ─── Quick Compare helper for compare prompts ─────────────────────────
+function quickCompare(t1, n1, t2, n2){
+  showPage('compare');
+  setTimeout(function(){
+    try { cmpSelect(1, t1, n1); } catch(e){ console.log('cmp1 err', e); }
+    setTimeout(function(){
+      try { cmpSelect(2, t2, n2); } catch(e){ console.log('cmp2 err', e); }
+    }, 600);
+  }, 100);
+}
+
+_dykStart();
 init();
 
 // Hash-based routing for direct links (e.g., /#methodology, /#sources, /#about)
