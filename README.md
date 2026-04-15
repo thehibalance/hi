@@ -2,7 +2,7 @@
 
 ## Human kind?
 
-**For centuries, we've made decisions using four elements: cost, time, convenience, risk. We left out the most important one. HI Grade adds love back as the fifth element of every decision we make.**
+**For centuries, we've made decisions using four checks: cost, time, convenience, risk. We left out the one that matters most — verified human impact. HI Grade is the fifth check before every decision.**
 
 Built without AI to measure AI. **42 free public data sources. 19 active sub-signals. Zero AI in the scoring engine.** The world's first ethical scoring framework for the age of AI.
 
@@ -16,17 +16,17 @@ Built without AI to measure AI. **42 free public data sources. 19 active sub-sig
 
 ---
 
-## The Fifth Element
+## The Fifth Check
 
 Every decision we make — as consumers, employees, investors, founders — runs through four filters: **cost, time, convenience, risk.** The framework for weighing them is 500 years old and well understood.
 
-We left out a fifth filter. It's not new. It's the oldest one. We stopped measuring it because it was hard to quantify, and because we convinced ourselves it was nice-to-have instead of load-bearing.
+We left out a fifth filter: **verified human impact.** Not "does this company feel ethical?" but *"does this company treat humans well in ways that leave a data trail?"*
 
-**The fifth filter is love.** How much does this company love the humans it touches? How much does it love its workers, its customers, its neighbors, its planet? How much does it *not* love — automating empathy, extracting from communities, poisoning landscapes, hiding its AI, performing virtue while quietly replacing people?
+Revenue per employee. Layoff trajectory. CEO pay ratios. Regulatory violations. DEI commitments that don't match hiring. AI disclosure gaps. Court settlements. Documented deaths. Filed documents, not filed promises.
 
-HI Grade is the attempt to make that question checkable. Not "does this company feel kind?" but *"does this company treat humans kindly in ways that leave a data trail?"* Revenue per employee. Layoffs. CEO pay ratios. Regulatory violations. DEI commitments that don't match hiring. AI disclosure gaps. Court settlements. Documented deaths. Filed documents, not filed promises.
+We stopped measuring this because it was hard to quantify and because we convinced ourselves it was nice-to-have instead of load-bearing. **It is load-bearing.** Companies that treat humans well outperform companies that don't — over time, across industries, in every measure that matters.
 
-**Before every decision, ask: Human kind?**
+HI Grade makes the fifth check possible. **Before every decision, ask: Human kind?**
 
 ---
 
@@ -54,7 +54,7 @@ The company must not be in **warning or critical decay** over the trailing 90 da
 
 ## The HUMAN Framework
 
-Five dimensions of humanity. Five elements. Love is what activates them all.
+Five dimensions of humanity. Each measures something AI can't replace.
 
 | Dimension | Measures | What AI Replaces |
 |---|---|---|
