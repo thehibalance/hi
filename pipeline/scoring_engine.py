@@ -510,6 +510,74 @@ def _get_dei_score(ticker, company_name):
     return None
 
 
+# ── Harm Documentation data (Pass 4 — public-record harm penalties) ──────
+# Documents publicly verifiable harm to penalize M dimension.
+# Principle: "Humans can still choose."
+# - Sugar/alcohol/tobacco-as-product/gambling: NO penalty (consumer choice)
+# - Hidden risk, deception, weapons: PENALTY (no consent possible)
+# Maps to: M.3 (Market Ethics) + M.4 (Product Ethics)
+
+_HARM_INDEX = None
+_HARM_NAME_INDEX = None
+
+def _load_harm_data():
+    """Load harm documentation index from pipeline output. Idempotent."""
+    global _HARM_INDEX, _HARM_NAME_INDEX
+    if _HARM_INDEX is not None:
+        return
+    _HARM_INDEX, _HARM_NAME_INDEX = {}, {}
+
+    harm_path = Path("data/harm/all_companies.json")
+    if harm_path.exists():
+        try:
+            data = json.load(open(harm_path))
+            companies = data.get("companies", []) if isinstance(data, dict) else data
+            for r in companies:
+                t = (r.get("ticker") or "").upper().strip()
+                n = (r.get("company") or "").lower().strip()
+                if t: _HARM_INDEX[t] = r
+                if n: _HARM_NAME_INDEX[n] = r
+        except Exception:
+            pass
+
+
+def _get_harm_record(ticker, company_name):
+    _load_harm_data()
+    if ticker and ticker.upper() in _HARM_INDEX:
+        return _HARM_INDEX[ticker.upper()]
+    if company_name:
+        cn = company_name.lower().strip()
+        if cn in _HARM_NAME_INDEX:
+            return _HARM_NAME_INDEX[cn]
+        for k, v in _HARM_NAME_INDEX.items():
+            if cn and len(cn) > 5 and len(k) > 5 and (cn in k or k in cn):
+                return v
+    return None
+
+
+def compute_harm_penalty(ticker, company_name=""):
+    """Compute Harm Documentation penalty — applies to M dimension only."""
+    record = _get_harm_record(ticker, company_name)
+    if not record:
+        return {
+            "has_harm": False,
+            "penalties": {"M": 0},
+            "flags": [],
+            "sources": []
+        }
+    return {
+        "has_harm": True,
+        "penalties": {"M": record.get("penalty_M_total", 0)},
+        "flags": record.get("flags", []),
+        "sources": record.get("sources", [])[:3],
+        "settlement_5yr": record.get("settlement_total_5yr", 0),
+        "deaths_attributed": record.get("deaths_attributed", 0),
+        "concealment_findings": record.get("concealment_findings", []),
+        "remediation_status": record.get("remediation_status", "active"),
+        "review_date": record.get("review_date", "")
+    }
+
+
 def _score_from_inclusion_tier(tier_score):
     """Map HRC CEI / DEI score to U.3 contribution using tier structure.
     
@@ -1326,6 +1394,14 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         D_M = clamp(D_M + p["M"])
         D_N = clamp(D_N + p["N"])
 
+    # ═══ HARM DOCUMENTATION — Direct M dimension penalty ═══
+    # Public-record harm: settlements, deaths, concealment.
+    # Same pattern as AHI but only M dimension (harm = market/product issue).
+    harm_doc = compute_harm_penalty(ticker, company_name)
+    if harm_doc["has_harm"]:
+        D_M = clamp(D_M + harm_doc["penalties"]["M"])
+
+
     # Round dimensions after all adjustments
     D_H, D_U, D_M, D_A, D_N = round_score(D_H), round_score(D_U), round_score(D_M), round_score(D_A), round_score(D_N)
 
@@ -1363,6 +1439,12 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         algo_flags = [f"AH: {f}" for f in algo_harm["flags"][:3]]  # Top 3 flags
         hw_flags.extend(algo_flags)
 
+    # Add harm documentation flags
+    if harm_doc.get("has_harm"):
+        harm_flags = [f"HD: {f}" for f in harm_doc.get("flags", [])[:3]]
+        hw_flags.extend(harm_flags)
+
+
     record = {
         "company": company_name, "ticker": ticker, "industry": industry, "sic": sic,
         "sic_description": sec_data.get("n_signals", {}).get("sic_description", "") if sec_data else "",
@@ -1374,6 +1456,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
         "humanwashing_flags": hw_flags,
         "algo_harm": algo_harm,
+        "harm_documentation": harm_doc,
         "genome": {
             "H": {"scores": h_detail, "sources": h_src},
             "U": {"scores": u_detail, "sources": u_src},

@@ -120,6 +120,9 @@ def main():
             run_if_exists("hrc_pipeline.py",
                           "Phase 2a: HRC Corporate Equality Index")
 
+            run_if_exists("harm_documentation_pipeline.py",
+                          "Phase 2a: Harm Documentation (settlements, deaths, concealment)")
+
             # ── Group B: API keys needed, rate-limited ──
             run_if_exists("fmp_pipeline.py",
                           "Phase 2b: FMP Financial Modeling Prep (250 calls/day)")
