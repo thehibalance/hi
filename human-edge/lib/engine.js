@@ -1,285 +1,250 @@
 /**
- * HI. Grade Filter Engine
+ * HI. Grade Filter Engine — v1.1.0
  * 
  * Pure deterministic logic for:
  *   - Computing composite HUMAN scores (HI Grades)
- *   - Applying the floor rule
- *   - Gold HI Grade: 3 gates (score, balance, honesty)
- *   - Filtering companies against user thresholds
+ *   - Gold HI Grade: 3 gates (Dimensions / Evidence / Momentum)
+ *   - Filtering companies against user's personal thresholds
  *   - Detecting humanwashing flags (rule-based)
  * 
- * SPECIFICATION REFERENCE: HUMAN Methodology Spec v1.0
- * Governed by: The HI Balance
- * Brand: HI. — Think human intelligence.
+ * SPECIFICATION REFERENCE: HUMAN Methodology Spec v1.1.0
+ * Governed by: Morf Innovations LLC
+ * Brand: HI. — Human kind?
  * 
  * ╔══════════════════════════════════════════════════════╗
- * ║  NO AI. NO ML. NO NEURAL NETWORKS. NO INFERENCE.   ║
+ * ║  NO AI. NO ML. NO NEURAL NETWORKS. NO INFERENCE.    ║
  * ║  Every decision is traceable. Every line auditable.  ║
- * ║  Hi — choose human.                                  ║
  * ╚══════════════════════════════════════════════════════╝
+ *
+ * v1.1.0 GATE CHANGES from v1.0:
+ *   Old Gate 1 (SCORE):     composite ≥ adaptive threshold
+ *   New Gate 1 (DIMENSIONS): all 5 dims ≥ 60
+ *
+ *   Old Gate 2 (BALANCE):   all dims ≥ 42
+ *   New Gate 2 (EVIDENCE):   each dim has ≥1 verified public source
+ *
+ *   Old Gate 3 (HONESTY):   no Humanwashing™ + AHI < 30
+ *   New Gate 3 (MOMENTUM):   not in warning/critical decay (90-day Heartbeat)
+ *
+ * Why simplified: Humanwashing and AHI are now absorbed INTO dimension
+ * scores via the harm pipelines (HW, AHI, PHI, HD), so they no longer
+ * need a separate gate. Momentum is a separate gate because backward-
+ * looking dimension data can't see real-time signals fast enough
+ * (e.g., Oracle layoffs in early 2025 not caught by annual SEC filings).
  */
 
 const HumanEngine = {
 
-  // ═══ CONSTANTS (from Methodology Spec v1.0) ═══
+  // ═══ CONSTANTS (from Methodology Spec v1.1.0) ═══
 
-  DIMENSION_WEIGHT: 0.20, // Each dimension weighted equally at 20%
-  FLOOR_THRESHOLD: 10,     // If any dimension below this...
-  FLOOR_CAP: 40,           // ...cap composite at this value
+  GOLD_DIM_THRESHOLD: 60,   // Each HUMAN dimension must score ≥ 60 (Gate 1)
+  GOLD_DECAY_BLOCKING: ['warning', 'critical'],  // Decay levels that block Gold (Gate 3)
 
   // Score-only system: every company gets a number 0-100.
-  // Gold HI Grade is earned by passing 3 gates. No letter grades.
-  GOLD_COLOR: "#C49B20",
-  SCORE_COLOR: "#1B3A5C",
-
-  // Adaptive threshold defaults (overridden by market stats)
-  GOLD_HARD_FLOOR: 55,  // Threshold never drops below this
+  // Gold HI Grade is earned by passing 3 gates.
+  GOLD_COLOR: '#C49B20',
+  SCORE_COLOR: '#1B3A5C',
 
   DIMENSIONS: ['h', 'u', 'm', 'a', 'n'],
 
   DIMENSION_LABELS: {
-    h: "Human Consciousness",
-    u: "Understanding & Empathy",
-    m: "Moral & Ethical Conduct",
-    a: "Alive & Environmental",
-    n: "Natural Transparency"
+    h: 'Human Consciousness',
+    u: 'Understanding & Empathy',
+    m: 'Moral & Ethical Conduct',
+    a: 'Alive & Environmental',
+    n: 'Natural Transparency'
   },
+
+  // Sources that count as "seed only" — fail Evidence gate
+  SEED_SOURCES: ['Defaults', 'Manual Scoring', 'Seed Estimate', 'Public Reporting'],
 
   // ═══ SCORING ═══
 
   /**
    * Compute composite HUMAN score from dimension scores.
-   * Formula: HUMAN = (H + U + M + A + N) / 5
-   * Floor rule: if min(H,U,M,A,N) < FLOOR_THRESHOLD, cap at FLOOR_CAP
-   * 
-   * @param {Object} company - Object with h, u, m, a, n properties (0-100 each)
-   * @returns {Object} { composite, floorTriggered, floorDimension }
+   * Formula (v1.1.0): composite = (H + U + M + A + N) / 5
+   * No floor rule in v1.1.0 — the Dimensions gate (all ≥ 60) replaces it.
    */
   computeComposite(company) {
     const scores = this.DIMENSIONS.map(d => company[d] || 0);
-    const raw = scores.reduce((sum, s) => sum + s, 0) / 5;
-
-    // Floor rule check
-    const minScore = Math.min(...scores);
-    const minDimension = this.DIMENSIONS[scores.indexOf(minScore)];
-    const floorTriggered = minScore < this.FLOOR_THRESHOLD;
-    let composite = floorTriggered ? Math.min(raw, this.FLOOR_CAP) : raw;
-    
-    // Round to whole number (same as cloud scoring engine)
-    composite = Math.round(composite);
-
-    return {
-      composite,
-      floorTriggered,
-      floorDimension: floorTriggered ? minDimension : null
-    };
-  },
-
-  // ═══ TIER CLASSIFICATION ═══
-
-  /**
-   * Classify a composite score. Score-only system — no letter grades.
-   * Returns display info. Gold status is determined by checkGoldHIGrade().
-   */
-  classifyScore(composite) {
-    return {
-      composite,
-      color: this.getScoreColor(composite),
-    };
+    const composite = Math.round(scores.reduce((sum, s) => sum + s, 0) / 5);
+    return { composite, floorTriggered: false, floorDimension: null };
   },
 
   /**
-   * Check if a company earns Gold HI Grade.
-   * 3 gates, 3 categories. The data decides.
+   * Check if a company earns Gold HI Grade (v1.1.0 spec).
+   * 3 gates: Dimensions / Evidence / Momentum.
    *
-   * Gate 1 — SCORE: Composite ≥ adaptive threshold (mean + 2σ, hard floor 55, ratchet up only)
-   * Gate 2 — BALANCE: All 5 HUMAN dimensions ≥ 42
-   * Gate 3 — HONESTY: No Humanwashing™ flags AND Algorithmic Harm Index™ below 30
+   * Gate 1 — DIMENSIONS: All 5 HUMAN dims ≥ 60
+   * Gate 2 — EVIDENCE:   Each dim has ≥1 real public source (not Seed/default)
+   * Gate 3 — MOMENTUM:   decay_level not in 'warning' or 'critical'
    *
-   * Score, balance, and honesty.
+   * Trusts cloud-provided gate booleans when available (cloud is authoritative).
+   * Falls back to local computation otherwise.
    */
-  checkGoldHIGrade(company, composite, hwFlags, marketStats) {
+  checkGoldHIGrade(company, composite, hwFlags, _legacyArg) {
+    // ── GATE 1: DIMENSIONS — all 5 dims ≥ 60 ──
     const dims = this.DIMENSIONS.map(d => company[d] || 0);
-    const belowCount = dims.filter(s => s < 42).length;
-    
-    // Adaptive threshold: mean + 2σ from market data, with hard floor and ratchet
-    // Accept threshold directly or from marketStats object
-    let threshold = 62;
-    if (typeof marketStats === 'number') {
-      threshold = marketStats;  // Direct threshold value
-    } else if (marketStats && marketStats.hiBalancedThreshold) {
-      threshold = marketStats.hiBalancedThreshold;
+    const dimensionsPass = dims.every(s => s >= this.GOLD_DIM_THRESHOLD);
+
+    // ── GATE 2: EVIDENCE — each dim has real source ──
+    // Trust cloud-provided value if present, else compute from genome.sources
+    let evidencePass = false;
+    if (typeof company.cloud_hi_balanced_gates_evidence === 'boolean') {
+      evidencePass = company.cloud_hi_balanced_gates_evidence;
+    } else if (company.genome) {
+      // Each dim needs at least one non-seed source
+      evidencePass = ['H', 'U', 'M', 'A', 'N'].every(D => {
+        const dd = company.genome[D] || {};
+        const srcs = dd.sources || [];
+        if (!srcs.length) return false;
+        return srcs.some(s => !this.SEED_SOURCES.includes(s));
+      });
+    } else {
+      // No genome data — can't verify, default to false (conservative)
+      evidencePass = false;
     }
-    threshold = Math.round(threshold);  // Always whole numbers
-    
-    // Gate 3: Honesty — both Humanwashing™ and Algorithmic Harm Index™
-    const ahiScore = company.algorithmic_harm_score || company.ahi_score || 0;
-    const honesty = hwFlags.length === 0 && ahiScore < 30;
-    
+
+    // ── GATE 3: MOMENTUM — not in warning/critical decay ──
+    const decayLevel = company.decay_level || 'stable';
+    const momentumPass = !this.GOLD_DECAY_BLOCKING.includes(decayLevel);
+
     const gates = {
-      score: composite >= threshold,       // Gate 1: Score
-      balance: belowCount === 0,           // Gate 2: Balance (all dims ≥ 42)
-      honesty: honesty,                    // Gate 3: Honesty (Humanwashing™ + AHI™)
+      dimensions: dimensionsPass,
+      evidence: evidencePass,
+      momentum: momentumPass,
+      // backward-compat aliases for any legacy code reading old keys
+      score: dimensionsPass,
+      balance: evidencePass,
+      honesty: momentumPass,
+      integrity: momentumPass
     };
-    
-    const isGold = Object.values(gates).every(v => v);
-    return { gold: isGold, gates, threshold };
+
+    const isGold = dimensionsPass && evidencePass && momentumPass;
+
+    // Threshold returned for backward compat — in v1.1.0 it's the per-dim threshold (60), not composite
+    return { gold: isGold, gates, threshold: this.GOLD_DIM_THRESHOLD };
   },
 
   /**
    * Get full HI Grade profile for a company.
-   * Score-only system: number 0-100, color-coded.
-   * Gold HI Grade earned by passing 3 gates.
-   * @param {Object} company - Company object from database
-   * @returns {Object} Complete score profile
+   * If company has cloud_hi_balanced_gates (object from API), trust those over local computation.
    */
-  getProfile(company, marketStats) {
-    const { composite, floorTriggered, floorDimension } = this.computeComposite(company);
+  getProfile(company, _legacyArg) {
+    const { composite } = this.computeComposite(company);
     const hwFlags = this.detectHumanwashing(company);
 
-    // Check Gold HI Grade (3 gates)
-    const goldCheck = this.checkGoldHIGrade(company, composite, hwFlags, marketStats);
-    const isGold = goldCheck.gold;
-    const scoreColor = isGold ? this.GOLD_COLOR : this.getScoreColor(composite, goldCheck.threshold);
+    // Trust cloud gates if provided
+    let goldCheck;
+    if (company.cloud_hi_balanced_gates && typeof company.cloud_hi_balanced_gates === 'object') {
+      const g = company.cloud_hi_balanced_gates;
+      const gates = {
+        dimensions: !!g.dimensions,
+        evidence: !!g.evidence,
+        momentum: !!g.momentum,
+        score: !!g.dimensions,
+        balance: !!g.evidence,
+        honesty: !!g.momentum,
+        integrity: !!g.momentum
+      };
+      goldCheck = {
+        gold: !!company.cloud_hi_balanced || (gates.dimensions && gates.evidence && gates.momentum),
+        gates,
+        threshold: this.GOLD_DIM_THRESHOLD
+      };
+    } else {
+      goldCheck = this.checkGoldHIGrade(company, composite, hwFlags);
+    }
 
-    // Balance info (for display — dimensions below 42)
-    const scores = this.DIMENSIONS.map(d => company[d] || 0);
-    const belowCount = scores.filter(s => s < 42).length;
-    const minScore = Math.min(...scores);
-    const minDim = this.DIMENSIONS[scores.indexOf(minScore)];
+    const isGold = goldCheck.gold;
+    const scoreColor = isGold ? this.GOLD_COLOR : this.getScoreColor(composite);
 
     return {
       id: company.id,
       name: company.name,
-      dimensions: {
-        h: company.h, u: company.u, m: company.m, a: company.a, n: company.n
-      },
+      dimensions: { h: company.h, u: company.u, m: company.m, a: company.a, n: company.n },
       composite,
       isGold,
-      hiBalanced: isGold,  // backward compat for content.js / popup.js
+      hiBalanced: isGold,             // backward compat
       goldGates: goldCheck.gates,
       goldThreshold: goldCheck.threshold,
-      balancedThreshold: goldCheck.threshold,  // backward compat alias
-      grade: isGold ? "Gold HI Grade" : "Scored",
+      balancedThreshold: goldCheck.threshold,  // backward compat
+      grade: isGold ? 'Gold HI Grade' : 'Scored',
       scoreColor,
-      tier: { color: scoreColor, satire: isGold ? "Humans and tech, in harmony. Gold HI Grade earned." : "" },
-      floorTriggered,
-      floorDimension,
-      belowCount,
-      weakestDim: minDim,
+      tier: { color: scoreColor, satire: isGold ? 'Humans and tech, in harmony. Gold HI Grade earned.' : '' },
+      floorTriggered: false,          // v1.1.0 has no floor
+      floorDimension: null,
       humanwashingFlags: hwFlags,
-      confidence: company.confidence || "estimated",
-      source: company.source || "local"
+      confidence: company.confidence || 'estimated',
+      source: company.source || 'local'
     };
   },
 
-  // ═══ FILTERING ═══
+  // ═══ FILTERING (user's personal thresholds — separate from Gold gates) ═══
 
-  /**
-   * Default user preferences.
-   */
   DEFAULT_PREFS: {
     masterToggle: true,       // true = full view, false = filtered
-    filterMode: "soft",       // "strict" or "soft"
-    thresholds: {
-      h: 0, u: 0, m: 0, a: 0, n: 0  // Default: show everything
-    },
-    minimumConfidence: "estimated" // "verified" or "estimated"
+    filterMode: 'soft',
+    thresholds: { h: 0, u: 0, m: 0, a: 0, n: 0 },
+    minimumConfidence: 'estimated'
   },
 
-  /**
-   * Check if a company passes the user's filter thresholds.
-   * 
-   * @param {Object} company - Company object
-   * @param {Object} prefs - User preferences with thresholds
-   * @returns {Object} { passes, failedDimensions }
-   */
   applyFilter(company, prefs) {
-    // If master toggle is ON (full view), everything passes
-    if (prefs.masterToggle) {
-      return { passes: true, failedDimensions: [] };
-    }
+    if (prefs.masterToggle) return { passes: true, failedDimensions: [] };
 
     const failedDimensions = [];
-
     for (const dim of this.DIMENSIONS) {
       const score = company[dim] || 0;
       const threshold = (prefs.thresholds && prefs.thresholds[dim]) || 0;
-      if (score < threshold) {
-        failedDimensions.push(dim);
-      }
+      if (score < threshold) failedDimensions.push(dim);
     }
 
-    // Check floor rule
-    const { floorTriggered } = this.computeComposite(company);
-    if (floorTriggered) {
-      failedDimensions.push('floor');
-    }
-
-    return {
-      passes: failedDimensions.length === 0,
-      failedDimensions
-    };
+    return { passes: failedDimensions.length === 0, failedDimensions };
   },
 
-  // ═══ HUMANWASHING DETECTION (Edge Heuristics) ═══
-  // Spec Reference: Section 9, Methodology Spec v1.0
-  // These are RULE-BASED heuristics. No ML. No inference.
+  // ═══ HUMANWASHING DETECTION (rule-based, no ML) ═══
+  // These are kept for display purposes — but NO LONGER affect Gold gates in v1.1.0.
+  // The harm pipelines (HW, AHI, PHI, HD) absorb these into dimension scores.
 
-  /**
-   * Detect humanwashing flags using deterministic rules.
-   * Edge-side implementation uses structured data fields only.
-   * 
-   * @param {Object} company - Company object
-   * @returns {Array} Array of triggered flag objects
-   */
   detectHumanwashing(company) {
     const flags = [];
 
-    // HW.1: High Automation Signal
-    // Revenue per employee significantly above industry average
     if (company.revenuePerEmployee && company.industryMedianRPE) {
-      if (company.revenuePerEmployee > company.industryMedianRPE * 3) {
+      if (company.revenuePerEmployee > company.industryMedianRPE * 4) {
         flags.push({
-          id: "HW.1",
-          name: "High Automation Signal",
-          detail: "Revenue per employee exceeds 3x industry median",
+          id: 'HW.1',
+          name: 'High Automation Signal',
+          detail: 'Revenue per employee exceeds 4x industry median',
           severity: 25
         });
       }
     }
 
-    // HW.2: Rapid AI Displacement
-    // Headcount down while AI investment up
     if (company.headcountDelta !== undefined && company.aiInvestDelta !== undefined) {
       if (company.headcountDelta < -0.20 && company.aiInvestDelta > 0.30) {
         flags.push({
-          id: "HW.2",
-          name: "Rapid AI Displacement",
-          detail: "Headcount ↓ >20% YoY while AI CapEx ↑ >30%",
+          id: 'HW.2',
+          name: 'Rapid AI Displacement',
+          detail: 'Headcount ↓ >20% YoY while AI CapEx ↑ >30%',
           severity: 30
         });
       }
     }
 
-    // HW.3: Simulated Empathy Indicator
-    // No human service + empathy marketing claims
     if (company.humanServiceChannels === 0 && company.empathyMarketingClaims === true) {
       flags.push({
-        id: "HW.3",
-        name: "Simulated Empathy",
-        detail: "No human customer service but markets empathetic care",
+        id: 'HW.3',
+        name: 'Simulated Empathy',
+        detail: 'No human customer service but markets empathetic care',
         severity: 25
       });
     }
 
-    // HW.4: Transparency Gap
-    // Claims no AI but uses known AI tools
-    if (company.disclosedAIUsage === "none" && company.detectedAITools === true) {
+    if (company.disclosedAIUsage === 'none' && company.detectedAITools === true) {
       flags.push({
-        id: "HW.4",
-        name: "Transparency Gap",
-        detail: "Claims no AI usage but AI tools detected in operations",
+        id: 'HW.4',
+        name: 'Transparency Gap',
+        detail: 'Claims no AI usage but AI tools detected in operations',
         severity: 30
       });
     }
@@ -291,25 +256,18 @@ const HumanEngine = {
 
   /**
    * Get the color for a score value.
-   * Green = above Gold threshold, Yellow = above 42, Red = below 42.
+   * v1.1.0: Green ≥ 60 (Dimensions gate threshold), Amber ≥ 42, Red < 42.
    */
-  getScoreColor(score, threshold) {
-    const t = threshold || 62;
-    if (score >= t) return "#16A34A";   // Green — Gold territory
-    if (score >= 42) return "#D97706";  // Amber — balanced but not Gold
-    return "#DC2626";                   // Red — out of balance
+  getScoreColor(score, _legacyArg) {
+    if (score >= this.GOLD_DIM_THRESHOLD) return '#16A34A';   // Green — Gold-eligible
+    if (score >= 42) return '#D97706';  // Amber — middling
+    return '#DC2626';                   // Red — below threshold
   },
 
-  /**
-   * Format a dimension label.
-   */
   getDimensionLabel(dim) {
     return this.DIMENSION_LABELS[dim] || dim.toUpperCase();
   },
 
-  /**
-   * Clamp a value between min and max.
-   */
   clamp(value, min, max) {
     return Math.max(min, Math.min(max, value));
   }

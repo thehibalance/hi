@@ -21,7 +21,7 @@
   // ═══ DISPLAY COMPANY COUNT ═══
   const localCount = HumanDB.count();
   const countEl = document.getElementById('companyCount');
-  countEl.textContent = `${localCount} local companies · v0.2.0`;
+  countEl.textContent = `${localCount} local companies · v1.1.0`;
 
   // Update with cloud count if available
   try {
@@ -29,7 +29,7 @@
       chrome.runtime.sendMessage({ type: 'GET_SYNC_STATUS' }, resolve);
     });
     if (syncResp && syncResp.serverStats && syncResp.serverStats.companies) {
-      countEl.textContent = `${syncResp.serverStats.companies} companies (${localCount} local) · v0.2.0`;
+      countEl.textContent = `${syncResp.serverStats.companies} companies (${localCount} local) · v1.1.0`;
     }
   } catch (e) { /* offline */ }
 

@@ -91,12 +91,10 @@
         </svg>
       </div>
     `;
-    reqBadge.addEventListener('click', (e) => {
-      if (reqBadge._wasDragged) { reqBadge._wasDragged = false; return; }
+    reqBadge.addEventListener('click', () => {
       window.open('https://thehibalance.org/#request&company=' + encodeURIComponent(domain), '_blank');
     });
     document.body.appendChild(reqBadge);
-    makeBadgeDraggable(reqBadge);
     return;
   }
 
@@ -173,65 +171,6 @@ async function loadPreferences() {
 }
 
 /**
- * Make any badge element draggable + persist position to localStorage.
- * Used for both the scored badge and the "unknown company" mini badge.
- */
-function makeBadgeDraggable(badge) {
-  // Load saved position
-  try {
-    const saved = localStorage.getItem('hi_badge_pos');
-    if (saved) {
-      const pos = JSON.parse(saved);
-      badge.style.bottom = 'auto';
-      badge.style.left = Math.min(pos.x, window.innerWidth - 60) + 'px';
-      badge.style.top = Math.min(pos.y, window.innerHeight - 70) + 'px';
-    }
-  } catch(e) {}
-
-  let dragStartX, dragStartY, badgeStartX, badgeStartY, isDragging = false;
-
-  badge.addEventListener('mousedown', (e) => {
-    if (e.target.closest('.human-panel')) return;
-    isDragging = false;
-    dragStartX = e.clientX;
-    dragStartY = e.clientY;
-    const rect = badge.getBoundingClientRect();
-    badgeStartX = rect.left;
-    badgeStartY = rect.top;
-
-    const onMove = (e2) => {
-      const dx = e2.clientX - dragStartX;
-      const dy = e2.clientY - dragStartY;
-      if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
-        isDragging = true;
-        badge.style.bottom = 'auto';
-        badge.style.left = Math.max(0, Math.min(badgeStartX + dx, window.innerWidth - 60)) + 'px';
-        badge.style.top = Math.max(0, Math.min(badgeStartY + dy, window.innerHeight - 70)) + 'px';
-        badge.style.transition = 'none';
-      }
-    };
-
-    const onUp = () => {
-      document.removeEventListener('mousemove', onMove);
-      document.removeEventListener('mouseup', onUp);
-      badge.style.transition = '';
-      if (isDragging) {
-        badge._wasDragged = true;
-        try {
-          localStorage.setItem('hi_badge_pos', JSON.stringify({
-            x: parseInt(badge.style.left),
-            y: parseInt(badge.style.top)
-          }));
-        } catch(e) {}
-      }
-    };
-
-    document.addEventListener('mousemove', onMove);
-    document.addEventListener('mouseup', onUp);
-  });
-}
-
-/**
  * Create the floating score badge on the page.
  */
 function createBadge(profile, filterResult, prefs) {
@@ -267,7 +206,60 @@ function createBadge(profile, filterResult, prefs) {
   // try { chrome.storage.local.get('darkMode', ...); } catch(e) {}
 
   document.body.appendChild(badge);
-  makeBadgeDraggable(badge);
+
+  // ═══ DRAGGABLE BADGE ═══
+  // Load saved position
+  try {
+    const saved = localStorage.getItem('hi_badge_pos');
+    if (saved) {
+      const pos = JSON.parse(saved);
+      badge.style.bottom = 'auto';
+      badge.style.left = Math.min(pos.x, window.innerWidth - 60) + 'px';
+      badge.style.top = Math.min(pos.y, window.innerHeight - 70) + 'px';
+    }
+  } catch(e) {}
+
+  let dragStartX, dragStartY, badgeStartX, badgeStartY, isDragging = false;
+  
+  badge.addEventListener('mousedown', (e) => {
+    if (e.target.closest('.human-panel')) return;
+    isDragging = false;
+    dragStartX = e.clientX;
+    dragStartY = e.clientY;
+    const rect = badge.getBoundingClientRect();
+    badgeStartX = rect.left;
+    badgeStartY = rect.top;
+    
+    const onMove = (e2) => {
+      const dx = e2.clientX - dragStartX;
+      const dy = e2.clientY - dragStartY;
+      if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+        isDragging = true;
+        badge.style.bottom = 'auto';
+        badge.style.left = Math.max(0, Math.min(badgeStartX + dx, window.innerWidth - 60)) + 'px';
+        badge.style.top = Math.max(0, Math.min(badgeStartY + dy, window.innerHeight - 70)) + 'px';
+        badge.style.transition = 'none';
+      }
+    };
+    
+    const onUp = () => {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+      badge.style.transition = '';
+      if (isDragging) {
+        badge._wasDragged = true;
+        try {
+          localStorage.setItem('hi_badge_pos', JSON.stringify({
+            x: parseInt(badge.style.left),
+            y: parseInt(badge.style.top)
+          }));
+        } catch(e) {}
+      }
+    };
+    
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+  });
 
   // Fetch ecosystem pulse (for panel use later)
   try {
@@ -560,8 +552,6 @@ function openFullPanel(profile, filterResult, prefs) {
   const panel = document.createElement('div');
   panel.id = 'human-detail-panel';
   panel.className = 'human-panel';
-  panel.style.maxHeight = 'calc(100vh - 40px)';
-  panel.style.overflowY = 'auto';
 
   const scoreColor = profile.isPending ? "#999" : profile.hiBalanced ? "#C49B20" : HumanEngine.getScoreColor(profile.composite, profile.balancedThreshold);
   const pulseColors = {'critical':'#DC2626','warning':'#DC2626','watch':'#D97706','stable':'#16A34A'};
@@ -649,8 +639,8 @@ function openFullPanel(profile, filterResult, prefs) {
     const dc = decayColors[profile.decay_level] || '#6B7280';
     decayHTML = `
       <div style="background:${dc}10;border:1px solid ${dc}30;border-radius:8px;padding:10px 12px;margin-top:8px">
-        <div style="font-weight:700;font-size:11px;color:${dc};letter-spacing:0.5px;text-transform:uppercase;margin-bottom:6px">♥ What the Heartbeat caught</div>
-        ${profile.decay_factors.map(f => `<div style="font-size:11px;margin-top:3px;padding-left:14px;position:relative;color:#444"><span style="position:absolute;left:0;color:${dc}">›</span>${f}</div>`).join('')}
+        <div style="font-weight:700;font-size:12px;color:${dc}">♥ ${profile.decay_level.charAt(0).toUpperCase() + profile.decay_level.slice(1)} · Decay: ${profile.decay_index}/100</div>
+        ${profile.decay_factors.map(f => `<div style="font-size:10px;margin-top:4px;padding-left:14px;position:relative;color:#444"><span style="position:absolute;left:0">›</span>${f}</div>`).join('')}
       </div>`;
   }
 
@@ -668,7 +658,7 @@ function openFullPanel(profile, filterResult, prefs) {
   if (pulse && pulse.pulse) {
     const pc = { healthy: '#16A34A', elevated: '#D97706', stressed: '#DC2626', critical: '#DC2626' };
     const pColor = pc[pulse.pulse] || '#6B7280';
-    pulseHTML = `<div style="font-size:10px;color:${pColor};margin-top:6px;text-align:center;opacity:0.8">Market pulse: <strong>${pulse.pulse}</strong> · ${pulse.alerts_count || 0} active alerts</div>`;
+    pulseHTML = `<div style="font-size:11px;color:${pColor};margin-top:8px;text-align:center">♥ Ecosystem: <strong>${pulse.pulse.toUpperCase()}</strong> · ${pulse.alerts_count || 0} alerts</div>`;
   }
 
   panel.innerHTML = `
@@ -680,13 +670,12 @@ function openFullPanel(profile, filterResult, prefs) {
 
     <div class="human-panel__company" style="background:white">
       <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3)' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<img src="'+chrome.runtime.getURL('icons/icon-white-128.png')+'" style="height:32px;width:auto">' : profile.composite}</div>
-      <div style="flex:1;min-width:0">
+      <div>
         <div class="human-panel__name">${profile.name}</div>
-        <div class="human-panel__tier" style="color: ${scoreColor};font-weight:600">${profile.isPending ? "Pending Verification" : profile.hiBalanced ? "Gold HI Grade™" : "HI Grade™"} · ${profile.composite}/100</div>
-        ${(profile.decay_level && profile.decay_level !== 'stable' && profile.decay_index > 0) ? `<div style="font-size:11px;color:${pulseColor};margin-top:3px;font-weight:600">♥ ${profile.decay_level.charAt(0).toUpperCase()+profile.decay_level.slice(1)} decay · ${profile.decay_index}/100</div>` : (profile.decay_level === 'stable' ? '<div style="font-size:11px;color:#16A34A;margin-top:3px;font-weight:600">♥ Stable</div>' : '')}
+        <div class="human-panel__tier" style="color: ${scoreColor}">${profile.isPending ? "Pending Verification" : profile.hiBalanced ? "Gold HI Grade™" : "HI Grade™"}${pulseDotHTML}</div>
       </div>
     </div>
-    ${profile.hiBalanced ? '<div style="padding:6px 16px;font-size:12px;color:#C49B20;font-weight:700;background:white;letter-spacing:0.5px">✨ ALL 3 GATES PASSED · GOLD HI GRADE</div>' : ''}
+    ${profile.hiBalanced ? '<div style="padding:4px 16px;font-size:20px;font-weight:900;color:#C49B20;background:white">'+profile.composite+'</div><div style="padding:2px 16px;font-size:11px;color:#C49B20;font-weight:600;background:white">All 3 gates passed</div>' : ''}
 
     <div style="background:white;padding:8px 16px">
     ${(() => {
@@ -696,27 +685,11 @@ function openFullPanel(profile, filterResult, prefs) {
       const g3 = !!gates.momentum;
       const passed = [g1, g2, g3].filter(Boolean).length;
       const total = 3;
-
-      const dimMap = ['h','u','m','a','n'];
-      const failedDims = dimMap.filter(d => (profile.dimensions[d] || 0) < 60).map(d => d.toUpperCase());
-      const dimDesc = g1 ? 'All 5 HUMAN dimensions ≥ 60' :
-        (failedDims.length === 1 ? failedDims[0] + ' below 60 (Gold needs all 5)' :
-         failedDims.length + ' dims below 60: ' + failedDims.join(', '));
-
-      const evDesc = g2 ? 'Each dimension verified by public data' : 'Coverage gap — some dims need more verified sources';
-
-      const decayLevel = profile.decay_level || 'stable';
-      const decayLabel = {warning:'Warning', critical:'Critical', watch:'Watch', stable:'Stable'}[decayLevel] || decayLevel;
-      const momDesc = g3 ? 'No warning or critical decay (90-day Heartbeat)' :
-        decayLabel + ' decay' + (profile.decay_index ? ' (' + profile.decay_index + '/100)' : '');
-
-      const headerLabel = passed + '/' + total + ' Gates passed' +
-        (passed === total ? ' · GOLD' : passed === 0 ? ' · Not eligible for Gold' : ' · Partial');
-      const gc = (icon, name, desc, ok) => '<div style="padding:5px 0;color:' + (ok ? '#16A34A' : '#DC2626') + '"><div style="font-size:11px;font-weight:700">' + (ok ? '✓' : '✗') + ' ' + icon + ' ' + name + '</div><div style="font-size:10px;color:' + (ok ? '#15803D' : '#DC2626') + ';margin-left:16px;font-weight:500;margin-top:1px">' + desc + '</div></div>';
-      return '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="font-size:11px;font-weight:700;color:#1B3A5C">' + headerLabel + '</span><div style="flex:1;height:4px;background:#EEF1F5;border-radius:2px"><div style="height:100%;width:' + (passed/total*100) + '%;background:' + (passed === total ? '#C49B20' : '#1B3A5C') + ';border-radius:2px"></div></div></div>' +
-        gc('📊', 'DIMENSIONS', dimDesc, g1) +
-        gc('🔬', 'EVIDENCE', evDesc, g2) +
-        gc('⏱', 'MOMENTUM', momDesc, g3);
+      const gc = (icon, name, desc, ok) => '<div style="padding:4px 0;color:' + (ok ? '#16A34A' : '#DC2626') + '"><div style="font-size:11px;font-weight:600">' + (ok ? '✓' : '✗') + ' ' + icon + ' ' + name + '</div><div style="font-size:9px;color:#888;margin-left:14px;font-weight:400">' + desc + '</div></div>';
+      return '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="font-size:11px;font-weight:700;color:#1B3A5C">' + passed + '/' + total + ' GATES</span><div style="flex:1;height:4px;background:#EEF1F5;border-radius:2px"><div style="height:100%;width:' + (passed/total*100) + '%;background:' + (passed === total ? '#C49B20' : '#1B3A5C') + ';border-radius:2px"></div></div></div>' +
+        gc('📊', 'DIMENSIONS', 'All 5 HUMAN dimensions ≥ 60', g1) +
+        gc('🔬', 'EVIDENCE', 'Each dimension verified by public data', g2) +
+        gc('⏱', 'MOMENTUM', 'No critical decay (90-day Heartbeat)', g3);
     })()}
     </div>
 
@@ -761,14 +734,17 @@ function openFullPanel(profile, filterResult, prefs) {
       }).join('')}
     </div>
 
-    <div style="background:#1B3A5C;padding:14px 16px;border-radius:0 0 14px 14px;margin-top:8px">
-      <div style="display:flex;justify-content:center;align-items:center;gap:14px;margin-bottom:10px;flex-wrap:wrap">
-        <a href="https://thehibalance.org" target="_blank" style="font-size:11px;font-weight:600;color:#C49B20;text-decoration:none">🌐 thehibalance.org</a>
-        <a href="https://apps.apple.com/app/hi/id6761270596" target="_blank" style="font-size:11px;font-weight:600;color:#C49B20;text-decoration:none">🍎 iOS App</a>
+    <div style="padding:8px 16px;text-align:center">
+      <div style="display:flex;align-items:center;justify-content:center;gap:4px;margin-bottom:8px">
+        <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#16A34A"></span>
+        <span id="hiPipelineCountdown" style="font-size:10px;font-family:monospace;color:#888">Connected · API live</span>
       </div>
-      <div style="display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:8px">
-        <span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#16A34A"></span>
-        <span id="hiPipelineCountdown" style="font-size:9px;font-family:'DM Mono',monospace;color:#5A7A9A;letter-spacing:0.3px">Connected · API live</span>
+    </div>
+
+    <div style="background:#1B3A5C;padding:12px 16px;border-radius:0 0 14px 14px">
+      <div style="display:flex;justify-content:center;gap:12px;margin-bottom:8px">
+        <a href="https://thehibalance.org" target="_blank" style="font-size:10px;font-weight:600;color:#C49B20;text-decoration:none">🌐 thehibalance.org</a>
+        <a href="https://apps.apple.com/app/hi/id6761270596" target="_blank" style="font-size:10px;font-weight:600;color:#C49B20;text-decoration:none">🍎 iOS App</a>
       </div>
       <div style="font-size:8px;color:#5A7A9A;line-height:1.4;text-align:center">Spec v1.1.0 · 3 gates: Dimensions, Evidence, Momentum · All dims ≥ 60. Estimated from public data. Not financial or legal advice.</div>
     </div>
