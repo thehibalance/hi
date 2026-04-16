@@ -1831,10 +1831,10 @@
     "sic_description": "Guided Missiles & Space Vehicles & Parts",
     "D_H": 59,
     "D_U": 72,
-    "D_M": 79,
+    "D_M": 0,
     "D_A": 57,
     "D_N": 78,
-    "composite": 69,
+    "composite": 53,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -1870,12 +1870,33 @@
       "has_harm": false
     },
     "harm_documentation": {
-      "has_harm": false,
+      "has_harm": true,
       "penalties": {
-        "M": 0
+        "M.3": -35,
+        "M.4": -47,
+        "M": -82
       },
-      "flags": [],
-      "sources": []
+      "flags": [
+        "Weapons manufacturer (78% defense revenue)",
+        "Products: F-35 fighter, Hellfire missile, THAAD",
+        "Concealment findings: 2"
+      ],
+      "details": {
+        "settlement_total_5yr": 0,
+        "deaths_attributed": 0,
+        "concealment_findings": [
+          "f35_program_cost_overruns_concealment_2010s",
+          "fcpa_settlement_300m_2022"
+        ],
+        "remediation_status": "active",
+        "remediation_multiplier": 1.0,
+        "sources": [
+          "https://www.justice.gov/opa/pr/lockheed-martin-corporation-pay-294-million-resolve-fcpa-allegations",
+          "https://www.gao.gov/products/gao-23-106047",
+          "https://sipri.org/databases/armsindustry"
+        ],
+        "review_date": "2026-04-15"
+      }
     },
     "genome": {
       "H": {
@@ -5749,10 +5770,10 @@
     "sic_description": "Ship & Boat Building & Repairing",
     "D_H": 73,
     "D_U": 56,
-    "D_M": 65,
+    "D_M": 0,
     "D_A": 50,
     "D_N": 67,
-    "composite": 62,
+    "composite": 49,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -5781,12 +5802,27 @@
       "has_harm": false
     },
     "harm_documentation": {
-      "has_harm": false,
+      "has_harm": true,
       "penalties": {
-        "M": 0
+        "M.3": -35,
+        "M.4": -35,
+        "M": -70
       },
-      "flags": [],
-      "sources": []
+      "flags": [
+        "Weapons manufacturer (85% defense revenue)",
+        "Products: Ford-class aircraft carriers, Virginia-class submarines, amphibious assault ships"
+      ],
+      "details": {
+        "settlement_total_5yr": 0,
+        "deaths_attributed": 0,
+        "concealment_findings": [],
+        "remediation_status": "active",
+        "remediation_multiplier": 1.0,
+        "sources": [
+          "https://sipri.org/databases/armsindustry"
+        ],
+        "review_date": "2026-04-15"
+      }
     },
     "genome": {
       "H": {
@@ -12986,10 +13022,10 @@
     "sic_description": "Aircraft Engines & Engine Parts",
     "D_H": 53,
     "D_U": 64,
-    "D_M": 65,
+    "D_M": 0,
     "D_A": 50,
     "D_N": 67,
-    "composite": 60,
+    "composite": 47,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -13020,12 +13056,32 @@
       "has_harm": false
     },
     "harm_documentation": {
-      "has_harm": false,
+      "has_harm": true,
       "penalties": {
-        "M": 0
+        "M.3": -20,
+        "M.4": -32,
+        "M": -52
       },
-      "flags": [],
-      "sources": []
+      "flags": [
+        "Weapons manufacturer (50% defense revenue)",
+        "Products: Tomahawk missile, Patriot missile, Stinger missile",
+        "Concealment findings: 2"
+      ],
+      "details": {
+        "settlement_total_5yr": 0,
+        "deaths_attributed": 0,
+        "concealment_findings": [
+          "doj_950m_settlement_2024_defective_pricing_munitions_export_violations",
+          "fcpa_violations_qatar"
+        ],
+        "remediation_status": "active",
+        "remediation_multiplier": 1.0,
+        "sources": [
+          "https://www.justice.gov/opa/pr/rtx-corporation-pay-over-950-million-resolve-foreign-corrupt-practices-act-defective",
+          "https://sipri.org/databases/armsindustry"
+        ],
+        "review_date": "2026-04-15"
+      }
     },
     "genome": {
       "H": {
@@ -18369,10 +18425,10 @@
     "sic_description": "Aircraft",
     "D_H": 59,
     "D_U": 67,
-    "D_M": 20,
+    "D_M": 0,
     "D_A": 54,
     "D_N": 88,
-    "composite": 58,
+    "composite": 54,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -18414,24 +18470,31 @@
     "harm_documentation": {
       "has_harm": true,
       "penalties": {
-        "M": -39
+        "M.3": -35,
+        "M.4": -44,
+        "M": -79
       },
       "flags": [
-        "Harm settlements: $2.5B (5y)",
+        "Defense products (30% defense revenue)",
+        "Harm settlements: $4.3B (5y)",
         "Documented deaths attributed: 346",
-        "Concealment findings: 1"
+        "Concealment findings: 2"
       ],
-      "sources": [
-        "https://www.justice.gov/opa/pr/boeing-charged-737-max-fraud-conspiracy-and-agrees-pay-over-25-billion",
-        "https://www.faa.gov/newsroom/boeing-737-max-return-service"
-      ],
-      "settlement_5yr": 2510000000,
-      "deaths_attributed": 346,
-      "concealment_findings": [
-        "737_max_mcas_certification_misrepresentation_2017_2019"
-      ],
-      "remediation_status": "active",
-      "review_date": "2026-04-15"
+      "details": {
+        "settlement_total_5yr": 4300000000,
+        "deaths_attributed": 346,
+        "concealment_findings": [
+          "737_max_mcas_safety_concealment_2018_2019",
+          "doj_2025_4b_settlement_737max_fraud"
+        ],
+        "remediation_status": "active",
+        "remediation_multiplier": 1.0,
+        "sources": [
+          "https://www.justice.gov/opa/pr/boeing-charged-737-max-fraud-conspiracy-and-agrees-pay-over-25-billion",
+          "https://sipri.org/databases/armsindustry"
+        ],
+        "review_date": "2026-04-15"
+      }
     },
     "genome": {
       "H": {
@@ -20511,10 +20574,10 @@
     "sic_description": "Ship & Boat Building & Repairing",
     "D_H": 53,
     "D_U": 56,
-    "D_M": 65,
+    "D_M": 0,
     "D_A": 50,
     "D_N": 67,
-    "composite": 58,
+    "composite": 45,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -20543,12 +20606,28 @@
       "has_harm": false
     },
     "harm_documentation": {
-      "has_harm": false,
+      "has_harm": true,
       "penalties": {
-        "M": 0
+        "M.3": -35,
+        "M.4": -35,
+        "M": -70
       },
-      "flags": [],
-      "sources": []
+      "flags": [
+        "Weapons manufacturer (73% defense revenue)",
+        "Products: M1 Abrams tank, Virginia-class submarine, Stryker"
+      ],
+      "details": {
+        "settlement_total_5yr": 0,
+        "deaths_attributed": 0,
+        "concealment_findings": [],
+        "remediation_status": "active",
+        "remediation_multiplier": 1.0,
+        "sources": [
+          "https://sipri.org/databases/armsindustry",
+          "https://www.gao.gov/products/gao-23-106074"
+        ],
+        "review_date": "2026-04-15"
+      }
     },
     "genome": {
       "H": {
@@ -23007,10 +23086,10 @@
     "sic_description": "Search, Detection, Navigation, Guidance, Aeronautical Sys",
     "D_H": 46,
     "D_U": 62,
-    "D_M": 65,
+    "D_M": 0,
     "D_A": 52,
     "D_N": 67,
-    "composite": 58,
+    "composite": 45,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -23041,12 +23120,28 @@
       "has_harm": false
     },
     "harm_documentation": {
-      "has_harm": false,
+      "has_harm": true,
       "penalties": {
-        "M": 0
+        "M.3": -35,
+        "M.4": -35,
+        "M": -70
       },
-      "flags": [],
-      "sources": []
+      "flags": [
+        "Weapons manufacturer (75% defense revenue)",
+        "Products: B-2/B-21 stealth bomber, Sentinel ICBM, Global Hawk drone"
+      ],
+      "details": {
+        "settlement_total_5yr": 0,
+        "deaths_attributed": 0,
+        "concealment_findings": [],
+        "remediation_status": "active",
+        "remediation_multiplier": 1.0,
+        "sources": [
+          "https://sipri.org/databases/armsindustry",
+          "https://www.gao.gov/products/gao-24-106611"
+        ],
+        "review_date": "2026-04-15"
+      }
     },
     "genome": {
       "H": {
