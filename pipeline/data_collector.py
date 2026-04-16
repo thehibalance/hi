@@ -192,8 +192,8 @@ def fetch_sec(company_name, ticker):
                     sorted_emp = sorted(annual_emp, key=lambda x: x.get("fy", 0), reverse=True)
                     result["headcount"] = {"value": sorted_emp[0].get("val", 0)}
                     if len(sorted_emp) >= 2:
-                        prev = sorted_emp[1].get("val", 0)
-                        curr = sorted_emp[0].get("val", 0)
+                        prev = float(sorted_emp[1].get("val", 0) or 0)
+                        curr = float(sorted_emp[0].get("val", 0) or 0)
                         if prev > 0:
                             result["headcount_change_pct"] = round((curr - prev) / prev * 100, 1)
                 
@@ -205,9 +205,9 @@ def fetch_sec(company_name, ticker):
                     result["rd_expense"] = sorted(annual_rd, key=lambda x: x.get("fy", 0), reverse=True)[0].get("val", 0)
                 
                 # Compute derived signals
-                rev = result.get("revenue", 0)
-                hc = result.get("headcount", {}).get("value", 0) if isinstance(result.get("headcount"), dict) else result.get("headcount", 0)
-                rd = result.get("rd_expense", 0)
+                rev = float(result.get("revenue", 0) or 0)
+                hc = float(result.get("headcount", {}).get("value", 0) if isinstance(result.get("headcount"), dict) else result.get("headcount", 0) or 0)
+                rd = float(result.get("rd_expense", 0) or 0)
                 
                 if hc > 0 and rev > 0:
                     result["revenue_per_employee"] = round(rev / hc)
