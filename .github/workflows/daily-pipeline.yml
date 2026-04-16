@@ -62,7 +62,7 @@ jobs:
 
           if [ "$MODE" = "quarterly" ]; then
             echo "Quarterly run"
-            python3 run_all.py --workers 8 --quarterly
+            python3 run_all.py --skip-collect --quarterly
           elif [ "$MODE" = "features-only" ]; then
             echo "Features only"
             python3 run_all.py --skip-collect --features-only

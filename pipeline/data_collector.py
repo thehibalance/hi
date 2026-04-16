@@ -60,8 +60,8 @@ def safe_get(url, params=None, headers=None, timeout=15, _retry_count=0):
             if _retry_count >= 2:
                 # Give up and let caller handle None — don't block the thread forever
                 return None
-            print(f"    Rate limited, waiting 60s (retry {_retry_count + 1}/2)...")
-            time.sleep(60)
+            print(f"    Rate limited, waiting 15s (retry {_retry_count + 1}/2)...")
+            time.sleep(15)
             return safe_get(url, params, headers, timeout, _retry_count + 1)
         else:
             return None
