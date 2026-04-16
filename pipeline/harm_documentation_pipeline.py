@@ -164,6 +164,218 @@ HARM_DATA = {
         "review_date": "2026-04-15"
     },
 
+    # ─────────── WEAPONS: products designed to harm humans who did not consent ───────────
+    # Per v1.1.0 'humans can choose' principle: weapons are explicitly excluded from
+    # consumer-choice exemption. The targeted humans cannot opt out of being shot.
+    # Defense contractors who derive primary revenue from lethal-systems manufacture
+    # carry product-harm penalty equivalent to documented pharma harm cases.
+    "LMT": {
+        "company": "Lockheed Martin Corporation",
+        "category": "weapons",
+        "primary_revenue_pct": 78,  # weapons-only: Aero 40% + Missiles 17% + RMS weapons-portion ~21%
+        "revenue_breakdown": {
+            "weapons_pct": 78,
+            "civilian_pct": 22,  # Space division: Orion crew capsule, GPS satellites, NOAA weather sats, planetary missions
+            "civilian_notes": "Lockheed Martin Space (~17%) + Sikorsky civilian helicopters (~5%) — scientific/non-lethal work excluded from penalty"
+        },
+        "products": ["F-35 fighter", "Hellfire missile", "THAAD", "Trident SLBM", "PAC-3 Patriot"],
+        "civilian_products": ["Orion crew capsule (NASA)", "GPS III satellites", "GOES weather satellites", "OSIRIS-APEX (NASA asteroid mission)"],
+        "concealment_findings": [
+            "f35_program_cost_overruns_concealment_2010s",
+            "fcpa_settlement_300m_2022"
+        ],
+        "sources": [
+            "https://www.justice.gov/opa/pr/lockheed-martin-corporation-pay-294-million-resolve-fcpa-allegations",
+            "https://www.gao.gov/products/gao-23-106047",
+            "https://sipri.org/databases/armsindustry"
+        ],
+        "remediation_status": "active",
+        "review_date": "2026-04-15",
+        "notes": "World's largest defense contractor. Primary product line is lethal weapons systems."
+    },
+    "RTX": {
+        "company": "RTX Corporation (Raytheon Technologies)",
+        "category": "weapons",
+        "primary_revenue_pct": 50,  # Raytheon segment + military portion of Pratt & Collins
+        "revenue_breakdown": {
+            "weapons_pct": 50,
+            "civilian_pct": 50,
+            "civilian_notes": "Pratt & Whitney commercial engines (~25%) — A320neo/A220/Embraer airliners. Collins Aerospace civilian avionics (~25%) — commercial airliner systems."
+        },
+        "products": ["Tomahawk missile", "Patriot missile", "Stinger missile", "Javelin", "AIM-9 Sidewinder"],
+        "civilian_products": ["PW1100G GTF engines (A320neo)", "PW1500G (A220)", "Collins commercial cockpit systems"],
+        "concealment_findings": [
+            "doj_950m_settlement_2024_defective_pricing_munitions_export_violations",
+            "fcpa_violations_qatar"
+        ],
+        "sources": [
+            "https://www.justice.gov/opa/pr/rtx-corporation-pay-over-950-million-resolve-foreign-corrupt-practices-act-defective",
+            "https://sipri.org/databases/armsindustry"
+        ],
+        "remediation_status": "active",
+        "review_date": "2026-04-15",
+        "notes": "Top-3 global arms producer. $950M DOJ settlement Oct 2024 for defective pricing + munitions export violations."
+    },
+    "GD": {
+        "company": "General Dynamics Corporation",
+        "category": "weapons",
+        "primary_revenue_pct": 73,  # Marine Systems + Combat Systems + Mission Systems + Tech (defense IT)
+        "revenue_breakdown": {
+            "weapons_pct": 73,
+            "civilian_pct": 27,
+            "civilian_notes": "Gulfstream Aerospace (~27%) — civilian business jets G500/G650/G700"
+        },
+        "products": ["M1 Abrams tank", "Virginia-class submarine", "Stryker", "ammunition", "GAU-17 minigun"],
+        "civilian_products": ["Gulfstream G500/G650/G700/G800 business jets"],
+        "concealment_findings": [],
+        "sources": [
+            "https://sipri.org/databases/armsindustry",
+            "https://www.gao.gov/products/gao-23-106074"
+        ],
+        "remediation_status": "active",
+        "review_date": "2026-04-15",
+        "notes": "Tanks, submarines, combat systems. Top-5 global defense contractor."
+    },
+    "NOC": {
+        "company": "Northrop Grumman Corporation",
+        "category": "weapons",
+        "primary_revenue_pct": 75,  # Aeronautics + Defense Systems + Mission Systems + space-weapons portion
+        "revenue_breakdown": {
+            "weapons_pct": 75,
+            "civilian_pct": 25,
+            "civilian_notes": "Space Systems portion: James Webb Space Telescope ops, civilian satellites, NASA Artemis support — though most space work is missile defense/Sentinel ICBM"
+        },
+        "products": ["B-2/B-21 stealth bomber", "Sentinel ICBM", "Global Hawk drone", "naval guns"],
+        "civilian_products": ["James Webb Space Telescope (operations)", "civilian Earth-observation satellites"],
+        "concealment_findings": [],
+        "sources": [
+            "https://sipri.org/databases/armsindustry",
+            "https://www.gao.gov/products/gao-24-106611"
+        ],
+        "remediation_status": "active",
+        "review_date": "2026-04-15",
+        "notes": "Strategic deterrent (nuclear) systems. Top-5 global defense contractor."
+    },
+    "LHX": {
+        "company": "L3Harris Technologies",
+        "category": "weapons",
+        "primary_revenue_pct": 70,
+        "revenue_breakdown": {
+            "weapons_pct": 70,
+            "civilian_pct": 30,
+            "civilian_notes": "Communication Systems portion (~20%) civilian comms infra + Space & Airborne portion (~10%) civilian satellites/weather/maritime"
+        },
+        "products": ["combat radios", "missile guidance", "tactical drones", "naval combat systems", "Aerojet Rocketdyne ICBM rocket motors"],
+        "civilian_products": ["civilian aviation electronics", "weather satellites support"],
+        "concealment_findings": [],
+        "sources": ["https://sipri.org/databases/armsindustry"],
+        "remediation_status": "active",
+        "review_date": "2026-04-15",
+        "notes": "Defense electronics + targeting systems. Acquired Aerojet Rocketdyne 2023 (rocket motors for ICBMs/missiles)."
+    },
+    "HII": {
+        "company": "Huntington Ingalls Industries",
+        "category": "weapons",
+        "primary_revenue_pct": 85,
+        "revenue_breakdown": {
+            "weapons_pct": 85,
+            "civilian_pct": 15,
+            "civilian_notes": "Mission Technologies (~15%) — defense/intel IT services, training simulators, unmanned underwater vehicles for research"
+        },
+        "products": ["Ford-class aircraft carriers", "Virginia-class submarines", "amphibious assault ships"],
+        "concealment_findings": [],
+        "sources": ["https://sipri.org/databases/armsindustry"],
+        "remediation_status": "active",
+        "review_date": "2026-04-15",
+        "notes": "Sole US Navy aircraft carrier builder. Nuclear submarine platform."
+    },
+    "TXT": {
+        "company": "Textron Inc",
+        "category": "weapons_partial",
+        "primary_revenue_pct": 30,  # Bell military + Systems (drones/munitions) — most revenue is civilian aviation
+        "revenue_breakdown": {
+            "weapons_pct": 30,
+            "civilian_pct": 70,
+            "civilian_notes": "Cessna Citation jets, Beechcraft, Bell commercial helicopters, Industrial (golf carts, vehicle products)"
+        },
+        "products": ["Bell UH-1Y/AH-1Z military helicopters", "AT-6 Wolverine attack aircraft", "Shadow drone"],
+        "civilian_products": ["Cessna Citation business jets", "Beechcraft King Air", "Bell 407/429 commercial helicopters"],
+        "concealment_findings": [],
+        "sources": ["https://sipri.org/databases/armsindustry"],
+        "remediation_status": "active",
+        "review_date": "2026-04-15",
+        "notes": "Mixed civilian/military. Bell military rotorcraft + ScanEagle/Shadow drones."
+    },
+    "BA": {
+        "company": "The Boeing Company",
+        "category": "weapons_partial",
+        "primary_revenue_pct": 30,  # Defense weapons portion only (BDS minus Space subsegment)
+        "revenue_breakdown": {
+            "weapons_pct": 30,
+            "civilian_pct": 70,
+            "civilian_notes": "Commercial Airplanes (~50%) + Boeing Space (~10%, CST-100 Starliner / ISS / commercial sats) + Global Services (~10%)"
+        },
+        "products": ["F-15EX fighter", "AH-64 Apache", "F/A-18 Super Hornet", "JDAM bombs", "GBU-39 SDB"],
+        "civilian_products": ["737 / 787 / 777 commercial aircraft", "CST-100 Starliner", "ISS support"],
+        "concealment_findings": [
+            "737_max_mcas_safety_concealment_2018_2019",
+            "doj_2025_4b_settlement_737max_fraud"
+        ],
+        "settlement_total_5yr": 4_300_000_000,  # 737 MAX DOJ settlement
+        "deaths_attributed": 346,  # Lion Air 610 + Ethiopian 302
+        "sources": [
+            "https://www.justice.gov/opa/pr/boeing-charged-737-max-fraud-conspiracy-and-agrees-pay-over-25-billion",
+            "https://sipri.org/databases/armsindustry"
+        ],
+        "remediation_status": "active",
+        "review_date": "2026-04-15",
+        "notes": "Lion Air 610 + Ethiopian 302 = 346 deaths. DOJ deferred prosecution agreement 2021. Defense arm separately produces F-15, Apache, JDAM munitions."
+    },
+    "SWBI": {
+        "company": "Smith & Wesson Brands",
+        "category": "weapons",
+        "primary_revenue_pct": 100,
+        "products": ["AR-15 style rifles", "M&P pistols", "revolvers"],
+        "concealment_findings": [
+            "industry_lobbying_PLCAA_immunity_consumer_disclosures"
+        ],
+        "sources": [
+            "https://www.cdc.gov/nchs/fastats/injury.htm",  # firearm deaths data
+            "https://everytownresearch.org/"
+        ],
+        "remediation_status": "active",
+        "review_date": "2026-04-15",
+        "notes": "Civilian firearms. PLCAA shields industry from product-liability suits unique to consumer goods."
+    },
+    "RGR": {
+        "company": "Sturm, Ruger & Co",
+        "category": "weapons",
+        "primary_revenue_pct": 100,
+        "products": ["AR-style rifles", "10/22 rifle", "handguns"],
+        "concealment_findings": [],
+        "sources": ["https://www.cdc.gov/nchs/fastats/injury.htm"],
+        "remediation_status": "active",
+        "review_date": "2026-04-15",
+        "notes": "Pure-play firearms manufacturer."
+    },
+    "VSTO": {
+        "company": "Vista Outdoor",
+        "category": "weapons",
+        "primary_revenue_pct": 60,
+        "revenue_breakdown": {
+            "weapons_pct": 60,
+            "civilian_pct": 40,
+            "civilian_notes": "Outdoor Products (~40%) — CamelBak, Bushnell optics, Bell helmets, Giro, BlackHawk gear"
+        },
+        "products": ["Federal/CCI/Speer ammunition", "primers", "powders"],
+        "civilian_products": ["CamelBak hydration", "Bushnell binoculars", "Bell/Giro helmets"],
+        "concealment_findings": [],
+        "sources": ["https://www.cdc.gov/nchs/fastats/injury.htm"],
+        "remediation_status": "active",
+        "review_date": "2026-04-15",
+        "notes": "Largest US ammunition maker (Federal/CCI/Speer). Sporting + law enforcement + military supply."
+    },
+
     # ─────────── PFAS / "FOREVER CHEMICALS": hidden contamination ───────────
     "MMM": {
         "company": "3M Company",
@@ -226,22 +438,6 @@ HARM_DATA = {
         "review_date": "2026-04-15",
         "notes": "Ignition switch defect known since 2002, recall not until 2014. 124 deaths."
     },
-    "BA": {
-        "company": "Boeing Company",
-        "settlement_total_5yr": 2_510_000_000,
-        "deaths_attributed": 346,  # 737 MAX MCAS crashes
-        "concealment_findings": [
-            "737_max_mcas_certification_misrepresentation_2017_2019"
-        ],
-        "sources": [
-            "https://www.justice.gov/opa/pr/boeing-charged-737-max-fraud-conspiracy-and-agrees-pay-over-25-billion",
-            "https://www.faa.gov/newsroom/boeing-737-max-return-service"
-        ],
-        "remediation_status": "active",
-        "review_date": "2026-04-15",
-        "notes": "Lion Air 610 + Ethiopian 302 = 346 deaths. DOJ deferred prosecution agreement 2021."
-    },
-
     # ─────────── OPIOID: extreme concealment, mass deaths ───────────
     "ENDP": {
         "company": "Endo International (Endo Pharmaceuticals)",
@@ -369,6 +565,29 @@ def remediation_multiplier(record):
 # AGGREGATE: compute per-company harm penalty
 # ============================================================================
 
+def weapons_penalty(record):
+    """
+    Weapons-category penalty. The product itself is the harm.
+    Per v1.1.0 'humans can choose' principle, weapons are explicitly excluded
+    from consumer-choice exemption — targeted humans cannot opt out.
+
+    Penalty scales with primary defense revenue percentage:
+      90%+ defense: -45 M.3, -45 M.4 (full penalty, equivalent to JNJ/PFE pharma harm)
+      60-89% defense: -35 M.3, -35 M.4
+      <60% (mixed civilian/military): -20 M.3, -20 M.4
+    """
+    cat = record.get("category", "")
+    if cat not in ("weapons", "weapons_partial"):
+        return (0, 0)
+    pct = record.get("primary_revenue_pct", 0)
+    if pct >= 90:
+        return (-45, -45)
+    elif pct >= 60:
+        return (-35, -35)
+    else:
+        return (-20, -20)
+
+
 def compute_harm_penalty(ticker, company_name=""):
     """
     Returns dict with per-dimension adjustments and reasons.
@@ -399,7 +618,22 @@ def compute_harm_penalty(ticker, company_name=""):
     m4_concealment_pen = round(concealment_penalty(record) * mult)
     m4_pen = m4_deaths_pen + m4_concealment_pen
 
+    # Weapons category: add product-itself penalty on top of any settlements/deaths
+    weapons_m3, weapons_m4 = weapons_penalty(record)
+    m3_pen += weapons_m3
+    m4_pen += weapons_m4
+
     flags = []
+    cat = record.get("category", "")
+    if cat == "weapons":
+        pct = record.get("primary_revenue_pct", 0)
+        flags.append(f"Weapons manufacturer ({pct}% defense revenue)")
+        prods = record.get("products", [])
+        if prods:
+            flags.append(f"Products: {', '.join(prods[:3])}")
+    elif cat == "weapons_partial":
+        pct = record.get("primary_revenue_pct", 0)
+        flags.append(f"Defense products ({pct}% defense revenue)")
     settlement_b = (record.get("settlement_total_5yr") or 0) / 1_000_000_000
     if settlement_b >= 1:
         flags.append(f"Harm settlements: ${settlement_b:.1f}B (5y)")
