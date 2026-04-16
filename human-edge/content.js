@@ -604,7 +604,7 @@ function openFullPanel(profile, filterResult, prefs) {
       Object.values(subScores).forEach(v => { if (Math.round(v) < 45 || Math.round(v) > 55) realCount++; });
     }
     
-    const subBarsHTML = (SUB_KEYS[d] || []).map(k => {
+    const subBarsHTML = (SUB_KEYS[d] || []).filter(k => !(SUB_LABELS[k] || '').includes('(v1.2)')).map(k => {
       const v = Math.round(subScores[k] || 50);
       const lbl = SUB_LABELS[k] || k;
       const isDef = isSeed || (v >= 45 && v <= 55 && !dimSources.length);
@@ -622,7 +622,8 @@ function openFullPanel(profile, filterResult, prefs) {
     const covLabel = isSeed ? 'Estimated' : realCount >= 4 ? 'Strong data' : realCount >= 2 ? 'Partial' : realCount > 0 ? 'Limited' : 'Needs data';
     const covColor = isSeed ? '#92400E' : realCount >= 4 ? '#16A34A' : '#D97706';
     const covBg = isSeed ? '#F3F0E8' : realCount >= 4 ? '#DCF5E7' : '#FFF3E0';
-    const covHTML = `<div style="display:flex;align-items:center;gap:6px;margin-top:4px"><span style="font-size:8px;font-weight:600;color:${covColor};padding:2px 6px;border-radius:4px;background:${covBg}">${realCount}/${Object.keys(subScores).length} · ${covLabel}</span>${dimSources.length ? `<span style="font-size:8px;color:#999">${dimSources.join(' · ')}</span>` : ''}</div>`;
+    const activeKeys = (SUB_KEYS[d] || []).filter(k => !(SUB_LABELS[k] || '').includes('(v1.2)'));
+    const covHTML = `<div style="display:flex;align-items:center;gap:6px;margin-top:4px"><span style="font-size:8px;font-weight:600;color:${covColor};padding:2px 6px;border-radius:4px;background:${covBg}">${realCount}/${activeKeys.length} · ${covLabel}</span>${dimSources.length ? `<span style="font-size:8px;color:#999">${dimSources.join(' · ')}</span>` : ''}</div>`;
 
     return `
       <div style="margin-bottom:8px">
