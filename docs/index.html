@@ -176,32 +176,34 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <p class="subpage-sub">See every company's HI Grade™ as you browse. Zero AI. Zero tracking. Pure transparency.</p>
 <div style="text-align:center;margin-bottom:24px"><button class="btn btn-primary" onclick="window.open('https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg','_blank')" style="font-size:16px;padding:14px 32px"><span class="btn-icon">🌐</span> Add to Chrome</button></div>
 
-<div class="mockup-box">
-<div class="mockup-label">Extension Preview — pepsi.com</div>
-<div style="display:flex;gap:32px;justify-content:center;align-items:flex-end;flex-wrap:wrap;padding:16px 0">
-<div style="text-align:center">
-<div style="font-size:10px;color:#5A7A9A;margin-bottom:8px;letter-spacing:1px">FLOATING PILL</div>
-<svg width="64" height="76" viewBox="0 0 68 80">
-<path d="M24,0 C30,-3 38,-3 44,0 C52,4 54,12 54,20 C54,30 46,38 34,38 C22,38 14,30 14,20 C14,12 16,4 24,0 Z M4,66 C4,48 16,40 34,40 C52,40 64,48 64,66 L64,72 C64,74 62,76 60,76 L8,76 C6,76 4,74 4,72 Z" fill="#C49B20"/>
-<text x="34" y="48" text-anchor="middle" fill="white" font-family="sans-serif" font-size="22" font-weight="900" letter-spacing="-1">hi.</text>
-</svg>
-<div style="font-size:9px;color:#1B3A5C;margin-top:4px">Balanced Board</div>
-</div>
-<div style="background:#1a2a4a;border-radius:10px;padding:20px;min-width:220px;max-width:260px">
-<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-<div style="width:36px;height:36px;border-radius:50%;background:#C49B20;display:flex;align-items:center;justify-content:center;overflow:hidden"><img src="/logo-512-white.png" alt="hi." style="height:24px;width:auto"></div>
-<div><div style="color:white;font-weight:700;font-size:13px">PepsiCo, Inc.</div><div style="color:#C49B20;font-size:11px">HI Grade™ · 69</div></div>
-</div>
-<div style="display:flex;flex-direction:column;gap:6px">
-<div style="display:flex;align-items:center;gap:6px"><span style="color:#5A7A9A;font-size:10px;width:12px">H</span><div style="flex:1;height:6px;background:#2a3f5f;border-radius:3px"><div style="width:49%;height:100%;background:#D97706;border-radius:3px"></div></div><span style="color:#D97706;font-size:10px;font-weight:700">49</span></div>
-<div style="display:flex;align-items:center;gap:6px"><span style="color:#5A7A9A;font-size:10px;width:12px">U</span><div style="flex:1;height:6px;background:#2a3f5f;border-radius:3px"><div style="width:61%;height:100%;background:#D97706;border-radius:3px"></div></div><span style="color:#D97706;font-size:10px;font-weight:700">61</span></div>
-<div style="display:flex;align-items:center;gap:6px"><span style="color:#5A7A9A;font-size:10px;width:12px">M</span><div style="flex:1;height:6px;background:#2a3f5f;border-radius:3px"><div style="width:68%;height:100%;background:#16A34A;border-radius:3px"></div></div><span style="color:#16A34A;font-size:10px;font-weight:700">68</span></div>
-<div style="display:flex;align-items:center;gap:6px"><span style="color:#5A7A9A;font-size:10px;width:12px">A</span><div style="flex:1;height:6px;background:#2a3f5f;border-radius:3px"><div style="width:92%;height:100%;background:#16A34A;border-radius:3px"></div></div><span style="color:#16A34A;font-size:10px;font-weight:700">92</span></div>
-<div style="display:flex;align-items:center;gap:6px"><span style="color:#5A7A9A;font-size:10px;width:12px">N</span><div style="flex:1;height:6px;background:#2a3f5f;border-radius:3px"><div style="width:76%;height:100%;background:#16A34A;border-radius:3px"></div></div><span style="color:#16A34A;font-size:10px;font-weight:700">76</span></div>
-</div>
-<div style="text-align:center;margin-top:10px;color:#5A7A9A;font-size:9px">♥ Watch · Decay: 20 · thehibalance.org</div>
-</div>
-</div>
+<!-- Extension screenshot gallery (v1.2) -->
+<div style="margin-bottom:32px">
+  <!-- Hero shot: pill + detail panel -->
+  <div style="background:linear-gradient(135deg,#1B3A5C 0%,#0F2540 100%);border-radius:18px;padding:8px;margin-bottom:14px;box-shadow:0 16px 40px rgba(15,37,64,.35)">
+    <a href="https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg" target="_blank" style="display:block;border-radius:12px;overflow:hidden">
+      <img src="/ext-2-apple.png" alt="HI extension on apple.com — pill + detail panel" style="width:100%;height:auto;display:block;border-radius:12px">
+    </a>
+  </div>
+
+  <!-- 3-up: pill on site, heartbeat, balanced board -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+    <a href="https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg" target="_blank" style="display:block;border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(15,37,64,.2);transition:transform .2s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+      <img src="/ext-1-pill.png" alt="Floating pill on patagonia.com" style="width:100%;height:auto;display:block;border-radius:12px">
+    </a>
+    <a href="https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg" target="_blank" style="display:block;border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(15,37,64,.2);transition:transform .2s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+      <img src="/ext-3-heartbeat.png" alt="Heartbeat decay live monitoring" style="width:100%;height:auto;display:block;border-radius:12px">
+    </a>
+    <a href="https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg" target="_blank" style="display:block;border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(15,37,64,.2);transition:transform .2s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+      <img src="/ext-4-patagonia.png" alt="Balanced Board company — Patagonia detail" style="width:100%;height:auto;display:block;border-radius:12px">
+    </a>
+  </div>
+
+  <!-- Captions row -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px">
+    <div style="text-align:center"><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase">Browse</span></div>
+    <div style="text-align:center"><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase">♥ Live decay</span></div>
+    <div style="text-align:center"><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase">◆ Balanced Board</span></div>
+  </div>
 </div>
 
 <div class="feature-grid">
