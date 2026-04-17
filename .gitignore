@@ -1,31 +1,81 @@
-# ═══ Python ═══
+# ═══════════════════════════════════════════════════════════════
+# HI Grade — .gitignore
+# ═══════════════════════════════════════════════════════════════
+
+# ─── SECRETS (NEVER COMMIT) ────────────────────────────────────
+# API keys, tokens, credentials
+*_key.txt
+*_secret.txt
+.env
+.env.local
+.env.*.local
+api_keys.py
+secrets/
+credentials/
+.secrets
+*.pem
+*.key
+*.p12
+
+# ─── PYTHON ────────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
-*.egg-info/
-dist/
+*$py.class
+*.so
+.Python
 build/
+develop-eggs/
+dist/
+downloads/
+eggs/
 .eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
 *.egg
-.venv/
+MANIFEST
+
+# Virtual environments
 venv/
 env/
+ENV/
+.venv/
+.env/
+env.bak/
+venv.bak/
 
-# ═══ Node ═══
+# ─── NODE / EXTENSION ──────────────────────────────────────────
 node_modules/
 npm-debug.log*
-package-lock.json
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+package-lock.json.bak
 
-# ═══ Data (generated, not committed) ═══
-data/
-!pipeline/data/
-*.json.bak
-
-# ═══ Extension packaging ═══
+# Build outputs
+dist/
+build/
 *.zip
-*.crx
-*.pem
+human-edge*.zip
+human-edge/dist/
 
-# ═══ IDE ═══
+# ─── iOS / XCODE ───────────────────────────────────────────────
+# (only if the iOS source lives in this repo — adjust if external)
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+DerivedData/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# ─── EDITOR / IDE ──────────────────────────────────────────────
 .vscode/
 .idea/
 *.swp
@@ -33,27 +83,75 @@ data/
 *~
 .DS_Store
 Thumbs.db
+.claude/
 
-# ═══ Environment / Secrets ═══
-.env
-.env.local
-.env.production
-*.secret
-config.local.py
-
-# ═══ Logs ═══
+# ─── TEMPORARY / BACKUP FILES ──────────────────────────────────
+*.bak
+*.pre_*.bak
+*.tmp
+*.orig
+.backup/
 *.log
-logs/
 
-# ═══ OS ═══
+# Patcher scripts (one-off tools, shouldn't ship)
+add_*.py
+fix_*.py
+patch_*.py
+kill_*.py
+dedup_*.py
+refine_*.py
+v12_*.py
+swap_*.py
+update_*.py
+collect_*.py.bak
+check_*.py
+
+# ─── PIPELINE OUTPUTS (mostly-tracked — adjust as needed) ─────
+# Large volatile data files
+pipeline/data/prices/*.json
+pipeline/data/validation/*.json
+pipeline/data/history/*.json
+
+# But DO commit the current state
+!pipeline/data/scores/all_scores.json
+!pipeline/data/subsignals/
+!pipeline/data/human100/
+!pipeline/data/heartbeat/
+!pipeline/data/gov/
+
+# Cache directories
+.cache/
+cache/
+pipeline/.cache/
+
+# ─── LOCAL DEVELOPMENT ─────────────────────────────────────────
+local_config.py
+local_settings.py
+.local/
+debug/
+scratch/
+playground/
+tmp/
+TODO.local.md
+notes.local.md
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb.bak
+
+# ─── ANALYTICS / TRACKING ──────────────────────────────────────
+# Never commit analytics credentials or dumps
+analytics_export.*
+ga_*.csv
+mixpanel_*.json
+
+# ─── OS GARBAGE ────────────────────────────────────────────────
 .DS_Store
-.DS_Store?
+.AppleDouble
+.LSOverride
 ._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-
-# ═══ Confidential docs (keep in private storage) ═══
-# Uncomment these if you want to keep legal docs out of the repo:
-# docs/patent/
-# docs/ip-package/
+Desktop.ini
+$RECYCLE.BIN/

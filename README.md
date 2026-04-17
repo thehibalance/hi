@@ -1,228 +1,187 @@
-# HI.
+<div align="center">
 
-## Human kind?
+<img src="https://raw.githubusercontent.com/thehibalance/hi/main/docs/logo-512.png" width="120" alt="HI."/>
 
-**For centuries, we've made decisions using four checks: cost, time, convenience, risk. We left out the one that matters most — verified human impact. HI Grade is the fifth check before every decision.**
+# Human kind?
 
-Built without AI to measure AI. **42 free public data sources. 19 active sub-signals. Zero AI in the scoring engine.** The world's first ethical scoring framework for the age of AI.
+**Score every company. Five dimensions AI can't replace.**
 
-**HI Grade** measures how human a company is across five dimensions — the things AI can't replace: consciousness, empathy, ethics, environment, and transparency. Every company gets a score from 0 to 100. Brands that pass all 3 gates — with verified data — earn **Gold HI Grade**.
+[Shop](https://thehibalance.org) · [Invest](https://thehibalance.org) · [Hire](https://thehibalance.org) · [Research](https://thehibalance.org) · [Build](https://api.thehibalance.org)
 
-🌐 [thehibalance.org](https://thehibalance.org) · 📖 [Methodology](https://thehibalance.org/#methodology) · 📊 [Sources](https://thehibalance.org/#sources) · 📡 [API](https://api.thehibalance.org)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![Spec](https://img.shields.io/badge/spec-v1.1.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
+[![API](https://img.shields.io/badge/API-live-16A34A.svg)](https://api.thehibalance.org)
+[![Chrome](https://img.shields.io/badge/Chrome-Extension-C49B20.svg)](https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg)
+[![iOS](https://img.shields.io/badge/iOS-App%20Store-000.svg)](https://apps.apple.com/app/hi/id6761270596)
 
-🏛 The HI Balance · 📄 Patent Pending · ™ HI Grade — Morf Innovations LLC
+**[thehibalance.org](https://thehibalance.org)** · Built without AI to measure AI · Open source
 
-**Spec v1.1.0 · April 2026**
-
----
-
-## The Fifth Check
-
-Every decision we make — as consumers, employees, investors, founders — runs through four filters: **cost, time, convenience, risk.** The framework for weighing them is 500 years old and well understood.
-
-We left out a fifth filter: **verified human impact.** Not "does this company feel ethical?" but *"does this company treat humans well in ways that leave a data trail?"*
-
-Revenue per employee. Layoff trajectory. CEO pay ratios. Regulatory violations. DEI commitments that don't match hiring. AI disclosure gaps. Court settlements. Documented deaths. Filed documents, not filed promises.
-
-We stopped measuring this because it was hard to quantify and because we convinced ourselves it was nice-to-have instead of load-bearing. **It is load-bearing.** Companies that treat humans well outperform companies that don't — over time, across industries, in every measure that matters.
-
-HI Grade makes the fifth check possible. **Before every decision, ask: Human kind?**
+</div>
 
 ---
 
-## Gold HI Grade — 3 Gates
+## What is HI Grade?
 
-Every company gets a score from 0 to 100. Pass all three gates and your score earns Gold. **You can't buy it. You can't apply for it. The math proves it.**
+For 500 years we've made decisions using four filters: **cost, time, convenience, risk.** We left out a fifth — **verified human impact.** Not "does this company feel ethical?" but _"does it treat humans well in ways that leave a data trail?"_
 
-### 📊 Gate 1: Dimensions
+**HI Grade** measures how human a company is across five dimensions. Every company gets a score from 0 to 100, built from 19 active sub-signals and 42 free public data sources. Zero AI in the scoring engine. Zero pay-to-play. Zero self-reporting. Every score is reconstructable from public data.
 
-All 5 HUMAN dimensions must score **≥ 60**. No single weak dimension allowed.
+Whether you're shopping, investing, hiring, researching, or building, HI Grade gives you one number with full audit trail.
 
-A composite-only system would let a company be excellent on four dimensions and ethically compromised on the fifth, and still rate highly. HI Grade refuses to do this. Each dimension is an independent check.
+## Try it in 30 seconds
 
-### 🔬 Gate 2: Evidence
+```bash
+curl https://api.thehibalance.org/api/v1/score/ticker/PTGN
+```
 
-Each dimension must have **at least one verified public source**. Industry defaults and seed estimates don't count. Real third-party data — SEC filings, government records, certifications, employee data — must back every dimension.
-
-### ⏱ Gate 3: Momentum
-
-The company must not be in **warning or critical decay** over the trailing 90 days. The HUMAN Heartbeat monitors news, 8-K filings, WARN Act notices, and other real-time signals. When Oracle laid off 40% of US employees in early 2025, their backward-looking SEC filings still showed the pre-layoff workforce. The momentum gate catches this.
-
-**Current Gold HI Grade (production):** Coca-Cola (75) · NextEra Energy (71) · Patagonia (71) · Ford Motor Company (62)
-
----
+Or install the **[Chrome Extension](https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg)** and see every company's HI Grade as you browse.
 
 ## The HUMAN Framework
 
-Five dimensions of humanity. Each measures something AI can't replace.
+Five dimensions. Each measures something AI can't replace.
 
-| Dimension | Measures | What AI Replaces |
+| | Dimension | Measures | Active Sub-Signals |
+|---|---|---|---|
+| 🧠 | **H — Human Consciousness** | Workforce investment, craft, human decision authority | H.1 H.2 H.3 |
+| 💙 | **U — Understanding & Empathy** | Customer empathy, worker empathy, relational integrity | U.1 U.2 U.3 U.4 |
+| ⚖️ | **M — Moral & Ethical Conduct** | Pricing, data, market, product, stakeholder ethics | M.1 M.2 M.3 M.4 M.5 |
+| 🌍 | **A — Alive & Environmental** | Energy, water, land, product lifecycle | A.1 A.2 A.3 A.4 |
+| 🔍 | **N — Natural Transparency** | Reporting quality, filing volume, disclosure depth | N.2 N.5 |
+
+**19 active sub-signals. 6 deferred to v1.2** (H.4, H.5, U.5, A.5, N.1, N.3, N.4 — spec'd but not yet scored). Our [methodology page](https://thehibalance.org/#methodology) documents every formula and threshold.
+
+## The Balanced Board
+
+Most frameworks hide weak dimensions inside a composite average. HI refuses. The **Balanced Board** highlights companies where **every one of the five HUMAN dimensions scores ≥ 60**. No gaps. No hiding.
+
+A company can have a high composite score and still fail the Balanced Board — a red dimension is a red dimension. Composite numbers are navy everywhere; the dimension bars do the storytelling.
+
+The Balanced Board is a descriptive property, not a prestige tier. The math decides, not us.
+
+## Harm Documentation
+
+Public-record harm flows directly into dimension scores. Anchored to DOJ/SEC/state AG records, CDC/NIH attribution data, and court findings.
+
+| System | What it catches | Affects |
 |---|---|---|
-| 🧠 **H — Human Consciousness** | Workforce investment, craft depth, human decision authority, AI-augmentation balance | Automation, replacement |
-| 💙 **U — Understanding & Empathy** | Customer empathy, worker empathy, relational integrity, simulated empathy detection | Simulated empathy |
-| ⚖️ **M — Moral & Ethical Conduct** | Pricing, data, market, product, and political ethics. Public-record harm. | Optimization at all costs |
-| 🌍 **A — Alive & Environmental** | Energy, water, land & habitat, product lifecycle | Hidden compute footprint |
-| 🔍 **N — Natural Transparency** | Reporting quality, filing volume, disclosure depth | Opacity, humanwashing |
-
-### 19 Active Sub-Signals (v1.1.0)
-
-- **H:** H.1 Workforce Valuation · H.2 Craft · H.3 Human Decision Depth · H.5 Human Augmentation Index
-- **U:** U.1 Customer Empathy · U.2 Worker Empathy · U.3 Relational Integrity · U.4 Simulated Empathy Detection
-- **M:** M.1 Pricing Ethics · M.2 Data Ethics · M.3 Market Ethics · M.4 Product Ethics · M.5 Stakeholder Governance
-- **A:** A.1 Energy & Emissions · A.2 Water · A.3 Land & Habitat · A.4 Product Lifecycle
-- **N:** N.2 Reporting Quality · N.5 Filing Volume
-
-Five additional sub-signals (H.4, N.1, N.3, N.4, U.5) are spec'd but not yet scored — in development for v1.2+. Every active sub-signal is computed deterministically from public data. The published methodology spec matches the code exactly.
-
-📖 **[Read the full methodology →](https://thehibalance.org/#methodology)**
-
----
-
-## The Four Harm Detection Systems
-
-HI Grade applies four harm-detection systems, all flowing into dimension scores (no separate gates):
-
-### Humanwashing™ (HW)
-Selling human craft while operating algorithmically. Detected via revenue-per-employee anomalies (4×+ industry median) and AI-replaces-disclosure mismatches. Penalizes H.1.
-
-### Algorithmic Harm Index™ (AHI)
-Measures algorithmic decision-making at scale. A bank's credit algorithm affects one person at a time. A social media moderation algorithm affects billions. AHI adjusts for blast radius. Penalizes M.3, U.4.
-
-### Product Harm Index (PHI)
-Physical or digital product safety failures. CPSC recalls, FDA warning letters, NHTSA investigations, HIBP breaches, EPA violations. Penalizes M.4.
-
-### Harm Documentation (HD) — *new in v1.1.0*
-Public-record harm: court settlements, attributed deaths, knowing concealment. Anchored to DOJ/SEC/state AG records, CDC/NIH attribution data, court findings. Penalizes M.3 + M.4 directly.
+| **Humanwashing™** | Selling human craft while operating algorithmically | H.1 |
+| **Algorithmic Harm Index™** | Algorithmic decisions at scale (blast radius adjusted) | M.3, U.4 |
+| **Product Harm Index** | Physical/digital product safety failures | M.4 |
+| **Harm Documentation** | Court settlements, attributed deaths, knowing concealment, weapons | M.3 + M.4 |
 
 ### "Humans can still choose"
 
-HD does *not* penalize companies for selling products that consumers knowingly choose: sugary beverages, alcohol, gambling, unflavored tobacco. These products may cause harm, but the harm flows from informed consumer choice. **HI Grade is not the consumer's parent.**
+HD does **not** penalize companies for selling products consumers knowingly choose — sugary beverages, alcohol, gambling, unflavored tobacco. These may cause harm, but it flows from informed consumer choice. **HI Grade is not the consumer's parent.**
 
-HD *does* penalize when consent was not possible:
+HD **does** penalize when consent was not possible:
 
-- **Hidden risk** — the company knew about a risk and concealed it (J&J talc, tobacco MSA, Pfizer Bextra)
-- **Doctor-mediated harm** — pharmaceutical companies that misrepresented drug safety to prescribers
+- **Hidden risk** — company knew about a risk and concealed it (J&J talc, tobacco MSA, Pfizer Bextra)
+- **Doctor-mediated harm** — pharma companies that misrepresented drug safety to prescribers
 - **Weapons** — products designed to harm humans who did not consent to being targeted
-- **Environmental contamination** — chemical or physical harm to populations who never bought the product (PFAS in drinking water, asbestos in air)
+- **Environmental contamination** — PFAS, asbestos, unconsenting populations
 
----
+This is why Lockheed Martin's composite dropped from 69 to 53 when weapons HD shipped. The math caught up with reality.
 
-## Confidence Tiers
+## 42 Data Sources, Zero AI
 
-Not all scores are equal. The system tells you how much data backs each score.
+All free, public, auditable. No proprietary databases. No purchased ratings. No pay-to-play. No self-reporting surveys. No LLMs.
 
-| Tier | Criteria | Gold Eligible |
+| Bucket | Count | Examples |
 |---|---|---|
-| **Verified** | 5+ real data sources | ✅ Yes |
-| **Estimated** | 1-4 real data sources | ❌ No (fails Evidence gate) |
-| **Pending** | Seed data only | ❌ No (fails Evidence gate) |
+| 🏛️ **Government** | 13 | SEC EDGAR, EPA ECHO, BLS, CFPB, FEC, FDA, FTC, CPSC, OSHA, DOL, EEOC, NHTSA, USPTO |
+| 💼 **Financial** | 7 | FMP, Finnhub, Yahoo Finance, Alpha Vantage, FRED, OpenCorporates, NewsAPI |
+| 📊 **Public Datasets** | 17 | Glassdoor, HRC CEI, Disability:IN DEI, CDP (Climate/Water/Forests), GRI, SBTi, IRS 990, WARN Act, iFixit, BBB, HIBP, Layoffs.fyi |
+| ✅ **Certifications** | 5 | B Corp, Fair Trade USA, USDA Organic, Climate Neutral, 1% for the Planet |
+| 🧮 **Computed Aggregates** | 10 | Harm Documentation, AHI, CEO Accountability, RPE, Heartbeat Decay Index |
 
-Pending companies show neutral scores across all surfaces. Scores may change significantly once verified against the full source array.
+Full list and methodology per source: **[thehibalance.org/#sources](https://thehibalance.org/#sources)**
 
----
+## The HUMAN Heartbeat
 
-## 42 Data Sources
+Companies change. HI Grade moves with them. The Heartbeat watches daily across:
 
-**Zero AI. Zero pay-to-play. Zero self-reporting. All free, public, and auditable.**
+- **SEC 8-K restructuring disclosures** (legally mandated within 4 days)
+- **WARN Act notices** (federally mandated workforce reductions)
+- **NewsAPI keyword surveillance** (150,000+ news sources)
+- **Finnhub insider trading** + **CEO pipeline**
 
-📊 **[See all 42 sources →](https://thehibalance.org/#sources)**
+Decay levels: **Stable → Watch → Warning → Critical**. When Oracle laid off 40% of US employees in early 2025, backward-looking SEC filings still showed the pre-layoff workforce. The Heartbeat caught it.
 
-### 13 Government Sources (refreshed nightly)
+This is what "scores that move" means. No other ethics framework does this daily.
 
-SEC EDGAR (10-K, 8-K, DEF 14A, Form 4), EPA ECHO, BLS, CFPB, FEC/OpenSecrets, FDA, FTC, CPSC, OSHA, DOL, EEOC, NHTSA, USPTO.
+## Known Limitations
 
-### 7 Financial & Corporate (live API)
+We publish what we haven't solved yet — because a transparency framework that hides its own gaps is hypocritical. See [`RUBRIC.md`](RUBRIC.md) for the full Pass-1 inventory of which sub-signal ladders are **GROUNDED**, **PARTIAL**, or **UNGROUNDED** against external authorities.
 
-FMP, Finnhub ESG, Yahoo Finance, Alpha Vantage, FRED, OpenCorporates, NewsAPI.
+**Current state (v1.1.0):**
 
-### 17 Public Datasets (refreshed quarterly)
+- Several sub-signal scoring ladders use editorial tier cutoffs on authoritative data (e.g., CFPB complaints per $B revenue is authoritative; the tier cutoffs on it are editorial). This is the dominant pattern, explicitly flagged in `RUBRIC.md`.
+- 6 sub-signals are spec'd but not yet scored (v1.2 target).
+- Harm Documentation covers ~14 categories; historical harm detection pre-2020 is limited to the Major Harm Events dictionary.
+- CFPB coverage is financial-services-heavy; ~80% of companies fall back to neutral defaults for U.1/M.1.
+- iFixit repairability covers 15 companies; everyone else uses industry defaults.
 
-Glassdoor, HRC Corporate Equality Index, Disability:IN DEI Index, CDP Climate, CDP Water, CDP Forests, GRI, SBTi, IRS 990, WARN Act, iFixit, BBB, HIBP, Layoffs.fyi, Industry RPE Medians, Job Boards, Industry Deforestation Risk.
+**Active research:**
 
-### 5 Certification Partners (manual quarterly review)
+- Grounding UNGROUNDED ladders against external frameworks (BLS, SBTi, B Corp)
+- Expanding Harm Documentation to pre-2020 events
+- v1.2 sub-signals (H.4, H.5, U.5, A.5, N.1, N.3, N.4)
+- International data sources (EU CSRD, Companies House)
 
-B Corp, Fair Trade USA/International, USDA Organic, Climate Neutral, 1% for the Planet.
+If you spot a score that seems wrong, **[open an issue](https://github.com/thehibalance/hi/issues/new)** with the company name, ticker, and what you think the correct answer is. We respond.
 
-### 10 Computed & Curated Aggregates
+## API
 
-Harm Documentation, Algorithmic Harm Index, CEO Accountability, Revenue per Employee, Headcount Trajectory, R&D per Employee, Filing Transparency Score, Political Donation Concentration, Consumer Complaint Density, Heartbeat Decay Index.
+Base URL: `https://api.thehibalance.org` · Free · No auth required · Rate limited 100 req/min
 
-### Layered Layoff Detection
+```bash
+# Single company by ticker
+curl https://api.thehibalance.org/api/v1/score/ticker/AAPL
 
-Workforce reductions are detected three ways — **SEC 8-K restructuring disclosures** (legally mandated), **WARN Act filings** (federal/state required), and **NewsAPI keyword surveillance** across 150,000+ news sources. More defensible than any single crowdsourced tracker.
+# Search
+curl 'https://api.thehibalance.org/api/v1/search?q=patagonia'
 
----
+# Top companies (verified-first)
+curl https://api.thehibalance.org/api/v1/grades/top?limit=10
 
-## What Makes HI Different
+# The Heartbeat pulse
+curl https://api.thehibalance.org/api/v1/heartbeat/pulse
 
-### The Scoring
+# Balanced Board members
+curl https://api.thehibalance.org/api/v1/grades/top?balanced=true
+```
 
-- **19 sub-signals across 5 dimensions, deterministic.** Published methodology matches code.
-- **42 data sources, zero AI.** Every sub-signal has a deterministic data source. No black boxes. No surveys. No self-reporting.
-- **Four harm detection systems** — Humanwashing, Algorithmic Harm Index, Product Harm Index, Harm Documentation. Cross-cutting penalties applied at the dimension level.
-- **HUMAN Heartbeat.** Real-time decay monitoring across SEC 8-K, NewsAPI, WARN Act, Finnhub, and CEO pipeline feeds. Powers the momentum gate.
-- **"Humans can choose" principle.** No paternalistic penalties for consumer choice — only documented harm where consent wasn't possible.
+**32 endpoints.** Full reference: [thehibalance.org/api](https://thehibalance.org/api)
 
-### The Architecture
+Each response includes `score_status`: `verified`, `estimated`, or `pending` — and a `harm_documentation` object when applicable. Every number traceable to its source.
 
-- **Edge-to-cloud.** Chrome extension + iOS app + REST API (32+ endpoints) + nightly pipeline. No other scoring framework ships across all surfaces.
-- **Expandable sub-signals.** Tap any dimension to see sub-signal bars, coverage badge, and source list. Uniform across website, app, and extension.
-- **"How was this calculated?" audit trail.** Every score is reconstructable. Click any company, see the full formula, all 19 sub-signals, sources per dimension, and the exact curl command to verify.
-- **Verified-first rankings.** API sorts verified companies before estimated before pending.
-- **Nightly pipeline.** GitHub Actions at midnight CST. All 42 sources. Full scoring, merging, validation, and history tracking.
+## Architecture
 
-### Security
+```
+┌─ Data Collection (nightly, 180min budget) ─────────────────┐
+│  SEC · EPA · BLS · CFPB · FEC · FDA · FTC · CPSC · OSHA    │
+│  DOL · EEOC · NHTSA · USPTO · FMP · Finnhub · Yahoo        │
+│  NewsAPI · CDP · HRC · Disability:IN · SBTi · GRI · 990    │
+└────────────────────────────┬───────────────────────────────┘
+                             │
+┌─ Scoring Engine (deterministic, no AI) ────────────────────┐
+│  19 active sub-signals → 5 dimensions → 1 composite (0-100)│
+│  + 4 harm detection systems applied at dimension level     │
+│  + 3-layer validation (input · output · MSSI)              │
+└────────────────────────────┬───────────────────────────────┘
+                             │
+         ┌───────────────────┼───────────────────┐
+         ▼                   ▼                   ▼
+   REST API (32)     Chrome Extension     iOS App
+   api.thehibalance    441+ brands        App Store
+```
 
-- Read-only API — no write endpoints exist
-- CORS whitelist — thehibalance.org + browser extension + localhost only
-- Rate limiting — 100 req/min global, 20 req/min on search
-- Input sanitization — HTML escape, control chars stripped, query length capped
-- Security headers — X-Content-Type-Options, X-Frame-Options, X-XSS-Protection, strict Referrer-Policy
-- Extension — zero AI, zero tracking, zero phone-home, zero user data collection
+**Nightly pipeline:** GitHub Actions at midnight CST. Full pipeline runs in ~60-90 min; skip-collect quarterly re-score in ~5 min. Validation stops publication if anything looks wrong.
 
----
-
-## The 10 HUMAN Features
-
-| Feature | What It Does |
-|---|---|
-| **HUMAN Genome™** | Sub-signal fingerprint — expandable in app, extension, and website |
-| **HUMAN Decay** | Predicts score drops via trailing regression and real-time signals |
-| **HUMAN Heartbeat™** | Real-time monitoring from SEC 8-K, NewsAPI, WARN Act, Finnhub, CEO pipeline |
-| **HUMAN Watermark** | Detects performative vs genuine empathy |
-| **HUMAN Contagion** | Measures ethical ripple through industries |
-| **HUMAN Shield** | AI displacement resistance score |
-| **HUMAN 100™** | Top 100 companies, verified-first |
-| **HUMAN Lens** | HI vs ESG gap detection |
-| **HUMAN Wave** | Collective market pressure signals |
-| **HUMAN Consciousness** | Company-level ethical footprint |
-
----
-
-## Compared to Existing Frameworks
-
-| Framework | What It Misses |
-|---|---|
-| ESG (MSCI, Sustainalytics) | No AI displacement. No empathy detection. No humanwashing. Uses LLMs in scoring. |
-| B Corp | No scoring granularity. No AI dimension. No real-time monitoring. |
-| Fair Trade | No AI measurement. No technology dimension. |
-| Carbon Tools (CDP, Watershed) | One dimension only. |
-| Credit Ratings (Moody's, S&P) | Financial only. |
-
----
-
-## Current Metrics
-
-| Metric | Value |
-|---|---|
-| Companies scored | 441 |
-| Gold HI Grade | 4 |
-| Active sub-signals | 19 |
-| Active data sources | 32 (of 42 registered) |
-| Spec version | 1.1.0 |
-| Last update | Daily, midnight CST |
-
----
+**3-layer validation:** 
+1. Input validation — no negative headcounts, no impossible Glassdoor ratings
+2. Output validation — score stability checks, distribution shape, known leaders
+3. MSSI — Maximum Single-Source Impact — no one source moves a sub-signal more than 15 points
 
 ## Local Development
 
@@ -231,62 +190,49 @@ git clone https://github.com/thehibalance/hi.git
 cd hi/pipeline
 pip install -r requirements.txt
 
-# Run full pipeline
+# Full pipeline (nightly run equivalent, ~60min)
 python3 run_all.py
 
-# Re-score from existing data (faster)
+# Re-score from cached data (~5min)
 python3 run_all.py --skip-collect
 
 # Quarterly threshold recalculation
 python3 run_all.py --quarterly
 
-# Start API locally
+# Start API locally (port 8080)
 python3 api_server.py --port 8080
 ```
 
----
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for how to add a company, add a data source, or grind a sub-signal ladder.
 
-## Automation
+## What Makes HI Different
 
-| Schedule | Mode | What Happens |
-|---|---|---|
-| Daily (midnight CST) | Incremental | All 42 sources, commits scores, captures historical snapshot |
-| Quarterly (Jan/Apr/Jul/Oct 1) | Full refresh | Recalculates threshold, reviews certification matches |
-| Manual | Your choice | Trigger from Actions tab |
-
----
-
-## API
-
-**Base URL:** `https://api.thehibalance.org` · Free · No auth required
-
-| Endpoint | Description |
+| Framework | Misses |
 |---|---|
-| `GET /api/v1/stats` | Stats + Gold count + spec version |
-| `GET /api/v1/score/{domain}` | Score by domain |
-| `GET /api/v1/score/ticker/{ticker}` | Score by ticker |
-| `GET /api/v1/search?q={query}` | Search companies |
-| `GET /api/v1/grades/top?limit=10` | Top companies (verified first) |
-| `GET /api/v1/heartbeat/pulse` | Ecosystem pulse |
-| `GET /api/v1/heartbeat/alerts` | Decay alerts |
-| `GET /api/v1/human100` | HUMAN 100 Index |
-| `GET /api/v1/arbitrage` | HUMAN Lens (HI vs ESG gap) |
-| `GET /api/v1/moat` | HUMAN Shield |
-| `GET /api/v1/contagion` | HUMAN Contagion |
-| `GET /api/v1/empathy` | HUMAN Watermark |
-| `GET /api/v1/collective` | HUMAN Wave |
+| ESG (MSCI, Sustainalytics) | No AI displacement. No empathy detection. No humanwashing. Uses LLMs in scoring. Pay-to-play. |
+| B Corp | No scoring granularity. No AI dimension. Self-reported. No real-time monitoring. |
+| Fair Trade | Certifications only. No technology dimension. |
+| Carbon Tools (CDP, Watershed) | Environmental only. |
+| Credit Ratings (Moody's, S&P) | Financial only. |
+| **HI Grade** | — |
 
-Response includes `score_status`: **verified**, **estimated**, or **pending**.
-Response includes `harm_documentation` field with HD penalty details when applicable.
+We publish our methodology. We publish our limitations. Every sub-signal is auditable. Every score is reconstructable. No AI. No pay-to-play.
 
-**Verify any score yourself:**
+## Roadmap
 
-```bash
-curl https://api.thehibalance.org/api/v1/score/ticker/AAPL
-curl https://api.thehibalance.org/api/v1/search?q=patagonia
-```
-
----
+| Capability | Status |
+|---|---|
+| Chrome Extension v1.1.7 | ✅ Shipped |
+| iOS App v1.1.0 | In Apple review |
+| Balanced Board methodology | ✅ Shipped |
+| Harm Documentation (14 categories) | ✅ Shipped |
+| 180-min quarterly workflow | ✅ Shipped |
+| Safari extension | Planned |
+| Firefox / Edge extensions | Planned |
+| State of Human Intelligence report | Planned |
+| EU CSRD + Companies House integration | Planned |
+| Sub-signals H.4, H.5, U.5, A.5, N.1, N.3, N.4 | v1.2 target |
+| Subsidiary Transparency Rule (SEC Exhibit 21) | v1.2 target |
 
 ## Intellectual Property
 
@@ -298,30 +244,43 @@ curl https://api.thehibalance.org/api/v1/search?q=patagonia
 | Algorithmic Harm Index™ | Common law |
 | "Human kind?"™ | Trademark pending |
 | HUMAN Grade Spec v1.1.0 whitepaper | Copyright registered |
-| Open source | Apache 2.0 |
+| Methodology + scoring engine | Apache 2.0 (see [LICENSE](LICENSE)) |
+
+## Contributing
+
+Pull requests welcome. Issues especially welcome — we want to hear when a score looks wrong. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+**Three kinds of contributions we specifically need:**
+
+1. **Score challenges** — you think company X should be higher/lower? Open an issue with evidence, we investigate.
+2. **Data source additions** — proposing a new public, free, auditable data source? PR with docstring + pipeline integration.
+3. **Ladder grounding** — got an academic paper or regulatory framework that could replace one of our editorial thresholds? Gold.
+
+## Acknowledgments
+
+Built on public data from the SEC, EPA, BLS, CFPB, FEC, FDA, FTC, CPSC, OSHA, DOL, EEOC, NHTSA, USPTO. These agencies make HI Grade possible. Government transparency is a public good.
+
+Built on methodology in part from CDP, GRI, SBTi, B Corp, Fair Trade, HRC, Disability:IN. Their work predates ours and informs ours.
+
+## License
+
+Methodology, scoring engine, API server, and pipeline code: **Apache 2.0** — see [LICENSE](LICENSE).
+
+Chrome extension and iOS app: source Apache 2.0. Distributed binaries are subject to the Chrome Web Store Developer Agreement and Apple Developer Program License Agreement, respectively.
+
+Trademarks (HI Grade™, Humanwashing™, Algorithmic Harm Index™, Human kind?™) are property of Morf Innovations LLC and not covered by the Apache 2.0 license. See [NOTICE](NOTICE) for usage guidelines.
 
 ---
 
-## What's Next
-
-| Capability | Status |
-|---|---|
-| Detail page consolidation (dim bars + sub-signals) | In progress |
-| Chrome extension v1.1.0 update | Coming soon |
-| iOS app v1.1.0 update | Coming soon |
-| Safari extension | Planned |
-| Edge / Firefox extensions | Planned |
-| State of Human Intelligence report | Planned |
-| International data sources (EU CSRD, Companies House) | Planned |
-| Sub-signals H.4, N.1, N.3, N.4, U.5 (deferred from v1.1.0) | v1.2 target |
-
----
+<div align="center">
 
 ## hi.
 
 **Human kind?**
 
-[thehibalance.org](https://thehibalance.org) · iOS App · Chrome Extension · [Methodology](https://thehibalance.org/#methodology) · [Sources](https://thehibalance.org/#sources)
+[thehibalance.org](https://thehibalance.org) · [Chrome Extension](https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg) · [iOS App](https://apps.apple.com/app/hi/id6761270596) · [API](https://api.thehibalance.org) · [Methodology](https://thehibalance.org/#methodology) · [Sources](https://thehibalance.org/#sources)
 
 The HI Balance · Patent Pending · HI Grade™ · Humanwashing™ · Algorithmic Harm Index™
-Morf Innovations LLC · [@thehibalance](https://twitter.com/thehibalance)
+Morf Innovations LLC · [@thehibalance](https://twitter.com/thehibalance) · [hi@thehibalance.org](mailto:hi@thehibalance.org)
+
+</div>
