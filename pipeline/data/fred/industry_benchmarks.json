@@ -1,7 +1,7 @@
 {
   "source": "FRED",
   "fetched": ".",
-  "series_count": 12,
+  "series_count": 14,
   "benchmarks": {
     "avg_hourly_earnings": {
       "series_id": "CES0500000003",
@@ -84,6 +84,15 @@
       "change_pct": 5.18,
       "observations": 12
     },
+    "manufacturing_employment": {
+      "series_id": "MANEMP",
+      "latest_value": 12591.0,
+      "latest_date": "2026-03-01",
+      "oldest_value": 12662.0,
+      "oldest_date": "2025-04-01",
+      "change_pct": -0.56,
+      "observations": 12
+    },
     "retail_employment": {
       "series_id": "USTRADE",
       "latest_value": 15427.9,
@@ -91,6 +100,15 @@
       "oldest_value": 15461.6,
       "oldest_date": "2025-04-01",
       "change_pct": -0.22,
+      "observations": 12
+    },
+    "healthcare_employment": {
+      "series_id": "CES6562000001",
+      "latest_value": 23756.5,
+      "latest_date": "2026-03-01",
+      "oldest_value": 23152.0,
+      "oldest_date": "2025-04-01",
+      "change_pct": 2.61,
       "observations": 12
     },
     "industrial_production": {
