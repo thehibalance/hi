@@ -122,8 +122,8 @@
     profile.goldThreshold = recheck.threshold;
     profile.balancedThreshold = recheck.threshold;  // backward compat
     profile.grade = recheck.gold ? "Gold HI Grade" : "Scored";
-    profile.scoreColor = '#1B3A5C';
-    profile.tier = { color: profile.scoreColor, satire: "" };
+    profile.scoreColor = recheck.gold ? '#C49B20' : HumanEngine.getScoreColor(profile.composite, recheck.threshold);
+    profile.tier = { color: profile.scoreColor, satire: recheck.gold ? "Humans and tech, in harmony. Gold HI Grade earned." : "" };
   }
   
   // Attach heartbeat data
@@ -284,7 +284,7 @@ function createBadge(profile, filterResult, prefs) {
  */
 function buildMiniHTML(profile) {
   const threshold = profile.balancedThreshold || 62;
-  const scoreColor = profile.isPending ? '#999' : '#1B3A5C';
+  const scoreColor = profile.isPending ? '#999' : HumanEngine.getScoreColor(profile.composite, threshold);
   const decayLevel = profile.decay_level || 'stable';
   
   // Human silhouette path
@@ -305,17 +305,17 @@ function buildMiniHTML(profile) {
     '#D97706': '#D97706', 
     '#DC2626': '#DC2626',
   };
-  const fillColor = scoreColor;
+  const fillColor = profile.hiBalanced ? '#C49B20' : scoreColor;
   
   if (profile.hiBalanced) {
     // Gold: score in head, hi. logo in torso, golden glow
     return `
       <div class="human-badge__mini" style="padding:0;background:transparent !important;border:none !important;box-shadow:none !important">
         <svg width="56" height="70" viewBox="0 -4 68 88" style="animation:gold-glow 3s ease-in-out infinite;filter:drop-shadow(0 2px 8px rgba(196,155,32,0.4))">
-          <path d="${silhouette}" fill="#1B3A5C"/>
+          <path d="${silhouette}" fill="#C49B20"/>
           <text x="34" y="24" text-anchor="middle" fill="white" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="15" font-weight="900">${profile.composite}</text>
           <circle cx="34" cy="57" r="10" fill="white" opacity="0.95"/>
-          <text x="34" y="61" text-anchor="middle" fill="white" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="10" font-weight="900">hi.</text>
+          <text x="34" y="61" text-anchor="middle" fill="#C49B20" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="10" font-weight="900">hi.</text>
         </svg>
       </div>
     `;
@@ -339,7 +339,7 @@ function buildMiniHTML(profile) {
  * Build the badge HTML content.
  */
 function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
-  const scoreColor = profile.isPending ? "#999" : "#1B3A5C";
+  const scoreColor = profile.isPending ? "#999" : HumanEngine.getScoreColor(profile.composite, profile.balancedThreshold);
   const tierColor = profile.tier.color;
   const confidenceBadge = profile.confidence === 'estimated' 
     ? '<span class="human-badge__confidence">EST</span>' 
@@ -563,7 +563,7 @@ function openFullPanel(profile, filterResult, prefs) {
   panel.style.maxHeight = 'calc(100vh - 40px)';
   panel.style.overflowY = 'auto';
 
-  const scoreColor = profile.isPending ? "#999" : "#1B3A5C";
+  const scoreColor = profile.isPending ? "#999" : profile.hiBalanced ? "#C49B20" : HumanEngine.getScoreColor(profile.composite, profile.balancedThreshold);
   const pulseColors = {'critical':'#DC2626','warning':'#DC2626','watch':'#D97706','stable':'#16A34A'};
   const pulseColor = pulseColors[profile.decay_level] || '#16A34A';
   const pulseDotHTML = profile.decay_index > 0 
@@ -674,21 +674,52 @@ function openFullPanel(profile, filterResult, prefs) {
 
   panel.innerHTML = `
     <div class="human-panel__header" style="background:#1B3A5C !important;border-bottom:none">
-      <div class="human-panel__back" id="panelBack" style="visibility:hidden;color:white">←</div>
+      <div class="human-panel__back" id="panelBack" style="visibility:hidden;color:#C49B20">←</div>
       <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-128.png')}" style="height:40px;width:auto;border-radius:6px;filter:brightness(0) invert(1)" alt="HI."></div>
       <div class="human-panel__close" id="panelClose" style="color:white">✕</div>
     </div>
 
     <div class="human-panel__company" style="background:white">
-      <div class="human-panel__grade" style="color:${scoreColor};font-size:36px">${profile.composite}</div>
+      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3)' : 'color:'+scoreColor+';font-size:36px'}">${profile.hiBalanced ? '<img src="'+chrome.runtime.getURL('icons/icon-white-128.png')+'" style="height:32px;width:auto">' : profile.composite}</div>
       <div style="flex:1;min-width:0">
         <div class="human-panel__name">${profile.name}</div>
         <div class="human-panel__tier" style="color: ${scoreColor};font-weight:600">${profile.isPending ? "Pending Verification" : profile.hiBalanced ? "Gold HI Grade™" : "HI Grade™"} · ${profile.composite}/100</div>
         ${(profile.decay_level && profile.decay_level !== 'stable' && profile.decay_index > 0) ? `<div style="font-size:11px;color:${pulseColor};margin-top:3px;font-weight:600">♥ ${profile.decay_level.charAt(0).toUpperCase()+profile.decay_level.slice(1)} decay · ${profile.decay_index}/100</div>` : (profile.decay_level === 'stable' ? '<div style="font-size:11px;color:#16A34A;margin-top:3px;font-weight:600">♥ Stable</div>' : '')}
       </div>
     </div>
-    
+    ${profile.hiBalanced ? '<div style="padding:6px 16px;font-size:12px;color:#C49B20;font-weight:700;background:white;letter-spacing:0.5px">✨ ALL 3 GATES PASSED · GOLD HI GRADE</div>' : ''}
 
+    <div style="background:white;padding:8px 16px">
+    ${(() => {
+      const gates = profile.goldGates || {};
+      const g1 = !!gates.dimensions;
+      const g2 = !!gates.evidence;
+      const g3 = !!gates.momentum;
+      const passed = [g1, g2, g3].filter(Boolean).length;
+      const total = 3;
+
+      const dimMap = ['h','u','m','a','n'];
+      const failedDims = dimMap.filter(d => (profile.dimensions[d] || 0) < 60).map(d => d.toUpperCase());
+      const dimDesc = g1 ? 'All 5 HUMAN dimensions ≥ 60' :
+        (failedDims.length === 1 ? failedDims[0] + ' below 60 (Gold needs all 5)' :
+         failedDims.length + ' dims below 60: ' + failedDims.join(', '));
+
+      const evDesc = g2 ? 'Each dimension verified by public data' : 'Coverage gap — some dims need more verified sources';
+
+      const decayLevel = profile.decay_level || 'stable';
+      const decayLabel = {warning:'Warning', critical:'Critical', watch:'Watch', stable:'Stable'}[decayLevel] || decayLevel;
+      const momDesc = g3 ? 'No warning or critical decay (90-day Heartbeat)' :
+        decayLabel + ' decay' + (profile.decay_index ? ' (' + profile.decay_index + '/100)' : '');
+
+      const headerLabel = passed + '/' + total + ' Gates passed' +
+        (passed === total ? ' · GOLD' : passed === 0 ? ' · Not eligible for Gold' : ' · Partial');
+      const gc = (icon, name, desc, ok) => '<div style="padding:5px 0;color:' + (ok ? '#16A34A' : '#DC2626') + '"><div style="font-size:11px;font-weight:700">' + (ok ? '✓' : '✗') + ' ' + icon + ' ' + name + '</div><div style="font-size:10px;color:' + (ok ? '#15803D' : '#DC2626') + ';margin-left:16px;font-weight:500;margin-top:1px">' + desc + '</div></div>';
+      return '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="font-size:11px;font-weight:700;color:#1B3A5C">' + headerLabel + '</span><div style="flex:1;height:4px;background:#EEF1F5;border-radius:2px"><div style="height:100%;width:' + (passed/total*100) + '%;background:' + (passed === total ? '#C49B20' : '#1B3A5C') + ';border-radius:2px"></div></div></div>' +
+        gc('📊', 'DIMENSIONS', dimDesc, g1) +
+        gc('🔬', 'EVIDENCE', evDesc, g2) +
+        gc('⏱', 'MOMENTUM', momDesc, g3);
+    })()}
+    </div>
 
     <div style="background:white;padding:8px 16px">
       <div style="font-size:11px;font-weight:700;color:#1B3A5C;letter-spacing:0.5px;margin-bottom:8px">HUMAN DIMENSIONS</div>
@@ -733,14 +764,14 @@ function openFullPanel(profile, filterResult, prefs) {
 
     <div style="background:#1B3A5C;padding:14px 16px;border-radius:0 0 14px 14px;margin-top:8px">
       <div style="display:flex;justify-content:center;align-items:center;gap:14px;margin-bottom:10px;flex-wrap:wrap">
-        <a href="https://thehibalance.org" target="_blank" style="font-size:11px;font-weight:600;color:#E8E2D0;text-decoration:none">🌐 thehibalance.org</a>
-        <a href="https://apps.apple.com/app/hi/id6761270596" target="_blank" style="font-size:11px;font-weight:600;color:#E8E2D0;text-decoration:none">🍎 iOS App</a>
+        <a href="https://thehibalance.org" target="_blank" style="font-size:11px;font-weight:600;color:#C49B20;text-decoration:none">🌐 thehibalance.org</a>
+        <a href="https://apps.apple.com/app/hi/id6761270596" target="_blank" style="font-size:11px;font-weight:600;color:#C49B20;text-decoration:none">🍎 iOS App</a>
       </div>
       <div style="display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:8px">
         <span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#16A34A"></span>
         <span id="hiPipelineCountdown" style="font-size:9px;font-family:'DM Mono',monospace;color:#5A7A9A;letter-spacing:0.3px">Connected · API live</span>
       </div>
-      <div style="font-size:8px;color:#5A7A9A;line-height:1.4;text-align:center">Spec v1.1.0 · 19 active sub-signals · 42 data sources · Estimated from public data. Not financial or legal advice.</div>
+      <div style="font-size:8px;color:#5A7A9A;line-height:1.4;text-align:center">Spec v1.1.0 · 3 gates: Dimensions, Evidence, Momentum · All dims ≥ 60. Estimated from public data. Not financial or legal advice.</div>
     </div>
   `;
 
@@ -854,13 +885,13 @@ function openDetailPanel(profile, dim) {
 
   panel.innerHTML = `
     <div class="human-panel__header" style="background:#1B3A5C !important;border-bottom:none">
-      <div class="human-panel__back" id="panelBack" style="color:white">← Back</div>
+      <div class="human-panel__back" id="panelBack" style="color:#C49B20">← Back</div>
       <div class="human-panel__title"><img src="${chrome.runtime.getURL('icons/icon-128.png')}" style="height:40px;width:auto;border-radius:6px;filter:brightness(0) invert(1)" alt="HI."></div>
       <div class="human-panel__close" id="panelClose" style="color:white">✕</div>
     </div>
 
     <div class="human-panel__company">
-      <div class="human-panel__grade" style="color:${scoreColor};font-size:36px">${profile.composite}</div>
+      <div class="human-panel__grade" style="${profile.hiBalanced ? 'background:#C49B20;color:white;border-radius:50%;width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(196,155,32,0.3);font-size:28px;font-weight:900' : 'color:'+scoreColor+';font-size:36px'}">${profile.composite}</div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
         <div class="human-panel__tier" style="color: ${scoreColor}">${profile.isPending ? "Pending Verification" : "HI Grade™"}${pulseDotHTML}</div>
@@ -943,9 +974,9 @@ function openDetailPanel(profile, dim) {
     </div>
 
     <div style="background:#1B3A5C;padding:14px 16px;border-radius:0 0 14px 14px">
-      <div style="font-size:13px;font-weight:700;color:#E8E2D0;letter-spacing:0.5px;text-align:center">Think human intelligence.</div>
+      <div style="font-size:13px;font-weight:700;color:#C49B20;letter-spacing:0.5px;text-align:center">Think human intelligence.</div>
       <div style="font-size:11px;color:white;margin-top:4px;opacity:0.8;text-align:center">thehibalance.org · The HI Balance</div>
-      <div style="font-size:8px;color:#5A7A9A;margin-top:8px;line-height:1.4;text-align:center">HI Grade Spec v1.1.0 · 19 active sub-signals · 42 data sources · Estimated from public data. Not financial or legal advice.</div>
+      <div style="font-size:8px;color:#5A7A9A;margin-top:8px;line-height:1.4;text-align:center">HI Grade Spec v1.1.0 · 3 gates: Dimensions, Evidence, Momentum · All dims ≥ 60. Estimated from public data. Not financial or legal advice.</div>
     </div>
   `;
 
@@ -1034,7 +1065,7 @@ function openDetailPanel(profile, dim) {
       const SEED = ['Defaults', 'Manual Scoring', 'Seed Estimate', 'Public Reporting'];
       const ds = c.data_sources || [];
       const pend = c.score_status === 'pending' || (ds.length === 1 && SEED.includes(ds[0])) || ds.length === 0;
-      const col = pend ? '#999' : '#1B3A5C';
+      const col = pend ? '#999' : HumanEngine.getScoreColor(p.composite, p.balancedThreshold);
       return `
         <div class="human-panel__result"${pend ? ' style="opacity:0.6"' : ''}>
           <span class="human-panel__result-score" style="color: ${col}">${p.composite}</span>
