@@ -22,14 +22,14 @@
 
 For 500 years we've made decisions using four filters: **cost, time, convenience, risk.** We left out a fifth — **verified human impact.** Not "does this company feel ethical?" but _"does it treat humans well in ways that leave a data trail?"_
 
-**HI Grade** measures how human a company is across five dimensions. Every company gets a score from 0 to 100, built from 19 active sub-signals and 42 free public data sources. Zero AI in the scoring engine. Zero pay-to-play. Zero self-reporting. Every score is reconstructable from public data.
+**HI Grade** measures how human a company is across five dimensions. Every company gets a score from 0 to 100, built from 18 active sub-signals and 42 free public data sources. Zero AI in the scoring engine. Zero pay-to-play. Zero self-reporting. Every score is reconstructable from public data.
 
 Whether you're shopping, investing, hiring, researching, or building, HI Grade gives you one number with full audit trail.
 
 ## Try it in 30 seconds
 
 ```bash
-curl https://api.thehibalance.org/api/v1/score/ticker/PTGN
+curl https://api.thehibalance.org/api/v1/score/ticker/AAPL
 ```
 
 Or install the **[Chrome Extension](https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg)** and see every company's HI Grade as you browse.
@@ -46,7 +46,7 @@ Five dimensions. Each measures something AI can't replace.
 | 🌍 | **A — Alive & Environmental** | Energy, water, land, product lifecycle | A.1 A.2 A.3 A.4 |
 | 🔍 | **N — Natural Transparency** | Reporting quality, filing volume, disclosure depth | N.2 N.5 |
 
-**19 active sub-signals. 6 deferred to v1.2** (H.4, H.5, U.5, A.5, N.1, N.3, N.4 — spec'd but not yet scored). Our [methodology page](https://thehibalance.org/#methodology) documents every formula and threshold.
+**18 active sub-signals. 7 deferred to v1.2** (H.4, H.5, U.5, A.5, N.1, N.3, N.4 — spec'd but not yet scored). Our [methodology page](https://thehibalance.org/#methodology) documents every formula and threshold.
 
 ## The Balanced Board
 
@@ -114,7 +114,7 @@ We publish what we haven't solved yet — because a transparency framework that 
 **Current state (v1.1.0):**
 
 - Several sub-signal scoring ladders use editorial tier cutoffs on authoritative data (e.g., CFPB complaints per $B revenue is authoritative; the tier cutoffs on it are editorial). This is the dominant pattern, explicitly flagged in `RUBRIC.md`.
-- 6 sub-signals are spec'd but not yet scored (v1.2 target).
+- 7 sub-signals are spec'd but not yet scored (v1.2 target).
 - Harm Documentation covers ~14 categories; historical harm detection pre-2020 is limited to the Major Harm Events dictionary.
 - CFPB coverage is financial-services-heavy; ~80% of companies fall back to neutral defaults for U.1/M.1.
 - iFixit repairability covers 15 companies; everyone else uses industry defaults.
@@ -163,7 +163,7 @@ Each response includes `score_status`: `verified`, `estimated`, or `pending` —
 └────────────────────────────┬───────────────────────────────┘
                              │
 ┌─ Scoring Engine (deterministic, no AI) ────────────────────┐
-│  19 active sub-signals → 5 dimensions → 1 composite (0-100)│
+│  18 active sub-signals → 5 dimensions → 1 composite (0-100)│
 │  + 4 harm detection systems applied at dimension level     │
 │  + 3-layer validation (input · output · MSSI)              │
 └────────────────────────────┬───────────────────────────────┘
