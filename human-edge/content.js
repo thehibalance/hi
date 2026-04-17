@@ -307,29 +307,23 @@ function buildMiniHTML(profile) {
   };
   const fillColor = scoreColor;
   
-  if (profile.hiBalanced) {
-    // Gold: score in head, hi. logo in torso, golden glow
-    return `
-      <div class="human-badge__mini" style="padding:0;background:transparent !important;border:none !important;box-shadow:none !important">
-        <svg width="56" height="70" viewBox="0 -4 68 88" style="animation:gold-glow 3s ease-in-out infinite;filter:drop-shadow(0 2px 8px rgba(196,155,32,0.4))">
-          <path d="${silhouette}" fill="#1B3A5C"/>
-          <text x="34" y="24" text-anchor="middle" fill="white" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="15" font-weight="900">${profile.composite}</text>
-          <circle cx="34" cy="57" r="10" fill="white" opacity="0.95"/>
-          <text x="34" y="61" text-anchor="middle" fill="white" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="10" font-weight="900">hi.</text>
-        </svg>
-      </div>
-    `;
-  }
-  
-  // Regular: score in head, pulsing heart in torso
+    
+  // Unified pill: navy silhouette + score + heart + optional ◈ for Balanced Board
+  // Dual drop-shadow: soft glow for dark-mode visibility + subtle depth shadow
+  const glowColor = profile.hiBalanced ? 'rgba(196,155,32,0.55)' : fillColor + '70';
+  const bbMarker = profile.hiBalanced
+    ? '<circle cx="54" cy="14" r="7" fill="#C49B20"/><text x="54" y="18" text-anchor="middle" fill="white" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="9" font-weight="900">\u25C8</text>'
+    : '';
+  const bbTooltip = profile.hiBalanced ? 'Balanced Board \u2014 all 5 HUMAN dimensions \u2265 60' : '';
   return `
-    <div class="human-badge__mini" style="padding:0;background:transparent !important;border:none !important;box-shadow:none !important">
-      <svg width="56" height="70" viewBox="0 -4 68 88" style="filter:drop-shadow(0 2px 8px ${fillColor}40)">
+    <div class="human-badge__mini" style="padding:0;background:transparent !important;border:none !important;box-shadow:none !important" title="${bbTooltip}">
+      <svg width="56" height="70" viewBox="0 -4 68 88" style="filter:drop-shadow(0 0 10px ${glowColor}) drop-shadow(0 2px 4px rgba(0,0,0,0.25))">
         <path d="${silhouette}" fill="${fillColor}"/>
         <text x="34" y="24" text-anchor="middle" fill="white" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="15" font-weight="900">${profile.composite}</text>
         <g style="animation:${heartAnim};transform-origin:34px 58px">
-          <text x="34" y="64" text-anchor="middle" fill="white" font-size="18">♥</text>
+          <text x="34" y="64" text-anchor="middle" fill="white" font-size="18">\u2665</text>
         </g>
+        ${bbMarker}
       </svg>
     </div>
   `;
@@ -682,7 +676,7 @@ function openFullPanel(profile, filterResult, prefs) {
     <div class="human-panel__company" style="background:white">
       <div class="human-panel__grade" style="color:${scoreColor};font-size:36px">${profile.composite}</div>
       <div style="flex:1;min-width:0">
-        <div class="human-panel__name">${profile.name}</div>
+        <div class="human-panel__name">${profile.name}</div>${profile.hiBalanced ? '<div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1.5px;margin-top:2px">\u25C8 BALANCED BOARD</div>' : ''}
         <div class="human-panel__tier" style="color: ${scoreColor};font-weight:600">${profile.isPending ? "Pending Verification" : profile.hiBalanced ? "Gold HI Grade™" : "HI Grade™"} · ${profile.composite}/100</div>
         ${(profile.decay_level && profile.decay_level !== 'stable' && profile.decay_index > 0) ? `<div style="font-size:11px;color:${pulseColor};margin-top:3px;font-weight:600">♥ ${profile.decay_level.charAt(0).toUpperCase()+profile.decay_level.slice(1)} decay · ${profile.decay_index}/100</div>` : (profile.decay_level === 'stable' ? '<div style="font-size:11px;color:#16A34A;margin-top:3px;font-weight:600">♥ Stable</div>' : '')}
       </div>
