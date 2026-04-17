@@ -394,7 +394,7 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
  */
 
 const GENOME_LABELS = {
-  'H.1':'Workforce','H.2':'Craft','H.3':'Decision','H.5':'Augmentation (v1.2)',
+  'H.1':'Workforce','H.2':'Craft','H.3':'Decision','H.5':'Augmentation',
   'U.1':'Cust. Empathy','U.2':'Worker Empathy','U.3':'Relational','U.4':'Sim. Empathy',
   'U.6_dei':'DEI','U.7_hrc':'HRC',
   'M.1':'Pricing','M.2':'Data','M.3':'Market','M.4':'Product','M.5':'Stakeholder',
@@ -566,7 +566,7 @@ function openFullPanel(profile, filterResult, prefs) {
 
   // Sub-signal labels matching website/app
   const SUB_LABELS = {
-    'H.1':'Workforce Valuation','H.2':'Craft','H.3':'Human Decision Depth','H.4':'CEO Accountability (v1.2)','H.5':'Human Augmentation Index (v1.2)',
+    'H.1':'Workforce Valuation','H.2':'Craft','H.3':'Human Decision Depth','H.4':'CEO Accountability (v1.2)','H.5':'Human Augmentation Index',
     'U.1':'Customer Empathy','U.2':'Worker Empathy','U.3':'Relational Integrity','U.4':'Simulated Empathy Detection','U.5':'Moral Courage (v1.2)',
     'M.1':'Pricing Ethics','M.2':'Data Ethics','M.3':'Market Ethics','M.4':'Product Ethics','M.5':'Stakeholder Governance',
     'A.1':'Energy & Emissions','A.2':'Water','A.3':'Land & Habitat','A.4':'Product Lifecycle','A.5':'Resource Stewardship (v1.2)',
