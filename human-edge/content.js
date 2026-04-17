@@ -121,7 +121,7 @@
     profile.goldGates = recheck.gates;
     profile.goldThreshold = recheck.threshold;
     profile.balancedThreshold = recheck.threshold;  // backward compat
-    profile.grade = recheck.gold ? "Gold HI Grade" : "Scored";
+    profile.grade = "Scored";
     profile.scoreColor = '#1B3A5C';
     profile.tier = { color: profile.scoreColor, satire: "" };
   }
@@ -674,10 +674,10 @@ function openFullPanel(profile, filterResult, prefs) {
     </div>
 
     <div class="human-panel__company" style="background:white">
-      <div class="human-panel__grade" style="color:${scoreColor};font-size:36px">${profile.composite}</div>
+      <div class="human-panel__grade" style="color:${scoreColor};font-size:36px;display:flex;align-items:baseline;gap:2px">${profile.composite}<span style="font-size:16px;color:#9CA3AF;font-weight:600">/100</span></div>
       <div style="flex:1;min-width:0">
         <div class="human-panel__name">${profile.name}</div>${profile.hiBalanced ? '<div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1.5px;margin-top:2px">\u25C8 BALANCED BOARD</div>' : ''}
-        <div class="human-panel__tier" style="color: ${scoreColor};font-weight:600">${profile.isPending ? "Pending Verification" : profile.hiBalanced ? "Gold HI Grade™" : "HI Grade™"} · ${profile.composite}/100</div>
+        <div class="human-panel__tier" style="color: ${scoreColor};font-weight:600">${profile.isPending ? "Pending Verification" : "HI Grade™"}</div>
         ${(profile.decay_level && profile.decay_level !== 'stable' && profile.decay_index > 0) ? `<div style="font-size:11px;color:${pulseColor};margin-top:3px;font-weight:600">♥ ${profile.decay_level.charAt(0).toUpperCase()+profile.decay_level.slice(1)} decay · ${profile.decay_index}/100</div>` : (profile.decay_level === 'stable' ? '<div style="font-size:11px;color:#16A34A;margin-top:3px;font-weight:600">♥ Stable</div>' : '')}
       </div>
     </div>
@@ -776,7 +776,7 @@ function openDetailPanel(profile, dim) {
     </div>
 
     <div class="human-panel__company">
-      <div class="human-panel__grade" style="color:${scoreColor};font-size:36px">${profile.composite}</div>
+      <div class="human-panel__grade" style="color:${scoreColor};font-size:36px;display:flex;align-items:baseline;gap:2px">${profile.composite}<span style="font-size:16px;color:#9CA3AF;font-weight:600">/100</span></div>
       <div>
         <div class="human-panel__name">${profile.name}</div>
         <div class="human-panel__tier" style="color: ${scoreColor}">${profile.isPending ? "Pending Verification" : "HI Grade™"}${pulseDotHTML}</div>
