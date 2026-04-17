@@ -34,10 +34,13 @@ RATE_LIMIT_PAUSE = 0.3  # seconds between API calls
 
 
 def load_key(name):
-    """Load API key from file or env."""
-    env_name = name.upper().replace(".", "_")
-    if os.environ.get(env_name):
-        return os.environ[env_name]
+    """Load API key. Env vars preferred (checks 3 naming conventions), files as fallback."""
+    base = name.upper().replace(".", "_")
+    # Try env vars: FINNHUB_API_KEY, FINNHUB_KEY, FINNHUB
+    for env_name in [f"{base}_API_KEY", f"{base}_KEY", base]:
+        if os.environ.get(env_name):
+            return os.environ[env_name]
+    # Fall back to files (for local dev)
     for path in [DATA_DIR / f"{name}_key.txt", DATA_DIR / f"{name}.txt", Path(f"{name}_key.txt")]:
         if path.exists():
             return path.read_text().strip()
