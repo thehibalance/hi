@@ -22,7 +22,7 @@
 
 For 500 years we've made decisions using four filters: **cost, time, convenience, risk.** We left out a fifth — **verified human impact.** Not "does this company feel ethical?" but _"does it treat humans well in ways that leave a data trail?"_
 
-**HI Grade** measures how human a company is across five dimensions. Every company gets a score from 0 to 100, built from 18 active sub-signals and 42 free public data sources. Zero AI in the scoring engine. Zero pay-to-play. Zero self-reporting. Every score is reconstructable from public data.
+**HI Grade** measures how human a company is across five dimensions. Every company gets a score from 0 to 100, built from 19 active sub-signals and 42 free public data sources. Zero AI in the scoring engine. Zero pay-to-play. Zero self-reporting. Every score is reconstructable from public data.
 
 Whether you're shopping, investing, hiring, researching, or building, HI Grade gives you one number with full audit trail.
 
@@ -40,13 +40,13 @@ Five dimensions. Each measures something AI can't replace.
 
 | | Dimension | Measures | Active Sub-Signals |
 |---|---|---|---|
-| 🧠 | **H — Human Consciousness** | Workforce investment, craft, human decision authority | H.1 H.2 H.3 |
+| 🧠 | **H — Human Consciousness** | Workforce, craft, decision depth, augmentation | H.1 H.2 H.3 H.5 |
 | 💙 | **U — Understanding & Empathy** | Customer empathy, worker empathy, relational integrity | U.1 U.2 U.3 U.4 |
 | ⚖️ | **M — Moral & Ethical Conduct** | Pricing, data, market, product, stakeholder ethics | M.1 M.2 M.3 M.4 M.5 |
 | 🌍 | **A — Alive & Environmental** | Energy, water, land, product lifecycle | A.1 A.2 A.3 A.4 |
 | 🔍 | **N — Natural Transparency** | Reporting quality, filing volume, disclosure depth | N.2 N.5 |
 
-**18 active sub-signals. 7 deferred to v1.2** (H.4, H.5, U.5, A.5, N.1, N.3, N.4 — spec'd but not yet scored). Our [methodology page](https://thehibalance.org/#methodology) documents every formula and threshold.
+**19 active sub-signals. 5 deferred to v1.2** (H.4, U.5, N.1, N.3, N.4 — spec'd but not yet scored). Our [methodology page](https://thehibalance.org/#methodology) documents every formula and threshold.
 
 ## The Balanced Board
 
@@ -163,7 +163,7 @@ Each response includes `score_status`: `verified`, `estimated`, or `pending` —
 └────────────────────────────┬───────────────────────────────┘
                              │
 ┌─ Scoring Engine (deterministic, no AI) ────────────────────┐
-│  18 active sub-signals → 5 dimensions → 1 composite (0-100)│
+│  19 active sub-signals → 5 dimensions → 1 composite (0-100)│
 │  + 4 harm detection systems applied at dimension level     │
 │  + 3-layer validation (input · output · MSSI)              │
 └────────────────────────────┬───────────────────────────────┘
