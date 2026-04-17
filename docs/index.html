@@ -54,6 +54,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div class="nav-dropdown"><span class="nav-dd-trigger">HUMAN ▾</span><div class="nav-dd-menu"><span class="nav-dd-item" onclick="showPage('human100')">🏆 HUMAN 100 Index</span><span class="nav-dd-item" onclick="showPage('heartbeat')">♥ HUMAN Heartbeat</span><span class="nav-dd-item" onclick="showPage('decay')">💀 HUMAN Decay</span><span class="nav-dd-item" onclick="showPage('moat')">🛡 HUMAN Shield</span><span class="nav-dd-item" onclick="showPage('arbitrage')">🔍 HUMAN Lens</span><span class="nav-dd-item" onclick="showPage('genome')">🧬 HUMAN Genome</span><span class="nav-dd-item" onclick="showPage('contagion')">🌊 HUMAN Contagion</span><span class="nav-dd-item" onclick="showPage('watermark')">🔬 HUMAN Watermark</span><span class="nav-dd-item" onclick="showPage('wave')">📢 HUMAN Wave</span><span class="nav-dd-item" onclick="showPage('consciousness')">📊 HUMAN Consciousness</span></div></div>
 <span class="nav-link" id="nav-methodology" onclick="showPage('methodology')">Methodology</span>
 <span class="nav-link" id="nav-sources" onclick="showPage('sources')">Sources</span>
+<span class="nav-link" id="nav-known-gaps" onclick="showPage('known-gaps')">Known Gaps</span>
 <span class="nav-link" id="nav-about" onclick="showPage('about')">About</span>
 <span class="nav-link" id="nav-contact" onclick="showPage('contact')">Say hi</span>
 </div></div><span class="nav-tagline">HUMAN KIND?</span></div></nav>
@@ -206,8 +207,8 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div class="feature-card"><div class="feature-icon">📊</div><div class="feature-title">Five Dimensions</div><div class="feature-desc">Click any dimension bar to open a full detail panel with sub-signals, descriptions, and the complete HUMAN breakdown.</div></div>
 <div class="feature-card"><div class="feature-icon">🎛️</div><div class="feature-title">Equalizer</div><div class="feature-desc">Set your own thresholds per dimension. Care most about environmental impact? Slide A up. The extension filters companies that don't meet your standards.</div></div>
 <div class="feature-card"><div class="feature-icon">🔒</div><div class="feature-title">Zero AI. Zero Tracking.</div><div class="feature-desc">The extension runs entirely on deterministic logic. No machine learning, no data collection, no phone-home. Your browsing stays private.</div></div>
-<div class="feature-card"><div class="feature-icon">🔎</div><div class="feature-title">Search Any Company</div><div class="feature-desc">Search 441+ brands directly from the extension. Find scores, compare companies, and make informed decisions without leaving the page.</div></div>
-<div class="feature-card"><div class="feature-icon">☁️</div><div class="feature-title">Cloud + Local</div><div class="feature-desc">Works offline with a built-in database of 441+ seed companies. When connected, pulls live scores from the HI API for 441+ brands.</div></div>
+<div class="feature-card"><div class="feature-icon">🔎</div><div class="feature-title">Search Any Company</div><div class="feature-desc">Search 441+ companies directly from the extension. Find scores, compare companies, and make informed decisions without leaving the page.</div></div>
+<div class="feature-card"><div class="feature-icon">☁️</div><div class="feature-title">Cloud + Local</div><div class="feature-desc">Works offline with a built-in database of 441+ seed companies. When connected, pulls live scores from the HI API for 441+ companies.</div></div>
 </div>
 
 <div style="text-align:center;margin-top:32px"><button class="btn btn-secondary" style="opacity:0.5;cursor:not-allowed;pointer-events:none"><span class="btn-icon">🧭</span> Safari — Coming Soon</button></div>
@@ -224,7 +225,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 </div>
 
 <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px">
-<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light);text-align:center"><div style="font-size:24px;margin-bottom:8px">🔍</div><div style="font-weight:700;color:var(--navy);font-size:13px">Company Search</div><div style="font-size:11px;color:var(--muted);margin-top:4px">441+ brands scored</div></div>
+<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light);text-align:center"><div style="font-size:24px;margin-bottom:8px">🔍</div><div style="font-weight:700;color:var(--navy);font-size:13px">Company Search</div><div style="font-size:11px;color:var(--muted);margin-top:4px">441+ companies scored</div></div>
 <div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light);text-align:center"><div style="font-size:24px;margin-bottom:8px">🏆</div><div style="font-weight:700;color:var(--navy);font-size:13px">HUMAN 100</div><div style="font-size:11px;color:var(--muted);margin-top:4px">Top 100 most human companies</div></div>
 <div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light);text-align:center"><div style="font-size:24px;margin-bottom:8px">⭐</div><div style="font-weight:700;color:var(--navy);font-size:13px">Watchlist</div><div style="font-size:11px;color:var(--muted);margin-top:4px">Track companies you care about</div></div>
 <div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light);text-align:center"><div style="font-size:24px;margin-bottom:8px">🔒</div><div style="font-weight:700;color:var(--navy);font-size:13px">5/5 Gates</div><div style="font-size:11px;color:var(--muted);margin-top:4px">All dimensions · Evidence · Momentum</div></div>
@@ -254,7 +255,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <p class="subpage-sub">Integrate HI Grades™ into procurement platforms, investment tools, ESG dashboards, and consumer products.</p>
 
 <div class="about-card" style="text-align:center;border-left:4px solid var(--navy)">
-<p style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px">441+ brands · 42 data sources · 32 endpoints</p>
+<p style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px">441+ companies · 42 data sources · 32 endpoints</p>
 <p style="margin:0;color:var(--muted)">HUMAN Heartbeat · HUMAN Genome · HUMAN 100 Index · HUMAN Lens · Real-time decay detection</p>
 </div>
 
@@ -503,13 +504,13 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 
 <div class="about-card"><h3>💡 The Fifth Check</h3><p>For centuries, we've made decisions through four filters: cost, time, convenience, risk. HI Grade adds the missing one — <strong>verified human impact.</strong></p><p style="font-style:italic">Human kind? Now you can find out.</p></div>
 
-<div class="about-card"><h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">The Founder</h3><p><img src="/logo-512.png" alt="hi." style="height:16px;vertical-align:middle"> started on Earth Day 2025 with a simple question: <strong>if AI is changing everything, who's measuring what we're losing?</strong></p><p>I'd spent years in technology — enough to know what AI could do, and enough to worry about what it was replacing. Not just jobs. <strong>The craft behind the work. The empathy in the service. The humans in the loop.</strong></p><p>I couldn't find a tool that measured any of that. So I built one. The methodology is open source because <strong>a transparency framework that hides its own math would be hypocritical.</strong> The name is <img src="/logo-512.png" alt="hi." style="height:14px;vertical-align:middle"> because it's both a greeting and a question: <strong>is it Human Intelligence, or Artificial?</strong></p><p><strong>Don't panic.</strong> Every journey starts somewhere. The data will get better. The gates will get harder. The companies will adapt. That's the point.</p><p style="margin-top:12px;font-style:italic;color:var(--navy);font-weight:600">Bringing balance to the workforce.</p></div>
+<div class="about-card"><h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">The Founder</h3><p><img src="/logo-512.png" alt="hi." style="height:16px;vertical-align:middle"> started on Earth Day 2025 with a simple question: <strong>if AI is changing everything, who's measuring what we're losing?</strong></p><p>I'd spent years in technology — enough to know what AI could do, and enough to worry about what it was replacing. Not just jobs. <strong>The craft behind the work. The empathy in the service. The humans in the loop.</strong></p><p>I couldn't find a tool that measured any of that. So I built one. The methodology is open source because <strong>a transparency framework that hides its own math would be hypocritical.</strong> The name is <img src="/logo-512.png" alt="hi." style="height:14px;vertical-align:middle"> because it's both a greeting and a question: <strong>is it Human Intelligence, or Artificial?</strong></p><p><strong>Don't panic.</strong> Every journey starts somewhere. The data will get better. The ladders will get grounded. The companies will adapt. That's the point.</p><p style="margin-top:12px;font-style:italic;color:var(--navy);font-weight:600">Bringing balance to the workforce.</p></div>
 
 <div class="about-card"><h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">What HI Grade does for you</h3><div style="display:flex;flex-direction:column;gap:14px;margin-top:8px"><div><strong>Before you buy.</strong> <span style="color:var(--muted);font-size:14px">Scan a barcode or search a brand. Know if the humans behind the product are being invested in or replaced.</span></div><div><strong>Before you work.</strong> <span style="color:var(--muted);font-size:14px">Look up the company before the interview. HI Grade tells you what Glassdoor can't.</span></div><div><strong>Before you invest.</strong> <span style="color:var(--muted);font-size:14px">Know what you're funding. HI Grade reveals the human cost of every portfolio.</span></div><div><strong>Before you recommend.</strong> <span style="color:var(--muted);font-size:14px">Don't vouch for a brand you haven't checked. Ask <em>Human kind?</em> before your reputation is on it.</span></div></div></div>
 
 <div class="about-card"><h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">🔒 Privacy &amp; Open Source</h3><p>The API is <strong>read-only</strong> — no write endpoints exist. The browser extension runs <strong>zero AI, zero tracking, zero phone-home</strong> — your browsing stays private.</p><p style="margin-top:14px">The scoring methodology, browser extension, and pipeline are <strong>open source on <a href="https://github.com/thehibalance/hi" target="_blank" style="color:var(--sky);font-weight:600">GitHub</a></strong>. A transparency framework that hides its own methodology would be hypocritical.</p></div>
 
-<div style="background:linear-gradient(135deg,#1B3A5C,#0F1A2E);color:#fff;padding:24px;border-radius:14px;margin:32px 0 24px;text-align:center"><div style="font-family:'DM Serif Display';font-size:18px;color:#E5C44A;margin-bottom:6px">Want to know more?</div><div style="font-size:13px;color:#B4BFCC;margin-bottom:14px">Read how every score is computed — sub-signals, gates, harm penalties, the whole thing.</div><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><span onclick="showPage('methodology')" style="padding:9px 18px;background:#E5C44A;color:#0F1A2E;border-radius:7px;font-weight:700;font-size:13px;cursor:pointer">Read the methodology →</span><span onclick="showPage('sources')" style="padding:9px 18px;background:transparent;color:#fff;border:1px solid #5A7A9A;border-radius:7px;font-weight:600;font-size:13px;cursor:pointer">See all 42 sources →</span></div></div>
+<div style="background:linear-gradient(135deg,#1B3A5C,#0F1A2E);color:#fff;padding:24px;border-radius:14px;margin:32px 0 24px;text-align:center"><div style="font-family:'DM Serif Display';font-size:18px;color:#E5C44A;margin-bottom:6px">Want to know more?</div><div style="font-size:13px;color:#B4BFCC;margin-bottom:14px">Read how every score is computed — 19 sub-signals, harm documentation, dimension math, the whole thing.</div><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><span onclick="showPage('methodology')" style="padding:9px 18px;background:#E5C44A;color:#0F1A2E;border-radius:7px;font-weight:700;font-size:13px;cursor:pointer">Read the methodology →</span><span onclick="showPage('sources')" style="padding:9px 18px;background:transparent;color:#fff;border:1px solid #5A7A9A;border-radius:7px;font-weight:600;font-size:13px;cursor:pointer">See all 42 sources →</span></div></div>
 
 <div style="text-align:center;margin-top:32px"><div style="font-family:'DM Serif Display';font-size:18px;color:var(--navy)">The HI Balance</div><div style="font-size:13px;color:var(--muted);margin-top:6px">Patent Pending · HI Grade™ · Humanwashing™ · Algorithmic Harm Index™ · Morf Innovations LLC</div></div></div></div>
 
@@ -832,7 +833,123 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 
 
 
-<footer><div class="footer-brand" onclick="showPage('home')" style="cursor:pointer"><img src="/logo-512-white.png" alt="hi." style="height:36px;width:auto"></div><div class="footer-tagline">Human kind?</div><div class="footer-links"><span class="footer-link" onclick="showPage('methodology')">Methodology</span><span class="footer-link" onclick="showPage('sources')">Sources</span><span class="footer-link" onclick="showPage('about')">About</span><span class="footer-link" onclick="showPage('contact')">Say hi</span><a class="footer-link" href="https://github.com/thehibalance/hi" target="_blank">GitHub</a><a class="footer-link" href="privacy.html" target="_blank">Privacy</a></div><div class="footer-info">The HI Balance · thehibalance.org · Patent Pending · HI Grade™ · Humanwashing™ · Algorithmic Harm Index™ · Morf Innovations LLC</div><div class="footer-disclaimer">The Balanced Board requires all five HUMAN dimensions to score 60 or higher with verified public data on each. Scores are estimated from public data. Not financial or legal advice.</div></footer>
+
+<!-- KNOWN GAPS PAGE -->
+<div id="page-known-gaps" class="page hidden" style="max-width:900px;margin:0 auto;padding:0 24px">
+  <div class="subpage">
+    <h1>Known Gaps</h1>
+    <p class="subpage-sub">What our methodology doesn't do yet — published, because a transparency framework that hides its own limitations is hypocritical.</p>
+
+    <div style="background:#FEF3C7;border:1px solid #FCD34D;border-radius:12px;padding:20px 24px;margin-bottom:32px">
+      <div style="font-size:12px;font-weight:700;color:#92400E;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">◆ Principle</div>
+      <p style="font-size:15px;color:#78350F;line-height:1.6;margin:0">HI Grade publishes what it hasn't solved alongside what it has. Every limitation on this page is tracked. Every one has a path forward. <strong>The math decides — and when the math is incomplete, we say so.</strong></p>
+    </div>
+
+    <!-- Editorial Ladders -->
+    <div class="about-card">
+      <h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">Editorial tier cutoffs on authoritative data</h3>
+      <p>This is the dominant pattern in v1.1.0 and the most important to understand.</p>
+      <p>Most of our scoring uses <strong>authoritative data with editorial thresholds</strong>. The data is published by regulators or peer-reviewed institutions — SEC EDGAR, CFPB, OSHA, EPA, CDP. The <em>thresholds</em> that map that data to score bands (e.g., &lt;100 CFPB complaints per $B = 85 points, &lt;500 = 70, &lt;2000 = 55) were chosen by the engine authors.</p>
+      <p>This means the <em>inputs</em> are authoritative but the <em>scoring ladder</em> is editorial. A company's raw complaint count is ground truth; its sub-signal score depends on where we drew the lines.</p>
+      <p style="background:#F3F4F6;padding:14px 18px;border-radius:8px;margin-top:14px;font-size:14px"><strong>Path forward:</strong> grounding these thresholds against external frameworks (B Corp quintiles, CFPB published distributions, BLS industry medians). Tracked in <a href="https://github.com/thehibalance/hi/blob/main/RUBRIC.md" style="color:var(--sky);font-weight:600">RUBRIC.md</a> — 19 sub-signals, labeled GROUNDED / PARTIAL / UNGROUNDED.</p>
+    </div>
+
+    <!-- Deferred sub-signals -->
+    <div class="about-card">
+      <h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">6 sub-signals spec'd but not yet scored</h3>
+      <p>The v1.1.0 spec defines 25 sub-signals across the 5 HUMAN dimensions. We ship scores for 19 of them. Six are deferred to v1.2 because the data ladders aren't ready.</p>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px">
+        <div style="background:#F8F9FA;padding:14px;border-radius:8px">
+          <div style="font-weight:700;color:var(--navy);font-size:13px;margin-bottom:4px">H.4 · Decision Authority</div>
+          <div style="font-size:12px;color:#666">How much real authority rests with humans vs. algorithmic approval</div>
+        </div>
+        <div style="background:#F8F9FA;padding:14px;border-radius:8px">
+          <div style="font-weight:700;color:var(--navy);font-size:13px;margin-bottom:4px">H.5 · Craft Retention</div>
+          <div style="font-size:12px;color:#666">Whether skilled jobs being replaced are retrained or displaced</div>
+        </div>
+        <div style="background:#F8F9FA;padding:14px;border-radius:8px">
+          <div style="font-weight:700;color:var(--navy);font-size:13px;margin-bottom:4px">U.5 · Relational Integrity</div>
+          <div style="font-size:12px;color:#666">Consistency of customer/worker relationships over time</div>
+        </div>
+        <div style="background:#F8F9FA;padding:14px;border-radius:8px">
+          <div style="font-weight:700;color:var(--navy);font-size:13px;margin-bottom:4px">A.5 · Lifecycle Accountability</div>
+          <div style="font-size:12px;color:#666">End-of-life, recyclability, extended producer responsibility</div>
+        </div>
+        <div style="background:#F8F9FA;padding:14px;border-radius:8px">
+          <div style="font-weight:700;color:var(--navy);font-size:13px;margin-bottom:4px">N.1 · Reporting Quality</div>
+          <div style="font-size:12px;color:#666">Depth and auditability of voluntary disclosures</div>
+        </div>
+        <div style="background:#F8F9FA;padding:14px;border-radius:8px">
+          <div style="font-weight:700;color:var(--navy);font-size:13px;margin-bottom:4px">N.3 / N.4 · Disclosure Depth</div>
+          <div style="font-size:12px;color:#666">Subsidiary transparency, supply chain attestation</div>
+        </div>
+      </div>
+      <p style="background:#F3F4F6;padding:14px 18px;border-radius:8px;margin-top:14px;font-size:14px"><strong>Path forward:</strong> v1.2 target. Each requires either a new data source or a new scoring ladder. Progress tracked in the open-source repo.</p>
+    </div>
+
+    <!-- CFPB coverage -->
+    <div class="about-card">
+      <h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">CFPB covers financial services, not everyone</h3>
+      <p>CFPB complaints are a critical input for U.1 (Customer Empathy) and M.1 (Pricing Ethics). The catch: CFPB is a <em>financial services</em> regulator. Banks, credit card issuers, mortgage servicers, debt collectors — they're covered well. A coffee company? Not covered.</p>
+      <p>For ~80% of the 441+ companies we score, CFPB returns zero complaints — not because they treat customers well, but because CFPB doesn't regulate that sector. These companies fall back to neutral defaults on CFPB-driven sub-signals.</p>
+      <p style="background:#F3F4F6;padding:14px 18px;border-radius:8px;margin-top:14px;font-size:14px"><strong>Path forward:</strong> BBB complaints (now ingested for broader coverage), FTC actions (already scoring), CPSC SaferProducts (already scoring for product harm). Per-sector complaint regulators are being audited for additional ingestion.</p>
+    </div>
+
+    <!-- iFixit 15 companies -->
+    <div class="about-card">
+      <h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">iFixit repairability covers 15 companies</h3>
+      <p>iFixit maintains detailed repairability scores for consumer electronics — Apple, Samsung, Dell, HP, Microsoft Surface, and about 10 others. For the other 426+ companies we score, A.4 (Product Lifecycle) falls back to industry defaults.</p>
+      <p>This means Apple's repairability is graded against real teardown data; a cosmetics company's A.4 comes from industry averages (low product-lifecycle weight for that sector).</p>
+      <p style="background:#F3F4F6;padding:14px 18px;border-radius:8px;margin-top:14px;font-size:14px"><strong>Path forward:</strong> Extended Producer Responsibility datasets from EU countries publish repairability and recyclability scores. Ingestion planned for v1.2.</p>
+    </div>
+
+    <!-- Harm Documentation pre-2020 -->
+    <div class="about-card">
+      <h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">Harm Documentation is strong post-2020, limited before</h3>
+      <p>Our Harm Documentation pipeline covers 14 categories (weapons, attributed deaths, knowing concealment, environmental contamination, etc.) with strong coverage from 2020 onward. For historical harm events — tobacco, asbestos, J&amp;J talc — we maintain a curated Major Harm Events dictionary that encodes court settlements and established attribution.</p>
+      <p>We're confident in the dictionary, but it's incomplete. Some industry-defining harm events predate our systematic coverage and rely on memory of which companies were involved.</p>
+      <p style="background:#F3F4F6;padding:14px 18px;border-radius:8px;margin-top:14px;font-size:14px"><strong>Path forward:</strong> systematic historical harm backfill from EPA Superfund site attributions, state AG settlement databases, and academic attribution studies. Ongoing.</p>
+    </div>
+
+    <!-- Industry RPE -->
+    <div class="about-card">
+      <h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">Industry Revenue-Per-Employee medians are hardcoded</h3>
+      <p>Many sub-signals normalize by industry (a software company at $500K RPE is different from a grocer at $500K RPE). Our industry medians were derived from aggregated SEC data but are currently hardcoded constants in the pipeline.</p>
+      <p>This means they don't update automatically when industry economics shift. Our last refresh was Q1 2025; the next is scheduled for Q3 2026.</p>
+      <p style="background:#F3F4F6;padding:14px 18px;border-radius:8px;margin-top:14px;font-size:14px"><strong>Path forward:</strong> dynamic industry median computation from the live company universe. Technical work planned for v1.2.</p>
+    </div>
+
+    <!-- Heart decay thresholds -->
+    <div class="about-card">
+      <h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">Heartbeat decay thresholds are editorial</h3>
+      <p>The HUMAN Heartbeat aggregates signals (layoff mentions, 8-K filings, WARN notices, CEO accountability) into a Decay Index from 0-100. The inputs are authoritative; the thresholds that map to Stable / Watch / Warning / Critical are editorial.</p>
+      <p>A company can be flagged as "Warning" not because any individual signal is catastrophic, but because several moderate signals accumulated. Whether "several moderate" should mean 30 or 50 on the index is a judgment call we made.</p>
+      <p style="background:#F3F4F6;padding:14px 18px;border-radius:8px;margin-top:14px;font-size:14px"><strong>Path forward:</strong> validating thresholds against known decay events (Oracle layoffs, Twitter 2022, Meta metaverse pivot). Calibration work ongoing.</p>
+    </div>
+
+    <!-- What we don't plan to change -->
+    <div style="background:var(--dark);color:var(--white);border-radius:14px;padding:28px;margin:32px 0;text-align:center">
+      <div style="font-family:'DM Serif Display';font-size:22px;color:#E5C44A;margin-bottom:12px">What we won't change</div>
+      <div style="font-size:14px;line-height:1.7;color:#B4BFCC;max-width:600px;margin:0 auto">
+        <p style="margin-bottom:12px">• Zero AI in the scoring engine. Not now, not ever.</p>
+        <p style="margin-bottom:12px">• Zero pay-to-play. No company pays for a better score.</p>
+        <p style="margin-bottom:12px">• Zero self-reported data. Every input is third-party verifiable.</p>
+        <p style="margin-bottom:0">• All limitations published. Known Gaps is a permanent page.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center;margin-top:40px">
+      <a href="https://github.com/thehibalance/hi/blob/main/RUBRIC.md" target="_blank" style="display:inline-block;padding:14px 28px;background:var(--navy);color:var(--white);border-radius:12px;font-weight:700;font-size:14px">Read the full sub-signal audit on GitHub →</a>
+    </div>
+
+    <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:40px;line-height:1.6">
+      Updated as of v1.1.0 · April 2026 · <a href="https://github.com/thehibalance/hi/issues/new" target="_blank" style="color:var(--sky)">Open an issue</a> if you believe a score is wrong.
+    </p>
+  </div>
+</div>
+
+<footer><div class="footer-brand" onclick="showPage('home')" style="cursor:pointer"><img src="/logo-512-white.png" alt="hi." style="height:36px;width:auto"></div><div class="footer-tagline">Human kind?</div><div class="footer-links"><span class="footer-link" onclick="showPage('methodology')">Methodology</span><span class="footer-link" onclick="showPage('sources')">Sources</span><span class="footer-link" onclick="showPage('known-gaps')">Known Gaps</span><span class="footer-link" onclick="showPage('about')">About</span><span class="footer-link" onclick="showPage('contact')">Say hi</span><a class="footer-link" href="https://github.com/thehibalance/hi" target="_blank">GitHub</a><a class="footer-link" href="privacy.html" target="_blank">Privacy</a></div><div class="footer-info">The HI Balance · thehibalance.org · Patent Pending · HI Grade™ · Humanwashing™ · Algorithmic Harm Index™ · Morf Innovations LLC</div><div class="footer-disclaimer">The Balanced Board requires all five HUMAN dimensions to score 60 or higher with verified public data on each. Scores are estimated from public data. Not financial or legal advice.</div></footer>
 <script>
 const API=location.hostname==='localhost'?'http://localhost:8080':'https://api.thehibalance.org';
 const GC={"Balanced Board":"#1B3A5C","HI Balanced":"#1B3A5C","scored":"#1B3A5C"};
