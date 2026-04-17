@@ -585,13 +585,7 @@ h+='<div style="display:flex;align-items:center;gap:8px;padding:4px 0;font-size:
 h+='<div class="detail-section"><h3>HUMAN Dimensions</h3>'+fullDims+'</div>';
 // ═══ HUMAN GENOME — Feature ═══
 var gn=c.genome||{};
-var gnLabels={'H.1':'Workforce Valuation','H.2':'Craft','H.3':'Human Decision Depth','H.4':'Accountability','H.5':'Human Augmentation Index (v1.2)',
-'U.1':'Empathy Expression','U.2':'Worker Empathy','U.3':'Relational Integrity','U.4':'Moral Courage','U.5':'Simulated Empathy',
-'U.6_dei':'Disability Inclusion','U.7_hrc':'LGBTQ+ Equality',
-'M.1':'Pricing Ethics','M.2':'Data Ethics','M.3':'Market Ethics','M.4':'CEO Accountability','M.5':'Pay Equity',
-'M.6_dei':'DEI Inclusion','M.7_hrc':'HRC Equality',
-'A.1':'Carbon Footprint','A.2':'AI Energy Cost','A.3':'Environmental Compliance','A.4':'Resource Stewardship',
-'N.1':'AI Disclosure (v1.2)','N.2':'Reporting Quality','N.3':'Labor Auditability (v1.2)','N.4':'Humanwashing Detection (v1.2)','N.5':'Filing Volume'};
+var gnLabels={'H.1':'Workforce Valuation','H.2':'Craft','H.3':'Human Decision Depth','H.4':'CEO Accountability (v1.2)','H.5':'Human Augmentation Index (v1.2)','U.1':'Customer Empathy','U.2':'Worker Empathy','U.3':'Relational Integrity','U.4':'Simulated Empathy Detection','U.5':'Moral Courage (v1.2)','M.1':'Pricing Ethics','M.2':'Data Ethics','M.3':'Market Ethics','M.4':'Product Ethics','M.5':'Stakeholder Governance','A.1':'Energy & Emissions','A.2':'Water','A.3':'Land & Habitat','A.4':'Product Lifecycle','A.5':'Resource Stewardship (v1.2)','N.1':'AI Disclosure (v1.2)','N.2':'Reporting Quality','N.3':'Labor Auditability (v1.2)','N.4':'Humanwashing Detection (v1.2)','N.5':'Filing Volume'};
 var gnDims=['H','U','M','A','N'];
 var hasGenome=gnDims.some(function(d){return gn[d]&&Object.keys(gn[d].scores||{}).length>0});
 if(hasGenome){
