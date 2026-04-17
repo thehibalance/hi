@@ -6,8 +6,6 @@
 
 **Score every company. Five dimensions AI can't replace.**
 
-[Shop](https://thehibalance.org) · [Invest](https://thehibalance.org) · [Hire](https://thehibalance.org) · [Research](https://thehibalance.org) · [Build](https://api.thehibalance.org)
-
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![Spec](https://img.shields.io/badge/spec-v1.1.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
 [![API](https://img.shields.io/badge/API-live-16A34A.svg)](https://api.thehibalance.org)
@@ -214,7 +212,7 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) for how to add a company, add a data so
 | Fair Trade | Certifications only. No technology dimension. |
 | Carbon Tools (CDP, Watershed) | Environmental only. |
 | Credit Ratings (Moody's, S&P) | Financial only. |
-| **HI Grade** | — |
+| **HI Grade** | All five HUMAN dimensions. Zero AI. Auditable. Open source. |
 
 We publish our methodology. We publish our limitations. Every sub-signal is auditable. Every score is reconstructable. No AI. No pay-to-play.
 
