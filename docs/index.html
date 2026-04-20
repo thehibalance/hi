@@ -572,14 +572,6 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
   <p style="font-size:15px;color:var(--navy);line-height:1.6;margin:0;font-weight:500">Every company is scored from <strong>0 to 100</strong>. The score is the average of five HUMAN dimensions, each scored 0–100. Higher means more human. <strong>The Balanced Board</strong> highlights companies where <strong>all five dimensions</strong> score ≥ 60.</p>
 </div>
 
-
-<div style="background:linear-gradient(135deg,#1B3A5C,#0F1A2E);color:#fff;padding:32px 28px;border-radius:14px;margin-bottom:32px;text-align:center">
-<div style="font-family:'DM Serif Display';font-size:24px;color:#E5C44A;margin-bottom:10px;line-height:1.3"></div>
-<div style="font-size:13px;color:#B4BFCC"></div>
-</div>
-
-
-
 <h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 16px">The HUMAN framework</h2>
 <p style="color:#444;line-height:1.7;margin-bottom:20px">HI Grade scores companies across five dimensions. Together they spell HUMAN:</p>
 
@@ -685,89 +677,130 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div style="margin-top:16px;padding-top:14px;border-top:1px solid #E5E7EB;text-align:center"><a href="https://github.com/thehibalance/hi/blob/main/RUBRIC.md" target="_blank" style="font-size:13px;color:var(--navy);font-weight:600;text-decoration:none">📖 View RUBRIC.md on GitHub →</a></div>
 </div>
 
-<h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 16px">The 19 sub-signals</h2>
-<p style="color:#444;line-height:1.7;margin-bottom:16px">Each HUMAN dimension is computed from 2-5 sub-signals. The current v1.1.0 engine scores <strong>19 sub-signals</strong>. Five additional sub-signals (H.4, N.1, N.3, N.4, U.5) are spec'd but not yet scored — in development for v1.2+.</p>
-
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:24px">
-
-<div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:18px"><div style="font-weight:800;color:var(--navy);font-size:14px;margin-bottom:10px">H — Human Consciousness</div><ul style="list-style:none;padding:0;margin:0;font-size:12px;color:#555;line-height:1.8"><li><strong>H.1</strong> Workforce Valuation</li><li><strong>H.2</strong> Craft</li><li><strong>H.3</strong> Human Decision Depth</li><li><strong>H.5</strong> Human Augmentation Index</li></ul></div>
-
-<div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:18px"><div style="font-weight:800;color:var(--navy);font-size:14px;margin-bottom:10px">U — Understanding &amp; Empathy</div><ul style="list-style:none;padding:0;margin:0;font-size:12px;color:#555;line-height:1.8"><li><strong>U.1</strong> Customer Empathy</li><li><strong>U.2</strong> Worker Empathy</li><li><strong>U.3</strong> Relational Integrity</li><li><strong>U.4</strong> Simulated Empathy Detection</li></ul></div>
-
-<div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:18px"><div style="font-weight:800;color:var(--navy);font-size:14px;margin-bottom:10px">M — Morals &amp; Ethics</div><ul style="list-style:none;padding:0;margin:0;font-size:12px;color:#555;line-height:1.8"><li><strong>M.1</strong> Pricing Ethics</li><li><strong>M.2</strong> Data Ethics</li><li><strong>M.3</strong> Market Ethics</li><li><strong>M.4</strong> Product Ethics</li><li><strong>M.5</strong> Stakeholder Governance</li></ul></div>
-
-<div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:18px"><div style="font-weight:800;color:var(--navy);font-size:14px;margin-bottom:10px">A — Alive &amp; Environmental</div><ul style="list-style:none;padding:0;margin:0;font-size:12px;color:#555;line-height:1.8"><li><strong>A.1</strong> Energy &amp; Emissions</li><li><strong>A.2</strong> Water</li><li><strong>A.3</strong> Land &amp; Habitat</li><li><strong>A.4</strong> Product Lifecycle</li></ul></div>
-
-<div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:18px"><div style="font-weight:800;color:var(--navy);font-size:14px;margin-bottom:10px">N — Natural Transparency</div><ul style="list-style:none;padding:0;margin:0;font-size:12px;color:#555;line-height:1.8"><li><strong>N.2</strong> Reporting Quality</li><li><strong>N.5</strong> Filing Volume</li></ul></div>
-</div>
-
 <h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 12px">The Rubric</h2>
 <p style="color:#444;line-height:1.7;margin-bottom:20px">Every score on thehibalance.org traces back to these formulas. <strong>19 active sub-signals. 5 deferred for v1.2.</strong> Open the table for any dimension to see the math.</p>
 
-<details class="about-card" style="margin-bottom:14px;border-left:4px solid #C49B20;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:18px;color:var(--navy);font-weight:600">H — Human Consciousness <span style="font-size:12px;color:var(--muted);font-weight:400;margin-left:8px">4 active · 1 deferred</span></summary>
+<!-- H DIMENSION RUBRIC -->
+<details class="about-card" style="margin-bottom:14px;border-left:4px solid #C49B20;padding:16px 20px">
+<summary style="cursor:pointer;font-family:'DM Serif Display';font-size:18px;color:var(--navy);font-weight:600">H — Human Consciousness <span style="font-size:12px;color:var(--muted);font-weight:400;margin-left:8px">4 active · 1 deferred</span></summary>
 <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:14px">
 <thead><tr style="border-bottom:2px solid #E5E7EB"><th style="text-align:left;padding:8px 4px;color:var(--navy)">ID</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Name</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Signal</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Source</th><th style="text-align:center;padding:8px 4px;color:var(--navy)">Status</th></tr></thead>
 <tbody>
 <tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">H.1</td><td style="padding:8px 4px">Workforce Valuation</td><td style="padding:8px 4px;color:#444">Layoffs, WARN filings, revenue-per-employee ratio</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">WARN, SEC 10-K, BLS</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">H.2</td><td style="padding:8px 4px">Craft</td><td style="padding:8px 4px;color:#444">Apprenticeship, training investment, craftsmanship</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">Glassdoor, Jobs, BLS</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">H.3</td><td style="padding:8px 4px">Human Decision Depth</td><td style="padding:8px 4px;color:#444">AI-disclosed roles vs human roles</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC 10-K, Job Boards</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;color:var(--muted);font-weight:700">H.4</td><td style="padding:8px 4px;color:var(--muted)">Decision Authority</td><td style="padding:8px 4px;color:var(--muted)">Real authority: humans vs algorithms</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
-<tr><td style="padding:8px 4px;font-weight:700;color:#C49B20">H.5</td><td style="padding:8px 4px">Human Augmentation Index</td><td style="padding:8px 4px;color:#444">AI as tool vs AI as replacement</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC, job boards</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
-</tbody></table></details>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">H.2</td><td style="padding:8px 4px">Craft</td><td style="padding:8px 4px;color:#444">Apprenticeship, training investment, craftsmanship signals</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">Glassdoor, Jobs, BLS</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">H.3</td><td style="padding:8px 4px">Human Decision Depth</td><td style="padding:8px 4px;color:#444">AI-disclosed roles vs human roles, decision authority</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC 10-K, Job Boards</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;color:var(--muted);font-weight:700">H.4</td><td style="padding:8px 4px;color:var(--muted)">Leadership Continuity</td><td style="padding:8px 4px;color:var(--muted)">CEO turnover, board stability</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
+<tr><td style="padding:8px 4px;font-weight:700;color:#C49B20">H.5</td><td style="padding:8px 4px">Human Augmentation Index</td><td style="padding:8px 4px;color:#444">AI as tool vs AI as replacement — measured by role composition</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC filings, job boards</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+</tbody>
+</table>
+</details>
 
-<details class="about-card" style="margin-bottom:14px;border-left:4px solid #C49B20;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:18px;color:var(--navy);font-weight:600">U — Understanding &amp; Empathy <span style="font-size:12px;color:var(--muted);font-weight:400;margin-left:8px">4 active · 1 deferred</span></summary>
+<!-- U DIMENSION RUBRIC -->
+<details class="about-card" style="margin-bottom:14px;border-left:4px solid #C49B20;padding:16px 20px">
+<summary style="cursor:pointer;font-family:'DM Serif Display';font-size:18px;color:var(--navy);font-weight:600">U — Understanding &amp; Empathy <span style="font-size:12px;color:var(--muted);font-weight:400;margin-left:8px">4 active · 1 deferred</span></summary>
 <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:14px">
 <thead><tr style="border-bottom:2px solid #E5E7EB"><th style="text-align:left;padding:8px 4px;color:var(--navy)">ID</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Name</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Signal</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Source</th><th style="text-align:center;padding:8px 4px;color:var(--navy)">Status</th></tr></thead>
 <tbody>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">U.1</td><td style="padding:8px 4px">Customer Empathy</td><td style="padding:8px 4px;color:#444">Customer complaint volume, response rate</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">CFPB, FTC Sentinel</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">U.2</td><td style="padding:8px 4px">Worker Empathy</td><td style="padding:8px 4px;color:#444">Employee sentiment, safety</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">Glassdoor, OSHA</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">U.3</td><td style="padding:8px 4px">Relational Integrity</td><td style="padding:8px 4px;color:#444">HRC, Disability:IN, accessibility</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">HRC, DEI disclosures</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">U.4</td><td style="padding:8px 4px">Simulated Empathy Detection</td><td style="padding:8px 4px;color:#444">Chatbot vs human support mix</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">Glassdoor, complaints</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
-<tr><td style="padding:8px 4px;color:var(--muted);font-weight:700">U.5</td><td style="padding:8px 4px;color:var(--muted)">Moral Courage</td><td style="padding:8px 4px;color:var(--muted)">Public commitment vs private behavior</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
-</tbody></table></details>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">U.1</td><td style="padding:8px 4px">Relational Integrity</td><td style="padding:8px 4px;color:#444">Customer complaint volume, complaint response rate</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">CFPB, FTC Sentinel</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">U.2</td><td style="padding:8px 4px">Simulated Empathy Detection</td><td style="padding:8px 4px;color:#444">Chatbot vs human support mix, escalation paths</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">Glassdoor, complaints</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">U.3</td><td style="padding:8px 4px">Culture Authenticity</td><td style="padding:8px 4px;color:#444">Glassdoor trajectory, CEO approval vs recommend gap</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">Glassdoor</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">U.4</td><td style="padding:8px 4px">Inclusion Signal</td><td style="padding:8px 4px;color:#444">HRC CEI score, DEI programs, accessibility</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">HRC, DEI disclosures</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
+<tr><td style="padding:8px 4px;color:var(--muted);font-weight:700">U.5</td><td style="padding:8px 4px;color:var(--muted)">Community Investment Depth</td><td style="padding:8px 4px;color:var(--muted)">Philanthropy vs PR measure</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
+</tbody>
+</table>
+</details>
 
-<details class="about-card" style="margin-bottom:14px;border-left:4px solid #C49B20;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:18px;color:var(--navy);font-weight:600">M — Moral &amp; Ethical Conduct <span style="font-size:12px;color:var(--muted);font-weight:400;margin-left:8px">5 active · 0 deferred</span></summary>
+<!-- M DIMENSION RUBRIC -->
+<details class="about-card" style="margin-bottom:14px;border-left:4px solid #C49B20;padding:16px 20px">
+<summary style="cursor:pointer;font-family:'DM Serif Display';font-size:18px;color:var(--navy);font-weight:600">M — Moral &amp; Ethical Conduct <span style="font-size:12px;color:var(--muted);font-weight:400;margin-left:8px">5 active · 0 deferred</span></summary>
 <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:14px">
 <thead><tr style="border-bottom:2px solid #E5E7EB"><th style="text-align:left;padding:8px 4px;color:var(--navy)">ID</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Name</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Signal</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Source</th><th style="text-align:center;padding:8px 4px;color:var(--navy)">Status</th></tr></thead>
 <tbody>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.1</td><td style="padding:8px 4px">Pricing Ethics</td><td style="padding:8px 4px;color:#444">Price gouging, deceptive pricing</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">FTC, CFPB</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.2</td><td style="padding:8px 4px">Data Ethics</td><td style="padding:8px 4px;color:#444">Privacy violations, breach history</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">HIBP, FTC, settlements</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.3</td><td style="padding:8px 4px">Market Ethics</td><td style="padding:8px 4px;color:#444">Antitrust, monopolistic behavior</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">DOJ, FTC actions</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.4</td><td style="padding:8px 4px">Product Ethics</td><td style="padding:8px 4px;color:#444">Product harm, recalls, safety</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">CPSC, FDA, NHTSA</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
-<tr><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.5</td><td style="padding:8px 4px">Stakeholder Governance</td><td style="padding:8px 4px;color:#444">Board independence, CEO pay ratio</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC DEF 14A</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
-</tbody></table></details>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.1</td><td style="padding:8px 4px">Principled Action</td><td style="padding:8px 4px;color:#444">Regulatory violations, SEC enforcement</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC, OSHA, EPA ECHO</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.2</td><td style="padding:8px 4px">Accountability Structure</td><td style="padding:8px 4px;color:#444">Board independence, executive pay ratio</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC DEF 14A</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.3</td><td style="padding:8px 4px">Workplace Safety</td><td style="padding:8px 4px;color:#444">OSHA incident rate, fatality rate vs industry</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">OSHA via DOL</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.4</td><td style="padding:8px 4px">Optimization Harm</td><td style="padding:8px 4px;color:#444">Algorithmic harm, dark pattern detection, AHI flags</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">Public reporting, FTC</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+<tr><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.5</td><td style="padding:8px 4px">CEO Accountability</td><td style="padding:8px 4px;color:#444">Compensation-to-median-worker ratio, public commitments</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC DEF 14A</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+</tbody>
+</table>
+</details>
 
-<details class="about-card" style="margin-bottom:14px;border-left:4px solid #C49B20;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:18px;color:var(--navy);font-weight:600">A — Alive &amp; Environmental <span style="font-size:12px;color:var(--muted);font-weight:400;margin-left:8px">4 active · 0 deferred</span></summary>
+<!-- A DIMENSION RUBRIC -->
+<details class="about-card" style="margin-bottom:14px;border-left:4px solid #C49B20;padding:16px 20px">
+<summary style="cursor:pointer;font-family:'DM Serif Display';font-size:18px;color:var(--navy);font-weight:600">A — Alive &amp; Environmental <span style="font-size:12px;color:var(--muted);font-weight:400;margin-left:8px">4 active · 0 deferred</span></summary>
 <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:14px">
 <thead><tr style="border-bottom:2px solid #E5E7EB"><th style="text-align:left;padding:8px 4px;color:var(--navy)">ID</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Name</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Signal</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Source</th><th style="text-align:center;padding:8px 4px;color:var(--navy)">Status</th></tr></thead>
 <tbody>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">A.1</td><td style="padding:8px 4px">Energy &amp; Emissions</td><td style="padding:8px 4px;color:#444">CDP score, Scope 1+2+3, SBTi targets</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">CDP, SEC Climate</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">A.2</td><td style="padding:8px 4px">Water</td><td style="padding:8px 4px;color:#444">CDP Water, water stress exposure</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">CDP Water, EPA</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">A.3</td><td style="padding:8px 4px">Land &amp; Habitat</td><td style="padding:8px 4px;color:#444">USDA Organic, CDP Forests, EPA ECHO</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">USDA, EPA, CDP</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
-<tr><td style="padding:8px 4px;font-weight:700;color:#C49B20">A.4</td><td style="padding:8px 4px">Product Lifecycle</td><td style="padding:8px 4px;color:#444">iFixit repairability, Fair Trade traceability</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">iFixit, B Corp, Fair Trade</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
-</tbody></table></details>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">A.1</td><td style="padding:8px 4px">Climate Integrity</td><td style="padding:8px 4px;color:#444">CDP score, Scope 1+2+3 disclosures, trajectory</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">CDP, SEC Climate</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">A.2</td><td style="padding:8px 4px">Pollution &amp; Compliance</td><td style="padding:8px 4px;color:#444">EPA ECHO violations, remediation history</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">EPA ECHO</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">A.3</td><td style="padding:8px 4px">Land &amp; Water</td><td style="padding:8px 4px;color:#444">Industry baseline, USDA Organic, water stress</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">Industry, EPA, USDA</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+<tr><td style="padding:8px 4px;font-weight:700;color:#C49B20">A.4</td><td style="padding:8px 4px">AI Infrastructure Cost</td><td style="padding:8px 4px;color:#444">Data center power, water for compute, AI emissions</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC, public disclosures</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+</tbody>
+</table>
+</details>
 
-<details class="about-card" style="margin-bottom:14px;border-left:4px solid #C49B20;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:18px;color:var(--navy);font-weight:600">N — Natural Transparency <span style="font-size:12px;color:var(--muted);font-weight:400;margin-left:8px">2 active · 3 deferred</span></summary>
+<!-- N DIMENSION RUBRIC -->
+<details class="about-card" style="margin-bottom:14px;border-left:4px solid #C49B20;padding:16px 20px">
+<summary style="cursor:pointer;font-family:'DM Serif Display';font-size:18px;color:var(--navy);font-weight:600">N — Natural Transparency <span style="font-size:12px;color:var(--muted);font-weight:400;margin-left:8px">2 active · 3 deferred</span></summary>
 <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:14px">
 <thead><tr style="border-bottom:2px solid #E5E7EB"><th style="text-align:left;padding:8px 4px;color:var(--navy)">ID</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Name</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Signal</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Source</th><th style="text-align:center;padding:8px 4px;color:var(--navy)">Status</th></tr></thead>
 <tbody>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;color:var(--muted);font-weight:700">N.1</td><td style="padding:8px 4px;color:var(--muted)">Reporting Quality</td><td style="padding:8px 4px;color:var(--muted)">Depth and auditability of disclosures</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">N.2</td><td style="padding:8px 4px">Reporting Quality</td><td style="padding:8px 4px;color:#444">GRI compliance, restatement history</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC, GRI</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;color:var(--muted);font-weight:700">N.3</td><td style="padding:8px 4px;color:var(--muted)">Subsidiary Transparency</td><td style="padding:8px 4px;color:var(--muted)">Disclosure of corporate structure</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;color:var(--muted);font-weight:700">N.4</td><td style="padding:8px 4px;color:var(--muted)">Supply Chain Attestation</td><td style="padding:8px 4px;color:var(--muted)">Verified supplier conditions</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
-<tr><td style="padding:8px 4px;font-weight:700;color:#C49B20">N.5</td><td style="padding:8px 4px">Filing Volume</td><td style="padding:8px 4px;color:#444">8-K frequency, 10-K completeness</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC EDGAR</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">GROUNDED</td></tr>
-</tbody></table></details>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;color:var(--muted);font-weight:700">N.1</td><td style="padding:8px 4px;color:var(--muted)">Disclosure Quality</td><td style="padding:8px 4px;color:var(--muted)">Readability vs legalese in material filings</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">N.2</td><td style="padding:8px 4px">Humanwashing Detection</td><td style="padding:8px 4px;color:#444">Revenue-per-employee anomalies, AI-replaces mismatches</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC 10-K, jobs data</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;color:var(--muted);font-weight:700">N.3</td><td style="padding:8px 4px;color:var(--muted)">Proactive Disclosure</td><td style="padding:8px 4px;color:var(--muted)">Voluntary reporting beyond legal minimum</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;color:var(--muted);font-weight:700">N.4</td><td style="padding:8px 4px;color:var(--muted)">Material Event Timing</td><td style="padding:8px 4px;color:var(--muted)">Time-to-disclosure for material events</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
+<tr><td style="padding:8px 4px;font-weight:700;color:#C49B20">N.5</td><td style="padding:8px 4px">Filing Volume</td><td style="padding:8px 4px;color:#444">8-K frequency, 10-K completeness, amendment rate</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC EDGAR</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">GROUNDED</td></tr>
+</tbody>
+</table>
+</details>
 
-<div class="about-card" style="background:#F8FAFC;margin-top:20px;margin-bottom:32px">
+<!-- STATUS LEGEND + GitHub link -->
+<div class="about-card" style="background:#F8FAFC;margin-top:20px;margin-bottom:20px">
 <div style="font-family:'DM Serif Display';font-size:16px;color:var(--navy);margin-bottom:10px">Status Legend</div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;font-size:12px;color:#444;line-height:1.6">
 <div><strong style="color:#16A34A">GROUNDED</strong> — Every value traces to a verifiable public record. No estimates.</div>
-<div><strong style="color:#16A34A">PARTIAL</strong> — Some values grounded; coverage gaps filled with industry baselines.</div>
-<div><strong style="color:#F59E0B">UNGROUNDED</strong> — Signal exists but uses proxies. Ladder-to-ground roadmap documented.</div>
-<div><strong style="color:#9CA3AF">DEFERRED</strong> — Spec'd but not yet active. v1.2 roadmap.</div>
+<div><strong style="color:#16A34A">PARTIAL</strong> — Some values grounded in real data; coverage gaps filled with industry baselines.</div>
+<div><strong style="color:#F59E0B">UNGROUNDED</strong> — Signal exists but uses proxies or industry defaults. Ladder-to-ground roadmap documented.</div>
+<div><strong style="color:#9CA3AF">DEFERRED</strong> — Sub-signal defined in spec but not yet active. v1.2 roadmap.</div>
 </div>
-<div style="margin-top:14px;padding-top:12px;border-top:1px solid #E5E7EB;text-align:center"><a href="https://github.com/thehibalance/hi/blob/main/RUBRIC.md" target="_blank" style="font-size:13px;color:var(--navy);font-weight:600;text-decoration:none">📖 View RUBRIC.md on GitHub →</a></div>
+<div style="margin-top:16px;padding-top:14px;border-top:1px solid #E5E7EB;text-align:center"><a href="https://github.com/thehibalance/hi/blob/main/RUBRIC.md" target="_blank" style="font-size:13px;color:var(--navy);font-weight:600;text-decoration:none">📖 View RUBRIC.md on GitHub →</a></div>
 </div>
+
+<h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 16px">The four harm detection systems</h2>
+<p style="color:#444;line-height:1.7;margin-bottom:16px">HI Grade applies four harm-detection systems, all flowing into dimension scores (no separate gates):</p>
+
+<div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:20px;margin-bottom:14px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">Humanwashing™ (HW)</div><div style="font-size:13px;color:#555;line-height:1.6">Selling human craft while operating algorithmically. Detected via revenue-per-employee anomalies (4×+ industry median) and AI-replaces-disclosure mismatches. Penalizes H.1.</div></div>
+
+<div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:20px;margin-bottom:14px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">Algorithmic Harm Index™ (AHI)</div><div style="font-size:13px;color:#555;line-height:1.6">Measures algorithmic decision-making at scale. A bank's credit algorithm affects one person at a time. A social media moderation algorithm affects billions. AHI adjusts for blast radius. Penalizes M.3, U.4.</div></div>
+
+<div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:20px;margin-bottom:14px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">Product Harm Index (PHI)</div><div style="font-size:13px;color:#555;line-height:1.6">Physical or digital product safety failures. CPSC recalls, FDA warning letters, NHTSA investigations, HIBP breaches, EPA violations. Penalizes M.4.</div></div>
+
+<div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:20px;margin-bottom:24px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">Harm Documentation (HD)</div><div style="font-size:13px;color:#555;line-height:1.6">Public-record harm: court settlements, attributed deaths, concealment findings. Anchored to DOJ/SEC/state AG records, CDC/NIH attribution data, court findings. Penalizes M.3 + M.4 directly.</div></div>
+
+<h3 style="font-size:17px;font-weight:700;color:var(--navy);margin:24px 0 8px">"Humans can still choose"</h3>
+<p style="color:#444;line-height:1.7;margin-bottom:14px">HD does <em>not</em> penalize companies for selling products that consumers knowingly choose: sugary beverages, alcohol, gambling, unflavored tobacco. These products may cause harm, but the harm flows from informed consumer choice. HI Grade is not the consumer's parent.</p>
+<p style="color:#444;line-height:1.7;margin-bottom:14px">HD <em>does</em> penalize when consent was not possible:</p>
+<ul style="color:#444;line-height:1.8;padding-left:24px;margin-bottom:14px">
+<li><strong>Hidden risk</strong> — the company knew about a risk and concealed it (J&amp;J talc, tobacco MSA, Pfizer Bextra)</li>
+<li><strong>Doctor-mediated harm</strong> — pharmaceutical companies that misrepresented drug safety to prescribers</li>
+<li><strong>Weapons</strong> — products designed to harm humans who did not consent to being targeted</li>
+<li><strong>Environmental contamination</strong> — chemical or physical harm to populations who never bought the product (PFAS in drinking water, asbestos in air)</li>
+</ul>
+
+<h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 16px">Balanced Board — v1.1.0 criteria</h2>
+<p style="color:#444;line-height:1.7;margin-bottom:16px">The Balanced Board highlights companies with no weak HUMAN dimension. Earned algorithmically, never purchased. A company makes the Balanced Board when it meets <strong>all three</strong> criteria:</p>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px" class="gate-grid">
+<div style="background:var(--white);border:2px solid #C49B20;border-radius:12px;padding:18px;text-align:center"><div style="font-family:'DM Serif Display';font-size:28px;color:#C49B20;line-height:1;margin-bottom:6px">1</div><div style="font-weight:800;color:var(--navy);font-size:14px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">Dimensions</div><div style="font-size:12px;color:var(--muted);line-height:1.5">All 5 HUMAN dimensions score <strong>60 or higher</strong>. No single weak dimension allowed.</div></div>
+<div style="background:var(--white);border:2px solid #C49B20;border-radius:12px;padding:18px;text-align:center"><div style="font-family:'DM Serif Display';font-size:28px;color:#C49B20;line-height:1;margin-bottom:6px">2</div><div style="font-weight:800;color:var(--navy);font-size:14px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">Evidence</div><div style="font-size:12px;color:var(--muted);line-height:1.5">Each dimension has <strong>at least one real public source</strong>. Industry defaults don't count.</div></div>
+<div style="background:var(--white);border:2px solid #C49B20;border-radius:12px;padding:18px;text-align:center"><div style="font-family:'DM Serif Display';font-size:28px;color:#C49B20;line-height:1;margin-bottom:6px">3</div><div style="font-weight:800;color:var(--navy);font-size:14px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">Momentum</div><div style="font-size:12px;color:var(--muted);line-height:1.5">Not in <strong>warning or critical decay</strong> based on 90-day trailing signals.</div></div>
+</div>
+
+<h3 style="font-size:17px;font-weight:700;color:var(--navy);margin:24px 0 8px">Why three gates instead of one composite</h3>
+<p style="color:#444;line-height:1.7;margin-bottom:14px">A single weighted composite — the approach most ESG frameworks use — averages away disqualifying signals. A company can be excellent on four dimensions and ethically compromised on the fifth, and still rate highly. HI Grade refuses to do this. Each dimension is an independent check.</p>
+
+<h3 style="font-size:17px;font-weight:700;color:var(--navy);margin:24px 0 8px">Why momentum — the Oracle problem</h3>
+<p style="color:#444;line-height:1.7;margin-bottom:14px">When Oracle executed mass layoffs in April 2026 affecting an estimated 25,000+ workers, their backward-looking SEC filings still showed the pre-layoff workforce. A scoring system reading only last-quarter's 10-K would have given Oracle a high H score the day thousands of workers were locked out of internal systems at 6 a.m. EST. HI Grade's momentum gate catches this in real time by monitoring news, 8-K filings, WARN Act notices, and other decay signals across a 90-day rolling window.</p>
 
 <h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 12px">Score Integrity Rules</h2>
 <p style="color:#444;line-height:1.7;margin-bottom:20px">Every score passes through three validation layers. They exist to prevent any single source — including bad data, gaming attempts, or short-term news cycles — from distorting the math.</p>
@@ -815,81 +848,10 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <details class="about-card" style="margin-bottom:32px;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:17px;color:var(--navy);font-weight:600">Heartbeat decay thresholds are editorial</summary>
 <div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>The Decay Index aggregates layoff mentions, 8-K filings, WARN notices, CEO accountability into 0-100. Inputs are authoritative; thresholds mapping to Stable / Watch / Warning / Critical are editorial.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> validating against known decay events (Oracle 2026, Twitter 2022, Meta metaverse pivot). Ongoing.</p></div></details>
 
-<div style="background:var(--dark);color:var(--white);border-radius:14px;padding:28px;margin:24px 0;text-align:center">
-<div style="font-family:'DM Serif Display';font-size:22px;color:#E5C44A;margin-bottom:12px">What we won't change</div>
-<div style="font-size:14px;line-height:1.8;color:#B4BFCC;max-width:600px;margin:0 auto">
-<div style="margin-bottom:6px">• Zero AI in the scoring engine. Not now, not ever.</div>
-<div style="margin-bottom:6px">• Zero pay-to-play. No company pays for a better score.</div>
-<div style="margin-bottom:6px">• Zero self-reported data. Every input is third-party verifiable.</div>
-<div>• All limitations published. Known Limitations is permanent.</div>
-</div>
-</div>
-
-
-
-<h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 16px">Balanced Board — v1.1.0 criteria</h2>
-<p style="color:#444;line-height:1.7;margin-bottom:16px">The Balanced Board highlights companies with no weak HUMAN dimension. Earned algorithmically, never purchased. A company makes the Balanced Board when it meets <strong>all three</strong> criteria:</p>
-
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px" class="gate-grid">
-<div style="background:var(--white);border:2px solid #C49B20;border-radius:12px;padding:18px;text-align:center"><div style="font-family:'DM Serif Display';font-size:28px;color:#C49B20;line-height:1;margin-bottom:6px">1</div><div style="font-weight:800;color:var(--navy);font-size:14px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">Dimensions</div><div style="font-size:12px;color:var(--muted);line-height:1.5">All 5 HUMAN dimensions score <strong>60 or higher</strong>. No single weak dimension allowed.</div></div>
-<div style="background:var(--white);border:2px solid #C49B20;border-radius:12px;padding:18px;text-align:center"><div style="font-family:'DM Serif Display';font-size:28px;color:#C49B20;line-height:1;margin-bottom:6px">2</div><div style="font-weight:800;color:var(--navy);font-size:14px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">Evidence</div><div style="font-size:12px;color:var(--muted);line-height:1.5">Each dimension has <strong>at least one real public source</strong>. Industry defaults don't count.</div></div>
-<div style="background:var(--white);border:2px solid #C49B20;border-radius:12px;padding:18px;text-align:center"><div style="font-family:'DM Serif Display';font-size:28px;color:#C49B20;line-height:1;margin-bottom:6px">3</div><div style="font-weight:800;color:var(--navy);font-size:14px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">Momentum</div><div style="font-size:12px;color:var(--muted);line-height:1.5">Not in <strong>warning or critical decay</strong> based on 90-day trailing signals.</div></div>
-</div>
-
-<h3 style="font-size:17px;font-weight:700;color:var(--navy);margin:24px 0 8px">Why three gates instead of one composite</h3>
-<p style="color:#444;line-height:1.7;margin-bottom:14px">A single weighted composite — the approach most ESG frameworks use — averages away disqualifying signals. A company can be excellent on four dimensions and ethically compromised on the fifth, and still rate highly. HI Grade refuses to do this. Each dimension is an independent check.</p>
-
-<h3 style="font-size:17px;font-weight:700;color:var(--navy);margin:24px 0 8px">Why momentum — the Oracle problem</h3>
-<p style="color:#444;line-height:1.7;margin-bottom:14px">When Oracle executed mass layoffs in April 2026 affecting an estimated 25,000+ workers, their backward-looking SEC filings still showed the pre-layoff workforce. A scoring system reading only last-quarter's 10-K would have given Oracle a high H score the day thousands of workers were locked out of internal systems at 6 a.m. EST. HI Grade's momentum gate catches this in real time by monitoring news, 8-K filings, WARN Act notices, and other decay signals across a 90-day rolling window.</p>
-
-<h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 16px">The four harm detection systems</h2>
-<p style="color:#444;line-height:1.7;margin-bottom:16px">HI Grade applies four harm-detection systems, all flowing into dimension scores (no separate gates):</p>
-
-<div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:20px;margin-bottom:14px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">Humanwashing™ (HW)</div><div style="font-size:13px;color:#555;line-height:1.6">Selling human craft while operating algorithmically. Detected via revenue-per-employee anomalies (4×+ industry median) and AI-replaces-disclosure mismatches. Penalizes H.1.</div></div>
-
-<div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:20px;margin-bottom:14px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">Algorithmic Harm Index™ (AHI)</div><div style="font-size:13px;color:#555;line-height:1.6">Measures algorithmic decision-making at scale. A bank's credit algorithm affects one person at a time. A social media moderation algorithm affects billions. AHI adjusts for blast radius. Penalizes M.3, U.4.</div></div>
-
-<div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:20px;margin-bottom:14px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">Product Harm Index (PHI)</div><div style="font-size:13px;color:#555;line-height:1.6">Physical or digital product safety failures. CPSC recalls, FDA warning letters, NHTSA investigations, HIBP breaches, EPA violations. Penalizes M.4.</div></div>
-
-<div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:20px;margin-bottom:24px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">Harm Documentation (HD)</div><div style="font-size:13px;color:#555;line-height:1.6">Public-record harm: court settlements, attributed deaths, concealment findings. Anchored to DOJ/SEC/state AG records, CDC/NIH attribution data, court findings. Penalizes M.3 + M.4 directly.</div></div>
-
-<h3 style="font-size:17px;font-weight:700;color:var(--navy);margin:24px 0 8px">"Humans can still choose"</h3>
-<p style="color:#444;line-height:1.7;margin-bottom:14px">HD does <em>not</em> penalize companies for selling products that consumers knowingly choose: sugary beverages, alcohol, gambling, unflavored tobacco. These products may cause harm, but the harm flows from informed consumer choice. HI Grade is not the consumer's parent.</p>
-<p style="color:#444;line-height:1.7;margin-bottom:14px">HD <em>does</em> penalize when consent was not possible:</p>
-<ul style="color:#444;line-height:1.8;padding-left:24px;margin-bottom:14px">
-<li><strong>Hidden risk</strong> — the company knew about a risk and concealed it (J&amp;J talc, tobacco MSA, Pfizer Bextra)</li>
-<li><strong>Doctor-mediated harm</strong> — pharmaceutical companies that misrepresented drug safety to prescribers</li>
-<li><strong>Weapons</strong> — products designed to harm humans who did not consent to being targeted</li>
-<li><strong>Environmental contamination</strong> — chemical or physical harm to populations who never bought the product (PFAS in drinking water, asbestos in air)</li>
-</ul>
-
 <h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 16px">Measured without AI</h2>
 <p style="color:#444;line-height:1.7;margin-bottom:14px">HI Grade uses no AI in the scoring pipeline. No large language models summarizing reports. No neural networks classifying sentiment. No machine learning inferring "good" or "bad." Every score is a deterministic computation on public data.</p>
 <p style="color:#444;line-height:1.7;margin-bottom:14px">We do use AI to help <em>build</em> the system — write Python, draft documentation, test edge cases. We don't use AI to <em>judge</em> any company. The distinction matters: LLMs are excellent for engineering work and explanation, and untrustworthy for the kind of consistent, auditable, high-stakes judgments ESG ratings require.</p>
 <p style="color:#444;line-height:1.7">The entire value proposition of HI Grade is reproducibility and trust. An LLM-generated score can't be reproduced exactly, can't be audited line-by-line, and can't defend itself against "why did you rate us that way?" in a regulatory or legal context. <strong>Math and data can.</strong></p>
-
-<h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 16px">What we promise</h2>
-<div style="background:linear-gradient(135deg,#1B3A5C,#0F1A2E);color:#fff;padding:28px 24px;border-radius:14px;text-align:center;margin-bottom:24px">
-<div style="font-family:'DM Serif Display';font-size:22px;color:#E5C44A;margin-bottom:10px">Methodology transparency. Source transparency. Code transparency.</div>
-<div style="font-size:14px;color:#B4BFCC">Error correction. No pay-to-play. Ever.</div>
-</div>
-
-<h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 16px">Open source &amp; verify</h2>
-<p style="color:#444;line-height:1.7;margin-bottom:14px"><a href="https://github.com/thehibalance/hi" target="_blank" style="color:var(--sky);font-weight:600">github.com/thehibalance/hi</a> — the complete system, Apache 2.0 licensed. Read the scoring engine. Read each data pipeline. Review the rubric. File issues. Fork it. Run the entire pipeline on your own infrastructure.</p>
-<p style="color:#444;line-height:1.7;margin-bottom:14px"><a href="https://api.thehibalance.org" target="_blank" style="color:var(--sky);font-weight:600">api.thehibalance.org</a> — the same API every interface hits. Public endpoints. Rate-limited for free use.</p>
-<p style="color:#444;line-height:1.7">Questions, feedback, disagreements: <a href="mailto:hi@thehibalance.org" style="color:var(--sky);font-weight:600">hi@thehibalance.org</a></p>
-
-<div style="background:var(--light);border-radius:12px;padding:20px;margin-top:32px;text-align:center;font-size:12px;color:var(--muted)">
-<div style="margin-bottom:6px"><strong style="color:var(--navy)">HI Grade Methodology v1.1.0</strong> · Apache 2.0 · April 2026</div>
-<div>HI Grade is estimated from public data and is not financial, legal, or investment advice. Not affiliated with or endorsed by any company scored.</div>
-</div>
-
-</div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════════════════════ -->
-<!-- SOURCES PAGE -->
-<!-- ═══════════════════════════════════════════════════════════════════════════════ -->
 <div id="page-sources" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
 <div class="subpage">
 <h1>Data Sources</h1>
