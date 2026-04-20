@@ -1,12 +1,12 @@
 {
   "market_average": 57.3,
-  "total_companies": 439,
+  "total_companies": 438,
   "dimension_pressure": {
     "H": {
       "dimension": "H",
       "name": "Human Consciousness",
       "average": 53,
-      "below_threshold_count": 374,
+      "below_threshold_count": 373,
       "below_threshold_pct": 85.2,
       "failing_pct": 85.2,
       "stdev": 11.6,
@@ -18,11 +18,11 @@
       "dimension": "U",
       "name": "Understanding & Empathy",
       "average": 57,
-      "below_threshold_count": 352,
-      "below_threshold_pct": 80.2,
-      "failing_pct": 80.2,
+      "below_threshold_count": 351,
+      "below_threshold_pct": 80.1,
+      "failing_pct": 80.1,
       "stdev": 10.9,
-      "pressure_score": 47.8,
+      "pressure_score": 47.7,
       "status": "warning",
       "threshold": 64.6
     },
@@ -30,11 +30,11 @@
       "dimension": "M",
       "name": "Moral & Ethical Conduct",
       "average": 60,
-      "below_threshold_count": 178,
-      "below_threshold_pct": 40.5,
-      "failing_pct": 40.5,
-      "stdev": 15.6,
-      "pressure_score": 35.2,
+      "below_threshold_count": 177,
+      "below_threshold_pct": 40.4,
+      "failing_pct": 40.4,
+      "stdev": 15.4,
+      "pressure_score": 35.1,
       "status": "warning",
       "threshold": 64.6
     },
@@ -42,7 +42,7 @@
       "dimension": "A",
       "name": "Alive & Environmental",
       "average": 52,
-      "below_threshold_count": 389,
+      "below_threshold_count": 388,
       "below_threshold_pct": 88.6,
       "failing_pct": 88.6,
       "stdev": 11.3,
@@ -54,11 +54,11 @@
       "dimension": "N",
       "name": "Natural Transparency",
       "average": 64,
-      "below_threshold_count": 100,
-      "below_threshold_pct": 22.8,
-      "failing_pct": 22.8,
-      "stdev": 14.5,
-      "pressure_score": 27.8,
+      "below_threshold_count": 99,
+      "below_threshold_pct": 22.6,
+      "failing_pct": 22.6,
+      "stdev": 14.4,
+      "pressure_score": 27.7,
       "status": "stable",
       "threshold": 64.6
     }
@@ -89,18 +89,6 @@
       "status": "warning"
     },
     {
-      "industry": "default",
-      "company_count": 62,
-      "average_composite": 58.2,
-      "worst_dimension": "H",
-      "worst_dimension_avg": 52.0,
-      "humanwashing_flags": 7,
-      "algo_harm_companies": 1,
-      "below_threshold_dimensions": 192,
-      "pressure_score": 37.7,
-      "status": "warning"
-    },
-    {
       "industry": "telecom",
       "company_count": 8,
       "average_composite": 57.0,
@@ -110,6 +98,18 @@
       "algo_harm_companies": 2,
       "below_threshold_dimensions": 27,
       "pressure_score": 36.7,
+      "status": "warning"
+    },
+    {
+      "industry": "default",
+      "company_count": 58,
+      "average_composite": 58.5,
+      "worst_dimension": "H",
+      "worst_dimension_avg": 51.7,
+      "humanwashing_flags": 5,
+      "algo_harm_companies": 1,
+      "below_threshold_dimensions": 173,
+      "pressure_score": 35.6,
       "status": "warning"
     },
     {
@@ -206,6 +206,42 @@
       "algo_harm_companies": 0,
       "below_threshold_dimensions": 12,
       "pressure_score": 21.8,
+      "status": "stable"
+    },
+    {
+      "industry": "Consumer Services",
+      "company_count": 1,
+      "average_composite": 57.0,
+      "worst_dimension": "N",
+      "worst_dimension_avg": 48.0,
+      "humanwashing_flags": 0,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 5,
+      "pressure_score": 19.7,
+      "status": "stable"
+    },
+    {
+      "industry": "Automotive",
+      "company_count": 1,
+      "average_composite": 62.0,
+      "worst_dimension": "N",
+      "worst_dimension_avg": 60.0,
+      "humanwashing_flags": 0,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 5,
+      "pressure_score": 17.7,
+      "status": "stable"
+    },
+    {
+      "industry": "Financial Services",
+      "company_count": 1,
+      "average_composite": 61.0,
+      "worst_dimension": "H",
+      "worst_dimension_avg": 50.0,
+      "humanwashing_flags": 0,
+      "algo_harm_companies": 0,
+      "below_threshold_dimensions": 4,
+      "pressure_score": 17.6,
       "status": "stable"
     }
   ],

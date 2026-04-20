@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-04-20T08:05:34.395367",
-  "total_issues": 83,
+  "timestamp": "2026-04-20T16:53:00.035945",
+  "total_issues": 82,
   "critical": 0,
   "warnings": 79,
-  "info": 4,
+  "info": 3,
   "blocked": false,
   "stats": {
-    "total_companies": 439,
+    "total_companies": 438,
     "avg_composite": 57.3,
     "stdev": 10.2,
     "min_score": 13,
     "max_score": 85,
     "pct_90_100": 0.0,
-    "pct_40_70": 84.7,
+    "pct_40_70": 84.9,
     "pct_0_20": 1.1,
     "gold_count": 5,
     "gold_pct": 1.1,
@@ -46,15 +46,6 @@
       "message": "Composite 48 doesn't match dimensions (expected ~40)",
       "value": 48,
       "expected": 40
-    },
-    {
-      "layer": 1,
-      "severity": "info",
-      "company": "American",
-      "field": "data_sources",
-      "message": "Only 1 data source \u2014 score may be unreliable",
-      "value": 1,
-      "expected": ">= 2"
     },
     {
       "layer": 2,
@@ -196,7 +187,7 @@
       "severity": "warning",
       "company": "target",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 86, 'U.2': 96}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 87, 'U.2': 97}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -484,7 +475,7 @@
       "severity": "warning",
       "company": "paypal",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 83, 'U.2': 93}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 82, 'U.2': 92}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
