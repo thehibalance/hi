@@ -5623,7 +5623,7 @@
   },
   {
     "company": "Ford Motor Company",
-    "ticker": "",
+    "ticker": "F",
     "industry": "default",
     "sic": "",
     "sic_description": "",
@@ -6506,7 +6506,7 @@
   },
   {
     "company": "Bank of America Corporation",
-    "ticker": "",
+    "ticker": "BAC",
     "industry": "default",
     "sic": "",
     "sic_description": "",
@@ -6634,7 +6634,10 @@
         },
         "decay_level": "stable"
       }
-    }
+    },
+    "domains": [
+      "bankofamerica.com"
+    ]
   },
   {
     "company": "BEST BUY CO INC",
@@ -32263,7 +32266,7 @@
   },
   {
     "company": "McDonald's Corporation",
-    "ticker": "",
+    "ticker": "MCD",
     "industry": "default",
     "sic": "",
     "sic_description": "",
@@ -32394,7 +32397,10 @@
         },
         "decay_level": "stable"
       }
-    }
+    },
+    "domains": [
+      "mcdonalds.com"
+    ]
   },
   {
     "company": "MongoDB, Inc.",
@@ -44671,145 +44677,6 @@
           "M": true,
           "A": true,
           "N": true
-        },
-        "decay_level": "stable"
-      }
-    }
-  },
-  {
-    "company": "American",
-    "ticker": "",
-    "industry": "default",
-    "sic": "",
-    "sic_description": "",
-    "D_H": 50,
-    "D_U": 50,
-    "D_M": 7,
-    "D_A": 51,
-    "D_N": 37,
-    "composite": 39,
-    "hi_grade": "scored",
-    "satire": "",
-    "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
-    "confidence": "Estimated",
-    "spec_version": "1.1.0",
-    "data_sources": [
-      "Defaults"
-    ],
-    "signal_coverage": "3/19 sub-signals with real data",
-    "humanwashing_flags": [
-      "HD: Documented deaths attributed: 8,000,000",
-      "HD: Concealment findings: 1"
-    ],
-    "algo_harm": {
-      "algo_harm_score": 0,
-      "penalties": {
-        "H": 0,
-        "U": 0,
-        "M": 0,
-        "N": 0
-      },
-      "flags": [],
-      "has_harm": false
-    },
-    "harm_documentation": {
-      "has_harm": true,
-      "penalties": {
-        "M": -50
-      },
-      "flags": [
-        "Documented deaths attributed: 8,000,000",
-        "Concealment findings: 1"
-      ],
-      "sources": [
-        "https://www.justice.gov/opa/pr/british-american-tobacco-pay-over-629-million",
-        "https://www.who.int/news-room/fact-sheets/detail/tobacco"
-      ],
-      "settlement_5yr": 635000000,
-      "deaths_attributed": 8000000,
-      "concealment_findings": [
-        "historical_tobacco_industry_concealment"
-      ],
-      "remediation_status": "active",
-      "review_date": "2026-04-15"
-    },
-    "genome": {
-      "H": {
-        "scores": {
-          "H.1": 50,
-          "H.2": 50,
-          "H.3": 50,
-          "H.5": 50
-        },
-        "sources": []
-      },
-      "U": {
-        "scores": {
-          "U.1": 50,
-          "U.2": 50,
-          "U.3": 50,
-          "U.4": 50
-        },
-        "sources": []
-      },
-      "M": {
-        "scores": {
-          "M.1": 50,
-          "M.2": 50,
-          "M.3": 85,
-          "M.4": 50,
-          "M.5": 50
-        },
-        "sources": []
-      },
-      "A": {
-        "scores": {
-          "A.1": 50,
-          "A.2": 50,
-          "A.3": 50,
-          "A.4": 55
-        },
-        "sources": []
-      },
-      "N": {
-        "scores": {
-          "N.2": 50,
-          "N.5": 20
-        },
-        "sources": []
-      }
-    },
-    "key_signals": {
-      "headcount": null,
-      "headcount_change_pct": null,
-      "revenue_per_employee": null,
-      "displacement_signal": null,
-      "ai_hiring_ratio": null,
-      "glassdoor_rating": null,
-      "cdp_climate": null,
-      "epa_violations": null
-    },
-    "hi_balanced": false,
-    "hi_balanced_gates": {
-      "dimensions": false,
-      "evidence": false,
-      "momentum": true,
-      "_detail": {
-        "dim_pass": {
-          "H": false,
-          "U": false,
-          "M": false,
-          "A": false,
-          "N": false
-        },
-        "evidence_pass": {
-          "H": false,
-          "U": false,
-          "M": false,
-          "A": false,
-          "N": false
         },
         "decay_level": "stable"
       }
