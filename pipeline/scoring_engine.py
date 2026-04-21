@@ -607,7 +607,7 @@ def _score_from_inclusion_tier(tier_score):
 
 # ── Dimension Scoring ─────────────────────────────────────────────────
 
-def score_h_dimension(sec_h, job_data, bls_data, industry):
+def score_h_dimension(sec_h, job_data, bls_data, industry, patents=None):
     scores = {}
     sources_used = []
 
@@ -657,6 +657,11 @@ def score_h_dimension(sec_h, job_data, bls_data, industry):
     if isinstance(headcount, dict):
         headcount = headcount.get("value", 0)
     headcount = headcount or 0
+    # v1.2v: defensive int coercion — some data sources return strings
+    try:
+        headcount = int(headcount) if not isinstance(headcount, (int, float)) else headcount
+    except (ValueError, TypeError):
+        headcount = 0
     if headcount:
         if headcount > 200000: h3 = min(100, h3 + 15)
         elif headcount > 50000: h3 = min(100, h3 + 10)
@@ -676,6 +681,13 @@ def score_h_dimension(sec_h, job_data, bls_data, industry):
     scores["H.3"] = round(h3, 1)
     sources_used.extend([s for s in h3_sources if s not in sources_used])
 
+    # v1.2x Layered: fold USPTO.H.3_adj into H.3
+    if patents:
+        h3_adj = patents.get("H.3_adj", 0)
+        if h3_adj != 0:
+            scores["H.3"] = clamp(scores["H.3"] + h3_adj)
+            if "USPTO" not in sources_used: sources_used.append("USPTO")
+
     displacement = sec_h.get("displacement_signal")
     job_trend = job_data.get("h_signals", {}).get("ai_hiring_trend") if job_data else None
     if displacement is not None:
@@ -694,13 +706,22 @@ def score_h_dimension(sec_h, job_data, bls_data, industry):
         else:
             scores["H.5"] = 50
 
-    # v1.0.2 renormalization: H.4 removed. Weights scaled proportionally from
-    # {H.1:0.25, H.2:0.20, H.3:0.20, H.5:0.20} total 0.85 → /0.85 to sum to 1.00.
-    D_H = 0.294*scores["H.1"] + 0.235*scores["H.2"] + 0.235*scores["H.3"] + 0.235*scores["H.5"]
+    # v1.2x Layered: fold USPTO.H.5_adj into H.5
+    if patents:
+        h5_adj = patents.get("H.5_adj", 0)
+        if h5_adj != 0:
+            scores["H.5"] = clamp(scores["H.5"] + h5_adj)
+            if "USPTO" not in sources_used: sources_used.append("USPTO")
+
+    # v1.2v UNIFORM: All 4 active sub-signals weighted equally at 0.25.
+    # Restoration of original methodology design — every sub-signal in a
+    # dimension contributes equally. Adjustments (USPTO patents, AHI penalty)
+    # apply downstream in score_company().
+    D_H = 0.25*scores["H.1"] + 0.25*scores["H.2"] + 0.25*scores["H.3"] + 0.25*scores["H.5"]
     return round_score(D_H), scores, list(set(sources_used))
 
 
-def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=None, company_name=None):
+def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=None, company_name=None, osha=None, dol=None, bbb=None, eeoc=None):
     scores = {}
     sources_used = []
     gd = glassdoor_data.get("u_signals", {}) if glassdoor_data else {}
@@ -716,6 +737,13 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=N
         sources_used.append("Glassdoor")
     else:
         scores["U.1"] = 50
+
+    # v1.2x Layered: fold BBB blend into U.1 (customer-facing complaints)
+    if bbb is not None:
+        bbb_score = bbb.get("score") if isinstance(bbb, dict) else None
+        if bbb_score is not None:
+            scores["U.1"] = round(scores["U.1"] * 0.9 + bbb_score * 0.1, 1)
+            if "BBB" not in sources_used: sources_used.append("BBB")
 
     # U.2 Worker Empathy — Glassdoor (weighted by review count for confidence)
     if gd.get("worklife_score") is not None:
@@ -734,6 +762,27 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=N
         if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
     else:
         scores["U.2"] = 50
+
+    # v1.2x Layered: fold OSHA blend into U.2 (worker safety)
+    if osha is not None:
+        osha_score = osha.get("score") if isinstance(osha, dict) else None
+        if osha_score is not None:
+            scores["U.2"] = round(scores["U.2"] * 0.85 + osha_score * 0.15, 1)
+            if "OSHA" not in sources_used: sources_used.append("OSHA")
+
+    # v1.2x Layered: fold DOL wage blend into U.2
+    if dol is not None:
+        dol_score = dol.get("score") if isinstance(dol, dict) else None
+        if dol_score is not None:
+            scores["U.2"] = round(scores["U.2"] * 0.9 + dol_score * 0.1, 1)
+            if "DOL" not in sources_used: sources_used.append("DOL")
+
+    # v1.2x Layered: fold EEOC.U.2_adj into U.2
+    if eeoc is not None:
+        u2_adj = eeoc.get("U.2_adj", 0) if isinstance(eeoc, dict) else 0
+        if u2_adj != 0:
+            scores["U.2"] = clamp(scores["U.2"] + u2_adj)
+            if "EEOC" not in sources_used: sources_used.append("EEOC")
 
     # U.3 Relational Integrity — authoritative inclusion sources (HRC CEI, DEI, B Corp) blend with Glassdoor.
     # Per API_SHOPPING_LIST Pass 2D T0.1/T0.2/T0.5: HRC is the recognized US authority on LGBTQ+
@@ -791,13 +840,13 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=N
     
     scores["U.4"] = round(clamp(u4), 1)
 
-    # v1.0.2 renormalization: U.5 removed. Weights scaled proportionally from
-    # {U.1:0.25, U.2:0.25, U.3:0.20, U.4:0.15} total 0.85 → /0.85 to sum to 1.00.
-    D_U = 0.294*scores["U.1"] + 0.294*scores["U.2"] + 0.235*scores["U.3"] + 0.176*scores["U.4"]
+    # v1.2v UNIFORM: All 4 active sub-signals weighted equally at 0.25.
+    # Adjustments (EEOC, OSHA, DOL, BBB, AHI penalty) apply downstream.
+    D_U = 0.25*scores["U.1"] + 0.25*scores["U.2"] + 0.25*scores["U.3"] + 0.25*scores["U.4"]
     return round_score(D_U), scores, sources_used
 
 
-def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None, ticker=None, company_name=None):
+def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None, ticker=None, company_name=None, ftc=None, eeoc=None, fda=None, pay_ratio=None, insider=None):
     scores = {}
     sources_used = []
     ss = subsignals or {}
@@ -817,6 +866,11 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
         sources_used.append("HIBP")
     else:
         scores["M.2"] = 50  # No breach data ≠ good data ethics
+
+    # v1.2x Layered: fold FTC.M.2 blend into M.2
+    if ftc is not None and isinstance(ftc, dict) and ftc.get("M.2") is not None:
+        scores["M.2"] = round(scores["M.2"] * 0.9 + ftc["M.2"] * 0.1, 1)
+        if "FTC" not in sources_used: sources_used.append("FTC")
 
     # M.3 Market Ethics — SEC + EPA legal penalties (downward signal) blended with
     # Fair Trade certification (positive supply-chain evidence). Fair Trade is the
@@ -858,6 +912,28 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
     if litigation: sources_used.append("SEC")
     if epa_penalties > 0 or epa_actions > 0: sources_used.append("EPA")
 
+    # v1.2x Layered: fold EEOC.M.3_adj into M.3
+    if eeoc is not None and isinstance(eeoc, dict):
+        m3_adj = eeoc.get("M.3_adj", 0)
+        if m3_adj != 0:
+            scores["M.3"] = clamp(scores["M.3"] + m3_adj)
+            if "EEOC" not in sources_used: sources_used.append("EEOC")
+
+    # v1.2x Layered: fold pay_ratio.M.3_adj into M.3
+    if pay_ratio is not None and isinstance(pay_ratio, dict):
+        pr_adj = pay_ratio.get("M.3_adj", 0)
+        if pr_adj != 0:
+            scores["M.3"] = clamp(scores["M.3"] + pr_adj)
+        if pay_ratio.get("ratio") and "SEC DEF 14A" not in sources_used:
+            sources_used.append("SEC DEF 14A")
+
+    # v1.2x Layered: fold insider.M.3_adj into M.3
+    if insider is not None and isinstance(insider, dict):
+        ins_adj = insider.get("M.3_adj", 0)
+        if ins_adj != 0:
+            scores["M.3"] = clamp(scores["M.3"] + ins_adj)
+            if "SEC Form 4" not in sources_used: sources_used.append("SEC Form 4")
+
     # M.4 Product Ethics — CPSC recalls if available, else Glassdoor
     cpsc_m4 = ss.get("cpsc", {}).get("M.4")
     if cpsc_m4 is not None:
@@ -870,6 +946,13 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
             sources_used.append("Glassdoor")
         else:
             scores["M.4"] = 50  # No data = neutral
+
+    # v1.2x Layered: fold FDA blend into M.4
+    if fda is not None and isinstance(fda, dict):
+        fda_score = fda.get("score")
+        if fda_score is not None:
+            scores["M.4"] = round(scores["M.4"] * 0.9 + fda_score * 0.1, 1)
+            if "FDA" not in sources_used: sources_used.append("FDA")
 
     # M.5 Stakeholder Governance — B Corp legal structure is strongest (stakeholder-centric
     # fiduciary duty). 1% for the Planet is secondary (revenue-bound environmental pledge
@@ -901,11 +984,14 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
         else:
             scores["M.5"] = 50  # No data = neutral
 
-    D_M = 0.20*scores["M.1"] + 0.20*scores["M.2"] + 0.20*scores["M.3"] + 0.25*scores["M.4"] + 0.15*scores["M.5"]
+    # v1.2v UNIFORM: All 5 active sub-signals weighted equally at 0.20.
+    # Was 0.20/0.20/0.20/0.25/0.15. Adjustments (FTC, EEOC, FDA, pay ratio,
+    # insider, AHI penalty, HD penalty) apply downstream.
+    D_M = 0.20*scores["M.1"] + 0.20*scores["M.2"] + 0.20*scores["M.3"] + 0.20*scores["M.4"] + 0.20*scores["M.5"]
     return round_score(D_M), scores, list(set(sources_used))
 
 
-def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None, ticker=None, company_name=None):
+def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None, ticker=None, company_name=None, sbti=None):
     scores = {}
     sources_used = []
     ss = subsignals or {}
@@ -942,6 +1028,13 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None, tick
                     "healthcare": 55, "retail": 50, "food": 55, "media": 60,
                     "telecom": 45, "defense": 40, "auto": 40, "default": 50}
         scores["A.1"] = defaults.get(industry, 50)
+
+    # v1.2x Layered: fold SBTi.A.1_adj into A.1
+    if sbti is not None and isinstance(sbti, dict):
+        a1_adj = sbti.get("A.1_adj", 0)
+        if a1_adj != 0:
+            scores["A.1"] = clamp(scores["A.1"] + a1_adj)
+            if "SBTi" not in sources_used: sources_used.append("SBTi")
 
     # A.2 Water — CDP water
     if cdp_a.get("cdp_water_score") is not None:
@@ -1012,11 +1105,13 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None, tick
             hw_defaults = {"tech": 40, "telecom": 45, "manufacturing": 50, "default": 55}
             scores["A.4"] = hw_defaults.get(industry, 55)
 
-    D_A = 0.30*scores["A.1"] + 0.25*scores["A.2"] + 0.20*scores["A.3"] + 0.25*scores["A.4"]
+    # v1.2v UNIFORM: All 4 active sub-signals weighted equally at 0.25.
+    # Was 0.30/0.25/0.20/0.25. SBTi bonus applies downstream.
+    D_A = 0.25*scores["A.1"] + 0.25*scores["A.2"] + 0.25*scores["A.3"] + 0.25*scores["A.4"]
     return round_score(D_A), scores, list(set(sources_used))
 
 
-def score_n_dimension(sec_n, cdp_data, epa_data, industry):
+def score_n_dimension(sec_n, cdp_data, epa_data, industry, gri=None):
     scores = {}
     sources_used = []
     # v1.0.2 removed N.1 (Narrative Integrity), N.3 (Stakeholder Engagement), N.4 (Narrative Courage).
@@ -1037,6 +1132,13 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry):
     else:
         scores["N.2"] = 50
 
+    # v1.2x Layered: fold GRI.N.2_adj into N.2
+    if gri is not None and isinstance(gri, dict):
+        n2_adj = gri.get("N.2_adj", 0)
+        if n2_adj != 0:
+            scores["N.2"] = clamp(scores["N.2"] + n2_adj)
+            if "GRI" not in sources_used: sources_used.append("GRI")
+
     total_filings = sec_n.get("total_recent_filings", 0)
     if total_filings >= 8: scores["N.5"] = 90
     elif total_filings >= 5: scores["N.5"] = 75
@@ -1053,12 +1155,12 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry):
     if "Large Accelerated" in str(sec_n.get("category", "")):
         scores["N.5"] = min(100, scores["N.5"] + 5)
 
-    # v1.0.2 renormalization: N.1, N.3, N.4 removed. Weights scaled from
-    # {N.2:0.20, N.5:0.15} total 0.35 → /0.35 to sum to 1.00.
-    # NOTE: N dimension now heavily depends on just two signals. Pass 3 rubric
-    # authoring should consider whether D_N needs additional grounded signals
-    # (e.g., DSA transparency, 12b-25 late filings per API_SHOPPING_LIST T1.1, T1.3).
-    D_N = 0.571*scores["N.2"] + 0.429*scores["N.5"]
+    # v1.2v UNIFORM: 2 active sub-signals weighted equally at 0.50.
+    # Was 0.571/0.429. GRI bonus, AHI penalty apply downstream.
+    # NOTE: N dimension still depends on just two grounded signals (N.2, N.5).
+    # Three sub-signals deferred to v1.2 (N.1, N.3, N.4). Future pass should
+    # add DSA transparency, 12b-25 late filings per API_SHOPPING_LIST T1.1, T1.3.
+    D_N = 0.50*scores["N.2"] + 0.50*scores["N.5"]
     return round_score(D_N), scores, sources_used
 
 
@@ -1303,14 +1405,10 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
     sec_n = sec_data.get("n_signals", {}) if sec_data else {}
     sec_u = sec_data.get("u_signals", {}) if sec_data else {}
 
-    D_H, h_detail, h_src = score_h_dimension(sec_h, job_data, bls_data, industry)
-    D_U, u_detail, u_src = score_u_dimension(sec_u, glassdoor_data, industry, ss, ticker=ticker, company_name=company_name)
-    D_M, m_detail, m_src = score_m_dimension(sec_m, epa_data, glassdoor_data, industry, ss, ticker=ticker, company_name=company_name)
-    D_A, a_detail, a_src = score_a_dimension(sec_data.get("a_signals", {}) if sec_data else {}, epa_data, cdp_data, industry, ss, ticker=ticker, company_name=company_name)
-    D_N, n_detail, n_src = score_n_dimension(sec_n, cdp_data, epa_data, industry)
-
-    # ═══ EXTENDED SIGNALS (sources 23-34) ═══
-    # Load extended pipeline data and apply adjustments
+    # ═══ v1.2x LAYERED SCORING — Load ext BEFORE dimension calls ═══
+    # Weak-source blends (OSHA, DOL, BBB, FTC, FDA, EEOC, USPTO, pay ratio,
+    # insider, GRI, SBTi) are passed INTO their target sub-signal functions.
+    # Cross-cutting modifiers (AHI, HD) remain applied AT DIMENSION LEVEL below.
     ext = {}
     if ticker:
         try:
@@ -1320,70 +1418,38 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
                 ext = all_ext.get(ticker.upper(), {})
         except:
             pass
-    
-    if ext:
-        # OSHA → U.2 blend
-        osha_score = ext.get("osha", {}).get("score")
-        if osha_score is not None:
-            D_U = round_score(D_U * 0.85 + osha_score * 0.15)
-            if "OSHA" not in n_src: n_src.append("OSHA")
-        
-        # DOL wages → U.2 blend
-        dol_score = ext.get("dol", {}).get("score")
-        if dol_score is not None:
-            D_U = round_score(D_U * 0.9 + dol_score * 0.1)
-            if "DOL" not in n_src: n_src.append("DOL")
-        
-        # BBB → U.1 blend (into U dimension)
-        bbb_score = ext.get("bbb", {}).get("score")
-        if bbb_score is not None:
-            D_U = round_score(D_U * 0.9 + bbb_score * 0.1)
-            if "BBB" not in n_src: n_src.append("BBB")
-        
-        # FTC → M.2 only (N.4 removed in v1.0.2; deceptive-practices signal deferred to Pass 3)
-        ftc = ext.get("ftc", {})
-        if ftc.get("M.2") is not None:
-            D_M = round_score(D_M * 0.9 + ftc["M.2"] * 0.1)
-            if "FTC" not in n_src: n_src.append("FTC")
-        
-        # EEOC → U.2 + M.3 adjustments
-        eeoc = ext.get("eeoc", {})
-        D_U = clamp(D_U + eeoc.get("U.2_adj", 0))
-        D_M = clamp(D_M + eeoc.get("M.3_adj", 0))
-        if eeoc.get("U.2_adj", 0) != 0 and "EEOC" not in n_src: n_src.append("EEOC")
-        
-        # USPTO patents → H.3 + H.5 adjustments
-        patents = ext.get("patents", {})
-        D_H = clamp(D_H + patents.get("H.3_adj", 0) + patents.get("H.5_adj", 0))
-        if patents.get("H.3_adj", 0) != 0 and "USPTO" not in n_src: n_src.append("USPTO")
-        
-        # FDA → M.4 blend
-        fda_score = ext.get("fda", {}).get("score")
-        if fda_score is not None:
-            D_M = round_score(D_M * 0.9 + fda_score * 0.1)
-            if "FDA" not in n_src: n_src.append("FDA")
-        
-        # Pay ratio → M.3 only (H.4 removed in v1.0.2; H.4_adj no longer applied)
-        # Pay ratio as H-dimension signal deferred to Pass 3 rubric authoring.
-        pay = ext.get("pay_ratio", {})
-        D_M = clamp(D_M + pay.get("M.3_adj", 0))
-        if pay.get("ratio") and "SEC DEF 14A" not in n_src: n_src.append("SEC DEF 14A")
-        
-        # Insider trading → M.3
-        D_M = clamp(D_M + ext.get("insider", {}).get("M.3_adj", 0))
-        if ext.get("insider", {}).get("M.3_adj", 0) != 0 and "SEC Form 4" not in n_src: n_src.append("SEC Form 4")
-        
-        # GRI → N.2
-        D_N = clamp(D_N + ext.get("gri", {}).get("N.2_adj", 0))
-        if ext.get("gri", {}).get("N.2_adj", 0) != 0 and "GRI" not in n_src: n_src.append("GRI")
-        
-        # SBTi → A.1
-        D_A = clamp(D_A + ext.get("sbti", {}).get("A.1_adj", 0))
-        if ext.get("sbti", {}).get("A.1_adj", 0) != 0 and "SBTi" not in n_src: n_src.append("SBTi")
-        
-        # Charity adjustment removed in v1.0.2 — U.5 removed, and charity pipeline
-        # uses editorial curator labels ("high"/"medium"/"low"/"none") per Pass 2A.
-        # Will be reintroduced post-Pass-3 if grounded moral-courage signal exists.
+
+    D_H, h_detail, h_src = score_h_dimension(
+        sec_h, job_data, bls_data, industry,
+        patents=ext.get("patents"))
+    D_U, u_detail, u_src = score_u_dimension(
+        sec_u, glassdoor_data, industry, ss,
+        ticker=ticker, company_name=company_name,
+        osha=ext.get("osha"),
+        dol=ext.get("dol"),
+        bbb=ext.get("bbb"),
+        eeoc=ext.get("eeoc"))
+    D_M, m_detail, m_src = score_m_dimension(
+        sec_m, epa_data, glassdoor_data, industry, ss,
+        ticker=ticker, company_name=company_name,
+        ftc=ext.get("ftc"),
+        eeoc=ext.get("eeoc"),
+        fda=ext.get("fda"),
+        pay_ratio=ext.get("pay_ratio"),
+        insider=ext.get("insider"))
+    D_A, a_detail, a_src = score_a_dimension(
+        sec_data.get("a_signals", {}) if sec_data else {},
+        epa_data, cdp_data, industry, ss,
+        ticker=ticker, company_name=company_name,
+        sbti=ext.get("sbti"))
+    D_N, n_detail, n_src = score_n_dimension(
+        sec_n, cdp_data, epa_data, industry,
+        gri=ext.get("gri"))
+
+    # v1.2x Layered: weak-blend adjustment block removed — folded into sub-signals.
+    # Charity adjustment removed in v1.0.2 — U.5 removed, charity uses editorial
+    # curator labels per Pass 2A. Will be reintroduced post-Pass-3 if grounded
+    # moral-courage signal exists.
     
     # ═══ ALGORITHMIC HARM INDEX — Cross-cutting penalty ═══
     algo_harm = compute_algo_harm(ticker)
