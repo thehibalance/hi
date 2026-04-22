@@ -1,5 +1,730 @@
 {
-  "additions": [],
-  "removals": [],
-  "rank_changes": []
+  "additions": [
+    {
+      "ticker": "INTC",
+      "company": "INTEL CORP",
+      "rank": 7,
+      "composite": 65
+    },
+    {
+      "ticker": "GIS",
+      "company": "GENERAL MILLS INC",
+      "rank": 12,
+      "composite": 63
+    },
+    {
+      "ticker": "BMY",
+      "company": "BRISTOL MYERS SQUIBB CO",
+      "rank": 19,
+      "composite": 62
+    },
+    {
+      "ticker": "LLY",
+      "company": "ELI LILLY & Co",
+      "rank": 24,
+      "composite": 62
+    },
+    {
+      "ticker": "ALL",
+      "company": "ALLSTATE CORP",
+      "rank": 36,
+      "composite": 61
+    },
+    {
+      "ticker": "ABBV",
+      "company": "AbbVie Inc.",
+      "rank": 40,
+      "composite": 61
+    },
+    {
+      "ticker": "BBY",
+      "company": "BEST BUY CO INC",
+      "rank": 42,
+      "composite": 61
+    },
+    {
+      "ticker": "BLK",
+      "company": "BlackRock, Inc.",
+      "rank": 44,
+      "composite": 61
+    },
+    {
+      "ticker": "CMG",
+      "company": "CHIPOTLE MEXICAN GRILL INC",
+      "rank": 45,
+      "composite": 61
+    },
+    {
+      "ticker": "HUM",
+      "company": "HUMANA INC",
+      "rank": 54,
+      "composite": 61
+    },
+    {
+      "ticker": "MAR",
+      "company": "MARRIOTT INTERNATIONAL INC /MD/",
+      "rank": 56,
+      "composite": 61
+    },
+    {
+      "ticker": "APD",
+      "company": "Air Products & Chemicals, Inc.",
+      "rank": 71,
+      "composite": 60
+    },
+    {
+      "ticker": "STZ",
+      "company": "CONSTELLATION BRANDS, INC.",
+      "rank": 74,
+      "composite": 60
+    },
+    {
+      "ticker": "IDXX",
+      "company": "IDEXX LABORATORIES INC /DE",
+      "rank": 81,
+      "composite": 60
+    },
+    {
+      "ticker": "MET",
+      "company": "METLIFE INC",
+      "rank": 88,
+      "composite": 60
+    },
+    {
+      "ticker": "ABT",
+      "company": "ABBOTT LABORATORIES",
+      "rank": 96,
+      "composite": 59
+    }
+  ],
+  "removals": [
+    {
+      "ticker": "CME",
+      "company": "CME GROUP INC.",
+      "old_rank": 85
+    },
+    {
+      "ticker": "CPRT",
+      "company": "COPART INC",
+      "old_rank": 86
+    },
+    {
+      "ticker": "FE",
+      "company": "FIRSTENERGY CORP",
+      "old_rank": 87
+    },
+    {
+      "ticker": "GE",
+      "company": "GENERAL ELECTRIC CO",
+      "old_rank": 88
+    },
+    {
+      "ticker": "MKC",
+      "company": "MCCORMICK & CO INC",
+      "old_rank": 89
+    },
+    {
+      "ticker": "MCO",
+      "company": "MOODYS CORP /DE/",
+      "old_rank": 90
+    },
+    {
+      "ticker": "MDLZ",
+      "company": "Mondelez International, Inc.",
+      "old_rank": 91
+    },
+    {
+      "ticker": "MDB",
+      "company": "MongoDB, Inc.",
+      "old_rank": 92
+    },
+    {
+      "ticker": "PKG",
+      "company": "PACKAGING CORP OF AMERICA",
+      "old_rank": 93
+    },
+    {
+      "ticker": "LUV",
+      "company": "SOUTHWEST AIRLINES CO",
+      "old_rank": 94
+    },
+    {
+      "ticker": "TRV",
+      "company": "TRAVELERS COMPANIES, INC.",
+      "old_rank": 95
+    },
+    {
+      "ticker": "TT",
+      "company": "Trane Technologies plc",
+      "old_rank": 96
+    },
+    {
+      "ticker": "VMC",
+      "company": "Vulcan Materials CO",
+      "old_rank": 97
+    },
+    {
+      "ticker": "WEC",
+      "company": "WEC ENERGY GROUP, INC.",
+      "old_rank": 98
+    },
+    {
+      "ticker": "XEL",
+      "company": "XCEL ENERGY INC",
+      "old_rank": 99
+    },
+    {
+      "ticker": "CHTR",
+      "company": "CHARTER COMMUNICATIONS, INC. /MO/",
+      "old_rank": 100
+    }
+  ],
+  "rank_changes": [
+    {
+      "ticker": "AIG",
+      "company": "AMERICAN INTERNATIONAL GROUP, INC.",
+      "old_rank": 81,
+      "new_rank": 97,
+      "delta": -16
+    },
+    {
+      "ticker": "ADI",
+      "company": "ANALOG DEVICES INC",
+      "old_rank": 82,
+      "new_rank": 98,
+      "delta": -16
+    },
+    {
+      "ticker": "ABNB",
+      "company": "Airbnb, Inc.",
+      "old_rank": 83,
+      "new_rank": 99,
+      "delta": -16
+    },
+    {
+      "ticker": "BILL",
+      "company": "BILL Holdings, Inc.",
+      "old_rank": 84,
+      "new_rank": 100,
+      "delta": -16
+    },
+    {
+      "ticker": "PH",
+      "company": "Parker-Hannifin Corp",
+      "old_rank": 74,
+      "new_rank": 89,
+      "delta": -15
+    },
+    {
+      "ticker": "SRE",
+      "company": "SEMPRA",
+      "old_rank": 75,
+      "new_rank": 90,
+      "delta": -15
+    },
+    {
+      "ticker": "SWK",
+      "company": "STANLEY BLACK & DECKER, INC.",
+      "old_rank": 76,
+      "new_rank": 91,
+      "delta": -15
+    },
+    {
+      "ticker": "VRSK",
+      "company": "Verisk Analytics, Inc.",
+      "old_rank": 77,
+      "new_rank": 92,
+      "delta": -15
+    },
+    {
+      "ticker": "ZG",
+      "company": "ZILLOW GROUP, INC.",
+      "old_rank": 78,
+      "new_rank": 93,
+      "delta": -15
+    },
+    {
+      "ticker": "ZTS",
+      "company": "Zoetis Inc.",
+      "old_rank": 79,
+      "new_rank": 94,
+      "delta": -15
+    },
+    {
+      "ticker": "ZS",
+      "company": "Zscaler, Inc.",
+      "old_rank": 80,
+      "new_rank": 95,
+      "delta": -15
+    },
+    {
+      "ticker": "ITW",
+      "company": "ILLINOIS TOOL WORKS INC",
+      "old_rank": 68,
+      "new_rank": 82,
+      "delta": -14
+    },
+    {
+      "ticker": "IFF",
+      "company": "INTERNATIONAL FLAVORS & FRAGRANCES INC",
+      "old_rank": 69,
+      "new_rank": 83,
+      "delta": -14
+    },
+    {
+      "ticker": "ISRG",
+      "company": "INTUITIVE SURGICAL INC",
+      "old_rank": 70,
+      "new_rank": 84,
+      "delta": -14
+    },
+    {
+      "ticker": "IR",
+      "company": "Ingersoll Rand Inc.",
+      "old_rank": 71,
+      "new_rank": 85,
+      "delta": -14
+    },
+    {
+      "ticker": "LOW",
+      "company": "LOWES COMPANIES INC",
+      "old_rank": 72,
+      "new_rank": 86,
+      "delta": -14
+    },
+    {
+      "ticker": "MCK",
+      "company": "MCKESSON CORP",
+      "old_rank": 73,
+      "new_rank": 87,
+      "delta": -14
+    },
+    {
+      "ticker": "CE",
+      "company": "Celanese Corp",
+      "old_rank": 62,
+      "new_rank": 75,
+      "delta": -13
+    },
+    {
+      "ticker": "CB",
+      "company": "Chubb Ltd",
+      "old_rank": 63,
+      "new_rank": 76,
+      "delta": -13
+    },
+    {
+      "ticker": "DHR",
+      "company": "DANAHER CORP /DE/",
+      "old_rank": 64,
+      "new_rank": 77,
+      "delta": -13
+    },
+    {
+      "ticker": "DXCM",
+      "company": "DEXCOM INC",
+      "old_rank": 65,
+      "new_rank": 78,
+      "delta": -13
+    },
+    {
+      "ticker": "ES",
+      "company": "EVERSOURCE ENERGY",
+      "old_rank": 66,
+      "new_rank": 79,
+      "delta": -13
+    },
+    {
+      "ticker": "HUBS",
+      "company": "HUBSPOT INC",
+      "old_rank": 67,
+      "new_rank": 80,
+      "delta": -13
+    },
+    {
+      "ticker": "CARR",
+      "company": "CARRIER GLOBAL Corp",
+      "old_rank": 60,
+      "new_rank": 72,
+      "delta": -12
+    },
+    {
+      "ticker": "CAG",
+      "company": "CONAGRA BRANDS INC.",
+      "old_rank": 61,
+      "new_rank": 73,
+      "delta": -12
+    },
+    {
+      "ticker": "ODFL",
+      "company": "OLD DOMINION FREIGHT LINE, INC.",
+      "old_rank": 46,
+      "new_rank": 57,
+      "delta": -11
+    },
+    {
+      "ticker": "PRU",
+      "company": "PRUDENTIAL FINANCIAL INC",
+      "old_rank": 47,
+      "new_rank": 58,
+      "delta": -11
+    },
+    {
+      "ticker": "PEG",
+      "company": "PUBLIC SERVICE ENTERPRISE GROUP INC",
+      "old_rank": 48,
+      "new_rank": 59,
+      "delta": -11
+    },
+    {
+      "ticker": "REGN",
+      "company": "REGENERON PHARMACEUTICALS, INC.",
+      "old_rank": 49,
+      "new_rank": 60,
+      "delta": -11
+    },
+    {
+      "ticker": "RSG",
+      "company": "REPUBLIC SERVICES, INC.",
+      "old_rank": 50,
+      "new_rank": 61,
+      "delta": -11
+    },
+    {
+      "ticker": "ROST",
+      "company": "ROSS STORES, INC.",
+      "old_rank": 51,
+      "new_rank": 62,
+      "delta": -11
+    },
+    {
+      "ticker": "SPGI",
+      "company": "S&P Global Inc.",
+      "old_rank": 52,
+      "new_rank": 63,
+      "delta": -11
+    },
+    {
+      "ticker": "SLB",
+      "company": "SLB LIMITED/NV",
+      "old_rank": 53,
+      "new_rank": 64,
+      "delta": -11
+    },
+    {
+      "ticker": "SO",
+      "company": "SOUTHERN CO",
+      "old_rank": 54,
+      "new_rank": 65,
+      "delta": -11
+    },
+    {
+      "ticker": "SYK",
+      "company": "STRYKER CORP",
+      "old_rank": 55,
+      "new_rank": 66,
+      "delta": -11
+    },
+    {
+      "ticker": "SNOW",
+      "company": "Snowflake Inc.",
+      "old_rank": 56,
+      "new_rank": 67,
+      "delta": -11
+    },
+    {
+      "ticker": "WM",
+      "company": "WASTE MANAGEMENT INC",
+      "old_rank": 57,
+      "new_rank": 68,
+      "delta": -11
+    },
+    {
+      "ticker": "ZM",
+      "company": "Zoom Communications, Inc.",
+      "old_rank": 58,
+      "new_rank": 69,
+      "delta": -11
+    },
+    {
+      "ticker": "AEP",
+      "company": "AMERICAN ELECTRIC POWER CO INC",
+      "old_rank": 59,
+      "new_rank": 70,
+      "delta": -11
+    },
+    {
+      "ticker": "LIN",
+      "company": "LINDE PLC",
+      "old_rank": 45,
+      "new_rank": 55,
+      "delta": -10
+    },
+    {
+      "ticker": "CSCO",
+      "company": "CISCO SYSTEMS, INC.",
+      "old_rank": 37,
+      "new_rank": 46,
+      "delta": -9
+    },
+    {
+      "ticker": "ED",
+      "company": "CONSOLIDATED EDISON INC",
+      "old_rank": 38,
+      "new_rank": 47,
+      "delta": -9
+    },
+    {
+      "ticker": "CMI",
+      "company": "CUMMINS INC",
+      "old_rank": 39,
+      "new_rank": 48,
+      "delta": -9
+    },
+    {
+      "ticker": "DAL",
+      "company": "DELTA AIR LINES, INC.",
+      "old_rank": 40,
+      "new_rank": 49,
+      "delta": -9
+    },
+    {
+      "ticker": "D",
+      "company": "DOMINION ENERGY, INC",
+      "old_rank": 41,
+      "new_rank": 50,
+      "delta": -9
+    },
+    {
+      "ticker": "DOV",
+      "company": "DOVER Corp",
+      "old_rank": 42,
+      "new_rank": 51,
+      "delta": -9
+    },
+    {
+      "ticker": "EW",
+      "company": "Edwards Lifesciences Corp",
+      "old_rank": 43,
+      "new_rank": 52,
+      "delta": -9
+    },
+    {
+      "ticker": "FTNT",
+      "company": "Fortinet, Inc.",
+      "old_rank": 44,
+      "new_rank": 53,
+      "delta": -9
+    },
+    {
+      "ticker": "BSX",
+      "company": "BOSTON SCIENTIFIC CORP",
+      "old_rank": 36,
+      "new_rank": 43,
+      "delta": -7
+    },
+    {
+      "ticker": "AWK",
+      "company": "American Water Works Company, Inc.",
+      "old_rank": 35,
+      "new_rank": 41,
+      "delta": -6
+    },
+    {
+      "ticker": "AEE",
+      "company": "AMEREN CORP",
+      "old_rank": 32,
+      "new_rank": 37,
+      "delta": -5
+    },
+    {
+      "ticker": "ATO",
+      "company": "ATMOS ENERGY CORP",
+      "old_rank": 33,
+      "new_rank": 38,
+      "delta": -5
+    },
+    {
+      "ticker": "AZO",
+      "company": "AUTOZONE INC",
+      "old_rank": 34,
+      "new_rank": 39,
+      "delta": -5
+    },
+    {
+      "ticker": "EMR",
+      "company": "EMERSON ELECTRIC CO",
+      "old_rank": 21,
+      "new_rank": 25,
+      "delta": -4
+    },
+    {
+      "ticker": "EXC",
+      "company": "EXELON CORP",
+      "old_rank": 22,
+      "new_rank": 26,
+      "delta": -4
+    },
+    {
+      "ticker": "HAL",
+      "company": "HALLIBURTON CO",
+      "old_rank": 23,
+      "new_rank": 27,
+      "delta": -4
+    },
+    {
+      "ticker": "IRM",
+      "company": "IRON MOUNTAIN INC",
+      "old_rank": 24,
+      "new_rank": 28,
+      "delta": -4
+    },
+    {
+      "ticker": "JCI",
+      "company": "Johnson Controls International plc",
+      "old_rank": 25,
+      "new_rank": 29,
+      "delta": -4
+    },
+    {
+      "ticker": "LVS",
+      "company": "LAS VEGAS SANDS CORP",
+      "old_rank": 26,
+      "new_rank": 30,
+      "delta": -4
+    },
+    {
+      "ticker": "MCD",
+      "company": "McDonald",
+      "old_rank": 27,
+      "new_rank": 31,
+      "delta": -4
+    },
+    {
+      "ticker": "PPG",
+      "company": "PPG INDUSTRIES INC",
+      "old_rank": 28,
+      "new_rank": 32,
+      "delta": -4
+    },
+    {
+      "ticker": "TJX",
+      "company": "TJX COMPANIES INC /DE/",
+      "old_rank": 29,
+      "new_rank": 33,
+      "delta": -4
+    },
+    {
+      "ticker": "WYNN",
+      "company": "WYNN RESORTS LTD",
+      "old_rank": 30,
+      "new_rank": 34,
+      "delta": -4
+    },
+    {
+      "ticker": "YUM",
+      "company": "YUM BRANDS INC",
+      "old_rank": 31,
+      "new_rank": 35,
+      "delta": -4
+    },
+    {
+      "ticker": "CLX",
+      "company": "CLOROX CO /DE/",
+      "old_rank": 17,
+      "new_rank": 20,
+      "delta": -3
+    },
+    {
+      "ticker": "NET",
+      "company": "Cloudflare, Inc.",
+      "old_rank": 18,
+      "new_rank": 21,
+      "delta": -3
+    },
+    {
+      "ticker": "DDOG",
+      "company": "Datadog, Inc.",
+      "old_rank": 19,
+      "new_rank": 22,
+      "delta": -3
+    },
+    {
+      "ticker": "ECL",
+      "company": "ECOLAB INC.",
+      "old_rank": 20,
+      "new_rank": 23,
+      "delta": -3
+    },
+    {
+      "ticker": "HCA",
+      "company": "HCA Healthcare, Inc.",
+      "old_rank": 11,
+      "new_rank": 13,
+      "delta": -2
+    },
+    {
+      "ticker": "MDT",
+      "company": "Medtronic plc",
+      "old_rank": 12,
+      "new_rank": 14,
+      "delta": -2
+    },
+    {
+      "ticker": "NCLH",
+      "company": "Norwegian Cruise Line Holdings Ltd.",
+      "old_rank": 13,
+      "new_rank": 15,
+      "delta": -2
+    },
+    {
+      "ticker": "RCL",
+      "company": "ROYAL CARIBBEAN CRUISES LTD",
+      "old_rank": 14,
+      "new_rank": 16,
+      "delta": -2
+    },
+    {
+      "ticker": "TFC",
+      "company": "TRUIST FINANCIAL CORP",
+      "old_rank": 15,
+      "new_rank": 17,
+      "delta": -2
+    },
+    {
+      "ticker": "AAL",
+      "company": "American Airlines Group Inc.",
+      "old_rank": 16,
+      "new_rank": 18,
+      "delta": -2
+    },
+    {
+      "ticker": "PEP",
+      "company": "PepsiCo, Inc.",
+      "old_rank": 7,
+      "new_rank": 8,
+      "delta": -1
+    },
+    {
+      "ticker": "PNC",
+      "company": "PNC FINANCIAL SERVICES GROUP, INC.",
+      "old_rank": 8,
+      "new_rank": 9,
+      "delta": -1
+    },
+    {
+      "ticker": "CCL",
+      "company": "CARNIVAL CORP",
+      "old_rank": 9,
+      "new_rank": 10,
+      "delta": -1
+    },
+    {
+      "ticker": "CTAS",
+      "company": "CINTAS CORP",
+      "old_rank": 10,
+      "new_rank": 11,
+      "delta": -1
+    }
+  ]
 }
