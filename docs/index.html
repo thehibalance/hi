@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- v1.4-methodology-cleanup: applied 20260422-142750 -->
 <!-- v1.3-human-decline: applied
 20260422-123859 -->
 <meta charset="utf-8">
@@ -701,14 +702,14 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div style="margin-top:16px;padding-top:14px;border-top:1px solid #E5E7EB;text-align:center"><a href="https://github.com/thehibalance/hi/blob/main/RUBRIC.md" target="_blank" style="font-size:13px;color:var(--navy);font-weight:600;text-decoration:none">📖 View RUBRIC.md on GitHub →</a></div>
 </div>
 
-<h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 16px">The four harm detection systems</h2>
-<p style="color:#444;line-height:1.7;margin-bottom:16px">HI Grade applies four harm-detection systems, all flowing into dimension scores (no separate gates):</p>
+<h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 16px">The three harm detection systems</h2>
+<p style="color:#444;line-height:1.7;margin-bottom:16px">HI Grade applies three harm-detection systems, all flowing into dimension scores (no separate gates):</p>
 
 <div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:20px;margin-bottom:14px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">Humanwashing™ (HW)</div><div style="font-size:13px;color:#555;line-height:1.6">Selling human craft while operating algorithmically. Detected via revenue-per-employee anomalies (4×+ industry median) and AI-replaces-disclosure mismatches. Penalizes H.1.</div></div>
 
 <div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:20px;margin-bottom:14px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">Algorithmic Harm Index™ (AHI)</div><div style="font-size:13px;color:#555;line-height:1.6">Measures algorithmic decision-making at scale. A bank's credit algorithm affects one person at a time. A social media moderation algorithm affects billions. AHI adjusts for blast radius. Penalizes M.3, U.4.</div></div>
 
-<div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:20px;margin-bottom:14px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">Product Harm Index (PHI)</div><div style="font-size:13px;color:#555;line-height:1.6">Physical or digital product safety failures. CPSC recalls, FDA warning letters, NHTSA investigations, HIBP breaches, EPA violations. Penalizes M.4.</div></div>
+<div style="background:#F8FAFC;border:1px dashed var(--light);border-radius:12px;padding:16px 20px;margin-bottom:14px"><div style="font-size:11px;color:var(--muted);letter-spacing:1.5px;font-weight:700;margin-bottom:6px">ARCHITECTURE NOTE</div><div style="font-size:13px;color:#555;line-height:1.6"><strong>What happened to the Product Harm Index (PHI)?</strong><br>In v1.2 we folded product safety signals directly into <strong>M.4 (Product Ethics)</strong> as sub-signal inputs — CPSC recalls, FDA warning letters, NHTSA investigations, HIBP breaches, EPA violations — rather than maintaining them as a separate index. Signals are unchanged; architecture is simpler and more traceable.</div></div>
 
 <div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:20px;margin-bottom:24px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">Harm Documentation (HD)</div><div style="font-size:13px;color:#555;line-height:1.6">Public-record harm: court settlements, attributed deaths, concealment findings. Anchored to DOJ/SEC/state AG records, CDC/NIH attribution data, court findings. Penalizes M.3 + M.4 directly.</div></div>
 
@@ -758,6 +759,44 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <p style="color:#444;line-height:1.7;margin-bottom:10px"><strong>No single source can move a sub-signal score by more than 15 points.</strong> If one CFPB report would change U.1 by 30 points, the impact is capped at 15. The remaining movement requires a corroborating source.</p>
 <p style="color:#444;line-height:1.7;margin:0;font-style:italic">This prevents a single bad data point — or a coordinated gaming attempt — from poisoning a score. The cap exists because we trust no source completely, including ourselves.</p>
 </div>
+
+<h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 12px">Verify any score yourself</h2>
+<p style="color:#444;line-height:1.7;margin-bottom:16px">Every HI Grade is reconstructable from public data. The API returns every sub-signal value, every source, every penalty applied. No black boxes.</p>
+
+<div class="about-card" style="margin-bottom:14px;background:#0F172A;border:none;color:#E2E8F0;font-family:'DM Mono',monospace">
+<div style="font-size:11px;color:#94A3B8;letter-spacing:2px;margin-bottom:8px">TRY IT</div>
+<div style="font-size:13px;color:#22D3EE;word-break:break-all">curl https://api.thehibalance.org/api/v1/score/ticker/JNJ</div>
+</div>
+
+<p style="color:#444;line-height:1.7;margin-bottom:14px">The response contains the full breakdown:</p>
+<ul style="color:#444;line-height:1.8;padding-left:24px;margin-bottom:14px">
+<li>19 sub-signal scores with linked sources</li>
+<li>5 dimension aggregates with the math</li>
+<li>AHI components (if applicable) — <code style="background:#F3F4F6;padding:2px 6px;border-radius:4px;font-size:12px">division / addiction / manipulation / transparency / human_override</code></li>
+<li>HD rubric (if applicable) — settlements USD, deaths attributed, concealment findings, source URLs</li>
+<li>Composite score with the formula used</li>
+<li>Confidence level, coverage, and spec version</li>
+</ul>
+
+<p style="color:#444;line-height:1.7;margin-bottom:20px">The entire pipeline source is on <a href="https://github.com/thehibalance/hi" target="_blank" style="color:var(--navy);font-weight:600">GitHub</a> under Apache 2.0. Run it yourself. Get the same answer. <strong>That's the point.</strong></p>
+
+<h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 12px">How to dispute a score</h2>
+<p style="color:#444;line-height:1.7;margin-bottom:16px">HI Grade is estimated from public data. Sometimes public data is wrong, or missing, or misattributed. When that happens, the score is wrong. We fix it.</p>
+
+<div class="about-card" style="margin-bottom:14px">
+<ol style="color:#444;line-height:1.9;padding-left:24px;margin:0">
+<li><strong>Verify via API.</strong> Pull the current response (above) and identify which sub-signal you're disputing.</li>
+<li><strong>Find the public-record source</strong> supporting your correction. We require a citable source — press releases and internal data don't qualify.</li>
+<li><strong>Email <a href="mailto:hi@thehibalance.org" style="color:var(--navy);font-weight:600">hi@thehibalance.org</a></strong> with subject <code style="background:#F3F4F6;padding:2px 6px;border-radius:4px;font-size:12px">[SCORE-CHALLENGE] TICKER</code> and include: sub-signal, current value, proposed value, citation URL.</li>
+<li><strong>We verify against the public record.</strong> If the data is wrong, we fix it within 5 business days. Fix deploys with the next pipeline run.</li>
+</ol>
+</div>
+
+<p style="color:#444;line-height:1.7;margin-bottom:20px;font-style:italic"><strong>What we don't do:</strong> remove unflattering scores on request. A score based on verified public data stays. If you disagree with the methodology, the <a href="https://github.com/thehibalance/hi" target="_blank" style="color:var(--navy);font-weight:600">source is open</a> — propose a better rubric.</p>
+
+<h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 12px">Report a security issue</h2>
+<p style="color:#444;line-height:1.7;margin-bottom:16px">Found a security vulnerability? <strong>Don't open a public GitHub issue.</strong> Email <a href="mailto:hi@thehibalance.org" style="color:var(--navy);font-weight:600">hi@thehibalance.org</a> with subject <code style="background:#F3F4F6;padding:2px 6px;border-radius:4px;font-size:12px">[SECURITY]</code> and a description of the issue.</p>
+<p style="color:#444;line-height:1.7;margin-bottom:20px">Full scope, acknowledgement timelines, and what we care about: <a href="https://github.com/thehibalance/hi/blob/main/SECURITY.md" target="_blank" style="color:var(--navy);font-weight:600">SECURITY.md</a> on GitHub.</p>
 
 <h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 12px">Known Limitations</h2>
 <p style="color:#444;line-height:1.7;margin-bottom:20px">A transparency framework that hides its own limitations is hypocritical. Every limitation below is tracked and has a path forward. The math decides — and when the math is incomplete, we say so.</p>
@@ -960,7 +999,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 
 <!-- KNOWN GAPS PAGE -->
 
-<footer><div class="footer-brand" onclick="showPage('home')" style="cursor:pointer"><img src="/logo-512-white.png" alt="hi." style="height:36px;width:auto"></div><div class="footer-tagline">Human kind?</div><div class="footer-links"><span class="footer-link" onclick="showPage('methodology')">Methodology</span><span class="footer-link" onclick="showPage('sources')">Sources</span><span class="footer-link" onclick="showPage('about')">About</span><span class="footer-link" onclick="showPage('contact')">Say hi</span><a class="footer-link" href="https://github.com/thehibalance/hi" target="_blank">GitHub</a><a class="footer-link" href="privacy.html" target="_blank">Privacy</a></div><div class="footer-info">The HI Balance · thehibalance.org · Patent Pending · HI Grade™ · Humanwashing™ · Algorithmic Harm Index™ · Morf Innovations LLC</div><div class="footer-disclaimer">The Balanced Board requires all five HUMAN dimensions to score 60 or higher with verified public data on each. Scores are estimated from public data. Not financial or legal advice.</div></footer>
+<footer><div class="footer-brand" onclick="showPage('home')" style="cursor:pointer"><img src="/logo-512-white.png" alt="hi." style="height:36px;width:auto"></div><div class="footer-tagline">Human kind?</div><div class="footer-links"><span class="footer-link" onclick="showPage('methodology')">Methodology</span><span class="footer-link" onclick="showPage('sources')">Sources</span><span class="footer-link" onclick="showPage('about')">About</span><span class="footer-link" onclick="showPage('contact')">Say hi</span><a class="footer-link" href="https://github.com/thehibalance/hi" target="_blank">GitHub</a><a class="footer-link" href="https://github.com/thehibalance/hi/blob/main/SECURITY.md" target="_blank">Security</a><a class="footer-link" href="privacy.html" target="_blank">Privacy</a></div><div class="footer-info">The HI Balance · thehibalance.org · Patent Pending · HI Grade™ · Humanwashing™ · Algorithmic Harm Index™ · Morf Innovations LLC</div><div class="footer-disclaimer">The Balanced Board requires all five HUMAN dimensions to score 60 or higher with verified public data on each. Scores are estimated from public data. Not financial or legal advice.</div></footer>
 <script>
 const API=location.hostname==='localhost'?'http://localhost:8080':'https://api.thehibalance.org';
 const GC={"Balanced Board":"#1B3A5C","HI Balanced":"#1B3A5C","scored":"#1B3A5C"};
