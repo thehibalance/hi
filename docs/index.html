@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- v1.5-homepage-polish: applied 20260422-144026 -->
 <!-- v1.4-methodology-cleanup: applied 20260422-142750 -->
 <!-- v1.3-human-decline: applied
 20260422-123859 -->
@@ -137,14 +138,6 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 
 
 
-<div style="text-align:center;margin-bottom:16px"><div style="font-size:10px;font-weight:600;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px">What HI Grade Measures</div><h2 style="font-family:'DM Serif Display';font-size:32px;color:var(--navy);margin:0;line-height:1.2">Five things AI can't be.</h2></div>
-<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:32px 0 20px;cursor:pointer" onclick="showPage('methodology')" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-<div style="text-align:center;padding:22px 10px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:36px;color:#C49B20;line-height:1;margin-bottom:10px">H</div><div style="font-size:11px;font-weight:700;color:var(--navy);line-height:1.3"><strong style="color:#C49B20">H</strong>uman<br>Consciousness</div></div>
-<div style="text-align:center;padding:22px 10px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:36px;color:#C49B20;line-height:1;margin-bottom:10px">U</div><div style="font-size:11px;font-weight:700;color:var(--navy);line-height:1.3"><strong style="color:#C49B20">U</strong>nderstanding<br>&amp; Empathy</div></div>
-<div style="text-align:center;padding:22px 10px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:36px;color:#C49B20;line-height:1;margin-bottom:10px">M</div><div style="font-size:11px;font-weight:700;color:var(--navy);line-height:1.3"><strong style="color:#C49B20">M</strong>oral &amp;<br>Ethical Conduct</div></div>
-<div style="text-align:center;padding:22px 10px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:36px;color:#C49B20;line-height:1;margin-bottom:10px">A</div><div style="font-size:11px;font-weight:700;color:var(--navy);line-height:1.3"><strong style="color:#C49B20">A</strong>live &amp;<br>Environmental</div></div>
-<div style="text-align:center;padding:22px 10px;background:var(--white);border:1px solid var(--light);border-radius:14px;transition:all .2s"><div style="font-family:'DM Serif Display';font-size:36px;color:#C49B20;line-height:1;margin-bottom:10px">N</div><div style="font-size:11px;font-weight:700;color:var(--navy);line-height:1.3"><strong style="color:#C49B20">N</strong>atural<br>Transparency</div></div>
-</div>
 <div style="text-align:center;margin-bottom:80px"><span onclick="showPage('methodology')" style="font-size:13px;color:var(--sky);font-weight:600;cursor:pointer">How does HI Grade work? →</span></div>
 
 <!-- Apps row -->
@@ -155,31 +148,9 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div style="padding:24px 16px;text-align:center;background:var(--white);border:1px solid var(--light);border-radius:14px;cursor:pointer;transition:all .2s" onclick="showPage('api')" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.06)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'"><div style="font-size:32px;margin-bottom:8px">⚡</div><div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">Free API</div><div style="font-size:11px;color:var(--muted)">Build with HI Grade</div></div>
 </div>
 
-<!-- Two CTAs -->
-<div style="text-align:center;margin-bottom:24px"><h2 style="font-family:'DM Serif Display';font-size:28px;color:var(--navy);margin:0">Get Involved</h2></div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:80px">
 
-<!-- Request a HI Grade -->
-<div style="background:var(--white);border:1px solid var(--light);border-radius:16px;padding:28px">
-<div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1.5px;margin-bottom:8px">REQUEST A HI GRADE</div>
-<div style="font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.5">Don't see a brand you care about? Tell us and we'll add it.</div>
-<input id="reqCompany" placeholder="Company name..." style="width:100%;padding:12px 14px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit;margin-bottom:8px;box-sizing:border-box">
-<input id="reqEmail" placeholder="Email (optional)" style="width:100%;padding:12px 14px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit;margin-bottom:12px;box-sizing:border-box">
-<button onclick="submitRequest()" style="width:100%;padding:12px;background:var(--navy);color:white;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s">Request</button>
-<div id="reqSuccess" style="display:none;margin-top:10px;color:#16A34A;font-weight:600;font-size:11px">✓ Request submitted.</div>
-<div id="reqError" style="display:none;margin-top:10px;color:#DC2626;font-size:11px">Please enter a company name.</div>
-</div>
 
-<!-- Are you a company? -->
-<div style="background:var(--white);border:1px solid #C49B2030;border-radius:16px;padding:28px">
-<div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1.5px;margin-bottom:8px">ARE YOU A COMPANY?</div>
-<div style="font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.5">Want to understand or improve your HI Grade? Talk to us.</div>
-<input id="companyContactName" placeholder="Company name..." style="width:100%;padding:12px 14px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit;margin-bottom:8px;box-sizing:border-box">
-<input id="companyContactEmail" placeholder="Work email..." style="width:100%;padding:12px 14px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit;margin-bottom:12px;box-sizing:border-box">
-<button onclick="submitCompanyContact()" style="width:100%;padding:12px;background:#C49B20;color:white;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s">Reach Out</button>
-<div id="companyContactSuccess" style="display:none;margin-top:10px;color:#16A34A;font-weight:600;font-size:11px">✓ We'll reach out within 48 hours.</div>
-</div>
-</div>
+
 
 </div>
 <div id="page-detail" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px"><div class="detail" id="detailContent"></div></div>
@@ -1197,13 +1168,13 @@ document.addEventListener('click',function(e){if(!e.target.closest('.search-inpu
 
 // ─── DID YOU KNOW rotating consumer hook ──────────────────────────────
 var _dykFacts = [
-  {icon:'\u2728', text:'<strong>Coca-Cola made the Balanced Board.</strong> All five HUMAN dimensions above 60. Recycling commitments, fair worker pay, mini-cans for choice. Surprised? See the receipts \u2192', shareText:'Coca-Cola made the HI Balanced Board — all five HUMAN dimensions above 60. Recycling commitments, fair worker pay, mini-cans for choice. thehibalance.org', action:function(){loadC('KO','Coca-Cola Company')}},
-  {icon:'\u26A0\uFE0F', text:'<strong>Johnson &amp; Johnson scored 0 in Moral &amp; Ethical Conduct.</strong> Documented harm from talc settlements. ESG gives them a pass \u2014 HI Grade does not. See the data \u2192', shareText:'Johnson & Johnson scored 0/100 on Moral & Ethical Conduct. Documented harm from talc settlements. ESG passes them. HI Grade does not. thehibalance.org', action:function(){loadC('JNJ','Johnson &amp; Johnson')}},
-  {icon:'\u2728', text:'<strong>Patagonia made the Balanced Board algorithmically.</strong> All 5 HUMAN dimensions above 60. No badge bought. No marketing department involved. See the proof \u2192', shareText:'Patagonia made the HI Balanced Board — algorithmically. All 5 HUMAN dimensions above 60. No badge bought. The data decides. thehibalance.org', action:function(){loadC('','Patagonia')}},
-  {icon:'\u23F1\uFE0F', text:'<strong>Starbucks scored 73 \u2014 but didn\u2019t earn Gold.</strong> The Heartbeat caught labor news in the last 90 days. The Momentum gate held the line. See why \u2192', shareText:'Starbucks scored 73 on HI Grade \u2014 but didn\u2019t earn Gold. The 90-day Heartbeat caught labor news. The Momentum gate held the line. thehibalance.org', action:function(){loadC('SBUX','Starbucks Corporation')}},
-  {icon:'\u2728', text:'<strong>Ford Motor Company made the Balanced Board.</strong> A mass-market automaker with all 5 HUMAN dimensions above 60. Workforce investment, transparent reporting, no critical decay. See how \u2192', shareText:'Ford Motor Company made the HI Balanced Board — a mass-market automaker with all 5 HUMAN dimensions above 60. Workforce investment, transparent reporting, no critical decay. thehibalance.org', action:function(){loadC('F','Ford Motor Company')}},
-  {icon:'\u26A1', text:'<strong>Meta scored 49 on HI Grade. ESG rates them 62.</strong> The 13-point gap is algorithmic harm at scale \u2014 something ESG doesn\u2019t measure. See the gap \u2192', shareText:'Meta scored 49 on HI Grade. ESG rates them 62. The 13-point gap is algorithmic harm at scale \u2014 something ESG doesn\u2019t measure. thehibalance.org', action:function(){loadC('META','Meta Platforms, Inc.')}},
-  {icon:'\u{1F50D}', text:'<strong>Out of 441 companies scored, only 4 made the Balanced Board.</strong> Coca-Cola, NextEra Energy, Patagonia, and Ford — every dimension above 60. The bar is high on purpose. See the list \u2192', shareText:'Out of 441 companies scored, only 4 made the HI Balanced Board: Coca-Cola, NextEra Energy, Patagonia, and Ford. Every dimension above 60. The bar is high on purpose. thehibalance.org', action:function(){showPage('human100')}}
+  {icon:'\u2728', text:'<strong>Only 2 companies passed the Balanced Board.</strong> Out of 443 scored, just NextEra Energy and US Bancorp earned all five HUMAN dimensions above 60. The bar is high on purpose. See the list \u2192', shareText:'Only 2 companies passed the HI Balanced Board — NextEra Energy and US Bancorp. Out of 443 scored. All five HUMAN dimensions above 60. The bar is high on purpose. thehibalance.org', action:function(){showPage('human100')}},
+  {icon:'\u26A0\uFE0F', text:'<strong>Johnson &amp; Johnson scored 0 in Moral &amp; Ethical Conduct.</strong> Documented harm from talc settlements ($12.5B, ~50,000 deaths attributed). ESG gives them a pass \u2014 HI Grade does not. See the data \u2192', shareText:'Johnson & Johnson scored 0/100 on Moral & Ethical Conduct. $12.5B talc settlements. ESG passes them. HI Grade does not. thehibalance.org', action:function(){loadC('JNJ','Johnson &amp; Johnson')}},
+  {icon:'\u26A1', text:'<strong>Meta scored 55 on HI Grade.</strong> Algorithmic Harm Index: 81.5 (Instagram teen harm, engagement algorithm, feed replaced chronological). Penalties flow directly into H, U, M, N dimensions. See the math \u2192', shareText:'Meta scored 55 on HI Grade. Algorithmic Harm Index 81.5 — Instagram teen harm, feed manipulation. ESG misses what HI Grade catches. thehibalance.org', action:function(){loadC('META','Meta Platforms, Inc.')}},
+  {icon:'\u{1F50D}', text:'<strong>HUMAN Decline tracks which companies are eroding.</strong> Combined signals from Heartbeat (decay), Shield (moat), Contagion (industry drift), Lens (ESG gap), and Watermark (performative empathy). See who\u2019s at risk \u2192', shareText:'HUMAN Decline: the companies quietly eroding. Heartbeat + Shield + Contagion + Lens + Watermark combined. thehibalance.org', action:function(){showPage('decline')}},
+  {icon:'\u26A0\uFE0F', text:'<strong>TikTok scored 20.</strong> ByteDance\u2019s For You algorithm is documented to optimize for session length at the cost of teen mental health (WSJ 2021, Center for Humane Tech). ESG ratings don\u2019t measure this. HI Grade does \u2192', shareText:'TikTok / ByteDance scored 20 on HI Grade. Algorithmic harm at scale — documented teen mental health patterns. ESG misses this. thehibalance.org', action:function(){loadC('BYTEDANCE','TikTok / ByteDance')}},
+  {icon:'\u2728', text:'<strong>Equal Exchange scored 85.</strong> Fair Trade coffee cooperative, 75% worker-owned, no AI in customer-facing decisions. An example of what the Balanced Board almost caught \u2014 just missed on transparency. See why \u2192', shareText:'Equal Exchange scored 85 on HI Grade. Fair Trade, 75% worker-owned, no AI judgment. Almost Balanced Board. thehibalance.org', action:function(){loadC('','Equal Exchange')}},
+  {icon:'\u23F1\uFE0F', text:'<strong>HI Grade uses ZERO AI in scoring.</strong> 42 public data sources, 19 sub-signals, deterministic math. Every score is reconstructable from the raw data \u2014 no LLM summaries, no neural networks. See the method \u2192', shareText:'HI Grade: zero AI in scoring. 42 public data sources, 19 sub-signals, deterministic math. Every score reconstructable. thehibalance.org', action:function(){showPage('methodology')}}
 ];
 var _dykIdx = 0, _dykTimer = null;
 function _dykRender(){
