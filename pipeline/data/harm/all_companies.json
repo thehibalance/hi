@@ -7,7 +7,7 @@
     "concealment_findings": "3+ findings \u2192 -20 to M.4, 1 finding \u2192 -12",
     "remediation_fade": "active = 1.0x, paid_in_full = 0.5x"
   },
-  "company_count": 27,
+  "company_count": 29,
   "companies": [
     {
       "ticker": "BA",
@@ -80,6 +80,31 @@
       "notes": ""
     },
     {
+      "ticker": "BP",
+      "company": "BP p.l.c.",
+      "settlement_total_5yr": 3500000000,
+      "deaths_attributed": 11,
+      "concealment_findings": [
+        "deepwater_horizon_safety_documentation_2010",
+        "texas_city_refinery_2005_explosion_15_deaths_concealment"
+      ],
+      "remediation_status": "paid_in_full",
+      "review_date": "2026-04-22",
+      "sources": [
+        "https://www.justice.gov/opa/pr/bp-exploration-and-production-inc-agrees-plead-guilty-felony-manslaughter-environmental",
+        "https://www.epa.gov/enforcement/deepwater-horizon-bp-gulf-mexico-oil-spill",
+        "https://www.csb.gov/bp-america-refinery-explosion/"
+      ],
+      "penalty_M_3": -8,
+      "penalty_M_4": -9,
+      "penalty_M_total": -17,
+      "flags": [
+        "Harm settlements: $3.5B (5y)",
+        "Concealment findings: 2"
+      ],
+      "notes": "Deepwater Horizon 2010: 11 deaths, largest environmental settlement in US history. Total payments ~$65B across criminal/civil/NRD (5-year window ~$3.5B residual). Texas City 2005: 15 deaths, concealed hazard pattern."
+    },
+    {
       "ticker": "BTI",
       "company": "British American Tobacco",
       "settlement_total_5yr": 635000000,
@@ -101,6 +126,30 @@
         "Concealment findings: 1"
       ],
       "notes": ""
+    },
+    {
+      "ticker": "CVIEW",
+      "company": "Clearview AI",
+      "settlement_total_5yr": 50000000,
+      "deaths_attributed": 0,
+      "concealment_findings": [
+        "facial_recognition_scraping_without_consent_2017_2020",
+        "law_enforcement_database_sales_undisclosed"
+      ],
+      "remediation_status": "active",
+      "review_date": "2026-04-22",
+      "sources": [
+        "https://www.aclu.org/news/privacy-technology/aclu-v-clearview-ai",
+        "https://ico.org.uk/action-weve-taken/enforcement/clearview-ai-inc-mpn/",
+        "https://www.nytimes.com/2020/01/18/technology/clearview-privacy-facial-recognition.html"
+      ],
+      "penalty_M_3": -3,
+      "penalty_M_4": -12,
+      "penalty_M_total": -15,
+      "flags": [
+        "Concealment findings: 2"
+      ],
+      "notes": "Non-consensual scraping of 3B+ facial images. ACLU v. Clearview settled 2022 under Illinois BIPA. UK ICO fine \u00a37.5M (2022). Banned in Canada, Australia, France, Italy. Active US class actions."
     },
     {
       "ticker": "DD",
