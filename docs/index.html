@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
 <!-- v1.3-human-decline: applied
-<!-- v1.3.3-decline-route: applied 20260422-133303 -->
-<!-- v1.3.2-decline-factors: applied 20260422-124810 -->
-<!-- v1.3.1-decline-shapes: applied 20260422-124803 --> 20260422-123859 -->
+20260422-123859 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>hi — Human kind?</title>
@@ -55,7 +53,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 @media(max-width:768px){.feature-grid,.price-grid,.app-features{grid-template-columns:1fr}.nav-links{gap:8px;flex-wrap:wrap}}
 </style></head><body>
 <nav><div class="nav-inner"><div style="display:flex;align-items:center;gap:24px"><div class="nav-dropdown" style="padding:0"><span class="nav-brand" onclick="showPage('home')" style="position:relative;display:flex;align-items:center;gap:8px"><img src="/logo-512.png" alt="hi." style="height:32px;width:32px;border-radius:50%;object-fit:cover;background:white;padding:2px"></span><div class="nav-dd-menu" style="left:0;transform:none"><span class="nav-dd-item" onclick="showPage('app')">📱 App</span><span class="nav-dd-item" onclick="showPage('extension')">🌐 Extension</span><span class="nav-dd-item" onclick="showPage('api')">⚡ API</span></div></div><div class="nav-links">
-<span class="nav-link" onclick="showPage('human100')" style="font-weight:600">🏆 HUMAN 100</span><span class="nav-link" onclick="showPage('decline')" style="font-weight:600">💀 HUMAN Decline</span><div class="nav-dropdown"><span class="nav-dd-trigger">HUMAN ▾</span><div class="nav-dd-menu"><span class="nav-dd-item" onclick="showPage('heartbeat')">♥ HUMAN Heartbeat</span><span class="nav-dd-item" onclick="showPage('moat')">🛡 HUMAN Shield</span><span class="nav-dd-item" onclick="showPage('arbitrage')">🔍 HUMAN Lens</span><span class="nav-dd-item" onclick="showPage('genome')">🧬 HUMAN Genome</span><span class="nav-dd-item" onclick="showPage('contagion')">🌊 HUMAN Contagion</span><span class="nav-dd-item" onclick="showPage('watermark')">🔬 HUMAN Watermark</span><span class="nav-dd-item" onclick="showPage('wave')">📢 HUMAN Wave</span><span class="nav-dd-item" onclick="showPage('consciousness')">📊 HUMAN Consciousness</span></div></div>
+<span class="nav-link" onclick="showPage('human100')" style="font-weight:600;margin-right:16px">🏆 HUMAN 100</span><span class="nav-link" onclick="showPage('decline')" style="font-weight:600;margin-right:16px">💀 HUMAN Decline</span><div class="nav-dropdown"><span class="nav-dd-trigger">HUMAN ▾</span><div class="nav-dd-menu"><span class="nav-dd-item" onclick="showPage('heartbeat')">♥ HUMAN Heartbeat</span><span class="nav-dd-item" onclick="showPage('moat')">🛡 HUMAN Shield</span><span class="nav-dd-item" onclick="showPage('arbitrage')">🔍 HUMAN Lens</span><span class="nav-dd-item" onclick="showPage('genome')">🧬 HUMAN Genome</span><span class="nav-dd-item" onclick="showPage('contagion')">🌊 HUMAN Contagion</span><span class="nav-dd-item" onclick="showPage('watermark')">🔬 HUMAN Watermark</span><span class="nav-dd-item" onclick="showPage('wave')">📢 HUMAN Wave</span><span class="nav-dd-item" onclick="showPage('consciousness')">📊 HUMAN Consciousness</span></div></div>
 <span class="nav-link" id="nav-methodology" onclick="showPage('methodology')">Methodology</span>
 <span class="nav-link" id="nav-sources" onclick="showPage('sources')">Sources</span>
 
@@ -1419,7 +1417,7 @@ window.addEventListener('hashchange', _hashRoute);
           shieldHtml + contagionHtml + lensHtml + watermarkHtml +
           '</div>' : '') +
         '<div style="margin-top:12px;text-align:right">' +
-          '<span class="nav-link" onclick="showPage(\'detail\');setTimeout(function(){loadCompanyDetail(\'' + d.ticker + '\')},50)" style="color:var(--navy);font-size:12px;cursor:pointer;font-weight:600">View full grade →</span>' +
+          '<span class="nav-link" onclick="loadC(\'' + (d.ticker || '') + '\', \'' + (d.company || '') + '\')" style="color:var(--navy);font-size:12px;cursor:pointer;font-weight:600">View full grade →</span>' +
         '</div>' +
       '</div>';
     }).join('');
