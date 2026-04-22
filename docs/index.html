@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- v1.3-human-decline: applied 20260422-123859 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>hi — Human kind?</title>
@@ -51,7 +52,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 @media(max-width:768px){.feature-grid,.price-grid,.app-features{grid-template-columns:1fr}.nav-links{gap:8px;flex-wrap:wrap}}
 </style></head><body>
 <nav><div class="nav-inner"><div style="display:flex;align-items:center;gap:24px"><div class="nav-dropdown" style="padding:0"><span class="nav-brand" onclick="showPage('home')" style="position:relative;display:flex;align-items:center;gap:8px"><img src="/logo-512.png" alt="hi." style="height:32px;width:32px;border-radius:50%;object-fit:cover;background:white;padding:2px"></span><div class="nav-dd-menu" style="left:0;transform:none"><span class="nav-dd-item" onclick="showPage('app')">📱 App</span><span class="nav-dd-item" onclick="showPage('extension')">🌐 Extension</span><span class="nav-dd-item" onclick="showPage('api')">⚡ API</span></div></div><div class="nav-links">
-<div class="nav-dropdown"><span class="nav-dd-trigger">HUMAN ▾</span><div class="nav-dd-menu"><span class="nav-dd-item" onclick="showPage('human100')">🏆 HUMAN 100 Index</span><span class="nav-dd-item" onclick="showPage('heartbeat')">♥ HUMAN Heartbeat</span><span class="nav-dd-item" onclick="showPage('decay')">💀 HUMAN Decay</span><span class="nav-dd-item" onclick="showPage('moat')">🛡 HUMAN Shield</span><span class="nav-dd-item" onclick="showPage('arbitrage')">🔍 HUMAN Lens</span><span class="nav-dd-item" onclick="showPage('genome')">🧬 HUMAN Genome</span><span class="nav-dd-item" onclick="showPage('contagion')">🌊 HUMAN Contagion</span><span class="nav-dd-item" onclick="showPage('watermark')">🔬 HUMAN Watermark</span><span class="nav-dd-item" onclick="showPage('wave')">📢 HUMAN Wave</span><span class="nav-dd-item" onclick="showPage('consciousness')">📊 HUMAN Consciousness</span></div></div>
+<span class="nav-link" onclick="showPage('human100')" style="font-weight:600">🏆 HUMAN 100</span><span class="nav-link" onclick="showPage('decline')" style="font-weight:600">💀 HUMAN Decline</span><div class="nav-dropdown"><span class="nav-dd-trigger">HUMAN ▾</span><div class="nav-dd-menu"><span class="nav-dd-item" onclick="showPage('heartbeat')">♥ HUMAN Heartbeat</span><span class="nav-dd-item" onclick="showPage('moat')">🛡 HUMAN Shield</span><span class="nav-dd-item" onclick="showPage('arbitrage')">🔍 HUMAN Lens</span><span class="nav-dd-item" onclick="showPage('genome')">🧬 HUMAN Genome</span><span class="nav-dd-item" onclick="showPage('contagion')">🌊 HUMAN Contagion</span><span class="nav-dd-item" onclick="showPage('watermark')">🔬 HUMAN Watermark</span><span class="nav-dd-item" onclick="showPage('wave')">📢 HUMAN Wave</span><span class="nav-dd-item" onclick="showPage('consciousness')">📊 HUMAN Consciousness</span></div></div>
 <span class="nav-link" id="nav-methodology" onclick="showPage('methodology')">Methodology</span>
 <span class="nav-link" id="nav-sources" onclick="showPage('sources')">Sources</span>
 
@@ -471,28 +472,50 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div style="text-align:center;margin-top:24px;font-size:11px;color:var(--muted)">HUMAN Wave™ · Morf Innovations LLC</div>
 </div>
 </div>
-<div id="page-decay" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
+<div id="page-decline" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
 <div class="subpage">
-<h1 class="section-title" style="font-size:36px">💀 HUMAN Decay</h1>
-<p class="subpage-sub">When a company's humanity is eroding. Detected before it shows in the score.</p>
-<div class="about-card" style="border-left:4px solid #DC2626;padding:20px">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
-<div style="padding:12px;border-radius:8px;background:#FEE2E2"><span style="font-weight:700;color:#DC2626">🔴 Critical (50+)</span><div style="font-size:13px;color:#991B1B;margin-top:4px">Significant score drop likely. Multiple negative signals detected.</div></div>
-<div style="padding:12px;border-radius:8px;background:#FEE2E2"><span style="font-weight:700;color:#DC2626">🔴 Warning (30-49)</span><div style="font-size:13px;color:#991B1B;margin-top:4px">Score pressure building. Watch for developing patterns.</div></div>
-<div style="padding:12px;border-radius:8px;background:#FEF3C7"><span style="font-weight:700;color:#D97706">🟡 Watch (10-29)</span><div style="font-size:13px;color:#92400E;margin-top:4px">Minor signals detected. Monitoring recommended.</div></div>
-<div style="padding:12px;border-radius:8px;background:#DCFCE7"><span style="font-weight:700;color:#16A34A">🟢 Stable (0-9)</span><div style="font-size:13px;color:#166534;margin-top:4px">No significant decay signals. Score is holding steady.</div></div>
+<h1 class="section-title" style="font-size:36px">💀 HUMAN Decline</h1>
+<p class="subpage-sub">When humanity erodes. Combined warning signals from Heartbeat, Shield, Contagion, Lens, and Watermark.</p>
+
+<div class="about-card" style="border-left:4px solid #DC2626;padding:20px;margin-bottom:24px">
+<p style="color:#444;line-height:1.7;margin-bottom:12px">HUMAN Decline aggregates five orthogonal warning systems into one profile per company:</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:12px">
+<div style="font-size:12px;color:#555;padding:10px;background:#FEF3F2;border-radius:6px"><strong style="color:#991B1B">♥ Heartbeat</strong> — what's happening right now (layoffs, AI pivot, 8-K filings)</div>
+<div style="font-size:12px;color:#555;padding:10px;background:#FEF3F2;border-radius:6px"><strong style="color:#991B1B">🛡 Shield</strong> — how protected is the company from harm escalation</div>
+<div style="font-size:12px;color:#555;padding:10px;background:#FEF3F2;border-radius:6px"><strong style="color:#991B1B">🌊 Contagion</strong> — is industry dragging them down or vice versa</div>
+<div style="font-size:12px;color:#555;padding:10px;background:#FEF3F2;border-radius:6px"><strong style="color:#991B1B">🔍 Lens</strong> — gap between market perception and HI Grade</div>
+<div style="font-size:12px;color:#555;padding:10px;background:#FEF3F2;border-radius:6px"><strong style="color:#991B1B">💧 Watermark</strong> — performative empathy vs documented action</div>
 </div>
-<p>The Decay Index measures how fast a company's HI Grade is likely to drop based on real-time signals: layoff surges, aggressive AI pivots, ethics controversies, CEO accountability failures, and environmental incidents.</p>
 </div>
+
 <div style="display:flex;gap:16px;margin-top:20px;margin-bottom:20px;flex-wrap:wrap;justify-content:center">
-<div style="text-align:center;padding:16px 24px;background:white;border-radius:10px;border:1px solid #eee"><div id="decayPulseValue" style="font-size:28px;font-weight:800;font-family:'DM Serif Display'">...</div><div style="font-size:11px;color:var(--muted)">Ecosystem Pulse</div></div>
-<div style="text-align:center;padding:16px 24px;background:white;border-radius:10px;border:1px solid #eee"><div id="decayAvgDecay" style="font-size:28px;font-weight:800;font-family:'DM Serif Display';color:#DC2626">...</div><div style="font-size:11px;color:var(--muted)">Avg Decay</div></div>
-<div style="text-align:center;padding:16px 24px;background:white;border-radius:10px;border:1px solid #eee"><div id="decayAlertCount" style="font-size:28px;font-weight:800;font-family:'DM Serif Display';color:var(--navy)">...</div><div style="font-size:11px;color:var(--muted)">Active Alerts</div></div>
-<div style="text-align:center;padding:16px 24px;background:white;border-radius:10px;border:1px solid #eee"><div id="decayCompanyCount" style="font-size:28px;font-weight:800;font-family:'DM Serif Display';color:var(--navy)">...</div><div style="font-size:11px;color:var(--muted)">Monitored</div></div>
+<div style="text-align:center;padding:16px 24px;background:white;border-radius:10px;border:1px solid #eee"><div id="declineAvgDecay" style="font-size:28px;font-weight:800;font-family:'DM Serif Display';color:#DC2626">...</div><div style="font-size:11px;color:var(--muted)">Avg Decay Index</div></div>
+<div style="text-align:center;padding:16px 24px;background:white;border-radius:10px;border:1px solid #eee"><div id="declineCriticalCount" style="font-size:28px;font-weight:800;font-family:'DM Serif Display';color:#DC2626">...</div><div style="font-size:11px;color:var(--muted)">Critical</div></div>
+<div style="text-align:center;padding:16px 24px;background:white;border-radius:10px;border:1px solid #eee"><div id="declineWarningCount" style="font-size:28px;font-weight:800;font-family:'DM Serif Display';color:#D97706">...</div><div style="font-size:11px;color:var(--muted)">Warning</div></div>
+<div style="text-align:center;padding:16px 24px;background:white;border-radius:10px;border:1px solid #eee"><div id="declineTotalCount" style="font-size:28px;font-weight:800;font-family:'DM Serif Display';color:var(--navy)">...</div><div style="font-size:11px;color:var(--muted)">Companies Monitored</div></div>
 </div>
-<div style="margin-top:24px"><h2 class="section-title">Companies in Decay</h2></div>
-<div id="decayList" style="margin-top:16px"><div style="text-align:center;color:var(--muted);padding:40px">Loading decay data...</div></div>
-<div style="text-align:center;margin-top:24px;font-size:11px;color:var(--muted)">HUMAN Decay™ · Morf Innovations LLC</div>
+
+<!-- FILTERS -->
+<div style="display:flex;gap:8px;margin:24px 0 16px;flex-wrap:wrap;align-items:center">
+<span style="font-size:12px;color:var(--muted);margin-right:4px">SHOW:</span>
+<button class="decline-filter active" data-filter="all" style="padding:6px 14px;border:1px solid #ddd;background:white;border-radius:20px;font-size:12px;cursor:pointer;font-weight:600">All</button>
+<button class="decline-filter" data-filter="critical" style="padding:6px 14px;border:1px solid #FCA5A5;background:white;border-radius:20px;font-size:12px;cursor:pointer;color:#991B1B">🔴 Critical</button>
+<button class="decline-filter" data-filter="warning" style="padding:6px 14px;border:1px solid #FCD34D;background:white;border-radius:20px;font-size:12px;cursor:pointer;color:#92400E">🟡 Warning</button>
+<button class="decline-filter" data-filter="watch" style="padding:6px 14px;border:1px solid #93C5FD;background:white;border-radius:20px;font-size:12px;cursor:pointer;color:#1E40AF">🔵 Watch</button>
+
+<span style="font-size:12px;color:var(--muted);margin:0 4px 0 16px">SORT:</span>
+<select id="declineSortBy" style="padding:6px 10px;border:1px solid #ddd;border-radius:6px;font-size:12px;cursor:pointer">
+<option value="decay">Decay Index (highest)</option>
+<option value="composite">Composite (lowest)</option>
+<option value="shield">Shield weakness</option>
+<option value="lens">Lens gap</option>
+</select>
+</div>
+
+<h2 class="section-title" style="margin-top:24px">Companies in Decline</h2>
+<div id="declineList" style="margin-top:16px"><div style="text-align:center;color:var(--muted);padding:40px">Loading combined warning signals...</div></div>
+
+<div style="text-align:center;margin-top:32px;font-size:11px;color:var(--muted)">HUMAN Decline™ · Morf Innovations LLC · Aggregates Heartbeat + Shield + Contagion + Lens + Watermark</div>
 </div>
 </div>
 <div id="page-genome" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
@@ -1189,5 +1212,273 @@ window.addEventListener('load', _hashRoute);
 window.addEventListener('hashchange', _hashRoute);
 
 </script>
+
+<script>
+// v1.3-human-decline: HUMAN Decline aggregator loader
+(function() {
+  var API = 'https://api.thehibalance.org/api/v1';
+  var DECLINE_DATA = null;  // cached combined data
+  var DECLINE_FILTER = 'all';
+  var DECLINE_SORT = 'decay';
+
+  async function loadDeclineData() {
+    try {
+      // Fetch all 5 warning sources in parallel
+      var [alertsResp, moatsResp, contagionResp, arbResp, empResp] = await Promise.all([
+        fetch(API + '/heartbeat/alerts?limit=100').then(r => r.json()),
+        fetch(API + '/moat').then(r => r.json()),
+        fetch(API + '/contagion').then(r => r.json()),
+        fetch(API + '/arbitrage').then(r => r.json()),
+        fetch(API + '/empathy').then(r => r.json())
+      ]);
+
+      // Index each by ticker
+      var alerts = (alertsResp.results || []).reduce(function(acc, a) {
+        if (a.ticker) acc[a.ticker.toUpperCase()] = a;
+        return acc;
+      }, {});
+
+      // moat endpoint returns {companies: [...]} or similar
+      var moats = {};
+      var moatList = moatsResp.companies || moatsResp.results || moatsResp || [];
+      if (Array.isArray(moatList)) {
+        moatList.forEach(function(m) {
+          if (m.ticker) moats[m.ticker.toUpperCase()] = m;
+        });
+      } else if (typeof moatList === 'object') {
+        Object.keys(moatList).forEach(function(k) {
+          moats[k.toUpperCase()] = moatList[k];
+        });
+      }
+
+      var contagion = {};
+      var contList = contagionResp.companies || contagionResp.results || contagionResp || [];
+      if (Array.isArray(contList)) {
+        contList.forEach(function(c) {
+          if (c.ticker) contagion[c.ticker.toUpperCase()] = c;
+        });
+      }
+
+      var arbitrage = {};
+      var arbList = arbResp.companies || arbResp.results || arbResp || [];
+      if (Array.isArray(arbList)) {
+        arbList.forEach(function(a) {
+          if (a.ticker) arbitrage[a.ticker.toUpperCase()] = a;
+        });
+      }
+
+      var empathy = {};
+      var empList = empResp.companies || empResp.results || empResp || [];
+      if (Array.isArray(empList)) {
+        empList.forEach(function(e) {
+          if (e.ticker) empathy[e.ticker.toUpperCase()] = e;
+        });
+      }
+
+      // Build combined records — union of all tickers that have at least a heartbeat alert
+      var combined = {};
+      Object.keys(alerts).forEach(function(t) {
+        combined[t] = {
+          ticker: t,
+          company: alerts[t].company || t,
+          composite: alerts[t].composite,
+          decay_index: alerts[t].decay_index || 0,
+          decay_level: alerts[t].decay_level || 'stable',
+          decay_factors: alerts[t].decay_factors || [],
+          moat: moats[t] || null,
+          contagion: contagion[t] || null,
+          arbitrage: arbitrage[t] || null,
+          empathy: empathy[t] || null
+        };
+      });
+
+      DECLINE_DATA = Object.values(combined);
+
+      // Update headline stats
+      var critical = DECLINE_DATA.filter(function(d) { return d.decay_level === 'critical'; }).length;
+      var warning = DECLINE_DATA.filter(function(d) { return d.decay_level === 'warning'; }).length;
+      var avgDecay = DECLINE_DATA.length ? 
+        (DECLINE_DATA.reduce(function(s, d) { return s + (d.decay_index || 0); }, 0) / DECLINE_DATA.length).toFixed(1) : '0';
+
+      var $avg = document.getElementById('declineAvgDecay');
+      var $crit = document.getElementById('declineCriticalCount');
+      var $warn = document.getElementById('declineWarningCount');
+      var $total = document.getElementById('declineTotalCount');
+      if ($avg) $avg.textContent = avgDecay;
+      if ($crit) $crit.textContent = critical;
+      if ($warn) $warn.textContent = warning;
+      if ($total) $total.textContent = DECLINE_DATA.length;
+
+      renderDeclineList();
+    } catch (e) {
+      console.error('HUMAN Decline load error:', e);
+      var list = document.getElementById('declineList');
+      if (list) list.innerHTML = '<div style="text-align:center;color:#DC2626;padding:40px">Could not load decline data. Check API connection.</div>';
+    }
+  }
+
+  function renderDeclineList() {
+    if (!DECLINE_DATA) return;
+    var list = document.getElementById('declineList');
+    if (!list) return;
+
+    // Filter
+    var filtered = DECLINE_DATA.slice();
+    if (DECLINE_FILTER !== 'all') {
+      filtered = filtered.filter(function(d) { return d.decay_level === DECLINE_FILTER; });
+    }
+
+    // Sort
+    if (DECLINE_SORT === 'decay') {
+      filtered.sort(function(a, b) { return (b.decay_index || 0) - (a.decay_index || 0); });
+    } else if (DECLINE_SORT === 'composite') {
+      filtered.sort(function(a, b) { return (a.composite || 100) - (b.composite || 100); });
+    } else if (DECLINE_SORT === 'shield') {
+      filtered.sort(function(a, b) {
+        var aMoat = (a.moat && a.moat.moat_score) || 100;
+        var bMoat = (b.moat && b.moat.moat_score) || 100;
+        return aMoat - bMoat;
+      });
+    } else if (DECLINE_SORT === 'lens') {
+      filtered.sort(function(a, b) {
+        var aGap = (a.arbitrage && Math.abs(a.arbitrage.gap || 0)) || 0;
+        var bGap = (b.arbitrage && Math.abs(b.arbitrage.gap || 0)) || 0;
+        return bGap - aGap;
+      });
+    }
+
+    // Limit display
+    filtered = filtered.slice(0, 50);
+
+    if (filtered.length === 0) {
+      list.innerHTML = '<div style="text-align:center;color:var(--muted);padding:40px">No companies match this filter.</div>';
+      return;
+    }
+
+    var decayColors = {
+      'critical': { bg: '#FEE2E2', border: '#FCA5A5', text: '#991B1B' },
+      'warning': { bg: '#FEF3C7', border: '#FCD34D', text: '#92400E' },
+      'watch': { bg: '#EFF6FF', border: '#BFDBFE', text: '#1E40AF' },
+      'stable': { bg: '#F0FDF4', border: '#BBF7D0', text: '#166534' }
+    };
+
+    list.innerHTML = filtered.map(function(d) {
+      var c = decayColors[d.decay_level] || decayColors['stable'];
+      var levelLabel = d.decay_level.charAt(0).toUpperCase() + d.decay_level.slice(1);
+
+      // Decay factors (from heartbeat)
+      var factorsHtml = '';
+      if (d.decay_factors && d.decay_factors.length) {
+        factorsHtml = '<div style="margin-top:10px"><div style="font-size:11px;color:var(--muted);font-weight:600;margin-bottom:4px">♥ HEARTBEAT SIGNALS</div>' +
+          d.decay_factors.slice(0, 3).map(function(f) {
+            return '<div style="font-size:13px;color:#444;padding:4px 0">• ' + f + '</div>';
+          }).join('') + '</div>';
+      }
+
+      // Shield status
+      var shieldHtml = '';
+      if (d.moat) {
+        var status = d.moat.moat_status || d.moat.status || 'unknown';
+        var score = d.moat.moat_score !== undefined ? d.moat.moat_score : '?';
+        var shieldColor = status === 'fortress' ? '#16A34A' : status === 'strong' ? '#84CC16' : status === 'developing' ? '#D97706' : '#DC2626';
+        shieldHtml = '<div style="font-size:13px;padding:4px 0"><span style="color:var(--muted)">🛡 Shield:</span> <strong style="color:' + shieldColor + '">' + status.toUpperCase() + '</strong> <span style="color:var(--muted);font-size:11px">(moat ' + score + ')</span></div>';
+      }
+
+      // Contagion
+      var contagionHtml = '';
+      if (d.contagion) {
+        var isNeg = d.contagion.is_negative_leader;
+        var isPos = d.contagion.is_positive_leader;
+        var gap = d.contagion.gap;
+        var label = isNeg ? 'NEGATIVE LEADER' : isPos ? 'POSITIVE LEADER' : (gap < -5 ? 'dragging' : gap > 5 ? 'lifting' : 'neutral');
+        var color = isNeg ? '#DC2626' : isPos ? '#16A34A' : '#6B7280';
+        contagionHtml = '<div style="font-size:13px;padding:4px 0"><span style="color:var(--muted)">🌊 Contagion:</span> <strong style="color:' + color + '">' + label + '</strong>' + (gap !== undefined ? ' <span style="color:var(--muted);font-size:11px">(' + (gap > 0 ? '+' : '') + gap.toFixed(1) + ')</span>' : '') + '</div>';
+      }
+
+      // Lens
+      var lensHtml = '';
+      if (d.arbitrage) {
+        var lensStatus = d.arbitrage.arbitrage_type || d.arbitrage.status || 'unknown';
+        var lensLabels = {
+          'double_risk': { label: 'DOUBLE RISK', color: '#DC2626' },
+          'esg_washing': { label: 'ESG WASHING', color: '#DC2626' },
+          'hidden_gem': { label: 'HIDDEN GEM', color: '#16A34A' },
+          'aligned': { label: 'aligned', color: '#6B7280' }
+        };
+        var l = lensLabels[lensStatus] || { label: lensStatus, color: '#6B7280' };
+        lensHtml = '<div style="font-size:13px;padding:4px 0"><span style="color:var(--muted)">🔍 Lens:</span> <strong style="color:' + l.color + '">' + l.label + '</strong></div>';
+      }
+
+      // Watermark
+      var watermarkHtml = '';
+      if (d.empathy) {
+        var perfValue = d.empathy.performative || d.empathy.is_performative;
+        var perfStatus = perfValue ? 'PERFORMATIVE' : 'authentic';
+        var color = perfValue ? '#DC2626' : '#6B7280';
+        watermarkHtml = '<div style="font-size:13px;padding:4px 0"><span style="color:var(--muted)">💧 Watermark:</span> <strong style="color:' + color + '">' + perfStatus + '</strong></div>';
+      }
+
+      return '<div style="background:white;border:1px solid #eee;border-left:5px solid ' + c.border + ';border-radius:10px;padding:18px;margin-bottom:12px">' +
+        '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">' +
+          '<div>' +
+            '<div style="font-family:\'DM Serif Display\';font-size:20px;color:var(--navy);margin-bottom:2px">' + (d.company || d.ticker) + '</div>' +
+            '<div style="font-size:11px;color:var(--muted)">' + d.ticker + (d.composite !== undefined ? ' · Composite: <strong>' + d.composite + '</strong>' : '') + '</div>' +
+          '</div>' +
+          '<div style="background:' + c.bg + ';padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;color:' + c.text + '">💀 Decay ' + d.decay_index + ' · ' + levelLabel + '</div>' +
+        '</div>' +
+        factorsHtml +
+        (shieldHtml || contagionHtml || lensHtml || watermarkHtml ?
+          '<div style="margin-top:10px;padding-top:10px;border-top:1px solid #f3f4f6">' +
+          shieldHtml + contagionHtml + lensHtml + watermarkHtml +
+          '</div>' : '') +
+        '<div style="margin-top:12px;text-align:right">' +
+          '<span class="nav-link" onclick="showPage(\'detail\');setTimeout(function(){loadCompanyDetail(\'' + d.ticker + '\')},50)" style="color:var(--navy);font-size:12px;cursor:pointer;font-weight:600">View full grade →</span>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  // Wire up filters
+  document.addEventListener('click', function(e) {
+    if (e.target.classList && e.target.classList.contains('decline-filter')) {
+      var btns = document.querySelectorAll('.decline-filter');
+      btns.forEach(function(b) { b.classList.remove('active'); b.style.background = 'white'; b.style.color = ''; });
+      e.target.classList.add('active');
+      e.target.style.background = '#111827';
+      e.target.style.color = 'white';
+      DECLINE_FILTER = e.target.getAttribute('data-filter');
+      renderDeclineList();
+    }
+  });
+
+  // Wire up sort
+  document.addEventListener('change', function(e) {
+    if (e.target.id === 'declineSortBy') {
+      DECLINE_SORT = e.target.value;
+      renderDeclineList();
+    }
+  });
+
+  // Load when page shown
+  var origShowPage = window.showPage;
+  if (origShowPage) {
+    window.showPage = function(name) {
+      var result = origShowPage.apply(this, arguments);
+      if (name === 'decline' && !DECLINE_DATA) {
+        loadDeclineData();
+      }
+      return result;
+    };
+  }
+
+  // Also try to load on DOM ready if we're landing on the page
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.hash === '#decline') {
+      loadDeclineData();
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
