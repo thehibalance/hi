@@ -1544,9 +1544,10 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         algo_flags = [f"AH: {f}" for f in algo_harm["flags"][:3]]  # Top 3 flags
         hw_flags.extend(algo_flags)
 
-    # Add harm documentation flags
+    # Add harm documentation flags (v1.2y-hw-cleanup: filter out "Products:" — they're context, not harm evidence)
     if harm_doc.get("has_harm"):
-        harm_flags = [f"HD: {f}" for f in harm_doc.get("flags", [])[:3]]
+        harm_flags = [f"HD: {f}" for f in harm_doc.get("flags", [])[:3]
+                      if not f.strip().startswith("Products:")]
         hw_flags.extend(harm_flags)
 
 
