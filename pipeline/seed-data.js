@@ -1,3 +1,4 @@
+// v1.2y-seed-tickers: applied 20260422-115555
 const SEED_COMPANIES = [
   {
     "id": "apple",
@@ -346,6 +347,7 @@ const SEED_COMPANIES = [
   },
   {
     "id": "tiktok",
+    "ticker": "BYTEDANCE",
     "name": "TikTok / ByteDance",
     "domains": [
       "tiktok.com"
@@ -940,6 +942,7 @@ const SEED_COMPANIES = [
   },
   {
     "id": "wish",
+    "ticker": "WISH",
     "name": "Wish / ContextLogic",
     "domains": [
       "wish.com"
@@ -958,6 +961,7 @@ const SEED_COMPANIES = [
   },
   {
     "id": "alibaba",
+    "ticker": "BABA",
     "name": "Alibaba Group",
     "domains": [
       "alibaba.com",
@@ -1897,6 +1901,7 @@ const SEED_COMPANIES = [
   },
   {
     "id": "bp",
+    "ticker": "BP",
     "name": "BP",
     "domains": [
       "bp.com"
@@ -2316,6 +2321,7 @@ const SEED_COMPANIES = [
   },
   {
     "id": "clearview_ai",
+    "ticker": "CVIEW",
     "name": "Clearview AI",
     "domains": [
       "clearview.ai"

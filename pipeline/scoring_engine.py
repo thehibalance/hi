@@ -565,16 +565,19 @@ def compute_harm_penalty(ticker, company_name=""):
             "flags": [],
             "sources": []
         }
+    # v1.2y-evidence-fixes: flatten "details" sub-dict if present for consistent API
+    # Weapons companies (GD, NOC) may store rubric data nested under "details"
+    details = record.get("details", {})
     return {
         "has_harm": True,
         "penalties": {"M": record.get("penalty_M_total", 0)},
         "flags": record.get("flags", []),
-        "sources": record.get("sources", [])[:3],
-        "settlement_5yr": record.get("settlement_total_5yr", 0),
-        "deaths_attributed": record.get("deaths_attributed", 0),
-        "concealment_findings": record.get("concealment_findings", []),
-        "remediation_status": record.get("remediation_status", "active"),
-        "review_date": record.get("review_date", "")
+        "sources": (record.get("sources") or details.get("sources", []))[:3],
+        "settlement_5yr": record.get("settlement_total_5yr") or details.get("settlement_total_5yr", 0),
+        "deaths_attributed": record.get("deaths_attributed") or details.get("deaths_attributed", 0),
+        "concealment_findings": record.get("concealment_findings") or details.get("concealment_findings", []),
+        "remediation_status": record.get("remediation_status") or details.get("remediation_status", "active"),
+        "review_date": record.get("review_date") or details.get("review_date", "")
     }
 
 
@@ -1347,6 +1350,26 @@ ALGO_HARM_DATA = {
     "WMT":   {"division": 5, "addiction": 15, "manipulation": 20, "transparency": 40, "human_override": 60, "flags": []},
     "COST":  {"division": 0, "addiction": 5, "manipulation": 5, "transparency": 60, "human_override": 80, "flags": []},
     "TGT":   {"division": 5, "addiction": 15, "manipulation": 15, "transparency": 45, "human_override": 60, "flags": []},
+    # ─── v1.2y-evidence-fixes: bottom-scorer AHI entries (public record) ───
+    "BYTEDANCE": {"division": 80, "addiction": 95, "manipulation": 80, "transparency": 15, "human_override": 15,
+                  "flags": ["For You algorithm optimized for session length (internal docs leak 2022)",
+                            "Documented teen mental-health content promotion (WSJ investigation 2021)",
+                            "Douyin (China) vs TikTok (West) show different content curation (Center for Humane Tech research 2022)",
+                            "Opaque moderation escalation (Congressional testimony 2023)"]},
+    "WISH":      {"division": 25, "addiction": 45, "manipulation": 85, "transparency": 10, "human_override": 15,
+                  "flags": ["Dark patterns in pricing display (FTC consent order 2023)",
+                            "Counterfeit product prevalence (Paris Commercial Court ruling 2020)",
+                            "Misleading original-price strikethrough (class action 2022)",
+                            "Opaque merchant moderation practices"]},
+    "CVIEW":     {"division": 20, "addiction": 5, "manipulation": 75, "transparency": 5, "human_override": 5,
+                  "flags": ["Non-consensual facial image scraping (3B+ images, ACLU v. Clearview settlement 2022)",
+                            "Biometric database without subject consent (Illinois BIPA violations)",
+                            "Sold to law enforcement without public oversight (NYT expose 2020)",
+                            "Banned in Canada, UK, France, Italy, Australia (regulatory rulings 2021-2023)"]},
+    "BABA":      {"division": 15, "addiction": 30, "manipulation": 60, "transparency": 20, "human_override": 25,
+                  "flags": ["Algorithmic merchant ranking with paid placement opacity",
+                            "Counterfeit goods platform moderation concerns (USTR Notorious Markets List)"]},
+    # (end v1.2y-evidence-fixes additions)
 }
 
 def compute_algo_harm(ticker):

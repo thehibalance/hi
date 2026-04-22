@@ -496,6 +496,43 @@ HARM_DATA = {
         "remediation_status": "paid_in_full",
         "review_date": "2026-04-15"
     },
+
+    # ─── v1.2y-evidence-fixes: bottom-scorer HD entries (public record) ───
+    "BP": {
+        "company": "BP p.l.c.",
+        "settlement_total_5yr": 3_500_000_000,
+        "deaths_attributed": 11,  # Deepwater Horizon 2010
+        "concealment_findings": [
+            "deepwater_horizon_safety_documentation_2010",
+            "texas_city_refinery_2005_explosion_15_deaths_concealment"
+        ],
+        "sources": [
+            "https://www.justice.gov/opa/pr/bp-exploration-and-production-inc-agrees-plead-guilty-felony-manslaughter-environmental",
+            "https://www.epa.gov/enforcement/deepwater-horizon-bp-gulf-mexico-oil-spill",
+            "https://www.csb.gov/bp-america-refinery-explosion/"
+        ],
+        "remediation_status": "paid_in_full",
+        "review_date": "2026-04-22",
+        "notes": "Deepwater Horizon 2010: 11 deaths, largest environmental settlement in US history. Total payments ~$65B across criminal/civil/NRD (5-year window ~$3.5B residual). Texas City 2005: 15 deaths, concealed hazard pattern."
+    },
+    "CVIEW": {
+        "company": "Clearview AI",
+        "settlement_total_5yr": 50_000_000,
+        "deaths_attributed": 0,
+        "concealment_findings": [
+            "facial_recognition_scraping_without_consent_2017_2020",
+            "law_enforcement_database_sales_undisclosed"
+        ],
+        "sources": [
+            "https://www.aclu.org/news/privacy-technology/aclu-v-clearview-ai",
+            "https://ico.org.uk/action-weve-taken/enforcement/clearview-ai-inc-mpn/",
+            "https://www.nytimes.com/2020/01/18/technology/clearview-privacy-facial-recognition.html"
+        ],
+        "remediation_status": "active",
+        "review_date": "2026-04-22",
+        "notes": "Non-consensual scraping of 3B+ facial images. ACLU v. Clearview settled 2022 under Illinois BIPA. UK ICO fine £7.5M (2022). Banned in Canada, Australia, France, Italy. Active US class actions."
+    },
+    # (end v1.2y-evidence-fixes additions)
 }
 
 # Remove the empty EQR placeholder (was a typo guard)
