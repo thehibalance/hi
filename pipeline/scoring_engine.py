@@ -1369,7 +1369,15 @@ def compute_algo_harm(ticker):
     
     # Only apply penalties if harm > 30
     if harm <= 30:
-        return {"algo_harm_score": round(harm, 1), "penalties": {"H": 0, "U": 0, "M": 0, "N": 0}, "flags": data.get("flags", []), "has_harm": False}
+        # v1.2y-ahi-components: even without penalty, expose components
+        low_components = {
+            "division": data["division"],
+            "addiction": data["addiction"],
+            "manipulation": data["manipulation"],
+            "transparency": data["transparency"],
+            "human_override": data["human_override"],
+        }
+        return {"algo_harm_score": round(harm, 1), "penalties": {"H": 0, "U": 0, "M": 0, "N": 0}, "flags": data.get("flags", []), "has_harm": False, "components": low_components}
     
     # Penalties scale: max -15 per dimension at harm=100
     pf = (harm - 30) / 70  # 0 to 1
@@ -1380,7 +1388,15 @@ def compute_algo_harm(ticker):
         "N": round(-pf * 10, 1),   # N.4 — claiming to "connect" while dividing
     }
     
-    return {"algo_harm_score": round(harm, 1), "penalties": penalties, "flags": data.get("flags", []), "has_harm": True}
+    # v1.2y-ahi-components: expose the 5 factors that produce the AHI score for journalist/UI auditability
+    components = {
+        "division": data["division"],
+        "addiction": data["addiction"],
+        "manipulation": data["manipulation"],
+        "transparency": data["transparency"],
+        "human_override": data["human_override"],
+    }
+    return {"algo_harm_score": round(harm, 1), "penalties": penalties, "flags": data.get("flags", []), "has_harm": True, "components": components}
 
 
 def score_company(company_name, ticker="", sec_data=None, epa_data=None,
