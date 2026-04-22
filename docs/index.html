@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- v1.3-human-decline: applied 20260422-123859 -->
+<!-- v1.3-human-decline: applied
+<!-- v1.3.2-decline-factors: applied 20260422-124810 -->
+<!-- v1.3.1-decline-shapes: applied 20260422-124803 --> 20260422-123859 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>hi — Human kind?</title>
@@ -1232,67 +1234,45 @@ window.addEventListener('hashchange', _hashRoute);
         fetch(API + '/empathy').then(r => r.json())
       ]);
 
-      // Index each by ticker
-      var alerts = (alertsResp.results || []).reduce(function(acc, a) {
-        if (a.ticker) acc[a.ticker.toUpperCase()] = a;
-        return acc;
-      }, {});
-
-      // moat endpoint returns {companies: [...]} or similar
-      var moats = {};
-      var moatList = moatsResp.companies || moatsResp.results || moatsResp || [];
-      if (Array.isArray(moatList)) {
-        moatList.forEach(function(m) {
-          if (m.ticker) moats[m.ticker.toUpperCase()] = m;
+      // v1.3.1: index by ticker AND company-name fallback (contagion/empathy often have empty tickers)
+      function indexByTickerOrName(list) {
+        var idx = {};
+        (list || []).forEach(function(item) {
+          if (item.ticker) idx[item.ticker.toUpperCase()] = item;
+          if (item.company) idx['_NAME_' + item.company.trim().toLowerCase()] = item;
         });
-      } else if (typeof moatList === 'object') {
-        Object.keys(moatList).forEach(function(k) {
-          moats[k.toUpperCase()] = moatList[k];
-        });
+        return idx;
+      }
+      function lookup(idx, ticker, company) {
+        if (ticker && idx[ticker.toUpperCase()]) return idx[ticker.toUpperCase()];
+        if (company && idx['_NAME_' + company.trim().toLowerCase()]) return idx['_NAME_' + company.trim().toLowerCase()];
+        return null;
       }
 
-      var contagion = {};
-      var contList = contagionResp.companies || contagionResp.results || contagionResp || [];
-      if (Array.isArray(contList)) {
-        contList.forEach(function(c) {
-          if (c.ticker) contagion[c.ticker.toUpperCase()] = c;
-        });
-      }
+      var alertsList = alertsResp.results || [];
+      var moats = indexByTickerOrName(moatsResp.results || moatsResp.companies || []);
+      var contagion = indexByTickerOrName(contagionResp.results || contagionResp.companies || []);
+      var arbitrage = indexByTickerOrName(arbResp.results || arbResp.companies || []);
+      var empathy = indexByTickerOrName(empResp.results || empResp.companies || []);
 
-      var arbitrage = {};
-      var arbList = arbResp.companies || arbResp.results || arbResp || [];
-      if (Array.isArray(arbList)) {
-        arbList.forEach(function(a) {
-          if (a.ticker) arbitrage[a.ticker.toUpperCase()] = a;
-        });
-      }
-
-      var empathy = {};
-      var empList = empResp.companies || empResp.results || empResp || [];
-      if (Array.isArray(empList)) {
-        empList.forEach(function(e) {
-          if (e.ticker) empathy[e.ticker.toUpperCase()] = e;
-        });
-      }
-
-      // Build combined records — union of all tickers that have at least a heartbeat alert
-      var combined = {};
-      Object.keys(alerts).forEach(function(t) {
-        combined[t] = {
-          ticker: t,
-          company: alerts[t].company || t,
-          composite: alerts[t].composite,
-          decay_index: alerts[t].decay_index || 0,
-          decay_level: alerts[t].decay_level || 'stable',
-          decay_factors: alerts[t].decay_factors || [],
-          moat: moats[t] || null,
-          contagion: contagion[t] || null,
-          arbitrage: arbitrage[t] || null,
-          empathy: empathy[t] || null
+      // v1.3.1: Build combined records from the heartbeat ALERT list
+      // (these are the top N decay companies returned by the alerts endpoint)
+      DECLINE_DATA = alertsList.map(function(a) {
+        var ticker = (a.ticker || '').toUpperCase();
+        var company = a.company || ticker;
+        return {
+          ticker: ticker,
+          company: company,
+          composite: a.composite,
+          decay_index: a.decay_index || 0,
+          decay_level: a.decay_level || 'stable',
+          factors: a.factors || a.decay_factors || [],
+          moat: lookup(moats, ticker, company),
+          contagion: lookup(contagion, ticker, company),
+          arbitrage: lookup(arbitrage, ticker, company),
+          empathy: lookup(empathy, ticker, company)
         };
       });
-
-      DECLINE_DATA = Object.values(combined);
 
       // Update headline stats
       var critical = DECLINE_DATA.filter(function(d) { return d.decay_level === 'critical'; }).length;
@@ -1368,31 +1348,34 @@ window.addEventListener('hashchange', _hashRoute);
 
       // Decay factors (from heartbeat)
       var factorsHtml = '';
-      if (d.decay_factors && d.decay_factors.length) {
+      if (d.factors && d.factors.length) {
         factorsHtml = '<div style="margin-top:10px"><div style="font-size:11px;color:var(--muted);font-weight:600;margin-bottom:4px">♥ HEARTBEAT SIGNALS</div>' +
-          d.decay_factors.slice(0, 3).map(function(f) {
+          d.factors.slice(0, 6).map(function(f) {
             return '<div style="font-size:13px;color:#444;padding:4px 0">• ' + f + '</div>';
           }).join('') + '</div>';
       }
 
-      // Shield status
+      // Shield status (v1.3.1: actual field is moat_level)
       var shieldHtml = '';
       if (d.moat) {
-        var status = d.moat.moat_status || d.moat.status || 'unknown';
+        var status = d.moat.moat_level || d.moat.moat_status || 'unknown';
         var score = d.moat.moat_score !== undefined ? d.moat.moat_score : '?';
         var shieldColor = status === 'fortress' ? '#16A34A' : status === 'strong' ? '#84CC16' : status === 'developing' ? '#D97706' : '#DC2626';
         shieldHtml = '<div style="font-size:13px;padding:4px 0"><span style="color:var(--muted)">🛡 Shield:</span> <strong style="color:' + shieldColor + '">' + status.toUpperCase() + '</strong> <span style="color:var(--muted);font-size:11px">(moat ' + score + ')</span></div>';
       }
 
-      // Contagion
+      // Contagion (v1.3.1: actual field is gap_from_industry)
       var contagionHtml = '';
       if (d.contagion) {
         var isNeg = d.contagion.is_negative_leader;
         var isPos = d.contagion.is_positive_leader;
-        var gap = d.contagion.gap;
-        var label = isNeg ? 'NEGATIVE LEADER' : isPos ? 'POSITIVE LEADER' : (gap < -5 ? 'dragging' : gap > 5 ? 'lifting' : 'neutral');
+        var gap = d.contagion.gap_from_industry;
+        var label = isNeg ? 'NEGATIVE LEADER' : isPos ? 'POSITIVE LEADER' : 
+                    (gap < -5 ? 'dragging industry down' : gap > 5 ? 'lifting industry up' : 'neutral');
         var color = isNeg ? '#DC2626' : isPos ? '#16A34A' : '#6B7280';
-        contagionHtml = '<div style="font-size:13px;padding:4px 0"><span style="color:var(--muted)">🌊 Contagion:</span> <strong style="color:' + color + '">' + label + '</strong>' + (gap !== undefined ? ' <span style="color:var(--muted);font-size:11px">(' + (gap > 0 ? '+' : '') + gap.toFixed(1) + ')</span>' : '') + '</div>';
+        var gapDisplay = (gap !== undefined && gap !== null) ? 
+          ' <span style="color:var(--muted);font-size:11px">(' + (gap > 0 ? '+' : '') + gap.toFixed(1) + ' vs industry)</span>' : '';
+        contagionHtml = '<div style="font-size:13px;padding:4px 0"><span style="color:var(--muted)">🌊 Contagion:</span> <strong style="color:' + color + '">' + label + '</strong>' + gapDisplay + '</div>';
       }
 
       // Lens
@@ -1409,13 +1392,16 @@ window.addEventListener('hashchange', _hashRoute);
         lensHtml = '<div style="font-size:13px;padding:4px 0"><span style="color:var(--muted)">🔍 Lens:</span> <strong style="color:' + l.color + '">' + l.label + '</strong></div>';
       }
 
-      // Watermark
+      // Watermark (v1.3.1: show gap + performative flag)
       var watermarkHtml = '';
       if (d.empathy) {
-        var perfValue = d.empathy.performative || d.empathy.is_performative;
+        var perfValue = d.empathy.is_performative;
         var perfStatus = perfValue ? 'PERFORMATIVE' : 'authentic';
         var color = perfValue ? '#DC2626' : '#6B7280';
-        watermarkHtml = '<div style="font-size:13px;padding:4px 0"><span style="color:var(--muted)">💧 Watermark:</span> <strong style="color:' + color + '">' + perfStatus + '</strong></div>';
+        var gap = d.empathy.gap;
+        var gapDisplay = (gap !== undefined && gap > 5) ? 
+          ' <span style="color:var(--muted);font-size:11px">(external signals exceed internal reality by ' + gap.toFixed(1) + ')</span>' : '';
+        watermarkHtml = '<div style="font-size:13px;padding:4px 0"><span style="color:var(--muted)">💧 Watermark:</span> <strong style="color:' + color + '">' + perfStatus + '</strong>' + gapDisplay + '</div>';
       }
 
       return '<div style="background:white;border:1px solid #eee;border-left:5px solid ' + c.border + ';border-radius:10px;padding:18px;margin-bottom:12px">' +
