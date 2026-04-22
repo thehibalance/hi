@@ -9,6 +9,22 @@ from pathlib import Path
 from collections import defaultdict
 
 
+
+# v1.2y type coercion helper (narrow)
+def _to_num(value, default=0):
+    """Coerce value to int, handling strings, None, dicts, non-numeric."""
+    if value is None: return default
+    if isinstance(value, (int, float)): return int(value)
+    if isinstance(value, str):
+        cleaned = value.strip().replace(",", "").replace("$", "").replace(" ", "")
+        if not cleaned: return default
+        try: return int(float(cleaned))
+        except (ValueError, TypeError): return default
+    if isinstance(value, dict):
+        return _to_num(value.get("value"), default)
+    return default
+
+
 def load_scores(data_dir):
     """Load all scored companies."""
     sf = Path(data_dir) / "all_scores.json"
@@ -195,16 +211,17 @@ def compute_contagion(companies):
         ks = c.get("key_signals", {})
         
         # Influence weight — larger companies have more contagion
-        headcount = ks.get("headcount") or 1000
-        rpe = ks.get("revenue_per_employee", 200000) or 200000
+        # v1.2y: coerce to int defensively (FMP/Finnhub sometimes return strings)
+        headcount = _to_num(ks.get("headcount"), 1000) or 1000
+        rpe = _to_num(ks.get("revenue_per_employee"), 200000) or 200000
         est_revenue = headcount * rpe
         
         # Normalize influence within industry (0-1)
         ind_revenues = []
         for m in members:
             mks = m.get("key_signals", {})
-            mhc = mks.get("headcount") or 1000
-            mrpe = mks.get("revenue_per_employee", 200000) or 200000
+            mhc = _to_num(mks.get("headcount"), 1000) or 1000
+            mrpe = _to_num(mks.get("revenue_per_employee"), 200000) or 200000
             ind_revenues.append(mhc * mrpe)
         
         max_rev = max(ind_revenues) if ind_revenues else 1

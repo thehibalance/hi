@@ -38,6 +38,22 @@ from collections import defaultdict
 # CONFIGURATION
 # ═══════════════════════════════════════════════════════════════════════
 
+
+# v1.2y type coercion helper (narrow)
+def _to_num(value, default=0):
+    """Coerce value to int, handling strings, None, dicts, non-numeric."""
+    if value is None: return default
+    if isinstance(value, (int, float)): return int(value)
+    if isinstance(value, str):
+        cleaned = value.strip().replace(",", "").replace("$", "").replace(" ", "")
+        if not cleaned: return default
+        try: return int(float(cleaned))
+        except (ValueError, TypeError): return default
+    if isinstance(value, dict):
+        return _to_num(value.get("value"), default)
+    return default
+
+
 DIMENSIONS = ["D_H", "D_U", "D_M", "D_A", "D_N"]
 DIM_LABELS = {"D_H": "Human Consciousness", "D_U": "Understanding & Empathy",
               "D_M": "Moral & Ethical Conduct", "D_A": "Alive & Environmental",
@@ -206,8 +222,9 @@ def validate_inputs(companies, report, subsignals_dir=None):
         # ── Key signals validation ──
         ks = c.get("key_signals", {})
         if ks:
-            # Headcount
-            hc = ks.get("headcount")
+            # Headcount (v1.2y: coerce to int defensively)
+            hc_raw = ks.get("headcount")
+            hc = _to_num(hc_raw, None) if hc_raw is not None else None
             if hc is not None:
                 if hc < 0:
                     report.add(1, "critical", name, "headcount",
@@ -221,8 +238,9 @@ def validate_inputs(companies, report, subsignals_dir=None):
                               "Zero headcount — data source may have failed",
                               0, "> 0")
             
-            # Headcount change
-            hc_pct = ks.get("headcount_change_pct")
+            # Headcount change (v1.2y: coerce defensively)
+            hc_pct_raw = ks.get("headcount_change_pct")
+            hc_pct = _to_num(hc_pct_raw, None) if hc_pct_raw is not None else None
             if hc_pct is not None:
                 if abs(hc_pct) > MAX_HEADCOUNT_CHANGE_PCT:
                     report.add(1, "critical", name, "headcount_change_pct",
