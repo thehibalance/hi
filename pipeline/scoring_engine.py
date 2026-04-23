@@ -106,15 +106,48 @@ INDUSTRY_RPE_MEDIANS = {
     "defense": 350000, "auto": 300000, "default": 350000,
 }
 
+# v1.7.1-industry-classification: applied 20260423-085434
 SIC_TO_INDUSTRY = {
-    "35": "tech", "36": "tech", "37": "manufacturing", "38": "tech",
-    "73": "tech", "48": "telecom", "49": "energy",
+    # Technology / electronics (SIC 35-38, 73)
+    "35": "tech", "36": "tech", "38": "tech", "73": "tech",
+    # Defense / aerospace (SIC 37 split — auto in 371x, defense/aerospace in 372x-379x)
+    # Note: SIC 37 prefix matches both; weapons detection in HARM_DATA catches the real defense cos.
+    "37": "manufacturing",
+    # Telecom, energy, utilities
+    "48": "telecom", "49": "energy",
+    # Retail (SIC 52-59 except 58 which is food service)
     "52": "retail", "53": "retail", "54": "retail", "56": "retail", "57": "retail", "59": "retail",
-    "60": "finance", "61": "finance", "62": "finance", "63": "finance", "64": "finance",
-    "20": "food", "21": "food", "51": "food", "58": "food",
-    "28": "healthcare", "80": "healthcare", "50": "retail",
-    "13": "energy", "29": "energy", "27": "media", "78": "media",
-    "45": "defense", "55": "auto",
+    "50": "retail", "51": "retail",
+    # Finance (SIC 60-64)
+    "60": "finance", "61": "finance", "62": "finance", "63": "finance", "64": "finance", "67": "finance",
+    # Food & beverage (SIC 20-21, food service 58)
+    "20": "food", "21": "food", "58": "food",
+    # Healthcare / pharma (SIC 28 chemicals/pharma, 80 health services)
+    "28": "healthcare", "80": "healthcare", "87": "healthcare",
+    # Energy (SIC 13 oil/gas extraction, 29 refining)
+    "13": "energy", "29": "energy",
+    # Media / entertainment (SIC 27 publishing, 78 motion pictures, 79 amusement)
+    "27": "media", "78": "media",
+    # v1.7.1: Corrections + new categories
+    "45": "transportation",  # was "defense" — SIC 45xx is Transportation by Air
+    "40": "transportation",  # rail transport
+    "41": "transportation",  # passenger transit
+    "42": "transportation",  # motor freight / trucking (ODFL)
+    "44": "transportation",  # water transport / cruises (CCL, RCL, NCLH)
+    "47": "transportation",  # transportation services
+    "55": "auto",            # auto dealers (5500 series)
+    "30": "apparel",         # rubber/plastic footwear (Nike)
+    "31": "apparel",         # leather goods
+    "23": "apparel",         # apparel manufacturing
+    "79": "hospitality",     # amusement / casinos (Wynn, LVS)
+    "70": "hospitality",     # hotels (Hilton, Marriott)
+    "72": "services",        # personal services (Cintas industrial laundry)
+    "76": "services",        # repair services
+    "81": "services",        # legal services
+    "82": "services",        # education
+    "86": "services",        # membership organizations
+    "89": "services",        # miscellaneous services
+    # (end v1.7.1)
 }
 
 def get_industry(sic_code):
