@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- v1.8.0-content-polish: applied 20260423-152343 -->
 <!-- v1.7.3-detail-polish: applied 20260423-122315 -->
 <!-- v1.7.2-detail-evidence-ui: applied 20260423-110159 -->
 <!-- v1.7.0-human100-tiers: applied 20260423-084420 -->
@@ -198,7 +199,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 
 
 
-<div style="text-align:center;margin-top:32px"><button class="btn btn-secondary" style="opacity:0.5;cursor:not-allowed;pointer-events:none"><span class="btn-icon">🧭</span> Safari — Coming Soon</button></div>
+<div style="text-align:center;margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><button class="btn btn-secondary" style="opacity:0.5;cursor:not-allowed;pointer-events:none"><span class="btn-icon">\U0001f9ed</span> Safari — Coming Soon</button><button class="btn btn-secondary" style="opacity:0.5;cursor:not-allowed;pointer-events:none"><span class="btn-icon">\U0001fa9f</span> Edge — Coming Soon</button><button class="btn btn-secondary" style="opacity:0.5;cursor:not-allowed;pointer-events:none"><span class="btn-icon">\U0001f98a</span> Firefox — Coming Soon</button></div>
 </div>
 </div>
 
@@ -513,9 +514,11 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 
 <div class="about-card"><h3>💡 The Fifth Check</h3><p>For centuries, we've made decisions through four filters: cost, time, convenience, risk. HI Grade adds the missing one — <strong>verified human impact.</strong></p><p style="font-style:italic">Human kind? Now you can find out.</p></div>
 
-<div class="about-card"><h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">The Founder</h3><p><img src="/logo-512.png" alt="hi." style="height:16px;vertical-align:middle"> started on Earth Day 2025 with a simple question: <strong>if AI is changing everything, who's measuring what we're losing?</strong></p><p>I'd spent years in technology — enough to know what AI could do, and enough to worry about what it was replacing. Not just jobs. <strong>The craft behind the work. The empathy in the service. The humans in the loop.</strong></p><p>I couldn't find a tool that measured any of that. So I built one. The methodology is open source because <strong>a transparency framework that hides its own math would be hypocritical.</strong> The name is <img src="/logo-512.png" alt="hi." style="height:14px;vertical-align:middle"> because it's both a greeting and a question: <strong>is it Human Intelligence, or Artificial?</strong></p><p><strong>Don't panic.</strong> Every journey starts somewhere. The data will get better. The ladders will get grounded. The companies will adapt. That's the point.</p></div>
+
 
 <div class="about-card"><h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">What HI Grade does for you</h3><div style="display:flex;flex-direction:column;gap:14px;margin-top:8px"><div><strong>Before you buy.</strong> <span style="color:var(--muted);font-size:14px">Scan a barcode or search a brand. Know if the humans behind the product are being invested in or replaced.</span></div><div><strong>Before you work.</strong> <span style="color:var(--muted);font-size:14px">Look up the company before the interview. HI Grade tells you what Glassdoor can't.</span></div><div><strong>Before you invest.</strong> <span style="color:var(--muted);font-size:14px">Know what you're funding. HI Grade reveals the human cost of every portfolio.</span></div><div><strong>Before you recommend.</strong> <span style="color:var(--muted);font-size:14px">Don't vouch for a brand you haven't checked. Ask <em>Human kind?</em> before your reputation is on it.</span></div></div></div>
+
+<div class="about-card"><h3 style="font-family:'DM Serif Display';font-size:22px;color:var(--navy);margin-bottom:16px">The Founder</h3><p><img src="/logo-512.png" alt="hi." style="height:16px;vertical-align:middle"> started on Earth Day 2025 with a simple question: <strong>if AI is changing everything, who's measuring what we're losing?</strong></p><p>I'd spent years in technology — enough to know what AI could do, and enough to worry about what it was replacing. Not just jobs. <strong>The craft behind the work. The empathy in the service. The humans in the loop.</strong></p><p>I couldn't find a tool that measured any of that. So I built one. The methodology is open source because <strong>a transparency framework that hides its own math would be hypocritical.</strong> The name is <img src="/logo-512.png" alt="hi." style="height:14px;vertical-align:middle"> because it's both a greeting and a question: <strong>is it Human Intelligence, or Artificial?</strong></p><p><strong>Don't panic.</strong> Every journey starts somewhere. The data will get better. The ladders will get grounded. The companies will adapt. That's the point.</p></div>
 
 <div style="background:linear-gradient(135deg,#1B3A5C,#0F1A2E);color:#fff;padding:24px;border-radius:14px;margin:32px 0 24px;text-align:center"><div style="font-family:'DM Serif Display';font-size:18px;color:#E5C44A;margin-bottom:6px">Want to know more?</div><div style="font-size:13px;color:#B4BFCC;margin-bottom:14px">Read how every score is computed — 19 sub-signals, harm documentation, dimension math, the whole thing.</div><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><span onclick="showPage('methodology')" style="padding:9px 18px;background:#E5C44A;color:#0F1A2E;border-radius:7px;font-weight:700;font-size:13px;cursor:pointer">Read the methodology →</span><span onclick="showPage('sources')" style="padding:9px 18px;background:transparent;color:#fff;border:1px solid #5A7A9A;border-radius:7px;font-weight:600;font-size:13px;cursor:pointer">See all 42 sources →</span></div></div>
 
@@ -528,65 +531,61 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <h1 style="font-family:'DM Serif Display';font-size:42px;color:var(--navy);text-align:center;margin-bottom:8px">Say <img src="/logo-512.png" alt="hi." style="height:42px;vertical-align:middle"></h1>
 <p style="text-align:center;color:var(--muted);font-size:15px;margin-bottom:32px">We'd love to hear from you.</p>
 
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px">
-<div style="text-align:center;padding:32px 24px;background:white;border-radius:16px;border:1px solid #eee;transition:all .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'"><h3 style="font-family:'DM Serif Display';font-size:20px;color:var(--navy);margin-bottom:8px">Say <img src="/logo-512.png" alt="hi." style="height:18px;vertical-align:middle"> as a Company</h3><p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px">Understand your HI Grade™. See what drives your score across all five HUMAN dimensions.</p><a href="#" onclick="window.location=String.fromCharCode(109,97,105,108,116,111,58,104,105,64,116,104,101,104,105,98,97,108,97,110,99,101,46,111,114,103);return false" style="display:inline-block;padding:10px 24px;background:var(--navy);color:white;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">Say HI</a></div>
-<div style="text-align:center;padding:32px 24px;background:white;border-radius:16px;border:1px solid #eee;transition:all .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'"><h3 style="font-family:'DM Serif Display';font-size:20px;color:var(--navy);margin-bottom:8px">Just Say <img src="/logo-512.png" alt="hi." style="height:18px;vertical-align:middle"></h3><p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px">Questions, feedback, ideas, or just want to say hi. We're humans too.</p><a href="#" onclick="window.location=String.fromCharCode(109,97,105,108,116,111,58,104,105,64,116,104,101,104,105,98,97,108,97,110,99,101,46,111,114,103);return false" style="display:inline-block;padding:10px 24px;background:#16A34A;color:white;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">Say HI</a></div>
-</div>
+<!-- v1.8.0: Consolidated from 6 cards to 3 -->
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px">
 
-<!-- v1.6: Forms migrated from homepage Get Involved -->
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;margin-top:24px">
-
-<!-- Request a HI Grade -->
-<div style="background:white;border:1px solid var(--light);border-radius:16px;padding:28px">
-<div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1.5px;margin-bottom:8px">REQUEST A HI GRADE</div>
-<h3 style="font-family:'DM Serif Display';font-size:18px;color:var(--navy);margin-bottom:8px">Don\'t see a brand you care about?</h3>
-<p style="font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.5">Tell us and we\'ll add it to the scoring queue. We prioritize based on public interest.</p>
-<input id="reqCompany" placeholder="Company name..." style="width:100%;padding:12px 14px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit;margin-bottom:8px;box-sizing:border-box">
-<input id="reqEmail" placeholder="Email (optional, for follow-up)" style="width:100%;padding:12px 14px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit;margin-bottom:12px;box-sizing:border-box">
-<button onclick="submitRequest()" style="width:100%;padding:12px;background:var(--navy);color:white;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s">Submit Request</button>
-<div id="reqSuccess" style="display:none;margin-top:10px;color:#16A34A;font-weight:600;font-size:11px">\u2713 Request submitted. We\'ll add it to the scoring queue.</div>
-<div id="reqError" style="display:none;margin-top:10px;color:#DC2626;font-size:11px">Please enter a company name.</div>
-</div>
-
-<!-- Are you a company? -->
+<!-- Card 1: Companies -->
 <div style="background:white;border:1px solid #C49B2030;border-radius:16px;padding:28px">
-<div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1.5px;margin-bottom:8px">ARE YOU A COMPANY?</div>
-<h3 style="font-family:'DM Serif Display';font-size:18px;color:var(--navy);margin-bottom:8px">Want to improve your HI Grade?</h3>
-<p style="font-size:13px;color:var(--muted);margin-bottom:8px;line-height:1.5">Think your score is wrong? Want to improve it? We\'ll share your current gates and what it takes to earn Gold.</p>
+<div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1.5px;margin-bottom:8px">\u2728 ARE YOU A COMPANY?</div>
+<h3 style="font-family:'DM Serif Display';font-size:20px;color:var(--navy);margin-bottom:8px">Understand or improve your HI Grade.</h3>
+<p style="font-size:13px;color:var(--muted);margin-bottom:8px;line-height:1.5">See what drives your score across all five HUMAN dimensions. Want Gold? We\'ll share your current gates and what it takes.</p>
 <p style="font-size:11px;color:#C49B20;margin-bottom:18px">Earn Gold HI Grade \u2192 license the badge for your website, packaging, and job listings.</p>
 <input id="companyContactName" placeholder="Company name..." style="width:100%;padding:12px 14px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit;margin-bottom:8px;box-sizing:border-box">
 <input id="companyContactEmail" placeholder="Work email..." style="width:100%;padding:12px 14px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit;margin-bottom:12px;box-sizing:border-box">
 <button onclick="submitCompanyContact()" style="width:100%;padding:12px;background:#C49B20;color:white;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s">Reach Out</button>
 <div id="companyContactSuccess" style="display:none;margin-top:10px;color:#16A34A;font-weight:600;font-size:11px">\u2713 We\'ll reach out within 48 hours.</div>
+<div style="margin-top:10px;font-size:11px;color:var(--muted);text-align:center">Or email <a href="#" onclick="window.location=String.fromCharCode(109,97,105,108,116,111,58,104,105,64,116,104,101,104,105,98,97,108,97,110,99,101,46,111,114,103);return false" style="color:var(--navy);font-weight:600;text-decoration:none">hi@thehibalance.org</a></div>
+</div>
+
+<!-- Card 2: Individuals -->
+<div style="background:white;border:1px solid var(--light);border-radius:16px;padding:28px">
+<div style="font-size:10px;font-weight:700;color:var(--navy);letter-spacing:1.5px;margin-bottom:8px">\u{1F44B} JUST SAY HI</div>
+<h3 style="font-family:'DM Serif Display';font-size:20px;color:var(--navy);margin-bottom:8px">Request a brand. Share feedback. Say hi.</h3>
+<p style="font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.5">Don\'t see a company you care about? Tell us. Have feedback? Ideas? Questions? We\'re humans too.</p>
+<input id="reqCompany" placeholder="Company name or message..." style="width:100%;padding:12px 14px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit;margin-bottom:8px;box-sizing:border-box">
+<input id="reqEmail" placeholder="Email (optional, for reply)" style="width:100%;padding:12px 14px;border:1px solid #E0E0E0;border-radius:10px;font-size:13px;outline:none;font-family:inherit;margin-bottom:12px;box-sizing:border-box">
+<button onclick="submitRequest()" style="width:100%;padding:12px;background:var(--navy);color:white;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s">Say Hi</button>
+<div id="reqSuccess" style="display:none;margin-top:10px;color:#16A34A;font-weight:600;font-size:11px">\u2713 Thanks! We\'ll be in touch if you included an email.</div>
+<div id="reqError" style="display:none;margin-top:10px;color:#DC2626;font-size:11px">Please enter a company name or message.</div>
+<div style="margin-top:10px;font-size:11px;color:var(--muted);text-align:center">Or email <a href="#" onclick="window.location=String.fromCharCode(109,97,105,108,116,111,58,104,105,64,116,104,101,104,105,98,97,108,97,110,99,101,46,111,114,103);return false" style="color:var(--navy);font-weight:600;text-decoration:none">hi@thehibalance.org</a></div>
 </div>
 
 </div>
 
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:24px">
-<div style="padding:28px;background:linear-gradient(135deg,#0F1A2E,#1a2a4a);border-radius:16px;text-align:center;color:white">
-<div style="font-size:24px;margin-bottom:12px">📊</div>
-<h3 style="font-family:'DM Serif Display';font-size:20px;margin-bottom:8px">Sponsored Research</h3>
-<p style="font-size:12px;color:#8899AA;line-height:1.6;margin-bottom:16px">"State of Human Intelligence in [Your Industry]" — custom reports powered by 42 data sources. Perfect for industry associations, conferences, and thought leadership.</p>
-<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px">
-<span style="font-size:10px;color:#C49B20;background:#C49B2020;padding:3px 10px;border-radius:4px">Industry Deep Dives</span>
-<span style="font-size:10px;color:#C49B20;background:#C49B2020;padding:3px 10px;border-radius:4px">Quarterly Reports</span>
-<span style="font-size:10px;color:#C49B20;background:#C49B2020;padding:3px 10px;border-radius:4px">Conference Presentations</span>
+<!-- Card 3: Commercial -->
+<div style="margin-top:24px;padding:32px;background:linear-gradient(135deg,#0F1A2E,#1a2a4a);border-radius:16px;color:white">
+<div style="text-align:center;margin-bottom:24px">
+<div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1.5px;margin-bottom:8px">\u{1F4BC} COMMERCIAL PARTNERSHIPS</div>
+<h3 style="font-family:'DM Serif Display';font-size:22px;color:white;margin-bottom:6px">Work with HI Grade.</h3>
+<p style="font-size:13px;color:#8899AA;line-height:1.5">Industry reports, API licensing, research partnerships.</p>
 </div>
-<a href="#" onclick="window.location=String.fromCharCode(109,97,105,108,116,111,58,104,105,64,116,104,101,104,105,98,97,108,97,110,99,101,46,111,114,103);return false" style="display:inline-block;padding:8px 20px;background:#C49B20;color:white;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none">Inquire →</a>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+<div style="background:rgba(255,255,255,0.05);border-radius:12px;padding:20px;text-align:center">
+<div style="font-size:20px;margin-bottom:6px">\U0001F4CA</div>
+<div style="font-weight:700;color:white;margin-bottom:4px;font-size:14px">Sponsored Research</div>
+<div style="font-size:12px;color:#8899AA;line-height:1.5;margin-bottom:10px">"State of Human Intelligence in [Your Industry]" \u2014 custom reports powered by 42 data sources.</div>
 </div>
-<div style="padding:28px;background:white;border-radius:16px;border:1px solid #eee;text-align:center">
-<div style="font-size:24px;margin-bottom:12px">🤝</div>
-<h3 style="font-family:'DM Serif Display';font-size:20px;color:var(--navy);margin-bottom:8px">Affiliate Program</h3>
-<p style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:16px">Write about ethical companies? Recommend brands with high HI Grades? Join our affiliate program — earn referral revenue when your audience shops at scored companies.</p>
-<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px">
-<span style="font-size:10px;color:var(--navy);background:#F0F4F8;padding:3px 10px;border-radius:4px">Bloggers & Creators</span>
-<span style="font-size:10px;color:var(--navy);background:#F0F4F8;padding:3px 10px;border-radius:4px">Journalists</span>
-<span style="font-size:10px;color:var(--navy);background:#F0F4F8;padding:3px 10px;border-radius:4px">ESG Newsletters</span>
-</div>
-<a href="#" onclick="window.location=String.fromCharCode(109,97,105,108,116,111,58,104,105,64,116,104,101,104,105,98,97,108,97,110,99,101,46,111,114,103);return false" style="display:inline-block;padding:8px 20px;background:var(--navy);color:white;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none">Join Program →</a>
+<div style="background:rgba(255,255,255,0.05);border-radius:12px;padding:20px;text-align:center">
+<div style="font-size:20px;margin-bottom:6px">\U0001F91D</div>
+<div style="font-weight:700;color:white;margin-bottom:4px;font-size:14px">Affiliate Program</div>
+<div style="font-size:12px;color:#8899AA;line-height:1.5;margin-bottom:10px">Write about ethical companies? Recommend brands with high HI Grades? Earn referral revenue.</div>
 </div>
 </div>
+<div style="text-align:center;margin-top:20px">
+<a href="#" onclick="window.location=String.fromCharCode(109,97,105,108,116,111,58,104,105,64,116,104,101,104,105,98,97,108,97,110,99,101,46,111,114,103);return false" style="display:inline-block;padding:10px 24px;background:#C49B20;color:white;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none">Inquire \u2192</a>
 </div>
+</div>
+
 <div style="text-align:center;margin-top:32px">
 <div style="font-family:'DM Serif Display';font-size:18px;color:var(--navy)">The HI Balance</div><div style="font-size:13px;color:var(--muted);margin-top:6px">Patent Pending · HI Grade™ · Humanwashing™ · Algorithmic Harm Index™ · Morf Innovations LLC</div></div>
 </div>
@@ -823,7 +822,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>Harm Documentation covers 14 categories with strong coverage from 2020 onward. For historical events — tobacco, asbestos, J&amp;J talc — we maintain a curated Major Harm Events dictionary encoding court settlements. Confident in the dictionary, but incomplete.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> systematic backfill from EPA Superfund site attributions, state AG settlement databases, academic attribution studies.</p></div></details>
 
 <details class="about-card" style="margin-bottom:14px;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:17px;color:var(--navy);font-weight:600">Industry Revenue-Per-Employee medians are hardcoded</summary>
-<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>Many sub-signals normalize by industry. Medians were derived from aggregated SEC data but are currently hardcoded constants. Last refresh Q1 2025; next scheduled Q3 2026.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> dynamic industry median computation from the live company universe. Technical work planned for v1.2.</p></div></details>
+<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>Many sub-signals normalize by industry. Medians were derived from aggregated SEC data but are currently hardcoded constants. Last refresh Q1 2026; next scheduled Q3 2026.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> dynamic industry median computation from the live company universe. Technical work planned for v1.2.</p><p style="background:#FFFBEB;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>v1.0.2 renormalization note:</strong> H.4 (CEO Accountability) was removed from the H-dimension calculation. CEO accountability is now reflected in the Heartbeat decay system and in M.4 (Product Ethics). Remaining H sub-signals (H.1, H.2, H.3, H.5) were proportionally rescaled to sum to 1.0.</p><p style="background:#FFFBEB;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>D_N weights note:</strong> D_N (Natural Transparency) currently uses equal 0.5/0.5 weights between N.2 (Reporting Quality) and N.5 (Filing Volume). Sub-signals N.1, N.3, N.4 are deferred to v1.2. Additional grounded signals (DSA transparency, 12b-25 late-filings) are on the v1.2 roadmap.</p></div></details>
 
 <details class="about-card" style="margin-bottom:32px;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:17px;color:var(--navy);font-weight:600">Heartbeat decay thresholds are editorial</summary>
 <div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>The Decay Index aggregates layoff mentions, 8-K filings, WARN notices, CEO accountability into 0-100. Inputs are authoritative; thresholds mapping to Stable / Watch / Warning / Critical are editorial.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> validating against known decay events (Oracle 2026, Twitter 2022, Meta metaverse pivot). Ongoing.</p></div></details>
