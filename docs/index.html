@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- v1.7.2-detail-evidence-ui: applied 20260423-110159 -->
 <!-- v1.7.0-human100-tiers: applied 20260423-084420 -->
 <!-- v1.5.2-dyk-seed-audit: applied 20260422-153409 -->
 <!-- v1.5.1-dyk-integrity: applied 20260422-145224 -->
@@ -1068,7 +1069,81 @@ h+='<div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;align-ite
 var dlc={'critical':'#DC2626','warning':'#DC2626','watch':'#D97706','stable':'#16A34A'};
 if(dl!=='stable'&&di>0){h+='<div class="hw-section" style="background:'+(dl==='critical'?'#FEE2E2':dl==='warning'?'#FEF3C7':'#FFF7ED')+';border-color:'+(dlc[dl]||'#ccc')+'"><h3 style="color:'+(dlc[dl]||'var(--navy)')+'">♥ Heartbeat: '+(dl.charAt(0).toUpperCase()+dl.slice(1))+' (Decay: '+di+')</h3>'+(c.decay_factors||[]).map(function(f){return'<div class="hw-flag" style="color:#444">'+f+'</div>'}).join('')+'</div>'}
 if(c.humanwashing_flags&&c.humanwashing_flags.length>0)h+='<div class="hw-section"><h3>⚑ Humanwashing Flags</h3>'+c.humanwashing_flags.map(function(f){return'<div class="hw-flag">'+f+'</div>'}).join('')+'</div>';
-if(c.algo_harm&&c.algo_harm.has_harm){var ah=c.algo_harm;h+='<div class="hw-section" style="background:#FEF3F2;border-color:#FECACA"><h3 style="color:#DC2626">⚡ Algorithmic Harm Index: '+ah.algo_harm_score+'/100</h3><div class="hw-flag" style="color:#7F1D1D;font-weight:600">Algorithms that divide, addict, or manipulate reduce HI Grade across H, U, M, and N dimensions.</div>'+ah.flags.map(function(f){return'<div class="hw-flag" style="color:#991B1B">› '+f+'</div>'}).join('')+'<div style="display:flex;gap:8px;margin-top:8px;font-size:11px">'+['H','U','M','N'].map(function(d){var p=ah.penalties[d];return p<0?'<span style="color:#DC2626;font-weight:600">'+d+': '+p+'</span>':''}).filter(Boolean).join('')+'</div></div>';}
+if(c.algo_harm&&c.algo_harm.has_harm){var ah=c.algo_harm;
+  // v1.7.2: AHI components breakdown
+  var compHTML='';
+  if(ah.components){
+    var compLabels={division:'Division',addiction:'Addiction',manipulation:'Manipulation',transparency:'Transparency',human_override:'Human Override'};
+    var compNotes={transparency:'higher = more opaque',human_override:'lower = less override'};
+    compHTML='<div style="margin-top:14px;padding-top:14px;border-top:1px solid #FECACA"><div style="font-size:10px;font-weight:700;color:#991B1B;letter-spacing:1.5px;margin-bottom:10px">▪ COMPONENTS</div>';
+    ['division','addiction','manipulation','transparency','human_override'].forEach(function(k){
+      var v=ah.components[k];
+      if(v===undefined||v===null)return;
+      // invert transparency/override for visual (higher bar = worse)
+      var barVal=(k==='transparency'||k==='human_override')?(100-v):v;
+      compHTML+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;font-size:12px">'
+        +'<span style="width:110px;color:#444;font-weight:500">'+compLabels[k]+'</span>'
+        +'<div style="flex:1;height:8px;background:#FEE2E2;border-radius:4px;overflow:hidden"><div style="height:100%;width:'+barVal+'%;background:#DC2626;border-radius:4px"></div></div>'
+        +'<span style="width:32px;text-align:right;color:#991B1B;font-weight:700">'+v+'</span>'
+        +(compNotes[k]?'<span style="font-size:10px;color:#9CA3AF;width:140px">'+compNotes[k]+'</span>':'<span style="width:140px"></span>')
+        +'</div>';
+    });
+    compHTML+='</div>';
+  }
+  h+='<div class="hw-section" style="background:#FEF3F2;border-color:#FECACA"><h3 style="color:#DC2626">⚡ Algorithmic Harm Index: '+ah.algo_harm_score+'/100</h3><div class="hw-flag" style="color:#7F1D1D;font-weight:600">Algorithms that divide, addict, or manipulate reduce HI Grade across H, U, M, and N dimensions.</div>'+ah.flags.map(function(f){return'<div class="hw-flag" style="color:#991B1B">› '+f+'</div>'}).join('')+compHTML+'<div style="display:flex;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid #FECACA;font-size:11px"><span style="font-weight:600;color:#991B1B">Penalties applied:</span>'+['H','U','M','N'].map(function(d){var p=ah.penalties[d];return p<0?'<span style="color:#DC2626;font-weight:600">'+d+': '+p+'</span>':''}).filter(Boolean).join(' · ')+'</div></div>';
+}
+if(c.harm_documentation&&c.harm_documentation.has_harm){var hd=c.harm_documentation;
+  // v1.7.2: HD rubric display
+  var hdHTML='<div class="hw-section" style="background:#FEF3F2;border-color:#FCA5A5"><h3 style="color:#991B1B">⚠ Harm Documentation</h3>';
+  hdHTML+='<div class="hw-flag" style="color:#7F1D1D;font-weight:600;margin-bottom:10px">Public-record harm including court settlements, attributed deaths, or concealment findings. Penalizes M directly.</div>';
+  // Rubric grid
+  var rows=[];
+  if(hd.settlement_5yr&&hd.settlement_5yr>0){
+    var settlement=hd.settlement_5yr>=1e9?'$'+(hd.settlement_5yr/1e9).toFixed(1)+'B':hd.settlement_5yr>=1e6?'$'+(hd.settlement_5yr/1e6).toFixed(0)+'M':'$'+hd.settlement_5yr.toLocaleString();
+    rows.push(['Settlements (5yr)',settlement]);
+  }
+  if(hd.deaths_attributed&&hd.deaths_attributed>0){
+    var deaths=hd.deaths_attributed>=1000?'~'+Math.round(hd.deaths_attributed/1000)+'k':hd.deaths_attributed.toLocaleString();
+    rows.push(['Deaths attributed',deaths]);
+  }
+  if(hd.concealment_findings&&hd.concealment_findings.length>0){
+    rows.push(['Concealment findings',hd.concealment_findings.length+' documented']);
+  }
+  if(hd.remediation_status){
+    var statusColors={'paid_in_full':'#16A34A','active':'#D97706','active_with_ongoing_fraud':'#DC2626','resolved':'#16A34A'};
+    var statusColor=statusColors[hd.remediation_status]||'#6B7280';
+    var statusLabel=hd.remediation_status.replace(/_/g,' ');
+    rows.push(['Remediation status','<span style="color:'+statusColor+';font-weight:600">'+statusLabel+'</span>']);
+  }
+  if(rows.length>0){
+    hdHTML+='<div style="background:#FFF;border-radius:6px;padding:10px 14px;margin-bottom:10px">';
+    rows.forEach(function(r){
+      hdHTML+='<div style="display:flex;justify-content:space-between;padding:4px 0;font-size:12px;border-bottom:1px solid #F3F4F6"><span style="color:#6B7280">'+r[0]+'</span><span style="color:#111827;font-weight:600">'+r[1]+'</span></div>';
+    });
+    hdHTML+='</div>';
+  }
+  // Flags
+  if(hd.flags&&hd.flags.length>0){
+    hdHTML+='<div style="margin-bottom:10px">'+hd.flags.map(function(f){return'<div class="hw-flag" style="color:#991B1B">› '+f+'</div>'}).join('')+'</div>';
+  }
+  // Sources
+  if(hd.sources&&hd.sources.length>0){
+    hdHTML+='<div style="margin-top:10px;padding-top:10px;border-top:1px solid #FCA5A5"><div style="font-size:10px;font-weight:700;color:#991B1B;letter-spacing:1.5px;margin-bottom:6px">▪ SOURCES</div>';
+    hd.sources.forEach(function(s){
+      if(s&&typeof s==='string'){
+        var label=s.replace(/^https?:\/\//,'').split('/')[0];
+        hdHTML+='<div style="font-size:11px;padding:2px 0"><a href="'+s+'" target="_blank" rel="noopener" style="color:#991B1B;text-decoration:underline">'+label+' →</a></div>';
+      }
+    });
+    hdHTML+='</div>';
+  }
+  // Penalty footer
+  if(hd.penalties&&hd.penalties.M){
+    hdHTML+='<div style="margin-top:10px;padding-top:10px;border-top:1px solid #FCA5A5;font-size:11px;color:#991B1B;font-weight:600">Penalty applied to M: '+hd.penalties.M+'</div>';
+  }
+  hdHTML+='</div>';
+  h+=hdHTML;
+}
 if(c.floor_triggered)h+='<div class="hw-section" style="background:#FFFBEB;border-color:#FDE68A"><h3 style="color:var(--orange)">⚠ Floor Rule Triggered</h3><div class="hw-flag" style="color:#92400E">Dimension '+c.triggering_dimension+' scored below 10, capping composite at 40.</div></div>';
 if(c.balance_floor)h+='<div class="hw-section" style="background:#FFF7ED;border-color:#FDBA74"><h3 style="color:#DC2626">⚠ Dimension Below Threshold</h3><div class="hw-flag" style="color:#9A3412">Dimension '+c.triggering_dimension+' scored below 60. The Balanced Board requires all five HUMAN dimensions to clear the threshold.</div></div>';
 // Gates section — v1.1 spec: Dimensions / Evidence / Momentum
