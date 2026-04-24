@@ -8,6 +8,9 @@ struct Company: Codable, Identifiable, Hashable {
     let industry: String?
     let sic_description: String?
     let hi_balanced: Bool?
+    let hi_balanced_threshold: Double?
+    let gold_threshold: Double?
+    let hi_balanced_gates: HIBalancedGates?
     let hi_grade: String?
     let D_H: Double?
     let D_U: Double?
@@ -24,6 +27,9 @@ struct Company: Codable, Identifiable, Hashable {
     let domains: [String]?
     let data_sources: [String]?
     let confidence: String?
+    let score_status: String?
+    let spec_version: String?
+    let signal_coverage: String?
     let _source: String?
     
     func hash(into hasher: inout Hasher) { hasher.combine(id) }
@@ -33,13 +39,23 @@ struct Company: Codable, Identifiable, Hashable {
         case company, ticker, composite, industry, sic_description, hi_balanced, hi_grade
         case D_H, D_U, D_M, D_A, D_N
         case decay_index, decay_level, shield_score, shield_tier
-        case genome, algo_harm, humanwashing_flags, domains, data_sources, confidence
+        case hi_balanced_gates, hi_balanced_threshold, gold_threshold
+        case genome, algo_harm, humanwashing_flags, domains, data_sources
+        case confidence, score_status, spec_version, signal_coverage
         case _source
     }
 }
 
+// v1.1.0: gate booleans returned by /api/v1/score/* — Dimensions, Evidence, Momentum
+struct HIBalancedGates: Codable, Hashable {
+    let dimensions: Bool?
+    let evidence: Bool?
+    let momentum: Bool?
+}
+
 struct GenomeDimension: Codable {
     let scores: [String: Double]?
+    let sources: [String]?
     let avg: Double?
 }
 
@@ -57,6 +73,8 @@ struct APIStats: Codable {
     let hi_balanced_count: Int?
     let hi_balanced_threshold: Double?
     let gold_threshold: Double?
+    // v1.1.0: cloud-provided gate booleans (dimensions/evidence/momentum)
+    let hi_balanced_gates: HIBalancedGates?
 }
 
 struct SearchResponse: Codable { let results: [Company]?; let count: Int? }
@@ -85,7 +103,7 @@ struct Human100Meta: Codable { let average: Double?; let median: Double? }
 
 struct MoatResponse: Codable { let results: [MoatEntry]?; let metadata: MoatMeta?; let total: Int? }
 struct MoatEntry: Codable, Identifiable {
-    var id: String { ticker ?? company ?? UUID().uuidString }
+    var id: String { (ticker?.isEmpty == false ? ticker! : "") + "|" + (company ?? "") }
     let company: String?; let ticker: String?; let moat_score: Double?
     let moat_level: String?; let moat_label: String?; let composite: Double?
     let hi_balanced: Bool?; let components: [String: Double]?; let reasons: [String]?
@@ -94,7 +112,7 @@ struct MoatMeta: Codable { let distribution: [String: Int]? }
 
 struct ArbitrageResponse: Codable { let results: [ArbitrageEntry]?; let metadata: ArbitrageMeta? }
 struct ArbitrageEntry: Codable, Identifiable {
-    var id: String { ticker ?? company ?? UUID().uuidString }
+    var id: String { (ticker?.isEmpty == false ? ticker! : "") + "|" + (company ?? "") }
     let company: String?; let ticker: String?; let arbitrage_type: String?
     let arbitrage_label: String?; let hi_composite: Double?; let esg_composite: Double?
     let gap: Double?; let gap_reasons: [String]?

@@ -25,14 +25,16 @@ struct Human100View: View {
         }
         .task {
             let raw = await api.human100()
-            // Deduplicate and only show companies with tickers
+            // Deduplicate by ticker, then sort purely by composite desc
+            // (◆ Balanced Board members are marked via badge, not rank-inflated)
             var seen = Set<String>()
-            entries = raw.filter { e in
+            let deduped = raw.filter { e in
                 guard let ticker = e.ticker, !ticker.isEmpty else { return false }
                 guard !seen.contains(ticker) else { return false }
                 seen.insert(ticker)
                 return true
             }
+            entries = deduped.sorted { ($0.composite ?? 0) > ($1.composite ?? 0) }
             isLoading = false
         }
     }
@@ -47,25 +49,24 @@ struct Human100View: View {
                 .frame(width: 36, alignment: .leading)
             ZStack {
                 Circle()
-                    .fill(isGold ? Color.hiGold : Color.hiScore(score))
+                    .fill(Color.hiScore(score))
                     .frame(width: 36, height: 36)
-                if isGold {
-                    Image("hi-gold")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 22)
-                        .clipShape(Circle())
-                } else {
-                    Text("\(Int(score))")
-                        .font(.system(size: 13, weight: .heavy, design: .rounded))
-                        .foregroundColor(.white)
-                }
+                Text("\(Int(score))")
+                    .font(.system(size: 13, weight: .heavy, design: .rounded))
+                    .foregroundColor(.white)
             }
             VStack(alignment: .leading, spacing: 2) {
-                Text(entry.company ?? "")
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(.hiNavy)
-                    .lineLimit(1)
+                HStack(spacing: 4) {
+                    Text(entry.company ?? "")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundColor(.hiNavy)
+                        .lineLimit(1)
+                    if isGold {
+                        Text("◆")
+                            .font(.system(size: 11, weight: .bold))
+                            .foregroundColor(Color.hiGold)
+                    }
+                }
                 if let t = entry.ticker {
                     Text(t).font(.system(size: 11)).foregroundColor(.secondary)
                 }
@@ -81,10 +82,11 @@ struct Human100View: View {
         Company(
             company: entry.company, ticker: entry.ticker, composite: entry.composite,
             industry: nil, sic_description: nil, hi_balanced: entry.hi_balanced,
+            hi_balanced_threshold: nil, gold_threshold: nil, hi_balanced_gates: nil,
             hi_grade: nil, D_H: nil, D_U: nil, D_M: nil, D_A: nil, D_N: nil,
             decay_index: nil, decay_level: nil, shield_score: nil, shield_tier: nil,
             genome: nil, algo_harm: nil, humanwashing_flags: nil, domains: nil,
-            data_sources: nil, confidence: nil, _source: nil
+            data_sources: nil, confidence: nil, score_status: nil, spec_version: nil, signal_coverage: nil, _source: nil
         )
     }
 }

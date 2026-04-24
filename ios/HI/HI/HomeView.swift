@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 struct HomeView: View {
     @Environment(APIService.self) var api
@@ -16,13 +17,20 @@ struct HomeView: View {
                             .scaledToFit()
                             .frame(height: 80)
                         
-                        Text("Think human intelligence.")
+                        Text("Human kind?")
                             .font(.system(size: 15, weight: .medium))
                             .foregroundColor(.hiGold)
+                        Text("The fifth check before every decision.")
+                            .font(.system(size: 12, weight: .regular))
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                            .padding(.top, 2)
                         
                         if let stats = api.stats {
                             Text("\(stats.total_companies ?? 0) brands scored · \(stats.data_sources ?? 0) data sources")
                                 .font(HIFont.caption()).foregroundColor(.secondary).padding(.top, 2)
+                            PipelineCountdown()
+                                .padding(.top, 2)
                         }
                     }.padding(.top, 20).padding(.bottom, 16)
                     
@@ -220,5 +228,43 @@ struct TopCompanyRow: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
+    }
+}
+
+struct PipelineCountdown: View {
+    @State private var now = Date()
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    private var nextMidnightCST: Date {
+        var cal = Calendar.current
+        cal.timeZone = TimeZone(identifier: "America/Chicago")!
+        let cstNow = now
+        var comps = cal.dateComponents([.year, .month, .day], from: cstNow)
+        comps.hour = 0
+        comps.minute = 0
+        comps.second = 0
+        guard let todayMidnight = cal.date(from: comps) else { return now }
+        let nextMidnight = todayMidnight <= now ? cal.date(byAdding: .day, value: 1, to: todayMidnight)! : todayMidnight
+        return nextMidnight
+    }
+    
+    private var countdown: String {
+        let diff = nextMidnightCST.timeIntervalSince(now)
+        if diff <= 0 { return "Updating now..." }
+        let h = Int(diff) / 3600
+        let m = (Int(diff) % 3600) / 60
+        let s = Int(diff) % 60
+        return String(format: "%02d:%02d:%02d", h, m, s)
+    }
+    
+    var body: some View {
+        HStack(spacing: 4) {
+            Circle().fill(Color.green).frame(width: 6, height: 6)
+            Text("Connected · API live · Next update: \(countdown)")
+                .font(.system(size: 10, weight: .medium, design: .monospaced))
+                .foregroundColor(.secondary)
+        }
+        .onReceive(timer) { _ in now = Date() }
     }
 }

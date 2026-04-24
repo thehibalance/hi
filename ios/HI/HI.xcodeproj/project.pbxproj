@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		93233D582F8448740034EDD0 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93233D572F8448740034EDD0 /* WidgetKit.framework */; };
+		93233D5A2F8448740034EDD0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93233D592F8448740034EDD0 /* SwiftUI.framework */; };
+		93233D692F8448750034EDD0 /* HiWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 93233D552F8448740034EDD0 /* HiWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		93233C942F75F5D40034EDD0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,17 +27,63 @@
 			remoteGlobalIDString = 93233C852F75F5D30034EDD0;
 			remoteInfo = HI;
 		};
+		93233D672F8448750034EDD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93233C7E2F75F5D30034EDD0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93233D542F8448740034EDD0;
+			remoteInfo = HiWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		93233D6E2F8448750034EDD0 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				93233D692F8448750034EDD0 /* HiWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		93233C862F75F5D30034EDD0 /* HI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93233C932F75F5D40034EDD0 /* HITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93233C9D2F75F5D40034EDD0 /* HIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		93233D552F8448740034EDD0 /* HiWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HiWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		93233D572F8448740034EDD0 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		93233D592F8448740034EDD0 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		93233D6A2F8448750034EDD0 /* Exceptions for "HiWidget" folder in "HiWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 93233D542F8448740034EDD0 /* HiWidgetExtension */;
+		};
+		93233D742F844A2E0034EDD0 /* Exceptions for "HI" folder in "HiWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				APIService.swift,
+				CacheManager.swift,
+				Models.swift,
+			);
+			target = 93233D542F8448740034EDD0 /* HiWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		93233C882F75F5D30034EDD0 /* HI */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				93233D742F844A2E0034EDD0 /* Exceptions for "HI" folder in "HiWidgetExtension" target */,
+			);
 			path = HI;
 			sourceTree = "<group>";
 		};
@@ -43,6 +95,14 @@
 		93233CA02F75F5D40034EDD0 /* HIUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = HIUITests;
+			sourceTree = "<group>";
+		};
+		93233D5B2F8448740034EDD0 /* HiWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				93233D6A2F8448750034EDD0 /* Exceptions for "HiWidget" folder in "HiWidgetExtension" target */,
+			);
+			path = HiWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,6 +129,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		93233D522F8448740034EDD0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93233D5A2F8448740034EDD0 /* SwiftUI.framework in Frameworks */,
+				93233D582F8448740034EDD0 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +147,8 @@
 				93233C882F75F5D30034EDD0 /* HI */,
 				93233C962F75F5D40034EDD0 /* HITests */,
 				93233CA02F75F5D40034EDD0 /* HIUITests */,
+				93233D5B2F8448740034EDD0 /* HiWidget */,
+				93233D562F8448740034EDD0 /* Frameworks */,
 				93233C872F75F5D30034EDD0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +159,18 @@
 				93233C862F75F5D30034EDD0 /* HI.app */,
 				93233C932F75F5D40034EDD0 /* HITests.xctest */,
 				93233C9D2F75F5D40034EDD0 /* HIUITests.xctest */,
+				93233D552F8448740034EDD0 /* HiWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		93233D562F8448740034EDD0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				93233D572F8448740034EDD0 /* WidgetKit.framework */,
+				93233D592F8448740034EDD0 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,10 +183,12 @@
 				93233C822F75F5D30034EDD0 /* Sources */,
 				93233C832F75F5D30034EDD0 /* Frameworks */,
 				93233C842F75F5D30034EDD0 /* Resources */,
+				93233D6E2F8448750034EDD0 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				93233D682F8448750034EDD0 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				93233C882F75F5D30034EDD0 /* HI */,
@@ -163,6 +246,28 @@
 			productReference = 93233C9D2F75F5D40034EDD0 /* HIUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		93233D542F8448740034EDD0 /* HiWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93233D6B2F8448750034EDD0 /* Build configuration list for PBXNativeTarget "HiWidgetExtension" */;
+			buildPhases = (
+				93233D512F8448740034EDD0 /* Sources */,
+				93233D522F8448740034EDD0 /* Frameworks */,
+				93233D532F8448740034EDD0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				93233D5B2F8448740034EDD0 /* HiWidget */,
+			);
+			name = HiWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = HiWidgetExtension;
+			productReference = 93233D552F8448740034EDD0 /* HiWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +289,9 @@
 						CreatedOnToolsVersion = 26.3;
 						TestTargetID = 93233C852F75F5D30034EDD0;
 					};
+					93233D542F8448740034EDD0 = {
+						CreatedOnToolsVersion = 26.3;
+					};
 				};
 			};
 			buildConfigurationList = 93233C812F75F5D30034EDD0 /* Build configuration list for PBXProject "HI" */;
@@ -203,6 +311,7 @@
 				93233C852F75F5D30034EDD0 /* HI */,
 				93233C922F75F5D40034EDD0 /* HITests */,
 				93233C9C2F75F5D40034EDD0 /* HIUITests */,
+				93233D542F8448740034EDD0 /* HiWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +332,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		93233C9B2F75F5D40034EDD0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93233D532F8448740034EDD0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +369,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		93233D512F8448740034EDD0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -265,6 +388,11 @@
 			isa = PBXTargetDependency;
 			target = 93233C852F75F5D30034EDD0 /* HI */;
 			targetProxy = 93233C9E2F75F5D40034EDD0 /* PBXContainerItemProxy */;
+		};
+		93233D682F8448750034EDD0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93233D542F8448740034EDD0 /* HiWidgetExtension */;
+			targetProxy = 93233D672F8448750034EDD0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -407,11 +535,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.morfinnovations.higrade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -441,11 +570,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.morfinnovations.higrade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -466,7 +596,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P8ANZY74JY;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.morfinnovations.HITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -488,7 +618,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P8ANZY74JY;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.morfinnovations.HITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -509,6 +639,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P8ANZY74JY;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.morfinnovations.HIUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -529,6 +660,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P8ANZY74JY;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.morfinnovations.HIUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -539,6 +671,68 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = HI;
+			};
+			name = Release;
+		};
+		93233D6C2F8448750034EDD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P8ANZY74JY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HiWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HiWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.morfinnovations.higrade.HiWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		93233D6D2F8448750034EDD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P8ANZY74JY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HiWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HiWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.morfinnovations.higrade.HiWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -577,6 +771,15 @@
 			buildConfigurations = (
 				93233CAE2F75F5D40034EDD0 /* Debug */,
 				93233CAF2F75F5D40034EDD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93233D6B2F8448750034EDD0 /* Build configuration list for PBXNativeTarget "HiWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93233D6C2F8448750034EDD0 /* Debug */,
+				93233D6D2F8448750034EDD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

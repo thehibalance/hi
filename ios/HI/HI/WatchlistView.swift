@@ -85,10 +85,11 @@ struct WatchlistView: View {
         Company(
             company: fav.company, ticker: fav.ticker, composite: fav.composite,
             industry: nil, sic_description: nil, hi_balanced: fav.isGold,
+            hi_balanced_threshold: nil, gold_threshold: nil, hi_balanced_gates: nil,
             hi_grade: nil, D_H: nil, D_U: nil, D_M: nil, D_A: nil, D_N: nil,
             decay_index: nil, decay_level: nil, shield_score: nil, shield_tier: nil,
             genome: nil, algo_harm: nil, humanwashing_flags: nil, domains: nil,
-            data_sources: nil, confidence: nil, _source: nil
+            data_sources: nil, confidence: nil, score_status: nil, spec_version: nil, signal_coverage: nil, _source: nil
         )
     }
 }

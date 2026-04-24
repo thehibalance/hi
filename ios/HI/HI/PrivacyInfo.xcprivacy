@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!--
+        PrivacyInfo.xcprivacy
+        
+        Required by Apple as of iOS 17.4 (May 2024).
+        Declares:
+          1. What data types your app COLLECTS (if any)
+          2. What tracking domains your app uses (if any)
+          3. Which "Required Reason APIs" your app uses and why
+        
+        HI Grade:
+          - Collects NO personal data (no accounts, no analytics, no ads)
+          - Uses NO tracking domains
+          - Uses URLSession (NSURLRequest) for public API calls
+    -->
+    
+    <!-- Data collection: HI Grade does not collect user data -->
+    <key>NSPrivacyCollectedDataTypes</key>
+    <array/>
+    
+    <!-- Tracking domains: HI Grade does not track users -->
+    <key>NSPrivacyTracking</key>
+    <false/>
+    
+    <key>NSPrivacyTrackingDomains</key>
+    <array/>
+    
+    <!-- Required Reason APIs -->
+    <key>NSPrivacyAccessedAPITypes</key>
+    <array>
+        <!--
+            URLSession / NSURLRequest
+            
+            Used for fetching public HI Grade API data from api.thehibalance.org.
+            No user data transmitted. Reason code: C617.1 (app functionality).
+        -->
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryActiveKeyboards</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>54BD.1</string>
+            </array>
+        </dict>
+        
+        <!--
+            UserDefaults
+            
+            Used to cache API responses locally and to store the user's watchlist
+            of companies they've chosen to track. All data stays on device.
+            Reason code: CA92.1 (user preferences on device).
+        -->
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>CA92.1</string>
+            </array>
+        </dict>
+        
+        <!--
+            File Timestamp (FileManager)
+            
+            Used by CacheManager to check cache age for invalidating stale API data.
+            Reason code: C617.1 (app functionality).
+        -->
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>C617.1</string>
+            </array>
+        </dict>
+        
+        <!--
+            System Boot Time
+            
+            Used by iOS for app lifecycle. Standard for apps using ProcessInfo.
+            Reason code: 35F9.1.
+        -->
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategorySystemBootTime</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>35F9.1</string>
+            </array>
+        </dict>
+    </array>
+</dict>
+</plist>

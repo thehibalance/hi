@@ -4,6 +4,11 @@ struct FeaturesView: View {
     var body: some View {
         NavigationStack {
             List {
+                Section("PHONE EXTENSION") {
+                    NavigationLink { PhoneExtensionView() } label: {
+                        FeatureRow(icon: "apps.iphone", title: "Phone Extension", desc: "Score any app when you open it")
+                    }
+                }
                 Section("HUMAN FEATURES") {
                     NavigationLink { ShieldView() } label: { FeatureRow(icon: "shield.fill", title: "HUMAN Shield", desc: "Ethical moat depth") }
                     NavigationLink { LensView() } label: { FeatureRow(icon: "eye.fill", title: "HUMAN Lens", desc: "ESG vs HI gaps") }
@@ -56,15 +61,17 @@ struct ShieldView: View {
             }
             if isLoading { ProgressView().frame(maxHeight: .infinity) }
             else {
-                List(filtered) { entry in
-                    HStack(spacing: 12) {
-                        Text("\(Int(entry.moat_score ?? 0))").font(HIFont.score(20)).foregroundColor(.hiScore(entry.moat_score ?? 0)).frame(width: 40)
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text(entry.company ?? "").font(.system(size: 14, weight: .semibold)).foregroundColor(.hiNavy)
-                            Text(entry.moat_label ?? "").font(.system(size: 11)).foregroundColor(.hiScore(entry.moat_score ?? 0))
+                List {
+                    ForEach(Array(filtered.enumerated()), id: \.offset) { _, entry in
+                        HStack(spacing: 12) {
+                            Text("\(Int(entry.moat_score ?? 0))").font(HIFont.score(20)).foregroundColor(.hiScore(entry.moat_score ?? 0)).frame(width: 40)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(NameNormalizer.display(entry.company ?? "")).font(.system(size: 14, weight: .semibold)).foregroundColor(.hiNavy)
+                                Text(entry.moat_label ?? "").font(.system(size: 11)).foregroundColor(.hiScore(entry.moat_score ?? 0))
+                            }
+                            Spacer()
+                            Text("\(Int(entry.composite ?? 0))").font(.system(size: 14, weight: .bold)).foregroundColor(.secondary)
                         }
-                        Spacer()
-                        Text("\(Int(entry.composite ?? 0))").font(.system(size: 14, weight: .bold)).foregroundColor(.secondary)
                     }
                 }.listStyle(.plain)
             }
@@ -209,7 +216,6 @@ struct ContagionView: View {
         .navigationTitle("Contagion").navigationBarTitleDisplayMode(.inline)
         .task {
             let raw = await api.contagion()
-            // Deduplicate only — show all scores including zeros
             var seen = Set<String>()
             entries = raw.filter { e in
                 let key = e.ticker ?? e.company ?? UUID().uuidString
