@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- v1.8.2-app-page-overhaul: applied 20260424-093714 -->
 <!-- v1.8.1-detail-scrub: applied 20260424-092453 -->
 <!-- v1.8.0.3-emoji-fix: applied 20260423-154938 -->
 <!-- v1.8.0-content-polish: applied 20260423-152343 -->
@@ -208,36 +209,121 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div id="page-app" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
 <div class="subpage">
 <h1><img src="/logo-512.png" alt="hi." style="height:40px;vertical-align:middle"> Mobile App <span style="font-size:14px;font-weight:600;color:#16A34A;background:#16A34A15;padding:4px 12px;border-radius:12px;vertical-align:middle">FREE</span></h1>
-<p class="subpage-sub">The HI Grade™ in your pocket. Available now on iOS.</p>
+<p class="subpage-sub">The HI Grade™ in your pocket. On iOS now — expanding May 4.</p>
 
 <div style="text-align:center;margin:24px 0">
-<a href="https://apps.apple.com/app/hi/id6761270596" target="_blank" style="text-decoration:none;display:inline-block"><div style="background:#000;border-radius:14px;padding:14px 32px;display:inline-flex;align-items:center;gap:12px;transition:transform .2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"><span style="font-size:28px">🍎</span><div style="text-align:left"><div style="font-size:10px;color:#aaa;letter-spacing:0.5px">Download on the</div><div style="font-size:18px;font-weight:700;color:#fff">App Store</div></div></div></a>
+<a href="https://apps.apple.com/app/hi/id6761270596" target="_blank" style="text-decoration:none;display:inline-block"><div style="background:#000;border-radius:14px;padding:14px 32px;display:inline-flex;align-items:center;gap:12px;transition:transform .2s" onmouseover="this.style.transform=\'scale(1.05)\'" onmouseout="this.style.transform=\'scale(1)\'"><span style="font-size:28px">🍎</span><div style="text-align:left"><div style="font-size:10px;color:#aaa;letter-spacing:0.5px">Download on the</div><div style="font-size:18px;font-weight:700;color:#fff">App Store</div></div></div></a>
 </div>
 
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px">
-<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light);text-align:center"><div style="font-size:24px;margin-bottom:8px">🔍</div><div style="font-weight:700;color:var(--navy);font-size:13px">Company Search</div><div style="font-size:11px;color:var(--muted);margin-top:4px">441+ companies scored</div></div>
-<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light);text-align:center"><div style="font-size:24px;margin-bottom:8px">🏆</div><div style="font-weight:700;color:var(--navy);font-size:13px">HUMAN 100</div><div style="font-size:11px;color:var(--muted);margin-top:4px">Top 100 most human companies</div></div>
-<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light);text-align:center"><div style="font-size:24px;margin-bottom:8px">⭐</div><div style="font-weight:700;color:var(--navy);font-size:13px">Watchlist</div><div style="font-size:11px;color:var(--muted);margin-top:4px">Track companies you care about</div></div>
-<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light);text-align:center"><div style="font-size:24px;margin-bottom:8px">🔒</div><div style="font-weight:700;color:var(--navy);font-size:13px">5/5 Gates</div><div style="font-size:11px;color:var(--muted);margin-top:4px">All dimensions · Evidence · Momentum</div></div>
+<!-- ═══ AVAILABLE NOW (v1.1 shipping) ═══ -->
+<div style="margin-top:40px">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+<span style="font-size:10px;font-weight:700;color:#16A34A;letter-spacing:2px">✓ AVAILABLE NOW</span>
+<span style="font-size:11px;color:var(--muted)">v1.1 live on App Store</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light);text-align:center">
+<div style="font-size:28px;margin-bottom:8px">🔍</div>
+<div style="font-weight:700;color:var(--navy);font-size:13px">Search</div>
+<div style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5">Any of 443+ scored companies. Full dimension breakdown.</div>
+</div>
+<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light);text-align:center">
+<div style="font-size:28px;margin-bottom:8px">🏆</div>
+<div style="font-weight:700;color:var(--navy);font-size:13px">HUMAN 100</div>
+<div style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5">Balanced Board + top constituents. The most human companies.</div>
+</div>
+<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light);text-align:center">
+<div style="font-size:28px;margin-bottom:8px">⭐</div>
+<div style="font-weight:700;color:var(--navy);font-size:13px">Watchlist</div>
+<div style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5">Track companies you care about. Scores update daily.</div>
+</div>
+<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light);text-align:center">
+<div style="font-size:28px;margin-bottom:8px">⚖️</div>
+<div style="font-weight:700;color:var(--navy);font-size:13px">Evidence First</div>
+<div style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5">Every score reconstructable from 42 public sources.</div>
+</div>
+</div>
 </div>
 
+<!-- ═══ COMING IN v1.2 ═══ -->
+<div style="margin-top:40px;padding:24px;background:linear-gradient(135deg,#C49B2008,#C49B2003);border-radius:16px;border:1px solid #C49B2030">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+<span style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:2px">⚡ COMING IN v1.2</span>
+<span style="font-size:11px;color:#C49B20">Shipping with launch — May 4</span>
+</div>
+<p style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.5">Four new ways to use HI Grade without opening the app. Built. Polishing. Shipping soon.</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+
+<!-- Widget -->
+<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid #C49B2030">
+<div style="font-size:28px;margin-bottom:8px">📱</div>
+<div style="font-weight:700;color:var(--navy);font-size:13px;margin-bottom:6px">Home Screen Widget</div>
+<div style="font-size:11px;color:var(--muted);line-height:1.5">Your top companies — live HI Grades, refreshed every 6 hours. Small, medium, and large sizes.</div>
+</div>
+
+<!-- Siri -->
+<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid #C49B2030">
+<div style="font-size:28px;margin-bottom:8px">🎤</div>
+<div style="font-weight:700;color:var(--navy);font-size:13px;margin-bottom:6px">Siri Voice Lookup</div>
+<div style="font-size:11px;color:var(--muted);line-height:1.5">“Hey Siri, HI Grade Nike” — instant score in the Siri dialog. No app opening needed.</div>
+</div>
+
+<!-- Shortcuts -->
+<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid #C49B2030">
+<div style="font-size:28px;margin-bottom:8px">⚡</div>
+<div style="font-weight:700;color:var(--navy);font-size:13px;margin-bottom:6px">iOS Shortcuts</div>
+<div style="font-size:11px;color:var(--muted);line-height:1.5">Four custom shortcuts — quick score, full breakdown, search, and app lookup. Chain them into your own workflows.</div>
+</div>
+
+<!-- Phone Extension -->
+<div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid #C49B2030;position:relative">
+<div style="position:absolute;top:10px;right:10px;font-size:9px;font-weight:700;color:#C49B20;background:#C49B2015;padding:2px 6px;border-radius:4px;letter-spacing:1px">SIGNATURE</div>
+<div style="font-size:28px;margin-bottom:8px">🔌</div>
+<div style="font-weight:700;color:var(--navy);font-size:13px;margin-bottom:6px">Phone Extension</div>
+<div style="font-size:11px;color:var(--muted);line-height:1.5">See HI Grades as you open your favorite apps. One-time setup across 100+ popular apps. iOS Shortcuts automation.</div>
+</div>
+</div>
+</div>
+
+<!-- ═══ COMING NEXT ═══ -->
 <div style="margin-top:32px;padding:24px;background:var(--white);border-radius:16px;border:1px solid var(--light)">
-<h3 style="font-family:'DM Serif Display';font-size:18px;color:var(--navy);margin-bottom:16px;text-align:center">Coming Next</h3>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
-<div style="text-align:center;padding:16px;background:#F8FAFC;border-radius:12px"><div style="font-size:24px;margin-bottom:8px">📱</div><div style="font-weight:700;color:var(--navy);font-size:13px">Barcode Scanner</div><div style="font-size:11px;color:var(--muted);margin-top:4px">Scan any product in-store</div></div>
-<div style="text-align:center;padding:16px;background:#F8FAFC;border-radius:12px"><div style="font-size:24px;margin-bottom:8px">📄</div><div style="font-weight:700;color:var(--navy);font-size:13px">Document Scanner</div><div style="font-size:11px;color:var(--muted);margin-top:4px">Know what you're signing</div></div>
-<div style="text-align:center;padding:16px;background:#F8FAFC;border-radius:12px"><div style="font-size:24px;margin-bottom:8px">📤</div><div style="font-weight:700;color:var(--navy);font-size:13px">Share Cards</div><div style="font-size:11px;color:var(--muted);margin-top:4px">Spread the balance</div></div>
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+<span style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:2px">📅 COMING NEXT</span>
+<span style="font-size:11px;color:var(--muted)">Summer 2026</span>
+</div>
+<p style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.5">On the roadmap. Not yet built.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px">
+<div style="text-align:center;padding:14px;background:#F8FAFC;border-radius:10px">
+<div style="font-size:22px;margin-bottom:6px">📱</div>
+<div style="font-weight:700;color:var(--navy);font-size:12px">Barcode Scanner</div>
+<div style="font-size:10px;color:var(--muted);margin-top:3px">Scan any product in-store</div>
+</div>
+<div style="text-align:center;padding:14px;background:#F8FAFC;border-radius:10px">
+<div style="font-size:22px;margin-bottom:6px">📄</div>
+<div style="font-weight:700;color:var(--navy);font-size:12px">Document Scanner</div>
+<div style="font-size:10px;color:var(--muted);margin-top:3px">Know what you\'re signing</div>
+</div>
+<div style="text-align:center;padding:14px;background:#F8FAFC;border-radius:10px">
+<div style="font-size:22px;margin-bottom:6px">📤</div>
+<div style="font-weight:700;color:var(--navy);font-size:12px">Share Cards</div>
+<div style="font-size:10px;color:var(--muted);margin-top:3px">Spread the balance</div>
+</div>
+<div style="text-align:center;padding:14px;background:#F8FAFC;border-radius:10px">
+<div style="font-size:22px;margin-bottom:6px">🔔</div>
+<div style="font-weight:700;color:var(--navy);font-size:12px">Heartbeat Alerts</div>
+<div style="font-size:10px;color:var(--muted);margin-top:3px">Decay notifications</div>
+</div>
 </div>
 </div>
 
-<div style="text-align:center;margin-top:24px">
-<div style="display:inline-flex;align-items:center;gap:10px;background:#000;border-radius:10px;padding:10px 20px;opacity:0.4;cursor:not-allowed"><span style="font-size:20px">▶️</span><div style="text-align:left"><div style="font-size:9px;color:#aaa">Coming soon on</div><div style="font-size:14px;font-weight:600;color:#fff">Google Play</div></div></div>
+<!-- ═══ ANDROID ═══ -->
+<div style="text-align:center;margin-top:32px">
+<div style="display:inline-flex;align-items:center;gap:10px;background:#000;border-radius:10px;padding:10px 20px;opacity:0.4;cursor:not-allowed"><span style="font-size:20px">▶️</span><div style="text-align:left"><div style="font-size:9px;color:#aaa">Coming Q3 2026 on</div><div style="font-size:14px;font-weight:600;color:#fff">Google Play</div></div></div>
 </div>
 
 </div>
 </div>
-
-
 
 <div id="page-api" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
 <div class="subpage">
@@ -575,7 +661,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div style="background:rgba(255,255,255,0.05);border-radius:12px;padding:20px;text-align:center">
 <div style="font-size:20px;margin-bottom:6px">📊</div>
 <div style="font-weight:700;color:white;margin-bottom:4px;font-size:14px">Sponsored Research</div>
-<div style="font-size:12px;color:#8899AA;line-height:1.5;margin-bottom:10px">"State of Human Intelligence in [Your Industry]" \u2014 custom reports powered by 42 data sources.</div>
+<div style="font-size:12px;color:#8899AA;line-height:1.5;margin-bottom:10px">"State of Human Intelligence in [Your Industry]" — custom reports powered by 42 data sources.</div>
 </div>
 <div style="background:rgba(255,255,255,0.05);border-radius:12px;padding:20px;text-align:center">
 <div style="font-size:20px;margin-bottom:6px">🤝</div>
@@ -1015,7 +1101,7 @@ var hiT=62;function sc(s){if(s>=hiT)return"#16A34A";if(s>=42)return"#D97706";ret
 function cleanSrc(s){return s==='Manual Scoring'?'Public Reporting':s==='Seed Estimate'?'Public Reporting':s}
 function cleanSrcs(arr){return(arr||[]).map(cleanSrc)}
 function hiE(size){var s=size||18;return'<span style="display:inline-flex;align-items:center;justify-content:center;width:'+s+'px;height:'+s+'px;border-radius:50%;background:linear-gradient(135deg,#C49B20,#D4AA30);flex-shrink:0;box-shadow:0 1px '+(s*0.15)+'px rgba(196,155,32,0.3);overflow:hidden"><img src="/logo-512-white.png" alt="hi." style="height:'+(s*0.7)+'px;width:auto"></span>'}
-function esc(s){return(s||'').replace(/'/g,"\\'")}
+function esc(s){return(s||'').replace(/'/g,"\'")}
 const GRADES=[["HI Grade™","0-100","Every company gets a number. Higher is better. The dimensions tell you why."],["Balanced Board","All 5 dimensions ≥ 60","Companies with no weak HUMAN dimension. The data decides, not us."]];
 function getSatire(c){if(c.satire)return c.satire;var s=c.composite||0;if(c.gold||c.hi_balanced)return"Strict HUMAN Verified. All five dimensions scored 60+ with real data.";if(s>=hiT)return"Almost gold. The humans are still in charge here.";if(s>=60)return"Close to gold. Most dimensions are holding.";return"DON'T PANIC. But maybe start asking questions."}
 let stats=null,pulse=null;
@@ -1315,17 +1401,17 @@ var cmpData={1:null,2:null};var cmpTimers={1:null,2:null};
 function cmpDoSearch(slot,q){clearTimeout(cmpTimers[slot]);var el=document.getElementById('cmpResults'+slot);if(q.length<2){el.className='search-results';return}cmpTimers[slot]=setTimeout(async function(){try{var r=await fetch(API+'/api/v1/search?q='+encodeURIComponent(q)+'&limit=6');var d=await r.json();var res=d.results||[];if(!res.length){el.className='search-results';return}el.innerHTML=res.map(function(c){var pend=c.score_status==='pending'||(c.data_sources&&c.data_sources.length===1&&['Defaults','Manual Scoring','Seed Estimate','Public Reporting'].indexOf(c.data_sources[0])>=0);var sColor=pend?'#999':(c.gold||c.hi_balanced)?'#C49B20':sc(c.composite||0);return'<div class="search-item" onclick="cmpSelect('+slot+',\''+esc(c.ticker||'')+'\',\''+esc(c.company)+'\')"'+(pend?' style="opacity:0.6"':'')+'><span class="search-score" style="color:'+sColor+'">'+((c.gold||c.hi_balanced)?hiE(20):c.composite)+'</span><div style="flex:1"><div class="search-name">'+c.company+(pend?' <span style="font-size:9px;color:#999">· pending</span>':'')+'</div><div class="search-grade" style="color:'+sColor+'">'+(pend?'Pending':c.composite)+'</div></div></div>'}).join('');el.className='search-results active'}catch(e){el.className='search-results'}},250)}
 async function cmpSelect(slot,ticker,name){var inputId='cmpSearch'+slot;var resultId='cmpResults'+slot;var el=document.getElementById(inputId);if(el)el.value=name;var re=document.getElementById(resultId);if(re)re.className='search-results';try{var url=ticker?API+'/api/v1/score/ticker/'+ticker:API+'/api/v1/search?q='+encodeURIComponent(name)+'&limit=1';var r=await fetch(url);var c=await r.json();if(!ticker&&c.results)c=c.results[0];cmpData[slot]=c;cmpRenderCard(slot,c);cmpRenderCompare()}catch(e){}}
 function cmpRenderCard(slot,c){if(!c)return;var pend=c.score_status==='pending'||(c.data_sources&&c.data_sources.length===1&&['Defaults','Manual Scoring','Seed Estimate','Public Reporting'].indexOf(c.data_sources[0])>=0);var gc=pend?'#999':((c.gold||c.hi_balanced)?'#C49B20':sc(c.composite))||'#666';var el=document.getElementById('cmpCard'+slot);el.innerHTML='<div style="background:white;border-radius:12px;border:1px solid #eee;padding:20px;text-align:center"><div style="font-size:48px;font-weight:900;color:'+gc+'">'+c.composite+'</div><div style="font-size:11px;font-weight:700;color:'+gc+'">'+((c.gold||c.hi_balanced)?hiE(14)+' HI Grade™':pend?'Pending Verification':'HI Grade™')+' · '+c.composite+'</div><div style="font-size:16px;font-weight:700;color:var(--navy);margin-top:8px">'+(c.company||'')+'</div>'+(c.industry?'<div style="font-size:11px;color:var(--muted)">'+c.industry+'</div>':'')+'<div style="display:flex;gap:6px;justify-content:center;margin-top:12px">'+['D_H','D_U','D_M','D_A','D_N'].map(function(d){var v=c[d]||0;var l=d.replace('D_','');return'<div style="text-align:center"><div style="font-size:16px;font-weight:800;color:'+sc(v)+'">'+v+'</div><div style="font-size:9px;color:var(--muted)">'+l+'</div></div>'}).join('')+'</div><div style="margin-top:12px"><a onclick="loadC(\''+esc(c.ticker||'')+'\',\''+esc(c.company||'')+'\')" style="font-size:11px;font-weight:600;color:var(--navy);cursor:pointer">View Details →</a></div></div>'}
-function cmpRenderCompare(){var a=cmpData[1],b=cmpData[2];if(!a||!b)return;var pa=a.score_status==='pending'||(a.data_sources&&a.data_sources.length===1&&['Defaults','Manual Scoring','Seed Estimate','Public Reporting'].indexOf(a.data_sources[0])>=0);var pb=b.score_status==='pending'||(b.data_sources&&b.data_sources.length===1&&['Defaults','Manual Scoring','Seed Estimate','Public Reporting'].indexOf(b.data_sources[0])>=0);function sca(v){return pa?'#999':sc(v)}function scb(v){return pb?'#999':sc(v)}var el=document.getElementById('cmpDimCompare');var dims=[{k:'D_H',l:'H \u2014 Human Consciousness',i:'\ud83e\udde0'},{k:'D_U',l:'U \u2014 Understanding & Empathy',i:'\ud83d\udc99'},{k:'D_M',l:'M \u2014 Moral & Ethical Conduct',i:'\u2696\ufe0f'},{k:'D_A',l:'A \u2014 Alive & Environmental',i:'\ud83c\udf0d'},{k:'D_N',l:'N \u2014 Natural Transparency',i:'\ud83d\udd0d'}];el.innerHTML='<h2 class="section-title" style="font-size:18px">Dimension Comparison</h2>'+dims.map(function(d){var va=a[d.k]||0,vb=b[d.k]||0;var diff=va-vb;return'<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f0f0f0"><span style="font-size:16px;width:24px">'+d.i+'</span><div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--navy)">'+d.l+'</div><div style="display:flex;gap:8px;align-items:center;margin-top:4px"><div style="flex:1;height:8px;background:#EEF1F5;border-radius:4px;overflow:hidden;direction:rtl"><div style="height:100%;width:'+va+'%;background:'+sca(va)+';border-radius:4px"></div></div><span style="font-size:13px;font-weight:800;color:'+sca(va)+';width:30px;text-align:right">'+va+'</span><span style="font-size:10px;color:var(--muted);width:40px;text-align:center">'+(diff>0?'+'+diff:diff<0?diff:'=')+'</span><span style="font-size:13px;font-weight:800;color:'+scb(vb)+';width:30px">'+vb+'</span><div style="flex:1;height:8px;background:#EEF1F5;border-radius:4px;overflow:hidden"><div style="height:100%;width:'+vb+'%;background:'+scb(vb)+';border-radius:4px"></div></div></div></div></div>'}).join('')+'<div style="display:flex;justify-content:space-between;margin-top:16px;padding:12px 16px;background:#F8FAFC;border-radius:8px"><div style="text-align:center"><div style="font-size:24px;font-weight:900;color:var(--navy)">'+a.composite+'</div><div style="font-size:11px;color:var(--muted)">'+(a.company||'').split(' ').slice(0,2).join(' ')+'</div></div><div style="text-align:center;align-self:center;font-size:13px;color:var(--muted)">vs</div><div style="text-align:center"><div style="font-size:24px;font-weight:900;color:var(--navy)">'+b.composite+'</div><div style="font-size:11px;color:var(--muted)">'+(b.company||'').split(' ').slice(0,2).join(' ')+'</div></div></div>'}
+function cmpRenderCompare(){var a=cmpData[1],b=cmpData[2];if(!a||!b)return;var pa=a.score_status==='pending'||(a.data_sources&&a.data_sources.length===1&&['Defaults','Manual Scoring','Seed Estimate','Public Reporting'].indexOf(a.data_sources[0])>=0);var pb=b.score_status==='pending'||(b.data_sources&&b.data_sources.length===1&&['Defaults','Manual Scoring','Seed Estimate','Public Reporting'].indexOf(b.data_sources[0])>=0);function sca(v){return pa?'#999':sc(v)}function scb(v){return pb?'#999':sc(v)}var el=document.getElementById('cmpDimCompare');var dims=[{k:'D_H',l:'H — Human Consciousness',i:'\ud83e\udde0'},{k:'D_U',l:'U — Understanding & Empathy',i:'\ud83d\udc99'},{k:'D_M',l:'M — Moral & Ethical Conduct',i:'\u2696\ufe0f'},{k:'D_A',l:'A — Alive & Environmental',i:'\ud83c\udf0d'},{k:'D_N',l:'N — Natural Transparency',i:'\ud83d\udd0d'}];el.innerHTML='<h2 class="section-title" style="font-size:18px">Dimension Comparison</h2>'+dims.map(function(d){var va=a[d.k]||0,vb=b[d.k]||0;var diff=va-vb;return'<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f0f0f0"><span style="font-size:16px;width:24px">'+d.i+'</span><div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--navy)">'+d.l+'</div><div style="display:flex;gap:8px;align-items:center;margin-top:4px"><div style="flex:1;height:8px;background:#EEF1F5;border-radius:4px;overflow:hidden;direction:rtl"><div style="height:100%;width:'+va+'%;background:'+sca(va)+';border-radius:4px"></div></div><span style="font-size:13px;font-weight:800;color:'+sca(va)+';width:30px;text-align:right">'+va+'</span><span style="font-size:10px;color:var(--muted);width:40px;text-align:center">'+(diff>0?'+'+diff:diff<0?diff:'=')+'</span><span style="font-size:13px;font-weight:800;color:'+scb(vb)+';width:30px">'+vb+'</span><div style="flex:1;height:8px;background:#EEF1F5;border-radius:4px;overflow:hidden"><div style="height:100%;width:'+vb+'%;background:'+scb(vb)+';border-radius:4px"></div></div></div></div></div>'}).join('')+'<div style="display:flex;justify-content:space-between;margin-top:16px;padding:12px 16px;background:#F8FAFC;border-radius:8px"><div style="text-align:center"><div style="font-size:24px;font-weight:900;color:var(--navy)">'+a.composite+'</div><div style="font-size:11px;color:var(--muted)">'+(a.company||'').split(' ').slice(0,2).join(' ')+'</div></div><div style="text-align:center;align-self:center;font-size:13px;color:var(--muted)">vs</div><div style="text-align:center"><div style="font-size:24px;font-weight:900;color:var(--navy)">'+b.composite+'</div><div style="font-size:11px;color:var(--muted)">'+(b.company||'').split(' ').slice(0,2).join(' ')+'</div></div></div>'}
 document.addEventListener('click',function(e){if(!e.target.closest('.search-input')&&!e.target.closest('.search-results')){var r1=document.getElementById('searchResults');if(r1)r1.className='search-results';var r2=document.getElementById('cmpResults2');if(r2)r2.className='search-results';var r3=document.getElementById('cmpResults1');if(r3)r3.className='search-results'}});
 
 // ─── DID YOU KNOW rotating consumer hook ──────────────────────────────
 var _dykFacts = [
   {icon:'✨', text:'<strong>Only 2 companies passed the Balanced Board.</strong> Out of 443 scored, just NextEra Energy and US Bancorp earned all five HUMAN dimensions above 60. The bar is high on purpose. See the list →', shareText:'Only 2 companies passed the HI Balanced Board — NextEra Energy and US Bancorp. Out of 443 scored. All five HUMAN dimensions above 60. The bar is high on purpose. thehibalance.org', action:function(){showPage('human100')}},
-  {icon:'\u26A0\uFE0F', text:'<strong>Johnson &amp; Johnson scored 0 in Moral &amp; Ethical Conduct.</strong> Documented harm from talc settlements ($12.5B, ~50,000 deaths attributed). ESG gives them a pass \u2014 HI Grade does not. See the data →', shareText:'Johnson & Johnson scored 0/100 on Moral & Ethical Conduct. $12.5B talc settlements. ESG passes them. HI Grade does not. thehibalance.org', action:function(){loadC('JNJ','Johnson &amp; Johnson')}},
-  {icon:'\u26A1', text:'<strong>Meta scored 55 on HI Grade.</strong> Algorithmic Harm Index: 81.5 (Instagram teen harm, engagement algorithm, feed replaced chronological). Penalties flow directly into H, U, M, N dimensions. See the math →', shareText:'Meta scored 55 on HI Grade. Algorithmic Harm Index 81.5 — Instagram teen harm, feed manipulation. ESG misses what HI Grade catches. thehibalance.org', action:function(){loadC('META','Meta Platforms, Inc.')}},
+  {icon:'\u26A0\uFE0F', text:'<strong>Johnson &amp; Johnson scored 0 in Moral &amp; Ethical Conduct.</strong> Documented harm from talc settlements ($12.5B, ~50,000 deaths attributed). ESG gives them a pass — HI Grade does not. See the data →', shareText:'Johnson & Johnson scored 0/100 on Moral & Ethical Conduct. $12.5B talc settlements. ESG passes them. HI Grade does not. thehibalance.org', action:function(){loadC('JNJ','Johnson &amp; Johnson')}},
+  {icon:'⚡', text:'<strong>Meta scored 55 on HI Grade.</strong> Algorithmic Harm Index: 81.5 (Instagram teen harm, engagement algorithm, feed replaced chronological). Penalties flow directly into H, U, M, N dimensions. See the math →', shareText:'Meta scored 55 on HI Grade. Algorithmic Harm Index 81.5 — Instagram teen harm, feed manipulation. ESG misses what HI Grade catches. thehibalance.org', action:function(){loadC('META','Meta Platforms, Inc.')}},
   {icon:'\u{1F50D}', text:'<strong>HUMAN Decline tracks which companies are eroding.</strong> Combined signals from Heartbeat (decay), Shield (moat), Contagion (industry drift), Lens (ESG gap), and Watermark (performative empathy). See who\u2019s at risk →', shareText:'HUMAN Decline: the companies quietly eroding. Heartbeat + Shield + Contagion + Lens + Watermark combined. thehibalance.org', action:function(){showPage('decline')}},
   {icon:'\u{1F3C6}', text:'<strong>NextEra Energy passed the Balanced Board.</strong> Composite 70. All five HUMAN dimensions scored 60 or higher with verified public data. One of only two companies out of 443 that made the cut. See the data →', shareText:'NextEra Energy passed the HI Balanced Board. All five HUMAN dimensions 60+. One of only 2 companies out of 443 scored. thehibalance.org', action:function(){loadC('NEE','NextEra Energy, Inc.')}},
-  {icon:'\u23F1\uFE0F', text:'<strong>HI Grade uses ZERO AI in scoring.</strong> 42 public data sources, 19 sub-signals, deterministic math. Every score is reconstructable from the raw data \u2014 no LLM summaries, no neural networks. See the method →', shareText:'HI Grade: zero AI in scoring. 42 public data sources, 19 sub-signals, deterministic math. Every score reconstructable. thehibalance.org', action:function(){showPage('methodology')}}
+  {icon:'\u23F1\uFE0F', text:'<strong>HI Grade uses ZERO AI in scoring.</strong> 42 public data sources, 19 sub-signals, deterministic math. Every score is reconstructable from the raw data — no LLM summaries, no neural networks. See the method →', shareText:'HI Grade: zero AI in scoring. 42 public data sources, 19 sub-signals, deterministic math. Every score reconstructable. thehibalance.org', action:function(){showPage('methodology')}}
 ];
 var _dykIdx = 0, _dykTimer = null;
 function _dykRender(){
