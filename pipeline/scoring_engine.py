@@ -5,8 +5,7 @@ Merges signals from 24 sub-signals across 40 data sources into HUMAN dimension s
 
 Follows HUMAN_Grade_Methodology_Spec v1.1
 3 gates: Score, Balance, Integrity
-Floor rule: any dimension < 10 caps composite at 40.
-Balance floor: any dimension < 42 flags balance. 2+ dims below 42 caps at 41. 1 dim below 42 caps at 49.
+Floor rule (v1.2.0): any HUMAN dimension < 30 caps composite at 50.
 Defaults: All sub-signals default to 50 (neutral) when no data is available.
 Rounding: down unless decimal is .6 or higher (whole numbers only).
 
@@ -1208,16 +1207,34 @@ def round_score(val):
 
 
 def compute_composite(D_H, D_U, D_M, D_A, D_N):
-    """v1.1.0: composite is the simple mean of the five HUMAN dimensions.
-    
-    Floors removed in v1.1.0 — Gold HI Grade eligibility is now determined per-dimension
-    by check_hi_certified (each dim ≥ 60). Composite is purely a display number for users
-    who want a single quick gauge; it does not gate anything.
-    
-    Return signature preserved for backward compatibility with callers expecting a 4-tuple,
-    but the 2nd/3rd/4th elements are always False/False/None now.
+    """v1.2.0: composite is the mean of the five HUMAN dimensions, with one floor rule.
+
+    FLOOR RULE: if ANY dimension < 30, composite is capped at 50.
+    Severe failure in any single HUMAN dimension means the company cannot earn a
+    composite above 50, even if the other four dimensions average it higher. This
+    protects users from companies with one severely failing dimension (e.g.,
+    harm_documentation penalties zeroing out M for J&J / Bayer / Purdue-style cases).
+
+    Returns 4-tuple (signature preserved for backward compatibility):
+      (composite, floor_triggered, balance_floor_unused, triggering_dimension)
+
+    The 3rd element (balance_floor_unused) is always False — the legacy multi-tier
+    "balance floor" rule was removed in v1.1.0; the placeholder is retained so the
+    api_server caller can serialize a stable schema without churn. Schedule for
+    full removal in v1.3 once iOS / extension consumers are audited.
+
+    floor_triggered fires whenever min_dim < 30, even if the mean was already ≤ 50
+    (signals "severe single-dim failure" to UI consumers regardless of cap effect).
     """
     composite = (D_H + D_U + D_M + D_A + D_N) / 5
+    dims = {"H": D_H, "U": D_U, "M": D_M, "A": D_A, "N": D_N}
+    min_dim_value = min(dims.values())
+
+    if min_dim_value < 30:
+        composite = min(composite, 50)
+        triggering_dimension = min(dims, key=dims.get)
+        return round_score(composite), True, False, triggering_dimension
+
     return round_score(composite), False, False, None
 
 def get_hi_grade(composite, verified=False):
