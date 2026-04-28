@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- v1.9.2-coverage-spec: applied 20260428-095435 -->
 <!-- v1.9.1-detail-rebuild: applied 20260428-093936 -->
 <!-- v1.9.0-detail-story-forward: applied 20260428-093035 -->
 <!-- v1.8.4-app-grid-fix: applied 20260424-124215 -->
@@ -397,7 +398,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div class="leaderboard">
 <h1 class="section-title" style="font-size:36px">HUMAN 100</h1>
 <p style="text-align:center;color:var(--muted);font-size:14px;margin-bottom:4px">The top 100 most human public companies.</p>
-<p style="text-align:center;color:var(--muted);font-size:12px;margin-bottom:24px">ETF-licensable. Rebalanced monthly. Methodology: HUMAN Grade Spec v1.1.0.</p>
+<p style="text-align:center;color:var(--muted);font-size:12px;margin-bottom:24px">ETF-licensable. Rebalanced monthly. Methodology: HUMAN Grade Spec v1.2.0.</p>
 <div id="h100Stats" style="display:flex;justify-content:center;gap:32px;margin-bottom:24px;flex-wrap:wrap"></div>
 <div id="h100DimAvg" style="display:flex;justify-content:center;gap:8px;margin-bottom:24px;flex-wrap:wrap"></div>
 <div id="h100List" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px"></div>
@@ -1115,6 +1116,31 @@ function startCountdown(){var el=document.getElementById('hiCountdownText');if(!
 var sT;function doSearch(q){clearTimeout(sT);var el=document.getElementById('searchResults');if(q.length<2){el.className='search-results';return}el.innerHTML='<div style="padding:16px;text-align:center;color:var(--muted);font-size:13px">Searching...</div>';el.className='search-results active';sT=setTimeout(async function(){try{var r=await fetch(API+'/api/v1/search?q='+encodeURIComponent(q)+'&limit=12');if(!r.ok)throw new Error('API error '+r.status);var d=await r.json();var res=d.results||[];if(!res.length){el.innerHTML='<div style="padding:16px;text-align:center"><div style="color:var(--muted);font-size:13px;margin-bottom:8px">No results for "'+q+'"</div><div style="font-size:12px"><a href="#" onclick="event.preventDefault();document.getElementById(\'reqCompany\').value=\''+q+'\';document.getElementById(\'reqCompany\').scrollIntoView({behavior:\'smooth\'});document.getElementById(\'reqCompany\').focus()" style="color:var(--navy);font-weight:600;text-decoration:none">Request their HI Grade →</a></div></div>';return}el.innerHTML=res.map(function(c){var pend=c.score_status==='pending'||(c.data_sources&&c.data_sources.length===1&&['Defaults','Manual Scoring','Seed Estimate','Public Reporting'].indexOf(c.data_sources[0])>=0);var sColor=pend?'#999':(c.gold||c.hi_balanced)?'#C49B20':sc(c.composite||0);return'<div class="search-item" onclick="searchSelect(\''+esc(c.ticker||'')+'\',\''+esc(c.company)+'\')"'+(pend?' style="opacity:0.6"':'')+'><span class="search-score" style="color:'+sColor+'">'+((c.gold||c.hi_balanced)?hiE(20):c.composite)+'</span><div style="flex:1"><div class="search-name">'+c.company+(pend?' <span style="font-size:9px;color:#999;font-weight:400">· pending</span>':'')+'</div><div class="search-grade" style="color:'+sColor+'">'+((c.gold||c.hi_balanced)?hiE(14)+' HI Grade™':pend?'Pending Verification':'HI Grade™')+' · '+c.composite+'</div></div>'+(c.ticker?'<span class="search-ticker">'+c.ticker+'</span>':'')+'</div>'}).join('')}catch(e){console.log('Search error:',e);el.innerHTML='<div style="padding:16px;text-align:center;color:var(--muted);font-size:13px">Search unavailable — try refreshing</div>'}},250)}
 function searchSelect(ticker,name){document.getElementById('searchInput').value=name;document.getElementById('searchResults').className='search-results';loadC(ticker,name)}
 async function loadC(ticker,name){try{var c=null;if(ticker){var r=await fetch(API+'/api/v1/score/ticker/'+ticker);var d=await r.json();if(!d.error)c=d}if(!c||c.error||!c.D_H){var r2=await fetch(API+'/api/v1/search?q='+encodeURIComponent(name)+'&limit=1');var d2=await r2.json();if(d2.results&&d2.results[0]){var res=d2.results[0];if(res.ticker&&res.ticker!==ticker){var r3=await fetch(API+'/api/v1/score/ticker/'+res.ticker);var d3=await r3.json();if(!d3.error&&d3.D_H)c=d3}if(!c||!c.D_H){if(res.domains&&res.domains[0]){var r4=await fetch(API+'/api/v1/score/'+res.domains[0]);var d4=await r4.json();if(!d4.error)c=d4}if(!c||!c.D_H)c=res}}}if(!c||c.error)return;renderDet(c);showPage('detail')}catch(e){console.log('loadC error',e)}}
+
+// v1.9.2: coverage parser + badge renderer
+function getCoveragePct(c){
+  // Parses signal_coverage like "13/19 sub-signals..." → 68
+  if(c.coverage_pct!=null)return Math.round(c.coverage_pct);
+  if(c.signal_coverage){
+    var m=c.signal_coverage.match(/(\d+)\s*\/\s*(\d+)/);
+    if(m)return Math.round(parseInt(m[1])/parseInt(m[2])*100);
+  }
+  if(c.real_signals!=null && c.total_signals)return Math.round(c.real_signals/c.total_signals*100);
+  return null;
+}
+function coverageBadge(pct, size){
+  if(pct==null)return '';
+  size = size || 'md';
+  var label, bg, fg, icon;
+  if(pct>=60){label='Verified';bg='#16A34A15';fg='#16A34A';icon='✓';}
+  else if(pct>=40){label='Partial';bg='#D9770615';fg='#D97706';icon='●';}
+  else{label='Limited';bg='#6B728015';fg='#6B7280';icon='○';}
+  if(size==='sm'){
+    return '<span style="display:inline-flex;align-items:center;gap:3px;padding:2px 6px;background:'+bg+';color:'+fg+';border-radius:10px;font-size:9px;font-weight:700;letter-spacing:0.3px">'+icon+' '+pct+'%</span>';
+  }
+  return '<span style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:'+bg+';color:'+fg+';border-radius:12px;font-size:11px;font-weight:700;letter-spacing:0.3px;text-transform:uppercase">'+icon+' '+pct+'% '+label+'</span>';
+}
+
 function renderDet(c){var comp=Math.round(c.composite||0);
 // v1.9.0: clean company display names (strip backslash artifacts)
 if(c.company){c.company=c.company.replace(/\\([A-Z]{2,3})\\/g,'').replace(/\s+/g,' ').trim();}
@@ -1306,8 +1332,8 @@ var _auditVerify='<div style="padding:14px 16px;background:#F0F6FF;border-radius
 // Wrap in collapsible section
 h+='<div class="detail-section"><h3 style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none" onclick="var d=this.nextElementSibling;d.style.display=d.style.display===\'block\'?\'none\':\'block\';this.querySelector(\'.audit-arrow\').textContent=d.style.display===\'block\'?\'▴\':\'▾\'">📐 How was this calculated? <span class="audit-arrow" style="font-size:14px;color:var(--muted);font-weight:400">▾</span></h3><div style="display:none;padding-top:16px;border-top:1px solid #EEF1F5;margin-top:8px">'+_auditFormula+_auditGrid+_auditSrc+_auditVerify+'</div></div>';
 // ─── END AUDIT TRAIL ─────────────────────────────────────────────────
-h+='<div class="meta-tags"><span class="meta-tag">Confidence: '+(c.confidence||'Estimated').replace('Estimated from public reporting','Baseline')+'</span><span class="meta-tag">Spec: '+(c.spec_version||'1.1.0')+'</span>'+(c.signal_coverage?'<span class="meta-tag">Coverage: '+c.signal_coverage.replace('Estimated from public reporting','Estimated from public data').replace('seed estimate','estimated from public data').replace('Seed Estimate','Estimated from public data')+'</span>':'')+'</div>';
-h+='<div class="detail-disclaimer">HI Grades are estimated from public data and are not financial, legal, or investment advice. Not affiliated with or endorsed by '+(c.company||'this company')+'. Methodology: HUMAN Grade Spec v1.1.0 (Apache 2.0). HI Grade™ Morf Innovations LLC.</div>';
+/* v1.9.2: redundant chips removed — coverage now inline with score, spec moved to footer */
+h+='<div class="detail-disclaimer">HI Grades are estimated from public data and are not financial, legal, or investment advice. Not affiliated with or endorsed by '+(c.company||'this company')+'. Methodology: HUMAN Grade Spec v1.2.0 (Apache 2.0). HI Grade™ Morf Innovations LLC.</div>';
 // v1.8.1: Waitlist CTA removed — did not ship, broken CTA hurts credibility
 // Secondary CTAs: inline links (Improve + Visit)
 h+=(c.domains&&c.domains.length?'<div style="text-align:center;padding:14px 0;font-size:11px;color:var(--muted)"><a href="https://'+c.domains[0]+'" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600;text-decoration:underline">Visit '+c.company+' →</a></div>':'');
