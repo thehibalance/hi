@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- v1.9.3-heartbeat-dedup: applied 20260428-100305 -->
 <!-- v1.9.2-coverage-spec: applied 20260428-095435 -->
 <!-- v1.9.1-detail-rebuild: applied 20260428-093936 -->
 <!-- v1.9.0-detail-story-forward: applied 20260428-093035 -->
@@ -1198,7 +1199,7 @@ if(dl!=='stable'&&di>0){
 h+='<div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;align-items:center"><span style="font-size:11px;color:var(--muted)">Share:</span><a href="https://twitter.com/intent/tweet?text='+shareText+'" target="_blank" style="padding:6px 14px;border-radius:6px;font-size:11px;font-weight:600;background:#000;color:#fff;text-decoration:none;cursor:pointer">𝕏 Post</a><a href="https://www.linkedin.com/sharing/share-offsite/?url='+shareUrl+'" target="_blank" style="padding:6px 14px;border-radius:6px;font-size:11px;font-weight:600;background:#0A66C2;color:#fff;text-decoration:none;cursor:pointer">LinkedIn</a><a href="https://threads.net/intent/post?text='+shareText+'" target="_blank" style="padding:6px 14px;border-radius:6px;font-size:11px;font-weight:600;background:#000;color:#fff;text-decoration:none;cursor:pointer">Threads</a><span id="copyShareBtn" style="padding:6px 14px;border-radius:6px;font-size:11px;font-weight:600;background:var(--navy);color:#fff;cursor:pointer">Copy</span></div>';
 // Composite shown in header badge, no duplicate display needed here
 var dlc={'critical':'#DC2626','warning':'#DC2626','watch':'#D97706','stable':'#16A34A'};
-if(dl!=='stable'&&di>0){h+='<div class="hw-section" style="background:'+(dl==='critical'?'#FEE2E2':dl==='warning'?'#FEF3C7':'#FFF7ED')+';border-color:'+(dlc[dl]||'#ccc')+'"><h3 style="color:'+(dlc[dl]||'var(--navy)')+'">♥ Heartbeat: '+(dl.charAt(0).toUpperCase()+dl.slice(1))+' (Decay: '+di+')</h3>'+(c.decay_factors||[]).filter(function(f){return !/^\d+\s*humanwashing\s*flag/i.test(f)}).map(function(f){return'<div class="hw-flag" style="color:#444">'+f+'</div>'}).join('')+'</div>'}
+/* v1.9.3: legacy heartbeat removed */
 
 // v1.9.1: Sector comparison line
 var SECTOR_MEDIANS={"tech": 65, "healthcare": 68, "finance": 62, "energy": 55, "retail": 60, "food": 64, "manufacturing": 60, "auto": 58, "media": 58, "telecom": 60, "defense": 56, "transportation": 60, "apparel": 62, "hospitality": 60, "utilities": 64, "default": 60};
