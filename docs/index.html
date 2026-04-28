@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- v1.10.0-detail-rebuild: applied 20260428-110303 -->
 <!-- v1.9.3-heartbeat-dedup: applied 20260428-100305 -->
 <!-- v1.9.2-coverage-spec: applied 20260428-095435 -->
 <!-- v1.9.1-detail-rebuild: applied 20260428-093936 -->
@@ -1142,204 +1143,250 @@ function coverageBadge(pct, size){
   return '<span style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:'+bg+';color:'+fg+';border-radius:12px;font-size:11px;font-weight:700;letter-spacing:0.3px;text-transform:uppercase">'+icon+' '+pct+'% '+label+'</span>';
 }
 
-function renderDet(c){var comp=Math.round(c.composite||0);
-// v1.9.0: clean company display names (strip backslash artifacts)
-if(c.company){c.company=c.company.replace(/\\([A-Z]{2,3})\\/g,'').replace(/\s+/g,' ').trim();}
-var isCertified=(c.gold||c.hi_balanced)||false;var isPending=c.score_status==='pending'||(c.data_sources&&c.data_sources.length===1&&['Defaults','Manual Scoring','Seed Estimate','Public Reporting'].indexOf(c.data_sources[0])>=0);var gc=isPending?'#999':'#1B3A5C';var fs=36,ks=c.key_signals||{};var R=52,circ=2*Math.PI*R,dash=(comp/100)*circ,gap=circ-dash;
-var sat='';/* v1.9.0: satire deprecated */
-var hasDims=c.D_H!=null;
-// Build insight text for each dimension based on available data
-function dimInsights(d,c){var ks=c.key_signals||{},g=c.genome||{},ins=[];var dd=g[d]||{},scores=dd.scores||{},srcs=dd.sources||[];
-if(d==='H'){
-if(ks.headcount)ins.push({t:'Workforce Size',v:ks.headcount.toLocaleString()+' employees',n:ks.headcount>50000?'Large workforce maintained':'Smaller workforce'});
-if(ks.revenue_per_employee)ins.push({t:'Revenue per Employee',v:'$'+(ks.revenue_per_employee/1000).toFixed(0)+'K',n:ks.revenue_per_employee>2000000?'Very high — suggests heavy automation':'Healthy ratio'});
-if(ks.headcount_change_pct!=null)ins.push({t:'Headcount Change',v:ks.headcount_change_pct+'%',n:ks.headcount_change_pct<-5?'Significant workforce reduction':ks.headcount_change_pct>5?'Growing workforce':'Stable workforce'});
-if(ks.ai_hiring_ratio!=null)ins.push({t:'AI Hiring Ratio',v:(ks.ai_hiring_ratio*100).toFixed(0)+'% of open roles',n:ks.ai_hiring_ratio>0.35?'AI roles dominate job postings':'Balanced hiring mix'});
-if(ks.displacement_signal!=null)ins.push({t:'Displacement Signal',v:Math.round(ks.displacement_signal),n:ks.displacement_signal>0?'AI investment outpacing headcount growth':'Humans and tech growing together'});
-}else if(d==='U'){
-if(ks.glassdoor_rating)ins.push({t:'Employee Rating',v:'★ '+ks.glassdoor_rating+'/5',n:ks.glassdoor_rating>=4?'Employees feel valued':'Room for improvement in employee experience'});
-if(ks.dei_score!=null)ins.push({t:'Disability Inclusion (DEI)',v:ks.dei_score+'/100',n:ks.dei_score>=80?'Strong disability inclusion':'Opportunity to improve accessibility'});
-if(ks.hrc_score!=null)ins.push({t:'LGBTQ+ Equality (HRC)',v:ks.hrc_score+'/100',n:ks.hrc_score>=80?'Strong LGBTQ+ workplace equality':'Opportunity to improve inclusion'});
-}else if(d==='M'){
-if(ks.ceo_accountability_score!=null)ins.push({t:'CEO Accountability',v:ks.ceo_accountability_score+'/100',n:ks.ceo_accountability_score<30?'Leadership accountability is critically low':ks.ceo_accountability_score<50?'Leadership accountability needs attention':'Reasonable leadership accountability'});
-if(ks.epa_violations!=null)ins.push({t:'EPA Violations',v:ks.epa_violations+' recorded',n:ks.epa_violations>5?'Significant regulatory issues':ks.epa_violations>0?'Some regulatory concerns':'Clean regulatory record'});
-if(ks.dei_score!=null)ins.push({t:'DEI Inclusion',v:ks.dei_score+'/100',n:'Blended into ethical conduct score'});
-if(ks.hrc_score!=null)ins.push({t:'HRC Equality',v:ks.hrc_score+'/100',n:'Blended into ethical conduct score'});
-}else if(d==='A'){
-if(ks.cdp_climate)ins.push({t:'CDP Climate Grade',v:ks.cdp_climate,n:{'A':'Leadership in climate disclosure','A-':'Strong climate disclosure','B':'Good climate efforts','B-':'Above average disclosure','C':'Average disclosure','D':'Below average disclosure','D-':'Minimal disclosure','F':'No meaningful disclosure'}[ks.cdp_climate]||'Climate disclosure on file'});
-if(ks.epa_violations!=null)ins.push({t:'Environmental Violations',v:ks.epa_violations,n:ks.epa_violations>0?'Environmental compliance issues detected':'No environmental violations'});
-}else if(d==='N'){
-if(ks.cdp_climate)ins.push({t:'Climate Transparency',v:ks.cdp_climate!='N/A'?'Disclosed to CDP':'Not disclosed',n:ks.cdp_climate!='N/A'?'Voluntarily reports climate data':'Has not disclosed climate data to CDP'});
-if(c.humanwashing_flags&&c.humanwashing_flags.length)ins.push({t:'Humanwashing Flags',v:c.humanwashing_flags.length+' detected',n:c.humanwashing_flags[0]});
-}
-/* v1.8.1: removed redundant per-dimension Data Sources row — shown in chip and in bottom box */
-return ins}
-var fullDims=hasDims?['H','U','M','A','N'].map(function(d){var s=c['D_'+d]||0,i=DI[d];var ins=dimInsights(d,c);var gd=c.genome||{};var dimGenome=gd[d]||{};var dimSources=(dimGenome.sources||[]);var dimIsSeed=dimSources.indexOf('Seed Estimate')>=0||dimSources.indexOf('Manual Scoring')>=0||dimSources.indexOf('Public Reporting')>=0;var dimScores=dimGenome.scores||{};var dimEntries=Object.entries(dimScores);var dimReal=0;if(dimIsSeed){dimReal=0}else{dimEntries.forEach(function(e){var v=Math.round(e[1]);if(dimSources.length>0&&(v<45||v>55))dimReal++})};var gnLabels={'H.1':'Workforce Valuation','H.2':'Craft','H.3':'Human Decision Depth','H.4':'CEO Accountability (v1.2)','H.5':'Human Augmentation Index','U.1':'Customer Empathy','U.2':'Worker Empathy','U.3':'Relational Integrity','U.4':'Simulated Empathy Detection','U.5':'Moral Courage (v1.2)','M.1':'Pricing Ethics','M.2':'Data Ethics','M.3':'Market Ethics','M.4':'Product Ethics','M.5':'Stakeholder Governance','A.1':'Energy & Emissions','A.2':'Water','A.3':'Land & Habitat','A.4':'Product Lifecycle','A.5':'Resource Stewardship','N.1':'AI Disclosure (v1.2)','N.2':'Reporting Quality','N.3':'Labor Auditability (v1.2)','N.4':'Humanwashing Detection (v1.2)','N.5':'Filing Volume'};var dimKeys={'H':['H.1','H.2','H.3','H.5'],'U':['U.1','U.2','U.3','U.4'],'M':['M.1','M.2','M.3','M.4','M.5'],'A':['A.1','A.2','A.3','A.4'],'N':['N.2','N.5']};var subScores=dimScores;if(!Object.keys(subScores).length)(dimKeys[d]||[]).forEach(function(k){subScores[k]=s});var _vals=Object.values(subScores);var allSame=_vals.length>1&&new Set(_vals.map(Math.round)).size===1&&_vals[0]>=45&&_vals[0]<=55;var subHTML=(dimKeys[d]||[]).filter(function(k){return !(gnLabels[k]||'').match(/\(v1\.2\)/)}).map(function(k){var v=Math.round(subScores[k]||50);var lbl=gnLabels[k]||k;var isDef=dimIsSeed||allSame||(v>=45&&v<=55&&!dimSources.length);var barColor=isDef?'#ccc':sc(v);var txtColor=isDef?'#999':sc(v);return'<div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="font-size:10px;font-weight:700;font-family:monospace;color:#999;width:28px;text-align:right">'+k+'</span><div style="flex:1"><div style="display:flex;justify-content:space-between"><span style="font-size:11px;color:'+(isDef?'#999':'var(--navy)')+'">'+lbl+'</span><span style="font-size:11px;font-weight:700;color:'+txtColor+'">'+v+'</span></div><div style="height:4px;background:#EEF1F5;border-radius:2px;margin-top:2px"><div style="height:100%;width:'+v+'%;background:'+barColor+';border-radius:2px"></div></div></div></div>'}).join('');var covLabel2=dimIsSeed||allSame?'Estimated':dimReal>=4?'Strong data':dimReal>=2?'Partial data':dimReal>0?'Limited data':'Needs data';var covColor2=dimIsSeed||allSame?'#92400E':dimReal>=4?'#16A34A':dimReal>=2?'#2E5E8E':'#D97706';var covBg2=dimIsSeed||allSame?'#F3F0E8':dimReal>=4?'#DCF5E7':dimReal>=2?'#DCEEFB':'#FFF3E0';subHTML+='<div style="display:flex;align-items:center;gap:6px;margin-top:6px"><span style="font-size:9px;font-weight:600;color:'+covColor2+';padding:2px 8px;border-radius:6px;background:'+covBg2+'">'+dimReal+' of '+Object.keys(subScores).length+' sub-signals · '+covLabel2+'</span>'+(dimSources.length?'<span style="font-size:9px;color:#999">'+cleanSrcs(dimSources).join(' · ')+'</span>':'')+'</div>';var insHTML=subHTML+(ins.length?'<div style="margin-top:8px;border-top:1px solid #EEF1F5;padding-top:8px">'+ins.map(function(x){return'<div style="padding:4px 0;border-bottom:1px solid #EEF1F5"><div style="display:flex;justify-content:space-between"><span style="font-size:11px;font-weight:600;color:var(--navy)">'+x.t+'</span><span style="font-size:11px;font-weight:700;color:'+sc(s)+'">'+x.v+'</span></div><div style="font-size:10px;color:var(--muted);margin-top:1px">'+x.n+'</div></div>'}).join('')+'</div>':'');return'<div class="dim-row" style="cursor:pointer" onclick="this.querySelector(\'.dim-drill\').style.display=this.querySelector(\'.dim-drill\').style.display===\'block\'?\'none\':\'block\';this.querySelector(\'.dim-toggle\').textContent=this.querySelector(\'.dim-drill\').style.display===\'block\'?\'▴\':\'▾\'"><span class="dim-icon">'+i.i+'</span><div class="dim-letter">'+d+'</div><div class="dim-info"><div class="dim-top"><span class="dim-name">'+i.n+'</span><span style="font-size:11px;color:var(--muted);margin-right:4px" class="dim-toggle">▾</span><span class="dim-score" style="color:'+sc(s)+'">'+s+'</span></div><div class="dim-bar"><div class="dim-fill" style="width:'+s+'%;background:'+sc(s)+'"></div></div><div class="dim-drill" style="display:none;margin-top:8px;border-top:1px solid #EEF1F5;padding-top:8px"><div class="dim-desc" style="font-size:11px;color:var(--muted);font-style:italic;margin-bottom:10px;line-height:1.5">'+i.d+'</div>'+insHTML+'</div></div></div>'}).join(''):'<div style="color:var(--muted);font-size:13px;padding:12px 0">Detailed dimension scores are available when viewing from the search bar above.</div>';
-function sig(l,v,n){var cls='signal-value';if(n!=null&&n>0)cls+=' pos';else if(n!=null&&n<0)cls+=' neg';return'<div class="signal-box"><div class="signal-label">'+l+'</div><div class="'+cls+'">'+(v!=null&&v!==undefined?v:'—')+'</div></div>'}
-var hiThreshold=stats&&stats.hi_balanced_threshold?Math.round(stats.hi_balanced_threshold):62;
-var dl=c.decay_level||'stable',di=c.decay_index||0;var pulseColor={'critical':'#DC2626','warning':'#DC2626','watch':'#D97706','stable':'#16A34A'};var decayDisplay='<span style="font-size:12px;font-weight:700;color:'+(pulseColor[dl]||'#16A34A')+';margin-left:14px;padding-left:4px;vertical-align:middle'+(dl==='critical'||dl==='warning'?';animation:blink 2s infinite':'')+'">♥'+di+'</span>';
-var scoreColor=isPending?'#999':'#1B3A5C';
-var badgeContent=''+comp+'';
-var badgeStyle=isPending?'background:#999;font-size:'+fs+'px;opacity:0.6':'background:'+scoreColor+';font-size:'+fs+'px';
-var pendingBanner=isPending?'<div style="padding:12px 16px;background:#FEF3C7;border:1px solid #FDE68A;border-radius:10px;margin-bottom:16px;text-align:center"><div style="font-size:13px;font-weight:700;color:#92400E">⏳ Pending Verification</div><div style="font-size:11px;color:#92400E;margin-top:4px">This score is estimated from public reporting and has not been verified by our data pipeline. Scores may change significantly once verified against 42 data sources.</div></div>':'';
-var h='<span class="detail-back" onclick="goBack()">← Back</span>'+pendingBanner+'<div class="detail-header"><div class="detail-badge" style="'+badgeStyle+'">'+badgeContent+'</div><div><div class="detail-name">'+(c.company||'')+'</div>'+(isCertified?'<div style="font-size:11px;font-weight:800;color:#C49B20;letter-spacing:2px;margin:4px 0 2px">◆ BALANCED BOARD</div>':'')+'<div class="detail-tier" style="color:'+scoreColor+'">'+(isPending?'Pending Verification':'HI Grade™')+decayDisplay+'</div><div class="detail-meta-row">'+(c.ticker?'<span class="meta-tag">'+c.ticker+'</span>':'')+(c.industry?'<span class="meta-tag">'+c.industry+'</span>':'')+(c.sic_description?'<span class="meta-tag">'+(c.sic_description.indexOf(',')>0?c.sic_description.substring(0,c.sic_description.indexOf(',')):c.sic_description)+'</span>':'')+'</div></div></div>'+'';/* v1.9.0: satire removed — heartbeat tells story */
-var shareText=encodeURIComponent((c.company||'')+' has a HI Grade of '+comp+' ('+comp+'/100). Human kind? thehibalance.org #HIGrade #HumanKind');
-var shareUrl=encodeURIComponent('https://thehibalance.org');
-// v1.9.0: Heartbeat moved to TOP — story leads, score follows
-var dl=(c.decay_level||c.heartbeat_status||'stable').toLowerCase();
-var di=c.decay_index||0;
-var dlc={'critical':'#DC2626','warning':'#DC2626','watch':'#D97706','stable':'#16A34A'};
-if(dl!=='stable'&&di>0){
-  var bg=(dl==='critical'?'#FEE2E2':dl==='warning'?'#FEF3C7':'#FFF7ED');
-  var bc=(dlc[dl]||'#ccc');
-  var color=(dlc[dl]||'var(--navy)');
-  h+='<div class="hw-section" style="margin-top:8px;margin-bottom:20px;padding:20px 24px;background:'+bg+';border:1px solid '+bc+'40;border-left:4px solid '+bc+';border-radius:12px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="color:'+color+';font-size:14px">♥</span><span style="color:'+color+';font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px">Heartbeat: '+(dl.charAt(0).toUpperCase()+dl.slice(1))+'</span><span style="color:var(--muted);font-size:11px">· Decay '+di+'/100</span></div>'+(c.decay_factors||[]).map(function(f){return'<div style="color:#444;font-size:13px;margin-top:4px;line-height:1.5">• '+f+'</div>'}).join('')+'<div style="margin-top:14px;font-size:11px;color:var(--muted);font-style:italic">This score reflects pre-event data. Next quarterly refresh will reflect changes.</div></div>';
+function renderDet(c) {
+  if (!c || !c.company) {
+    document.getElementById('detailContent').innerHTML = '<p>Company not found.</p>';
+    return;
+  }
+
+  if (c.company) {
+    c.company = c.company
+      .replace(/\\([A-Z]{2,3})\\/g, '')
+      .replace(/\s*\/[A-Z]{2,3}\/\s*/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  var comp = Math.round(c.composite || 0);
+  var isCertified = (c.gold || c.hi_balanced) || false;
+  var isPending = c.score_status === 'pending' ||
+    (c.data_sources && c.data_sources.length === 1 &&
+      ['Defaults', 'Manual Scoring', 'Seed Estimate', 'Public Reporting'].indexOf(c.data_sources[0]) >= 0);
+  var scoreColor = isPending ? '#999' : isCertified ? '#C49B20' : sc(comp);
+
+  var covPct = null;
+  if (c.coverage_pct != null) {
+    covPct = Math.round(c.coverage_pct);
+  } else if (c.signal_coverage) {
+    var m = c.signal_coverage.match(/(\d+)\s*\/\s*(\d+)/);
+    if (m) covPct = Math.round(parseInt(m[1]) / parseInt(m[2]) * 100);
+  }
+
+  function covBadge(p, sz) {
+    if (p == null) return '';
+    var bg, fg, icon, label;
+    if (p >= 60) { bg = '#16A34A15'; fg = '#16A34A'; icon = '\u2713'; label = 'Verified'; }
+    else if (p >= 40) { bg = '#D9770615'; fg = '#D97706'; icon = '\u25CF'; label = 'Partial'; }
+    else { bg = '#6B728015'; fg = '#6B7280'; icon = '\u25CB'; label = 'Limited'; }
+    var pad = (sz === 'sm') ? '2px 6px' : '4px 10px';
+    var fs = (sz === 'sm') ? '9px' : '11px';
+    var lbl = (sz === 'sm') ? '' : ' ' + label;
+    return '<span style="display:inline-flex;align-items:center;gap:4px;padding:' + pad +
+      ';background:' + bg + ';color:' + fg + ';border-radius:10px;font-size:' + fs +
+      ';font-weight:700;letter-spacing:0.3px;text-transform:uppercase">' + icon + ' ' + p + '%' + lbl + '</span>';
+  }
+
+  var dl = (c.decay_level || c.heartbeat_status || 'stable').toLowerCase();
+  var di = c.decay_index || 0;
+  var hbActive = (dl !== 'stable' && di > 0);
+  var hbCfg = {
+    critical: { color: '#DC2626', bg: '#FEE2E2', label: 'Critical', leadTone: '#7F1D1D' },
+    warning: { color: '#DC2626', bg: '#FEF3C7', label: 'Warning', leadTone: '#78350F' },
+    watch: { color: '#D97706', bg: '#FFF7ED', label: 'Watch', leadTone: '#78350F' }
+  };
+  var hb = hbCfg[dl] || hbCfg.watch;
+
+  var SECTOR_MEDIANS = {
+    'tech': 65, 'healthcare': 68, 'finance': 62, 'energy': 55, 'retail': 60,
+    'food': 64, 'manufacturing': 60, 'auto': 58, 'media': 58, 'telecom': 60,
+    'defense': 56, 'transportation': 60, 'apparel': 62, 'hospitality': 60,
+    'utilities': 64, 'default': 60
+  };
+  var sectorMed = SECTOR_MEDIANS[c.industry] || SECTOR_MEDIANS['default'];
+  var sectorDiff = comp - sectorMed;
+  var SP500_AVG = 58;
+  var spDiff = comp - SP500_AVG;
+  var industryName = (c.industry || 'sector').charAt(0).toUpperCase() + (c.industry || 'sector').slice(1);
+
+  var hasAHI = (c.algo_harm && c.algo_harm.has_harm);
+  var hasHW = (c.humanwashing_flags && c.humanwashing_flags.length > 0);
+
+  var h = '<span class="detail-back" onclick="goBack()">\u2190 Back</span>';
+
+  // SECTION 1: HERO
+  h += '<div style="padding:24px 0 16px">';
+  h += '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap">';
+  h += '<div style="flex:1;min-width:280px">';
+  h += '<h1 style="font-family:DM Serif Display,serif;font-size:36px;color:var(--navy);margin:0 0 6px;line-height:1.1">' + (c.company || '') + '</h1>';
+  h += '<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">';
+  if (c.ticker) h += '<span class="meta-tag">' + c.ticker + '</span>';
+  if (c.industry) h += '<span class="meta-tag">' + c.industry + '</span>';
+  if (c.sic_description) h += '<span class="meta-tag" style="font-size:11px">' + c.sic_description + '</span>';
+  h += '</div>';
+  h += '</div>';
+  h += '<div style="text-align:right">';
+  h += '<div style="display:flex;align-items:baseline;gap:8px;justify-content:flex-end;line-height:1">';
+  h += '<span style="font-size:64px;font-weight:800;color:' + scoreColor + ';letter-spacing:-2px">' + comp + '</span>';
+  h += '</div>';
+  h += '<div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;font-weight:700">';
+  h += (isCertified ? hiE(11) + ' Certified \u00b7 ' : '') + 'HI Grade';
+  h += '</div>';
+  if (covPct != null) h += '<div style="margin-top:8px">' + covBadge(covPct) + '</div>';
+  h += '</div>';
+  h += '</div>';
+  h += '</div>';
+
+  // SECTION 2: THE STORY
+  if (hbActive || hasAHI) {
+    var bgColor = hbActive ? hb.bg : '#FEE2E2';
+    var borderColor = hbActive ? hb.color : '#DC2626';
+    h += '<div style="margin:0 -24px 28px;padding:24px;background:linear-gradient(135deg,' + bgColor + '80, ' + bgColor + '40);border-top:1px solid ' + borderColor + '30;border-bottom:1px solid ' + borderColor + '30">';
+    h += '<div style="max-width:1100px;margin:0 auto;padding:0 24px">';
+    if (hbActive) {
+      h += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">';
+      h += '<span style="color:' + hb.color + ';font-size:13px">\u2665</span>';
+      h += '<span style="color:' + hb.color + ';font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px">Heartbeat: ' + hb.label + '</span>';
+      h += '<span style="color:' + hb.leadTone + ';font-size:11px;opacity:0.6">Decay ' + di + '/100</span>';
+      h += '</div>';
+      h += '<h2 style="font-family:DM Serif Display,serif;font-size:22px;color:' + hb.leadTone + ';margin:0 0 14px;font-weight:600">What\u2019s happening with ' + (c.company || 'this company') + '</h2>';
+      h += '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px">';
+      (c.decay_factors || []).forEach(function(f) {
+        h += '<div style="display:flex;gap:10px;font-size:14px;line-height:1.5;color:#374151"><span style="color:' + hb.color + ';font-weight:700;flex-shrink:0">\u00b7</span><span>' + f + '</span></div>';
+      });
+      h += '</div>';
+    }
+    if (hasAHI) {
+      var ah = c.algo_harm;
+      h += '<div style="' + (hbActive ? 'margin-top:18px;padding-top:18px;border-top:1px solid ' + hb.color + '30' : '') + '">';
+      h += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">';
+      h += '<span style="color:#DC2626;font-size:13px">\u26A1</span>';
+      h += '<span style="color:#DC2626;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px">Algorithmic Harm Index</span>';
+      h += '<span style="color:#7F1D1D;font-size:11px;opacity:0.6">' + ah.algo_harm_score + '/100</span>';
+      h += '</div>';
+      h += '<div style="font-size:13px;color:#374151;margin-bottom:10px;line-height:1.5">Algorithms that divide, addict, or manipulate users.</div>';
+      h += '<div style="display:flex;flex-direction:column;gap:6px">';
+      (ah.flags || []).forEach(function(f) {
+        h += '<div style="display:flex;gap:10px;font-size:13px;line-height:1.5;color:#374151"><span style="color:#DC2626;font-weight:700;flex-shrink:0">\u203A</span><span>' + f + '</span></div>';
+      });
+      h += '</div>';
+      h += '</div>';
+    }
+    if (hbActive) {
+      h += '<div style="margin-top:14px;font-size:12px;color:' + hb.leadTone + ';opacity:0.7;font-style:italic">This score reflects pre-event data. Next quarterly refresh will reflect changes.</div>';
+    }
+    h += '</div>';
+    h += '</div>';
+  }
+
+  // SECTION 3: HOW IT COMPARES
+  h += '<div style="margin-bottom:28px">';
+  h += '<div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px">How it compares</div>';
+  h += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px">';
+  h += '<div style="padding:14px 16px;background:#F9FAFB;border-radius:10px;border:1px solid #E5E7EB">';
+  h += '<div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:4px">vs ' + industryName + ' median</div>';
+  h += '<div style="display:flex;align-items:baseline;gap:8px">';
+  h += '<span style="font-size:22px;font-weight:800;color:var(--navy)">' + sectorMed + '</span>';
+  h += '<span style="font-size:13px;font-weight:700;color:' + (sectorDiff >= 0 ? '#16A34A' : '#DC2626') + '">' + (sectorDiff > 0 ? '+' : '') + sectorDiff + '</span>';
+  h += '</div>';
+  h += '</div>';
+  h += '<div style="padding:14px 16px;background:#F9FAFB;border-radius:10px;border:1px solid #E5E7EB">';
+  h += '<div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:4px">vs S&P 500 average</div>';
+  h += '<div style="display:flex;align-items:baseline;gap:8px">';
+  h += '<span style="font-size:22px;font-weight:800;color:var(--navy)">' + SP500_AVG + '</span>';
+  h += '<span style="font-size:13px;font-weight:700;color:' + (spDiff >= 0 ? '#16A34A' : '#DC2626') + '">' + (spDiff > 0 ? '+' : '') + spDiff + '</span>';
+  h += '</div>';
+  h += '</div>';
+  if (c.score_30d_ago) {
+    var d30 = comp - c.score_30d_ago;
+    h += '<div style="padding:14px 16px;background:#F9FAFB;border-radius:10px;border:1px solid #E5E7EB">';
+    h += '<div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:4px">vs 30 days ago</div>';
+    h += '<div style="display:flex;align-items:baseline;gap:8px">';
+    h += '<span style="font-size:22px;font-weight:800;color:var(--navy)">' + c.score_30d_ago + '</span>';
+    h += '<span style="font-size:13px;font-weight:700;color:' + (d30 >= 0 ? '#16A34A' : '#DC2626') + '">' + (d30 > 0 ? '+' : '') + d30 + '</span>';
+    h += '</div>';
+    h += '</div>';
+  }
+  h += '</div>';
+  h += '</div>';
+
+  // SECTION 4: THE EVIDENCE
+  var DI = {
+    H: { i: '\uD83E\uDDE0', n: 'Human Consciousness' },
+    U: { i: '\uD83D\uDC99', n: 'Understanding & Empathy' },
+    M: { i: '\u2696\uFE0F', n: 'Moral & Ethical Conduct' },
+    A: { i: '\uD83C\uDF0D', n: 'Alive & Environmental' },
+    N: { i: '\uD83D\uDD0D', n: 'Natural Transparency' }
+  };
+  var hasDims = c.D_H != null;
+  if (hasDims) {
+    h += '<details open style="margin-bottom:16px;border:1px solid #E5E7EB;border-radius:12px;background:white"><summary style="padding:18px 20px;cursor:pointer;font-weight:700;color:var(--navy);font-size:15px;display:flex;align-items:center;justify-content:space-between"><span>HUMAN Dimensions</span><span style="font-size:12px;color:var(--muted);font-weight:500">5 dimensions</span></summary>';
+    h += '<div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:14px">';
+    ['H', 'U', 'M', 'A', 'N'].forEach(function(d) {
+      var s = c['D_' + d] || 0;
+      var info = DI[d];
+      h += '<div>';
+      h += '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">';
+      h += '<div style="display:flex;align-items:center;gap:10px">';
+      h += '<span style="font-size:18px">' + info.i + '</span>';
+      h += '<div><div style="font-size:13px;font-weight:700;color:var(--navy)">' + d + ' \u2014 ' + info.n + '</div></div>';
+      h += '</div>';
+      h += '<span style="font-size:18px;font-weight:800;color:' + sc(s) + '">' + s + '</span>';
+      h += '</div>';
+      h += '<div style="height:8px;background:#EEF1F5;border-radius:4px;overflow:hidden"><div style="height:100%;width:' + s + '%;background:' + sc(s) + ';border-radius:4px"></div></div>';
+      h += '</div>';
+    });
+    h += '</div></details>';
+  }
+  if (hasHW) {
+    h += '<details style="margin-bottom:16px;border:1px solid #E5E7EB;border-radius:12px;background:white"><summary style="padding:18px 20px;cursor:pointer;font-weight:700;color:var(--navy);font-size:15px;display:flex;align-items:center;justify-content:space-between"><span>\u2691 Humanwashing Flags</span><span style="font-size:12px;color:#DC2626;font-weight:700">' + c.humanwashing_flags.length + '</span></summary>';
+    h += '<div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px">';
+    c.humanwashing_flags.forEach(function(f) {
+      h += '<div style="display:flex;gap:10px;font-size:13px;line-height:1.5;color:#374151"><span style="color:#DC2626;flex-shrink:0">\u00b7</span><span>' + f + '</span></div>';
+    });
+    h += '</div></details>';
+  }
+  var sources = c.data_sources || [];
+  if (sources.length > 0) {
+    h += '<details style="margin-bottom:16px;border:1px solid #E5E7EB;border-radius:12px;background:white"><summary style="padding:18px 20px;cursor:pointer;font-weight:700;color:var(--navy);font-size:15px;display:flex;align-items:center;justify-content:space-between"><span>Sources & Methodology</span><span style="font-size:12px;color:var(--muted);font-weight:500">' + sources.length + ' sources</span></summary>';
+    h += '<div style="padding:0 20px 20px">';
+    h += '<div style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:12px">' + sources.join(' \u00b7 ') + '</div>';
+    h += '<div style="font-size:12px;color:var(--muted)"><a onclick="showPage(\'methodology\')" style="color:var(--navy);font-weight:600;cursor:pointer;text-decoration:underline">Read the full methodology \u2192</a></div>';
+    h += '</div></details>';
+  }
+
+  // SECTION 5: SHARE & VISIT
+  var shareText = encodeURIComponent((c.company || '') + ' has a HI Grade of ' + ((c.gold || c.hi_balanced) ? 'Gold \u00b7 ' : '') + comp + ' (' + comp + '/100). Human kind? thehibalance.org #HIGrade #HumanKind');
+  var shareUrl = encodeURIComponent('https://thehibalance.org');
+  h += '<div style="margin-top:32px;padding-top:24px;border-top:1px solid #E5E7EB">';
+  h += '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">';
+  h += '<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">';
+  h += '<span style="font-size:11px;color:var(--muted);font-weight:600;margin-right:4px">Share:</span>';
+  h += '<a href="https://twitter.com/intent/tweet?text=' + shareText + '" target="_blank" style="padding:6px 12px;border-radius:6px;font-size:11px;font-weight:600;background:#000;color:#fff;text-decoration:none">X Post</a>';
+  h += '<a href="https://www.linkedin.com/sharing/share-offsite/?url=' + shareUrl + '" target="_blank" style="padding:6px 12px;border-radius:6px;font-size:11px;font-weight:600;background:#0A66C2;color:#fff;text-decoration:none">LinkedIn</a>';
+  h += '<a href="https://threads.net/intent/post?text=' + shareText + '" target="_blank" style="padding:6px 12px;border-radius:6px;font-size:11px;font-weight:600;background:#000;color:#fff;text-decoration:none">Threads</a>';
+  h += '<span id="copyShareBtn" style="padding:6px 12px;border-radius:6px;font-size:11px;font-weight:600;background:var(--navy);color:#fff;cursor:pointer">Copy</span>';
+  h += '</div>';
+  if (c.domains && c.domains.length) {
+    h += '<a href="https://' + c.domains[0] + '" target="_blank" rel="noopener" style="font-size:13px;color:var(--navy);font-weight:600;text-decoration:underline">Visit ' + (c.company || 'company') + ' \u2192</a>';
+  }
+  h += '</div>';
+  h += '</div>';
+  h += '<div style="margin-top:20px;font-size:11px;color:var(--muted);line-height:1.6">HI Grades are estimated from public data and are not financial, legal, or investment advice. Not affiliated with or endorsed by ' + (c.company || 'this company') + '. Methodology: HUMAN Grade Spec v1.2.0 (Apache 2.0). HI Grade\u2122 Morf Innovations LLC.</div>';
+
+  document.getElementById('detailContent').innerHTML = h;
+
+  var csb = document.getElementById('copyShareBtn');
+  if (csb) {
+    csb.onclick = function() {
+      var txt = decodeURIComponent(shareText);
+      navigator.clipboard.writeText(txt).then(function() {
+        csb.textContent = 'Copied!';
+        setTimeout(function() { csb.textContent = 'Copy'; }, 2000);
+      });
+    };
+  }
 }
 
-h+='<div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;align-items:center"><span style="font-size:11px;color:var(--muted)">Share:</span><a href="https://twitter.com/intent/tweet?text='+shareText+'" target="_blank" style="padding:6px 14px;border-radius:6px;font-size:11px;font-weight:600;background:#000;color:#fff;text-decoration:none;cursor:pointer">𝕏 Post</a><a href="https://www.linkedin.com/sharing/share-offsite/?url='+shareUrl+'" target="_blank" style="padding:6px 14px;border-radius:6px;font-size:11px;font-weight:600;background:#0A66C2;color:#fff;text-decoration:none;cursor:pointer">LinkedIn</a><a href="https://threads.net/intent/post?text='+shareText+'" target="_blank" style="padding:6px 14px;border-radius:6px;font-size:11px;font-weight:600;background:#000;color:#fff;text-decoration:none;cursor:pointer">Threads</a><span id="copyShareBtn" style="padding:6px 14px;border-radius:6px;font-size:11px;font-weight:600;background:var(--navy);color:#fff;cursor:pointer">Copy</span></div>';
-// Composite shown in header badge, no duplicate display needed here
-var dlc={'critical':'#DC2626','warning':'#DC2626','watch':'#D97706','stable':'#16A34A'};
-/* v1.9.3: legacy heartbeat removed */
-
-// v1.9.1: Sector comparison line
-var SECTOR_MEDIANS={"tech": 65, "healthcare": 68, "finance": 62, "energy": 55, "retail": 60, "food": 64, "manufacturing": 60, "auto": 58, "media": 58, "telecom": 60, "defense": 56, "transportation": 60, "apparel": 62, "hospitality": 60, "utilities": 64, "default": 60};
-var sectorMed=SECTOR_MEDIANS[c.industry]||SECTOR_MEDIANS["default"];
-var sectorDiff=comp-sectorMed;
-var sectorDiffStr=(sectorDiff>0?"+":"")+sectorDiff;
-var sectorDiffColor=sectorDiff>=0?"#16A34A":"#DC2626";
-var industryName=(c.industry||"sector").charAt(0).toUpperCase()+(c.industry||"sector").slice(1);
-h+='<div style="display:flex;gap:24px;flex-wrap:wrap;padding:14px 0;margin-bottom:20px;font-size:12px;color:var(--muted);border-bottom:1px solid #F3F4F6"><div><strong style="color:var(--navy)">vs '+industryName+' median</strong> ('+sectorMed+'): <span style="color:'+sectorDiffColor+';font-weight:700">'+sectorDiffStr+'</span></div>'+(c.score_30d_ago?'<div><strong style="color:var(--navy)">vs 30 days ago</strong> ('+c.score_30d_ago+'): <span style="color:'+(comp-c.score_30d_ago>=0?"#16A34A":"#DC2626")+';font-weight:700">'+(comp-c.score_30d_ago>0?"+":"")+(comp-c.score_30d_ago)+'</span></div>':'')+'</div>';
-
-if(c.humanwashing_flags&&c.humanwashing_flags.length>0)h+='<div class="hw-section"><h3>⚑ Humanwashing Flags</h3>'+c.humanwashing_flags.map(function(f){return'<div class="hw-flag">'+f+'</div>'}).join('')+'</div>';
-if(c.algo_harm&&c.algo_harm.has_harm){var ah=c.algo_harm;
-  // v1.7.2: AHI components breakdown
-  var compHTML='';
-  if(ah.components){
-    var compLabels={division:'Division',addiction:'Addiction',manipulation:'Manipulation',transparency:'Transparency',human_override:'Human Override'};
-    var compNotes={transparency:'higher = more opaque',human_override:'lower = less override'};
-    compHTML='<div style="margin-top:14px;padding-top:14px;border-top:1px solid #FECACA"><div style="font-size:10px;font-weight:700;color:#991B1B;letter-spacing:1.5px;margin-bottom:10px">▪ COMPONENTS</div>';
-    ['division','addiction','manipulation','transparency','human_override'].forEach(function(k){
-      var v=ah.components[k];
-      if(v===undefined||v===null)return;
-      // invert transparency/override for visual (higher bar = worse)
-      var barVal=(k==='transparency'||k==='human_override')?(100-v):v;
-      compHTML+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;font-size:12px">'
-        +'<span style="width:110px;color:#444;font-weight:500">'+compLabels[k]+'</span>'
-        +'<div style="flex:1;height:8px;background:#FEE2E2;border-radius:4px;overflow:hidden"><div style="height:100%;width:'+barVal+'%;background:#DC2626;border-radius:4px"></div></div>'
-        +'<span style="width:32px;text-align:right;color:#991B1B;font-weight:700">'+v+'</span>'
-        +(compNotes[k]?'<span style="font-size:10px;color:#9CA3AF;width:140px">'+compNotes[k]+'</span>':'<span style="width:140px"></span>')
-        +'</div>';
-    });
-    compHTML+='</div>';
-  }
-  h+='<div class="hw-section" style="background:#FEF3F2;border-color:#FECACA"><h3 style="color:#DC2626">⚡ Algorithmic Harm Index: '+ah.algo_harm_score+'/100</h3><div class="hw-flag" style="color:#7F1D1D;font-weight:600">Algorithms that divide, addict, or manipulate reduce HI Grade across H, U, M, and N dimensions.</div>'+ah.flags.map(function(f){return'<div class="hw-flag" style="color:#991B1B">› '+f+'</div>'}).join('')+compHTML+'<div style="display:flex;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid #FECACA;font-size:11px"><span style="font-weight:600;color:#991B1B">Penalties applied:</span>'+['H','U','M','N'].map(function(d){var p=ah.penalties[d];return p<0?'<span style="color:#DC2626;font-weight:600">'+d+': '+p+'</span>':''}).filter(Boolean).join(' · ')+'</div></div>';
-}
-if(c.harm_documentation&&c.harm_documentation.has_harm){var hd=c.harm_documentation;
-  // v1.7.2: HD rubric display
-  var hdHTML='<div class="hw-section" style="background:#FEF3F2;border-color:#FCA5A5"><h3 style="color:#991B1B">⚠ Harm Documentation</h3>';
-  hdHTML+='<div class="hw-flag" style="color:#7F1D1D;font-weight:600;margin-bottom:10px">Public-record harm including court settlements, attributed deaths, or concealment findings. Penalizes M directly.</div>';
-  // Rubric grid
-  var rows=[];
-  if(hd.settlement_5yr&&hd.settlement_5yr>0){
-    var settlement=hd.settlement_5yr>=1e9?'$'+(hd.settlement_5yr/1e9).toFixed(1)+'B':hd.settlement_5yr>=1e6?'$'+(hd.settlement_5yr/1e6).toFixed(0)+'M':'$'+hd.settlement_5yr.toLocaleString();
-    rows.push(['Settlements (5yr)',settlement]);
-  }
-  if(hd.deaths_attributed&&hd.deaths_attributed>0){
-    var deaths=hd.deaths_attributed>=1000?'~'+Math.round(hd.deaths_attributed/1000)+'k':hd.deaths_attributed.toLocaleString();
-    rows.push(['Deaths attributed',deaths]);
-  }
-  if(hd.concealment_findings&&hd.concealment_findings.length>0){
-    rows.push(['Concealment findings',hd.concealment_findings.length+' documented']);
-  }
-  if(hd.remediation_status){
-    var statusColors={'paid_in_full':'#16A34A','active':'#D97706','active_with_ongoing_fraud':'#DC2626','resolved':'#16A34A'};
-    var statusColor=statusColors[hd.remediation_status]||'#6B7280';
-    var statusLabel=hd.remediation_status.replace(/_/g,' ');
-    rows.push(['Remediation status','<span style="color:'+statusColor+';font-weight:600">'+statusLabel+'</span>']);
-  }
-  if(rows.length>0){
-    hdHTML+='<div style="background:#FFF;border-radius:6px;padding:10px 14px;margin-bottom:10px">';
-    rows.forEach(function(r){
-      hdHTML+='<div style="display:flex;justify-content:space-between;padding:4px 0;font-size:12px;border-bottom:1px solid #F3F4F6"><span style="color:#6B7280">'+r[0]+'</span><span style="color:#111827;font-weight:600">'+r[1]+'</span></div>';
-    });
-    hdHTML+='</div>';
-  }
-  // Flags
-  if(hd.flags&&hd.flags.length>0){
-    hdHTML+='<div style="margin-bottom:10px">'+hd.flags.map(function(f){return'<div class="hw-flag" style="color:#991B1B">› '+f+'</div>'}).join('')+'</div>';
-  }
-  // Sources
-  if(hd.sources&&hd.sources.length>0){
-    hdHTML+='<div style="margin-top:10px;padding-top:10px;border-top:1px solid #FCA5A5"><div style="font-size:10px;font-weight:700;color:#991B1B;letter-spacing:1.5px;margin-bottom:6px">▪ SOURCES</div>';
-    hd.sources.forEach(function(s){
-      if(s&&typeof s==='string'){
-        var label=s.replace(/^https?:\/\//,'').split('/')[0];
-        hdHTML+='<div style="font-size:11px;padding:2px 0"><a href="'+s+'" target="_blank" rel="noopener" style="color:#991B1B;text-decoration:underline">'+label+' →</a></div>';
-      }
-    });
-    hdHTML+='</div>';
-  }
-  // Penalty footer
-  if(hd.penalties&&hd.penalties.M){
-    hdHTML+='<div style="margin-top:10px;padding-top:10px;border-top:1px solid #FCA5A5;font-size:11px;color:#991B1B;font-weight:600">Penalty applied to M: '+hd.penalties.M+'</div>';
-  }
-  hdHTML+='</div>';
-  h+=hdHTML;
-}
-if(c.floor_triggered)h+='<div class="hw-section" style="background:#FFFBEB;border-color:#FDE68A"><h3 style="color:var(--orange)">⚠ Floor Rule Triggered</h3><div class="hw-flag" style="color:#92400E">Dimension '+c.triggering_dimension+' scored below 10, capping composite at 40.</div></div>';
-if(c.balance_floor)h+='<div class="hw-section" style="background:#FFF7ED;border-color:#FDBA74"><h3 style="color:#DC2626">⚠ Dimension Below Threshold</h3><div class="hw-flag" style="color:#9A3412">Dimension '+c.triggering_dimension+' scored below 60. The Balanced Board requires all five HUMAN dimensions to clear the threshold.</div></div>';
-// Gates section — v1.1 spec: Dimensions / Evidence / Momentum
-var hbg=c.hi_balanced_gates||{};var hbgDetail=hbg._detail||{};
-var isSeed=c._source==='seed'||((c.confidence||'').indexOf('Estimated from')===0)||((c.data_sources||[]).join(',').indexOf('News')>=0&&(c.data_sources||[]).join(',').indexOf('SEC')<0);
-// Gate 1: Dimensions — all 5 dims >= 60
-var g1pass=(c.D_H>=60&&c.D_U>=60&&c.D_M>=60&&c.D_A>=60&&c.D_N>=60);
-var g1hasData=c.D_H!==undefined;
-// Gate 2: Evidence — verified data per dim
-var g2pass=(typeof hbg.evidence==='boolean')?hbg.evidence:((function(){var g=c.gates&&c.gates.verified_per_dim;return g&&g.H&&g.U&&g.M&&g.A&&g.N})());
-var g2hasData=(typeof hbg.evidence==='boolean')||(c.gates!==undefined);
-// Gate 3: Momentum — not in warning/critical decay
-var g3pass=(typeof hbg.momentum==='boolean')?hbg.momentum:(['stable','watch'].indexOf(c.decay_level||'stable')>=0);
-var g3hasData=true;
-var gateChecks=[["All 5 dimensions \u2265 60",g1pass,g1hasData],["Each dimension verified by public data",g2pass,g2hasData],["No critical decay in last 90 days",g3pass,g3hasData]];
-var gPassed=gateChecks.filter(function(g){return g[2]&&g[1]}).length;
-var gTotal=gateChecks.filter(function(g){return g[2]}).length;
-var hasAnyGray=gateChecks.some(function(g){return !g[2]});if(hasAnyGray)isSeed=true;
-h+='<div class="detail-section" style="display:none"><h3>'+gPassed+'/'+gTotal+' Gates passed'+(isCertified?' · '+hiE(14):'')+(isSeed&&!isCertified?' · <span style="font-size:10px;color:var(--muted);font-weight:400">some checks need more data</span>':'')+'</h3><div style="height:6px;background:#EEF1F5;border-radius:3px;margin-bottom:20px"><div style="height:100%;width:'+(gTotal>0?gPassed/gTotal*100:0)+'%;background:'+(isCertified?'#C49B20':gPassed===gTotal?'#16A34A':'#1B3A5C')+';border-radius:3px;transition:width .3s"></div></div>';
-// Render each gate with v1.1 names
-var gateLabels=[{n:"DIMENSIONS",icon:"\ud83d\udcca",color:"#1B3A5C",desc:"All 5 HUMAN dimensions score 60 or higher"},{n:"EVIDENCE",icon:"\ud83d\udd2c",color:"#C49B20",desc:"Each dimension backed by verified public data"},{n:"MOMENTUM",icon:"\u23f1",color:"#16A34A",desc:"Not in warning or critical decay (90-day Heartbeat)"}];
-gateChecks.forEach(function(g,i){var lbl=gateLabels[i];var noData=!g[2];var color=noData?"#9CA3AF":(g[1]?"#16A34A":"#DC2626");var icon=noData?"\u25cb":(g[1]?"✓":"\u2717");h+='<div style="margin-bottom:14px"><div style="font-size:10px;font-weight:700;color:'+lbl.color+';letter-spacing:1.5px;margin-bottom:6px">'+lbl.icon+' '+lbl.n+'</div><div style="display:flex;align-items:center;gap:8px;padding:4px 0;font-size:13px"><span style="color:'+color+';font-size:16px;font-weight:700">'+icon+'</span><span style="color:'+(noData?"#9CA3AF":(g[1]?"#444":"#DC2626"))+'">'+g[0]+(noData?" · needs data":"")+'</span></div><div style="font-size:11px;color:var(--muted);margin-left:24px;margin-top:2px">'+lbl.desc+'</div></div>';});
-h+='</div>';
-h+='<div class="detail-section"><h3>HUMAN Dimensions</h3>'+fullDims+'</div>';
-// ─── AUDIT TRAIL SECTION (Stage 3 transparency) ──────────────────────
-var _auditKeys={H:['H.1','H.2','H.3','H.4','H.5'],U:['U.1','U.2','U.3','U.4','U.5'],M:['M.1','M.2','M.3','M.4','M.5'],A:['A.1','A.2','A.3','A.4','A.5'],N:['N.1','N.2','N.3','N.4','N.5']};
-var _auditLabels={'H.1':'Workforce Valuation','H.2':'Craft','H.3':'Human Decision Depth','H.4':'CEO Accountability (v1.2)','H.5':'Human Augmentation Index','U.1':'Customer Empathy','U.2':'Worker Empathy','U.3':'Relational Integrity','U.4':'Simulated Empathy Detection','U.5':'Moral Courage (v1.2)','M.1':'Pricing Ethics','M.2':'Data Ethics','M.3':'Market Ethics','M.4':'Product Ethics','M.5':'Stakeholder Governance','A.1':'Energy & Emissions','A.2':'Water','A.3':'Land & Habitat','A.4':'Product Lifecycle','A.5':'Resource Stewardship','N.1':'AI Disclosure (v1.2)','N.2':'Reporting Quality','N.3':'Labor Auditability (v1.2)','N.4':'Humanwashing Detection (v1.2)','N.5':'Filing Volume'};
-var _auditGenome=c.genome||{};
-// Piece 1: Formula
-var _auditFormula='<div style="padding:14px 16px;background:#F8FAFC;border-radius:10px;font-family:SFMono-Regular,Menlo,monospace;font-size:13px;margin-bottom:16px;line-height:1.8"><div style="color:var(--muted);font-size:10px;letter-spacing:1.5px;margin-bottom:8px;font-family:inherit">COMPOSITE FORMULA</div>Composite = (H + U + M + A + N) / 5<br>= ('+(c.D_H||0)+' + '+(c.D_U||0)+' + '+(c.D_M||0)+' + '+(c.D_A||0)+' + '+(c.D_N||0)+') / 5<br><span style="font-size:18px;font-weight:800;color:'+scoreColor+'">= '+comp+'</span></div>';
-// Piece 2: 5x5 sub-signal grid
-var _auditGrid='<div style="margin-bottom:16px"><div style="color:var(--muted);font-size:10px;letter-spacing:1.5px;margin-bottom:8px">ALL 19 SUB-SIGNALS</div><div style="display:grid;grid-template-columns:auto repeat(5,1fr) auto;gap:4px;font-size:11px">';
-_auditGrid+='<div></div>'+['.1','.2','.3','.4','.5'].map(function(n){return '<div style="text-align:center;color:var(--muted);font-size:9px;padding:2px">'+n+'</div>'}).join('')+'<div style="text-align:center;color:var(--muted);font-size:9px;padding:2px;font-weight:700">DIM</div>';
-['H','U','M','A','N'].forEach(function(d){
-var _dg=_auditGenome[d]||{};var _scores=_dg.scores||{};
-_auditGrid+='<div style="font-weight:800;color:var(--navy);padding:6px 4px;text-align:center">'+d+'</div>';
-var _DEFERRED_SUBS=["H.4","U.5","A.5","N.1","N.3","N.4"];_auditKeys[d].forEach(function(k){if(_DEFERRED_SUBS.indexOf(k)>=0){_auditGrid+='<div title="'+(_auditLabels[k]||k)+' — coming in v1.2" style="padding:6px 2px;text-align:center;background:#F3F4F6;border-radius:4px;color:#9CA3AF;font-weight:600;cursor:help;font-size:10px">—</div>'}else{var v=Math.round(_scores[k]||50);var _col=sc(v);_auditGrid+='<div title="'+(_auditLabels[k]||k)+': '+v+'" style="padding:6px 2px;text-align:center;background:'+_col+'15;border-radius:4px;color:'+_col+';font-weight:700;cursor:help">'+v+'</div>'}});
-var _dv=c['D_'+d]||0;_auditGrid+='<div style="padding:6px 4px;text-align:center;background:'+sc(_dv)+'25;border-radius:4px;color:'+sc(_dv)+';font-weight:800">'+_dv+'</div>';
-});
-_auditGrid+='</div><div style="font-size:10px;color:var(--muted);margin-top:6px;font-style:italic">Hover any cell for the sub-signal name. <span style="color:#9CA3AF">— = coming in v1.2</span>. Colors: green ≥65, amber 42-64, red &lt;42.</div></div>';
-// Piece 3: Sources per dimension
-var _auditSrc='<div style="margin-bottom:16px"><div style="color:var(--muted);font-size:10px;letter-spacing:1.5px;margin-bottom:8px">SOURCES PER DIMENSION</div>'+['H','U','M','A','N'].map(function(d){var _dg=_auditGenome[d]||{};var _srcs=_dg.sources||[];var _clean=cleanSrcs(_srcs).join(', ')||'Industry defaults';return '<div style="padding:5px 0;font-size:12px;border-bottom:1px solid #EEF1F5"><strong style="color:var(--navy);display:inline-block;width:20px">'+d+':</strong> <span style="color:#444">'+_clean+'</span></div>'}).join('')+'</div>';
-// Piece 4: Verify yourself
-var _auditVerify='<div style="padding:14px 16px;background:#F0F6FF;border-radius:10px;border-left:3px solid var(--navy)"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px">Verify these numbers yourself</div><div style="font-family:SFMono-Regular,Menlo,monospace;font-size:11px;padding:10px 12px;background:white;border-radius:6px;overflow-x:auto;color:#444;border:1px solid #E0E7F0">curl '+API+'/api/v1/score/ticker/'+(c.ticker||'TICKER')+'</div><div style="font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5">Every HI Grade is reconstructable from public data. Nothing hidden. The API response contains the full sub-signal breakdown, source attribution, and audit trail.</div></div>';
-// Wrap in collapsible section
-h+='<div class="detail-section"><h3 style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none" onclick="var d=this.nextElementSibling;d.style.display=d.style.display===\'block\'?\'none\':\'block\';this.querySelector(\'.audit-arrow\').textContent=d.style.display===\'block\'?\'▴\':\'▾\'">📐 How was this calculated? <span class="audit-arrow" style="font-size:14px;color:var(--muted);font-weight:400">▾</span></h3><div style="display:none;padding-top:16px;border-top:1px solid #EEF1F5;margin-top:8px">'+_auditFormula+_auditGrid+_auditSrc+_auditVerify+'</div></div>';
-// ─── END AUDIT TRAIL ─────────────────────────────────────────────────
-/* v1.9.2: redundant chips removed — coverage now inline with score, spec moved to footer */
-h+='<div class="detail-disclaimer">HI Grades are estimated from public data and are not financial, legal, or investment advice. Not affiliated with or endorsed by '+(c.company||'this company')+'. Methodology: HUMAN Grade Spec v1.2.0 (Apache 2.0). HI Grade™ Morf Innovations LLC.</div>';
-// v1.8.1: Waitlist CTA removed — did not ship, broken CTA hurts credibility
-// Secondary CTAs: inline links (Improve + Visit)
-h+=(c.domains&&c.domains.length?'<div style="text-align:center;padding:14px 0;font-size:11px;color:var(--muted)"><a href="https://'+c.domains[0]+'" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600;text-decoration:underline">Visit '+c.company+' →</a></div>':'');
-document.getElementById('detailContent').innerHTML=h;
-var csb=document.getElementById('copyShareBtn');if(csb){csb.onclick=function(){var txt=decodeURIComponent(shareText);navigator.clipboard.writeText(txt).then(function(){csb.textContent='Copied!';setTimeout(function(){csb.textContent='Copy'},2000)})}}}
 function submitWaitlist(){var e=document.getElementById('waitlistEmail').value.trim();if(!e||!e.includes('@'))return;
 fetch('https://formspree.io/f/xbdzkrdj',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,type:'certification',date:new Date().toISOString()})}).then(function(){document.getElementById('waitlistSuccess').style.display='block';document.getElementById('waitlistEmail').value=''}).catch(function(){document.getElementById('waitlistSuccess').style.display='block';document.getElementById('waitlistEmail').value=''})}
 function submitAppWaitlist(){var e=document.getElementById('appWaitlistEmail').value.trim();if(!e||!e.includes('@'))return;
