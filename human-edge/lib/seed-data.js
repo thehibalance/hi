@@ -1824,6 +1824,7 @@ const SEED_COMPANIES = [
   },
   {
     "id": "rivian",
+    "ticker": "RIVN",
     "name": "Rivian",
     "domains": [
       "rivian.com"
