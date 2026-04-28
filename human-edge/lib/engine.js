@@ -62,13 +62,24 @@ const HumanEngine = {
 
   /**
    * Compute composite HUMAN score from dimension scores.
-   * Formula (v1.1.0): composite = (H + U + M + A + N) / 5
-   * No floor rule in v1.1.0 — the Dimensions gate (all ≥ 60) replaces it.
+   * Formula (v1.2.0): composite = (H + U + M + A + N) / 5
+   * Floor rule (v1.2.0): if any HUMAN dimension < 30, composite is capped at 50.
+   *   - Mirrors backend pipeline/scoring_engine.py:compute_composite
+   *   - floorTriggered fires whenever min_dim < 30, regardless of cap effect
+   *   - floorDimension is the uppercase letter of the lowest dim ('H','U','M','A','N')
    */
   computeComposite(company) {
     const scores = this.DIMENSIONS.map(d => company[d] || 0);
-    const composite = Math.round(scores.reduce((sum, s) => sum + s, 0) / 5);
-    return { composite, floorTriggered: false, floorDimension: null };
+    let composite = Math.round(scores.reduce((sum, s) => sum + s, 0) / 5);
+    const minDim = Math.min(...scores);
+    let floorTriggered = false;
+    let floorDimension = null;
+    if (minDim < 30) {
+      composite = Math.min(composite, 50);
+      floorTriggered = true;
+      floorDimension = this.DIMENSIONS[scores.indexOf(minDim)].toUpperCase();
+    }
+    return { composite, floorTriggered, floorDimension };
   },
 
   /**
@@ -131,7 +142,7 @@ const HumanEngine = {
    * If company has cloud_hi_balanced_gates (object from API), trust those over local computation.
    */
   getProfile(company, _legacyArg) {
-    const { composite } = this.computeComposite(company);
+    const { composite, floorTriggered, floorDimension } = this.computeComposite(company);
     const hwFlags = this.detectHumanwashing(company);
 
     // Trust cloud gates if provided
@@ -172,8 +183,8 @@ const HumanEngine = {
       grade: isGold ? 'Gold HI Grade' : 'Scored',
       scoreColor,
       tier: { color: scoreColor, satire: isGold ? 'Humans and tech, in harmony. Gold HI Grade earned.' : '' },
-      floorTriggered: false,          // v1.1.0 has no floor
-      floorDimension: null,
+      floorTriggered,                 // v1.2.0: any dim < 30 → cap composite at 50
+      floorDimension,
       humanwashingFlags: hwFlags,
       confidence: company.confidence || 'estimated',
       source: company.source || 'local'

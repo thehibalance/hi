@@ -1392,11 +1392,9 @@ function renderDet(c) {
     h += '<div style="padding:0 14px 14px;font-size:12px;color:#374151;line-height:1.6">';
     h += '<p style="margin:8px 0">The composite score is a weighted average of the five HUMAN dimensions:</p>';
     h += '<div style="font-family:ui-monospace,monospace;background:#fff;padding:10px 12px;border-radius:6px;border:1px solid #E5E7EB;margin:8px 0;font-size:11px">composite = (H + U + M + A + N) / 5</div>';
-    h += '<p style="margin:8px 0"><strong>Balance floors</strong> apply when one dimension drags far behind:</p>';
+    h += '<p style="margin:8px 0"><strong>Floor rule</strong> protects against severe single-dimension failure:</p>';
     h += '<div style="font-family:ui-monospace,monospace;background:#fff;padding:10px 12px;border-radius:6px;border:1px solid #E5E7EB;margin:8px 0;font-size:11px">';
-    h += '• Any dimension < 10 → composite capped at 40<br>';
-    h += '• 2+ dimensions < 42 → capped at 41 (F)<br>';
-    h += '• 1 dimension < 42 → capped at 49 (D)';
+    h += 'Any HUMAN dimension &lt; 30 &rarr; composite capped at 50';
     h += '</div>';
     h += '<p style="margin:8px 0">This company\'s sub-signals: <strong>' + (c.signal_coverage || 'data coverage information unavailable') + '</strong></p>';
     h += '</div></details>';
