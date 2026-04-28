@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- v1.10.4-api-enhance: applied 20260428-145607 -->
 <!-- v1.10.3-terminology: applied 20260428-113916 -->
 <!-- v1.10.2-navy-bookends: applied 20260428-112919 -->
 <!-- v1.10.1-story-cohesion: applied 20260428-111854 -->
@@ -344,6 +345,12 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <p style="margin:0;color:var(--muted)">HUMAN Heartbeat · HUMAN Genome · HUMAN 100 Index · HUMAN Lens · Real-time decay detection</p>
 </div>
 
+<div class="about-card" style="margin-top:24px;background:#0F172A;color:#fff;border-radius:14px;padding:20px 24px">
+<div style="font-size:11px;font-weight:700;color:#94A3B8;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px">Try it now</div>
+<div style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:#E2E8F0;background:#1E293B;padding:14px 16px;border-radius:8px;overflow-x:auto;line-height:1.5">curl https://api.thehibalance.org/api/v1/score/ticker/AAPL</div>
+<div style="font-size:12px;color:#94A3B8;margin-top:10px;line-height:1.5">Returns Apple\'s composite score, all 5 HUMAN dimensions, sub-signal genome, decay status, and data source list. <strong style="color:#fff">No API key. No signup.</strong> Just curl.</div>
+</div>
+
 <h2 class="section-title" style="font-size:22px;margin-top:32px">Use Cases</h2>
 <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
 <div class="about-card" style="flex:1;min-width:240px;max-width:340px"><div style="font-size:20px;margin-bottom:8px">🏦</div><div style="font-weight:700;color:var(--navy);margin-bottom:4px">Investment Research</div><div style="font-size:12px;color:var(--muted)">HUMAN Lens reveals gaps between ESG and HI ratings. The HUMAN 100 Index is ETF-licensable. Alternative data feed for quant strategies.</div></div>
@@ -356,20 +363,20 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 
 <h2 class="section-title" style="font-size:22px">Endpoints</h2>
 <div style="margin-bottom:32px">
-<div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px;margin-bottom:8px">SCORING</div>
+<div style="margin-bottom:12px"><div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px">SCORING</div><div style="font-size:11px;color:var(--muted);font-style:italic;margin-top:2px">The fundamental data — score any company by domain or ticker</div></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/score/{domain}</span><span class="ep-desc">Score by domain (with genome, heartbeat)</span></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/score/ticker/{ticker}</span><span class="ep-desc">Score by stock ticker</span></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/search?q={query}</span><span class="ep-desc">Search companies</span></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/grades/top?limit=10</span><span class="ep-desc">Top rated companies</span></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/stats</span><span class="ep-desc">Database statistics</span></div>
-<div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px;margin-bottom:8px;margin-top:20px">HEARTBEAT</div>
+<div style="margin:24px 0 12px"><div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px">HEARTBEAT</div><div style="font-size:11px;color:var(--muted);font-style:italic;margin-top:2px">Real-time decay detection — 90-day forward-looking signals</div></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/heartbeat/pulse</span><span class="ep-desc">Ecosystem pulse</span></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/heartbeat/alerts</span><span class="ep-desc">Active decay signals</span></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/heartbeat/{ticker}</span><span class="ep-desc">Company heartbeat</span></div>
-<div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px;margin-bottom:8px;margin-top:20px">HUMAN 100 INDEX</div>
+<div style="margin:24px 0 12px"><div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px">HUMAN 100 INDEX</div><div style="font-size:11px;color:var(--muted);font-style:italic;margin-top:2px">ETF-licensable benchmark — rebalanced monthly</div></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/human100</span><span class="ep-desc">Full index with metadata</span></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/human100/check/{ticker}</span><span class="ep-desc">Check membership</span></div>
-<div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px;margin-bottom:8px;margin-top:20px">FEATURES</div>
+<div style="margin:24px 0 12px"><div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px">FEATURES</div><div style="font-size:11px;color:var(--muted);font-style:italic;margin-top:2px">Derived signals — arbitrage, AI moat, contagion, empathy authenticity</div></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/arbitrage</span><span class="ep-desc">HI vs ESG gap analysis</span></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/moat</span><span class="ep-desc">AI displacement resistance</span></div>
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/contagion</span><span class="ep-desc">Industry contagion scores</span></div>
@@ -378,9 +385,16 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div class="endpoint"><span class="ep-method">GET</span><span class="ep-path">/api/v1/collective</span><span class="ep-desc">Market pressure signals</span></div>
 </div>
 
-<div class="about-card" style="text-align:center;border-left:4px solid #16A34A;margin-top:32px">
-<p style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px">Free to use · No API key required · 100 calls/day</p>
-<p style="margin:0;color:var(--muted)">All 32 endpoints are free and open. Need more? <a href="#" onclick="window.location=String.fromCharCode(109,97,105,108,116,111,58,104,105,64,116,104,101,104,105,98,97,108,97,110,99,101,46,111,114,103);return false" style="color:var(--navy);font-weight:600;text-decoration:none">Contact us →</a></p>
+<div class="about-card" style="text-align:center;border-left:4px solid #16A34A;margin-top:32px;padding:24px">
+<div style="font-size:11px;font-weight:700;color:#16A34A;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px">Open by default</div>
+<p style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:6px">Free to use · No API key required · 100 calls/day</p>
+<p style="margin:0 0 14px;color:var(--muted);font-size:14px">All 32 endpoints are free and open. Sufficient for most journalism, research, and prototyping.</p>
+<div style="border-top:1px solid #E5E7EB;padding-top:14px;margin-top:6px;font-size:13px;color:var(--muted)">Building something at scale? Need higher rate limits, dedicated support, or commercial licensing for ETF / procurement / SaaS use? <a href="#" onclick="window.location=String.fromCharCode(109,97,105,108,116,111,58,104,105,64,116,104,101,104,105,98,97,108,97,110,99,101,46,111,114,103);return false" style="color:var(--navy);font-weight:700;text-decoration:underline">Get in touch →</a></div>
+</div>
+
+<div style="text-align:center;margin-top:24px;padding:18px 24px;font-size:12px;color:var(--muted);line-height:1.7">
+<strong style="color:var(--navy)">Built for builders.</strong> If you\'re a journalist verifying a story, a researcher running a study, a developer prototyping an idea, or a fund evaluating a thesis — this API is for you. We\'d love to hear what you\'re building.<br>
+<span style="font-size:11px;opacity:0.75">Open source methodology (Apache 2.0) · No tracking · No analytics · Just data.</span>
 </div>
 </div>
 </div>
