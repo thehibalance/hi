@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- v1.10.3-terminology: applied 20260428-113916 -->
 <!-- v1.10.2-navy-bookends: applied 20260428-112919 -->
 <!-- v1.10.1-story-cohesion: applied 20260428-111854 -->
 <!-- v1.10.0-detail-rebuild: applied 20260428-110303 -->
@@ -1238,7 +1239,7 @@ function renderDet(c) {
   h += '<span style="font-size:64px;font-weight:800;color:' + scoreColor + ';letter-spacing:-2px">' + comp + '</span>';
   h += '</div>';
   h += '<div style="font-size:11px;color:#94A3B8;text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;font-weight:700">';
-  h += (isCertified ? hiE(11) + ' Certified \u00b7 ' : '') + 'HI Grade';
+  h += isCertified ? hiE(11) + ' Gold HI Grade\u2122 Certified' : 'HI Grade';
   h += '</div>';
   if (covPct != null) h += '<div style="margin-top:8px">' + covBadge(covPct) + '</div>';
   h += '</div>';
