@@ -706,7 +706,7 @@ function openFullPanel(profile, filterResult, prefs) {
         <span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#16A34A"></span>
         <span id="hiPipelineCountdown" style="font-size:9px;font-family:'DM Mono',monospace;color:#5A7A9A;letter-spacing:0.3px">Connected · API live</span>
       </div>
-      <div style="font-size:8px;color:#5A7A9A;line-height:1.4;text-align:center">Spec v1.1.0 · 19 active sub-signals · 42 data sources · Estimated from public data. Not financial or legal advice.</div>
+      <div style="font-size:8px;color:#5A7A9A;line-height:1.4;text-align:center">Spec v1.2.0 · 19 active sub-signals · 42 data sources · Estimated from public data. Not financial or legal advice.</div>
     </div>
   `;
 
@@ -833,7 +833,7 @@ function openDetailPanel(profile, dim) {
     <div style="background:#1B3A5C;padding:14px 16px;border-radius:0 0 14px 14px">
       <div style="font-size:13px;font-weight:700;color:#E8E2D0;letter-spacing:0.5px;text-align:center">Think human intelligence.</div>
       <div style="font-size:11px;color:white;margin-top:4px;opacity:0.8;text-align:center">thehibalance.org · The HI Balance</div>
-      <div style="font-size:8px;color:#5A7A9A;margin-top:8px;line-height:1.4;text-align:center">HI Grade Spec v1.1.0 · 19 active sub-signals · 42 data sources · Estimated from public data. Not financial or legal advice.</div>
+      <div style="font-size:8px;color:#5A7A9A;margin-top:8px;line-height:1.4;text-align:center">HI Grade Spec v1.2.0 · 19 active sub-signals · 42 data sources · Estimated from public data. Not financial or legal advice.</div>
     </div>
   `;
 
