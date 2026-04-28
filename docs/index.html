@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- v1.10.2-navy-bookends: applied 20260428-112919 -->
 <!-- v1.10.1-story-cohesion: applied 20260428-111854 -->
 <!-- v1.10.0-detail-rebuild: applied 20260428-110303 -->
 <!-- v1.9.3-heartbeat-dedup: applied 20260428-100305 -->
@@ -1212,30 +1213,40 @@ function renderDet(c) {
   var hasAHI = (c.algo_harm && c.algo_harm.has_harm);
   var hasHW = (c.humanwashing_flags && c.humanwashing_flags.length > 0);
 
-  var h = '<span class="detail-back" onclick="goBack()">\u2190 Back</span>';
+  var h = '';
 
-  // SECTION 1: HERO
-  h += '<div style="padding:24px 0 16px">';
+  // v1.10.2: Navy band wrapping the hero
+  h += '<div style="margin:0 -24px 0;padding:18px 24px 8px;background:linear-gradient(180deg,#0F172A,#1E293B);color:#fff">';
+  h += '<div style="max-width:1100px;margin:0 auto;padding:0">';
+  h += '<span class="detail-back" onclick="goBack()" style="color:#94A3B8;font-size:13px;cursor:pointer;display:inline-block;margin-bottom:14px">\u2190 Back</span>';
+
+  // SECTION 1: HERO (now inside navy band)
+  h += '<div style="padding:0 0 20px">';
   h += '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap">';
   h += '<div style="flex:1;min-width:280px">';
-  h += '<h1 style="font-family:DM Serif Display,serif;font-size:36px;color:var(--navy);margin:0 0 6px;line-height:1.1">' + (c.company || '') + '</h1>';
+  h += '<h1 style="font-family:DM Serif Display,serif;font-size:38px;color:#fff;margin:0 0 8px;line-height:1.1">' + (c.company || '') + '</h1>';
   h += '<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">';
-  if (c.ticker) h += '<span class="meta-tag">' + c.ticker + '</span>';
-  if (c.industry) h += '<span class="meta-tag">' + c.industry + '</span>';
-  if (c.sic_description) h += '<span class="meta-tag" style="font-size:11px">' + c.sic_description + '</span>';
+  // v1.10.2: tag pills sized for navy background
+  var tagStyle = 'display:inline-block;padding:3px 10px;background:rgba(255,255,255,0.12);color:#CBD5E1;border-radius:12px;font-size:11px;font-weight:500;border:1px solid rgba(255,255,255,0.1)';
+  if (c.ticker) h += '<span style="' + tagStyle + '">' + c.ticker + '</span>';
+  if (c.industry) h += '<span style="' + tagStyle + '">' + c.industry + '</span>';
+  if (c.sic_description) h += '<span style="' + tagStyle + ';font-size:10px">' + c.sic_description + '</span>';
   h += '</div>';
   h += '</div>';
   h += '<div style="text-align:right">';
   h += '<div style="display:flex;align-items:baseline;gap:8px;justify-content:flex-end;line-height:1">';
   h += '<span style="font-size:64px;font-weight:800;color:' + scoreColor + ';letter-spacing:-2px">' + comp + '</span>';
   h += '</div>';
-  h += '<div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;font-weight:700">';
+  h += '<div style="font-size:11px;color:#94A3B8;text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;font-weight:700">';
   h += (isCertified ? hiE(11) + ' Certified \u00b7 ' : '') + 'HI Grade';
   h += '</div>';
   if (covPct != null) h += '<div style="margin-top:8px">' + covBadge(covPct) + '</div>';
   h += '</div>';
   h += '</div>';
   h += '</div>';
+
+  // v1.10.2: close navy band wrapping the hero
+  h += '</div></div>';
 
   // SECTION 2: THE STORY
   if (hbActive || hasAHI || hasHW) {
@@ -1249,7 +1260,7 @@ function renderDet(c) {
       h += '<span style="color:' + hb.color + ';font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px">Heartbeat: ' + hb.label + '</span>';
       h += '<span style="color:' + hb.leadTone + ';font-size:11px;opacity:0.6">Decay ' + di + '/100</span>';
       h += '</div>';
-      h += '<h2 style="font-family:DM Serif Display,serif;font-size:22px;color:' + hb.leadTone + ';margin:0 0 14px;font-weight:600">What\u2019s happening with ' + (c.company || 'this company') + '</h2>';
+      h += '<div style="font-size:11px;font-weight:700;color:' + hb.color + ';text-transform:uppercase;letter-spacing:2px;margin:14px 0 10px">What the Heartbeat caught</div>';
       h += '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px">';
       (c.decay_factors || []).forEach(function(f) {
         h += '<div style="display:flex;gap:10px;font-size:14px;line-height:1.5;color:#374151"><span style="color:' + hb.color + ';font-weight:700;flex-shrink:0">\u00b7</span><span>' + f + '</span></div>';
@@ -1404,24 +1415,27 @@ function renderDet(c) {
     h += '</div></details>';
   }
 
-  // SECTION 5: SHARE & VISIT
+  // SECTION 5: SHARE & VISIT — navy band (v1.10.2)
   var shareText = encodeURIComponent((c.company || '') + ' has a HI Grade of ' + ((c.gold || c.hi_balanced) ? 'Gold \u00b7 ' : '') + comp + ' (' + comp + '/100). Human kind? thehibalance.org #HIGrade #HumanKind');
   var shareUrl = encodeURIComponent('https://thehibalance.org');
-  h += '<div style="margin-top:32px;padding-top:24px;border-top:1px solid #E5E7EB">';
+  h += '<div style="margin:32px -24px 0;padding:22px 24px 18px;background:linear-gradient(180deg,#1E293B,#0F172A);color:#fff">';
+  h += '<div style="max-width:1100px;margin:0 auto;padding:0">';
   h += '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">';
   h += '<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">';
-  h += '<span style="font-size:11px;color:var(--muted);font-weight:600;margin-right:4px">Share:</span>';
+  h += '<span style="font-size:11px;color:#94A3B8;font-weight:600;margin-right:4px">Share:</span>';
   h += '<a href="https://twitter.com/intent/tweet?text=' + shareText + '" target="_blank" style="padding:6px 12px;border-radius:6px;font-size:11px;font-weight:600;background:#000;color:#fff;text-decoration:none">X Post</a>';
   h += '<a href="https://www.linkedin.com/sharing/share-offsite/?url=' + shareUrl + '" target="_blank" style="padding:6px 12px;border-radius:6px;font-size:11px;font-weight:600;background:#0A66C2;color:#fff;text-decoration:none">LinkedIn</a>';
   h += '<a href="https://threads.net/intent/post?text=' + shareText + '" target="_blank" style="padding:6px 12px;border-radius:6px;font-size:11px;font-weight:600;background:#000;color:#fff;text-decoration:none">Threads</a>';
   h += '<span id="copyShareBtn" style="padding:6px 12px;border-radius:6px;font-size:11px;font-weight:600;background:var(--navy);color:#fff;cursor:pointer">Copy</span>';
   h += '</div>';
   if (c.domains && c.domains.length) {
-    h += '<a href="https://' + c.domains[0] + '" target="_blank" rel="noopener" style="font-size:13px;color:var(--navy);font-weight:600;text-decoration:underline">Visit ' + (c.company || 'company') + ' \u2192</a>';
+    h += '<a href="https://' + c.domains[0] + '" target="_blank" rel="noopener" style="font-size:13px;color:#fff;font-weight:600;text-decoration:underline;text-decoration-color:rgba(255,255,255,0.4)">Visit ' + (c.company || 'company') + ' \u2192</a>';
   }
   h += '</div>';
   h += '</div>';
-  h += '<div style="margin-top:20px;font-size:11px;color:var(--muted);line-height:1.6">HI Grades are estimated from public data and are not financial, legal, or investment advice. Not affiliated with or endorsed by ' + (c.company || 'this company') + '. Methodology: HUMAN Grade Spec v1.2.0 (Apache 2.0). HI Grade\u2122 Morf Innovations LLC.</div>';
+  h += '<div style="margin-top:18px;font-size:11px;color:#94A3B8;line-height:1.6">HI Grades are estimated from public data and are not financial, legal, or investment advice. Not affiliated with or endorsed by ' + (c.company || 'this company') + '. Methodology: HUMAN Grade Spec v1.2.0 (Apache 2.0). HI Grade\u2122 Morf Innovations LLC.</div>';
+  // v1.10.2: close navy footer band
+  h += '</div></div>';
 
   document.getElementById('detailContent').innerHTML = h;
 
