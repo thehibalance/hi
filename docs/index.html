@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- v1.10.1-story-cohesion: applied 20260428-111854 -->
 <!-- v1.10.0-detail-rebuild: applied 20260428-110303 -->
 <!-- v1.9.3-heartbeat-dedup: applied 20260428-100305 -->
 <!-- v1.9.2-coverage-spec: applied 20260428-095435 -->
@@ -1237,7 +1238,7 @@ function renderDet(c) {
   h += '</div>';
 
   // SECTION 2: THE STORY
-  if (hbActive || hasAHI) {
+  if (hbActive || hasAHI || hasHW) {
     var bgColor = hbActive ? hb.bg : '#FEE2E2';
     var borderColor = hbActive ? hb.color : '#DC2626';
     h += '<div style="margin:0 -24px 28px;padding:24px;background:linear-gradient(135deg,' + bgColor + '80, ' + bgColor + '40);border-top:1px solid ' + borderColor + '30;border-bottom:1px solid ' + borderColor + '30">';
@@ -1255,6 +1256,22 @@ function renderDet(c) {
       });
       h += '</div>';
     }
+    if (hasHW) {
+      h += '<div style="' + (hbActive ? 'margin-top:18px;padding-top:18px;border-top:1px solid ' + hb.color + '30' : '') + '">';
+      h += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">';
+      h += '<span style="color:#DC2626;font-size:13px">\u2691</span>';
+      h += '<span style="color:#DC2626;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px">Humanwashing</span>';
+      h += '<span style="color:#7F1D1D;font-size:11px;opacity:0.6">' + c.humanwashing_flags.length + ' flags</span>';
+      h += '</div>';
+      h += '<div style="font-size:13px;color:#374151;margin-bottom:10px;line-height:1.5">What they say vs. what they do.</div>';
+      h += '<div style="display:flex;flex-direction:column;gap:6px">';
+      c.humanwashing_flags.forEach(function(f) {
+        h += '<div style="display:flex;gap:10px;font-size:13px;line-height:1.5;color:#374151"><span style="color:#DC2626;font-weight:700;flex-shrink:0">\u00b7</span><span>' + f + '</span></div>';
+      });
+      h += '</div>';
+      h += '</div>';
+    }
+
     if (hasAHI) {
       var ah = c.algo_harm;
       h += '<div style="' + (hbActive ? 'margin-top:18px;padding-top:18px;border-top:1px solid ' + hb.color + '30' : '') + '">';
@@ -1337,19 +1354,52 @@ function renderDet(c) {
     });
     h += '</div></details>';
   }
-  if (hasHW) {
-    h += '<details style="margin-bottom:16px;border:1px solid #E5E7EB;border-radius:12px;background:white"><summary style="padding:18px 20px;cursor:pointer;font-weight:700;color:var(--navy);font-size:15px;display:flex;align-items:center;justify-content:space-between"><span>\u2691 Humanwashing Flags</span><span style="font-size:12px;color:#DC2626;font-weight:700">' + c.humanwashing_flags.length + '</span></summary>';
-    h += '<div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px">';
-    c.humanwashing_flags.forEach(function(f) {
-      h += '<div style="display:flex;gap:10px;font-size:13px;line-height:1.5;color:#374151"><span style="color:#DC2626;flex-shrink:0">\u00b7</span><span>' + f + '</span></div>';
-    });
-    h += '</div></details>';
-  }
+  // v1.10.1: HW moved to story section above
   var sources = c.data_sources || [];
   if (sources.length > 0) {
     h += '<details style="margin-bottom:16px;border:1px solid #E5E7EB;border-radius:12px;background:white"><summary style="padding:18px 20px;cursor:pointer;font-weight:700;color:var(--navy);font-size:15px;display:flex;align-items:center;justify-content:space-between"><span>Sources & Methodology</span><span style="font-size:12px;color:var(--muted);font-weight:500">' + sources.length + ' sources</span></summary>';
     h += '<div style="padding:0 20px 20px">';
-    h += '<div style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:12px">' + sources.join(' \u00b7 ') + '</div>';
+    h += '<div style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:16px">' + sources.join(' \u00b7 ') + '</div>';
+    
+    // v1.10.1: methodology sub-expandables
+    h += '<details style="margin-bottom:8px;background:#F9FAFB;border-radius:8px;border:1px solid #E5E7EB"><summary style="padding:12px 14px;cursor:pointer;font-size:13px;font-weight:600;color:var(--navy)">How was this score calculated?</summary>';
+    h += '<div style="padding:0 14px 14px;font-size:12px;color:#374151;line-height:1.6">';
+    h += '<p style="margin:8px 0">The composite score is a weighted average of the five HUMAN dimensions:</p>';
+    h += '<div style="font-family:ui-monospace,monospace;background:#fff;padding:10px 12px;border-radius:6px;border:1px solid #E5E7EB;margin:8px 0;font-size:11px">composite = (H + U + M + A + N) / 5</div>';
+    h += '<p style="margin:8px 0"><strong>Balance floors</strong> apply when one dimension drags far behind:</p>';
+    h += '<div style="font-family:ui-monospace,monospace;background:#fff;padding:10px 12px;border-radius:6px;border:1px solid #E5E7EB;margin:8px 0;font-size:11px">';
+    h += '• Any dimension < 10 → composite capped at 40<br>';
+    h += '• 2+ dimensions < 42 → capped at 41 (F)<br>';
+    h += '• 1 dimension < 42 → capped at 49 (D)';
+    h += '</div>';
+    h += '<p style="margin:8px 0">This company\'s sub-signals: <strong>' + (c.signal_coverage || 'data coverage information unavailable') + '</strong></p>';
+    h += '</div></details>';
+    
+    h += '<details style="margin-bottom:8px;background:#F9FAFB;border-radius:8px;border:1px solid #E5E7EB"><summary style="padding:12px 14px;cursor:pointer;font-size:13px;font-weight:600;color:var(--navy)">How is the Heartbeat decay computed?</summary>';
+    h += '<div style="padding:0 14px 14px;font-size:12px;color:#374151;line-height:1.6">';
+    h += '<p style="margin:8px 0">The Heartbeat tracks recent events that may degrade a score before the next quarterly refresh.</p>';
+    h += '<p style="margin:8px 0"><strong>Signals weighted into decay:</strong></p>';
+    h += '<div style="font-family:ui-monospace,monospace;background:#fff;padding:10px 12px;border-radius:6px;border:1px solid #E5E7EB;margin:8px 0;font-size:11px">';
+    h += '• Layoff coverage (Layoffs.fyi, news)<br>';
+    h += '• SEC 8-K filings (executive churn, restructuring)<br>';
+    h += '• Aggressive AI pivot signals (NewsAPI)<br>';
+    h += '• Ethics/legal incidents (Finnhub)<br>';
+    h += '• CEO accountability shifts';
+    h += '</div>';
+    h += '<p style="margin:8px 0">Decay is reported on a 0–100 scale where higher = more concerning. Status: stable < 30 ≤ watch < 60 ≤ warning < 90 ≤ critical.</p>';
+    h += '</div></details>';
+    
+    h += '<details style="margin-bottom:14px;background:#F9FAFB;border-radius:8px;border:1px solid #E5E7EB"><summary style="padding:12px 14px;cursor:pointer;font-size:13px;font-weight:600;color:var(--navy)">How does data coverage affect confidence?</summary>';
+    h += '<div style="padding:0 14px 14px;font-size:12px;color:#374151;line-height:1.6">';
+    h += '<p style="margin:8px 0">Each company is scored across <strong>19 sub-signals</strong>. When a sub-signal lacks public data, the engine assigns a neutral default (50) rather than a flattering one. This produces conservative scores, not generous ones.</p>';
+    h += '<p style="margin:8px 0">The coverage badge tells you how much real data backs the score:</p>';
+    h += '<div style="display:flex;flex-direction:column;gap:6px;margin:8px 0">';
+    h += '<div><span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:#16A34A15;color:#16A34A;border-radius:10px;font-size:11px;font-weight:700;text-transform:uppercase">✓ Verified</span> — 60% or more sub-signals have real data</div>';
+    h += '<div><span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:#D9770615;color:#D97706;border-radius:10px;font-size:11px;font-weight:700;text-transform:uppercase">● Partial</span> — 40–59% real data, partial confidence</div>';
+    h += '<div><span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:#6B728015;color:#6B7280;border-radius:10px;font-size:11px;font-weight:700;text-transform:uppercase">○ Limited</span> — below 40% real data, score reflects mostly defaults</div>';
+    h += '</div>';
+    h += '</div></details>';
+    
     h += '<div style="font-size:12px;color:var(--muted)"><a onclick="showPage(\'methodology\')" style="color:var(--navy);font-weight:600;cursor:pointer;text-decoration:underline">Read the full methodology \u2192</a></div>';
     h += '</div></details>';
   }
