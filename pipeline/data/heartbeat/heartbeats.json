@@ -3,7 +3,7 @@
     "company": "Meta Platforms, Inc.",
     "ticker": "META",
     "hi_grade": "scored",
-    "composite": 55,
+    "composite": 50,
     "decay_index": 100,
     "decay_level": "critical",
     "factors": [
@@ -628,7 +628,7 @@
     "company": "Johnson & Johnson",
     "ticker": "JNJ",
     "hi_grade": "scored",
-    "composite": 62,
+    "composite": 50,
     "decay_index": 55,
     "decay_level": "critical",
     "factors": [
@@ -1081,7 +1081,7 @@
     "company": "NVIDIA",
     "ticker": "NVDA",
     "hi_grade": "scored",
-    "composite": 62,
+    "composite": 50,
     "decay_index": 48,
     "decay_level": "warning",
     "factors": [
@@ -1410,7 +1410,7 @@
     "company": "Chevron Corporation",
     "ticker": "CVX",
     "hi_grade": "scored",
-    "composite": 58,
+    "composite": 50,
     "decay_index": 43,
     "decay_level": "warning",
     "factors": [
@@ -2396,7 +2396,7 @@
     "company": "Costco Wholesale Corporation",
     "ticker": "COST",
     "hi_grade": "scored",
-    "composite": 58,
+    "composite": 50,
     "decay_index": 30,
     "decay_level": "warning",
     "factors": [
@@ -2961,7 +2961,7 @@
     "company": "Lockheed Martin Corporation",
     "ticker": "LMT",
     "hi_grade": "scored",
-    "composite": 54,
+    "composite": 50,
     "decay_index": 28,
     "decay_level": "watch",
     "factors": [
@@ -3304,7 +3304,7 @@
     "company": "Boeing Company",
     "ticker": "BA",
     "hi_grade": "scored",
-    "composite": 54,
+    "composite": 50,
     "decay_index": 25,
     "decay_level": "watch",
     "factors": [
@@ -4144,7 +4144,7 @@
     "company": "RTX Corp",
     "ticker": "RTX",
     "hi_grade": "scored",
-    "composite": 51,
+    "composite": 50,
     "decay_index": 20,
     "decay_level": "watch",
     "factors": [
@@ -4312,7 +4312,7 @@
     "company": "Philip Morris International Inc.",
     "ticker": "PM",
     "hi_grade": "scored",
-    "composite": 51,
+    "composite": 50,
     "decay_index": 20,
     "decay_level": "watch",
     "factors": [
@@ -10141,31 +10141,6 @@
     }
   },
   {
-    "company": "Rivian",
-    "ticker": "",
-    "hi_grade": "scored",
-    "composite": 57,
-    "decay_index": 4,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 1,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "Accenture",
     "ticker": "",
     "hi_grade": "scored",
@@ -11227,6 +11202,31 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 0,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Rivian",
+    "ticker": "RIVN",
+    "hi_grade": "scored",
+    "composite": 57,
+    "decay_index": 0,
+    "decay_level": "stable",
+    "factors": [],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 3,
+      "ethics_news_90d": 4,
       "total_displaced": 0,
       "material_events_180d": 0,
       "humanwashing_flags": 0,

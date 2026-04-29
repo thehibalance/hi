@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-04-28T08:22:18.463521",
-  "total_issues": 84,
+  "timestamp": "2026-04-29T08:14:39.391292",
+  "total_issues": 88,
   "critical": 0,
-  "warnings": 80,
+  "warnings": 84,
   "info": 4,
   "blocked": false,
   "stats": {
     "total_companies": 445,
-    "avg_composite": 57.7,
+    "avg_composite": 57.6,
     "stdev": 10.2,
     "min_score": 13,
     "max_score": 85,
@@ -23,11 +23,38 @@
     {
       "layer": 1,
       "severity": "warning",
+      "company": "Costco Wholesale Corporation",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~58)",
+      "value": 50,
+      "expected": 58
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "NVIDIA",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~62)",
+      "value": 50,
+      "expected": 62
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
       "company": "VICI PROPERTIES INC.",
       "field": "revenue_per_employee",
       "message": "RPE $128,999,571 \u2014 unusually high",
       "value": 128999571,
       "expected": "< $50,000,000"
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Chevron Corporation",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~58)",
+      "value": 50,
+      "expected": 58
     },
     {
       "layer": 1,
@@ -46,6 +73,15 @@
       "message": "Only 1 data source \u2014 score may be unreliable",
       "value": 1,
       "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Meta Platforms, Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~55)",
+      "value": 50,
+      "expected": 55
     },
     {
       "layer": 1,
