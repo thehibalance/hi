@@ -136,10 +136,13 @@
   profile.genome = company.genome || {};
   profile.data_sources = company.data_sources || [];
   
-  // Detect pending (seed) companies — show gray
-  const SEED_SOURCES = ['Defaults', 'Manual Scoring', 'Seed Estimate', 'Public Reporting'];
-  profile.isPending = company.score_status === 'pending' || 
-    (profile.data_sources.length === 1 && SEED_SOURCES.includes(profile.data_sources[0])) ||
+  // Pending detection — aligned with backend/web standard.
+  // A company is PENDING only when it has zero data sources or the API
+  // explicitly marks it pending. Seed-source records (Manual Scoring,
+  // Seed Estimate, etc.) render normally with their composite + source
+  // count, matching docs/index.html behavior. Users judge data quality
+  // via the visible source count, not via gray-out treatment.
+  profile.isPending = company.score_status === 'pending' ||
     (profile.data_sources.length === 0);
   if (profile.isPending) {
     profile.scoreColor = '#999';
