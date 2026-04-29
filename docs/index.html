@@ -1314,6 +1314,37 @@ function renderDet(c) {
       h += '</div>';
       h += '</div>';
     }
+
+    // v1.2.0: HARM DOCUMENTATION block — mirrors AHI structure for JNJ-class
+    // public-record harm (settlements, attributed deaths, concealment findings).
+    // Anchored to DOJ/SEC/CDC sources. Renders when harm_documentation.has_harm.
+    if (c.harm_documentation && c.harm_documentation.has_harm) {
+      var hd = c.harm_documentation;
+      h += '<div style="' + (hbActive ? 'margin-top:18px;padding-top:18px;border-top:1px solid ' + hb.color + '30' : '') + '">';
+      h += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">';
+      h += '<span style="color:#DC2626;font-size:13px">\u26A0</span>';
+      h += '<span style="color:#DC2626;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px">Harm Documentation</span>';
+      var hdPenalty = (hd.penalties && hd.penalties.M) ? hd.penalties.M : null;
+      if (hdPenalty != null) h += '<span style="color:#7F1D1D;font-size:11px;opacity:0.6">M ' + hdPenalty + '</span>';
+      h += '</div>';
+      h += '<div style="font-size:13px;color:#374151;margin-bottom:10px;line-height:1.5">Public-record harm: settlements, attributed deaths, concealment findings.</div>';
+      h += '<div style="display:flex;flex-direction:column;gap:6px">';
+      (hd.flags || []).forEach(function(f) {
+        h += '<div style="display:flex;gap:10px;font-size:13px;line-height:1.5;color:#374151"><span style="color:#DC2626;font-weight:700;flex-shrink:0">\u203A</span><span>' + f + '</span></div>';
+      });
+      h += '</div>';
+      // Source links — small, muted, below flag list
+      if (hd.sources && hd.sources.length > 0) {
+        h += '<div style="margin-top:10px;font-size:11px;color:#7F1D1D;opacity:0.75;line-height:1.6">';
+        h += '<strong style="font-weight:700">Sources:</strong> ';
+        h += hd.sources.map(function(s) {
+          var label = s.replace(/^https?:\/\//, '').split('/')[0];
+          return '<a href="' + s + '" target="_blank" rel="noopener" style="color:#7F1D1D;text-decoration:underline">' + label + '</a>';
+        }).join(' \u00b7 ');
+        h += '</div>';
+      }
+      h += '</div>';
+    }
     if (hbActive) {
       h += '<div style="margin-top:14px;font-size:12px;color:' + hb.leadTone + ';opacity:0.7;font-style:italic">This score reflects pre-event data. Next quarterly refresh will reflect changes.</div>';
     }
