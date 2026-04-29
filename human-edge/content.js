@@ -65,6 +65,8 @@
         key_signals: d.key_signals || {},
         genome: d.genome || {},
         data_sources: d.data_sources || [],
+        signal_coverage: d.signal_coverage || '',
+        humanwashing_flags: d.humanwashing_flags || [],
       };
     }
   } catch (e) {
@@ -133,6 +135,8 @@
   profile.balance_floor = company.balance_floor || false;
   profile.triggering_dimension = company.triggering_dimension || null;
   profile.key_signals = company.key_signals || {};
+  profile.signal_coverage = company.signal_coverage || '';
+  profile.humanwashing_flags = company.humanwashing_flags || [];
   profile.genome = company.genome || {};
   profile.data_sources = company.data_sources || [];
   
@@ -652,6 +656,21 @@ function openFullPanel(profile, filterResult, prefs) {
       </div>`;
   }
 
+  // Humanwashing section — mirrors web detail page (HUMANWASHING + HD lines).
+  // Renders only when profile.humanwashing_flags has entries. Distinct red
+  // treatment from the heartbeat section so users can tell them apart.
+  let humanwashingHTML = '';
+  const hwArr = profile.humanwashing_flags || [];
+  if (hwArr.length > 0) {
+    const hwColor = '#DC2626';
+    humanwashingHTML = `
+      <div style="background:${hwColor}10;border:1px solid ${hwColor}30;border-radius:8px;padding:10px 12px;margin-top:8px">
+        <div style="font-weight:700;font-size:11px;color:${hwColor};letter-spacing:0.5px;text-transform:uppercase;margin-bottom:6px">⚑ Humanwashing · ${hwArr.length} flag${hwArr.length !== 1 ? 's' : ''}</div>
+        <div style="font-size:10px;color:#666;margin-bottom:6px;font-style:italic">What they say vs. what they do.</div>
+        ${hwArr.map(f => `<div style="font-size:11px;margin-top:3px;padding-left:14px;position:relative;color:#444"><span style="position:absolute;left:0;color:${hwColor}">›</span>${f}</div>`).join('')}
+      </div>`;
+  }
+
   // Balance floor
   let floorHTML = '';
   if (profile.balance_floor) {
@@ -669,6 +688,20 @@ function openFullPanel(profile, filterResult, prefs) {
     pulseHTML = `<div style="font-size:10px;color:${pColor};margin-top:6px;text-align:center;opacity:0.8">Market pulse: <strong>${pulse.pulse}</strong> · ${pulse.alerts_count || 0} active alerts</div>`;
   }
 
+  // Verified pill — parses signal_coverage field like "19/19 sub-signals with real data"
+  // into a percentage. Mirrors the green ✓ VERIFIED pill on the web detail page.
+  // Hides for pending companies.
+  let verifiedPillHTML = '';
+  if (!profile.isPending) {
+    const coverage = profile.signal_coverage || '';
+    const m = coverage.match(/^(\d+)\/(\d+)/);
+    if (m) {
+      const pct = Math.round((parseInt(m[1], 10) / parseInt(m[2], 10)) * 100);
+      const pillColor = pct >= 90 ? '#16A34A' : pct >= 50 ? '#D97706' : '#DC2626';
+      verifiedPillHTML = `<div style="display:inline-flex;align-items:center;gap:4px;background:${pillColor}15;color:${pillColor};font-size:10px;font-weight:700;letter-spacing:0.4px;padding:3px 8px;border-radius:10px;margin-top:4px">✓ ${pct}% VERIFIED</div>`;
+    }
+  }
+
   panel.innerHTML = `
     <div class="human-panel__header" style="background:#1B3A5C !important;border-bottom:none">
       <div class="human-panel__back" id="panelBack" style="visibility:hidden;color:white">←</div>
@@ -681,6 +714,7 @@ function openFullPanel(profile, filterResult, prefs) {
       <div style="flex:1;min-width:0">
         <div class="human-panel__name">${profile.name}</div>${profile.hiBalanced ? '<div style="font-size:10px;font-weight:700;color:#C49B20;letter-spacing:1.5px;margin-top:2px">\u25C8 BALANCED BOARD</div>' : ''}
         <div class="human-panel__tier" style="color: ${scoreColor};font-weight:600">${profile.isPending ? "Pending Verification" : "HI Grade™"}</div>
+        ${verifiedPillHTML}
         ${(profile.decay_level && profile.decay_level !== 'stable' && profile.decay_index > 0) ? `<div style="font-size:11px;color:${pulseColor};margin-top:3px;font-weight:600">♥ ${profile.decay_level.charAt(0).toUpperCase()+profile.decay_level.slice(1)} decay · ${profile.decay_index}/100</div>` : (profile.decay_level === 'stable' ? '<div style="font-size:11px;color:#16A34A;margin-top:3px;font-weight:600">♥ Stable</div>' : '')}
       </div>
     </div>
@@ -694,6 +728,7 @@ function openFullPanel(profile, filterResult, prefs) {
 
     ${floorHTML ? `<div style="background:white;padding:4px 16px">${floorHTML}</div>` : ''}
     ${decayHTML ? `<div style="background:white;padding:4px 16px">${decayHTML}</div>` : ''}
+    ${humanwashingHTML ? `<div style="background:white;padding:4px 16px">${humanwashingHTML}</div>` : ''}
 
     ${pulseHTML ? `<div style="background:white;padding:4px 16px">${pulseHTML}</div>` : ''}
 
