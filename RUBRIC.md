@@ -8,7 +8,7 @@ This file accompanies the [Limitations](https://thehibalance.org/#limitations) p
 - **PARTIAL** — the data input is authoritative (regulator, certified third party) but the tier cutoffs that map data to score bands were chosen by the engine authors.
 - **UNGROUNDED** — both the data input source AND the scoring ladder are editorial choices. May be defensible, but does not reproduce a published methodology.
 
-Spec version: **v1.1.0** · Active sub-signals: **19** · Deferred: **5**
+Spec version: **v1.2.0** · Active sub-signals: **19** · Deferred: **5**
 
 ---
 
@@ -20,9 +20,33 @@ Spec version: **v1.1.0** · Active sub-signals: **19** · Deferred: **5**
 | PARTIAL | 10 | Authoritative data, editorial ladder |
 | UNGROUNDED | 8 | Editorial data + editorial ladder |
 | **TOTAL ACTIVE** | **19** | |
-| DEFERRED (v1.2 target) | 5 | Spec'd but not yet scored |
+| DEFERRED (v1.3 target) | 5 | Spec'd but not yet scored |
 
-The dominant pattern is **UNGROUNDED**. We don't hide this — most sub-signal ladders were authored by intuition during the engine build, not by reproducing a published authority. **Grounding these ladders is the active research priority for v1.2.**
+The dominant pattern is **UNGROUNDED**. We don't hide this — most sub-signal ladders were authored by intuition during the engine build, not by reproducing a published authority. **Grounding these ladders is the active research priority for v1.3 and beyond.**
+
+---
+
+## Composite Floor Rule (v1.2.0)
+
+The composite score is the simple mean of the five HUMAN dimensions, with **one floor rule**:
+
+> **If any HUMAN dimension scores below 30, the composite is capped at 50.**
+
+This protects against severe single-dimension failure being averaged away by strong scores in other dimensions. A company cannot earn a composite above 50 if even one HUMAN dimension is in critical failure (< 30), regardless of how the other four perform.
+
+When the floor fires:
+- `composite` is capped at 50 (or kept at the natural mean if already ≤ 50)
+- `floor_triggered: true` in the API response
+- `triggering_dimension` indicates which dimension caused the cap (H/U/M/A/N)
+
+This rule replaces a multi-tier floor system used in earlier specs (any dim < 10 → 40 / 1 dim < 42 → 49 / 2+ dims < 42 → 41), simplified to one clear, defensible threshold.
+
+**Examples:**
+- J&J: `D_M = 0` (Harm Documentation penalty) → composite capped at 50
+- Costco: `D_N = 27` (CDP grade D + thin SEC filings) → composite capped at 50
+- Apple: min dim `D_H = 53` → no cap, composite = mean (74)
+
+**Sub-signal scores < 30 do NOT trigger the floor.** Only dimension-level scores (D_H, D_U, D_M, D_A, D_N) count. Sub-signals are component inputs to the dimension score; the dimension is what matters for floor evaluation.
 
 ---
 

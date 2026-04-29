@@ -7,7 +7,7 @@
 **Score every company. Five dimensions AI can't replace.**
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Spec](https://img.shields.io/badge/spec-v1.1.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
+[![Spec](https://img.shields.io/badge/spec-v1.2.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
 [![API](https://img.shields.io/badge/API-live-16A34A.svg)](https://api.thehibalance.org)
 [![Chrome](https://img.shields.io/badge/Chrome-Extension-C49B20.svg)](https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg)
 [![iOS](https://img.shields.io/badge/iOS-App%20Store-000.svg)](https://apps.apple.com/app/hi/id6761270596)
@@ -46,7 +46,15 @@ Five dimensions. Each measures something AI can't replace.
 | 🌍 | **A — Alive & Environmental** | Energy, water, land, product lifecycle | A.1 A.2 A.3 A.4 |
 | 🔍 | **N — Natural Transparency** | Reporting quality, filing volume, disclosure depth | N.2 N.5 |
 
-**19 active sub-signals. 5 deferred to v1.2** (H.4, U.5, N.1, N.3, N.4 — spec'd but not yet scored). Our [methodology page](https://thehibalance.org/#methodology) documents every formula and threshold.
+**19 active sub-signals. 5 deferred to v1.3** (H.4, U.5, N.1, N.3, N.4 — spec'd but not yet scored). Our [methodology page](https://thehibalance.org/#methodology) documents every formula and threshold.
+
+## What's new in v1.2.0
+
+**Composite Floor Rule.** If any HUMAN dimension scores below 30, the composite is capped at 50. Replaces an earlier multi-tier floor system with one clear, defensible threshold. See `RUBRIC.md` for examples (J&J, Costco, Apple).
+
+**Standardized harm rendering across surfaces.** Web detail page and Chrome extension panel now show identical evidence blocks: ⚠ Harm Documentation (J&J-class public-record harm with linked sources), ⚡ Algorithmic Harm Index with components mini-bars (Meta-class algorithmic decision-making at scale), and 🚩 Humanwashing (filtered to true HW flags only — no duplication across blocks).
+
+**Coverage expansion.** S&P 500 + Russell 1000 universe (589 US tickers) now feeds SEC EDGAR, FMP, and Yahoo pipelines. Earlier list was 315 tickers.
 
 ## The Balanced Board
 

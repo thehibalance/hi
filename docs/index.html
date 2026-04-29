@@ -707,7 +707,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div id="page-methodology" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
 <div class="subpage">
 <h1>Methodology</h1>
-<p class="subpage-sub">The math behind being human kind. Spec v1.1.0 · April 2026</p>
+<p class="subpage-sub">The math behind being human kind. Spec v1.2.0 · April 2026</p>
 <div style="background:#F3F0E8;border:1px solid #C49B20;border-radius:12px;padding:20px 24px;margin:20px 0 32px;text-align:center">
   <div style="font-family:'DM Mono',monospace;font-size:11px;color:#92400E;letter-spacing:2px;font-weight:700;text-transform:uppercase;margin-bottom:8px">How HI Grade scores work</div>
   <p style="font-size:15px;color:var(--navy);line-height:1.6;margin:0;font-weight:500">Every company is scored from <strong>0 to 100</strong>. The score is the average of five HUMAN dimensions, each scored 0–100. Higher means more human. <strong>The Balanced Board</strong> highlights companies where <strong>all five dimensions</strong> score ≥ 60.</p>
@@ -839,7 +839,34 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <li><strong>Environmental contamination</strong> — chemical or physical harm to populations who never bought the product (PFAS in drinking water, asbestos in air)</li>
 </ul>
 
-<h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 16px">Balanced Board — v1.1.0 criteria</h2>
+<h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 16px">Composite Floor Rule — v1.2.0</h2>
+<p style="color:#444;line-height:1.7;margin-bottom:16px">The composite score is the simple mean of the five HUMAN dimensions, with <strong>one floor rule</strong>:</p>
+
+<div style="background:#FEF3F2;border-left:4px solid #DC2626;padding:16px 20px;margin:16px 0;border-radius:0 8px 8px 0">
+  <p style="margin:0;font-size:15px;color:#7F1D1D;font-weight:600;line-height:1.5">If any HUMAN dimension scores below 30, the composite is capped at 50.</p>
+</div>
+
+<p style="color:#444;line-height:1.7;margin-bottom:16px">This protects against severe single-dimension failure being averaged away by strong scores in other dimensions. A company cannot earn a composite above 50 if even one HUMAN dimension is in critical failure (&lt; 30), regardless of how the other four perform.</p>
+
+<p style="color:#444;line-height:1.7;margin-bottom:8px"><strong>When the floor fires:</strong></p>
+<ul style="color:#444;line-height:1.8;margin-bottom:16px">
+  <li><code style="background:#F3F4F6;padding:2px 6px;border-radius:4px;font-size:12px">composite</code> is capped at 50 (or kept at the natural mean if already ≤ 50)</li>
+  <li><code style="background:#F3F4F6;padding:2px 6px;border-radius:4px;font-size:12px">floor_triggered: true</code> in the API response</li>
+  <li><code style="background:#F3F4F6;padding:2px 6px;border-radius:4px;font-size:12px">triggering_dimension</code> indicates which dimension caused the cap (H/U/M/A/N)</li>
+</ul>
+
+<p style="color:#444;line-height:1.7;margin-bottom:16px">This rule replaces a multi-tier floor system used in earlier specs (any dim &lt; 10 → cap 40, one dim &lt; 42 → cap 49, two+ dims &lt; 42 → cap 41), simplified to one clear, defensible threshold.</p>
+
+<p style="color:#444;line-height:1.7;margin-bottom:8px"><strong>Examples:</strong></p>
+<ul style="color:#444;line-height:1.8;margin-bottom:16px">
+  <li><strong>Johnson &amp; Johnson:</strong> D_M = 0 (Harm Documentation penalty) → composite capped at 50</li>
+  <li><strong>Costco:</strong> D_N = 27 (CDP grade D + thin SEC filings) → composite capped at 50</li>
+  <li><strong>Apple:</strong> minimum dimension D_H = 53 → no cap, composite = mean (74)</li>
+</ul>
+
+<p style="color:#666;line-height:1.7;margin-bottom:16px;font-size:13px;font-style:italic">Note: sub-signal scores below 30 do not trigger the floor. Only dimension-level scores (D_H, D_U, D_M, D_A, D_N) count. Sub-signals are component inputs; the dimension is what matters for floor evaluation.</p>
+
+<h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 16px">Balanced Board — v1.2.0 criteria</h2>
 <p style="color:#444;line-height:1.7;margin-bottom:16px">The Balanced Board highlights companies with no weak HUMAN dimension. Earned algorithmically, never purchased. A company makes the Balanced Board when it meets <strong>all three</strong> criteria:</p>
 
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px" class="gate-grid">
