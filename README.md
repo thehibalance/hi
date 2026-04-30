@@ -119,10 +119,10 @@ This is what "scores that move" means. No other ethics framework does this daily
 
 We publish what we haven't solved yet — because a transparency framework that hides its own gaps is hypocritical. See [`RUBRIC.md`](RUBRIC.md) for the full Pass-1 inventory of which sub-signal ladders are **GROUNDED**, **PARTIAL**, or **UNGROUNDED** against external authorities.
 
-**Current state (v1.1.0):**
+**Current state (v1.2.0):**
 
 - Several sub-signal scoring ladders use editorial tier cutoffs on authoritative data (e.g., CFPB complaints per $B revenue is authoritative; the tier cutoffs on it are editorial). This is the dominant pattern, explicitly flagged in `RUBRIC.md`.
-- 7 sub-signals are spec'd but not yet scored (v1.2 target).
+- 5 sub-signals are spec'd but not yet scored (v1.3 target).
 - Harm Documentation covers ~14 categories; historical harm detection pre-2020 is limited to the Major Harm Events dictionary.
 - CFPB coverage is financial-services-heavy; ~80% of companies fall back to neutral defaults for U.1/M.1.
 - iFixit repairability covers 15 companies; everyone else uses industry defaults.
@@ -131,7 +131,7 @@ We publish what we haven't solved yet — because a transparency framework that 
 
 - Grounding UNGROUNDED ladders against external frameworks (BLS, SBTi, B Corp)
 - Expanding Harm Documentation to pre-2020 events
-- v1.2 sub-signals (H.4, H.5, U.5, A.5, N.1, N.3, N.4)
+- v1.3 sub-signals (H.4, U.5, N.1, N.3, N.4)
 - International data sources (EU CSRD, Companies House)
 
 If you spot a score that seems wrong, **[open an issue](https://github.com/thehibalance/hi/issues/new)** with the company name, ticker, and what you think the correct answer is. We respond.
@@ -228,8 +228,8 @@ We publish our methodology. We publish our limitations. Every sub-signal is audi
 
 | Capability | Status |
 |---|---|
-| Chrome Extension v1.1.7 | ✅ Shipped |
-| iOS App v1.1.0 | In Apple review |
+| Chrome Extension | ✅ Shipped |
+| iOS App | ✅ Shipped |
 | Balanced Board methodology | ✅ Shipped |
 | Harm Documentation (14 categories) | ✅ Shipped |
 | 180-min quarterly workflow | ✅ Shipped |
@@ -237,8 +237,8 @@ We publish our methodology. We publish our limitations. Every sub-signal is audi
 | Firefox / Edge extensions | Planned |
 | State of Human Intelligence report | Planned |
 | EU CSRD + Companies House integration | Planned |
-| Sub-signals H.4, H.5, U.5, A.5, N.1, N.3, N.4 | v1.2 target |
-| Subsidiary Transparency Rule (SEC Exhibit 21) | v1.2 target |
+| Sub-signals H.4, U.5, N.1, N.3, N.4 | v1.3 target |
+| Subsidiary Transparency Rule (SEC Exhibit 21) | v1.3 target |
 
 ## Intellectual Property
 
@@ -249,7 +249,7 @@ We publish our methodology. We publish our limitations. Every sub-signal is audi
 | Humanwashing™ | Common law |
 | Algorithmic Harm Index™ | Common law |
 | "Human kind?"™ | Trademark pending |
-| HUMAN Grade Spec v1.1.0 whitepaper | Copyright registered |
+| HUMAN Grade Spec v1.2.0 whitepaper | Copyright registered |
 | Methodology + scoring engine | Apache 2.0 (see [LICENSE](LICENSE)) |
 
 ## Contributing

@@ -694,6 +694,22 @@ def build_index():
 
 # ── Endpoints ─────────────────────────────────────────────────────────
 
+
+
+# ── Dynamic source count loader (added by patch_api_stats.py) ──
+def get_dynamic_source_count():
+    """Read live source count from pipeline data/source_count.json. Falls back to 42."""
+    try:
+        import json as _json
+        from pathlib import Path as _Path
+        sc_path = _Path("data/source_count.json")
+        if sc_path.exists():
+            data = _json.load(open(sc_path))
+            return data.get("total_registered", 42)
+    except Exception:
+        pass
+    return 42
+
 @app.route("/")
 def root():
     return jsonify({
@@ -884,8 +900,8 @@ def stats():
         "humanwashing_flagged": sum(1 for c in ALL_COMPANIES if c.get("humanwashing_flags")),
         "floor_rule_triggered": sum(1 for c in ALL_COMPANIES if c.get("floor_triggered")),
         "balance_floor_triggered": sum(1 for c in ALL_COMPANIES if c.get("balance_floor")),
-        "data_sources": 40,
-        "spec_version": "1.0.0",
+        "data_sources": get_dynamic_source_count(),
+        "spec_version": "1.2.0",
         "brand": {
             "name": "HI.", "tagline": "Find the HI balance.",
             "domain": "thehibalance.org", "foundation": "The HI Balance",

@@ -1,5 +1,5 @@
 /**
- * HI. Grade Filter Engine — v1.1.0
+ * HI. Grade Filter Engine — v1.2.0
  * 
  * Pure deterministic logic for:
  *   - Computing composite HUMAN scores (HI Grades)
@@ -7,7 +7,7 @@
  *   - Filtering companies against user's personal thresholds
  *   - Detecting humanwashing flags (rule-based)
  * 
- * SPECIFICATION REFERENCE: HUMAN Methodology Spec v1.1.0
+ * SPECIFICATION REFERENCE: HUMAN Methodology Spec v1.2.0
  * Governed by: Morf Innovations LLC
  * Brand: HI. — Human kind?
  * 
@@ -35,7 +35,7 @@
 
 const HumanEngine = {
 
-  // ═══ CONSTANTS (from Methodology Spec v1.1.0) ═══
+  // ═══ CONSTANTS (from Methodology Spec v1.2.0) ═══
 
   GOLD_DIM_THRESHOLD: 60,   // Each HUMAN dimension must score ≥ 60 (Gate 1)
   GOLD_DECAY_BLOCKING: ['warning', 'critical'],  // Decay levels that block Gold (Gate 3)
@@ -83,7 +83,7 @@ const HumanEngine = {
   },
 
   /**
-   * Check if a company earns Gold HI Grade (v1.1.0 spec).
+   * Check if a company earns Gold HI Grade (v1.2.0 spec).
    * 3 gates: Dimensions / Evidence / Momentum.
    *
    * Gate 1 — DIMENSIONS: All 5 HUMAN dims ≥ 60
@@ -133,7 +133,7 @@ const HumanEngine = {
 
     const isGold = dimensionsPass && evidencePass && momentumPass;
 
-    // Threshold returned for backward compat — in v1.1.0 it's the per-dim threshold (60), not composite
+    // Threshold returned for backward compat — in v1.2.0 it's the per-dim threshold (60), not composite
     return { gold: isGold, gates, threshold: this.GOLD_DIM_THRESHOLD };
   },
 
@@ -214,7 +214,7 @@ const HumanEngine = {
   },
 
   // ═══ HUMANWASHING DETECTION (rule-based, no ML) ═══
-  // These are kept for display purposes — but NO LONGER affect Gold gates in v1.1.0.
+  // These are kept for display purposes — but NO LONGER affect Gold gates in v1.2.0.
   // The harm pipelines (HW, AHI, PHI, HD) absorb these into dimension scores.
 
   detectHumanwashing(company) {
@@ -267,7 +267,7 @@ const HumanEngine = {
 
   /**
    * Get the color for a score value.
-   * v1.1.0: Green ≥ 60 (Dimensions gate threshold), Amber ≥ 42, Red < 42.
+   * v1.2.0: Green ≥ 60 (Dimensions gate threshold), Amber ≥ 42, Red < 42.
    */
   getScoreColor(score, _legacyArg) {
     if (score >= this.GOLD_DIM_THRESHOLD) return '#16A34A';   // Green — Gold-eligible

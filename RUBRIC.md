@@ -181,13 +181,13 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 **Status:** GROUNDED  
 **Inputs:** SEC EDGAR filing counts and timeliness (on-time material disclosure)  
 **Ladder:** Reproduces SEC's own materiality + timeliness framework. Companies with consistent on-time material disclosure rank highest.  
-**Notes:** Currently the only fully grounded sub-signal in v1.1.0.
+**Notes:** Currently the only fully grounded sub-signal in v1.2.0.
 
 ---
 
-## Deferred to v1.2
+## Deferred to v1.3
 
-These 5 sub-signals are spec'd in HUMAN Grade Spec v1.1.0 but not yet scored. They will be added in v1.2. Until then, they receive no contribution to dimension scores.
+These 5 sub-signals are spec'd in HUMAN Grade Spec v1.2.0 but not yet scored. They will be added in v1.3. Until then, they receive no contribution to dimension scores.
 
 | ID | Why deferred |
 |---|---|
@@ -220,4 +220,4 @@ We respond to ladder-grounding issues within 5 business days.
 
 ---
 
-*Last updated: April 2026. Spec v1.1.0. Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
+*Last updated: April 2026. Spec v1.2.0. Maintained by Morf Innovations LLC. Apache 2.0 licensed.*

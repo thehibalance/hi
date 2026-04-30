@@ -326,7 +326,7 @@ def seed_to_record(s):
     # Backfill api_server-specific fields that merge_seed doesn't emit
     record.setdefault("hi_balanced", False)  # recomputed at serve time by check_hi_balanced
     record.setdefault("satire", "")
-    record.setdefault("spec_version", "1.0.2")
+    record.setdefault("spec_version", "1.2.0")
     record.setdefault("algorithmic_harm_score", s.get("algorithmic_harm_score", 0))
     record.setdefault("subsidiaries", s.get("subsidiaries", []))
     record.setdefault("primary_contractors", s.get("primary_contractors", []))
