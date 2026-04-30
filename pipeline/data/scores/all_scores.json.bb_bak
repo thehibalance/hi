@@ -144,8 +144,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -154,9 +153,7 @@
     "tags": [
       "food",
       "beverage"
-    ],
-    "decay_level": "watch",
-    "decay_index": 10
+    ]
   },
   {
     "company": "Apple Inc.",
@@ -316,7 +313,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -332,8 +329,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 43
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -343,9 +339,7 @@
       "technology",
       "hardware",
       "software"
-    ],
-    "decay_level": "warning",
-    "decay_index": 43
+    ]
   },
   {
     "company": "PepsiCo, Inc.",
@@ -502,8 +496,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -514,9 +507,7 @@
       "food",
       "beverage",
       "snacks"
-    ],
-    "decay_level": "watch",
-    "decay_index": 20
+    ]
   },
   {
     "company": "Microsoft Corporation",
@@ -674,7 +665,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -690,8 +681,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 48
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -702,9 +692,7 @@
       "technology",
       "software",
       "cloud"
-    ],
-    "decay_level": "warning",
-    "decay_index": 48
+    ]
   },
   {
     "company": "Nike, Inc.",
@@ -843,7 +831,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -859,8 +847,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -870,9 +857,7 @@
       "apparel",
       "footwear",
       "sports"
-    ],
-    "decay_level": "warning",
-    "decay_index": 30
+    ]
   },
   {
     "company": "Starbucks Corporation",
@@ -1032,8 +1017,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -1043,9 +1027,7 @@
       "food",
       "beverage",
       "retail"
-    ],
-    "decay_level": "watch",
-    "decay_index": 20
+    ]
   },
   {
     "company": "Home Depot, Inc.",
@@ -1196,8 +1178,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 22
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -1206,9 +1187,7 @@
     "tags": [
       "retail",
       "home improvement"
-    ],
-    "decay_level": "watch",
-    "decay_index": 22
+    ]
   },
   {
     "company": "NextEra Energy, Inc.",
@@ -1357,8 +1336,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -1368,9 +1346,7 @@
       "energy",
       "renewable",
       "utility"
-    ],
-    "decay_level": "watch",
-    "decay_index": 15
+    ]
   },
   {
     "company": "Patagonia",
@@ -1669,7 +1645,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -1685,8 +1661,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 60
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -1696,9 +1671,7 @@
       "technology",
       "software",
       "cloud"
-    ],
-    "decay_level": "critical",
-    "decay_index": 60
+    ]
   },
   {
     "company": "Walmart Inc.",
@@ -1854,11 +1827,11 @@
       "cdp_climate": "A-",
       "epa_violations": null
     },
-    "hi_balanced": false,
+    "hi_balanced": true,
     "hi_balanced_gates": {
       "dimensions": true,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -1874,8 +1847,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 38
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -1884,9 +1856,7 @@
     "tags": [
       "retail",
       "grocery"
-    ],
-    "decay_level": "warning",
-    "decay_index": 38
+    ]
   },
   {
     "company": "Pfizer, Inc.",
@@ -2037,11 +2007,11 @@
       "cdp_climate": "B",
       "epa_violations": null
     },
-    "hi_balanced": false,
+    "hi_balanced": true,
     "hi_balanced_gates": {
       "dimensions": true,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -2057,8 +2027,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 40
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -2067,9 +2036,7 @@
     "tags": [
       "healthcare",
       "pharmaceutical"
-    ],
-    "decay_level": "warning",
-    "decay_index": 40
+    ]
   },
   {
     "company": "General Motors Company",
@@ -2219,7 +2186,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -2235,8 +2202,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 48
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -2244,9 +2210,7 @@
     ],
     "tags": [
       "automotive"
-    ],
-    "decay_level": "warning",
-    "decay_index": 48
+    ]
   },
   {
     "company": "Hilton Worldwide Holdings Inc.",
@@ -2389,8 +2353,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 23
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -2399,9 +2362,7 @@
     "tags": [
       "hospitality",
       "hotel"
-    ],
-    "decay_level": "watch",
-    "decay_index": 23
+    ]
   },
   {
     "company": "Dr. Bronner's",
@@ -2695,7 +2656,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -2711,8 +2672,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 52
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -2722,9 +2682,7 @@
     "tags": [
       "finance",
       "investment banking"
-    ],
-    "decay_level": "critical",
-    "decay_index": 52
+    ]
   },
   {
     "company": "US BANCORP \\DE\\",
@@ -2865,12 +2823,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 19
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 19
+    }
   },
   {
     "company": "Aon plc",
@@ -2991,7 +2946,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -3007,12 +2962,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 33
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 33
+    }
   },
   {
     "company": "CAPITAL ONE FINANCIAL CORP",
@@ -3133,11 +3085,11 @@
       "cdp_climate": null,
       "epa_violations": null
     },
-    "hi_balanced": false,
+    "hi_balanced": true,
     "hi_balanced_gates": {
       "dimensions": true,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -3153,12 +3105,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 43
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 43
+    }
   },
   {
     "company": "Costco Wholesale Corporation",
@@ -3313,7 +3262,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -3329,8 +3278,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -3339,9 +3287,7 @@
     "tags": [
       "retail",
       "grocery"
-    ],
-    "decay_level": "warning",
-    "decay_index": 30
+    ]
   },
   {
     "company": "DARDEN RESTAURANTS INC",
@@ -3478,12 +3424,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "GENERAL MILLS INC",
@@ -3630,8 +3573,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -3640,9 +3582,7 @@
     "tags": [
       "food",
       "consumer goods"
-    ],
-    "decay_level": "stable",
-    "decay_index": 0
+    ]
   },
   {
     "company": "INTERNATIONAL BUSINESS MACHINES CORP",
@@ -3769,7 +3709,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -3785,8 +3725,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 53
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -3796,9 +3735,7 @@
       "technology",
       "software",
       "consulting"
-    ],
-    "decay_level": "critical",
-    "decay_index": 53
+    ]
   },
   {
     "company": "Netflix",
@@ -3950,7 +3887,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -3966,8 +3903,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 33
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -3977,9 +3913,7 @@
       "technology",
       "entertainment",
       "streaming"
-    ],
-    "decay_level": "warning",
-    "decay_index": 33
+    ]
   },
   {
     "company": "UnitedHealth Group Incorporated",
@@ -4114,7 +4048,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -4130,8 +4064,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 50
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -4140,9 +4073,7 @@
     "tags": [
       "healthcare",
       "insurance"
-    ],
-    "decay_level": "critical",
-    "decay_index": 50
+    ]
   },
   {
     "company": "Etsy",
@@ -4273,7 +4204,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -4289,8 +4220,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 33
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -4300,9 +4230,7 @@
       "retail",
       "marketplace",
       "handmade"
-    ],
-    "decay_level": "warning",
-    "decay_index": 33
+    ]
   },
   {
     "company": "ORACLE CORP",
@@ -4433,7 +4361,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -4449,8 +4377,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 47
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -4460,9 +4387,7 @@
       "technology",
       "software",
       "cloud"
-    ],
-    "decay_level": "warning",
-    "decay_index": 47
+    ]
   },
   {
     "company": "PNC FINANCIAL SERVICES GROUP, INC.",
@@ -4599,12 +4524,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Visa",
@@ -4738,7 +4660,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -4754,12 +4676,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 56
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "critical",
-    "decay_index": 56
+    }
   },
   {
     "company": "AUTOMATIC DATA PROCESSING INC",
@@ -4884,7 +4803,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -4900,12 +4819,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 68
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "critical",
-    "decay_index": 68
+    }
   },
   {
     "company": "BANK OF AMERICA CORP /DE/",
@@ -5057,8 +4973,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -5067,9 +4982,7 @@
     "tags": [
       "finance",
       "banking"
-    ],
-    "decay_level": "watch",
-    "decay_index": 20
+    ]
   },
   {
     "company": "CARNIVAL CORP",
@@ -5206,12 +5119,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "CINTAS CORP",
@@ -5348,12 +5258,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "DOW INC.",
@@ -5480,7 +5387,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -5496,12 +5403,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 33
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 33
+    }
   },
   {
     "company": "FEDEX CORP",
@@ -5631,7 +5535,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -5647,8 +5551,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 43
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -5657,9 +5560,7 @@
     "tags": [
       "logistics",
       "shipping"
-    ],
-    "decay_level": "warning",
-    "decay_index": 43
+    ]
   },
   {
     "company": "Fidelity National Information Services, Inc.",
@@ -5782,7 +5683,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -5798,8 +5699,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 36
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -5808,9 +5708,7 @@
     "tags": [
       "finance",
       "investment"
-    ],
-    "decay_level": "warning",
-    "decay_index": 36
+    ]
   },
   {
     "company": "HCA Healthcare, Inc.",
@@ -5947,12 +5845,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 20
+    }
   },
   {
     "company": "IRON MOUNTAIN INC",
@@ -6089,12 +5984,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "LAS VEGAS SANDS CORP",
@@ -6231,12 +6123,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "Medtronic plc",
@@ -6377,12 +6266,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Norwegian Cruise Line Holdings Ltd.",
@@ -6519,12 +6405,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "PROCTER & GAMBLE Co",
@@ -6671,8 +6554,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -6680,9 +6562,7 @@
     ],
     "tags": [
       "consumer goods"
-    ],
-    "decay_level": "watch",
-    "decay_index": 25
+    ]
   },
   {
     "company": "ROYAL CARIBBEAN CRUISES LTD",
@@ -6819,12 +6699,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Target Corporation",
@@ -6971,7 +6848,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -6987,8 +6864,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 39
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -6996,9 +6872,7 @@
     ],
     "tags": [
       "retail"
-    ],
-    "decay_level": "warning",
-    "decay_index": 39
+    ]
   },
   {
     "company": "TRUIST FINANCIAL CORP",
@@ -7135,12 +7009,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 25
+    }
   },
   {
     "company": "WYNN RESORTS LTD",
@@ -7277,12 +7148,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "AbbVie Inc.",
@@ -7421,12 +7289,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 8
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 8
+    }
   },
   {
     "company": "American Airlines Group Inc.",
@@ -7565,12 +7430,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "AMERICAN EXPRESS CO",
@@ -7695,7 +7557,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -7711,12 +7573,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 58
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "critical",
-    "decay_index": 58
+    }
   },
   {
     "company": "Atlassian Corp",
@@ -7837,7 +7696,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -7853,12 +7712,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 76
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "critical",
-    "decay_index": 76
+    }
   },
   {
     "company": "BRISTOL MYERS SQUIBB CO",
@@ -7997,12 +7853,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 12
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 12
+    }
   },
   {
     "company": "CLOROX CO /DE/",
@@ -8144,8 +7997,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -8154,9 +8006,7 @@
     "tags": [
       "personal care",
       "natural"
-    ],
-    "decay_level": "watch",
-    "decay_index": 10
+    ]
   },
   {
     "company": "Cloudflare, Inc.",
@@ -8293,12 +8143,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 25
+    }
   },
   {
     "company": "Coinbase Global, Inc.",
@@ -8421,7 +8268,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -8437,12 +8284,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 37
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 37
+    }
   },
   {
     "company": "COLGATE PALMOLIVE CO",
@@ -8571,7 +8415,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -8587,12 +8431,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 37
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 37
+    }
   },
   {
     "company": "Datadog, Inc.",
@@ -8729,12 +8570,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 25
+    }
   },
   {
     "company": "ECOLAB INC.",
@@ -8871,12 +8709,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "ELI LILLY & Co",
@@ -9015,12 +8850,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "EMERSON ELECTRIC CO",
@@ -9157,12 +8989,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 25
+    }
   },
   {
     "company": "ESTEE LAUDER COMPANIES INC",
@@ -9285,7 +9114,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -9301,12 +9130,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 35
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 35
+    }
   },
   {
     "company": "EXELON CORP",
@@ -9445,12 +9271,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "HALLIBURTON CO",
@@ -9589,12 +9412,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 18
+    }
   },
   {
     "company": "INTEL CORP",
@@ -9741,8 +9561,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -9751,9 +9570,7 @@
     "tags": [
       "technology",
       "semiconductors"
-    ],
-    "decay_level": "watch",
-    "decay_index": 15
+    ]
   },
   {
     "company": "Johnson Controls International plc",
@@ -9890,12 +9707,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 18
+    }
   },
   {
     "company": "JPMORGAN CHASE & CO",
@@ -10012,7 +9826,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -10028,8 +9842,7 @@
           "A": false,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 53
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -10038,9 +9851,7 @@
     "tags": [
       "finance",
       "banking"
-    ],
-    "decay_level": "critical",
-    "decay_index": 53
+    ]
   },
   {
     "company": "MARRIOTT INTERNATIONAL INC /MD/",
@@ -10179,8 +9990,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -10189,9 +9999,7 @@
     "tags": [
       "hospitality",
       "hotel"
-    ],
-    "decay_level": "watch",
-    "decay_index": 15
+    ]
   },
   {
     "company": "McDonald",
@@ -10322,8 +10130,7 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -10333,9 +10140,7 @@
       "food",
       "restaurant",
       "fast food"
-    ],
-    "decay_level": "watch",
-    "decay_index": 10
+    ]
   },
   {
     "company": "Morgan Stanley",
@@ -10462,7 +10267,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -10478,12 +10283,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 63
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "critical",
-    "decay_index": 63
+    }
   },
   {
     "company": "PPG INDUSTRIES INC",
@@ -10620,12 +10422,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "SYNOPSYS INC",
@@ -10746,7 +10545,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -10762,12 +10561,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 54
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "critical",
-    "decay_index": 54
+    }
   },
   {
     "company": "TJX COMPANIES INC /DE/",
@@ -10904,12 +10700,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "YUM BRANDS INC",
@@ -11046,12 +10839,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 14
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 14
+    }
   },
   {
     "company": "Air Products & Chemicals, Inc.",
@@ -11186,12 +10976,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 0
+    }
   },
   {
     "company": "ALLSTATE CORP",
@@ -11330,12 +11117,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 0
+    }
   },
   {
     "company": "Amazon.com, Inc.",
@@ -11503,7 +11287,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -11519,8 +11303,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 92
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -11530,9 +11313,7 @@
       "technology",
       "retail",
       "cloud"
-    ],
-    "decay_level": "critical",
-    "decay_index": 92
+    ]
   },
   {
     "company": "AMEREN CORP",
@@ -11669,12 +11450,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "American Water Works Company, Inc.",
@@ -11811,12 +11589,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "AMGEN INC",
@@ -11941,7 +11716,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -11957,12 +11732,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 30
+    }
   },
   {
     "company": "ATMOS ENERGY CORP",
@@ -12099,12 +11871,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "AUTOZONE INC",
@@ -12241,12 +12010,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 28
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 28
+    }
   },
   {
     "company": "BEST BUY CO INC",
@@ -12387,8 +12153,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -12397,9 +12162,7 @@
     "tags": [
       "retail",
       "electronics"
-    ],
-    "decay_level": "stable",
-    "decay_index": 0
+    ]
   },
   {
     "company": "BlackRock, Inc.",
@@ -12536,12 +12299,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "BOSTON SCIENTIFIC CORP",
@@ -12678,12 +12438,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 25
+    }
   },
   {
     "company": "CADENCE DESIGN SYSTEMS INC",
@@ -12804,7 +12561,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -12820,12 +12577,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 35
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 35
+    }
   },
   {
     "company": "CHIPOTLE MEXICAN GRILL INC",
@@ -12962,8 +12716,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -12972,9 +12725,7 @@
     "tags": [
       "food",
       "restaurant"
-    ],
-    "decay_level": "stable",
-    "decay_index": 0
+    ]
   },
   {
     "company": "Cigna Group",
@@ -13113,12 +12864,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 20
+    }
   },
   {
     "company": "CISCO SYSTEMS, INC.",
@@ -13263,8 +13011,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 29
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -13273,9 +13020,7 @@
     "tags": [
       "technology",
       "networking"
-    ],
-    "decay_level": "watch",
-    "decay_index": 29
+    ]
   },
   {
     "company": "CONSOLIDATED EDISON INC",
@@ -13412,12 +13157,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "CUMMINS INC",
@@ -13556,12 +13298,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "DELTA AIR LINES, INC.",
@@ -13704,8 +13443,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -13714,9 +13452,7 @@
     "tags": [
       "transportation",
       "airline"
-    ],
-    "decay_level": "watch",
-    "decay_index": 15
+    ]
   },
   {
     "company": "DOMINION ENERGY, INC",
@@ -13853,12 +13589,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "DOVER Corp",
@@ -13995,12 +13728,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Edwards Lifesciences Corp",
@@ -14137,12 +13867,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "Fortinet, Inc.",
@@ -14279,12 +14006,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 22
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 22
+    }
   },
   {
     "company": "HONEYWELL INTERNATIONAL INC",
@@ -14425,12 +14149,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 20
+    }
   },
   {
     "company": "HORMEL FOODS CORP /DE/",
@@ -14572,12 +14293,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "HUMANA INC",
@@ -14714,12 +14432,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 19
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 19
+    }
   },
   {
     "company": "LINDE PLC",
@@ -14856,12 +14571,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "OLD DOMINION FREIGHT LINE, INC.",
@@ -14998,12 +14710,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Palantir",
@@ -15133,7 +14842,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -15149,8 +14858,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 38
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -15160,9 +14868,7 @@
       "technology",
       "data analytics",
       "defense"
-    ],
-    "decay_level": "warning",
-    "decay_index": 38
+    ]
   },
   {
     "company": "PRUDENTIAL FINANCIAL INC",
@@ -15301,12 +15007,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 22
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 22
+    }
   },
   {
     "company": "PUBLIC SERVICE ENTERPRISE GROUP INC",
@@ -15443,12 +15146,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "REGENERON PHARMACEUTICALS, INC.",
@@ -15585,12 +15285,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "REPUBLIC SERVICES, INC.",
@@ -15727,12 +15424,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Roblox Corp",
@@ -15853,7 +15547,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -15869,12 +15563,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 33
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 33
+    }
   },
   {
     "company": "ROCKWELL AUTOMATION, INC",
@@ -15995,7 +15686,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -16011,12 +15702,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 35
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 35
+    }
   },
   {
     "company": "ROSS STORES, INC.",
@@ -16153,12 +15841,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "S&P Global Inc.",
@@ -16295,12 +15980,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 18
+    }
   },
   {
     "company": "SLB LIMITED/NV",
@@ -16437,12 +16119,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Snowflake Inc.",
@@ -16579,12 +16258,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 25
+    }
   },
   {
     "company": "SOUTHERN CO",
@@ -16721,12 +16397,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 23
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 23
+    }
   },
   {
     "company": "STRYKER CORP",
@@ -16863,12 +16536,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "WASTE MANAGEMENT INC",
@@ -17005,12 +16675,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 23
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 23
+    }
   },
   {
     "company": "Zoom Communications, Inc.",
@@ -17151,8 +16818,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 22
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -17161,9 +16827,7 @@
     "tags": [
       "technology",
       "communications"
-    ],
-    "decay_level": "watch",
-    "decay_index": 22
+    ]
   },
   {
     "company": "ABBOTT LABORATORIES",
@@ -17305,12 +16969,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 5
+    }
   },
   {
     "company": "Adobe",
@@ -17457,8 +17118,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 27
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -17468,9 +17128,7 @@
       "technology",
       "software",
       "creative"
-    ],
-    "decay_level": "watch",
-    "decay_index": 27
+    ]
   },
   {
     "company": "ADVANCED MICRO DEVICES INC",
@@ -17597,7 +17255,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -17613,12 +17271,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 52
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "critical",
-    "decay_index": 52
+    }
   },
   {
     "company": "AMERICAN ELECTRIC POWER CO INC",
@@ -17755,12 +17410,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Baker Hughes Co",
@@ -17897,12 +17549,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 24
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 24
+    }
   },
   {
     "company": "Bank of America Corporation",
@@ -18169,12 +17818,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "CARRIER GLOBAL Corp",
@@ -18311,12 +17957,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Caterpillar",
@@ -18439,7 +18082,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -18455,12 +18098,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 33
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 33
+    }
   },
   {
     "company": "Celanese Corp",
@@ -18597,12 +18237,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Chubb Ltd",
@@ -18739,12 +18376,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "CONAGRA BRANDS INC.",
@@ -18881,12 +18515,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "CONSTELLATION BRANDS, INC.",
@@ -19021,12 +18652,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 0
+    }
   },
   {
     "company": "DANAHER CORP /DE/",
@@ -19163,12 +18791,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 18
+    }
   },
   {
     "company": "DEXCOM INC",
@@ -19305,12 +18930,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "DOCUSIGN, INC.",
@@ -19431,7 +19053,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -19447,12 +19069,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 40
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 40
+    }
   },
   {
     "company": "EVERSOURCE ENERGY",
@@ -19589,12 +19208,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "HUBSPOT INC",
@@ -19731,12 +19347,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "IDEXX LABORATORIES INC /DE",
@@ -19872,12 +19485,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 0
+    }
   },
   {
     "company": "ILLINOIS TOOL WORKS INC",
@@ -20014,12 +19624,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Ingersoll Rand Inc.",
@@ -20156,12 +19763,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Intercontinental Exchange, Inc.",
@@ -20282,7 +19886,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -20298,12 +19902,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 30
+    }
   },
   {
     "company": "INTERNATIONAL FLAVORS & FRAGRANCES INC",
@@ -20440,12 +20041,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "INTUITIVE SURGICAL INC",
@@ -20582,12 +20180,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 18
+    }
   },
   {
     "company": "Kraft Heinz Co",
@@ -20728,8 +20323,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -20738,9 +20332,7 @@
     "tags": [
       "food",
       "consumer goods"
-    ],
-    "decay_level": "watch",
-    "decay_index": 15
+    ]
   },
   {
     "company": "LOWES COMPANIES INC",
@@ -20869,7 +20461,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -20885,8 +20477,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 38
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -20895,9 +20486,7 @@
     "tags": [
       "retail",
       "home improvement"
-    ],
-    "decay_level": "warning",
-    "decay_index": 38
+    ]
   },
   {
     "company": "Mastercard Inc",
@@ -21026,7 +20615,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -21042,12 +20631,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 41
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 41
+    }
   },
   {
     "company": "METLIFE INC",
@@ -21185,12 +20771,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 5
+    }
   },
   {
     "company": "Okta, Inc.",
@@ -21311,7 +20894,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -21327,12 +20910,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 33
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 33
+    }
   },
   {
     "company": "Parker-Hannifin Corp",
@@ -21469,12 +21049,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "PAYCHEX INC",
@@ -21609,12 +21186,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 8
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 8
+    }
   },
   {
     "company": "SCHWAB CHARLES CORP",
@@ -21749,12 +21323,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 25
+    }
   },
   {
     "company": "SEMPRA",
@@ -21891,12 +21462,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "STANLEY BLACK & DECKER, INC.",
@@ -22033,12 +21601,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 28
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 28
+    }
   },
   {
     "company": "TYSON FOODS, INC.",
@@ -22161,7 +21726,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -22177,8 +21742,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 46
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -22188,9 +21752,7 @@
       "food",
       "meat",
       "agriculture"
-    ],
-    "decay_level": "warning",
-    "decay_index": 46
+    ]
   },
   {
     "company": "UNITED PARCEL SERVICE INC",
@@ -22316,7 +21878,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -22332,8 +21894,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 80
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -22342,9 +21903,7 @@
     "tags": [
       "logistics",
       "shipping"
-    ],
-    "decay_level": "critical",
-    "decay_index": 80
+    ]
   },
   {
     "company": "Verisk Analytics, Inc.",
@@ -22481,12 +22040,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Walt Disney Company",
@@ -22617,8 +22173,7 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 23
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -22628,9 +22183,7 @@
       "entertainment",
       "media",
       "streaming"
-    ],
-    "decay_level": "watch",
-    "decay_index": 23
+    ]
   },
   {
     "company": "ZILLOW GROUP, INC.",
@@ -22767,12 +22320,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Zoetis Inc.",
@@ -22909,12 +22459,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Zscaler, Inc.",
@@ -23051,12 +22598,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 29
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 29
+    }
   },
   {
     "company": "Airbnb, Inc.",
@@ -23197,8 +22741,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 23
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -23208,9 +22751,7 @@
       "technology",
       "hospitality",
       "marketplace"
-    ],
-    "decay_level": "watch",
-    "decay_index": 23
+    ]
   },
   {
     "company": "ALBEMARLE CORP",
@@ -23349,12 +22890,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 20
+    }
   },
   {
     "company": "AMERICAN INTERNATIONAL GROUP, INC.",
@@ -23491,12 +23029,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 14
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 14
+    }
   },
   {
     "company": "ANALOG DEVICES INC",
@@ -23633,12 +23168,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Aptiv PLC",
@@ -23773,12 +23305,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 5
+    }
   },
   {
     "company": "BILL Holdings, Inc.",
@@ -23915,12 +23444,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 25
+    }
   },
   {
     "company": "CF Industries Holdings, Inc.",
@@ -24059,12 +23585,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "CHURCH & DWIGHT CO INC /DE/",
@@ -24203,12 +23726,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "CITIGROUP INC",
@@ -24350,12 +23870,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 25
+    }
   },
   {
     "company": "CME GROUP INC.",
@@ -24492,12 +24009,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "COPART INC",
@@ -24634,12 +24148,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "CrowdStrike Holdings, Inc.",
@@ -24760,7 +24271,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -24776,12 +24287,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 40
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 40
+    }
   },
   {
     "company": "CSX CORP",
@@ -24902,7 +24410,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -24918,12 +24426,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 38
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 38
+    }
   },
   {
     "company": "Duke Energy CORP",
@@ -25044,7 +24549,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -25060,12 +24565,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 38
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 38
+    }
   },
   {
     "company": "Elevance Health, Inc.",
@@ -25186,7 +24688,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -25202,12 +24704,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 30
+    }
   },
   {
     "company": "EQUINIX INC",
@@ -25344,12 +24843,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 19
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 19
+    }
   },
   {
     "company": "FIRSTENERGY CORP",
@@ -25486,12 +24982,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 25
+    }
   },
   {
     "company": "GENERAL ELECTRIC CO",
@@ -25632,12 +25125,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 25
+    }
   },
   {
     "company": "GILEAD SCIENCES, INC.",
@@ -25760,7 +25250,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -25776,12 +25266,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 30
+    }
   },
   {
     "company": "Alphabet Inc.",
@@ -25939,7 +25426,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -25955,8 +25442,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 77
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -25968,9 +25454,7 @@
       "technology",
       "software",
       "advertising"
-    ],
-    "decay_level": "critical",
-    "decay_index": 77
+    ]
   },
   {
     "company": "MCCORMICK & CO INC",
@@ -26107,12 +25591,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "MGM Resorts International",
@@ -26249,12 +25730,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "Mondelez International, Inc.",
@@ -26393,12 +25871,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "MongoDB, Inc.",
@@ -26535,12 +26010,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 23
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 23
+    }
   },
   {
     "company": "MOODYS CORP /DE/",
@@ -26677,12 +26149,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "MOSAIC CO",
@@ -26821,12 +26290,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 20
+    }
   },
   {
     "company": "PACCAR INC",
@@ -26961,12 +26427,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 5
+    }
   },
   {
     "company": "PACKAGING CORP OF AMERICA",
@@ -27103,12 +26566,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Public Storage",
@@ -27245,12 +26705,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "QUALCOMM INC/DE",
@@ -27375,7 +26832,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -27391,12 +26848,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 40
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 40
+    }
   },
   {
     "company": "ServiceNow, Inc.",
@@ -27517,7 +26971,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -27533,12 +26987,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 47
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 47
+    }
   },
   {
     "company": "SOUTHWEST AIRLINES CO",
@@ -27677,8 +27128,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -27687,9 +27137,7 @@
     "tags": [
       "transportation",
       "airline"
-    ],
-    "decay_level": "watch",
-    "decay_index": 15
+    ]
   },
   {
     "company": "T-Mobile US, Inc.",
@@ -27818,7 +27266,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -27834,8 +27282,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 66
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -27843,9 +27290,7 @@
     ],
     "tags": [
       "telecommunications"
-    ],
-    "decay_level": "critical",
-    "decay_index": 66
+    ]
   },
   {
     "company": "Trane Technologies plc",
@@ -27982,12 +27427,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "TRAVELERS COMPANIES, INC.",
@@ -28124,12 +27566,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 18
+    }
   },
   {
     "company": "Uber",
@@ -28276,7 +27715,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -28292,8 +27731,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 66
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -28303,9 +27741,7 @@
       "technology",
       "transportation",
       "gig economy"
-    ],
-    "decay_level": "critical",
-    "decay_index": 66
+    ]
   },
   {
     "company": "VERTEX PHARMACEUTICALS INC / MA",
@@ -28444,12 +27880,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "Vulcan Materials CO",
@@ -28586,12 +28019,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "WEC ENERGY GROUP, INC.",
@@ -28728,12 +28158,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Workday, Inc.",
@@ -28854,7 +28281,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -28870,12 +28297,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 63
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "critical",
-    "decay_index": 63
+    }
   },
   {
     "company": "XCEL ENERGY INC",
@@ -29012,12 +28436,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 14
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 14
+    }
   },
   {
     "company": "Archer-Daniels-Midland Co",
@@ -29140,7 +28561,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -29156,12 +28577,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 30
+    }
   },
   {
     "company": "AVALONBAY COMMUNITIES INC",
@@ -29298,12 +28716,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "BOSTON BEER CO INC",
@@ -29442,12 +28857,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "CAMPBELL'S Co",
@@ -29586,12 +28998,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "CENTENE CORP",
@@ -29714,7 +29123,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -29730,12 +29139,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 40
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 40
+    }
   },
   {
     "company": "CHARTER COMMUNICATIONS, INC. /MO/",
@@ -29872,12 +29278,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "COMCAST CORP",
@@ -30019,7 +29422,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -30035,12 +29438,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 44
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 44
+    }
   },
   {
     "company": "Deere",
@@ -30179,12 +29579,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 18
+    }
   },
   {
     "company": "EBAY INC",
@@ -30307,7 +29704,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -30323,8 +29720,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 58
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -30334,9 +29730,7 @@
       "retail",
       "marketplace",
       "e-commerce"
-    ],
-    "decay_level": "critical",
-    "decay_index": 58
+    ]
   },
   {
     "company": "EQUITY RESIDENTIAL",
@@ -30473,12 +29867,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "FASTENAL CO",
@@ -30613,12 +30004,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 0
+    }
   },
   {
     "company": "Ford Motor Company",
@@ -30749,8 +30137,7 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -30758,9 +30145,7 @@
     ],
     "tags": [
       "automotive"
-    ],
-    "decay_level": "watch",
-    "decay_index": 18
+    ]
   },
   {
     "company": "GENUINE PARTS CO",
@@ -30897,12 +30282,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "HERSHEY CO",
@@ -31041,12 +30423,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "INTERNATIONAL PAPER CO /NEW/",
@@ -31181,12 +30560,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 20
+    }
   },
   {
     "company": "J M SMUCKER Co",
@@ -31325,12 +30701,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "KINDER MORGAN, INC.",
@@ -31467,12 +30840,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 29
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 29
+    }
   },
   {
     "company": "KROGER CO",
@@ -31614,12 +30984,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 25
+    }
   },
   {
     "company": "LAM RESEARCH CORP",
@@ -31758,12 +31125,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "MARTIN MARIETTA MATERIALS INC",
@@ -31898,12 +31262,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 0
+    }
   },
   {
     "company": "MCKESSON CORP",
@@ -32040,12 +31401,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 19
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 19
+    }
   },
   {
     "company": "MID AMERICA APARTMENT COMMUNITIES INC.",
@@ -32182,12 +31540,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "MOLSON COORS BEVERAGE CO",
@@ -32326,12 +31681,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "Monster Beverage Corp",
@@ -32470,12 +31822,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "MSCI Inc.",
@@ -32612,12 +31961,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 14
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 14
+    }
   },
   {
     "company": "NORFOLK SOUTHERN CORP",
@@ -32754,12 +32100,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "ONEOK INC /NEW/",
@@ -32896,12 +32239,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Palo Alto Networks Inc",
@@ -33038,12 +32378,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 29
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 29
+    }
   },
   {
     "company": "PayPal Holdings, Inc.",
@@ -33185,7 +32522,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -33201,8 +32538,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 73
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -33212,9 +32548,7 @@
       "finance",
       "fintech",
       "payments"
-    ],
-    "decay_level": "critical",
-    "decay_index": 73
+    ]
   },
   {
     "company": "REALTY INCOME CORP",
@@ -33349,12 +32683,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 0
+    }
   },
   {
     "company": "SHERWIN WILLIAMS CO",
@@ -33491,12 +32822,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 25
+    }
   },
   {
     "company": "STATE STREET CORP",
@@ -33632,12 +32960,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 5
+    }
   },
   {
     "company": "STEEL DYNAMICS INC",
@@ -33774,12 +33099,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "TEXAS INSTRUMENTS INC",
@@ -33900,7 +33222,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -33916,12 +33238,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 30
+    }
   },
   {
     "company": "Trade Desk, Inc.",
@@ -34058,12 +33377,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 14
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 14
+    }
   },
   {
     "company": "United Airlines Holdings, Inc.",
@@ -34200,12 +33516,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "VERIZON COMMUNICATIONS INC",
@@ -34336,7 +33649,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -34352,8 +33665,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 56
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -34361,9 +33673,7 @@
     ],
     "tags": [
       "telecommunications"
-    ],
-    "decay_level": "critical",
-    "decay_index": 56
+    ]
   },
   {
     "company": "WELLS FARGO & COMPANY/MN",
@@ -34507,7 +33817,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -34523,8 +33833,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 50
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -34533,9 +33842,7 @@
     "tags": [
       "finance",
       "banking"
-    ],
-    "decay_level": "critical",
-    "decay_index": 50
+    ]
   },
   {
     "company": "APPLIED MATERIALS INC /DE",
@@ -34656,7 +33963,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -34672,12 +33979,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 33
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 33
+    }
   },
   {
     "company": "AT&T Inc.",
@@ -34821,7 +34125,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -34837,8 +34141,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 40
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -34846,9 +34149,7 @@
     ],
     "tags": [
       "telecommunications"
-    ],
-    "decay_level": "warning",
-    "decay_index": 40
+    ]
   },
   {
     "company": "BECTON DICKINSON & CO",
@@ -34983,12 +34284,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 4
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 4
+    }
   },
   {
     "company": "CVS Health",
@@ -35123,7 +34421,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -35139,8 +34437,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 73
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -35150,9 +34447,7 @@
       "healthcare",
       "pharmacy",
       "retail"
-    ],
-    "decay_level": "critical",
-    "decay_index": 73
+    ]
   },
   {
     "company": "DIGITAL REALTY TRUST, INC.",
@@ -35289,12 +34584,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 14
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 14
+    }
   },
   {
     "company": "DTE ENERGY CO",
@@ -35431,12 +34723,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Eaton Corp plc",
@@ -35573,12 +34862,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 18
+    }
   },
   {
     "company": "FISERV INC",
@@ -35697,7 +34983,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -35713,12 +34999,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 33
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 33
+    }
   },
   {
     "company": "FREEPORT-MCMORAN INC",
@@ -35855,12 +35138,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "INTUIT INC.",
@@ -35998,12 +35278,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 19
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 19
+    }
   },
   {
     "company": "KIMBERLY CLARK CORP",
@@ -36139,12 +35416,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "KLA CORP",
@@ -36281,12 +35555,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 0
+    }
   },
   {
     "company": "NEWMONT Corp /DE/",
@@ -36423,12 +35694,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "NUCOR CORP",
@@ -36565,12 +35833,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "O REILLY AUTOMOTIVE INC",
@@ -36705,12 +35970,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "PINTEREST, INC.",
@@ -36846,7 +36108,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -36862,8 +36124,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 37
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -36872,9 +36133,7 @@
     "tags": [
       "technology",
       "social media"
-    ],
-    "decay_level": "warning",
-    "decay_index": 37
+    ]
   },
   {
     "company": "SHOPIFY INC.",
@@ -36997,7 +36256,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -37013,8 +36272,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 60
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -37024,9 +36282,7 @@
       "technology",
       "e-commerce",
       "platform"
-    ],
-    "decay_level": "critical",
-    "decay_index": 60
+    ]
   },
   {
     "company": "THERMO FISHER SCIENTIFIC INC.",
@@ -37163,12 +36419,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 18
+    }
   },
   {
     "company": "UNION PACIFIC CORP",
@@ -37305,12 +36558,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 18
+    }
   },
   {
     "company": "Unity Software Inc.",
@@ -37445,12 +36695,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 8
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 8
+    }
   },
   {
     "company": "Wayfair Inc.",
@@ -37591,8 +36838,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -37602,9 +36848,7 @@
       "retail",
       "furniture",
       "e-commerce"
-    ],
-    "decay_level": "watch",
-    "decay_index": 15
+    ]
   },
   {
     "company": "WILLIAMS COMPANIES, INC.",
@@ -37741,12 +36985,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "AMERICAN TOWER CORP /MA/",
@@ -37883,12 +37124,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "CMS ENERGY CORP",
@@ -38023,12 +37261,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 0
+    }
   },
   {
     "company": "CONOCOPHILLIPS",
@@ -38171,12 +37406,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 25
+    }
   },
   {
     "company": "CROWN CASTLE INC.",
@@ -38315,12 +37547,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "DOMINOS PIZZA INC",
@@ -38457,12 +37686,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 19
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 19
+    }
   },
   {
     "company": "DuPont de Nemours, Inc.",
@@ -38615,12 +37841,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 20
+    }
   },
   {
     "company": "Exxon Mobil Corporation",
@@ -38735,7 +37958,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -38751,8 +37974,7 @@
           "A": false,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -38762,9 +37984,7 @@
       "energy",
       "oil",
       "gas"
-    ],
-    "decay_level": "warning",
-    "decay_index": 30
+    ]
   },
   {
     "company": "HORTON D R INC /DE/",
@@ -38903,12 +38123,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "LENNAR CORP /NEW/",
@@ -39047,12 +38264,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "McDonald's Corporation",
@@ -39332,7 +38546,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -39348,12 +38562,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 51
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "critical",
-    "decay_index": 51
+    }
   },
   {
     "company": "OCCIDENTAL PETROLEUM CORP /DE/",
@@ -39490,12 +38701,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "POOL CORP",
@@ -39634,12 +38842,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 20
+    }
   },
   {
     "company": "Prologis, Inc.",
@@ -39778,12 +38983,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "PULTEGROUP INC/MI/",
@@ -39922,12 +39124,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "ROKU, INC",
@@ -40064,12 +39263,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 18
+    }
   },
   {
     "company": "SIMON PROPERTY GROUP INC.",
@@ -40206,12 +39402,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "Spotify",
@@ -40491,12 +39684,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 5
+    }
   },
   {
     "company": "SYSCO CORP",
@@ -40635,12 +39825,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 23
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 23
+    }
   },
   {
     "company": "TAKE TWO INTERACTIVE SOFTWARE INC",
@@ -40790,12 +39977,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 28
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 28
+    }
   },
   {
     "company": "TWILIO INC",
@@ -40932,12 +40116,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 22
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 22
+    }
   },
   {
     "company": "W.W. GRAINGER, INC.",
@@ -41076,12 +40257,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "Warner Bros. Discovery, Inc.",
@@ -41218,12 +40396,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 28
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 28
+    }
   },
   {
     "company": "3M CO",
@@ -41366,7 +40541,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -41382,8 +40557,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 53
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -41392,9 +40566,7 @@
     "tags": [
       "manufacturing",
       "industrial"
-    ],
-    "decay_level": "critical",
-    "decay_index": 53
+    ]
   },
   {
     "company": "ALEXANDRIA REAL ESTATE EQUITIES, INC.",
@@ -41533,12 +40705,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "Booking Holdings Inc.",
@@ -41674,7 +40843,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -41690,12 +40859,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 40
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 40
+    }
   },
   {
     "company": "Broadcom Inc.",
@@ -41818,7 +40984,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -41834,12 +41000,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 30
+    }
   },
   {
     "company": "CARDINAL HEALTH INC",
@@ -41978,12 +41141,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 19
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 19
+    }
   },
   {
     "company": "Match Group, Inc.",
@@ -42104,7 +41264,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -42120,12 +41280,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 37
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 37
+    }
   },
   {
     "company": "Targa Resources Corp.",
@@ -42262,12 +41419,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "VICI PROPERTIES INC.",
@@ -42406,12 +41560,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "WELLTOWER INC.",
@@ -42550,12 +41701,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "Coterra Energy Inc.",
@@ -42692,12 +41840,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    }
   },
   {
     "company": "DEVON ENERGY CORP/DE",
@@ -42836,12 +41981,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "Diamondback Energy, Inc.",
@@ -42978,12 +42120,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "EOG RESOURCES INC",
@@ -43122,12 +42261,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "Marathon Petroleum Corp",
@@ -43250,7 +42386,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -43266,12 +42402,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 45
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 45
+    }
   },
   {
     "company": "Marvell Technology, Inc.",
@@ -43396,12 +42529,9 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 22
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 22
+    }
   },
   {
     "company": "Phillips 66",
@@ -43524,7 +42654,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -43540,12 +42670,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 45
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 45
+    }
   },
   {
     "company": "VALERO ENERGY CORP/TX",
@@ -43668,7 +42795,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -43684,12 +42811,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 30
+    }
   },
   {
     "company": "ELECTRONIC ARTS INC.",
@@ -43827,7 +42951,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -43843,8 +42967,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -43853,9 +42976,7 @@
     "tags": [
       "technology",
       "gaming"
-    ],
-    "decay_level": "warning",
-    "decay_index": 30
+    ]
   },
   {
     "company": "Coinbase",
@@ -44126,7 +43247,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -44142,8 +43263,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 58
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -44152,9 +43272,7 @@
     "tags": [
       "technology",
       "social media"
-    ],
-    "decay_level": "critical",
-    "decay_index": 58
+    ]
   },
   {
     "company": "Boeing Company",
@@ -44327,12 +43445,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 25
+    }
   },
   {
     "company": "Chevron Corporation",
@@ -44471,7 +43586,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -44487,12 +43602,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 43
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 43
+    }
   },
   {
     "company": "HUNTINGTON INGALLS INDUSTRIES, INC.",
@@ -44641,12 +43753,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 15
+    }
   },
   {
     "company": "Johnson & Johnson",
@@ -44810,7 +43919,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -44826,8 +43935,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 55
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -44836,9 +43944,7 @@
     "tags": [
       "healthcare",
       "pharmaceutical"
-    ],
-    "decay_level": "critical",
-    "decay_index": 55
+    ]
   },
   {
     "company": "Lockheed Martin Corporation",
@@ -45010,8 +44116,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 28
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -45020,9 +44125,7 @@
     "tags": [
       "defense",
       "aerospace"
-    ],
-    "decay_level": "watch",
-    "decay_index": 28
+    ]
   },
   {
     "company": "Meta Platforms, Inc.",
@@ -45190,7 +44293,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -45206,8 +44309,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 100
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -45219,9 +44321,7 @@
       "technology",
       "social media",
       "advertising"
-    ],
-    "decay_level": "critical",
-    "decay_index": 100
+    ]
   },
   {
     "company": "NVIDIA",
@@ -45360,7 +44460,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -45376,8 +44476,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 48
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -45387,9 +44486,7 @@
       "technology",
       "hardware",
       "semiconductors"
-    ],
-    "decay_level": "warning",
-    "decay_index": 48
+    ]
   },
   {
     "company": "Philip Morris International Inc.",
@@ -45543,12 +44640,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 20
+    }
   },
   {
     "company": "RTX Corp",
@@ -45707,12 +44801,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "watch",
-    "decay_index": 20
+    }
   },
   {
     "company": "Tesla",
@@ -45858,7 +44949,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -45874,8 +44965,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 53
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -45885,9 +44975,7 @@
       "automotive",
       "technology",
       "energy"
-    ],
-    "decay_level": "critical",
-    "decay_index": 53
+    ]
   },
   {
     "company": "ALTRIA GROUP, INC.",
@@ -46029,7 +45117,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -46045,12 +45133,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "warning",
-    "decay_index": 30
+    }
   },
   {
     "company": "GENERAL DYNAMICS CORP",
@@ -46198,12 +45283,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 5
+    }
   },
   {
     "company": "NORTHROP GRUMMAN CORP /DE/",
@@ -46355,12 +45437,9 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "stable"
       }
-    },
-    "decay_level": "stable",
-    "decay_index": 5
+    }
   },
   {
     "company": "Shein",
@@ -51324,18 +50403,7 @@
       "electric"
     ],
     "notes": "EV-only manufacturer. Conservation focus. Growing workforce.",
-    "_source": "seed",
-    "hi_balanced_gates": {
-      "dimensions": false,
-      "evidence": false,
-      "momentum": true,
-      "_detail": {
-        "decay_level": "watch",
-        "decay_index": 10
-      }
-    },
-    "decay_level": "watch",
-    "decay_index": 10
+    "_source": "seed"
   },
   {
     "company": "Subaru",

@@ -82,10 +82,14 @@ def pass_defensibility(d):
             num = int(parts[0])
             denom_str = parts[1].split()[0]
             denom = int(denom_str)
-            if num < 10:
-                findings.append(("BLOCKER", f"signal_coverage thin: {num}/{denom}"))
-            elif num < 14:
-                findings.append(("LAUNCH-OK", f"signal_coverage limited: {num}/{denom}"))
+            # v1.2.0: thresholds calibrated for sector-thin reporting.
+            # Utilities/transport/energy legitimately have ~9/19 because
+            # ~10 sub-signals (HRC, DEI, B Corp, USDA Organic, etc.) don't apply.
+            # < 6 = genuinely insufficient. < 9 = defensible sector-thin.
+            if num < 6:
+                findings.append(("BLOCKER", f"signal_coverage insufficient: {num}/{denom}"))
+            elif num < 9:
+                findings.append(("LAUNCH-OK", f"signal_coverage sector-thin: {num}/{denom}"))
         except (ValueError, IndexError):
             findings.append(("LAUNCH-OK", f"signal_coverage unparseable: {coverage!r}"))
     else:

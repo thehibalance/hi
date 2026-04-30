@@ -326,7 +326,13 @@ def seed_to_record(s):
     # Backfill api_server-specific fields that merge_seed doesn't emit
     record.setdefault("hi_balanced", False)  # recomputed at serve time by check_hi_balanced
     record.setdefault("satire", "")
-    record.setdefault("spec_version", "1.2.0")
+    # v1.2.0 fix: handle records where spec_version is explicitly None (seed-only
+    # records like RIVN). setdefault only fills missing keys, so None passes through
+    # untouched and the API serves null. Force-set to '1.2.0' if falsy.
+    if not record.get("spec_version"):
+        record["spec_version"] = "1.2.0"
+    else:
+        record.setdefault("spec_version", "1.2.0")
     record.setdefault("algorithmic_harm_score", s.get("algorithmic_harm_score", 0))
     record.setdefault("subsidiaries", s.get("subsidiaries", []))
     record.setdefault("primary_contractors", s.get("primary_contractors", []))

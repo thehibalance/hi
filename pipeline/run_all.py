@@ -190,6 +190,15 @@ def main():
                   "Phase 4c: HUMAN Heartbeat",
                   f"--data {args.data} --output {args.output}/heartbeat")
 
+    # v1.2.0: Re-evaluate Balanced Board momentum gate using fresh heartbeat data.
+    # Scoring runs in Phase 2 before heartbeat exists, so the momentum gate falls
+    # back to "stable" by default, false-passing companies that are actually in
+    # warning/critical decay (e.g., PFE, WMT, COF). This post-process step
+    # reads heartbeats.json and corrects hi_balanced + hi_balanced_gates.
+    run_if_exists("post_process_balanced_board.py",
+                  "Phase 4d: Balanced Board Post-Process",
+                  "")
+
     # HUMAN 100 Index
     run_if_exists("human100_index.py",
                   "Phase 4d: HUMAN 100 Index",
