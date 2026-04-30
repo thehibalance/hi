@@ -155,3 +155,13 @@ mixpanel_*.json
 ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
+
+# macOS Finder duplicate files (case-insensitive filesystem artifacts)
+* 2.json
+* 3.json
+*.bak
+*.tmp
+*.v120tmp.js
+
+# Patcher backups (created by surgical patchers)
+*.pre_*
