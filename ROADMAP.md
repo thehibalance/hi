@@ -28,3 +28,16 @@ Fix path: integrate FMP/Yahoo as fallback SEC sources for revenue + headcount,
 push per-company coverage above ~75% before next H ladder revision.
 
 Not a launch blocker — disclosed limitation, not a bug.
+
+## v1.2.1 — H dimension industry-default fallback widespread
+~30-40% of S&P 500 companies have H sub-signals from industry medians, not 
+per-company SEC data. Pattern: when SEC RPE data is missing, fallback to 
+INDUSTRY_RPE_MEDIANS dict. Effects: identical H scores within an industry 
+(KO=SBUX=80/65/55/80 because both consumer goods).
+
+Already disclosed at /methodology page (line 935 deep-dive card).
+
+Fix path: integrate FMP/Yahoo as fallback SEC sources for revenue + headcount,
+push per-company coverage above ~75% before next H ladder revision.
+
+Not a launch blocker — disclosed limitation, not a bug.
