@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-04-29T08:14:39.391292",
-  "total_issues": 88,
+  "timestamp": "2026-04-30T08:18:28.796979",
+  "total_issues": 86,
   "critical": 0,
-  "warnings": 84,
+  "warnings": 82,
   "info": 4,
   "blocked": false,
   "stats": {
@@ -17,7 +17,7 @@
     "gold_count": 4,
     "gold_pct": 0.9,
     "mssi_violations": 0,
-    "single_source_dimensions": 81
+    "single_source_dimensions": 79
   },
   "issues": [
     {
@@ -656,24 +656,6 @@
       "company": "meta",
       "field": "U_sources",
       "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "meta",
-      "field": "M_sources",
-      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "meta",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
