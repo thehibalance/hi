@@ -514,6 +514,12 @@ def build_index():
                 c["decay_level"] = hb.get("decay_level", "stable")
                 c["decay_factors"] = hb.get("factors", [])
             
+            # v1.2.0: normalize spec_version at load time so cache never serves null.
+            # Seed-only tickers (RIVN class) store spec_version: null in their source
+            # records; the line 329 setdefault fallback doesn't fire for cache hits.
+            if not c.get("spec_version"):
+                c["spec_version"] = "1.2.0"
+            
             if t: TICKERS[t.upper()] = c
             if n: NAME_INDEX[n.lower()] = c
             if norm: NORM_INDEX[norm] = c
