@@ -79,25 +79,6 @@
     "composite": 73
   },
   {
-    "company": "PepsiCo, Inc.",
-    "ticker": "PEP",
-    "industry": "default",
-    "hi_composite": 65,
-    "esg_composite": 75.6,
-    "esg_components": {
-      "environmental": 90,
-      "social": 68.8,
-      "governance": 67.0
-    },
-    "gap": -10.6,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 65
-  },
-  {
     "company": "ProPublica",
     "ticker": "",
     "industry": "media",
@@ -174,25 +155,6 @@
     "composite": 72
   },
   {
-    "company": "Nike, Inc.",
-    "ticker": "NKE",
-    "industry": "default",
-    "hi_composite": 65,
-    "esg_composite": 74.1,
-    "esg_components": {
-      "environmental": 81,
-      "social": 73.2,
-      "governance": 68.0
-    },
-    "gap": -9.1,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 65
-  },
-  {
     "company": "Apple Inc.",
     "ticker": "AAPL",
     "industry": "tech",
@@ -231,23 +193,42 @@
     "composite": 60
   },
   {
-    "company": "General Motors Company",
-    "ticker": "GM",
-    "industry": "default",
-    "hi_composite": 59,
-    "esg_composite": 67.2,
+    "company": "Nike, Inc.",
+    "ticker": "NKE",
+    "industry": "apparel",
+    "hi_composite": 72,
+    "esg_composite": 80.4,
     "esg_components": {
-      "environmental": 80,
-      "social": 69.4,
-      "governance": 52.5
+      "environmental": 81,
+      "social": 73.8,
+      "governance": 85.5
     },
-    "gap": -8.2,
+    "gap": -8.4,
     "arbitrage_type": "aligned",
     "arbitrage_label": "Aligned",
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 59
+    "composite": 72
+  },
+  {
+    "company": "PepsiCo, Inc.",
+    "ticker": "PEP",
+    "industry": "food",
+    "hi_composite": 74,
+    "esg_composite": 82.1,
+    "esg_components": {
+      "environmental": 90,
+      "social": 70.0,
+      "governance": 84.5
+    },
+    "gap": -8.1,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 74
   },
   {
     "company": "Mayo Clinic",
@@ -307,44 +288,6 @@
       "Strong human consciousness (72) \u2014 invisible to ESG"
     ],
     "composite": 60
-  },
-  {
-    "company": "Coca-Cola Company",
-    "ticker": "KO",
-    "industry": "default",
-    "hi_composite": 67,
-    "esg_composite": 74.3,
-    "esg_components": {
-      "environmental": 88,
-      "social": 73.8,
-      "governance": 61.0
-    },
-    "gap": -7.3,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 67
-  },
-  {
-    "company": "Lockheed Martin Corporation",
-    "ticker": "LMT",
-    "industry": "manufacturing",
-    "hi_composite": 50,
-    "esg_composite": 57.3,
-    "esg_components": {
-      "environmental": 61,
-      "social": 73.2,
-      "governance": 40.0
-    },
-    "gap": -7.3,
-    "arbitrage_type": "esg_washing",
-    "arbitrage_label": "ESG Washing",
-    "gap_reasons": [
-      "2 humanwashing flags \u2014 ESG misses performative claims"
-    ],
-    "composite": 50
   },
   {
     "company": "AMEREN CORP",
@@ -412,6 +355,27 @@
   {
     "company": "CONSOLIDATED EDISON INC",
     "ticker": "ED",
+    "industry": "energy",
+    "hi_composite": 61,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": 7.3,
+    "arbitrage_type": "hidden_gem",
+    "arbitrage_label": "Hidden Gem",
+    "gap_reasons": [
+      "HI composite 61 but ESG only 53.7",
+      "Genuinely human company not recognized by traditional ESG",
+      "Strong human consciousness (73) \u2014 invisible to ESG"
+    ],
+    "composite": 61
+  },
+  {
+    "company": "DOMINION ENERGY, INC",
+    "ticker": "D",
     "industry": "energy",
     "hi_composite": 61,
     "esg_composite": 53.7,
@@ -536,25 +500,23 @@
     "composite": 61
   },
   {
-    "company": "DOMINION ENERGY, INC",
-    "ticker": "D",
-    "industry": "energy",
-    "hi_composite": 61,
-    "esg_composite": 53.7,
+    "company": "Lockheed Martin Corporation",
+    "ticker": "LMT",
+    "industry": "manufacturing",
+    "hi_composite": 50,
+    "esg_composite": 57.3,
     "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
+      "environmental": 61,
+      "social": 73.2,
+      "governance": 40.0
     },
-    "gap": 7.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
+    "gap": -7.3,
+    "arbitrage_type": "esg_washing",
+    "arbitrage_label": "ESG Washing",
     "gap_reasons": [
-      "HI composite 61 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG",
-      "Strong human consciousness (73) \u2014 invisible to ESG"
+      "2 humanwashing flags \u2014 ESG misses performative claims"
     ],
-    "composite": 61
+    "composite": 50
   },
   {
     "company": "Equal Exchange",
@@ -690,6 +652,25 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 75
+  },
+  {
+    "company": "Red Wing Shoes",
+    "ticker": "",
+    "industry": "retail",
+    "hi_composite": 70,
+    "esg_composite": 63.2,
+    "esg_components": {
+      "environmental": 55,
+      "social": 63.2,
+      "governance": 71.5
+    },
+    "gap": 6.8,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 70
   },
   {
     "company": "Red Wing Shoes",
@@ -884,15 +865,15 @@
     "composite": 75
   },
   {
-    "company": "Walmart Inc.",
-    "ticker": "WMT",
-    "industry": "default",
-    "hi_composite": 64,
-    "esg_composite": 70.3,
+    "company": "General Motors Company",
+    "ticker": "GM",
+    "industry": "manufacturing",
+    "hi_composite": 67,
+    "esg_composite": 73.3,
     "esg_components": {
-      "environmental": 87,
-      "social": 60.0,
-      "governance": 62.5
+      "environmental": 80,
+      "social": 69.4,
+      "governance": 70.0
     },
     "gap": -6.3,
     "arbitrage_type": "aligned",
@@ -900,7 +881,28 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 64
+    "composite": 67
+  },
+  {
+    "company": "AMERICAN ELECTRIC POWER CO INC",
+    "ticker": "AEP",
+    "industry": "energy",
+    "hi_composite": 60,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": 6.3,
+    "arbitrage_type": "hidden_gem",
+    "arbitrage_label": "Hidden Gem",
+    "gap_reasons": [
+      "HI composite 60 but ESG only 53.7",
+      "Genuinely human company not recognized by traditional ESG",
+      "Strong human consciousness (69) \u2014 invisible to ESG"
+    ],
+    "composite": 60
   },
   {
     "company": "EVERSOURCE ENERGY",
@@ -941,27 +943,6 @@
       "HI composite 60 but ESG only 53.7",
       "Genuinely human company not recognized by traditional ESG",
       "Strong human consciousness (70) \u2014 invisible to ESG"
-    ],
-    "composite": 60
-  },
-  {
-    "company": "AMERICAN ELECTRIC POWER CO INC",
-    "ticker": "AEP",
-    "industry": "energy",
-    "hi_composite": 60,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 6.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 60 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG",
-      "Strong human consciousness (69) \u2014 invisible to ESG"
     ],
     "composite": 60
   },
@@ -1044,6 +1025,25 @@
     "composite": 69
   },
   {
+    "company": "Filson",
+    "ticker": "",
+    "industry": "retail",
+    "hi_composite": 69,
+    "esg_composite": 62.9,
+    "esg_components": {
+      "environmental": 58,
+      "social": 62.0,
+      "governance": 68.5
+    },
+    "gap": 6.1,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 69
+  },
+  {
     "company": "Le Creuset",
     "ticker": "",
     "industry": "default",
@@ -1061,6 +1061,44 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 65
+  },
+  {
+    "company": "Le Creuset",
+    "ticker": "",
+    "industry": "default",
+    "hi_composite": 65,
+    "esg_composite": 59.0,
+    "esg_components": {
+      "environmental": 55,
+      "social": 59.0,
+      "governance": 63.0
+    },
+    "gap": 6.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 65
+  },
+  {
+    "company": "Walmart Inc.",
+    "ticker": "WMT",
+    "industry": "retail",
+    "hi_composite": 70,
+    "esg_composite": 75.9,
+    "esg_components": {
+      "environmental": 87,
+      "social": 60.6,
+      "governance": 78.0
+    },
+    "gap": -5.9,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 70
   },
   {
     "company": "King Arthur Baking",
@@ -1082,27 +1120,27 @@
     "composite": 80
   },
   {
-    "company": "CARNIVAL CORP",
-    "ticker": "CCL",
-    "industry": "transportation",
-    "hi_composite": 63,
-    "esg_composite": 57.2,
+    "company": "Coca-Cola Company",
+    "ticker": "KO",
+    "industry": "food",
+    "hi_composite": 75,
+    "esg_composite": 80.8,
     "esg_components": {
-      "environmental": 51,
-      "social": 53.0,
-      "governance": 67.0
+      "environmental": 88,
+      "social": 75.0,
+      "governance": 78.5
     },
-    "gap": 5.8,
+    "gap": -5.8,
     "arbitrage_type": "aligned",
     "arbitrage_label": "Aligned",
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 63
+    "composite": 75
   },
   {
-    "company": "ROYAL CARIBBEAN CRUISES LTD",
-    "ticker": "RCL",
+    "company": "CARNIVAL CORP",
+    "ticker": "CCL",
     "industry": "transportation",
     "hi_composite": 63,
     "esg_composite": 57.2,
@@ -1139,23 +1177,23 @@
     "composite": 63
   },
   {
-    "company": "Ford Motor Company",
-    "ticker": "",
-    "industry": "default",
-    "hi_composite": 61,
-    "esg_composite": 66.7,
+    "company": "ROYAL CARIBBEAN CRUISES LTD",
+    "ticker": "RCL",
+    "industry": "transportation",
+    "hi_composite": 63,
+    "esg_composite": 57.2,
     "esg_components": {
-      "environmental": 77,
-      "social": 63.6,
-      "governance": 59.0
+      "environmental": 51,
+      "social": 53.0,
+      "governance": 67.0
     },
-    "gap": -5.7,
+    "gap": 5.8,
     "arbitrage_type": "aligned",
     "arbitrage_label": "Aligned",
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 61
+    "composite": 63
   },
   {
     "company": "Boeing Company",
@@ -1215,23 +1253,6 @@
     "composite": 64
   },
   {
-    "company": "Costco Wholesale Corporation",
-    "ticker": "COST",
-    "industry": "default",
-    "hi_composite": 50,
-    "esg_composite": 55.6,
-    "esg_components": {
-      "environmental": 46,
-      "social": 70.4,
-      "governance": 52.5
-    },
-    "gap": -5.6,
-    "arbitrage_type": "esg_washing",
-    "arbitrage_label": "ESG Washing",
-    "gap_reasons": [],
-    "composite": 50
-  },
-  {
     "company": "Clearview AI",
     "ticker": "",
     "industry": "tech",
@@ -1249,6 +1270,25 @@
       "Low on both HI and ESG \u2014 significant risk across all dimensions"
     ],
     "composite": 15
+  },
+  {
+    "company": "Leatherman",
+    "ticker": "",
+    "industry": "manufacturing",
+    "hi_composite": 66,
+    "esg_composite": 60.4,
+    "esg_components": {
+      "environmental": 55,
+      "social": 59.0,
+      "governance": 67.0
+    },
+    "gap": 5.6,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 66
   },
   {
     "company": "Leatherman",
@@ -1369,6 +1409,27 @@
     "composite": 59
   },
   {
+    "company": "FIRSTENERGY CORP",
+    "ticker": "FE",
+    "industry": "energy",
+    "hi_composite": 59,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": 5.3,
+    "arbitrage_type": "hidden_gem",
+    "arbitrage_label": "Hidden Gem",
+    "gap_reasons": [
+      "HI composite 59 but ESG only 53.7",
+      "Genuinely human company not recognized by traditional ESG",
+      "Strong human consciousness (67) \u2014 invisible to ESG"
+    ],
+    "composite": 59
+  },
+  {
     "company": "WEC ENERGY GROUP, INC.",
     "ticker": "WEC",
     "industry": "energy",
@@ -1411,25 +1472,23 @@
     "composite": 59
   },
   {
-    "company": "FIRSTENERGY CORP",
-    "ticker": "FE",
-    "industry": "energy",
-    "hi_composite": 59,
-    "esg_composite": 53.7,
+    "company": "FEDEX CORP",
+    "ticker": "FDX",
+    "industry": "transportation",
+    "hi_composite": 63,
+    "esg_composite": 57.8,
     "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
+      "environmental": 47,
+      "social": 56.6,
+      "governance": 69.5
     },
-    "gap": 5.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
+    "gap": 5.2,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
     "gap_reasons": [
-      "HI composite 59 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG",
-      "Strong human consciousness (67) \u2014 invisible to ESG"
+      "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 59
+    "composite": 63
   },
   {
     "company": "AUTOZONE INC",
@@ -1449,25 +1508,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 61
-  },
-  {
-    "company": "FEDEX CORP",
-    "ticker": "FDX",
-    "industry": "transportation",
-    "hi_composite": 63,
-    "esg_composite": 57.8,
-    "esg_components": {
-      "environmental": 47,
-      "social": 56.6,
-      "governance": 69.5
-    },
-    "gap": 5.2,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 63
   },
   {
     "company": "DuckDuckGo",
@@ -1565,6 +1605,44 @@
     "composite": 66
   },
   {
+    "company": "Vitamix",
+    "ticker": "",
+    "industry": "manufacturing",
+    "hi_composite": 66,
+    "esg_composite": 60.9,
+    "esg_components": {
+      "environmental": 55,
+      "social": 60.8,
+      "governance": 67.0
+    },
+    "gap": 5.1,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 66
+  },
+  {
+    "company": "ORACLE CORP",
+    "ticker": "ORCL",
+    "industry": "tech",
+    "hi_composite": 64,
+    "esg_composite": 59.0,
+    "esg_components": {
+      "environmental": 52,
+      "social": 56.6,
+      "governance": 68.0
+    },
+    "gap": 5.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 64
+  },
+  {
     "company": "Atlassian Corp",
     "ticker": "TEAM",
     "industry": "tech",
@@ -1641,25 +1719,6 @@
     "composite": 62
   },
   {
-    "company": "SYNOPSYS INC",
-    "ticker": "SNPS",
-    "industry": "tech",
-    "hi_composite": 62,
-    "esg_composite": 57.0,
-    "esg_components": {
-      "environmental": 52,
-      "social": 51.2,
-      "governance": 67.0
-    },
-    "gap": 5.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 62
-  },
-  {
     "company": "Johnson Controls International plc",
     "ticker": "JCI",
     "industry": "tech",
@@ -1679,15 +1738,15 @@
     "composite": 62
   },
   {
-    "company": "ORACLE CORP",
-    "ticker": "ORCL",
+    "company": "SYNOPSYS INC",
+    "ticker": "SNPS",
     "industry": "tech",
-    "hi_composite": 64,
-    "esg_composite": 59.0,
+    "hi_composite": 62,
+    "esg_composite": 57.0,
     "esg_components": {
       "environmental": 52,
-      "social": 56.6,
-      "governance": 68.0
+      "social": 51.2,
+      "governance": 67.0
     },
     "gap": 5.0,
     "arbitrage_type": "aligned",
@@ -1695,7 +1754,7 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 64
+    "composite": 62
   },
   {
     "company": "Fidelity National Information Services, Inc.",
@@ -2002,23 +2061,23 @@
     "composite": 79
   },
   {
-    "company": "Pfizer, Inc.",
-    "ticker": "PFE",
-    "industry": "default",
-    "hi_composite": 60,
-    "esg_composite": 64.4,
+    "company": "AUTOMATIC DATA PROCESSING INC",
+    "ticker": "ADP",
+    "industry": "tech",
+    "hi_composite": 63,
+    "esg_composite": 58.6,
     "esg_components": {
-      "environmental": 66,
-      "social": 71.6,
-      "governance": 56.5
+      "environmental": 52,
+      "social": 56.6,
+      "governance": 67.0
     },
-    "gap": -4.4,
+    "gap": 4.4,
     "arbitrage_type": "aligned",
     "arbitrage_label": "Aligned",
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 60
+    "composite": 63
   },
   {
     "company": "HUNTINGTON INGALLS INDUSTRIES, INC.",
@@ -2038,25 +2097,6 @@
       "Low on both HI and ESG \u2014 significant risk across all dimensions"
     ],
     "composite": 50
-  },
-  {
-    "company": "AUTOMATIC DATA PROCESSING INC",
-    "ticker": "ADP",
-    "industry": "tech",
-    "hi_composite": 63,
-    "esg_composite": 58.6,
-    "esg_components": {
-      "environmental": 52,
-      "social": 56.6,
-      "governance": 67.0
-    },
-    "gap": 4.4,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 63
   },
   {
     "company": "TJX COMPANIES INC /DE/",
@@ -2158,6 +2198,25 @@
     "composite": 61
   },
   {
+    "company": "Adobe",
+    "ticker": "ADBE",
+    "industry": "tech",
+    "hi_composite": 60,
+    "esg_composite": 64.2,
+    "esg_components": {
+      "environmental": 62,
+      "social": 56.6,
+      "governance": 73.0
+    },
+    "gap": -4.2,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 60
+  },
+  {
     "company": "Shein",
     "ticker": "",
     "industry": "default",
@@ -2213,6 +2272,44 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 65
+  },
+  {
+    "company": "BOSTON SCIENTIFIC CORP",
+    "ticker": "BSX",
+    "industry": "tech",
+    "hi_composite": 61,
+    "esg_composite": 57.0,
+    "esg_components": {
+      "environmental": 52,
+      "social": 51.2,
+      "governance": 67.0
+    },
+    "gap": 4.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 61
+  },
+  {
+    "company": "CADENCE DESIGN SYSTEMS INC",
+    "ticker": "CDNS",
+    "industry": "tech",
+    "hi_composite": 61,
+    "esg_composite": 57.0,
+    "esg_components": {
+      "environmental": 52,
+      "social": 51.2,
+      "governance": 67.0
+    },
+    "gap": 4.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 61
   },
   {
     "company": "DOVER Corp",
@@ -2291,27 +2388,8 @@
     "composite": 61
   },
   {
-    "company": "Snowflake Inc.",
-    "ticker": "SNOW",
-    "industry": "tech",
-    "hi_composite": 61,
-    "esg_composite": 57.0,
-    "esg_components": {
-      "environmental": 52,
-      "social": 51.2,
-      "governance": 67.0
-    },
-    "gap": 4.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 61
-  },
-  {
-    "company": "CADENCE DESIGN SYSTEMS INC",
-    "ticker": "CDNS",
+    "company": "ROCKWELL AUTOMATION, INC",
+    "ticker": "ROK",
     "industry": "tech",
     "hi_composite": 61,
     "esg_composite": 57.0,
@@ -2348,8 +2426,8 @@
     "composite": 61
   },
   {
-    "company": "ROCKWELL AUTOMATION, INC",
-    "ticker": "ROK",
+    "company": "Snowflake Inc.",
+    "ticker": "SNOW",
     "industry": "tech",
     "hi_composite": 61,
     "esg_composite": 57.0,
@@ -2369,25 +2447,6 @@
   {
     "company": "STRYKER CORP",
     "ticker": "SYK",
-    "industry": "tech",
-    "hi_composite": 61,
-    "esg_composite": 57.0,
-    "esg_components": {
-      "environmental": 52,
-      "social": 51.2,
-      "governance": 67.0
-    },
-    "gap": 4.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 61
-  },
-  {
-    "company": "BOSTON SCIENTIFIC CORP",
-    "ticker": "BSX",
     "industry": "tech",
     "hi_composite": 61,
     "esg_composite": 57.0,
@@ -2441,23 +2500,6 @@
       "Low on both HI and ESG \u2014 significant risk across all dimensions"
     ],
     "composite": 48
-  },
-  {
-    "company": "Adobe",
-    "ticker": "",
-    "industry": "default",
-    "hi_composite": 52,
-    "esg_composite": 55.8,
-    "esg_components": {
-      "environmental": 61,
-      "social": 55.4,
-      "governance": 51.0
-    },
-    "gap": -3.8,
-    "arbitrage_type": "esg_washing",
-    "arbitrage_label": "ESG Washing",
-    "gap_reasons": [],
-    "composite": 52
   },
   {
     "company": "OLD DOMINION FREIGHT LINE, INC.",
@@ -2534,6 +2576,25 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 63
+  },
+  {
+    "company": "Costco Wholesale Corporation",
+    "ticker": "COST",
+    "industry": "retail",
+    "hi_composite": 65,
+    "esg_composite": 61.4,
+    "esg_components": {
+      "environmental": 46,
+      "social": 70.4,
+      "governance": 69.0
+    },
+    "gap": 3.6,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 65
   },
   {
     "company": "JPMORGAN CHASE & CO",
@@ -2688,23 +2749,23 @@
     "composite": 61
   },
   {
-    "company": "BANK OF AMERICA CORP /DE/",
-    "ticker": "BAC",
-    "industry": "finance",
-    "hi_composite": 64,
-    "esg_composite": 67.3,
+    "company": "Birkenstock",
+    "ticker": "",
+    "industry": "retail",
+    "hi_composite": 61,
+    "esg_composite": 57.6,
     "esg_components": {
-      "environmental": 78,
-      "social": 52.4,
-      "governance": 69.5
+      "environmental": 58,
+      "social": 56.0,
+      "governance": 58.5
     },
-    "gap": -3.3,
+    "gap": 3.4,
     "arbitrage_type": "aligned",
     "arbitrage_label": "Aligned",
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 64
+    "composite": 61
   },
   {
     "company": "US BANCORP \\DE\\",
@@ -2745,6 +2806,25 @@
     "composite": 61
   },
   {
+    "company": "UNITED PARCEL SERVICE INC",
+    "ticker": "UPS",
+    "industry": "transportation",
+    "hi_composite": 60,
+    "esg_composite": 56.7,
+    "esg_components": {
+      "environmental": 51,
+      "social": 51.2,
+      "governance": 67.0
+    },
+    "gap": 3.3,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 60
+  },
+  {
     "company": "DTE ENERGY CO",
     "ticker": "DTE",
     "industry": "energy",
@@ -2783,25 +2863,6 @@
       "Genuinely human company not recognized by traditional ESG"
     ],
     "composite": 57
-  },
-  {
-    "company": "UNITED PARCEL SERVICE INC",
-    "ticker": "UPS",
-    "industry": "transportation",
-    "hi_composite": 60,
-    "esg_composite": 56.7,
-    "esg_components": {
-      "environmental": 51,
-      "social": 51.2,
-      "governance": 67.0
-    },
-    "gap": 3.3,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 60
   },
   {
     "company": "COPART INC",
@@ -2918,15 +2979,15 @@
     "composite": 63
   },
   {
-    "company": "Baker Hughes Co",
-    "ticker": "BKR",
-    "industry": "tech",
-    "hi_composite": 60,
-    "esg_composite": 57.0,
+    "company": "PNC FINANCIAL SERVICES GROUP, INC.",
+    "ticker": "PNC",
+    "industry": "finance",
+    "hi_composite": 64,
+    "esg_composite": 61.0,
     "esg_components": {
-      "environmental": 52,
-      "social": 52.4,
-      "governance": 66.0
+      "environmental": 64,
+      "social": 50.6,
+      "governance": 67.0
     },
     "gap": 3.0,
     "arbitrage_type": "aligned",
@@ -2934,7 +2995,7 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 60
+    "composite": 64
   },
   {
     "company": "McDonald",
@@ -2956,33 +3017,14 @@
     "composite": 62
   },
   {
-    "company": "CENTENE CORP",
-    "ticker": "CNC",
-    "industry": "finance",
-    "hi_composite": 58,
-    "esg_composite": 61.0,
+    "company": "Baker Hughes Co",
+    "ticker": "BKR",
+    "industry": "tech",
+    "hi_composite": 60,
+    "esg_composite": 57.0,
     "esg_components": {
-      "environmental": 64,
-      "social": 50.6,
-      "governance": 67.0
-    },
-    "gap": -3.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
-  },
-  {
-    "company": "PNC FINANCIAL SERVICES GROUP, INC.",
-    "ticker": "PNC",
-    "industry": "finance",
-    "hi_composite": 64,
-    "esg_composite": 61.0,
-    "esg_components": {
-      "environmental": 64,
-      "social": 50.6,
+      "environmental": 52,
+      "social": 51.2,
       "governance": 67.0
     },
     "gap": 3.0,
@@ -2991,7 +3033,7 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 64
+    "composite": 60
   },
   {
     "company": "CARRIER GLOBAL Corp",
@@ -3127,6 +3169,25 @@
     "composite": 60
   },
   {
+    "company": "INTUITIVE SURGICAL INC",
+    "ticker": "ISRG",
+    "industry": "tech",
+    "hi_composite": 60,
+    "esg_composite": 57.0,
+    "esg_components": {
+      "environmental": 52,
+      "social": 51.2,
+      "governance": 67.0
+    },
+    "gap": 3.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 60
+  },
+  {
     "company": "Okta, Inc.",
     "ticker": "OKTA",
     "industry": "tech",
@@ -3203,23 +3264,23 @@
     "composite": 60
   },
   {
-    "company": "INTUITIVE SURGICAL INC",
-    "ticker": "ISRG",
-    "industry": "tech",
-    "hi_composite": 60,
-    "esg_composite": 57.0,
+    "company": "CENTENE CORP",
+    "ticker": "CNC",
+    "industry": "finance",
+    "hi_composite": 58,
+    "esg_composite": 61.0,
     "esg_components": {
-      "environmental": 52,
-      "social": 51.2,
+      "environmental": 64,
+      "social": 50.6,
       "governance": 67.0
     },
-    "gap": 3.0,
+    "gap": -3.0,
     "arbitrage_type": "aligned",
     "arbitrage_label": "Aligned",
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 60
+    "composite": 58
   },
   {
     "company": "Snap Inc",
@@ -3277,25 +3338,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 68
-  },
-  {
-    "company": "INTEL CORP",
-    "ticker": "INTC",
-    "industry": "tech",
-    "hi_composite": 65,
-    "esg_composite": 67.9,
-    "esg_components": {
-      "environmental": 73,
-      "social": 57.2,
-      "governance": 72.0
-    },
-    "gap": -2.9,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 65
   },
   {
     "company": "ECOLAB INC.",
@@ -3717,26 +3759,6 @@
     "composite": 61
   },
   {
-    "company": "CMS ENERGY CORP",
-    "ticker": "CMS",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.5,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.6,
-      "governance": 66.0
-    },
-    "gap": 2.5,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.5",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
     "company": "Spotify",
     "ticker": "",
     "industry": "default",
@@ -3871,6 +3893,26 @@
     "composite": 65
   },
   {
+    "company": "CMS ENERGY CORP",
+    "ticker": "CMS",
+    "industry": "energy",
+    "hi_composite": 56,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": 2.3,
+    "arbitrage_type": "hidden_gem",
+    "arbitrage_label": "Hidden Gem",
+    "gap_reasons": [
+      "HI composite 56 but ESG only 53.7",
+      "Genuinely human company not recognized by traditional ESG"
+    ],
+    "composite": 56
+  },
+  {
     "company": "OCCIDENTAL PETROLEUM CORP /DE/",
     "ticker": "OXY",
     "industry": "energy",
@@ -3910,53 +3952,15 @@
     "composite": 24
   },
   {
-    "company": "Intel",
-    "ticker": "",
-    "industry": "tech",
-    "hi_composite": 46,
-    "esg_composite": 43.7,
+    "company": "DOW INC.",
+    "ticker": "DOW",
+    "industry": "healthcare",
+    "hi_composite": 63,
+    "esg_composite": 60.8,
     "esg_components": {
-      "environmental": 38,
-      "social": 48.8,
-      "governance": 45.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
-    "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
-    ],
-    "composite": 46
-  },
-  {
-    "company": "Starbucks Corporation",
-    "ticker": "",
-    "industry": "default",
-    "hi_composite": 58,
-    "esg_composite": 60.2,
-    "esg_components": {
-      "environmental": 67,
-      "social": 62.0,
-      "governance": 52.0
-    },
-    "gap": -2.2,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
-  },
-  {
-    "company": "SOUTHWEST AIRLINES CO",
-    "ticker": "LUV",
-    "industry": "transportation",
-    "hi_composite": 59,
-    "esg_composite": 56.8,
-    "esg_components": {
-      "environmental": 47,
-      "social": 53.0,
-      "governance": 70.0
+      "environmental": 55,
+      "social": 60.2,
+      "governance": 67.0
     },
     "gap": 2.2,
     "arbitrage_type": "aligned",
@@ -3964,7 +3968,7 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 59
+    "composite": 63
   },
   {
     "company": "CLOROX CO /DE/",
@@ -3984,6 +3988,63 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 62
+  },
+  {
+    "company": "Aptiv PLC",
+    "ticker": "APTV",
+    "industry": "manufacturing",
+    "hi_composite": 59,
+    "esg_composite": 56.8,
+    "esg_components": {
+      "environmental": 50,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": 2.2,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 59
+  },
+  {
+    "company": "PACCAR INC",
+    "ticker": "PCAR",
+    "industry": "manufacturing",
+    "hi_composite": 59,
+    "esg_composite": 56.8,
+    "esg_components": {
+      "environmental": 50,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": 2.2,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 59
+  },
+  {
+    "company": "SOUTHWEST AIRLINES CO",
+    "ticker": "LUV",
+    "industry": "transportation",
+    "hi_composite": 59,
+    "esg_composite": 56.8,
+    "esg_components": {
+      "environmental": 47,
+      "social": 53.0,
+      "governance": 70.0
+    },
+    "gap": 2.2,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 59
   },
   {
     "company": "United Airlines Holdings, Inc.",
@@ -4064,23 +4125,23 @@
     "composite": 44
   },
   {
-    "company": "NORTHROP GRUMMAN CORP /DE/",
-    "ticker": "NOC",
-    "industry": "tech",
-    "hi_composite": 45,
-    "esg_composite": 47.1,
+    "company": "PROCTER & GAMBLE Co",
+    "ticker": "PG",
+    "industry": "healthcare",
+    "hi_composite": 63,
+    "esg_composite": 60.9,
     "esg_components": {
-      "environmental": 52,
-      "social": 57.2,
-      "governance": 33.5
+      "environmental": 55,
+      "social": 60.2,
+      "governance": 67.5
     },
-    "gap": -2.1,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
+    "gap": 2.1,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
     "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+      "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 45
+    "composite": 63
   },
   {
     "company": "Spotify Technology S.A.",
@@ -4121,15 +4182,15 @@
     "composite": 47
   },
   {
-    "company": "BRISTOL MYERS SQUIBB CO",
-    "ticker": "BMY",
-    "industry": "healthcare",
-    "hi_composite": 62,
-    "esg_composite": 60.0,
+    "company": "TRUIST FINANCIAL CORP",
+    "ticker": "TFC",
+    "industry": "finance",
+    "hi_composite": 63,
+    "esg_composite": 61.0,
     "esg_components": {
-      "environmental": 55,
-      "social": 59.0,
-      "governance": 66.0
+      "environmental": 64,
+      "social": 50.6,
+      "governance": 67.0
     },
     "gap": 2.0,
     "arbitrage_type": "aligned",
@@ -4137,64 +4198,7 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 62
-  },
-  {
-    "company": "CARDINAL HEALTH INC",
-    "ticker": "CAH",
-    "industry": "retail",
-    "hi_composite": 55,
-    "esg_composite": 57.0,
-    "esg_components": {
-      "environmental": 51,
-      "social": 53.6,
-      "governance": 66.0
-    },
-    "gap": -2.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 55
-  },
-  {
-    "company": "CME GROUP INC.",
-    "ticker": "CME",
-    "industry": "finance",
-    "hi_composite": 59,
-    "esg_composite": 61.0,
-    "esg_components": {
-      "environmental": 64,
-      "social": 50.6,
-      "governance": 67.0
-    },
-    "gap": -2.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 59
-  },
-  {
-    "company": "TRAVELERS COMPANIES, INC.",
-    "ticker": "TRV",
-    "industry": "finance",
-    "hi_composite": 59,
-    "esg_composite": 61.0,
-    "esg_components": {
-      "environmental": 64,
-      "social": 50.6,
-      "governance": 67.0
-    },
-    "gap": -2.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 59
+    "composite": 63
   },
   {
     "company": "AMERICAN INTERNATIONAL GROUP, INC.",
@@ -4214,44 +4218,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 59
-  },
-  {
-    "company": "Elevance Health, Inc.",
-    "ticker": "ELV",
-    "industry": "finance",
-    "hi_composite": 59,
-    "esg_composite": 61.0,
-    "esg_components": {
-      "environmental": 64,
-      "social": 50.6,
-      "governance": 67.0
-    },
-    "gap": -2.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 59
-  },
-  {
-    "company": "TRUIST FINANCIAL CORP",
-    "ticker": "TFC",
-    "industry": "finance",
-    "hi_composite": 63,
-    "esg_composite": 61.0,
-    "esg_components": {
-      "environmental": 64,
-      "social": 50.6,
-      "governance": 67.0
-    },
-    "gap": 2.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 63
   },
   {
     "company": "ANALOG DEVICES INC",
@@ -4292,14 +4258,14 @@
     "composite": 59
   },
   {
-    "company": "Broadcom Inc.",
-    "ticker": "AVGO",
-    "industry": "tech",
-    "hi_composite": 55,
-    "esg_composite": 57.0,
+    "company": "CME GROUP INC.",
+    "ticker": "CME",
+    "industry": "finance",
+    "hi_composite": 59,
+    "esg_composite": 61.0,
     "esg_components": {
-      "environmental": 52,
-      "social": 51.2,
+      "environmental": 64,
+      "social": 50.6,
       "governance": 67.0
     },
     "gap": -2.0,
@@ -4308,7 +4274,7 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 55
+    "composite": 59
   },
   {
     "company": "CrowdStrike Holdings, Inc.",
@@ -4330,14 +4296,14 @@
     "composite": 59
   },
   {
-    "company": "Match Group, Inc.",
-    "ticker": "MTCH",
-    "industry": "tech",
-    "hi_composite": 55,
-    "esg_composite": 57.0,
+    "company": "Elevance Health, Inc.",
+    "ticker": "ELV",
+    "industry": "finance",
+    "hi_composite": 59,
+    "esg_composite": 61.0,
     "esg_components": {
-      "environmental": 52,
-      "social": 51.2,
+      "environmental": 64,
+      "social": 50.6,
       "governance": 67.0
     },
     "gap": -2.0,
@@ -4346,7 +4312,7 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 55
+    "composite": 59
   },
   {
     "company": "MongoDB, Inc.",
@@ -4387,6 +4353,25 @@
     "composite": 59
   },
   {
+    "company": "ServiceNow, Inc.",
+    "ticker": "NOW",
+    "industry": "tech",
+    "hi_composite": 59,
+    "esg_composite": 57.0,
+    "esg_components": {
+      "environmental": 52,
+      "social": 51.2,
+      "governance": 67.0
+    },
+    "gap": 2.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 59
+  },
+  {
     "company": "Trane Technologies plc",
     "ticker": "TT",
     "industry": "tech",
@@ -4398,6 +4383,25 @@
       "governance": 67.0
     },
     "gap": 2.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 59
+  },
+  {
+    "company": "TRAVELERS COMPANIES, INC.",
+    "ticker": "TRV",
+    "industry": "finance",
+    "hi_composite": 59,
+    "esg_composite": 61.0,
+    "esg_components": {
+      "environmental": 64,
+      "social": 50.6,
+      "governance": 67.0
+    },
+    "gap": -2.0,
     "arbitrage_type": "aligned",
     "arbitrage_label": "Aligned",
     "gap_reasons": [
@@ -4425,23 +4429,80 @@
     "composite": 59
   },
   {
-    "company": "ServiceNow, Inc.",
-    "ticker": "NOW",
+    "company": "STATE STREET CORP",
+    "ticker": "STT",
+    "industry": "finance",
+    "hi_composite": 58,
+    "esg_composite": 60.0,
+    "esg_components": {
+      "environmental": 64,
+      "social": 50.6,
+      "governance": 64.0
+    },
+    "gap": -2.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 58
+  },
+  {
+    "company": "Broadcom Inc.",
+    "ticker": "AVGO",
     "industry": "tech",
-    "hi_composite": 59,
+    "hi_composite": 55,
     "esg_composite": 57.0,
     "esg_components": {
       "environmental": 52,
       "social": 51.2,
       "governance": 67.0
     },
-    "gap": 2.0,
+    "gap": -2.0,
     "arbitrage_type": "aligned",
     "arbitrage_label": "Aligned",
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 59
+    "composite": 55
+  },
+  {
+    "company": "CARDINAL HEALTH INC",
+    "ticker": "CAH",
+    "industry": "retail",
+    "hi_composite": 55,
+    "esg_composite": 57.0,
+    "esg_components": {
+      "environmental": 51,
+      "social": 53.6,
+      "governance": 66.0
+    },
+    "gap": -2.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 55
+  },
+  {
+    "company": "Match Group, Inc.",
+    "ticker": "MTCH",
+    "industry": "tech",
+    "hi_composite": 55,
+    "esg_composite": 57.0,
+    "esg_components": {
+      "environmental": 52,
+      "social": 51.2,
+      "governance": 67.0
+    },
+    "gap": -2.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 55
   },
   {
     "company": "Shell plc",
@@ -4501,23 +4562,42 @@
     "composite": 74
   },
   {
-    "company": "ESTEE LAUDER COMPANIES INC",
-    "ticker": "EL",
-    "industry": "healthcare",
-    "hi_composite": 62,
-    "esg_composite": 60.1,
+    "company": "Netflix",
+    "ticker": "NFLX",
+    "industry": "media",
+    "hi_composite": 65,
+    "esg_composite": 66.9,
     "esg_components": {
-      "environmental": 55,
-      "social": 60.2,
-      "governance": 65.0
+      "environmental": 60,
+      "social": 69.6,
+      "governance": 71.5
     },
-    "gap": 1.9,
+    "gap": -1.9,
     "arbitrage_type": "aligned",
     "arbitrage_label": "Aligned",
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 62
+    "composite": 65
+  },
+  {
+    "company": "BANK OF AMERICA CORP /DE/",
+    "ticker": "BAC",
+    "industry": "finance",
+    "hi_composite": 63,
+    "esg_composite": 64.9,
+    "esg_components": {
+      "environmental": 67,
+      "social": 54.8,
+      "governance": 71.5
+    },
+    "gap": -1.9,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 63
   },
   {
     "company": "REGENERON PHARMACEUTICALS, INC.",
@@ -4537,6 +4617,44 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 61
+  },
+  {
+    "company": "ABBOTT LABORATORIES",
+    "ticker": "ABT",
+    "industry": "healthcare",
+    "hi_composite": 60,
+    "esg_composite": 58.1,
+    "esg_components": {
+      "environmental": 55,
+      "social": 59.6,
+      "governance": 60.0
+    },
+    "gap": 1.9,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 60
+  },
+  {
+    "company": "Caterpillar",
+    "ticker": "CAT",
+    "industry": "tech",
+    "hi_composite": 60,
+    "esg_composite": 58.1,
+    "esg_components": {
+      "environmental": 52,
+      "social": 54.8,
+      "governance": 67.0
+    },
+    "gap": 1.9,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 60
   },
   {
     "company": "AMERICAN TOWER CORP /MA/",
@@ -4615,25 +4733,6 @@
     "composite": 56
   },
   {
-    "company": "Caterpillar",
-    "ticker": "CAT",
-    "industry": "tech",
-    "hi_composite": 60,
-    "esg_composite": 58.1,
-    "esg_components": {
-      "environmental": 52,
-      "social": 54.8,
-      "governance": 67.0
-    },
-    "gap": 1.9,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 60
-  },
-  {
     "company": "Coinbase",
     "ticker": "",
     "industry": "default",
@@ -4691,25 +4790,6 @@
     "composite": 50
   },
   {
-    "company": "ELI LILLY & Co",
-    "ticker": "LLY",
-    "industry": "healthcare",
-    "hi_composite": 62,
-    "esg_composite": 60.2,
-    "esg_components": {
-      "environmental": 55,
-      "social": 60.2,
-      "governance": 65.5
-    },
-    "gap": 1.8,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 62
-  },
-  {
     "company": "COLGATE PALMOLIVE CO",
     "ticker": "CL",
     "industry": "healthcare",
@@ -4727,6 +4807,25 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 62
+  },
+  {
+    "company": "CSX CORP",
+    "ticker": "CSX",
+    "industry": "transportation",
+    "hi_composite": 59,
+    "esg_composite": 57.2,
+    "esg_components": {
+      "environmental": 51,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": 1.8,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 59
   },
   {
     "company": "PACKAGING CORP OF AMERICA",
@@ -4748,9 +4847,9 @@
     "composite": 59
   },
   {
-    "company": "CSX CORP",
-    "ticker": "CSX",
-    "industry": "transportation",
+    "company": "Vulcan Materials CO",
+    "ticker": "VMC",
+    "industry": "default",
     "hi_composite": 59,
     "esg_composite": 57.2,
     "esg_components": {
@@ -4786,53 +4885,15 @@
     "composite": 57
   },
   {
-    "company": "STATE STREET CORP",
-    "ticker": "STT",
-    "industry": "finance",
-    "hi_composite": 58,
-    "esg_composite": 59.8,
+    "company": "Pfizer, Inc.",
+    "ticker": "PFE",
+    "industry": "healthcare",
+    "hi_composite": 69,
+    "esg_composite": 70.7,
     "esg_components": {
-      "environmental": 63,
-      "social": 51.8,
-      "governance": 63.5
-    },
-    "gap": -1.8,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
-  },
-  {
-    "company": "Vulcan Materials CO",
-    "ticker": "VMC",
-    "industry": "default",
-    "hi_composite": 59,
-    "esg_composite": 57.2,
-    "esg_components": {
-      "environmental": 51,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 1.8,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 59
-  },
-  {
-    "company": "Netflix",
-    "ticker": "",
-    "industry": "default",
-    "hi_composite": 56,
-    "esg_composite": 57.7,
-    "esg_components": {
-      "environmental": 51,
-      "social": 72.6,
-      "governance": 51.5
+      "environmental": 66,
+      "social": 72.2,
+      "governance": 74.0
     },
     "gap": -1.7,
     "arbitrage_type": "aligned",
@@ -4840,11 +4901,30 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 56
+    "composite": 69
   },
   {
-    "company": "PRUDENTIAL FINANCIAL INC",
-    "ticker": "PRU",
+    "company": "Air Products & Chemicals, Inc.",
+    "ticker": "APD",
+    "industry": "healthcare",
+    "hi_composite": 61,
+    "esg_composite": 59.3,
+    "esg_components": {
+      "environmental": 55,
+      "social": 55.4,
+      "governance": 67.0
+    },
+    "gap": 1.7,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 61
+  },
+  {
+    "company": "ALLSTATE CORP",
+    "ticker": "ALL",
     "industry": "finance",
     "hi_composite": 61,
     "esg_composite": 62.7,
@@ -4862,34 +4942,15 @@
     "composite": 61
   },
   {
-    "company": "IDEXX LABORATORIES INC /DE",
-    "ticker": "IDXX",
-    "industry": "healthcare",
-    "hi_composite": 60,
-    "esg_composite": 58.3,
-    "esg_components": {
-      "environmental": 55,
-      "social": 54.8,
-      "governance": 64.5
-    },
-    "gap": 1.7,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 60
-  },
-  {
-    "company": "Bank of New York Mellon Corp",
-    "ticker": "BK",
+    "company": "BlackRock, Inc.",
+    "ticker": "BLK",
     "industry": "finance",
-    "hi_composite": 59,
-    "esg_composite": 60.7,
+    "hi_composite": 61,
+    "esg_composite": 62.7,
     "esg_components": {
-      "environmental": 63,
-      "social": 51.8,
-      "governance": 66.0
+      "environmental": 64,
+      "social": 56.0,
+      "governance": 67.0
     },
     "gap": -1.7,
     "arbitrage_type": "aligned",
@@ -4897,7 +4958,45 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 59
+    "composite": 61
+  },
+  {
+    "company": "Cigna Group",
+    "ticker": "CI",
+    "industry": "finance",
+    "hi_composite": 61,
+    "esg_composite": 62.7,
+    "esg_components": {
+      "environmental": 64,
+      "social": 56.0,
+      "governance": 67.0
+    },
+    "gap": -1.7,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 61
+  },
+  {
+    "company": "HUMANA INC",
+    "ticker": "HUM",
+    "industry": "finance",
+    "hi_composite": 61,
+    "esg_composite": 62.7,
+    "esg_components": {
+      "environmental": 64,
+      "social": 56.0,
+      "governance": 67.0
+    },
+    "gap": -1.7,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 61
   },
   {
     "company": "LINDE PLC",
@@ -4919,15 +5018,15 @@
     "composite": 61
   },
   {
-    "company": "SCHWAB CHARLES CORP",
-    "ticker": "SCHW",
+    "company": "PRUDENTIAL FINANCIAL INC",
+    "ticker": "PRU",
     "industry": "finance",
-    "hi_composite": 59,
-    "esg_composite": 60.7,
+    "hi_composite": 61,
+    "esg_composite": 62.7,
     "esg_components": {
-      "environmental": 63,
-      "social": 51.8,
-      "governance": 66.0
+      "environmental": 64,
+      "social": 56.0,
+      "governance": 67.0
     },
     "gap": -1.7,
     "arbitrage_type": "aligned",
@@ -4935,7 +5034,45 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 59
+    "composite": 61
+  },
+  {
+    "company": "PAYCHEX INC",
+    "ticker": "PAYX",
+    "industry": "healthcare",
+    "hi_composite": 60,
+    "esg_composite": 58.3,
+    "esg_components": {
+      "environmental": 52,
+      "social": 55.4,
+      "governance": 67.0
+    },
+    "gap": 1.7,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 60
+  },
+  {
+    "company": "CHARTER COMMUNICATIONS, INC. /MO/",
+    "ticker": "CHTR",
+    "industry": "telecom",
+    "hi_composite": 58,
+    "esg_composite": 56.3,
+    "esg_components": {
+      "environmental": 51,
+      "social": 50.0,
+      "governance": 67.0
+    },
+    "gap": 1.7,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 58
   },
   {
     "company": "POOL CORP",
@@ -4974,25 +5111,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 56
-  },
-  {
-    "company": "CHARTER COMMUNICATIONS, INC. /MO/",
-    "ticker": "CHTR",
-    "industry": "telecom",
-    "hi_composite": 58,
-    "esg_composite": 56.3,
-    "esg_components": {
-      "environmental": 51,
-      "social": 50.0,
-      "governance": 67.0
-    },
-    "gap": 1.7,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
   },
   {
     "company": "Enphase Energy",
@@ -5052,27 +5170,46 @@
     "composite": 60
   },
   {
-    "company": "Marriott International",
-    "ticker": "",
-    "industry": "default",
-    "hi_composite": 44,
-    "esg_composite": 42.3,
+    "company": "UnitedHealth Group Incorporated",
+    "ticker": "UNH",
+    "industry": "finance",
+    "hi_composite": 65,
+    "esg_composite": 66.6,
     "esg_components": {
-      "environmental": 38,
-      "social": 50.0,
-      "governance": 40.0
+      "environmental": 64,
+      "social": 64.4,
+      "governance": 71.0
     },
-    "gap": 1.7,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
+    "gap": -1.6,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
     "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+      "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 44
+    "composite": 65
   },
   {
-    "company": "DOW INC.",
-    "ticker": "DOW",
+    "company": "AbbVie Inc.",
+    "ticker": "ABBV",
+    "industry": "healthcare",
+    "hi_composite": 62,
+    "esg_composite": 60.4,
+    "esg_components": {
+      "environmental": 55,
+      "social": 59.6,
+      "governance": 66.5
+    },
+    "gap": 1.6,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 62
+  },
+  {
+    "company": "ESTEE LAUDER COMPANIES INC",
+    "ticker": "EL",
     "industry": "healthcare",
     "hi_composite": 62,
     "esg_composite": 60.4,
@@ -5090,23 +5227,23 @@
     "composite": 62
   },
   {
-    "company": "ABBOTT LABORATORIES",
-    "ticker": "ABT",
-    "industry": "healthcare",
-    "hi_composite": 59,
-    "esg_composite": 57.4,
+    "company": "METLIFE INC",
+    "ticker": "MET",
+    "industry": "finance",
+    "hi_composite": 60,
+    "esg_composite": 61.6,
     "esg_components": {
-      "environmental": 55,
-      "social": 59.0,
-      "governance": 58.5
+      "environmental": 64,
+      "social": 56.0,
+      "governance": 64.0
     },
-    "gap": 1.6,
+    "gap": -1.6,
     "arbitrage_type": "aligned",
     "arbitrage_label": "Aligned",
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 59
+    "composite": 60
   },
   {
     "company": "CVS Health",
@@ -5185,6 +5322,25 @@
     "composite": 70
   },
   {
+    "company": "CHIPOTLE MEXICAN GRILL INC",
+    "ticker": "CMG",
+    "industry": "food",
+    "hi_composite": 61,
+    "esg_composite": 59.5,
+    "esg_components": {
+      "environmental": 52,
+      "social": 56.0,
+      "governance": 70.0
+    },
+    "gap": 1.5,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 61
+  },
+  {
     "company": "CONAGRA BRANDS INC.",
     "ticker": "CAG",
     "industry": "food",
@@ -5204,15 +5360,15 @@
     "composite": 60
   },
   {
-    "company": "AbbVie Inc.",
-    "ticker": "ABBV",
-    "industry": "healthcare",
-    "hi_composite": 61,
-    "esg_composite": 59.5,
+    "company": "CONSTELLATION BRANDS, INC.",
+    "ticker": "STZ",
+    "industry": "food",
+    "hi_composite": 60,
+    "esg_composite": 58.5,
     "esg_components": {
-      "environmental": 55,
-      "social": 59.0,
-      "governance": 64.5
+      "environmental": 52,
+      "social": 56.0,
+      "governance": 67.0
     },
     "gap": 1.5,
     "arbitrage_type": "aligned",
@@ -5220,26 +5376,7 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 61
-  },
-  {
-    "company": "MARRIOTT INTERNATIONAL INC /MD/",
-    "ticker": "MAR",
-    "industry": "default",
-    "hi_composite": 61,
-    "esg_composite": 59.5,
-    "esg_components": {
-      "environmental": 51,
-      "social": 58.4,
-      "governance": 69.0
-    },
-    "gap": 1.5,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 61
+    "composite": 60
   },
   {
     "company": "McDonald's Corporation",
@@ -5299,15 +5436,91 @@
     "composite": 58
   },
   {
-    "company": "CONSTELLATION BRANDS, INC.",
-    "ticker": "STZ",
-    "industry": "food",
+    "company": "BRISTOL MYERS SQUIBB CO",
+    "ticker": "BMY",
+    "industry": "healthcare",
+    "hi_composite": 62,
+    "esg_composite": 60.6,
+    "esg_components": {
+      "environmental": 55,
+      "social": 59.6,
+      "governance": 67.0
+    },
+    "gap": 1.4,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 62
+  },
+  {
+    "company": "ELI LILLY & Co",
+    "ticker": "LLY",
+    "industry": "healthcare",
+    "hi_composite": 62,
+    "esg_composite": 60.6,
+    "esg_components": {
+      "environmental": 55,
+      "social": 60.2,
+      "governance": 66.5
+    },
+    "gap": 1.4,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 62
+  },
+  {
+    "company": "INTEL CORP",
+    "ticker": "INTC",
+    "industry": "tech",
+    "hi_composite": 62,
+    "esg_composite": 63.4,
+    "esg_components": {
+      "environmental": 62,
+      "social": 56.6,
+      "governance": 70.5
+    },
+    "gap": -1.4,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 62
+  },
+  {
+    "company": "IDEXX LABORATORIES INC /DE",
+    "ticker": "IDXX",
+    "industry": "healthcare",
     "hi_composite": 60,
     "esg_composite": 58.6,
     "esg_components": {
-      "environmental": 54,
+      "environmental": 55,
       "social": 55.4,
-      "governance": 66.0
+      "governance": 65.0
+    },
+    "gap": 1.4,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 60
+  },
+  {
+    "company": "Walt Disney Company",
+    "ticker": "DIS",
+    "industry": "hospitality",
+    "hi_composite": 60,
+    "esg_composite": 58.6,
+    "esg_components": {
+      "environmental": 51,
+      "social": 58.4,
+      "governance": 66.5
     },
     "gap": 1.4,
     "arbitrage_type": "aligned",
@@ -5337,44 +5550,6 @@
     "composite": 56
   },
   {
-    "company": "SYSCO CORP",
-    "ticker": "SYY",
-    "industry": "retail",
-    "hi_composite": 56,
-    "esg_composite": 57.4,
-    "esg_components": {
-      "environmental": 51,
-      "social": 53.6,
-      "governance": 67.0
-    },
-    "gap": -1.4,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "O REILLY AUTOMOTIVE INC",
-    "ticker": "ORLY",
-    "industry": "auto",
-    "hi_composite": 57,
-    "esg_composite": 55.6,
-    "esg_components": {
-      "environmental": 47,
-      "social": 53.6,
-      "governance": 66.0
-    },
-    "gap": 1.4,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 57
-  },
-  {
     "company": "DuPont de Nemours, Inc.",
     "ticker": "DD",
     "industry": "healthcare",
@@ -5391,6 +5566,25 @@
     "gap_reasons": [
       "HI composite 56 but ESG only 54.6",
       "Genuinely human company not recognized by traditional ESG"
+    ],
+    "composite": 56
+  },
+  {
+    "company": "SYSCO CORP",
+    "ticker": "SYY",
+    "industry": "retail",
+    "hi_composite": 56,
+    "esg_composite": 57.4,
+    "esg_components": {
+      "environmental": 51,
+      "social": 53.6,
+      "governance": 67.0
+    },
+    "gap": -1.4,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 56
   },
@@ -5412,6 +5606,25 @@
       "Low on both HI and ESG \u2014 significant risk across all dimensions"
     ],
     "composite": 49
+  },
+  {
+    "company": "NORTHROP GRUMMAN CORP /DE/",
+    "ticker": "NOC",
+    "industry": "tech",
+    "hi_composite": 46,
+    "esg_composite": 47.4,
+    "esg_components": {
+      "environmental": 52,
+      "social": 56.6,
+      "governance": 35.0
+    },
+    "gap": -1.4,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 46
   },
   {
     "company": "Nestl\u00e9",
@@ -5452,25 +5665,6 @@
     "composite": 64
   },
   {
-    "company": "CHIPOTLE MEXICAN GRILL INC",
-    "ticker": "CMG",
-    "industry": "food",
-    "hi_composite": 61,
-    "esg_composite": 59.7,
-    "esg_components": {
-      "environmental": 54,
-      "social": 55.4,
-      "governance": 69.0
-    },
-    "gap": 1.3,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 61
-  },
-  {
     "company": "CISCO SYSTEMS, INC.",
     "ticker": "CSCO",
     "industry": "tech",
@@ -5490,25 +5684,6 @@
     "composite": 61
   },
   {
-    "company": "METLIFE INC",
-    "ticker": "MET",
-    "industry": "finance",
-    "hi_composite": 60,
-    "esg_composite": 61.3,
-    "esg_components": {
-      "environmental": 63,
-      "social": 56.6,
-      "governance": 63.5
-    },
-    "gap": -1.3,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 60
-  },
-  {
     "company": "Zoom Communications, Inc.",
     "ticker": "ZM",
     "industry": "tech",
@@ -5526,64 +5701,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 61
-  },
-  {
-    "company": "Aptiv PLC",
-    "ticker": "APTV",
-    "industry": "manufacturing",
-    "hi_composite": 58,
-    "esg_composite": 56.7,
-    "esg_components": {
-      "environmental": 50,
-      "social": 53.6,
-      "governance": 66.0
-    },
-    "gap": 1.3,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
-  },
-  {
-    "company": "PACCAR INC",
-    "ticker": "PCAR",
-    "industry": "manufacturing",
-    "hi_composite": 58,
-    "esg_composite": 56.7,
-    "esg_components": {
-      "environmental": 50,
-      "social": 53.6,
-      "governance": 66.0
-    },
-    "gap": 1.3,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
-  },
-  {
-    "company": "Targa Resources Corp.",
-    "ticker": "TRGP",
-    "industry": "energy",
-    "hi_composite": 55,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 1.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 55 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 55
   },
   {
     "company": "TAKE TWO INTERACTIVE SOFTWARE INC",
@@ -5606,6 +5723,26 @@
     "composite": 56
   },
   {
+    "company": "Targa Resources Corp.",
+    "ticker": "TRGP",
+    "industry": "energy",
+    "hi_composite": 55,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": 1.3,
+    "arbitrage_type": "hidden_gem",
+    "arbitrage_label": "Hidden Gem",
+    "gap_reasons": [
+      "HI composite 55 but ESG only 53.7",
+      "Genuinely human company not recognized by traditional ESG"
+    ],
+    "composite": 55
+  },
+  {
     "company": "Klean Kanteen",
     "ticker": "",
     "industry": "default",
@@ -5625,15 +5762,15 @@
     "composite": 75
   },
   {
-    "company": "Air Products & Chemicals, Inc.",
-    "ticker": "APD",
-    "industry": "healthcare",
-    "hi_composite": 60,
-    "esg_composite": 58.8,
+    "company": "MARRIOTT INTERNATIONAL INC /MD/",
+    "ticker": "MAR",
+    "industry": "hospitality",
+    "hi_composite": 62,
+    "esg_composite": 60.8,
     "esg_components": {
-      "environmental": 55,
-      "social": 54.8,
-      "governance": 66.0
+      "environmental": 51,
+      "social": 61.4,
+      "governance": 70.0
     },
     "gap": 1.2,
     "arbitrage_type": "aligned",
@@ -5641,18 +5778,18 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 60
+    "composite": 62
   },
   {
     "company": "CITIGROUP INC",
     "ticker": "C",
     "industry": "finance",
-    "hi_composite": 58,
-    "esg_composite": 59.2,
+    "hi_composite": 59,
+    "esg_composite": 60.2,
     "esg_components": {
-      "environmental": 63,
-      "social": 56.6,
-      "governance": 57.5
+      "environmental": 64,
+      "social": 56.0,
+      "governance": 60.0
     },
     "gap": -1.2,
     "arbitrage_type": "aligned",
@@ -5660,7 +5797,26 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 58
+    "composite": 59
+  },
+  {
+    "company": "O REILLY AUTOMOTIVE INC",
+    "ticker": "ORLY",
+    "industry": "auto",
+    "hi_composite": 57,
+    "esg_composite": 55.8,
+    "esg_components": {
+      "environmental": 47,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": 1.2,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 57
   },
   {
     "company": "HORTON D R INC /DE/",
@@ -5720,6 +5876,25 @@
     "composite": 56
   },
   {
+    "company": "American",
+    "ticker": "",
+    "industry": "default",
+    "hi_composite": 39,
+    "esg_composite": 40.2,
+    "esg_components": {
+      "environmental": 51,
+      "social": 50.0,
+      "governance": 21.0
+    },
+    "gap": -1.2,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 39
+  },
+  {
     "company": "Aspiration",
     "ticker": "",
     "industry": "finance",
@@ -5775,101 +5950,6 @@
       "Low on both HI and ESG \u2014 significant risk across all dimensions"
     ],
     "composite": 50
-  },
-  {
-    "company": "American",
-    "ticker": "",
-    "industry": "default",
-    "hi_composite": 39,
-    "esg_composite": 40.2,
-    "esg_components": {
-      "environmental": 51,
-      "social": 50.0,
-      "governance": 21.0
-    },
-    "gap": -1.2,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
-    "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
-    ],
-    "composite": 39
-  },
-  {
-    "company": "ALLSTATE CORP",
-    "ticker": "ALL",
-    "industry": "finance",
-    "hi_composite": 61,
-    "esg_composite": 62.1,
-    "esg_components": {
-      "environmental": 63,
-      "social": 56.6,
-      "governance": 66.0
-    },
-    "gap": -1.1,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 61
-  },
-  {
-    "company": "BlackRock, Inc.",
-    "ticker": "BLK",
-    "industry": "finance",
-    "hi_composite": 61,
-    "esg_composite": 62.1,
-    "esg_components": {
-      "environmental": 63,
-      "social": 56.6,
-      "governance": 66.0
-    },
-    "gap": -1.1,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 61
-  },
-  {
-    "company": "Cigna Group",
-    "ticker": "CI",
-    "industry": "finance",
-    "hi_composite": 61,
-    "esg_composite": 62.1,
-    "esg_components": {
-      "environmental": 63,
-      "social": 56.6,
-      "governance": 66.0
-    },
-    "gap": -1.1,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 61
-  },
-  {
-    "company": "HUMANA INC",
-    "ticker": "HUM",
-    "industry": "finance",
-    "hi_composite": 61,
-    "esg_composite": 62.1,
-    "esg_components": {
-      "environmental": 63,
-      "social": 56.6,
-      "governance": 66.0
-    },
-    "gap": -1.1,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 61
   },
   {
     "company": "EQUINIX INC",
@@ -6024,25 +6104,6 @@
     "composite": 66
   },
   {
-    "company": "ADVANCED MICRO DEVICES INC",
-    "ticker": "AMD",
-    "industry": "tech",
-    "hi_composite": 60,
-    "esg_composite": 61.0,
-    "esg_components": {
-      "environmental": 61,
-      "social": 51.2,
-      "governance": 69.5
-    },
-    "gap": -1.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 60
-  },
-  {
     "company": "HORMEL FOODS CORP /DE/",
     "ticker": "HRL",
     "industry": "food",
@@ -6062,8 +6123,65 @@
     "composite": 61
   },
   {
+    "company": "ADVANCED MICRO DEVICES INC",
+    "ticker": "AMD",
+    "industry": "tech",
+    "hi_composite": 60,
+    "esg_composite": 61.0,
+    "esg_components": {
+      "environmental": 61,
+      "social": 51.2,
+      "governance": 69.5
+    },
+    "gap": -1.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 60
+  },
+  {
+    "company": "Bank of New York Mellon Corp",
+    "ticker": "BK",
+    "industry": "finance",
+    "hi_composite": 60,
+    "esg_composite": 61.0,
+    "esg_components": {
+      "environmental": 64,
+      "social": 50.6,
+      "governance": 67.0
+    },
+    "gap": -1.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 60
+  },
+  {
     "company": "Chubb Ltd",
     "ticker": "CB",
+    "industry": "finance",
+    "hi_composite": 60,
+    "esg_composite": 61.0,
+    "esg_components": {
+      "environmental": 64,
+      "social": 50.6,
+      "governance": 67.0
+    },
+    "gap": -1.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 60
+  },
+  {
+    "company": "Intercontinental Exchange, Inc.",
+    "ticker": "ICE",
     "industry": "finance",
     "hi_composite": 60,
     "esg_composite": 61.0,
@@ -6100,46 +6218,8 @@
     "composite": 60
   },
   {
-    "company": "PayPal Holdings, Inc.",
-    "ticker": "PYPL",
-    "industry": "tech",
-    "hi_composite": 58,
-    "esg_composite": 59.0,
-    "esg_components": {
-      "environmental": 52,
-      "social": 55.4,
-      "governance": 69.0
-    },
-    "gap": -1.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
-  },
-  {
-    "company": "VERIZON COMMUNICATIONS INC",
-    "ticker": "VZ",
-    "industry": "telecom",
-    "hi_composite": 58,
-    "esg_composite": 59.0,
-    "esg_components": {
-      "environmental": 51,
-      "social": 56.0,
-      "governance": 69.5
-    },
-    "gap": -1.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
-  },
-  {
-    "company": "Intercontinental Exchange, Inc.",
-    "ticker": "ICE",
+    "company": "SCHWAB CHARLES CORP",
+    "ticker": "SCHW",
     "industry": "finance",
     "hi_composite": 60,
     "esg_composite": 61.0,
@@ -6157,72 +6237,15 @@
     "composite": 60
   },
   {
-    "company": "INTERNATIONAL PAPER CO /NEW/",
-    "ticker": "IP",
-    "industry": "default",
+    "company": "Ford Motor Company",
+    "ticker": "F",
+    "industry": "manufacturing",
     "hi_composite": 58,
     "esg_composite": 57.0,
     "esg_components": {
-      "environmental": 51,
-      "social": 53.6,
-      "governance": 66.0
-    },
-    "gap": 1.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
-  },
-  {
-    "company": "MARTIN MARIETTA MATERIALS INC",
-    "ticker": "MLM",
-    "industry": "default",
-    "hi_composite": 58,
-    "esg_composite": 57.0,
-    "esg_components": {
-      "environmental": 51,
-      "social": 53.6,
-      "governance": 66.0
-    },
-    "gap": 1.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
-  },
-  {
-    "company": "PAYCHEX INC",
-    "ticker": "PAYX",
-    "industry": "default",
-    "hi_composite": 58,
-    "esg_composite": 57.0,
-    "esg_components": {
-      "environmental": 51,
-      "social": 53.6,
-      "governance": 66.0
-    },
-    "gap": 1.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
-  },
-  {
-    "company": "REALTY INCOME CORP",
-    "ticker": "O",
-    "industry": "default",
-    "hi_composite": 58,
-    "esg_composite": 57.0,
-    "esg_components": {
-      "environmental": 51,
-      "social": 53.6,
-      "governance": 66.0
+      "environmental": 49,
+      "social": 55.4,
+      "governance": 66.5
     },
     "gap": 1.0,
     "arbitrage_type": "aligned",
@@ -6244,6 +6267,44 @@
       "governance": 67.0
     },
     "gap": 1.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 58
+  },
+  {
+    "company": "Palo Alto Networks Inc",
+    "ticker": "PANW",
+    "industry": "tech",
+    "hi_composite": 58,
+    "esg_composite": 57.0,
+    "esg_components": {
+      "environmental": 52,
+      "social": 51.2,
+      "governance": 67.0
+    },
+    "gap": 1.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 58
+  },
+  {
+    "company": "PayPal Holdings, Inc.",
+    "ticker": "PYPL",
+    "industry": "tech",
+    "hi_composite": 58,
+    "esg_composite": 59.0,
+    "esg_components": {
+      "environmental": 52,
+      "social": 55.4,
+      "governance": 69.0
+    },
+    "gap": -1.0,
     "arbitrage_type": "aligned",
     "arbitrage_label": "Aligned",
     "gap_reasons": [
@@ -6282,6 +6343,25 @@
       "governance": 67.0
     },
     "gap": 1.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 58
+  },
+  {
+    "company": "VERIZON COMMUNICATIONS INC",
+    "ticker": "VZ",
+    "industry": "telecom",
+    "hi_composite": 58,
+    "esg_composite": 59.0,
+    "esg_components": {
+      "environmental": 51,
+      "social": 56.0,
+      "governance": 69.5
+    },
+    "gap": -1.0,
     "arbitrage_type": "aligned",
     "arbitrage_label": "Aligned",
     "gap_reasons": [
@@ -6347,25 +6427,6 @@
     "composite": 56
   },
   {
-    "company": "Palo Alto Networks Inc",
-    "ticker": "PANW",
-    "industry": "tech",
-    "hi_composite": 58,
-    "esg_composite": 57.0,
-    "esg_components": {
-      "environmental": 52,
-      "social": 51.2,
-      "governance": 67.0
-    },
-    "gap": 1.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
-  },
-  {
     "company": "Tentree",
     "ticker": "",
     "industry": "retail",
@@ -6405,23 +6466,23 @@
     "composite": 55
   },
   {
-    "company": "Chipotle",
-    "ticker": "",
+    "company": "Starbucks Corporation",
+    "ticker": "SBUX",
     "industry": "food",
-    "hi_composite": 52,
-    "esg_composite": 51.0,
+    "hi_composite": 71,
+    "esg_composite": 70.1,
     "esg_components": {
-      "environmental": 52,
-      "social": 50.0,
-      "governance": 51.0
+      "environmental": 65,
+      "social": 67.4,
+      "governance": 77.5
     },
-    "gap": 1.0,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
+    "gap": 0.9,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
     "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+      "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 52
+    "composite": 71
   },
   {
     "company": "Etsy",
@@ -6443,15 +6504,15 @@
     "composite": 64
   },
   {
-    "company": "GENERAL MILLS INC",
-    "ticker": "GIS",
-    "industry": "food",
-    "hi_composite": 63,
-    "esg_composite": 62.1,
+    "company": "MGM Resorts International",
+    "ticker": "MGM",
+    "industry": "hospitality",
+    "hi_composite": 59,
+    "esg_composite": 58.1,
     "esg_components": {
-      "environmental": 61,
-      "social": 59.0,
-      "governance": 66.0
+      "environmental": 51,
+      "social": 56.0,
+      "governance": 67.0
     },
     "gap": 0.9,
     "arbitrage_type": "aligned",
@@ -6459,7 +6520,7 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 63
+    "composite": 59
   },
   {
     "company": "Mondelez International, Inc.",
@@ -6500,15 +6561,15 @@
     "composite": 57
   },
   {
-    "company": "MGM Resorts International",
-    "ticker": "MGM",
-    "industry": "hospitality",
-    "hi_composite": 59,
-    "esg_composite": 58.1,
+    "company": "KIMBERLY CLARK CORP",
+    "ticker": "KMB",
+    "industry": "default",
+    "hi_composite": 57,
+    "esg_composite": 56.1,
     "esg_components": {
       "environmental": 51,
-      "social": 56.0,
-      "governance": 67.0
+      "social": 53.0,
+      "governance": 64.0
     },
     "gap": 0.9,
     "arbitrage_type": "aligned",
@@ -6516,7 +6577,7 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 59
+    "composite": 57
   },
   {
     "company": "Marvell Technology, Inc.",
@@ -6652,23 +6713,42 @@
     "composite": 63
   },
   {
-    "company": "Annie's Homegrown",
-    "ticker": "",
-    "industry": "food",
-    "hi_composite": 63,
-    "esg_composite": 62.1,
+    "company": "INTERNATIONAL PAPER CO /NEW/",
+    "ticker": "IP",
+    "industry": "default",
+    "hi_composite": 58,
+    "esg_composite": 57.2,
     "esg_components": {
-      "environmental": 68,
-      "social": 54.8,
-      "governance": 62.5
+      "environmental": 51,
+      "social": 53.0,
+      "governance": 67.0
     },
-    "gap": 0.9,
+    "gap": 0.8,
     "arbitrage_type": "aligned",
     "arbitrage_label": "Aligned",
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 63
+    "composite": 58
+  },
+  {
+    "company": "MARTIN MARIETTA MATERIALS INC",
+    "ticker": "MLM",
+    "industry": "default",
+    "hi_composite": 58,
+    "esg_composite": 57.2,
+    "esg_components": {
+      "environmental": 51,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": 0.8,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 58
   },
   {
     "company": "NORFOLK SOUTHERN CORP",
@@ -6709,25 +6789,6 @@
     "composite": 58
   },
   {
-    "company": "KIMBERLY CLARK CORP",
-    "ticker": "KMB",
-    "industry": "default",
-    "hi_composite": 57,
-    "esg_composite": 56.2,
-    "esg_components": {
-      "environmental": 51,
-      "social": 53.6,
-      "governance": 63.5
-    },
-    "gap": 0.8,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 57
-  },
-  {
     "company": "Dropbox",
     "ticker": "",
     "industry": "tech",
@@ -6766,15 +6827,15 @@
     "composite": 67
   },
   {
-    "company": "TYSON FOODS, INC.",
-    "ticker": "TSN",
+    "company": "GENERAL MILLS INC",
+    "ticker": "GIS",
     "industry": "food",
-    "hi_composite": 60,
-    "esg_composite": 59.3,
+    "hi_composite": 65,
+    "esg_composite": 64.3,
     "esg_components": {
-      "environmental": 52,
-      "social": 56.0,
-      "governance": 69.5
+      "environmental": 62,
+      "social": 59.6,
+      "governance": 70.5
     },
     "gap": 0.7,
     "arbitrage_type": "aligned",
@@ -6782,45 +6843,7 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 60
-  },
-  {
-    "company": "Celanese Corp",
-    "ticker": "CE",
-    "industry": "healthcare",
-    "hi_composite": 60,
-    "esg_composite": 59.3,
-    "esg_components": {
-      "environmental": 55,
-      "social": 55.4,
-      "governance": 67.0
-    },
-    "gap": 0.7,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 60
-  },
-  {
-    "company": "MCCORMICK & CO INC",
-    "ticker": "MKC",
-    "industry": "food",
-    "hi_composite": 59,
-    "esg_composite": 58.3,
-    "esg_components": {
-      "environmental": 52,
-      "social": 56.0,
-      "governance": 66.5
-    },
-    "gap": 0.7,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 59
+    "composite": 65
   },
   {
     "company": "AMERICAN EXPRESS CO",
@@ -6861,6 +6884,63 @@
     "composite": 62
   },
   {
+    "company": "Celanese Corp",
+    "ticker": "CE",
+    "industry": "healthcare",
+    "hi_composite": 60,
+    "esg_composite": 59.3,
+    "esg_components": {
+      "environmental": 55,
+      "social": 55.4,
+      "governance": 67.0
+    },
+    "gap": 0.7,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 60
+  },
+  {
+    "company": "TYSON FOODS, INC.",
+    "ticker": "TSN",
+    "industry": "food",
+    "hi_composite": 60,
+    "esg_composite": 59.3,
+    "esg_components": {
+      "environmental": 52,
+      "social": 56.0,
+      "governance": 69.5
+    },
+    "gap": 0.7,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 60
+  },
+  {
+    "company": "Zoetis Inc.",
+    "ticker": "ZTS",
+    "industry": "healthcare",
+    "hi_composite": 60,
+    "esg_composite": 59.3,
+    "esg_components": {
+      "environmental": 55,
+      "social": 55.4,
+      "governance": 67.0
+    },
+    "gap": 0.7,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 60
+  },
+  {
     "company": "Airbnb, Inc.",
     "ticker": "ABNB",
     "industry": "tech",
@@ -6899,6 +6979,25 @@
     "composite": 59
   },
   {
+    "company": "MCCORMICK & CO INC",
+    "ticker": "MKC",
+    "industry": "food",
+    "hi_composite": 59,
+    "esg_composite": 58.3,
+    "esg_components": {
+      "environmental": 52,
+      "social": 56.0,
+      "governance": 66.5
+    },
+    "gap": 0.7,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 59
+  },
+  {
     "company": "QUALCOMM INC/DE",
     "ticker": "QCOM",
     "industry": "tech",
@@ -6916,25 +7015,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 59
-  },
-  {
-    "company": "Zoetis Inc.",
-    "ticker": "ZTS",
-    "industry": "healthcare",
-    "hi_composite": 60,
-    "esg_composite": 59.3,
-    "esg_components": {
-      "environmental": 55,
-      "social": 55.4,
-      "governance": 67.0
-    },
-    "gap": 0.7,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 60
   },
   {
     "company": "Vita Coco",
@@ -6962,9 +7042,9 @@
     "hi_composite": 61,
     "esg_composite": 60.4,
     "esg_components": {
-      "environmental": 53,
+      "environmental": 52,
       "social": 59.0,
-      "governance": 69.0
+      "governance": 70.0
     },
     "gap": 0.6,
     "arbitrage_type": "aligned",
@@ -6973,6 +7053,44 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 61
+  },
+  {
+    "company": "COMCAST CORP",
+    "ticker": "CMCSA",
+    "industry": "telecom",
+    "hi_composite": 58,
+    "esg_composite": 57.4,
+    "esg_components": {
+      "environmental": 51,
+      "social": 54.8,
+      "governance": 66.0
+    },
+    "gap": 0.6,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 58
+  },
+  {
+    "company": "LAM RESEARCH CORP",
+    "ticker": "LRCX",
+    "industry": "tech",
+    "hi_composite": 58,
+    "esg_composite": 58.6,
+    "esg_components": {
+      "environmental": 52,
+      "social": 56.6,
+      "governance": 67.0
+    },
+    "gap": -0.6,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 58
   },
   {
     "company": "MCKESSON CORP",
@@ -7013,44 +7131,6 @@
     "composite": 50
   },
   {
-    "company": "LAM RESEARCH CORP",
-    "ticker": "LRCX",
-    "industry": "tech",
-    "hi_composite": 58,
-    "esg_composite": 58.6,
-    "esg_components": {
-      "environmental": 52,
-      "social": 56.6,
-      "governance": 67.0
-    },
-    "gap": -0.6,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
-  },
-  {
-    "company": "COMCAST CORP",
-    "ticker": "CMCSA",
-    "industry": "telecom",
-    "hi_composite": 58,
-    "esg_composite": 57.4,
-    "esg_components": {
-      "environmental": 51,
-      "social": 54.8,
-      "governance": 66.0
-    },
-    "gap": 0.6,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
-  },
-  {
     "company": "Kraft Heinz Co",
     "ticker": "KHC",
     "industry": "food",
@@ -7060,6 +7140,25 @@
       "environmental": 52,
       "social": 56.0,
       "governance": 70.0
+    },
+    "gap": 0.5,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 60
+  },
+  {
+    "company": "Mastercard Inc",
+    "ticker": "MA",
+    "industry": "tech",
+    "hi_composite": 60,
+    "esg_composite": 59.5,
+    "esg_components": {
+      "environmental": 52,
+      "social": 56.6,
+      "governance": 69.5
     },
     "gap": 0.5,
     "arbitrage_type": "aligned",
@@ -7127,23 +7226,23 @@
     "composite": 58
   },
   {
-    "company": "Mastercard Inc",
-    "ticker": "MA",
-    "industry": "tech",
-    "hi_composite": 60,
-    "esg_composite": 59.5,
+    "company": "HERSHEY CO",
+    "ticker": "HSY",
+    "industry": "food",
+    "hi_composite": 58,
+    "esg_composite": 58.5,
     "esg_components": {
       "environmental": 52,
-      "social": 56.6,
-      "governance": 69.5
+      "social": 56.0,
+      "governance": 67.0
     },
-    "gap": 0.5,
+    "gap": -0.5,
     "arbitrage_type": "aligned",
     "arbitrage_label": "Aligned",
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 60
+    "composite": 58
   },
   {
     "company": "MOLSON COORS BEVERAGE CO",
@@ -7184,25 +7283,6 @@
     "composite": 58
   },
   {
-    "company": "HERSHEY CO",
-    "ticker": "HSY",
-    "industry": "food",
-    "hi_composite": 58,
-    "esg_composite": 58.5,
-    "esg_components": {
-      "environmental": 52,
-      "social": 56.0,
-      "governance": 67.0
-    },
-    "gap": -0.5,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
-  },
-  {
     "company": "Seventh Generation",
     "ticker": "",
     "industry": "default",
@@ -7222,44 +7302,6 @@
     "composite": 73
   },
   {
-    "company": "Best Buy",
-    "ticker": "",
-    "industry": "retail",
-    "hi_composite": 39,
-    "esg_composite": 39.5,
-    "esg_components": {
-      "environmental": 35,
-      "social": 44.0,
-      "governance": 40.0
-    },
-    "gap": -0.5,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
-    "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
-    ],
-    "composite": 39
-  },
-  {
-    "company": "UnitedHealth Group Incorporated",
-    "ticker": "",
-    "industry": "default",
-    "hi_composite": 53,
-    "esg_composite": 53.4,
-    "esg_components": {
-      "environmental": 51,
-      "social": 61.4,
-      "governance": 49.0
-    },
-    "gap": -0.4,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
-    "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
-    ],
-    "composite": 53
-  },
-  {
     "company": "AMGEN INC",
     "ticker": "AMGN",
     "industry": "healthcare",
@@ -7277,25 +7319,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 61
-  },
-  {
-    "company": "Walt Disney Company",
-    "ticker": "DIS",
-    "industry": "default",
-    "hi_composite": 52,
-    "esg_composite": 51.6,
-    "esg_components": {
-      "environmental": 51,
-      "social": 55.4,
-      "governance": 49.0
-    },
-    "gap": 0.4,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
-    "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
-    ],
-    "composite": 52
   },
   {
     "company": "PINTEREST, INC.",
@@ -7334,6 +7357,25 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 55
+  },
+  {
+    "company": "GENERAL DYNAMICS CORP",
+    "ticker": "GD",
+    "industry": "manufacturing",
+    "hi_composite": 46,
+    "esg_composite": 45.6,
+    "esg_components": {
+      "environmental": 50,
+      "social": 53.0,
+      "governance": 35.0
+    },
+    "gap": 0.4,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 46
   },
   {
     "company": "Levi Strauss & Co.",
@@ -7412,6 +7454,25 @@
     "composite": 58
   },
   {
+    "company": "ALBEMARLE CORP",
+    "ticker": "ALB",
+    "industry": "healthcare",
+    "hi_composite": 59,
+    "esg_composite": 59.3,
+    "esg_components": {
+      "environmental": 55,
+      "social": 55.4,
+      "governance": 67.0
+    },
+    "gap": -0.3,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 59
+  },
+  {
     "company": "CF Industries Holdings, Inc.",
     "ticker": "CF",
     "industry": "healthcare",
@@ -7450,63 +7511,6 @@
     "composite": 59
   },
   {
-    "company": "VERTEX PHARMACEUTICALS INC / MA",
-    "ticker": "VRTX",
-    "industry": "healthcare",
-    "hi_composite": 59,
-    "esg_composite": 59.3,
-    "esg_components": {
-      "environmental": 55,
-      "social": 55.4,
-      "governance": 67.0
-    },
-    "gap": -0.3,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 59
-  },
-  {
-    "company": "ALBEMARLE CORP",
-    "ticker": "ALB",
-    "industry": "healthcare",
-    "hi_composite": 59,
-    "esg_composite": 59.3,
-    "esg_components": {
-      "environmental": 55,
-      "social": 55.4,
-      "governance": 67.0
-    },
-    "gap": -0.3,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 59
-  },
-  {
-    "company": "J M SMUCKER Co",
-    "ticker": "SJM",
-    "industry": "food",
-    "hi_composite": 58,
-    "esg_composite": 58.3,
-    "esg_components": {
-      "environmental": 52,
-      "social": 56.0,
-      "governance": 66.5
-    },
-    "gap": -0.3,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
-  },
-  {
     "company": "MOSAIC CO",
     "ticker": "MOS",
     "industry": "healthcare",
@@ -7526,23 +7530,42 @@
     "composite": 59
   },
   {
-    "company": "GENERAL DYNAMICS CORP",
-    "ticker": "GD",
-    "industry": "manufacturing",
-    "hi_composite": 45,
-    "esg_composite": 45.3,
+    "company": "VERTEX PHARMACEUTICALS INC / MA",
+    "ticker": "VRTX",
+    "industry": "healthcare",
+    "hi_composite": 59,
+    "esg_composite": 59.3,
     "esg_components": {
-      "environmental": 50,
-      "social": 53.6,
-      "governance": 33.5
+      "environmental": 55,
+      "social": 55.4,
+      "governance": 67.0
     },
     "gap": -0.3,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
     "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+      "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 45
+    "composite": 59
+  },
+  {
+    "company": "FASTENAL CO",
+    "ticker": "FAST",
+    "industry": "retail",
+    "hi_composite": 58,
+    "esg_composite": 57.7,
+    "esg_components": {
+      "environmental": 52,
+      "social": 53.6,
+      "governance": 67.0
+    },
+    "gap": 0.3,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 58
   },
   {
     "company": "GENUINE PARTS CO",
@@ -7556,6 +7579,25 @@
       "governance": 67.0
     },
     "gap": 0.3,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 58
+  },
+  {
+    "company": "J M SMUCKER Co",
+    "ticker": "SJM",
+    "industry": "food",
+    "hi_composite": 58,
+    "esg_composite": 58.3,
+    "esg_components": {
+      "environmental": 52,
+      "social": 56.0,
+      "governance": 66.5
+    },
+    "gap": -0.3,
     "arbitrage_type": "aligned",
     "arbitrage_label": "Aligned",
     "gap_reasons": [
@@ -7583,8 +7625,65 @@
     "composite": 58
   },
   {
+    "company": "ROKU, INC",
+    "ticker": "ROKU",
+    "industry": "telecom",
+    "hi_composite": 56,
+    "esg_composite": 56.3,
+    "esg_components": {
+      "environmental": 51,
+      "social": 50.0,
+      "governance": 67.0
+    },
+    "gap": -0.3,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 56
+  },
+  {
+    "company": "Warner Bros. Discovery, Inc.",
+    "ticker": "WBD",
+    "industry": "telecom",
+    "hi_composite": 56,
+    "esg_composite": 56.3,
+    "esg_components": {
+      "environmental": 51,
+      "social": 50.0,
+      "governance": 67.0
+    },
+    "gap": -0.3,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 56
+  },
+  {
     "company": "Coterra Energy Inc.",
     "ticker": "CTRA",
+    "industry": "energy",
+    "hi_composite": 54,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": 0.3,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 54
+  },
+  {
+    "company": "DEVON ENERGY CORP/DE",
+    "ticker": "DVN",
     "industry": "energy",
     "hi_composite": 54,
     "esg_composite": 53.7,
@@ -7678,65 +7777,8 @@
     "composite": 54
   },
   {
-    "company": "ROKU, INC",
-    "ticker": "ROKU",
-    "industry": "telecom",
-    "hi_composite": 56,
-    "esg_composite": 56.3,
-    "esg_components": {
-      "environmental": 51,
-      "social": 50.0,
-      "governance": 67.0
-    },
-    "gap": -0.3,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 56
-  },
-  {
     "company": "VALERO ENERGY CORP/TX",
     "ticker": "VLO",
-    "industry": "energy",
-    "hi_composite": 54,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 0.3,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
-    "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
-    ],
-    "composite": 54
-  },
-  {
-    "company": "Warner Bros. Discovery, Inc.",
-    "ticker": "WBD",
-    "industry": "telecom",
-    "hi_composite": 56,
-    "esg_composite": 56.3,
-    "esg_components": {
-      "environmental": 51,
-      "social": 50.0,
-      "governance": 67.0
-    },
-    "gap": -0.3,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "DEVON ENERGY CORP/DE",
-    "ticker": "DVN",
     "industry": "energy",
     "hi_composite": 54,
     "esg_composite": 53.7,
@@ -7790,25 +7832,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 64
-  },
-  {
-    "company": "Procter & Gamble",
-    "ticker": "",
-    "industry": "default",
-    "hi_composite": 39,
-    "esg_composite": 39.3,
-    "esg_components": {
-      "environmental": 38,
-      "social": 44.0,
-      "governance": 36.5
-    },
-    "gap": -0.3,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
-    "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
-    ],
-    "composite": 39
   },
   {
     "company": "Target Corporation",
@@ -7868,6 +7891,25 @@
     "composite": 57
   },
   {
+    "company": "NEWMONT Corp /DE/",
+    "ticker": "NEM",
+    "industry": "default",
+    "hi_composite": 57,
+    "esg_composite": 57.2,
+    "esg_components": {
+      "environmental": 51,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -0.2,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 57
+  },
+  {
     "company": "NUCOR CORP",
     "ticker": "NUE",
     "industry": "default",
@@ -7890,25 +7932,6 @@
     "company": "UNION PACIFIC CORP",
     "ticker": "UNP",
     "industry": "transportation",
-    "hi_composite": 57,
-    "esg_composite": 57.2,
-    "esg_components": {
-      "environmental": 51,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": -0.2,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 57
-  },
-  {
-    "company": "NEWMONT Corp /DE/",
-    "ticker": "NEM",
-    "industry": "default",
     "hi_composite": 57,
     "esg_composite": 57.2,
     "esg_components": {
@@ -8039,6 +8062,25 @@
     "composite": 62
   },
   {
+    "company": "GILEAD SCIENCES, INC.",
+    "ticker": "GILD",
+    "industry": "healthcare",
+    "hi_composite": 59,
+    "esg_composite": 59.1,
+    "esg_components": {
+      "environmental": 55,
+      "social": 55.4,
+      "governance": 66.5
+    },
+    "gap": -0.1,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 59
+  },
+  {
     "company": "T-Mobile US, Inc.",
     "ticker": "TMUS",
     "industry": "telecom",
@@ -8115,15 +8157,15 @@
     "composite": 58
   },
   {
-    "company": "FASTENAL CO",
-    "ticker": "FAST",
-    "industry": "retail",
+    "company": "EQUITY RESIDENTIAL",
+    "ticker": "EQR",
+    "industry": "finance",
     "hi_composite": 58,
     "esg_composite": 57.9,
     "esg_components": {
-      "environmental": 53,
-      "social": 54.2,
-      "governance": 66.0
+      "environmental": 55,
+      "social": 50.6,
+      "governance": 67.0
     },
     "gap": 0.1,
     "arbitrage_type": "aligned",
@@ -8134,15 +8176,15 @@
     "composite": 58
   },
   {
-    "company": "GILEAD SCIENCES, INC.",
-    "ticker": "GILD",
-    "industry": "healthcare",
-    "hi_composite": 59,
-    "esg_composite": 59.1,
+    "company": "KROGER CO",
+    "ticker": "KR",
+    "industry": "retail",
+    "hi_composite": 58,
+    "esg_composite": 58.1,
     "esg_components": {
       "environmental": 55,
-      "social": 55.4,
-      "governance": 66.5
+      "social": 53.6,
+      "governance": 65.0
     },
     "gap": -0.1,
     "arbitrage_type": "aligned",
@@ -8150,7 +8192,7 @@
     "gap_reasons": [
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
-    "composite": 59
+    "composite": 58
   },
   {
     "company": "MID AMERICA APARTMENT COMMUNITIES INC.",
@@ -8172,8 +8214,8 @@
     "composite": 58
   },
   {
-    "company": "EQUITY RESIDENTIAL",
-    "ticker": "EQR",
+    "company": "REALTY INCOME CORP",
+    "ticker": "O",
     "industry": "finance",
     "hi_composite": 58,
     "esg_composite": 57.9,
@@ -8198,8 +8240,8 @@
     "esg_composite": 57.1,
     "esg_components": {
       "environmental": 52,
-      "social": 57.2,
-      "governance": 62.0
+      "social": 56.6,
+      "governance": 62.5
     },
     "gap": -0.1,
     "arbitrage_type": "aligned",
@@ -8208,25 +8250,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 57
-  },
-  {
-    "company": "KROGER CO",
-    "ticker": "KR",
-    "industry": "retail",
-    "hi_composite": 58,
-    "esg_composite": 58.1,
-    "esg_components": {
-      "environmental": 55,
-      "social": 53.6,
-      "governance": 65.0
-    },
-    "gap": -0.1,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
   },
   {
     "company": "ELECTRONIC ARTS INC.",
@@ -8286,27 +8309,8 @@
     "composite": 45
   },
   {
-    "company": "PROCTER & GAMBLE Co",
-    "ticker": "PG",
-    "industry": "healthcare",
-    "hi_composite": 65,
-    "esg_composite": 65.0,
-    "esg_components": {
-      "environmental": 67,
-      "social": 60.2,
-      "governance": 67.0
-    },
-    "gap": 0.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 65
-  },
-  {
-    "company": "Eaton Corp plc",
-    "ticker": "ETN",
+    "company": "APPLIED MATERIALS INC /DE",
+    "ticker": "AMAT",
     "industry": "tech",
     "hi_composite": 57,
     "esg_composite": 57.0,
@@ -8343,8 +8347,8 @@
     "composite": 57
   },
   {
-    "company": "APPLIED MATERIALS INC /DE",
-    "ticker": "AMAT",
+    "company": "BECTON DICKINSON & CO",
+    "ticker": "BDX",
     "industry": "tech",
     "hi_composite": 57,
     "esg_composite": 57.0,
@@ -8362,15 +8366,15 @@
     "composite": 57
   },
   {
-    "company": "BECTON DICKINSON & CO",
-    "ticker": "BDX",
+    "company": "Eaton Corp plc",
+    "ticker": "ETN",
     "industry": "tech",
     "hi_composite": 57,
     "esg_composite": 57.0,
     "esg_components": {
       "environmental": 52,
-      "social": 52.4,
-      "governance": 66.0
+      "social": 51.2,
+      "governance": 67.0
     },
     "gap": 0.0,
     "arbitrage_type": "aligned",
@@ -8381,25 +8385,6 @@
     "composite": 57
   },
   {
-    "company": "Exxon Mobil Corporation",
-    "ticker": "XOM",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 56.0,
-    "esg_components": {
-      "environmental": 46,
-      "social": 55.4,
-      "governance": 66.5
-    },
-    "gap": 0.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 56
-  },
-  {
     "company": "FISERV INC",
     "ticker": "FISV",
     "industry": "tech",
@@ -8407,8 +8392,8 @@
     "esg_composite": 57.0,
     "esg_components": {
       "environmental": 52,
-      "social": 52.4,
-      "governance": 66.0
+      "social": 51.2,
+      "governance": 67.0
     },
     "gap": 0.0,
     "arbitrage_type": "aligned",
@@ -8464,8 +8449,8 @@
     "esg_composite": 57.0,
     "esg_components": {
       "environmental": 52,
-      "social": 52.4,
-      "governance": 66.0
+      "social": 51.2,
+      "governance": 67.0
     },
     "gap": 0.0,
     "arbitrage_type": "aligned",
@@ -8474,6 +8459,25 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 57
+  },
+  {
+    "company": "Exxon Mobil Corporation",
+    "ticker": "XOM",
+    "industry": "energy",
+    "hi_composite": 56,
+    "esg_composite": 56.0,
+    "esg_components": {
+      "environmental": 46,
+      "social": 55.4,
+      "governance": 66.5
+    },
+    "gap": 0.0,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 56
   },
   {
     "company": "Merck & Co., Inc.",

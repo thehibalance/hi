@@ -1781,7 +1781,21 @@ def main():
         # Check name dupe
         elif norm and norm in seen_names:
             existing = seen_names[norm]
-            if len(s.get("data_sources", [])) > len(existing.get("data_sources", [])):
+            # v1.2.0 fix: prefer ticker-bearing entries over seed entries.
+            # When a scored record (with ticker) collides on normalized name with
+            # a seed record (no ticker), the ticker entry should ALWAYS win
+            # regardless of raw data_sources count, otherwise we orphan the ticker
+            # and drop a Tier-1 company from the scored universe.
+            s_has_ticker = bool(s.get("ticker"))
+            e_has_ticker = bool(existing.get("ticker"))
+            s_sources = len(s.get("data_sources", []))
+            e_sources = len(existing.get("data_sources", []))
+            should_replace = False
+            if s_has_ticker and not e_has_ticker:
+                should_replace = True
+            elif s_has_ticker == e_has_ticker and s_sources > e_sources:
+                should_replace = True
+            if should_replace:
                 deduped.remove(existing)
                 seen_names[norm] = s
                 if t: seen_tickers[t] = s
