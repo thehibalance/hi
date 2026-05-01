@@ -69,29 +69,6 @@
     "industry_peer_count": 7
   },
   {
-    "company": "Tesla",
-    "ticker": "TSLA",
-    "industry": "manufacturing",
-    "composite": 49,
-    "industry_average": 59,
-    "gap_from_industry": -9.6,
-    "influence_weight": 0.612,
-    "contagion_magnitude": 5.9,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -16.2,
-      "U": -14.6,
-      "M": 17.2,
-      "A": -20.6,
-      "N": -15.0
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 16
-  },
-  {
     "company": "The Guardian",
     "ticker": "",
     "industry": "media",
@@ -113,6 +90,29 @@
     "worst_dimension": "H",
     "best_dimension": "N",
     "industry_peer_count": 7
+  },
+  {
+    "company": "Tesla",
+    "ticker": "TSLA",
+    "industry": "manufacturing",
+    "composite": 49,
+    "industry_average": 58,
+    "gap_from_industry": -8.6,
+    "influence_weight": 0.612,
+    "contagion_magnitude": 5.2,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -14.4,
+      "U": -14.1,
+      "M": 20.8,
+      "A": -20.2,
+      "N": -16.1
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 14
   },
   {
     "company": "AUTOZONE INC",
@@ -182,29 +182,6 @@
     "worst_dimension": "H",
     "best_dimension": "N",
     "industry_peer_count": 126
-  },
-  {
-    "company": "Boeing Company",
-    "ticker": "BA",
-    "industry": "manufacturing",
-    "composite": 50,
-    "industry_average": 59,
-    "gap_from_industry": -8.6,
-    "influence_weight": 0.492,
-    "contagion_magnitude": 4.2,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -2.2,
-      "U": 4.4,
-      "M": -46.8,
-      "A": 1.4,
-      "N": 15.0
-    },
-    "worst_dimension": "M",
-    "best_dimension": "N",
-    "industry_peer_count": 16
   },
   {
     "company": "Philip Morris International Inc.",
@@ -345,50 +322,27 @@
     "industry_peer_count": 36
   },
   {
-    "company": "Lockheed Martin Corporation",
-    "ticker": "LMT",
+    "company": "Boeing Company",
+    "ticker": "BA",
     "industry": "manufacturing",
     "composite": 50,
-    "industry_average": 59,
-    "gap_from_industry": -8.6,
-    "influence_weight": 0.428,
+    "industry_average": 58,
+    "gap_from_industry": -7.6,
+    "influence_weight": 0.492,
     "contagion_magnitude": 3.7,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -4.2,
-      "U": 9.4,
-      "M": -46.8,
-      "A": 3.4,
-      "N": 10.0
+      "H": -0.4,
+      "U": 4.9,
+      "M": -43.2,
+      "A": 1.8,
+      "N": 13.9
     },
     "worst_dimension": "M",
     "best_dimension": "N",
-    "industry_peer_count": 16
-  },
-  {
-    "company": "RTX Corp",
-    "ticker": "RTX",
-    "industry": "manufacturing",
-    "composite": 50,
-    "industry_average": 59,
-    "gap_from_industry": -8.6,
-    "influence_weight": 0.424,
-    "contagion_magnitude": 3.7,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -4.2,
-      "U": 1.4,
-      "M": -34.8,
-      "A": -2.6,
-      "N": 0.0
-    },
-    "worst_dimension": "M",
-    "best_dimension": "U",
-    "industry_peer_count": 16
+    "industry_peer_count": 14
   },
   {
     "company": "MGM Resorts International",
@@ -414,6 +368,52 @@
     "industry_peer_count": 6
   },
   {
+    "company": "Lockheed Martin Corporation",
+    "ticker": "LMT",
+    "industry": "manufacturing",
+    "composite": 50,
+    "industry_average": 58,
+    "gap_from_industry": -7.6,
+    "influence_weight": 0.428,
+    "contagion_magnitude": 3.2,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -2.4,
+      "U": 9.9,
+      "M": -43.2,
+      "A": 3.8,
+      "N": 8.9
+    },
+    "worst_dimension": "M",
+    "best_dimension": "U",
+    "industry_peer_count": 14
+  },
+  {
+    "company": "RTX Corp",
+    "ticker": "RTX",
+    "industry": "manufacturing",
+    "composite": 50,
+    "industry_average": 58,
+    "gap_from_industry": -7.6,
+    "influence_weight": 0.424,
+    "contagion_magnitude": 3.2,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -2.4,
+      "U": 1.9,
+      "M": -31.2,
+      "A": -2.2,
+      "N": -1.1
+    },
+    "worst_dimension": "M",
+    "best_dimension": "U",
+    "industry_peer_count": 14
+  },
+  {
     "company": "Hilton Worldwide Holdings Inc.",
     "ticker": "HLT",
     "industry": "hospitality",
@@ -435,6 +435,29 @@
     "worst_dimension": "A",
     "best_dimension": "H",
     "industry_peer_count": 6
+  },
+  {
+    "company": "Amazon.com, Inc.",
+    "ticker": "AMZN",
+    "industry": "retail",
+    "composite": 61,
+    "industry_average": 58,
+    "gap_from_industry": 3.1,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 3.1,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -13.6,
+      "U": 0.5,
+      "M": 5.4,
+      "A": -0.4,
+      "N": 21.4
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 58
   },
   {
     "company": "Archer-Daniels-Midland Co",
@@ -504,29 +527,6 @@
     "worst_dimension": "M",
     "best_dimension": "U",
     "industry_peer_count": 36
-  },
-  {
-    "company": "Amazon.com, Inc.",
-    "ticker": "AMZN",
-    "industry": "retail",
-    "composite": 61,
-    "industry_average": 58,
-    "gap_from_industry": 2.7,
-    "influence_weight": 1.0,
-    "contagion_magnitude": 2.7,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -14.7,
-      "U": 0.1,
-      "M": 5.0,
-      "A": -0.6,
-      "N": 21.3
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 61
   },
   {
     "company": "Netflix",
@@ -672,22 +672,22 @@
     "industry": "retail",
     "composite": 13,
     "industry_average": 58,
-    "gap_from_industry": -45.3,
+    "gap_from_industry": -44.9,
     "influence_weight": 0.05,
-    "contagion_magnitude": 2.3,
+    "contagion_magnitude": 2.2,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -41.7,
-      "U": -46.9,
-      "M": -50.0,
-      "A": -38.6,
-      "N": -50.7
+      "H": -40.6,
+      "U": -46.5,
+      "M": -49.6,
+      "A": -38.4,
+      "N": -50.6
     },
     "worst_dimension": "N",
     "best_dimension": "A",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "Clearview AI",
@@ -736,27 +736,27 @@
     "industry_peer_count": 126
   },
   {
-    "company": "HORTON D R INC /DE/",
-    "ticker": "DHI",
-    "industry": "default",
-    "composite": 56,
+    "company": "Home Depot, Inc.",
+    "ticker": "HD",
+    "industry": "retail",
+    "composite": 70,
     "industry_average": 58,
-    "gap_from_industry": -2.0,
-    "influence_weight": 1.0,
+    "gap_from_industry": 12.1,
+    "influence_weight": 0.164,
     "contagion_magnitude": 2.0,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -13.6,
-      "U": -3.3,
-      "M": 1.7,
-      "A": -5.0,
-      "N": 11.1
+      "H": 18.4,
+      "U": 9.5,
+      "M": 13.4,
+      "A": 1.6,
+      "N": 19.4
     },
-    "worst_dimension": "H",
+    "worst_dimension": "A",
     "best_dimension": "N",
-    "industry_peer_count": 29
+    "industry_peer_count": 58
   },
   {
     "company": "Apple Inc.",
@@ -780,52 +780,6 @@
     "worst_dimension": "H",
     "best_dimension": "N",
     "industry_peer_count": 126
-  },
-  {
-    "company": "Home Depot, Inc.",
-    "ticker": "HD",
-    "industry": "retail",
-    "composite": 70,
-    "industry_average": 58,
-    "gap_from_industry": 11.7,
-    "influence_weight": 0.164,
-    "contagion_magnitude": 1.9,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 17.3,
-      "U": 9.1,
-      "M": 13.0,
-      "A": 1.4,
-      "N": 19.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "N",
-    "industry_peer_count": 61
-  },
-  {
-    "company": "LENNAR CORP /NEW/",
-    "ticker": "LEN",
-    "industry": "default",
-    "composite": 56,
-    "industry_average": 58,
-    "gap_from_industry": -2.0,
-    "influence_weight": 0.965,
-    "contagion_magnitude": 1.9,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -14.6,
-      "U": -3.3,
-      "M": 1.7,
-      "A": -5.0,
-      "N": 11.1
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 29
   },
   {
     "company": "X / Twitter",
@@ -879,22 +833,22 @@
     "industry": "retail",
     "composite": 22,
     "industry_average": 58,
-    "gap_from_industry": -36.3,
+    "gap_from_industry": -35.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 1.8,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -31.7,
-      "U": -36.9,
-      "M": -42.0,
-      "A": -28.6,
-      "N": -42.7
+      "H": -30.6,
+      "U": -36.5,
+      "M": -41.6,
+      "A": -28.4,
+      "N": -42.6
     },
     "worst_dimension": "N",
     "best_dimension": "A",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "INTERNATIONAL BUSINESS MACHINES CORP",
@@ -918,6 +872,52 @@
     "worst_dimension": "A",
     "best_dimension": "H",
     "industry_peer_count": 126
+  },
+  {
+    "company": "HORTON D R INC /DE/",
+    "ticker": "DHI",
+    "industry": "default",
+    "composite": 56,
+    "industry_average": 58,
+    "gap_from_industry": -1.7,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 1.7,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -12.7,
+      "U": -3.1,
+      "M": 1.9,
+      "A": -5.1,
+      "N": 11.1
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 28
+  },
+  {
+    "company": "LENNAR CORP /NEW/",
+    "ticker": "LEN",
+    "industry": "default",
+    "composite": 56,
+    "industry_average": 58,
+    "gap_from_industry": -1.7,
+    "influence_weight": 0.965,
+    "contagion_magnitude": 1.7,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -13.7,
+      "U": -3.1,
+      "M": 1.9,
+      "A": -5.1,
+      "N": 11.1
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 28
   },
   {
     "company": "AMERICAN EXPRESS CO",
@@ -1058,29 +1058,6 @@
     "industry_peer_count": 41
   },
   {
-    "company": "Zara / Inditex",
-    "ticker": "",
-    "industry": "retail",
-    "composite": 29,
-    "industry_average": 58,
-    "gap_from_industry": -29.3,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 1.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -26.7,
-      "U": -30.9,
-      "M": -34.0,
-      "A": -23.6,
-      "N": -30.7
-    },
-    "worst_dimension": "M",
-    "best_dimension": "A",
-    "industry_peer_count": 61
-  },
-  {
     "company": "Shell plc",
     "ticker": "",
     "industry": "energy",
@@ -1178,22 +1155,45 @@
     "industry": "retail",
     "composite": 30,
     "industry_average": 58,
-    "gap_from_industry": -28.3,
+    "gap_from_industry": -27.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 1.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -28.7,
-      "U": -28.9,
-      "M": -32.0,
-      "A": -25.6,
-      "N": -25.7
+      "H": -27.6,
+      "U": -28.5,
+      "M": -31.6,
+      "A": -25.4,
+      "N": -25.6
     },
     "worst_dimension": "M",
     "best_dimension": "A",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Zara / Inditex",
+    "ticker": "",
+    "industry": "retail",
+    "composite": 29,
+    "industry_average": 58,
+    "gap_from_industry": -28.9,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 1.4,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -25.6,
+      "U": -30.5,
+      "M": -33.6,
+      "A": -23.4,
+      "N": -30.6
+    },
+    "worst_dimension": "M",
+    "best_dimension": "A",
+    "industry_peer_count": 58
   },
   {
     "company": "Activision Blizzard (Microsoft)",
@@ -1263,6 +1263,29 @@
     "worst_dimension": "M",
     "best_dimension": "H",
     "industry_peer_count": 53
+  },
+  {
+    "company": "Parker-Hannifin Corp",
+    "ticker": "PH",
+    "industry": "default",
+    "composite": 60,
+    "industry_average": 58,
+    "gap_from_industry": 2.3,
+    "influence_weight": 0.577,
+    "contagion_magnitude": 1.3,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 8.3,
+      "U": -3.1,
+      "M": 1.9,
+      "A": -5.1,
+      "N": 11.1
+    },
+    "worst_dimension": "A",
+    "best_dimension": "N",
+    "industry_peer_count": 28
   },
   {
     "company": "NVIDIA",
@@ -1380,29 +1403,6 @@
     "industry_peer_count": 126
   },
   {
-    "company": "Parker-Hannifin Corp",
-    "ticker": "PH",
-    "industry": "default",
-    "composite": 60,
-    "industry_average": 58,
-    "gap_from_industry": 2.0,
-    "influence_weight": 0.577,
-    "contagion_magnitude": 1.2,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 7.4,
-      "U": -3.3,
-      "M": 1.7,
-      "A": -5.0,
-      "N": 11.1
-    },
-    "worst_dimension": "A",
-    "best_dimension": "N",
-    "industry_peer_count": 29
-  },
-  {
     "company": "T-Mobile US, Inc.",
     "ticker": "TMUS",
     "industry": "telecom",
@@ -1447,29 +1447,6 @@
     "worst_dimension": "H",
     "best_dimension": "A",
     "industry_peer_count": 14
-  },
-  {
-    "company": "CARDINAL HEALTH INC",
-    "ticker": "CAH",
-    "industry": "retail",
-    "composite": 55,
-    "industry_average": 58,
-    "gap_from_industry": -3.3,
-    "influence_weight": 0.357,
-    "contagion_magnitude": 1.2,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -20.7,
-      "U": -2.9,
-      "M": 0.0,
-      "A": -2.6,
-      "N": 9.3
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 61
   },
   {
     "company": "Phillips 66",
@@ -1702,27 +1679,50 @@
     "industry_peer_count": 126
   },
   {
-    "company": "Gap Inc.",
+    "company": "Eileen Fisher",
     "ticker": "",
     "industry": "retail",
-    "composite": 37,
+    "composite": 79,
     "industry_average": 58,
-    "gap_from_industry": -21.3,
+    "gap_from_industry": 21.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 1.1,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -18.7,
-      "U": -20.9,
-      "M": -27.0,
-      "A": -18.6,
-      "N": -22.7
+      "H": 26.4,
+      "U": 19.5,
+      "M": 18.4,
+      "A": 24.6,
+      "N": 14.4
     },
-    "worst_dimension": "M",
-    "best_dimension": "A",
-    "industry_peer_count": 61
+    "worst_dimension": "N",
+    "best_dimension": "H",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Darn Tough Vermont",
+    "ticker": "",
+    "industry": "retail",
+    "composite": 79,
+    "industry_average": 58,
+    "gap_from_industry": 21.1,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 1.1,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 32.4,
+      "U": 21.5,
+      "M": 20.4,
+      "A": 14.6,
+      "N": 14.4
+    },
+    "worst_dimension": "N",
+    "best_dimension": "H",
+    "industry_peer_count": 58
   },
   {
     "company": "Kellanova / WK Kellogg",
@@ -1817,27 +1817,50 @@
     "industry_peer_count": 53
   },
   {
-    "company": "PULTEGROUP INC/MI/",
-    "ticker": "PHM",
+    "company": "STANLEY BLACK & DECKER, INC.",
+    "ticker": "SWK",
     "industry": "default",
-    "composite": 56,
+    "composite": 60,
     "industry_average": 58,
-    "gap_from_industry": -2.0,
-    "influence_weight": 0.488,
+    "gap_from_industry": 2.3,
+    "influence_weight": 0.445,
     "contagion_magnitude": 1.0,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -15.6,
-      "U": -3.3,
-      "M": 1.7,
-      "A": -5.0,
+      "H": 6.3,
+      "U": -3.1,
+      "M": 1.9,
+      "A": -5.1,
       "N": 11.1
+    },
+    "worst_dimension": "A",
+    "best_dimension": "N",
+    "industry_peer_count": 28
+  },
+  {
+    "company": "CARDINAL HEALTH INC",
+    "ticker": "CAH",
+    "industry": "retail",
+    "composite": 55,
+    "industry_average": 58,
+    "gap_from_industry": -2.9,
+    "influence_weight": 0.357,
+    "contagion_magnitude": 1.0,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -19.6,
+      "U": -2.5,
+      "M": 0.4,
+      "A": -2.4,
+      "N": 9.4
     },
     "worst_dimension": "H",
     "best_dimension": "N",
-    "industry_peer_count": 29
+    "industry_peer_count": 58
   },
   {
     "company": "King Arthur Baking",
@@ -1863,27 +1886,27 @@
     "industry_peer_count": 41
   },
   {
-    "company": "Eileen Fisher",
+    "company": "Gap Inc.",
     "ticker": "",
     "industry": "retail",
-    "composite": 79,
+    "composite": 37,
     "industry_average": 58,
-    "gap_from_industry": 20.7,
+    "gap_from_industry": -20.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 1.0,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 25.3,
-      "U": 19.1,
-      "M": 18.0,
-      "A": 24.4,
-      "N": 14.3
+      "H": -17.6,
+      "U": -20.5,
+      "M": -26.6,
+      "A": -18.4,
+      "N": -22.6
     },
-    "worst_dimension": "N",
+    "worst_dimension": "M",
     "best_dimension": "H",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "Duolingo",
@@ -1907,29 +1930,6 @@
     "worst_dimension": "N",
     "best_dimension": "A",
     "industry_peer_count": 126
-  },
-  {
-    "company": "Darn Tough Vermont",
-    "ticker": "",
-    "industry": "retail",
-    "composite": 79,
-    "industry_average": 58,
-    "gap_from_industry": 20.7,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 1.0,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 31.3,
-      "U": 21.1,
-      "M": 20.0,
-      "A": 14.4,
-      "N": 14.3
-    },
-    "worst_dimension": "N",
-    "best_dimension": "H",
-    "industry_peer_count": 61
   },
   {
     "company": "Bob's Red Mill",
@@ -1978,52 +1978,6 @@
     "industry_peer_count": 126
   },
   {
-    "company": "STANLEY BLACK & DECKER, INC.",
-    "ticker": "SWK",
-    "industry": "default",
-    "composite": 60,
-    "industry_average": 58,
-    "gap_from_industry": 2.0,
-    "influence_weight": 0.445,
-    "contagion_magnitude": 0.9,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 5.4,
-      "U": -3.3,
-      "M": 1.7,
-      "A": -5.0,
-      "N": 11.1
-    },
-    "worst_dimension": "A",
-    "best_dimension": "N",
-    "industry_peer_count": 29
-  },
-  {
-    "company": "NUCOR CORP",
-    "ticker": "NUE",
-    "industry": "default",
-    "composite": 57,
-    "industry_average": 58,
-    "gap_from_industry": -1.0,
-    "influence_weight": 0.916,
-    "contagion_magnitude": 0.9,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -8.6,
-      "U": -3.3,
-      "M": 1.7,
-      "A": -5.0,
-      "N": 11.1
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 29
-  },
-  {
     "company": "VALERO ENERGY CORP/TX",
     "ticker": "VLO",
     "industry": "energy",
@@ -2052,22 +2006,22 @@
     "industry": "default",
     "composite": 40,
     "industry_average": 58,
-    "gap_from_industry": -18.0,
+    "gap_from_industry": -17.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.9,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -23.6,
-      "U": -18.3,
-      "M": -10.3,
-      "A": -5.0,
+      "H": -22.7,
+      "U": -18.1,
+      "M": -10.1,
+      "A": -5.1,
       "N": -33.9
     },
     "worst_dimension": "N",
     "best_dimension": "A",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
   },
   {
     "company": "American",
@@ -2075,22 +2029,22 @@
     "industry": "default",
     "composite": 39,
     "industry_average": 58,
-    "gap_from_industry": -19.0,
+    "gap_from_industry": -18.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.9,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -3.6,
-      "U": -8.3,
-      "M": -55.3,
-      "A": -5.0,
+      "H": -2.7,
+      "U": -8.1,
+      "M": -55.1,
+      "A": -5.1,
       "N": -23.9
     },
     "worst_dimension": "M",
     "best_dimension": "H",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
   },
   {
     "company": "Temu",
@@ -2098,22 +2052,22 @@
     "industry": "default",
     "composite": 39,
     "industry_average": 58,
-    "gap_from_industry": -19.0,
+    "gap_from_industry": -18.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.9,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -23.6,
-      "U": -20.3,
-      "M": -10.3,
-      "A": -5.0,
+      "H": -22.7,
+      "U": -20.1,
+      "M": -10.1,
+      "A": -5.1,
       "N": -33.9
     },
     "worst_dimension": "N",
     "best_dimension": "A",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
   },
   {
     "company": "Samsung Electronics",
@@ -2231,27 +2185,50 @@
     "industry_peer_count": 53
   },
   {
-    "company": "Klean Kanteen",
+    "company": "Lodge Cast Iron",
     "ticker": "",
-    "industry": "default",
+    "industry": "manufacturing",
     "composite": 75,
     "industry_average": 58,
-    "gap_from_industry": 17.0,
+    "gap_from_industry": 17.4,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.9,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 18.4,
-      "U": 9.7,
-      "M": 15.7,
-      "A": 26.0,
+      "H": 22.6,
+      "U": 12.9,
+      "M": 36.8,
+      "A": 12.8,
+      "N": 0.9
+    },
+    "worst_dimension": "N",
+    "best_dimension": "M",
+    "industry_peer_count": 14
+  },
+  {
+    "company": "Klean Kanteen",
+    "ticker": "",
+    "industry": "default",
+    "composite": 75,
+    "industry_average": 58,
+    "gap_from_industry": 17.3,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.9,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 19.3,
+      "U": 9.9,
+      "M": 15.9,
+      "A": 25.9,
       "N": 16.1
     },
     "worst_dimension": "U",
     "best_dimension": "A",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
   },
   {
     "company": "Block (Square)",
@@ -2369,6 +2346,29 @@
     "industry_peer_count": 14
   },
   {
+    "company": "Target Corporation",
+    "ticker": "TGT",
+    "industry": "retail",
+    "composite": 63,
+    "industry_average": 58,
+    "gap_from_industry": 5.1,
+    "influence_weight": 0.153,
+    "contagion_magnitude": 0.8,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -4.6,
+      "U": 6.5,
+      "M": 3.4,
+      "A": 5.6,
+      "N": 14.4
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 58
+  },
+  {
     "company": "CISCO SYSTEMS, INC.",
     "ticker": "CSCO",
     "industry": "tech",
@@ -2390,6 +2390,29 @@
     "worst_dimension": "H",
     "best_dimension": "M",
     "industry_peer_count": 126
+  },
+  {
+    "company": "HONEYWELL INTERNATIONAL INC",
+    "ticker": "HON",
+    "industry": "manufacturing",
+    "composite": 61,
+    "industry_average": 58,
+    "gap_from_industry": 3.4,
+    "influence_weight": 0.237,
+    "contagion_magnitude": 0.8,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -2.4,
+      "U": -0.1,
+      "M": 20.8,
+      "A": -2.2,
+      "N": -1.1
+    },
+    "worst_dimension": "H",
+    "best_dimension": "M",
+    "industry_peer_count": 14
   },
   {
     "company": "Mondelez International, Inc.",
@@ -2438,29 +2461,6 @@
     "industry_peer_count": 8
   },
   {
-    "company": "CVS Health",
-    "ticker": "CVS",
-    "industry": "retail",
-    "composite": 57,
-    "industry_average": 58,
-    "gap_from_industry": -1.3,
-    "influence_weight": 0.622,
-    "contagion_magnitude": 0.8,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -17.7,
-      "U": 1.1,
-      "M": 6.0,
-      "A": -2.6,
-      "N": 6.3
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 61
-  },
-  {
     "company": "UNION PACIFIC CORP",
     "ticker": "UNP",
     "industry": "transportation",
@@ -2482,6 +2482,29 @@
     "worst_dimension": "H",
     "best_dimension": "A",
     "industry_peer_count": 14
+  },
+  {
+    "company": "PULTEGROUP INC/MI/",
+    "ticker": "PHM",
+    "industry": "default",
+    "composite": 56,
+    "industry_average": 58,
+    "gap_from_industry": -1.7,
+    "influence_weight": 0.488,
+    "contagion_magnitude": 0.8,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -14.7,
+      "U": -3.1,
+      "M": 1.9,
+      "A": -5.1,
+      "N": 11.1
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 28
   },
   {
     "company": "Anthropic",
@@ -2512,22 +2535,22 @@
     "industry": "default",
     "composite": 73,
     "industry_average": 58,
-    "gap_from_industry": 15.0,
+    "gap_from_industry": 15.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.8,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 14.4,
-      "U": 6.7,
-      "M": 15.7,
-      "A": 24.0,
+      "H": 15.3,
+      "U": 6.9,
+      "M": 15.9,
+      "A": 23.9,
       "N": 16.1
     },
     "worst_dimension": "U",
     "best_dimension": "A",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
   },
   {
     "company": "Deloitte",
@@ -2576,50 +2599,27 @@
     "industry_peer_count": 126
   },
   {
-    "company": "Lodge Cast Iron",
-    "ticker": "",
-    "industry": "manufacturing",
-    "composite": 75,
-    "industry_average": 59,
-    "gap_from_industry": 16.4,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.8,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 20.8,
-      "U": 12.4,
-      "M": 33.2,
-      "A": 12.4,
-      "N": 2.0
-    },
-    "worst_dimension": "N",
-    "best_dimension": "M",
-    "industry_peer_count": 16
-  },
-  {
     "company": "Vermont Country Store",
     "ticker": "",
     "industry": "retail",
     "composite": 74,
     "industry_average": 58,
-    "gap_from_industry": 15.7,
+    "gap_from_industry": 16.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.8,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 25.3,
-      "U": 21.1,
-      "M": 16.0,
-      "A": 6.4,
-      "N": 9.3
+      "H": 26.4,
+      "U": 21.5,
+      "M": 16.4,
+      "A": 6.6,
+      "N": 9.4
     },
     "worst_dimension": "A",
     "best_dimension": "H",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "Dell Technologies",
@@ -2650,22 +2650,22 @@
     "industry": "default",
     "composite": 74,
     "industry_average": 58,
-    "gap_from_industry": 16.0,
+    "gap_from_industry": 16.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.8,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 14.4,
-      "U": 13.7,
-      "M": 15.7,
-      "A": 19.0,
+      "H": 15.3,
+      "U": 13.9,
+      "M": 15.9,
+      "A": 18.9,
       "N": 16.1
     },
     "worst_dimension": "U",
     "best_dimension": "A",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
   },
   {
     "company": "Internet Archive",
@@ -2829,29 +2829,6 @@
     "industry_peer_count": 53
   },
   {
-    "company": "Target Corporation",
-    "ticker": "TGT",
-    "industry": "retail",
-    "composite": 63,
-    "industry_average": 58,
-    "gap_from_industry": 4.7,
-    "influence_weight": 0.153,
-    "contagion_magnitude": 0.7,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -5.7,
-      "U": 6.1,
-      "M": 3.0,
-      "A": 5.4,
-      "N": 14.3
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 61
-  },
-  {
     "company": "ECOLAB INC.",
     "ticker": "ECL",
     "industry": "healthcare",
@@ -2967,6 +2944,29 @@
     "industry_peer_count": 8
   },
   {
+    "company": "NUCOR CORP",
+    "ticker": "NUE",
+    "industry": "default",
+    "composite": 57,
+    "industry_average": 58,
+    "gap_from_industry": -0.7,
+    "influence_weight": 0.916,
+    "contagion_magnitude": 0.7,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -7.7,
+      "U": -3.1,
+      "M": 1.9,
+      "A": -5.1,
+      "N": 11.1
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 28
+  },
+  {
     "company": "Exxon Mobil Corporation",
     "ticker": "XOM",
     "industry": "energy",
@@ -3036,6 +3036,29 @@
     "industry_peer_count": 126
   },
   {
+    "company": "REI Co-op",
+    "ticker": "",
+    "industry": "retail",
+    "composite": 71,
+    "industry_average": 58,
+    "gap_from_industry": 13.1,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.7,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 16.4,
+      "U": 11.5,
+      "M": 13.4,
+      "A": 18.6,
+      "N": 7.4
+    },
+    "worst_dimension": "N",
+    "best_dimension": "A",
+    "industry_peer_count": 58
+  },
+  {
     "company": "Ben & Jerry's",
     "ticker": "",
     "industry": "food",
@@ -3087,45 +3110,22 @@
     "industry": "retail",
     "composite": 72,
     "industry_average": 58,
-    "gap_from_industry": 13.7,
+    "gap_from_industry": 14.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.7,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 21.3,
-      "U": 13.1,
-      "M": 13.0,
-      "A": 11.4,
-      "N": 9.3
+      "H": 22.4,
+      "U": 13.5,
+      "M": 13.4,
+      "A": 11.6,
+      "N": 9.4
     },
     "worst_dimension": "N",
     "best_dimension": "H",
-    "industry_peer_count": 61
-  },
-  {
-    "company": "Lululemon",
-    "ticker": "",
-    "industry": "retail",
-    "composite": 45,
-    "industry_average": 58,
-    "gap_from_industry": -13.3,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.7,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -6.7,
-      "U": -10.9,
-      "M": -17.0,
-      "A": -11.6,
-      "N": -18.7
-    },
-    "worst_dimension": "N",
-    "best_dimension": "H",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "New Belgium Brewing",
@@ -3156,22 +3156,22 @@
     "industry": "default",
     "composite": 44,
     "industry_average": 58,
-    "gap_from_industry": -14.0,
+    "gap_from_industry": -13.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.7,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -8.6,
-      "U": -16.3,
-      "M": -17.3,
-      "A": -8.0,
+      "H": -7.7,
+      "U": -16.1,
+      "M": -17.1,
+      "A": -8.1,
       "N": -16.9
     },
     "worst_dimension": "M",
-    "best_dimension": "A",
-    "industry_peer_count": 29
+    "best_dimension": "H",
+    "industry_peer_count": 28
   },
   {
     "company": "HP Inc.",
@@ -3197,50 +3197,27 @@
     "industry_peer_count": 126
   },
   {
-    "company": "ALDI",
-    "ticker": "",
-    "industry": "retail",
-    "composite": 45,
-    "industry_average": 58,
-    "gap_from_industry": -13.3,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.7,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -6.7,
-      "U": -13.9,
-      "M": -14.0,
-      "A": -8.6,
-      "N": -22.7
-    },
-    "worst_dimension": "N",
-    "best_dimension": "H",
-    "industry_peer_count": 61
-  },
-  {
     "company": "Patagonia",
     "ticker": "",
     "industry": "default",
     "composite": 70,
     "industry_average": 58,
-    "gap_from_industry": 12.0,
+    "gap_from_industry": 12.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.6,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 18.4,
-      "U": 24.7,
-      "M": 3.7,
-      "A": 16.0,
+      "H": 19.3,
+      "U": 24.9,
+      "M": 3.9,
+      "A": 15.9,
       "N": -3.9
     },
     "worst_dimension": "N",
     "best_dimension": "U",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
   },
   {
     "company": "Walmart Inc.",
@@ -3248,22 +3225,22 @@
     "industry": "retail",
     "composite": 70,
     "industry_average": 58,
-    "gap_from_industry": 11.7,
+    "gap_from_industry": 12.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.6,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 3.3,
-      "U": 2.1,
-      "M": -1.0,
-      "A": 18.4,
-      "N": 34.3
+      "H": 4.4,
+      "U": 2.5,
+      "M": -0.6,
+      "A": 18.6,
+      "N": 34.4
     },
     "worst_dimension": "M",
     "best_dimension": "N",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "Medtronic plc",
@@ -3312,29 +3289,6 @@
     "industry_peer_count": 14
   },
   {
-    "company": "HONEYWELL INTERNATIONAL INC",
-    "ticker": "HON",
-    "industry": "manufacturing",
-    "composite": 61,
-    "industry_average": 59,
-    "gap_from_industry": 2.4,
-    "influence_weight": 0.237,
-    "contagion_magnitude": 0.6,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -4.2,
-      "U": -0.6,
-      "M": 17.2,
-      "A": -2.6,
-      "N": 0.0
-    },
-    "worst_dimension": "H",
-    "best_dimension": "M",
-    "industry_peer_count": 16
-  },
-  {
     "company": "Chubb Ltd",
     "ticker": "CB",
     "industry": "finance",
@@ -3358,142 +3312,50 @@
     "industry_peer_count": 53
   },
   {
-    "company": "Ford Motor Company",
-    "ticker": "F",
-    "industry": "manufacturing",
-    "composite": 58,
-    "industry_average": 59,
-    "gap_from_industry": -0.6,
-    "influence_weight": 1.0,
+    "company": "CVS Health",
+    "ticker": "CVS",
+    "industry": "retail",
+    "composite": 57,
+    "industry_average": 58,
+    "gap_from_industry": -0.9,
+    "influence_weight": 0.622,
     "contagion_magnitude": 0.6,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -15.2,
-      "U": -3.6,
-      "M": 16.2,
-      "A": -3.6,
-      "N": 0.0
+      "H": -16.6,
+      "U": 1.5,
+      "M": 6.4,
+      "A": -2.4,
+      "N": 6.4
     },
     "worst_dimension": "H",
     "best_dimension": "M",
-    "industry_peer_count": 16
-  },
-  {
-    "company": "FREEPORT-MCMORAN INC",
-    "ticker": "FCX",
-    "industry": "default",
-    "composite": 57,
-    "industry_average": 58,
-    "gap_from_industry": -1.0,
-    "influence_weight": 0.645,
-    "contagion_magnitude": 0.6,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -6.6,
-      "U": -3.3,
-      "M": 1.7,
-      "A": -5.0,
-      "N": 11.1
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 29
-  },
-  {
-    "company": "NEWMONT Corp /DE/",
-    "ticker": "NEM",
-    "industry": "default",
-    "composite": 57,
-    "industry_average": 58,
-    "gap_from_industry": -1.0,
-    "influence_weight": 0.639,
-    "contagion_magnitude": 0.6,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -10.6,
-      "U": -3.3,
-      "M": 1.7,
-      "A": -5.0,
-      "N": 11.1
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 29
-  },
-  {
-    "company": "HUNTINGTON INGALLS INDUSTRIES, INC.",
-    "ticker": "HII",
-    "industry": "manufacturing",
-    "composite": 50,
-    "industry_average": 59,
-    "gap_from_industry": -8.6,
-    "influence_weight": 0.072,
-    "contagion_magnitude": 0.6,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 11.8,
-      "U": -7.6,
-      "M": -46.8,
-      "A": -2.6,
-      "N": 0.0
-    },
-    "worst_dimension": "M",
-    "best_dimension": "H",
-    "industry_peer_count": 16
+    "industry_peer_count": 58
   },
   {
     "company": "GENERAL DYNAMICS CORP",
     "ticker": "GD",
     "industry": "manufacturing",
     "composite": 46,
-    "industry_average": 59,
-    "gap_from_industry": -12.6,
+    "industry_average": 58,
+    "gap_from_industry": -11.6,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.6,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -10.2,
-      "U": -7.6,
-      "M": -46.8,
-      "A": -2.6,
-      "N": 0.0
+      "H": -8.4,
+      "U": -7.1,
+      "M": -43.2,
+      "A": -2.2,
+      "N": -1.1
     },
     "worst_dimension": "M",
     "best_dimension": "N",
-    "industry_peer_count": 16
-  },
-  {
-    "company": "REI Co-op",
-    "ticker": "",
-    "industry": "retail",
-    "composite": 71,
-    "industry_average": 58,
-    "gap_from_industry": 12.7,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.6,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 15.3,
-      "U": 11.1,
-      "M": 13.0,
-      "A": 18.4,
-      "N": 7.3
-    },
-    "worst_dimension": "N",
-    "best_dimension": "A",
-    "industry_peer_count": 61
+    "industry_peer_count": 14
   },
   {
     "company": "Chick-fil-A",
@@ -3519,27 +3381,96 @@
     "industry_peer_count": 41
   },
   {
-    "company": "Cotopaxi",
+    "company": "Tentree",
     "ticker": "",
     "industry": "retail",
-    "composite": 70,
+    "composite": 69,
     "industry_average": 58,
-    "gap_from_industry": 11.7,
+    "gap_from_industry": 11.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.6,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 8.3,
-      "U": 9.1,
-      "M": 13.0,
-      "A": 16.4,
-      "N": 11.3
+      "H": 6.4,
+      "U": 1.5,
+      "M": 10.4,
+      "A": 26.6,
+      "N": 11.4
+    },
+    "worst_dimension": "U",
+    "best_dimension": "A",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Lululemon",
+    "ticker": "",
+    "industry": "retail",
+    "composite": 45,
+    "industry_average": 58,
+    "gap_from_industry": -12.9,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -5.6,
+      "U": -10.5,
+      "M": -16.6,
+      "A": -11.4,
+      "N": -18.6
+    },
+    "worst_dimension": "N",
+    "best_dimension": "H",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Cotopaxi",
+    "ticker": "",
+    "industry": "retail",
+    "composite": 70,
+    "industry_average": 58,
+    "gap_from_industry": 12.1,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 9.4,
+      "U": 9.5,
+      "M": 13.4,
+      "A": 16.6,
+      "N": 11.4
     },
     "worst_dimension": "H",
     "best_dimension": "A",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Filson",
+    "ticker": "",
+    "industry": "retail",
+    "composite": 69,
+    "industry_average": 58,
+    "gap_from_industry": 11.1,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 24.4,
+      "U": 11.5,
+      "M": 10.4,
+      "A": 4.6,
+      "N": 4.4
+    },
+    "worst_dimension": "N",
+    "best_dimension": "H",
+    "industry_peer_count": 58
   },
   {
     "company": "Red Wing Shoes",
@@ -3547,22 +3478,45 @@
     "industry": "retail",
     "composite": 70,
     "industry_average": 58,
-    "gap_from_industry": 11.7,
+    "gap_from_industry": 12.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.6,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 25.3,
-      "U": 13.1,
-      "M": 13.0,
-      "A": 1.4,
-      "N": 7.3
+      "H": 26.4,
+      "U": 13.5,
+      "M": 13.4,
+      "A": 1.6,
+      "N": 7.4
     },
     "worst_dimension": "A",
     "best_dimension": "H",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
+  },
+  {
+    "company": "ALDI",
+    "ticker": "",
+    "industry": "retail",
+    "composite": 45,
+    "industry_average": 58,
+    "gap_from_industry": -12.9,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.6,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -5.6,
+      "U": -13.5,
+      "M": -13.6,
+      "A": -8.4,
+      "N": -22.6
+    },
+    "worst_dimension": "N",
+    "best_dimension": "H",
+    "industry_peer_count": 58
   },
   {
     "company": "Biogen",
@@ -3586,29 +3540,6 @@
     "worst_dimension": "N",
     "best_dimension": "H",
     "industry_peer_count": 36
-  },
-  {
-    "company": "Red Wing Shoes",
-    "ticker": "",
-    "industry": "retail",
-    "composite": 70,
-    "industry_average": 58,
-    "gap_from_industry": 11.7,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.6,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 25.3,
-      "U": 13.1,
-      "M": 13.0,
-      "A": 1.4,
-      "N": 7.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "H",
-    "industry_peer_count": 61
   },
   {
     "company": "Starbucks Corporation",
@@ -3655,6 +3586,29 @@
     "worst_dimension": "M",
     "best_dimension": "N",
     "industry_peer_count": 36
+  },
+  {
+    "company": "General Motors Company",
+    "ticker": "GM",
+    "industry": "manufacturing",
+    "composite": 67,
+    "industry_average": 58,
+    "gap_from_industry": 9.4,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.5,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -3.4,
+      "U": 6.9,
+      "M": 6.8,
+      "A": 12.8,
+      "N": 18.9
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 14
   },
   {
     "company": "TRUIST FINANCIAL CORP",
@@ -3724,6 +3678,75 @@
     "worst_dimension": "H",
     "best_dimension": "M",
     "industry_peer_count": 41
+  },
+  {
+    "company": "FREEPORT-MCMORAN INC",
+    "ticker": "FCX",
+    "industry": "default",
+    "composite": 57,
+    "industry_average": 58,
+    "gap_from_industry": -0.7,
+    "influence_weight": 0.645,
+    "contagion_magnitude": 0.5,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -5.7,
+      "U": -3.1,
+      "M": 1.9,
+      "A": -5.1,
+      "N": 11.1
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 28
+  },
+  {
+    "company": "NEWMONT Corp /DE/",
+    "ticker": "NEM",
+    "industry": "default",
+    "composite": 57,
+    "industry_average": 58,
+    "gap_from_industry": -0.7,
+    "influence_weight": 0.639,
+    "contagion_magnitude": 0.5,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -9.7,
+      "U": -3.1,
+      "M": 1.9,
+      "A": -5.1,
+      "N": 11.1
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 28
+  },
+  {
+    "company": "HUNTINGTON INGALLS INDUSTRIES, INC.",
+    "ticker": "HII",
+    "industry": "manufacturing",
+    "composite": 50,
+    "industry_average": 58,
+    "gap_from_industry": -7.6,
+    "influence_weight": 0.072,
+    "contagion_magnitude": 0.5,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 13.6,
+      "U": -7.1,
+      "M": -43.2,
+      "A": -2.2,
+      "N": -1.1
+    },
+    "worst_dimension": "M",
+    "best_dimension": "H",
+    "industry_peer_count": 14
   },
   {
     "company": "NORTHROP GRUMMAN CORP /DE/",
@@ -3818,27 +3841,27 @@
     "industry_peer_count": 41
   },
   {
-    "company": "Tentree",
+    "company": "Allbirds",
     "ticker": "",
     "industry": "retail",
-    "composite": 69,
+    "composite": 67,
     "industry_average": 58,
-    "gap_from_industry": 10.7,
+    "gap_from_industry": 9.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.5,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 5.3,
-      "U": 1.1,
-      "M": 10.0,
-      "A": 26.4,
-      "N": 11.3
+      "H": 9.4,
+      "U": 1.5,
+      "M": 6.4,
+      "A": 18.6,
+      "N": 9.4
     },
     "worst_dimension": "U",
     "best_dimension": "A",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "Amalgamated Bank",
@@ -3869,22 +3892,22 @@
     "industry": "retail",
     "composite": 68,
     "industry_average": 58,
-    "gap_from_industry": 9.7,
+    "gap_from_industry": 10.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.5,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 15.3,
-      "U": 9.1,
-      "M": 10.0,
-      "A": 11.4,
-      "N": 4.3
+      "H": 16.4,
+      "U": 9.5,
+      "M": 10.4,
+      "A": 11.6,
+      "N": 4.4
     },
     "worst_dimension": "N",
     "best_dimension": "H",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "Valve Corporation",
@@ -3933,96 +3956,27 @@
     "industry_peer_count": 36
   },
   {
-    "company": "Filson",
-    "ticker": "",
-    "industry": "retail",
-    "composite": 69,
-    "industry_average": 58,
-    "gap_from_industry": 10.7,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 23.3,
-      "U": 11.1,
-      "M": 10.0,
-      "A": 4.4,
-      "N": 4.3
-    },
-    "worst_dimension": "N",
-    "best_dimension": "H",
-    "industry_peer_count": 61
-  },
-  {
-    "company": "Filson",
-    "ticker": "",
-    "industry": "retail",
-    "composite": 69,
-    "industry_average": 58,
-    "gap_from_industry": 10.7,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 23.3,
-      "U": 11.1,
-      "M": 10.0,
-      "A": 4.4,
-      "N": 4.3
-    },
-    "worst_dimension": "N",
-    "best_dimension": "H",
-    "industry_peer_count": 61
-  },
-  {
-    "company": "General Motors Company",
-    "ticker": "GM",
-    "industry": "manufacturing",
-    "composite": 67,
-    "industry_average": 59,
-    "gap_from_industry": 8.4,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.4,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -5.2,
-      "U": 6.4,
-      "M": 3.2,
-      "A": 12.4,
-      "N": 20.0
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 16
-  },
-  {
     "company": "Dr. Bronner's",
     "ticker": "",
     "industry": "default",
     "composite": 66,
     "industry_average": 58,
-    "gap_from_industry": 8.0,
+    "gap_from_industry": 8.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 18.4,
-      "U": 23.7,
-      "M": 8.7,
-      "A": 12.0,
+      "H": 19.3,
+      "U": 23.9,
+      "M": 8.9,
+      "A": 11.9,
       "N": -23.9
     },
     "worst_dimension": "N",
     "best_dimension": "U",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
   },
   {
     "company": "Goldman Sachs Group, Inc.",
@@ -4046,6 +4000,29 @@
     "worst_dimension": "H",
     "best_dimension": "N",
     "industry_peer_count": 53
+  },
+  {
+    "company": "Costco Wholesale Corporation",
+    "ticker": "COST",
+    "industry": "retail",
+    "composite": 65,
+    "industry_average": 58,
+    "gap_from_industry": 7.1,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.4,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 14.4,
+      "U": 10.5,
+      "M": 14.4,
+      "A": -7.4,
+      "N": 1.4
+    },
+    "worst_dimension": "A",
+    "best_dimension": "H",
+    "industry_peer_count": 58
   },
   {
     "company": "DARDEN RESTAURANTS INC",
@@ -4214,22 +4191,22 @@
     "industry": "retail",
     "composite": 62,
     "industry_average": 58,
-    "gap_from_industry": 3.7,
+    "gap_from_industry": 4.1,
     "influence_weight": 0.105,
     "contagion_magnitude": 0.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 9.3,
-      "U": -2.9,
-      "M": 2.0,
-      "A": -1.6,
-      "N": 9.3
+      "H": 10.4,
+      "U": -2.5,
+      "M": 2.4,
+      "A": -1.4,
+      "N": 9.4
     },
     "worst_dimension": "U",
     "best_dimension": "H",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "SLB LIMITED/NV",
@@ -4253,6 +4230,29 @@
     "worst_dimension": "U",
     "best_dimension": "H",
     "industry_peer_count": 40
+  },
+  {
+    "company": "Ford Motor Company",
+    "ticker": "F",
+    "industry": "manufacturing",
+    "composite": 58,
+    "industry_average": 58,
+    "gap_from_industry": 0.4,
+    "influence_weight": 1.0,
+    "contagion_magnitude": 0.4,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -13.4,
+      "U": -3.1,
+      "M": 19.8,
+      "A": -3.2,
+      "N": -1.1
+    },
+    "worst_dimension": "H",
+    "best_dimension": "M",
+    "industry_peer_count": 14
   },
   {
     "company": "HERSHEY CO",
@@ -4370,50 +4370,27 @@
     "industry_peer_count": 41
   },
   {
-    "company": "Allbirds",
-    "ticker": "",
-    "industry": "retail",
-    "composite": 67,
-    "industry_average": 58,
-    "gap_from_industry": 8.7,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.4,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 8.3,
-      "U": 1.1,
-      "M": 6.0,
-      "A": 18.4,
-      "N": 9.3
-    },
-    "worst_dimension": "U",
-    "best_dimension": "A",
-    "industry_peer_count": 61
-  },
-  {
     "company": "Levi Strauss & Co.",
     "ticker": "",
     "industry": "retail",
     "composite": 50,
     "industry_average": 58,
-    "gap_from_industry": -8.3,
+    "gap_from_industry": -7.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -4.7,
-      "U": -8.9,
-      "M": -10.0,
-      "A": -5.6,
-      "N": -10.7
+      "H": -3.6,
+      "U": -8.5,
+      "M": -9.6,
+      "A": -5.4,
+      "N": -10.6
     },
     "worst_dimension": "N",
     "best_dimension": "H",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "Toyota",
@@ -4467,68 +4444,68 @@
     "industry": "retail",
     "composite": 50,
     "industry_average": 58,
-    "gap_from_industry": -8.3,
+    "gap_from_industry": -7.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -1.7,
-      "U": -8.9,
-      "M": -10.0,
-      "A": -5.6,
-      "N": -15.7
+      "H": -0.6,
+      "U": -8.5,
+      "M": -9.6,
+      "A": -5.4,
+      "N": -15.6
     },
     "worst_dimension": "N",
     "best_dimension": "H",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "Leatherman",
     "ticker": "",
     "industry": "manufacturing",
     "composite": 66,
-    "industry_average": 59,
-    "gap_from_industry": 7.4,
+    "industry_average": 58,
+    "gap_from_industry": 8.4,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 13.8,
-      "U": 2.4,
-      "M": 25.2,
-      "A": 2.4,
-      "N": -8.0
+      "H": 15.6,
+      "U": 2.9,
+      "M": 28.8,
+      "A": 2.8,
+      "N": -9.1
     },
     "worst_dimension": "N",
     "best_dimension": "M",
-    "industry_peer_count": 16
+    "industry_peer_count": 14
   },
   {
     "company": "Vitamix",
     "ticker": "",
     "industry": "manufacturing",
     "composite": 66,
-    "industry_average": 59,
-    "gap_from_industry": 7.4,
+    "industry_average": 58,
+    "gap_from_industry": 8.4,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 10.8,
-      "U": 5.4,
-      "M": 25.2,
-      "A": 2.4,
-      "N": -8.0
+      "H": 12.6,
+      "U": 5.9,
+      "M": 28.8,
+      "A": 2.8,
+      "N": -9.1
     },
     "worst_dimension": "N",
     "best_dimension": "M",
-    "industry_peer_count": 16
+    "industry_peer_count": 14
   },
   {
     "company": "Le Creuset",
@@ -4536,22 +4513,22 @@
     "industry": "default",
     "composite": 65,
     "industry_average": 58,
-    "gap_from_industry": 7.0,
+    "gap_from_industry": 7.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.4,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 24.4,
-      "U": 6.7,
-      "M": 5.7,
-      "A": -1.0,
+      "H": 25.3,
+      "U": 6.9,
+      "M": 5.9,
+      "A": -1.1,
       "N": -0.9
     },
     "worst_dimension": "A",
     "best_dimension": "H",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
   },
   {
     "company": "Pela Case",
@@ -4575,98 +4552,6 @@
     "worst_dimension": "N",
     "best_dimension": "A",
     "industry_peer_count": 126
-  },
-  {
-    "company": "Leatherman",
-    "ticker": "",
-    "industry": "manufacturing",
-    "composite": 66,
-    "industry_average": 59,
-    "gap_from_industry": 7.4,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.4,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 13.8,
-      "U": 2.4,
-      "M": 25.2,
-      "A": 2.4,
-      "N": -8.0
-    },
-    "worst_dimension": "N",
-    "best_dimension": "M",
-    "industry_peer_count": 16
-  },
-  {
-    "company": "Vitamix",
-    "ticker": "",
-    "industry": "manufacturing",
-    "composite": 66,
-    "industry_average": 59,
-    "gap_from_industry": 7.4,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.4,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 10.8,
-      "U": 5.4,
-      "M": 25.2,
-      "A": 2.4,
-      "N": -8.0
-    },
-    "worst_dimension": "N",
-    "best_dimension": "M",
-    "industry_peer_count": 16
-  },
-  {
-    "company": "Le Creuset",
-    "ticker": "",
-    "industry": "default",
-    "composite": 65,
-    "industry_average": 58,
-    "gap_from_industry": 7.0,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.4,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 24.4,
-      "U": 6.7,
-      "M": 5.7,
-      "A": -1.0,
-      "N": -0.9
-    },
-    "worst_dimension": "A",
-    "best_dimension": "H",
-    "industry_peer_count": 29
-  },
-  {
-    "company": "Costco Wholesale Corporation",
-    "ticker": "COST",
-    "industry": "retail",
-    "composite": 65,
-    "industry_average": 58,
-    "gap_from_industry": 6.7,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.3,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 13.3,
-      "U": 10.1,
-      "M": 14.0,
-      "A": -7.6,
-      "N": 1.3
-    },
-    "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 61
   },
   {
     "company": "BANK OF AMERICA CORP /DE/",
@@ -5175,6 +5060,29 @@
     "industry_peer_count": 41
   },
   {
+    "company": "LOWES COMPANIES INC",
+    "ticker": "LOW",
+    "industry": "retail",
+    "composite": 60,
+    "industry_average": 58,
+    "gap_from_industry": 2.1,
+    "influence_weight": 0.15,
+    "contagion_magnitude": 0.3,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -11.6,
+      "U": 6.5,
+      "M": 7.4,
+      "A": -1.4,
+      "N": 9.4
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 58
+  },
+  {
     "company": "Mastercard Inc",
     "ticker": "MA",
     "industry": "tech",
@@ -5219,6 +5127,29 @@
     "worst_dimension": "H",
     "best_dimension": "U",
     "industry_peer_count": 126
+  },
+  {
+    "company": "PACKAGING CORP OF AMERICA",
+    "ticker": "PKG",
+    "industry": "default",
+    "composite": 59,
+    "industry_average": 58,
+    "gap_from_industry": 1.3,
+    "influence_weight": 0.22,
+    "contagion_magnitude": 0.3,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 1.3,
+      "U": -3.1,
+      "M": 1.9,
+      "A": -5.1,
+      "N": 11.1
+    },
+    "worst_dimension": "A",
+    "best_dimension": "N",
+    "industry_peer_count": 28
   },
   {
     "company": "QUALCOMM INC/DE",
@@ -5433,22 +5364,22 @@
     "industry": "retail",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -2.3,
+    "gap_from_industry": -1.9,
     "influence_weight": 0.133,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -16.7,
-      "U": -2.9,
-      "M": 2.0,
-      "A": -2.6,
-      "N": 9.3
+      "H": -15.6,
+      "U": -2.5,
+      "M": 2.4,
+      "A": -2.4,
+      "N": 9.4
     },
     "worst_dimension": "H",
     "best_dimension": "N",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "Warner Bros. Discovery, Inc.",
@@ -5479,22 +5410,22 @@
     "industry": "default",
     "composite": 51,
     "industry_average": 58,
-    "gap_from_industry": -7.0,
+    "gap_from_industry": -6.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -3.6,
-      "U": 0.7,
-      "M": -2.3,
-      "A": -5.0,
+      "H": -2.7,
+      "U": 0.9,
+      "M": -2.1,
+      "A": -5.1,
       "N": -23.9
     },
     "worst_dimension": "N",
     "best_dimension": "U",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
   },
   {
     "company": "Snap Inc",
@@ -5541,29 +5472,6 @@
     "worst_dimension": "N",
     "best_dimension": "H",
     "industry_peer_count": 126
-  },
-  {
-    "company": "Nordstrom",
-    "ticker": "",
-    "industry": "retail",
-    "composite": 53,
-    "industry_average": 58,
-    "gap_from_industry": -5.3,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.3,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 1.3,
-      "U": 6.1,
-      "M": -7.0,
-      "A": -11.6,
-      "N": -15.7
-    },
-    "worst_dimension": "N",
-    "best_dimension": "U",
-    "industry_peer_count": 61
   },
   {
     "company": "Aspiration",
@@ -5635,6 +5543,29 @@
     "industry_peer_count": 126
   },
   {
+    "company": "Bombas",
+    "ticker": "",
+    "industry": "retail",
+    "composite": 63,
+    "industry_average": 58,
+    "gap_from_industry": 5.1,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.3,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 6.4,
+      "U": 9.5,
+      "M": 10.4,
+      "A": -1.4,
+      "N": 1.4
+    },
+    "worst_dimension": "A",
+    "best_dimension": "M",
+    "industry_peer_count": 58
+  },
+  {
     "company": "Beyond Meat",
     "ticker": "",
     "industry": "food",
@@ -5663,45 +5594,45 @@
     "industry": "retail",
     "composite": 52,
     "industry_average": 58,
-    "gap_from_industry": -6.3,
+    "gap_from_industry": -5.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -1.7,
-      "U": 6.1,
-      "M": -7.0,
-      "A": -15.6,
-      "N": -15.7
+      "H": -0.6,
+      "U": 6.5,
+      "M": -6.6,
+      "A": -15.4,
+      "N": -15.6
     },
     "worst_dimension": "N",
     "best_dimension": "U",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
-    "company": "Zappos",
+    "company": "Grove Collaborative",
     "ticker": "",
     "industry": "retail",
-    "composite": 53,
+    "composite": 63,
     "industry_average": 58,
-    "gap_from_industry": -5.3,
+    "gap_from_industry": 5.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 1.3,
-      "U": 9.1,
-      "M": -7.0,
-      "A": -15.6,
-      "N": -12.7
+      "H": 2.4,
+      "U": -0.5,
+      "M": 3.4,
+      "A": 18.6,
+      "N": 1.4
     },
-    "worst_dimension": "A",
-    "best_dimension": "U",
-    "industry_peer_count": 61
+    "worst_dimension": "U",
+    "best_dimension": "A",
+    "industry_peer_count": 58
   },
   {
     "company": "Pact",
@@ -5709,22 +5640,22 @@
     "industry": "retail",
     "composite": 64,
     "industry_average": 58,
-    "gap_from_industry": 5.7,
+    "gap_from_industry": 6.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 3.3,
-      "U": -3.9,
-      "M": 6.0,
-      "A": 16.4,
-      "N": 4.3
+      "H": 4.4,
+      "U": -3.5,
+      "M": 6.4,
+      "A": 16.6,
+      "N": 4.4
     },
     "worst_dimension": "U",
     "best_dimension": "A",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "Wegmans",
@@ -5732,22 +5663,22 @@
     "industry": "retail",
     "composite": 64,
     "industry_average": 58,
-    "gap_from_industry": 5.7,
+    "gap_from_industry": 6.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 15.3,
-      "U": 16.1,
-      "M": 8.0,
-      "A": -3.6,
-      "N": -8.7
+      "H": 16.4,
+      "U": 16.5,
+      "M": 8.4,
+      "A": -3.4,
+      "N": -8.6
     },
     "worst_dimension": "N",
     "best_dimension": "U",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "Nike, Inc.",
@@ -6047,6 +5978,29 @@
     "worst_dimension": "U",
     "best_dimension": "H",
     "industry_peer_count": 40
+  },
+  {
+    "company": "BEST BUY CO INC",
+    "ticker": "BBY",
+    "industry": "retail",
+    "composite": 61,
+    "industry_average": 58,
+    "gap_from_industry": 3.1,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.2,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -8.6,
+      "U": 6.5,
+      "M": 8.4,
+      "A": -1.4,
+      "N": 9.4
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 58
   },
   {
     "company": "BlackRock, Inc.",
@@ -6392,6 +6346,29 @@
     "worst_dimension": "U",
     "best_dimension": "H",
     "industry_peer_count": 126
+  },
+  {
+    "company": "ROSS STORES, INC.",
+    "ticker": "ROST",
+    "industry": "retail",
+    "composite": 61,
+    "industry_average": 58,
+    "gap_from_industry": 3.1,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.2,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 5.4,
+      "U": -2.5,
+      "M": 2.4,
+      "A": -1.4,
+      "N": 9.4
+    },
+    "worst_dimension": "U",
+    "best_dimension": "N",
+    "industry_peer_count": 58
   },
   {
     "company": "S&P Global Inc.",
@@ -6762,29 +6739,6 @@
     "industry_peer_count": 126
   },
   {
-    "company": "LOWES COMPANIES INC",
-    "ticker": "LOW",
-    "industry": "retail",
-    "composite": 60,
-    "industry_average": 58,
-    "gap_from_industry": 1.7,
-    "influence_weight": 0.15,
-    "contagion_magnitude": 0.2,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -12.7,
-      "U": 6.1,
-      "M": 7.0,
-      "A": -1.6,
-      "N": 9.3
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 61
-  },
-  {
     "company": "Okta, Inc.",
     "ticker": "OKTA",
     "industry": "tech",
@@ -6946,29 +6900,6 @@
     "industry_peer_count": 40
   },
   {
-    "company": "PACKAGING CORP OF AMERICA",
-    "ticker": "PKG",
-    "industry": "default",
-    "composite": 59,
-    "industry_average": 58,
-    "gap_from_industry": 1.0,
-    "influence_weight": 0.22,
-    "contagion_magnitude": 0.2,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 0.4,
-      "U": -3.3,
-      "M": 1.7,
-      "A": -5.0,
-      "N": 11.1
-    },
-    "worst_dimension": "A",
-    "best_dimension": "N",
-    "industry_peer_count": 29
-  },
-  {
     "company": "SOUTHWEST AIRLINES CO",
     "ticker": "LUV",
     "industry": "transportation",
@@ -7020,22 +6951,22 @@
     "industry": "default",
     "composite": 59,
     "industry_average": 58,
-    "gap_from_industry": 1.0,
+    "gap_from_industry": 1.3,
     "influence_weight": 0.157,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -0.6,
-      "U": -3.3,
-      "M": 1.7,
-      "A": -5.0,
+      "H": 0.3,
+      "U": -3.1,
+      "M": 1.9,
+      "A": -5.1,
       "N": 11.1
     },
     "worst_dimension": "A",
     "best_dimension": "N",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
   },
   {
     "company": "Monster Beverage Corp",
@@ -7158,22 +7089,45 @@
     "industry": "retail",
     "composite": 62,
     "industry_average": 58,
-    "gap_from_industry": 3.7,
+    "gap_from_industry": 4.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 15.3,
-      "U": 16.1,
-      "M": 6.0,
-      "A": -1.6,
-      "N": -15.7
+      "H": 16.4,
+      "U": 16.5,
+      "M": 6.4,
+      "A": -1.4,
+      "N": -15.6
     },
     "worst_dimension": "N",
     "best_dimension": "U",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Nordstrom",
+    "ticker": "",
+    "industry": "retail",
+    "composite": 53,
+    "industry_average": 58,
+    "gap_from_industry": -4.9,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.2,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 2.4,
+      "U": 6.5,
+      "M": -6.6,
+      "A": -11.4,
+      "N": -15.6
+    },
+    "worst_dimension": "N",
+    "best_dimension": "U",
+    "industry_peer_count": 58
   },
   {
     "company": "Everlane",
@@ -7181,22 +7135,22 @@
     "industry": "retail",
     "composite": 54,
     "industry_average": 58,
-    "gap_from_industry": -4.3,
+    "gap_from_industry": -3.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -1.7,
-      "U": -10.9,
-      "M": -10.0,
-      "A": 1.4,
-      "N": 1.3
+      "H": -0.6,
+      "U": -10.5,
+      "M": -9.6,
+      "A": 1.6,
+      "N": 1.4
     },
     "worst_dimension": "U",
     "best_dimension": "A",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "Vita Coco",
@@ -7245,27 +7199,50 @@
     "industry_peer_count": 126
   },
   {
-    "company": "Bombas",
+    "company": "TOMS",
     "ticker": "",
     "industry": "retail",
-    "composite": 63,
+    "composite": 61,
     "industry_average": 58,
-    "gap_from_industry": 4.7,
+    "gap_from_industry": 3.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 5.3,
-      "U": 9.1,
-      "M": 10.0,
-      "A": -1.6,
-      "N": 1.3
+      "H": 4.4,
+      "U": 6.5,
+      "M": 6.4,
+      "A": -1.4,
+      "N": -2.6
+    },
+    "worst_dimension": "N",
+    "best_dimension": "U",
+    "industry_peer_count": 58
+  },
+  {
+    "company": "Zappos",
+    "ticker": "",
+    "industry": "retail",
+    "composite": 53,
+    "industry_average": 58,
+    "gap_from_industry": -4.9,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.2,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 2.4,
+      "U": 9.5,
+      "M": -6.6,
+      "A": -15.4,
+      "N": -12.6
     },
     "worst_dimension": "A",
-    "best_dimension": "M",
-    "industry_peer_count": 61
+    "best_dimension": "U",
+    "industry_peer_count": 58
   },
   {
     "company": "Hydro Flask",
@@ -7273,45 +7250,45 @@
     "industry": "retail",
     "composite": 54,
     "industry_average": 58,
-    "gap_from_industry": -4.3,
+    "gap_from_industry": -3.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -1.7,
-      "U": -8.9,
-      "M": -7.0,
-      "A": 4.4,
-      "N": -10.7
+      "H": -0.6,
+      "U": -8.5,
+      "M": -6.6,
+      "A": 4.6,
+      "N": -10.6
     },
     "worst_dimension": "N",
     "best_dimension": "A",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
-    "company": "Grove Collaborative",
+    "company": "Birkenstock",
     "ticker": "",
     "industry": "retail",
-    "composite": 63,
+    "composite": 61,
     "industry_average": 58,
-    "gap_from_industry": 4.7,
+    "gap_from_industry": 3.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 1.3,
-      "U": -0.9,
-      "M": 3.0,
-      "A": 18.4,
-      "N": 1.3
+      "H": 16.4,
+      "U": 1.5,
+      "M": 0.4,
+      "A": 4.6,
+      "N": -5.6
     },
-    "worst_dimension": "U",
-    "best_dimension": "A",
-    "industry_peer_count": 61
+    "worst_dimension": "N",
+    "best_dimension": "H",
+    "industry_peer_count": 58
   },
   {
     "company": "YUM BRANDS INC",
@@ -7360,29 +7337,6 @@
     "industry_peer_count": 36
   },
   {
-    "company": "BEST BUY CO INC",
-    "ticker": "BBY",
-    "industry": "retail",
-    "composite": 61,
-    "industry_average": 58,
-    "gap_from_industry": 2.7,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.1,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -9.7,
-      "U": 6.1,
-      "M": 8.0,
-      "A": -1.6,
-      "N": 9.3
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 61
-  },
-  {
     "company": "OLD DOMINION FREIGHT LINE, INC.",
     "ticker": "ODFL",
     "industry": "transportation",
@@ -7429,29 +7383,6 @@
     "industry_peer_count": 36
   },
   {
-    "company": "ROSS STORES, INC.",
-    "ticker": "ROST",
-    "industry": "retail",
-    "composite": 61,
-    "industry_average": 58,
-    "gap_from_industry": 2.7,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.1,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 4.3,
-      "U": -2.9,
-      "M": 2.0,
-      "A": -1.6,
-      "N": 9.3
-    },
-    "worst_dimension": "U",
-    "best_dimension": "N",
-    "industry_peer_count": 61
-  },
-  {
     "company": "ABBOTT LABORATORIES",
     "ticker": "ABT",
     "industry": "healthcare",
@@ -7480,22 +7411,22 @@
     "industry": "default",
     "composite": 60,
     "industry_average": 58,
-    "gap_from_industry": 2.0,
+    "gap_from_industry": 2.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -3.6,
-      "U": 4.7,
-      "M": 2.7,
-      "A": 9.0,
+      "H": -2.7,
+      "U": 4.9,
+      "M": 2.9,
+      "A": 8.9,
       "N": -3.9
     },
     "worst_dimension": "N",
     "best_dimension": "A",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
   },
   {
     "company": "Bank of New York Mellon Corp",
@@ -7751,6 +7682,29 @@
     "industry_peer_count": 126
   },
   {
+    "company": "Aptiv PLC",
+    "ticker": "APTV",
+    "industry": "manufacturing",
+    "composite": 59,
+    "industry_average": 58,
+    "gap_from_industry": 1.4,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.1,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -8.4,
+      "U": -7.1,
+      "M": 20.8,
+      "A": -2.2,
+      "N": -1.1
+    },
+    "worst_dimension": "H",
+    "best_dimension": "M",
+    "industry_peer_count": 14
+  },
+  {
     "company": "BILL Holdings, Inc.",
     "ticker": "BILL",
     "industry": "tech",
@@ -7981,6 +7935,29 @@
     "industry_peer_count": 126
   },
   {
+    "company": "PACCAR INC",
+    "ticker": "PCAR",
+    "industry": "manufacturing",
+    "composite": 59,
+    "industry_average": 58,
+    "gap_from_industry": 1.4,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.1,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -8.4,
+      "U": -7.1,
+      "M": 20.8,
+      "A": -2.2,
+      "N": -1.1
+    },
+    "worst_dimension": "H",
+    "best_dimension": "M",
+    "industry_peer_count": 14
+  },
+  {
     "company": "Public Storage",
     "ticker": "PSA",
     "industry": "finance",
@@ -8188,29 +8165,6 @@
     "industry_peer_count": 40
   },
   {
-    "company": "KROGER CO",
-    "ticker": "KR",
-    "industry": "retail",
-    "composite": 58,
-    "industry_average": 58,
-    "gap_from_industry": -0.3,
-    "influence_weight": 0.258,
-    "contagion_magnitude": 0.1,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -7.7,
-      "U": -2.9,
-      "M": -2.0,
-      "A": 1.4,
-      "N": 9.3
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 61
-  },
-  {
     "company": "LAM RESEARCH CORP",
     "ticker": "LRCX",
     "industry": "tech",
@@ -8326,6 +8280,29 @@
     "industry_peer_count": 126
   },
   {
+    "company": "STEEL DYNAMICS INC",
+    "ticker": "STLD",
+    "industry": "default",
+    "composite": 58,
+    "industry_average": 58,
+    "gap_from_industry": 0.3,
+    "influence_weight": 0.271,
+    "contagion_magnitude": 0.1,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -3.7,
+      "U": -3.1,
+      "M": 1.9,
+      "A": -5.1,
+      "N": 11.1
+    },
+    "worst_dimension": "A",
+    "best_dimension": "N",
+    "industry_peer_count": 28
+  },
+  {
     "company": "TEXAS INSTRUMENTS INC",
     "ticker": "TXN",
     "industry": "tech",
@@ -8370,29 +8347,6 @@
     "worst_dimension": "U",
     "best_dimension": "N",
     "industry_peer_count": 126
-  },
-  {
-    "company": "Wayfair Inc.",
-    "ticker": "W",
-    "industry": "retail",
-    "composite": 57,
-    "industry_average": 58,
-    "gap_from_industry": -1.3,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.1,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -18.7,
-      "U": -2.9,
-      "M": 8.0,
-      "A": -1.6,
-      "N": 9.3
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 61
   },
   {
     "company": "AMERICAN TOWER CORP /MA/",
@@ -8469,22 +8423,22 @@
     "industry": "retail",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -2.3,
+    "gap_from_industry": -1.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -17.7,
-      "U": -2.9,
-      "M": 2.0,
-      "A": -2.6,
-      "N": 9.3
+      "H": -16.6,
+      "U": -2.5,
+      "M": 2.4,
+      "A": -2.4,
+      "N": 9.4
     },
     "worst_dimension": "H",
     "best_dimension": "N",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "McDonald's Corporation",
@@ -8492,22 +8446,22 @@
     "industry": "default",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -2.0,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 8.4,
-      "U": -2.3,
-      "M": -1.3,
-      "A": -0.0,
+      "H": 9.3,
+      "U": -2.1,
+      "M": -1.1,
+      "A": -0.1,
       "N": -13.9
     },
     "worst_dimension": "N",
     "best_dimension": "H",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
   },
   {
     "company": "POOL CORP",
@@ -8515,22 +8469,22 @@
     "industry": "retail",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -2.3,
+    "gap_from_industry": -1.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -18.7,
-      "U": -2.9,
-      "M": 2.0,
-      "A": -1.6,
-      "N": 9.3
+      "H": -17.6,
+      "U": -2.5,
+      "M": 2.4,
+      "A": -1.4,
+      "N": 9.4
     },
     "worst_dimension": "H",
     "best_dimension": "N",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "Prologis, Inc.",
@@ -8607,22 +8561,22 @@
     "industry": "default",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -2.0,
+    "gap_from_industry": -1.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -3.6,
-      "U": 14.7,
-      "M": 6.7,
-      "A": -5.0,
+      "H": -2.7,
+      "U": 14.9,
+      "M": 6.9,
+      "A": -5.1,
       "N": -23.9
     },
     "worst_dimension": "N",
     "best_dimension": "U",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
   },
   {
     "company": "W.W. GRAINGER, INC.",
@@ -8630,22 +8584,22 @@
     "industry": "retail",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -2.3,
+    "gap_from_industry": -1.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -16.7,
-      "U": -2.9,
-      "M": 2.0,
-      "A": -1.6,
-      "N": 9.3
+      "H": -15.6,
+      "U": -2.5,
+      "M": 2.4,
+      "A": -1.4,
+      "N": 9.4
     },
     "worst_dimension": "H",
     "best_dimension": "N",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "3M CO",
@@ -8883,22 +8837,22 @@
     "industry": "retail",
     "composite": 56,
     "industry_average": 58,
-    "gap_from_industry": -2.3,
+    "gap_from_industry": -1.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -1.7,
-      "U": -0.9,
-      "M": -7.0,
-      "A": 8.4,
-      "N": -8.7
+      "H": -0.6,
+      "U": -0.5,
+      "M": -6.6,
+      "A": 8.6,
+      "N": -8.6
     },
     "worst_dimension": "N",
     "best_dimension": "A",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "Subaru",
@@ -8922,52 +8876,6 @@
     "worst_dimension": "N",
     "best_dimension": "A",
     "industry_peer_count": 6
-  },
-  {
-    "company": "TOMS",
-    "ticker": "",
-    "industry": "retail",
-    "composite": 61,
-    "industry_average": 58,
-    "gap_from_industry": 2.7,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.1,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 3.3,
-      "U": 6.1,
-      "M": 6.0,
-      "A": -1.6,
-      "N": -2.7
-    },
-    "worst_dimension": "N",
-    "best_dimension": "U",
-    "industry_peer_count": 61
-  },
-  {
-    "company": "Warby Parker",
-    "ticker": "",
-    "industry": "retail",
-    "composite": 57,
-    "industry_average": 58,
-    "gap_from_industry": -1.3,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.1,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 1.3,
-      "U": 1.1,
-      "M": 0.0,
-      "A": -5.6,
-      "N": -2.7
-    },
-    "worst_dimension": "A",
-    "best_dimension": "H",
-    "industry_peer_count": 61
   },
   {
     "company": "Impossible Foods",
@@ -9039,73 +8947,50 @@
     "industry_peer_count": 41
   },
   {
-    "company": "Birkenstock",
-    "ticker": "",
-    "industry": "retail",
-    "composite": 61,
-    "industry_average": 58,
-    "gap_from_industry": 2.7,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.1,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 15.3,
-      "U": 1.1,
-      "M": 0.0,
-      "A": 4.4,
-      "N": -5.7
-    },
-    "worst_dimension": "N",
-    "best_dimension": "H",
-    "industry_peer_count": 61
-  },
-  {
     "company": "Reformation",
     "ticker": "",
     "industry": "retail",
     "composite": 60,
     "industry_average": 58,
-    "gap_from_industry": 1.7,
+    "gap_from_industry": 2.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -1.7,
-      "U": -8.9,
-      "M": -4.0,
-      "A": 18.4,
-      "N": 4.3
+      "H": -0.6,
+      "U": -8.5,
+      "M": -3.6,
+      "A": 18.6,
+      "N": 4.4
     },
     "worst_dimension": "U",
     "best_dimension": "A",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
-    "company": "Birkenstock",
+    "company": "Publix",
     "ticker": "",
     "industry": "retail",
-    "composite": 61,
+    "composite": 59,
     "industry_average": 58,
-    "gap_from_industry": 2.7,
+    "gap_from_industry": 1.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": 15.3,
-      "U": 1.1,
-      "M": 0.0,
-      "A": 4.4,
-      "N": -5.7
+      "H": 12.4,
+      "U": 11.5,
+      "M": 0.4,
+      "A": -8.4,
+      "N": -12.6
     },
     "worst_dimension": "N",
     "best_dimension": "H",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "MARRIOTT INTERNATIONAL INC /MD/",
@@ -9246,29 +9131,6 @@
     "industry_peer_count": 36
   },
   {
-    "company": "Aptiv PLC",
-    "ticker": "APTV",
-    "industry": "manufacturing",
-    "composite": 59,
-    "industry_average": 59,
-    "gap_from_industry": 0.4,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.0,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -10.2,
-      "U": -7.6,
-      "M": 17.2,
-      "A": -2.6,
-      "N": 0.0
-    },
-    "worst_dimension": "H",
-    "best_dimension": "M",
-    "industry_peer_count": 16
-  },
-  {
     "company": "CF Industries Holdings, Inc.",
     "ticker": "CF",
     "industry": "healthcare",
@@ -9361,29 +9223,6 @@
     "industry_peer_count": 36
   },
   {
-    "company": "PACCAR INC",
-    "ticker": "PCAR",
-    "industry": "manufacturing",
-    "composite": 59,
-    "industry_average": 59,
-    "gap_from_industry": 0.4,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.0,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -10.2,
-      "U": -7.6,
-      "M": 17.2,
-      "A": -2.6,
-      "N": 0.0
-    },
-    "worst_dimension": "H",
-    "best_dimension": "M",
-    "industry_peer_count": 16
-  },
-  {
     "company": "VERTEX PHARMACEUTICALS INC / MA",
     "ticker": "VRTX",
     "industry": "healthcare",
@@ -9458,22 +9297,22 @@
     "industry": "retail",
     "composite": 58,
     "industry_average": 58,
-    "gap_from_industry": -0.3,
+    "gap_from_industry": 0.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -9.7,
-      "U": -2.9,
-      "M": 2.0,
-      "A": -1.6,
-      "N": 9.3
+      "H": -8.6,
+      "U": -2.5,
+      "M": 2.4,
+      "A": -1.4,
+      "N": 9.4
     },
     "worst_dimension": "H",
     "best_dimension": "N",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "GENUINE PARTS CO",
@@ -9481,22 +9320,22 @@
     "industry": "retail",
     "composite": 58,
     "industry_average": 58,
-    "gap_from_industry": -0.3,
+    "gap_from_industry": 0.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -8.7,
-      "U": -2.9,
-      "M": 2.0,
-      "A": -1.6,
-      "N": 9.3
+      "H": -7.6,
+      "U": -2.5,
+      "M": 2.4,
+      "A": -1.4,
+      "N": 9.4
     },
     "worst_dimension": "H",
     "best_dimension": "N",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "INTERNATIONAL PAPER CO /NEW/",
@@ -9504,22 +9343,45 @@
     "industry": "default",
     "composite": 58,
     "industry_average": 58,
-    "gap_from_industry": 0.0,
+    "gap_from_industry": 0.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -3.6,
-      "U": -3.3,
-      "M": 1.7,
-      "A": -5.0,
+      "H": -2.7,
+      "U": -3.1,
+      "M": 1.9,
+      "A": -5.1,
       "N": 11.1
     },
     "worst_dimension": "A",
     "best_dimension": "N",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
+  },
+  {
+    "company": "KROGER CO",
+    "ticker": "KR",
+    "industry": "retail",
+    "composite": 58,
+    "industry_average": 58,
+    "gap_from_industry": 0.1,
+    "influence_weight": 0.258,
+    "contagion_magnitude": 0.0,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -6.6,
+      "U": -2.5,
+      "M": -1.6,
+      "A": 1.6,
+      "N": 9.4
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 58
   },
   {
     "company": "MARTIN MARIETTA MATERIALS INC",
@@ -9527,22 +9389,22 @@
     "industry": "default",
     "composite": 58,
     "industry_average": 58,
-    "gap_from_industry": 0.0,
+    "gap_from_industry": 0.3,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -3.6,
-      "U": -3.3,
-      "M": 1.7,
-      "A": -5.0,
+      "H": -2.7,
+      "U": -3.1,
+      "M": 1.9,
+      "A": -5.1,
       "N": 11.1
     },
     "worst_dimension": "A",
     "best_dimension": "N",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
   },
   {
     "company": "MCKESSON CORP",
@@ -9550,22 +9412,22 @@
     "industry": "retail",
     "composite": 58,
     "industry_average": 58,
-    "gap_from_industry": -0.3,
+    "gap_from_industry": 0.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -7.7,
-      "U": -2.9,
-      "M": 2.0,
-      "A": -2.6,
-      "N": 9.3
+      "H": -6.6,
+      "U": -2.5,
+      "M": 2.4,
+      "A": -2.4,
+      "N": 9.4
     },
     "worst_dimension": "H",
     "best_dimension": "N",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "MID AMERICA APARTMENT COMMUNITIES INC.",
@@ -9619,22 +9481,22 @@
     "industry": "retail",
     "composite": 58,
     "industry_average": 58,
-    "gap_from_industry": -0.3,
+    "gap_from_industry": 0.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -8.7,
-      "U": -2.9,
-      "M": 2.0,
-      "A": -1.6,
-      "N": 9.3
+      "H": -7.6,
+      "U": -2.5,
+      "M": 2.4,
+      "A": -1.4,
+      "N": 9.4
     },
     "worst_dimension": "H",
     "best_dimension": "N",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   },
   {
     "company": "STATE STREET CORP",
@@ -9658,29 +9520,6 @@
     "worst_dimension": "M",
     "best_dimension": "A",
     "industry_peer_count": 53
-  },
-  {
-    "company": "STEEL DYNAMICS INC",
-    "ticker": "STLD",
-    "industry": "default",
-    "composite": 58,
-    "industry_average": 58,
-    "gap_from_industry": 0.0,
-    "influence_weight": 0.271,
-    "contagion_magnitude": 0.0,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -4.6,
-      "U": -3.3,
-      "M": 1.7,
-      "A": -5.0,
-      "N": 11.1
-    },
-    "worst_dimension": "A",
-    "best_dimension": "N",
-    "industry_peer_count": 29
   },
   {
     "company": "WELLS FARGO & COMPANY/MN",
@@ -9872,22 +9711,22 @@
     "industry": "default",
     "composite": 57,
     "industry_average": 58,
-    "gap_from_industry": -1.0,
+    "gap_from_industry": -0.7,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -3.6,
-      "U": -3.3,
-      "M": -4.3,
-      "A": -5.0,
+      "H": -2.7,
+      "U": -3.1,
+      "M": -4.1,
+      "A": -5.1,
       "N": 11.1
     },
     "worst_dimension": "A",
     "best_dimension": "N",
-    "industry_peer_count": 29
+    "industry_peer_count": 28
   },
   {
     "company": "KLA CORP",
@@ -10026,6 +9865,29 @@
     "worst_dimension": "H",
     "best_dimension": "N",
     "industry_peer_count": 126
+  },
+  {
+    "company": "Wayfair Inc.",
+    "ticker": "W",
+    "industry": "retail",
+    "composite": 57,
+    "industry_average": 58,
+    "gap_from_industry": -0.9,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.0,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -17.6,
+      "U": -2.5,
+      "M": 8.4,
+      "A": -1.4,
+      "N": 9.4
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 58
   },
   {
     "company": "WILLIAMS COMPANIES, INC.",
@@ -10189,49 +10051,49 @@
     "industry_peer_count": 6
   },
   {
+    "company": "Warby Parker",
+    "ticker": "",
+    "industry": "retail",
+    "composite": 57,
+    "industry_average": 58,
+    "gap_from_industry": -0.9,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.0,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 2.4,
+      "U": 1.5,
+      "M": 0.4,
+      "A": -5.4,
+      "N": -2.6
+    },
+    "worst_dimension": "A",
+    "best_dimension": "H",
+    "industry_peer_count": 58
+  },
+  {
     "company": "Thrive Market",
     "ticker": "",
     "industry": "retail",
     "composite": 58,
     "industry_average": 58,
-    "gap_from_industry": -0.3,
+    "gap_from_industry": 0.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
-      "H": -1.7,
-      "U": 1.1,
-      "M": 0.0,
-      "A": 4.4,
-      "N": -5.7
+      "H": -0.6,
+      "U": 1.5,
+      "M": 0.4,
+      "A": 4.6,
+      "N": -5.6
     },
     "worst_dimension": "N",
     "best_dimension": "A",
-    "industry_peer_count": 61
-  },
-  {
-    "company": "Publix",
-    "ticker": "",
-    "industry": "retail",
-    "composite": 59,
-    "industry_average": 58,
-    "gap_from_industry": 0.7,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.0,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 11.3,
-      "U": 11.1,
-      "M": 0.0,
-      "A": -8.6,
-      "N": -12.7
-    },
-    "worst_dimension": "N",
-    "best_dimension": "H",
-    "industry_peer_count": 61
+    "industry_peer_count": 58
   }
 ]
