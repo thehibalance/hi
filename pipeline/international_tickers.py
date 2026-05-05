@@ -471,12 +471,35 @@ INTL_DOMAINS = {
 
 
 def get_international_tickers():
-    """Return deduplicated list of all international tickers."""
+    """Return deduplicated list of ALL international tickers, including foreign-listed.
+    Use this for Yahoo Finance / Finnhub which support foreign exchanges (.L, .T, .DE)."""
     all_tickers = set()
     for t in FTSE_100 + DAX_40 + CAC_40 + NIKKEI_225 + GLOBAL_MAJORS:
         t = t.strip()
         if t:
             all_tickers.add(t)
+    return sorted(all_tickers)
+
+
+def get_us_listed_tickers():
+    """v1.2.0: Return only US-listed ADRs (no country suffix).
+    
+    Use this for SEC EDGAR collection — SEC cannot fetch foreign filers, so
+    sending it tickers like '7203.T' or 'AAL.L' creates ghost records and
+    wastes API calls. ADR tickers (SHEL, BP, HSBC, AZN, etc.) trade on
+    NYSE/NASDAQ and have full SEC filings via 20-F (or 10-K for some)."""
+    all_tickers = set()
+    for t in FTSE_100 + DAX_40 + CAC_40 + NIKKEI_225 + GLOBAL_MAJORS:
+        t = t.strip()
+        if not t:
+            continue
+        # Skip tickers with foreign-exchange suffixes
+        # (.L London, .T Tokyo, .DE Germany, .PA Paris, .HK Hong Kong, .KS Korea,
+        #  .SZ Shenzhen, .SS Shanghai, .AX Australia, .TO Toronto, .MI Milan, etc.)
+        if "." in t and not t.endswith(".B") and not t.endswith(".A"):
+            # Has a dot AND it's not a US class share (BRK.B, BF.B style)
+            continue
+        all_tickers.add(t.upper())
     return sorted(all_tickers)
 
 

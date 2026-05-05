@@ -109,21 +109,33 @@ RUSSELL_1000_ADDITIONS = [
 ]
 
 def get_all_tickers():
-    """Return deduplicated list of all tickers (US + international)."""
+    """Return deduplicated list of all tickers (US + ADRs of international).
+    
+    v1.2.0: now uses get_us_listed_tickers() so foreign-exchange tickers
+    (.L, .T, .DE, .HK etc.) are excluded. SEC EDGAR cannot fetch them, and
+    they previously caused ghost records in the SEC aggregate."""
     all_tickers = set()
     for t in SP500 + RUSSELL_1000_ADDITIONS:
         t = t.strip().upper()
         if t:
             all_tickers.add(t)
     
-    # Add international tickers
+    # v1.2.0: US-listed ADRs only (SHEL, BP, HSBC, AZN, GSK, RIO, BHP, etc.)
     try:
-        from international_tickers import get_international_tickers
-        intl = get_international_tickers()
+        from international_tickers import get_us_listed_tickers
+        intl = get_us_listed_tickers()
         for t in intl:
             all_tickers.add(t)
     except ImportError:
-        pass
+        # Fallback to old behavior if get_us_listed_tickers not yet deployed
+        try:
+            from international_tickers import get_international_tickers
+            intl = get_international_tickers()
+            for t in intl:
+                if "." not in t or t.endswith(".B") or t.endswith(".A"):
+                    all_tickers.add(t)
+        except ImportError:
+            pass
     
     return sorted(all_tickers)
 
