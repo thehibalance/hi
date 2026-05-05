@@ -1,12 +1,12 @@
 # v1.2.0 Score Audit
 
-_Generated 2026-04-30 18:26 · 445 companies · 32s elapsed_
+_Generated 2026-05-01 18:19 · 445 companies · 58s elapsed_
 
 ## Summary
 
 | Severity | Count |
 |---|---|
-| 🔴 BLOCKER | 1 |
+| 🔴 BLOCKER | 0 |
 | 🟡 LAUNCH-OK | 40 |
 | 🟢 KNOWN-DEFERRED | 0 |
 
@@ -14,18 +14,11 @@ _Generated 2026-04-30 18:26 · 445 companies · 32s elapsed_
 
 | Category | Count |
 |---|---|
-| DEFENSIBILITY | 41 |
+| DEFENSIBILITY | 40 |
 | COVERAGE | 0 |
 | CONSISTENCY | 0 |
 | API | 0 |
 
-
-## 🔴 BLOCKER
-
-
-### DEFENSIBILITY
-
-- **RIVN** — spec_version is None, expected '1.2.0'
 
 ## 🟡 LAUNCH-OK
 
