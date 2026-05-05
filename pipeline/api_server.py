@@ -814,29 +814,65 @@ def search():
     if q in SEARCH_ALIASES:
         search_terms.append(SEARCH_ALIASES[q])
 
+    # v1.2.0 fix: normalize query for fuzzy matching (handles "coca cola" vs "Coca-Cola Company")
+    q_norm = normalize_name(q)
+    q_tokens = [t for t in q_norm.split() if t] if q_norm else []
+
     limit = min(int(request.args.get("limit", 20)), 100)
-    results = []
     seen_norms = set()
+    scored_results = []  # list of (relevance, composite, record)
+
     for c in ALL_COMPANIES:
         try:
             name = (c.get("company") or "").lower()
+            name_norm = normalize_name(c.get("company") or "")
             tags = " ".join(c.get("tags") or []).lower()
             ticker = (c.get("ticker") or "").lower()
-            domains = " ".join(c.get("domains") or []).lower()
-            matched = any(term in name or term in tags or term == ticker or term in domains for term in search_terms)
-            if matched:
-                norm = normalize_name(c.get("company") or "")
-                if norm in seen_norms:
+            domains = [d.lower().strip() for d in (c.get("domains") or [])]
+
+            # Compute relevance score (highest among all signals)
+            relevance = 0
+            for term in search_terms:
+                term_norm = normalize_name(term) if term else ""
+                # Exact ticker match (case-insensitive)
+                if term == ticker and ticker:
+                    relevance = max(relevance, 1000)
+                # Exact normalized name match
+                if term_norm and name_norm and term_norm == name_norm:
+                    relevance = max(relevance, 1000)
+                # Exact domain match
+                if term in domains:
+                    relevance = max(relevance, 900)
+                # Name starts with query
+                if name_norm and term_norm and name_norm.startswith(term_norm):
+                    relevance = max(relevance, 500)
+                # All query tokens appear in normalized name
+                if q_tokens and name_norm:
+                    if all(tok in name_norm for tok in q_tokens):
+                        relevance = max(relevance, 300)
+                # Substring in name (raw lowercase, original behavior)
+                if term and term in name:
+                    relevance = max(relevance, 100)
+                # Substring in tags
+                if term and term in tags:
+                    relevance = max(relevance, 50)
+                # Domain substring (e.g., user types "tesla" → matches "tesla.com")
+                if term and any(term in d for d in domains):
+                    relevance = max(relevance, 200)
+
+            if relevance > 0:
+                norm_dedup = normalize_name(c.get("company") or "")
+                if norm_dedup in seen_norms:
                     continue
-                seen_norms.add(norm)
-                results.append(c)
-            if len(results) >= limit:
-                break
+                seen_norms.add(norm_dedup)
+                scored_results.append((relevance, c.get("composite") or 0, c))
         except Exception:
             continue
 
-    # Sort: scored companies (with data_sources) before seed
-    results.sort(key=lambda x: (len(x.get("data_sources") or []) > 1, x.get("composite") or 0), reverse=True)
+    # Sort: relevance DESC, then composite DESC
+    scored_results.sort(key=lambda x: (x[0], x[1]), reverse=True)
+    results = [r[2] for r in scored_results[:limit]]
+
     return jsonify({"query": q, "count": len(results), "results": results})
 
 
