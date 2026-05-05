@@ -95,15 +95,62 @@ def load_company_list():
             if t:
                 seen_tickers.add(t)
     
+    # v1.2.0 fix: build a ticker→name lookup from authoritative sources before
+    # iterating universe tickers. This ensures we never pass an empty name to
+    # fetch_sec(), which previously caused 353 ghost records (empty company
+    # field in SEC aggregate) that scoring engine silently dropped.
+    name_lookup = {}
+
+    # Primary source: sp500_companies.SP500 — (ticker, name) tuples for full S&P 500
+    try:
+        from sp500_companies import SP500 as _SP500
+        for _t, _n in _SP500:
+            if _t and _n:
+                name_lookup[_t.upper()] = _n
+    except ImportError:
+        pass
+
+    # ADR fallback: major foreign filers not in sp500_companies (different SEC filing format)
+    ADR_NAMES = {
+        "TSM":  "Taiwan Semiconductor Manufacturing Company Limited",
+        "BABA": "Alibaba Group Holding Limited",
+        "ASML": "ASML Holding N.V.",
+        "NVO":  "Novo Nordisk A/S",
+        "TM":   "Toyota Motor Corporation",
+        "BHP":  "BHP Group Limited",
+        "RIO":  "Rio Tinto plc",
+        "NVS":  "Novartis AG",
+        "AZN":  "AstraZeneca plc",
+        "SAP":  "SAP SE",
+        "SHOP": "Shopify Inc.",
+        "SE":   "Sea Limited",
+        "SONY": "Sony Group Corporation",
+        "TD":   "Toronto-Dominion Bank",
+        "RY":   "Royal Bank of Canada",
+        "HSBC": "HSBC Holdings plc",
+        "DEO":  "Diageo plc",
+        "UL":   "Unilever PLC",
+        "BUD":  "Anheuser-Busch InBev SA/NV",
+        "STM":  "STMicroelectronics N.V.",
+    }
+    for _t, _n in ADR_NAMES.items():
+        if _t not in name_lookup:
+            name_lookup[_t] = _n
+
     # Add universe tickers not already in scores
     try:
         from universe_tickers import get_all_tickers
         universe = get_all_tickers()
         new_count = 0
+        unresolved_count = 0
         for ticker in universe:
             if ticker.upper() not in seen_tickers:
+                # v1.2.0: lookup authoritative name; empty only if truly unknown
+                resolved_name = name_lookup.get(ticker.upper(), "")
+                if not resolved_name:
+                    unresolved_count += 1
                 companies.append({
-                    "name": "",  # Will be resolved by SEC/Finnhub
+                    "name": resolved_name,  # populated from sp500_companies + ADR fallback
                     "ticker": ticker,
                     "industry": "",
                     "sic": "",
@@ -113,8 +160,21 @@ def load_company_list():
                 new_count += 1
         if new_count:
             print(f"  Universe tickers: {new_count} new tickers added (total: {len(companies)})")
+        if unresolved_count:
+            print(f"    ⚠ {unresolved_count} of those have no name in sp500_companies or ADR_NAMES — SEC will try to resolve at fetch time")
     except ImportError:
         print("  No universe_tickers.py found, using existing scores only.")
+
+    # Also backfill any name='' entries that came from existing scores
+    backfilled = 0
+    for c in companies:
+        if not c.get("name") and c.get("ticker"):
+            resolved = name_lookup.get(c["ticker"].upper(), "")
+            if resolved:
+                c["name"] = resolved
+                backfilled += 1
+    if backfilled:
+        print(f"  Name backfill: {backfilled} companies got names from sp500_companies/ADR list")
     
     if not companies:
         print("  No existing scores or universe tickers found.")
