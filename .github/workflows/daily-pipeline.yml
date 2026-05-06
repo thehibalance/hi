@@ -68,7 +68,7 @@ jobs:
             python3 run_all.py --skip-collect --features-only
           else
             echo "Daily run"
-            python3 run_all.py --workers 8 --incremental 24
+            python3 run_all.py --workers 8 --incremental 0
           fi
 
           if [ -f data/scores/all_scores_backup.json ] && [ -f data/scores/all_scores.json ]; then
