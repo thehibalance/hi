@@ -111,27 +111,51 @@ def load_company_list():
         pass
 
     # ADR fallback: major foreign filers not in sp500_companies (different SEC filing format)
+    # v1.2.0 final polish: extended with UK/Asian/Indian ADRs that audit found missing
     ADR_NAMES = {
+        # Asia/Pacific
         "TSM":  "Taiwan Semiconductor Manufacturing Company Limited",
         "BABA": "Alibaba Group Holding Limited",
-        "ASML": "ASML Holding N.V.",
-        "NVO":  "Novo Nordisk A/S",
+        "PDD":  "PDD Holdings Inc.",
+        "JD":   "JD.com, Inc.",
+        "NTES": "NetEase, Inc.",
+        "BIDU": "Baidu, Inc.",
+        "TCOM": "Trip.com Group Limited",
         "TM":   "Toyota Motor Corporation",
-        "BHP":  "BHP Group Limited",
-        "RIO":  "Rio Tinto plc",
-        "NVS":  "Novartis AG",
-        "AZN":  "AstraZeneca plc",
-        "SAP":  "SAP SE",
+        "SONY": "Sony Group Corporation",
         "SHOP": "Shopify Inc.",
         "SE":   "Sea Limited",
-        "SONY": "Sony Group Corporation",
-        "TD":   "Toronto-Dominion Bank",
-        "RY":   "Royal Bank of Canada",
-        "HSBC": "HSBC Holdings plc",
+        # Indian ADRs
+        "INFY": "Infosys Limited",
+        "HDB":  "HDFC Bank Limited",
+        "WIT":  "Wipro Limited",
+        # European ADRs
+        "ASML": "ASML Holding N.V.",
+        "SAP":  "SAP SE",
+        "STM":  "STMicroelectronics N.V.",
+        "NVO":  "Novo Nordisk A/S",
+        "NVS":  "Novartis AG",
+        "BUD":  "Anheuser-Busch InBev SA/NV",
+        # UK ADRs
+        "AZN":  "AstraZeneca plc",
+        "GSK":  "GSK plc",
+        "SHEL": "Shell plc",
+        "BP":   "BP p.l.c.",
+        "BTI":  "British American Tobacco p.l.c.",
         "DEO":  "Diageo plc",
         "UL":   "Unilever PLC",
-        "BUD":  "Anheuser-Busch InBev SA/NV",
-        "STM":  "STMicroelectronics N.V.",
+        "VOD":  "Vodafone Group Plc",
+        "LYG":  "Lloyds Banking Group plc",
+        "BCS":  "Barclays PLC",
+        "NWG":  "NatWest Group plc",
+        "WPP":  "WPP plc",
+        "HSBC": "HSBC Holdings plc",
+        # Australian/Mining
+        "BHP":  "BHP Group Limited",
+        "RIO":  "Rio Tinto plc",
+        # North American
+        "TD":   "Toronto-Dominion Bank",
+        "RY":   "Royal Bank of Canada",
     }
     for _t, _n in ADR_NAMES.items():
         if _t not in name_lookup:
@@ -225,8 +249,13 @@ def fetch_sec(company_name, ticker):
         ticker_map = safe_get("https://www.sec.gov/files/company_tickers.json", headers=SEC_HEADERS)
         cik = None
         if ticker_map:
+            # v1.2.0 fix: SEC uses HYPHEN for class shares (BRK-B, BF-B) while
+            # everyone else uses DOT (BRK.B, BF.B). Try both forms in lookup.
+            ticker_upper = ticker.upper()
+            ticker_hyphen = ticker_upper.replace(".", "-")
             for entry in ticker_map.values():
-                if entry.get("ticker", "").upper() == ticker.upper():
+                entry_ticker = entry.get("ticker", "").upper()
+                if entry_ticker == ticker_upper or entry_ticker == ticker_hyphen:
                     cik = str(entry["cik_str"]).zfill(10)
                     result["company"] = entry.get("title", company_name)
                     break
