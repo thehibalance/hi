@@ -1,21 +1,21 @@
 {
-  "timestamp": "2026-05-06T08:22:52.284397",
-  "total_issues": 85,
+  "timestamp": "2026-05-06T14:44:21.025035",
+  "total_issues": 352,
   "critical": 0,
   "warnings": 81,
-  "info": 4,
+  "info": 271,
   "blocked": false,
   "stats": {
-    "total_companies": 439,
-    "avg_composite": 58.0,
-    "stdev": 10.3,
+    "total_companies": 757,
+    "avg_composite": 56.1,
+    "stdev": 8.3,
     "min_score": 13,
     "max_score": 85,
     "pct_90_100": 0.0,
-    "pct_40_70": 85.9,
-    "pct_0_20": 1.1,
-    "gold_count": 3,
-    "gold_pct": 0.7,
+    "pct_40_70": 91.4,
+    "pct_0_20": 0.7,
+    "gold_count": 2,
+    "gold_pct": 0.3,
     "mssi_violations": 0,
     "single_source_dimensions": 79
   },
@@ -23,11 +23,11 @@
     {
       "layer": 1,
       "severity": "warning",
-      "company": "VICI PROPERTIES INC.",
-      "field": "revenue_per_employee",
-      "message": "RPE $128,999,571 \u2014 unusually high",
-      "value": 128999571,
-      "expected": "< $50,000,000"
+      "company": "Costco Wholesale Corporation",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~58)",
+      "value": 50,
+      "expected": 58
     },
     {
       "layer": 1,
@@ -52,18 +52,18 @@
       "severity": "warning",
       "company": "Chevron Corporation",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~58)",
+      "message": "Composite 50 doesn't match dimensions (expected ~59)",
       "value": 50,
-      "expected": 58
+      "expected": 59
     },
     {
       "layer": 1,
       "severity": "warning",
       "company": "Meta Platforms, Inc.",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~55)",
+      "message": "Composite 50 doesn't match dimensions (expected ~54)",
       "value": 50,
-      "expected": 55
+      "expected": 54
     },
     {
       "layer": 1,
@@ -79,14 +79,2417 @@
       "severity": "warning",
       "company": "ALTRIA GROUP, INC.",
       "field": "composite",
-      "message": "Composite 46 doesn't match dimensions (expected ~40)",
-      "value": 46,
+      "message": "Composite 49 doesn't match dimensions (expected ~40)",
+      "value": 49,
       "expected": 40
     },
     {
       "layer": 1,
       "severity": "info",
       "company": "American",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "CBRE GROUP, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "DXC Technology Co",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "ALNYLAM PHARMACEUTICALS, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "AstraZeneca plc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Axsome Therapeutics, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Beam Therapeutics Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "BIO-TECHNE Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "BIOMARIN PHARMACEUTICAL INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Celsius Holdings, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "CHARLES RIVER LABORATORIES INTERNATIONAL, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Crinetics Pharmaceuticals, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "CRISPR Therapeutics AG",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "DAVITA INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Diageo plc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Dutch Bros Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "EASTMAN CHEMICAL CO",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Editas Medicine, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "FMC CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "GARTNER INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "HALOZYME THERAPEUTICS, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "INCYTE CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "INSMED Inc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Intellia Therapeutics, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "IONIS PHARMACEUTICALS INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "IQVIA HOLDINGS INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Legend Biotech Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Novartis AG",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Post Holdings, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "RHYTHM PHARMACEUTICALS, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Sarepta Therapeutics, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Simply Good Foods Co",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "TG THERAPEUTICS, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Ultragenyx Pharmaceutical Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Vaxcyte, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Caesars Entertainment, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "DraftKings Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Live Nation Entertainment, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "PENN Entertainment, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Rush Street Interactive, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "AeroVironment Inc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "ALASKA AIR GROUP, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "AMC ENTERTAINMENT HOLDINGS, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Amcor plc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "AXON ENTERPRISE, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "BHP Group Limited",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "BORGWARNER INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "C. H. ROBINSON WORLDWIDE, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Cinemark Holdings, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "CORNING INC /NY",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Corteva, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "CRH PUBLIC LTD CO",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "DECKERS OUTDOOR CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "EVgo Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "FIGS, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "HEICO CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Howmet Aerospace Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "HUNT J B TRANSPORT SERVICES INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Invitation Homes Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "JACOBS SOLUTIONS INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "KRATOS DEFENSE & SECURITY SOLUTIONS, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Li Auto Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Limoneira CO",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Lucid Group, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "MOHAWK INDUSTRIES INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Momentus Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "NEWS CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "NIO Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Polestar Automotive Holding UK PLC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "QUANTA SERVICES, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "RALPH LAUREN CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Redwire Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Rio Tinto plc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Rocket Lab Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Snap-on Inc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "TAPESTRY, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "TransDigm Group INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "TREX CO INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Virgin Galactic Holdings, Inc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "WESTINGHOUSE AIR BRAKE TECHNOLOGIES CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "XPENG INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "ABERCROMBIE & FITCH CO /DE/",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "AES CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "AFLAC INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "ALLIANT ENERGY CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "AMERICAN EAGLE OUTFITTERS INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "AMERIPRISE FINANCIAL INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "APA Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Apollo Global Management, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "ARCH CAPITAL GROUP LTD.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Arthur J. Gallagher & Co.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "ASSURANT, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "B&G Foods, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Bath & Body Works, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "BED BATH & BEYOND, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Blackstone Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "BROWN & BROWN, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Builders FirstSource, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "CAMDEN PROPERTY TRUST",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "CASEYS GENERAL STORES INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Cencora, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "CITIZENS FINANCIAL GROUP INC/RI",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Clean Energy Fuels Corp.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "CLEANSPARK, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Constellation Energy Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "DICK'S SPORTING GOODS, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "DOLLAR GENERAL CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "DOLLAR TREE, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "ENTERGY CORP /DE/",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "EQUITY LIFESTYLE PROPERTIES INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "ESSEX PROPERTY TRUST, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Evergy, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "FEDERAL REALTY INVESTMENT TRUST",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "FIFTH THIRD BANCORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "FIVE BELOW, INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "FRANKLIN RESOURCES INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "GameStop Corp.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "GLOBE LIFE INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "HENRY SCHEIN INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "HSBC Holdings plc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "HUNTINGTON BANCSHARES INC /MD/",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Hut 8 Corp.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Invesco Ltd.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "KEYCORP /NEW/",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "KKR & Co. Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "KOHLS Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "LendingClub Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "LKQ CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "M&T BANK CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Macy's, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "MARA Holdings, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "MARKETAXESS HOLDINGS INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "NISOURCE INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "NNN REIT, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "NORTHERN TRUST CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "OMEGA HEALTHCARE INVESTORS INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "PG&E Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "PINNACLE WEST CAPITAL CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "PPL Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "PRICE T ROWE GROUP INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "PROGRESSIVE CORP/OH/",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "RAYMOND JAMES FINANCIAL INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "REGIONS FINANCIAL CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Rent the Runway, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Riot Platforms, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Royal Bank of Canada",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "SiteOne Landscape Supply, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "SoFi Technologies, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "STAG Industrial, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Stitch Fix, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Strategy Inc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "SUN COMMUNITIES INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "TE Connectivity plc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "TRACTOR SUPPLY CO /DE/",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "UDR, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Upstart Holdings, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "URBAN OUTFITTERS INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Ventas, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Vistra Corp.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "WEIS MARKETS INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "WEYERHAEUSER CO",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "WILLIS TOWERS WATSON PLC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Affirm Holdings, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Fortive Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "AAON, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "AGILENT TECHNOLOGIES, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Allegion plc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "ALLEGRO MICROSYSTEMS, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "AMBARELLA INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "AMETEK INC/",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "AMPHENOL CORP /DE/",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "AppLovin Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Arista Networks, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Array Technologies, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Asana, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "ASML Holding N.V.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "AST SpaceMobile, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "AXCELIS TECHNOLOGIES INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Ballard Power Systems Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "BIO-RAD LABORATORIES, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "BlackSky Technology Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Blink Charging Co.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Bloom Energy Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "BROADRIDGE FINANCIAL SOLUTIONS, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "C3.ai, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "ChargePoint Holdings, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "CIRRUS LOGIC, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Clearwater Analytics Holdings, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "COGNIZANT TECHNOLOGY SOLUTIONS CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "DENTSPLY SIRONA Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "DIODES INC /DEL/",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Elastic N.V.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "F5, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "FAIR ISAAC CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "FIRST SOLAR, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Five9, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Fox Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "GE HealthCare Technologies Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "GE Vernova Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "GENERAC HOLDINGS INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Gitlab Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "GLOBAL PAYMENTS INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "HUBBELL INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "IMAX CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Intuitive Machines, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "IonQ, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Keysight Technologies, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "LATTICE SEMICONDUCTOR CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "MACOM Technology Solutions Holdings, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Maxeon Solar Technologies, Ltd.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "MERCADOLIBRE INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "MERCURY SYSTEMS INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "METTLER TOLEDO INTERNATIONAL INC/",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "MICROCHIP TECHNOLOGY INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "MICRON TECHNOLOGY INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "monday.com Ltd.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "MONOLITHIC POWER SYSTEMS INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Motorola Solutions, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "NetApp, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "ON SEMICONDUCTOR CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Otis Worldwide Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Paycom Software, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "PLUG POWER INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "POWER INTEGRATIONS INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "PROCORE TECHNOLOGIES, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "PTC INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Qorvo, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "QUALYS, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Quantum Computing Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "QuantumScape Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "RAMBUS INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Rapid7, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "RESMED INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Rigetti Computing, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "ROBERT HALF INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "ROPER TECHNOLOGIES INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Samsara Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Sandisk Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Sea Ltd",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Seagate Technology Holdings plc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "SentinelOne, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "SILICON LABORATORIES INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "SITIME Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "SKYWORKS SOLUTIONS, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "SMITH A O CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "SOLAREDGE TECHNOLOGIES, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Solventum Corp",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Sony Group Corporation",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "SOUNDHOUND AI, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Sunrun Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Super Micro Computer, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "TELEDYNE TECHNOLOGIES INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Tenable Holdings, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "TERADYNE, INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Toast, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "TORO CO",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "UiPath, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "UNITED RENTALS, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "WATERS CORP /DE/",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "WEST PHARMACEUTICAL SERVICES INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "WESTERN DIGITAL CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "WOLFSPEED, INC.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "ZEBRA TECHNOLOGIES CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "EQUIFAX INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Cognizant",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Macom Technology",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "TEXTRON INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "L3HARRIS TECHNOLOGIES, INC. /DE/",
       "field": "data_sources",
       "message": "Only 1 data source \u2014 score may be unreliable",
       "value": 1,
