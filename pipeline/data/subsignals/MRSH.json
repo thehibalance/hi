@@ -13,12 +13,126 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 10,
+    "raw": {
+      "company": "Marsh & McLennan Companies Inc",
+      "ticker": "MRSH",
+      "domain": "hm.com",
+      "breach_count": 6,
+      "breaches": [
+        {
+          "name": "Benchmark",
+          "date": "2019-11-01",
+          "pwn_count": 93343,
+          "data_classes": [
+            "Email addresses",
+            "IP addresses",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "DataEnrichment",
+          "date": "2016-12-23",
+          "pwn_count": 8176132,
+          "data_classes": [
+            "Buying preferences",
+            "Charitable donations",
+            "Credit status information",
+            "Dates of birth",
+            "Email addresses",
+            "Family structure",
+            "Financial investments",
+            "Home ownership statuses",
+            "Income levels",
+            "Job titles",
+            "Marital statuses",
+            "Names",
+            "Net worths",
+            "Phone numbers",
+            "Physical addresses",
+            "Political donations"
+          ],
+          "is_verified": false
+        },
+        {
+          "name": "FreshMenu",
+          "date": "2016-07-01",
+          "pwn_count": 110355,
+          "data_classes": [
+            "Device information",
+            "Email addresses",
+            "Names",
+            "Phone numbers",
+            "Physical addresses",
+            "Purchases"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "Poshmark",
+          "date": "2018-05-16",
+          "pwn_count": 36395491,
+          "data_classes": [
+            "Email addresses",
+            "Genders",
+            "Geographic locations",
+            "Names",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "WHMCS",
+          "date": "2012-05-21",
+          "pwn_count": 134047,
+          "data_classes": [
+            "Email addresses",
+            "Email messages",
+            "Employers",
+            "IP addresses",
+            "Names",
+            "Partial credit card data",
+            "Passwords",
+            "Payment histories",
+            "Physical addresses",
+            "Website activity"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "Youthmanual",
+          "date": "2019-01-31",
+          "pwn_count": 937912,
+          "data_classes": [
+            "Bios",
+            "Dates of birth",
+            "Email addresses",
+            "Genders",
+            "Names",
+            "Passwords",
+            "Phone numbers",
+            "Physical addresses",
+            "Places of birth"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 45847280,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-03-23T08:46:22.479642",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
-    "A.4": 55,
+    "A.4": 70,
     "source": "Industry"
   },
   "land": {
-    "A.3": 50,
+    "A.3": 70,
     "source": "Industry+EPA"
   }
 }

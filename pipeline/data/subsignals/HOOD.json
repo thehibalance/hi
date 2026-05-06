@@ -13,12 +13,36 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 60,
+    "raw": {
+      "company": "Robinhood Markets Inc",
+      "ticker": "HOOD",
+      "domain": "robinhood.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "Robinhood",
+          "date": "2021-11-03",
+          "pwn_count": 5003937,
+          "data_classes": [
+            "Email addresses"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 5003937,
+      "sensitive_data_exposed": false,
+      "fetched": "2026-03-23T08:46:42.400599",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
-    "A.4": 55,
+    "A.4": 70,
     "source": "Industry"
   },
   "land": {
-    "A.3": 50,
+    "A.3": 70,
     "source": "Industry+EPA"
   }
 }

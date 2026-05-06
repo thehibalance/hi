@@ -1,21 +1,21 @@
 {
-  "timestamp": "2026-05-06T14:44:21.025035",
-  "total_issues": 352,
+  "timestamp": "2026-05-06T16:51:59.497293",
+  "total_issues": 368,
   "critical": 0,
-  "warnings": 81,
-  "info": 271,
+  "warnings": 82,
+  "info": 286,
   "blocked": false,
   "stats": {
-    "total_companies": 757,
-    "avg_composite": 56.1,
-    "stdev": 8.3,
+    "total_companies": 773,
+    "avg_composite": 56.0,
+    "stdev": 8.2,
     "min_score": 13,
     "max_score": 85,
     "pct_90_100": 0.0,
-    "pct_40_70": 91.4,
-    "pct_0_20": 0.7,
-    "gold_count": 2,
-    "gold_pct": 0.3,
+    "pct_40_70": 91.1,
+    "pct_0_20": 0.6,
+    "gold_count": 3,
+    "gold_pct": 0.4,
     "mssi_violations": 0,
     "single_source_dimensions": 79
   },
@@ -23,7 +23,7 @@
     {
       "layer": 1,
       "severity": "warning",
-      "company": "Costco Wholesale Corporation",
+      "company": "Palantir",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~58)",
       "value": 50,
@@ -2490,6 +2490,150 @@
       "layer": 1,
       "severity": "info",
       "company": "L3HARRIS TECHNOLOGIES, INC. /DE/",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "BROWN FORMAN CORP",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "GSK plc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Barclays PLC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "BERKSHIRE HATHAWAY INC",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "HDFC Bank Limited",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "JD.com, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Lloyds Banking Group plc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "NatWest Group plc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Baidu, Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Infosys Limited",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "PDD Holdings Inc.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Vodafone Group Plc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Wipro Limited",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "WPP plc",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "British American Tobacco p.l.c.",
+      "field": "composite",
+      "message": "Composite 48 doesn't match dimensions (expected ~40)",
+      "value": 48,
+      "expected": 40
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "British American Tobacco p.l.c.",
       "field": "data_sources",
       "message": "Only 1 data source \u2014 score may be unreliable",
       "value": 1,
