@@ -41,3 +41,17 @@ Fix path: integrate FMP/Yahoo as fallback SEC sources for revenue + headcount,
 push per-company coverage above ~75% before next H ladder revision.
 
 Not a launch blocker — disclosed limitation, not a bug.
+
+## v1.2.1 — Heartbeat decay factor calibration
+Audit #5 found decay system is structurally sound (117 alerts, all multi-factor,
+zero empty/single-factor decays). However:
+- "Aggressive AI pivot (N articles)" appears in ~95% of alerts — non-differentiating in 2026
+- "High 8-K activity (20 filings)" similarly universal
+- Real differentiation comes from layoff counts and ethics/legal counts
+EFX (Equifax) example: critical=65 is well-justified by 8 ethics articles + 2 HW
+flags + 4 scrutiny articles. The signal works when ethics issues are present.
+
+For v1.2.1: rebalance decay_index weights to lean more on ethics/legal/layoff
+signals over AI-pivot/8K-activity. Consider per-industry baselines for what
+counts as "aggressive AI pivot" — a payroll processor with 11 AI articles is
+different from a Big Tech company with the same.
