@@ -1684,11 +1684,11 @@ document.addEventListener('click',function(e){if(!e.target.closest('.search-inpu
 
 // ─── DID YOU KNOW rotating consumer hook ──────────────────────────────
 var _dykFacts = [
-  {icon:'✨', text:'<strong>Only 2 companies passed the Balanced Board.</strong> Out of 443 scored, just NextEra Energy and US Bancorp earned all five HUMAN dimensions above 60. The bar is high on purpose. See the list →', shareText:'Only 2 companies passed the HI Balanced Board — NextEra Energy and US Bancorp. Out of 443 scored. All five HUMAN dimensions above 60. The bar is high on purpose. thehibalance.org', action:function(){showPage('human100')}},
+  {icon:'✨', text:'<strong>The Balanced Board is rare.</strong> Only a handful of companies pass — earning all five HUMAN dimensions ≥ 60 with verified public data and no critical decay. See the list →', shareText:'The HI Balanced Board: companies earning all five HUMAN dimensions above 60 with verified data. The bar is high on purpose. thehibalance.org', action:function(){showPage('human100')}},
   {icon:'\u26A0\uFE0F', text:'<strong>Johnson &amp; Johnson scored 0 in Moral &amp; Ethical Conduct.</strong> Documented harm from talc settlements ($12.5B, ~50,000 deaths attributed). ESG gives them a pass — HI Grade does not. See the data →', shareText:'Johnson & Johnson scored 0/100 on Moral & Ethical Conduct. $12.5B talc settlements. ESG passes them. HI Grade does not. thehibalance.org', action:function(){loadC('JNJ','Johnson &amp; Johnson')}},
-  {icon:'⚡', text:'<strong>Meta scored 55 on HI Grade.</strong> Algorithmic Harm Index: 81.5 (Instagram teen harm, engagement algorithm, feed replaced chronological). Penalties flow directly into H, U, M, N dimensions. See the math →', shareText:'Meta scored 55 on HI Grade. Algorithmic Harm Index 81.5 — Instagram teen harm, feed manipulation. ESG misses what HI Grade catches. thehibalance.org', action:function(){loadC('META','Meta Platforms, Inc.')}},
+  {icon:'⚡', text:'<strong>Meta scored 50 on HI Grade.</strong> Algorithmic harm flags from Instagram teen wellbeing, engagement-driven feed manipulation, and chronological-feed removal reduced their score significantly. Penalties flow into H, U, M, N dimensions. See the math →', shareText:'Meta scored 50 on HI Grade. Algorithmic harm flags from Instagram teen wellbeing and feed manipulation. ESG misses what HI Grade catches. thehibalance.org', action:function(){loadC('META','Meta Platforms, Inc.')}},
   {icon:'\u{1F50D}', text:'<strong>HUMAN Decline tracks which companies are eroding.</strong> Combined signals from Heartbeat (decay), Shield (moat), Contagion (industry drift), Lens (ESG gap), and Watermark (performative empathy). See who’s at risk →', shareText:'HUMAN Decline: the companies quietly eroding. Heartbeat + Shield + Contagion + Lens + Watermark combined. thehibalance.org', action:function(){showPage('decline')}},
-  {icon:'\u{1F3C6}', text:'<strong>NextEra Energy passed the Balanced Board.</strong> Composite 70. All five HUMAN dimensions scored 60 or higher with verified public data. One of only two companies out of 443 that made the cut. See the data →', shareText:'NextEra Energy passed the HI Balanced Board. All five HUMAN dimensions 60+. One of only 2 companies out of 443 scored. thehibalance.org', action:function(){loadC('NEE','NextEra Energy, Inc.')}},
+  {icon:'\u{1F3C6}', text:'<strong>The Balanced Board features rare leaders.</strong> Companies that earn all five HUMAN dimensions above 60 with verified public data, every dimension grounded in real metrics. See today\'s leaders →', shareText:'The HI Balanced Board: rare leaders earning all five HUMAN dimensions above 60 with verified public data. thehibalance.org', action:function(){showPage('human100')}},
   {icon:'\u23F1\uFE0F', text:'<strong>HI Grade uses ZERO AI in scoring.</strong> 42 public data sources, 19 sub-signals, deterministic math. Every score is reconstructable from the raw data — no LLM summaries, no neural networks. See the method →', shareText:'HI Grade: zero AI in scoring. 42 public data sources, 19 sub-signals, deterministic math. Every score reconstructable. thehibalance.org', action:function(){showPage('methodology')}}
 ];
 var _dykIdx = 0, _dykTimer = null;
@@ -1711,6 +1711,73 @@ function dykCopy(btn){ var f=_dykCurrent(); var ok=function(){ var orig=btn.inne
 // Pick a random starting fact so visits look fresh
 _dykIdx = Math.floor(Math.random() * _dykFacts.length);
 
+// ─── Dynamic DYK builder — fetches live Balanced Board, mutates cards 0 + 4 ─────
+async function buildDynamicDYK(){
+  try {
+    var r = await fetch(API+'/api/v1/grades/top?limit=100');
+    var d = await r.json();
+    var list = (d.results||d).filter(function(c){return (c.gold||c.hi_balanced)});
+    // Dedup by company name
+    var seen = {};
+    list = list.filter(function(c){if(seen[c.company])return false;seen[c.company]=true;return true});
+    // Sort by composite descending
+    list.sort(function(a,b){return (b.composite||0)-(a.composite||0)});
+
+    var totalScored = (stats && stats.total_companies) ? stats.total_companies : 740;
+    var totalRounded = Math.floor(totalScored / 10) * 10;
+    var n = list.length;
+
+    // ── Card 0 — count + names ─────────────────────────────────────
+    var card0 = _dykFacts[0];
+    if (card0) {
+      if (n === 0) {
+        card0.text = '<strong>No companies currently pass the Balanced Board.</strong> Earning all five HUMAN dimensions above 60 with verified public data is rare — and the bar moves with the data. See the criteria →';
+        card0.shareText = 'The HI Balanced Board: zero companies currently pass. The bar is high on purpose. thehibalance.org';
+      } else if (n === 1) {
+        var c = list[0];
+        card0.text = '<strong>Only ' + c.company + ' passes the Balanced Board today.</strong> Out of ' + totalRounded + '+ scored, ' + c.company + ' is the only company earning all five HUMAN dimensions above 60. The bar is high on purpose. See the list →';
+        card0.shareText = 'Only ' + c.company + ' passes the HI Balanced Board today. Out of ' + totalRounded + '+ scored. All five HUMAN dimensions above 60. The bar is high on purpose. thehibalance.org';
+      } else {
+        // Format names: "A and B" for 2, "A, B, and C" for 3, etc.
+        var names = list.map(function(c){return c.company});
+        var namesStr;
+        if (names.length === 2) {
+          namesStr = names[0] + ' and ' + names[1];
+        } else {
+          namesStr = names.slice(0, -1).join(', ') + ', and ' + names[names.length - 1];
+        }
+        card0.text = '<strong>' + n + ' companies pass the Balanced Board.</strong> Out of ' + totalRounded + '+ scored, ' + namesStr + ' earn all five HUMAN dimensions above 60. The bar is high on purpose. See the list →';
+        card0.shareText = n + ' companies pass the HI Balanced Board — ' + namesStr + '. Out of ' + totalRounded + '+ scored. All five HUMAN dimensions above 60. The bar is high on purpose. thehibalance.org';
+      }
+    }
+
+    // ── Card 4 — featured top Balanced Board member ────────────────
+    var card4 = _dykFacts[4];
+    if (card4 && n > 0) {
+      var top = list[0];
+      var topComposite = Math.round(top.composite || 0);
+      var topTicker = top.ticker || '';
+      var topCompany = top.company;
+      // Escape company name for embedding in JS string
+      var escapedCompany = topCompany.replace(/'/g, "\\'");
+      var countWord = (n === 1) ? 'the only company' : (n === 2) ? 'one of only two companies' : (n === 3) ? 'one of only three companies' : 'one of ' + n + ' companies';
+      card4.text = '<strong>' + topCompany + ' passes the Balanced Board.</strong> Composite ' + topComposite + '. All five HUMAN dimensions scored 60 or higher with verified public data. ' + countWord.charAt(0).toUpperCase() + countWord.slice(1) + ' out of ' + totalRounded + '+ that made the cut. See the data →';
+      card4.shareText = topCompany + ' passes the HI Balanced Board. All five HUMAN dimensions 60+. ' + countWord.charAt(0).toUpperCase() + countWord.slice(1) + ' out of ' + totalRounded + '+ scored. thehibalance.org';
+      card4.action = (function(t, c){return function(){loadC(t, c)}})(topTicker, topCompany);
+    } else if (card4 && n === 0) {
+      // Fallback if no Balanced Board members
+      card4.text = '<strong>The Balanced Board is empty today.</strong> The decay system caught quality drift in companies that previously passed. See who\'s closest to recovering →';
+      card4.shareText = 'The HI Balanced Board is empty today. The bar moves with the data. thehibalance.org';
+      card4.action = function(){showPage('human100')};
+    }
+
+    // Re-render in case the carousel is currently displaying card 0 or 4
+    if (_dykIdx === 0 || _dykIdx === 4) _dykRender();
+  } catch(e) {
+    console.log('Dynamic DYK build error (using static fallback):', e);
+  }
+}
+
 // ─── Quick Compare helper for compare prompts ─────────────────────────
 function quickCompare(t1, n1, t2, n2){
   showPage('compare');
@@ -1722,7 +1789,10 @@ function quickCompare(t1, n1, t2, n2){
   }, 100);
 }
 
+// Start carousel immediately with placeholder text (nice fallback if API slow/fails),
+// then let buildDynamicDYK() overwrite cards 0 and 4 with live data.
 _dykStart();
+buildDynamicDYK();
 init();
 
 // Hash-based routing for direct links (e.g., /#methodology, /#sources, /#about)
