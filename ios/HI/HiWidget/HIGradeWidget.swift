@@ -6,7 +6,7 @@ import SwiftUI
 struct HIGradeEntry: TimelineEntry {
     let date: Date
     let companies: [WidgetCompany]
-    let balancedCount: Int
+    let goldCount: Int
 }
 
 struct WidgetCompany: Identifiable {
@@ -24,18 +24,18 @@ struct HIGradeProvider: TimelineProvider {
     private let apiBase = "https://api.thehibalance.org/api/v1"
     
     func placeholder(in context: Context) -> HIGradeEntry {
-        HIGradeEntry(date: .now, companies: sampleCompanies, balancedCount: 3)
+        HIGradeEntry(date: .now, companies: sampleCompanies, goldCount: 3)
     }
     
     func getSnapshot(in context: Context, completion: @escaping (HIGradeEntry) -> Void) {
-        completion(HIGradeEntry(date: .now, companies: sampleCompanies, balancedCount: 3))
+        completion(HIGradeEntry(date: .now, companies: sampleCompanies, goldCount: 3))
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<HIGradeEntry>) -> Void) {
         Task {
             let companies = await fetchTopCompanies()
-            let balancedCount = companies.filter(\.isGold).count
-            let entry = HIGradeEntry(date: .now, companies: companies, balancedCount: balancedCount)
+            let goldCount = companies.filter(\.isGold).count
+            let entry = HIGradeEntry(date: .now, companies: companies, goldCount: goldCount)
             
             // Refresh every 6 hours
             let nextUpdate = Calendar.current.date(byAdding: .hour, value: 6, to: .now)!
@@ -61,20 +61,9 @@ struct HIGradeProvider: TimelineProvider {
         guard let response = try? JSONDecoder().decode(TopResponse.self, from: data),
               let results = response.results else { return sampleCompanies }
         
-        // Dedup by ticker (fallback to name) so we never show same company twice
-        var seen = Set<String>()
-        var unique: [TopCompany] = []
-        for c in results {
-            let key = (c.ticker?.isEmpty == false ? c.ticker! : (c.company ?? ""))
-            if !key.isEmpty && !seen.contains(key) {
-                seen.insert(key)
-                unique.append(c)
-                if unique.count >= 6 { break }
-            }
-        }
-        return unique.map { c in
+        return results.prefix(6).map { c in
             WidgetCompany(
-                id: (c.ticker?.isEmpty == false ? c.ticker! : "") + "|" + (c.company ?? ""),
+                id: c.ticker ?? c.company ?? UUID().uuidString,
                 name: c.company ?? "Unknown",
                 ticker: c.ticker ?? "",
                 score: Int(c.composite ?? 0),
@@ -118,8 +107,8 @@ struct HIGradeSmallView: View {
                     .font(.system(size: 16, weight: .black, design: .rounded))
                     .foregroundColor(navy)
                 Spacer()
-                if entry.balancedCount > 0 {
-                    Text("◆ \(entry.balancedCount)")
+                if entry.goldCount > 0 {
+                    Text("🥇 \(entry.goldCount)")
                         .font(.system(size: 11, weight: .bold))
                         .foregroundColor(gold)
                 }
@@ -165,7 +154,7 @@ struct HIGradeMediumView: View {
                     .font(.system(size: 12, weight: .medium))
                     .foregroundColor(.secondary)
                 Spacer()
-                Text("◆ \(entry.balancedCount) Balanced")
+                Text("🥇 \(entry.goldCount) Gold")
                     .font(.system(size: 11, weight: .bold))
                     .foregroundColor(gold)
             }
