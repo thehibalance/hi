@@ -27,10 +27,10 @@
  *   New Gate 3 (MOMENTUM):   not in warning/critical decay (90-day Heartbeat)
  *
  * Why simplified: Humanwashing and AHI are now absorbed INTO dimension
- * scores via the harm pipelines (HW, AHI, PHI, HD), so they no longer
- * need a separate gate. Momentum is a separate gate because backward-
+ * scores via the harm pipelines (HW, AHI, HD — PHI was folded into M.4
+ * Product Ethics in v1.2.0). They no longer need a separate gate. Momentum is a separate gate because backward-
  * looking dimension data can't see real-time signals fast enough
- * (e.g., Oracle layoffs in early 2025 not caught by annual SEC filings).
+ * (e.g., Oracle layoffs in April 2026 not caught by annual SEC filings).
  */
 
 const HumanEngine = {
@@ -215,7 +215,7 @@ const HumanEngine = {
 
   // ═══ HUMANWASHING DETECTION (rule-based, no ML) ═══
   // These are kept for display purposes — but NO LONGER affect Gold gates in v1.2.0.
-  // The harm pipelines (HW, AHI, PHI, HD) absorb these into dimension scores.
+  // The harm pipelines (HW, AHI, HD; PHI folded into M.4 in v1.2.0) absorb these into dimension scores.
 
   detectHumanwashing(company) {
     const flags = [];

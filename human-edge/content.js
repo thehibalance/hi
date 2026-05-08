@@ -404,12 +404,13 @@ function buildBadgeHTML(profile, filterResult, prefs, isSoftFiltered) {
  * Build the dimension bar visualizations.
  */
 
+// v1.2.0 canonical labels (compact form for genome strip rendering).
+// _dei / _hrc keys removed — those signals are blended into U.3 in v1.2.0,
+// not surfaced as standalone genome bars.
 const GENOME_LABELS = {
   'H.1':'Workforce','H.2':'Craft','H.3':'Decision','H.5':'Augmentation',
   'U.1':'Cust. Empathy','U.2':'Worker Empathy','U.3':'Relational','U.4':'Sim. Empathy',
-  'U.6_dei':'DEI','U.7_hrc':'HRC',
   'M.1':'Pricing','M.2':'Data','M.3':'Market','M.4':'Product','M.5':'Stakeholder',
-  'M.6_dei':'DEI','M.7_hrc':'HRC',
   'A.1':'Energy','A.2':'Water','A.3':'Land','A.4':'Lifecycle',
   'N.2':'Reporting','N.5':'Filings'
 };
@@ -576,14 +577,16 @@ function openFullPanel(profile, filterResult, prefs) {
     : `<span style="font-size:12px;color:#16A34A;margin-left:8px">♥</span>`;
 
   // Sub-signal labels matching website/app
+  // v1.2.0 canonical: 19 active sub-signals; 5 deferred (target v1.3).
+  // No A.5 — A is a 4-signal dimension in v1.2.0.
   const SUB_LABELS = {
-    'H.1':'Workforce Valuation','H.2':'Craft','H.3':'Human Decision Depth','H.4':'CEO Accountability (v1.2)','H.5':'Human Augmentation Index',
-    'U.1':'Customer Empathy','U.2':'Worker Empathy','U.3':'Relational Integrity','U.4':'Simulated Empathy Detection','U.5':'Moral Courage (v1.2)',
+    'H.1':'Workforce Valuation','H.2':'Craft','H.3':'Human Decision Depth','H.4':'CEO Accountability (deferred)','H.5':'Human Augmentation Index',
+    'U.1':'Customer Empathy','U.2':'Worker Empathy','U.3':'Relational Integrity','U.4':'Simulated Empathy Detection','U.5':'Moral Courage (deferred)',
     'M.1':'Pricing Ethics','M.2':'Data Ethics','M.3':'Market Ethics','M.4':'Product Ethics','M.5':'Stakeholder Governance',
-    'A.1':'Energy & Emissions','A.2':'Water','A.3':'Land & Habitat','A.4':'Product Lifecycle','A.5':'Resource Stewardship (v1.2)',
-    'N.1':'AI Disclosure (v1.2)','N.2':'Reporting Quality','N.3':'Labor Auditability (v1.2)','N.4':'Humanwashing Detection (v1.2)','N.5':'Filing Volume'
+    'A.1':'Energy & Emissions','A.2':'Water','A.3':'Land & Habitat','A.4':'Product Lifecycle',
+    'N.1':'AI Disclosure (deferred)','N.2':'Reporting Quality','N.3':'Labor Auditability (deferred)','N.4':'Humanwashing Detection (deferred)','N.5':'Filing Volume'
   };
-  const SUB_KEYS = {h:['H.1','H.2','H.3','H.4','H.5'],u:['U.1','U.2','U.3','U.4','U.5'],m:['M.1','M.2','M.3','M.4','M.5'],a:['A.1','A.2','A.3','A.4','A.5'],n:['N.1','N.2','N.3','N.4','N.5']};
+  const SUB_KEYS = {h:['H.1','H.2','H.3','H.4','H.5'],u:['U.1','U.2','U.3','U.4','U.5'],m:['M.1','M.2','M.3','M.4','M.5'],a:['A.1','A.2','A.3','A.4'],n:['N.1','N.2','N.3','N.4','N.5']};
   const SEED_SRC = ['Defaults','Manual Scoring','Seed Estimate','Public Reporting'];
 
   // Build all dimensions with expandable sub-signal bars
@@ -609,7 +612,7 @@ function openFullPanel(profile, filterResult, prefs) {
       Object.values(subScores).forEach(v => { if (Math.round(v) < 45 || Math.round(v) > 55) realCount++; });
     }
     
-    const subBarsHTML = (SUB_KEYS[d] || []).filter(k => !(SUB_LABELS[k] || '').includes('(v1.2)')).map(k => {
+    const subBarsHTML = (SUB_KEYS[d] || []).filter(k => !(SUB_LABELS[k] || '').includes('(deferred)')).map(k => {
       const v = Math.round(subScores[k] || 50);
       const lbl = SUB_LABELS[k] || k;
       const isDef = isSeed || (v >= 45 && v <= 55 && !dimSources.length);
@@ -627,7 +630,7 @@ function openFullPanel(profile, filterResult, prefs) {
     const covLabel = isSeed ? 'Estimated' : realCount >= 4 ? 'Strong data' : realCount >= 2 ? 'Partial' : realCount > 0 ? 'Limited' : 'Needs data';
     const covColor = isSeed ? '#92400E' : realCount >= 4 ? '#16A34A' : '#D97706';
     const covBg = isSeed ? '#F3F0E8' : realCount >= 4 ? '#DCF5E7' : '#FFF3E0';
-    const activeKeys = (SUB_KEYS[d] || []).filter(k => !(SUB_LABELS[k] || '').includes('(v1.2)'));
+    const activeKeys = (SUB_KEYS[d] || []).filter(k => !(SUB_LABELS[k] || '').includes('(deferred)'));
     const covHTML = `<div style="display:flex;align-items:center;gap:6px;margin-top:4px"><span style="font-size:8px;font-weight:600;color:${covColor};padding:2px 6px;border-radius:4px;background:${covBg}">${realCount}/${activeKeys.length} · ${covLabel}</span>${dimSources.length ? `<span style="font-size:8px;color:#999">${dimSources.join(' · ')}</span>` : ''}</div>`;
 
     return `
