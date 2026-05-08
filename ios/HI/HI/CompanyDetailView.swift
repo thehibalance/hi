@@ -56,17 +56,19 @@ struct CompanyDetailView: View {
     }
 
     static let subSignalNames: [String: String] = [
-        // v1.1.0: 19 active sub-signals; 6 marked (v1.2) are spec'd but not yet scored.
+        // v1.2.0 canonical: 19 active sub-signals; 5 deferred (target v1.3).
+        // No A.5 — A is a 4-signal dimension in v1.2.0.
         "H.1": "Workforce Valuation", "H.2": "Craft", "H.3": "Human Decision Depth",
-        "H.4": "CEO Accountability (v1.2)", "H.5": "Human Augmentation Index (v1.2)",
+        "H.4": "CEO Accountability (deferred)", "H.5": "Human Augmentation Index",
         "U.1": "Customer Empathy", "U.2": "Worker Empathy", "U.3": "Relational Integrity",
-        "U.4": "Simulated Empathy Detection", "U.5": "Moral Courage (v1.2)",
+        "U.4": "Simulated Empathy Detection", "U.5": "Moral Courage (deferred)",
         "M.1": "Pricing Ethics", "M.2": "Data Ethics", "M.3": "Market Ethics",
         "M.4": "Product Ethics", "M.5": "Stakeholder Governance",
         "A.1": "Energy & Emissions", "A.2": "Water", "A.3": "Land & Habitat",
-        "A.4": "Product Lifecycle", "A.5": "Resource Stewardship (v1.2)",
-        "N.1": "AI Disclosure (v1.2)", "N.2": "Reporting Quality", "N.3": "Labor Auditability (v1.2)",
-        "N.4": "Humanwashing Detection (v1.2)", "N.5": "Filing Volume",
+        "A.4": "Product Lifecycle",
+        "N.1": "AI Disclosure (deferred)", "N.2": "Reporting Quality",
+        "N.3": "Labor Auditability (deferred)", "N.4": "Humanwashing Detection (deferred)",
+        "N.5": "Filing Volume",
     ]
 
     var body: some View {
@@ -265,7 +267,7 @@ struct CompanyDetailView: View {
             }
         }
         
-        let sortedKeys = scores.keys.sorted().filter { !(Self.subSignalNames[$0] ?? "").contains("(v1.2)") }
+        let sortedKeys = scores.keys.sorted().filter { !(Self.subSignalNames[$0] ?? "").contains("(deferred)") }
         let isSeed = sources.contains("Public Reporting") || sources.contains("Seed Estimate") || sources.contains("Manual Scoring") || (scores.count > 1 && Set(scores.values.map { Int($0) }).count == 1 && sources.isEmpty)
         let realCount = isSeed ? 0 : scores.values.filter { Int($0) < 45 || Int($0) > 55 }.count
 
@@ -376,7 +378,7 @@ struct CompanyDetailView: View {
         return VStack(alignment: .leading, spacing: 6) {
             HStack(spacing: 12) {
                 metaTag("Confidence", cleanSource(c.confidence ?? "Estimated"))
-                metaTag("Spec", c.spec_version ?? "1.1.0")
+                metaTag("Spec", c.spec_version ?? "1.2.0")
             }
             if !sources.isEmpty {
                 Text("Sources: \(sources.joined(separator: ", "))").font(.system(size: 10)).foregroundColor(.secondary)
