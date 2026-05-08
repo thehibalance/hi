@@ -3,8 +3,8 @@
 HI. — HUMAN Scoring Engine v2.1
 Merges signals from 24 sub-signals across 40 data sources into HUMAN dimension scores.
 
-Follows HUMAN_Grade_Methodology_Spec v1.1
-3 gates: Score, Balance, Integrity
+Follows HUMAN_Grade_Methodology_Spec v1.2.0. See SPEC.md for canonical sub-signal names.
+3 gates: Dimensions, Evidence, Momentum (gate logic from v1.1.0; unchanged in v1.2.0).
 Floor rule (v1.2.0): any HUMAN dimension < 30 caps composite at 50.
 Defaults: All sub-signals default to 50 (neutral) when no data is available.
 Rounding: down unless decimal is .6 or higher (whole numbers only).
@@ -752,6 +752,7 @@ def score_h_dimension(sec_h, job_data, bls_data, industry, patents=None):
     # Restoration of original methodology design — every sub-signal in a
     # dimension contributes equally. Adjustments (USPTO patents, AHI penalty)
     # apply downstream in score_company().
+    # H.4 = CEO Accountability deferred (target v1.3) per canonical spec.
     D_H = 0.25*scores["H.1"] + 0.25*scores["H.2"] + 0.25*scores["H.3"] + 0.25*scores["H.5"]
     return round_score(D_H), scores, list(set(sources_used))
 
@@ -877,6 +878,7 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=N
 
     # v1.2v UNIFORM: All 4 active sub-signals weighted equally at 0.25.
     # Adjustments (EEOC, OSHA, DOL, BBB, AHI penalty) apply downstream.
+    # U.5 = Moral Courage deferred (target v1.3) per canonical spec.
     D_U = 0.25*scores["U.1"] + 0.25*scores["U.2"] + 0.25*scores["U.3"] + 0.25*scores["U.4"]
     return round_score(D_U), scores, sources_used
 
@@ -1142,6 +1144,7 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None, tick
 
     # v1.2v UNIFORM: All 4 active sub-signals weighted equally at 0.25.
     # Was 0.30/0.25/0.20/0.25. SBTi bonus applies downstream.
+    # A is a 4-signal dimension in v1.2.0 — no A.5 in canonical spec.
     D_A = 0.25*scores["A.1"] + 0.25*scores["A.2"] + 0.25*scores["A.3"] + 0.25*scores["A.4"]
     return round_score(D_A), scores, list(set(sources_used))
 
@@ -1193,8 +1196,12 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry, gri=None):
     # v1.2v UNIFORM: 2 active sub-signals weighted equally at 0.50.
     # Was 0.571/0.429. GRI bonus, AHI penalty apply downstream.
     # NOTE: N dimension still depends on just two grounded signals (N.2, N.5).
-    # Three sub-signals deferred to v1.2 (N.1, N.3, N.4). Future pass should
-    # add DSA transparency, 12b-25 late filings per API_SHOPPING_LIST T1.1, T1.3.
+    # Three sub-signals deferred (target v1.3) per canonical spec:
+    #   N.1 = AI Disclosure
+    #   N.3 = Labor Auditability
+    #   N.4 = Humanwashing Detection
+    # Future pass should add DSA transparency, 12b-25 late filings per
+    # API_SHOPPING_LIST T1.1, T1.3.
     D_N = 0.50*scores["N.2"] + 0.50*scores["N.5"]
     return round_score(D_N), scores, sources_used
 
@@ -1243,7 +1250,7 @@ def get_hi_grade(composite, verified=False):
 
 
 # ═══════════════════════════════════════════════════════════════════════
-# GOLD HI GRADE GATE — v1.1.0 simplified rule
+# GOLD HI GRADE GATE — v1.2.0 (gate logic unchanged from v1.1.0)
 # ═══════════════════════════════════════════════════════════════════════
 # Single rule: All 5 HUMAN dimensions ≥ 60, each backed by ≥1 real data source,
 # AND no active warning/critical decay alert.
@@ -1263,7 +1270,7 @@ GOLD_DECAY_BLOCKING = {"warning", "critical"}  # decay levels that block Gold
 
 
 def check_hi_certified(record, decay_data=None):
-    """Check Gold HI Grade eligibility per v1.1.0 rule.
+    """Check Gold HI Grade eligibility per v1.2.0 rule (gate logic unchanged from v1.1.0).
     
     Returns (is_gold, gates_dict) where gates_dict reports per-gate pass/fail
     for use in audit drill-downs.
@@ -1323,8 +1330,9 @@ def check_hi_certified(record, decay_data=None):
 # migrated to check_hi_certified yet. v1.1.0 has no adaptive threshold;
 # Gold is determined per-company by the 3-gate rule above.
 def compute_gold_threshold(all_scores):
-    """DEPRECATED in v1.1.0. Returns GOLD_DIM_THRESHOLD for backward compat.
-    Old callers expecting a composite threshold should be migrated to check_hi_certified."""
+    """DEPRECATED in v1.1.0 (still deprecated in v1.2.0). Returns GOLD_DIM_THRESHOLD
+    for backward compatibility. Old callers expecting a composite threshold should
+    be migrated to check_hi_certified."""
     return GOLD_DIM_THRESHOLD
 
 
