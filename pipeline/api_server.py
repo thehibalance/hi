@@ -805,7 +805,7 @@ SEARCH_ALIASES = {
 @app.route("/api/v1/search")
 @limiter.limit("30 per minute")
 def search():
-    q = sanitize_input(request.args.get("q", ""), MAX_QUERY_LENGTH).lower().strip()
+    q = html_lib.unescape(sanitize_input(request.args.get("q", ""), MAX_QUERY_LENGTH)).lower().strip()  # v1.2.1: unescape so apostrophes survive (Dr. Bronner's, McDonald's, etc.)
     if len(q) < 2:
         return jsonify({"error": "Query too short (min 2 chars)"}), 400
 
