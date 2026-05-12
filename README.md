@@ -50,7 +50,7 @@ Five dimensions. Each measures something AI can't replace.
 
 ## What's new in v1.2.0
 
-**Composite Floor Rule.** If any HUMAN dimension scores below 30, the composite is capped at 50. Replaces an earlier multi-tier floor system with one clear, defensible threshold. See `RUBRIC.md` for examples (J&J, Costco, Apple).
+**Composite Floor Rule.** If any HUMAN dimension scores below 42, the composite is capped at 50. Replaces an earlier multi-tier floor system with one clear, defensible threshold. See `RUBRIC.md` for examples (J&J, Costco, Apple).
 
 **Standardized harm rendering across surfaces.** Web detail page and Chrome extension panel now show identical evidence blocks: ⚠ Harm Documentation (J&J-class public-record harm with linked sources), ⚡ Algorithmic Harm Index with components mini-bars (Meta-class algorithmic decision-making at scale), and 🚩 Humanwashing (filtered to true HW flags only — no duplication across blocks).
 
