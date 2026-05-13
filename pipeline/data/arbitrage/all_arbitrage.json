@@ -1,5 +1,43 @@
 [
   {
+    "company": "Microsoft Corporation",
+    "ticker": "MSFT",
+    "industry": "tech",
+    "hi_composite": 50,
+    "esg_composite": 86.4,
+    "esg_components": {
+      "environmental": 92,
+      "social": 77.4,
+      "governance": 88.5
+    },
+    "gap": -36.4,
+    "arbitrage_type": "esg_washing",
+    "arbitrage_label": "ESG Washing",
+    "gap_reasons": [
+      "H dimension at 35 \u2014 ESG ignores human consciousness"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "Salesforce",
+    "ticker": "CRM",
+    "industry": "tech",
+    "hi_composite": 50,
+    "esg_composite": 79.5,
+    "esg_components": {
+      "environmental": 76,
+      "social": 74.8,
+      "governance": 87.0
+    },
+    "gap": -29.5,
+    "arbitrage_type": "esg_washing",
+    "arbitrage_label": "ESG Washing",
+    "gap_reasons": [
+      "H dimension at 38 \u2014 ESG ignores human consciousness"
+    ],
+    "composite": 50
+  },
+  {
     "company": "Johnson & Johnson",
     "ticker": "JNJ",
     "industry": "healthcare",
@@ -35,6 +73,44 @@
     "gap_reasons": [
       "H dimension at 25 \u2014 ESG ignores human consciousness",
       "1 humanwashing flags \u2014 ESG misses performative claims"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "Dr. Bronner's",
+    "ticker": "",
+    "industry": "default",
+    "hi_composite": 50,
+    "esg_composite": 67.0,
+    "esg_components": {
+      "environmental": 68,
+      "social": 82.2,
+      "governance": 53.0
+    },
+    "gap": -17.0,
+    "arbitrage_type": "esg_washing",
+    "arbitrage_label": "ESG Washing",
+    "gap_reasons": [],
+    "composite": 50
+  },
+  {
+    "company": "Alphabet Inc.",
+    "ticker": "GOOGL",
+    "industry": "tech",
+    "hi_composite": 50,
+    "esg_composite": 65.7,
+    "esg_components": {
+      "environmental": 56,
+      "social": 70.8,
+      "governance": 71.0
+    },
+    "gap": -15.7,
+    "arbitrage_type": "esg_washing",
+    "arbitrage_label": "ESG Washing",
+    "gap_reasons": [
+      "H dimension at 30 \u2014 ESG ignores human consciousness",
+      "Algorithmic Harm score 64.5 \u2014 ESG doesn't measure this",
+      "2 humanwashing flags \u2014 ESG misses performative claims"
     ],
     "composite": 50
   },
@@ -80,42 +156,65 @@
     "composite": 50
   },
   {
-    "company": "Microsoft Corporation",
-    "ticker": "MSFT",
-    "industry": "tech",
-    "hi_composite": 73,
-    "esg_composite": 86.4,
+    "company": "Amazon.com, Inc.",
+    "ticker": "AMZN",
+    "industry": "retail",
+    "hi_composite": 50,
+    "esg_composite": 64.5,
     "esg_components": {
-      "environmental": 92,
-      "social": 77.4,
-      "governance": 88.5
+      "environmental": 58,
+      "social": 60.4,
+      "governance": 74.5
     },
-    "gap": -13.4,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
+    "gap": -14.5,
+    "arbitrage_type": "esg_washing",
+    "arbitrage_label": "ESG Washing",
     "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
+      "H dimension at 37 \u2014 ESG ignores human consciousness",
+      "Algorithmic Harm score 48.5 \u2014 ESG doesn't measure this",
+      "3 humanwashing flags \u2014 ESG misses performative claims"
     ],
-    "composite": 73
+    "composite": 50
   },
   {
-    "company": "Salesforce",
-    "ticker": "CRM",
+    "company": "Adobe",
+    "ticker": "ADBE",
     "industry": "tech",
-    "hi_composite": 69,
-    "esg_composite": 79.5,
+    "hi_composite": 50,
+    "esg_composite": 64.2,
     "esg_components": {
-      "environmental": 76,
-      "social": 74.8,
-      "governance": 87.0
+      "environmental": 62,
+      "social": 56.6,
+      "governance": 73.0
     },
-    "gap": -10.5,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
+    "gap": -14.2,
+    "arbitrage_type": "esg_washing",
+    "arbitrage_label": "ESG Washing",
     "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
+      "H dimension at 38 \u2014 ESG ignores human consciousness"
     ],
-    "composite": 69
+    "composite": 50
+  },
+  {
+    "company": "Uber",
+    "ticker": "UBER",
+    "industry": "tech",
+    "hi_composite": 50,
+    "esg_composite": 62.8,
+    "esg_components": {
+      "environmental": 52,
+      "social": 65.8,
+      "governance": 71.0
+    },
+    "gap": -12.8,
+    "arbitrage_type": "esg_washing",
+    "arbitrage_label": "ESG Washing",
+    "gap_reasons": [
+      "H dimension at 36 \u2014 ESG ignores human consciousness",
+      "Algorithmic Harm score 44.2 \u2014 ESG doesn't measure this",
+      "3 humanwashing flags \u2014 ESG misses performative claims"
+    ],
+    "composite": 50
   },
   {
     "company": "ProPublica",
@@ -213,6 +312,23 @@
     "composite": 60
   },
   {
+    "company": "Spotify",
+    "ticker": "",
+    "industry": "default",
+    "hi_composite": 50,
+    "esg_composite": 58.5,
+    "esg_components": {
+      "environmental": 51,
+      "social": 74.8,
+      "governance": 52.0
+    },
+    "gap": -8.5,
+    "arbitrage_type": "esg_washing",
+    "arbitrage_label": "ESG Washing",
+    "gap_reasons": [],
+    "composite": 50
+  },
+  {
     "company": "Nike, Inc.",
     "ticker": "NKE",
     "industry": "apparel",
@@ -287,25 +403,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 67
-  },
-  {
-    "company": "Alphabet Inc.",
-    "ticker": "GOOGL",
-    "industry": "tech",
-    "hi_composite": 58,
-    "esg_composite": 65.7,
-    "esg_components": {
-      "environmental": 56,
-      "social": 70.8,
-      "governance": 71.0
-    },
-    "gap": -7.7,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
   },
   {
     "company": "Signal Foundation",
@@ -675,6 +772,26 @@
     "composite": 56
   },
   {
+    "company": "B&G Foods, Inc.",
+    "ticker": "BGS",
+    "industry": "food",
+    "hi_composite": 50,
+    "esg_composite": 56.3,
+    "esg_components": {
+      "environmental": 52,
+      "social": 53.0,
+      "governance": 63.5
+    },
+    "gap": -6.3,
+    "arbitrage_type": "esg_washing",
+    "arbitrage_label": "ESG Washing",
+    "gap_reasons": [
+      "H dimension at 40 \u2014 ESG ignores human consciousness",
+      "1 humanwashing flags \u2014 ESG misses performative claims"
+    ],
+    "composite": 50
+  },
+  {
     "company": "Lodge Cast Iron",
     "ticker": "",
     "industry": "manufacturing",
@@ -711,6 +828,25 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 69
+  },
+  {
+    "company": "Merck & Co., Inc.",
+    "ticker": "MRK",
+    "industry": "healthcare",
+    "hi_composite": 50,
+    "esg_composite": 56.0,
+    "esg_components": {
+      "environmental": 55,
+      "social": 60.2,
+      "governance": 53.5
+    },
+    "gap": -6.0,
+    "arbitrage_type": "esg_washing",
+    "arbitrage_label": "ESG Washing",
+    "gap_reasons": [
+      "3 humanwashing flags \u2014 ESG misses performative claims"
+    ],
+    "composite": 50
   },
   {
     "company": "Le Creuset",
@@ -964,6 +1100,23 @@
     "composite": 59
   },
   {
+    "company": "EXELON CORP",
+    "ticker": "EXC",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 55.3,
+    "esg_components": {
+      "environmental": 41,
+      "social": 58.4,
+      "governance": 67.0
+    },
+    "gap": -5.3,
+    "arbitrage_type": "esg_washing",
+    "arbitrage_label": "ESG Washing",
+    "gap_reasons": [],
+    "composite": 50
+  },
+  {
     "company": "DuckDuckGo",
     "ticker": "",
     "industry": "tech",
@@ -1019,6 +1172,23 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 66
+  },
+  {
+    "company": "CONOCOPHILLIPS",
+    "ticker": "COP",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 55.0,
+    "esg_components": {
+      "environmental": 40,
+      "social": 58.4,
+      "governance": 67.0
+    },
+    "gap": -5.0,
+    "arbitrage_type": "esg_washing",
+    "arbitrage_label": "ESG Washing",
+    "gap_reasons": [],
+    "composite": 50
   },
   {
     "company": "Dansko",
@@ -1078,6 +1248,25 @@
     "composite": 19
   },
   {
+    "company": "HALLIBURTON CO",
+    "ticker": "HAL",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 54.8,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 70.0
+    },
+    "gap": -4.8,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
     "company": "Newman's Own",
     "ticker": "",
     "industry": "food",
@@ -1135,6 +1324,25 @@
     "composite": 62
   },
   {
+    "company": "DuPont de Nemours, Inc.",
+    "ticker": "DD",
+    "industry": "healthcare",
+    "hi_composite": 50,
+    "esg_composite": 54.6,
+    "esg_components": {
+      "environmental": 55,
+      "social": 55.4,
+      "governance": 53.5
+    },
+    "gap": -4.6,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
     "company": "Temu",
     "ticker": "",
     "industry": "default",
@@ -1171,25 +1379,6 @@
       "Low on both HI and ESG \u2014 significant risk across all dimensions"
     ],
     "composite": 14
-  },
-  {
-    "company": "Amazon.com, Inc.",
-    "ticker": "AMZN",
-    "industry": "retail",
-    "hi_composite": 60,
-    "esg_composite": 64.5,
-    "esg_components": {
-      "environmental": 58,
-      "social": 60.4,
-      "governance": 74.5
-    },
-    "gap": -4.5,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 60
   },
   {
     "company": "TikTok / ByteDance",
@@ -1306,25 +1495,6 @@
     "composite": 13
   },
   {
-    "company": "Adobe",
-    "ticker": "ADBE",
-    "industry": "tech",
-    "hi_composite": 60,
-    "esg_composite": 64.2,
-    "esg_components": {
-      "environmental": 62,
-      "social": 56.6,
-      "governance": 73.0
-    },
-    "gap": -4.2,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 60
-  },
-  {
     "company": "Shein",
     "ticker": "",
     "industry": "default",
@@ -1361,6 +1531,25 @@
       "Low on both HI and ESG \u2014 significant risk across all dimensions"
     ],
     "composite": 46
+  },
+  {
+    "company": "Snap Inc",
+    "ticker": "SNAP",
+    "industry": "tech",
+    "hi_composite": 50,
+    "esg_composite": 54.0,
+    "esg_components": {
+      "environmental": 52,
+      "social": 47.0,
+      "governance": 62.0
+    },
+    "gap": -4.0,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
   },
   {
     "company": "Fairphone",
@@ -1401,25 +1590,6 @@
     "composite": 48
   },
   {
-    "company": "Uber",
-    "ticker": "UBER",
-    "industry": "tech",
-    "hi_composite": 59,
-    "esg_composite": 62.8,
-    "esg_components": {
-      "environmental": 52,
-      "social": 65.8,
-      "governance": 71.0
-    },
-    "gap": -3.8,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 59
-  },
-  {
     "company": "Chevron Corporation",
     "ticker": "CVX",
     "industry": "energy",
@@ -1431,6 +1601,595 @@
       "governance": 67.5
     },
     "gap": -3.8,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "AMEREN CORP",
+    "ticker": "AEE",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "American Water Works Company, Inc.",
+    "ticker": "AWK",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "ATMOS ENERGY CORP",
+    "ticker": "ATO",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "CONSOLIDATED EDISON INC",
+    "ticker": "ED",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "DOMINION ENERGY, INC",
+    "ticker": "D",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "PUBLIC SERVICE ENTERPRISE GROUP INC",
+    "ticker": "PEG",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "REPUBLIC SERVICES, INC.",
+    "ticker": "RSG",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "SLB LIMITED/NV",
+    "ticker": "SLB",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "SOUTHERN CO",
+    "ticker": "SO",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "WASTE MANAGEMENT INC",
+    "ticker": "WM",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "AMERICAN ELECTRIC POWER CO INC",
+    "ticker": "AEP",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "EVERSOURCE ENERGY",
+    "ticker": "ES",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "SEMPRA",
+    "ticker": "SRE",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "Duke Energy CORP",
+    "ticker": "DUK",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "FIRSTENERGY CORP",
+    "ticker": "FE",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "WEC ENERGY GROUP, INC.",
+    "ticker": "WEC",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "XCEL ENERGY INC",
+    "ticker": "XEL",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "KINDER MORGAN, INC.",
+    "ticker": "KMI",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "ONEOK INC /NEW/",
+    "ticker": "OKE",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "DTE ENERGY CO",
+    "ticker": "DTE",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "WILLIAMS COMPANIES, INC.",
+    "ticker": "WMB",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "CMS ENERGY CORP",
+    "ticker": "CMS",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "OCCIDENTAL PETROLEUM CORP /DE/",
+    "ticker": "OXY",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "Targa Resources Corp.",
+    "ticker": "TRGP",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "Coterra Energy Inc.",
+    "ticker": "CTRA",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "DEVON ENERGY CORP/DE",
+    "ticker": "DVN",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "Diamondback Energy, Inc.",
+    "ticker": "FANG",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "EOG RESOURCES INC",
+    "ticker": "EOG",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "Marathon Petroleum Corp",
+    "ticker": "MPC",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "Phillips 66",
+    "ticker": "PSX",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
+    "company": "VALERO ENERGY CORP/TX",
+    "ticker": "VLO",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 53.7,
+    "esg_components": {
+      "environmental": 41,
+      "social": 53.0,
+      "governance": 67.0
+    },
+    "gap": -3.7,
     "arbitrage_type": "double_risk",
     "arbitrage_label": "Double Risk",
     "gap_reasons": [
@@ -1591,6 +2350,25 @@
     "composite": 68
   },
   {
+    "company": "ELECTRONIC ARTS INC.",
+    "ticker": "EA",
+    "industry": "tech",
+    "hi_composite": 50,
+    "esg_composite": 53.1,
+    "esg_components": {
+      "environmental": 52,
+      "social": 47.6,
+      "governance": 59.0
+    },
+    "gap": -3.1,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
     "company": "Nordstrom",
     "ticker": "",
     "industry": "retail",
@@ -1648,25 +2426,6 @@
     "composite": 63
   },
   {
-    "company": "CONOCOPHILLIPS",
-    "ticker": "COP",
-    "industry": "energy",
-    "hi_composite": 58,
-    "esg_composite": 55.0,
-    "esg_components": {
-      "environmental": 40,
-      "social": 58.4,
-      "governance": 67.0
-    },
-    "gap": 3.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
-  },
-  {
     "company": "Coursera",
     "ticker": "",
     "industry": "tech",
@@ -1703,6 +2462,25 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 68
+  },
+  {
+    "company": "Coinbase",
+    "ticker": "",
+    "industry": "default",
+    "hi_composite": 50,
+    "esg_composite": 52.9,
+    "esg_components": {
+      "environmental": 51,
+      "social": 61.4,
+      "governance": 47.5
+    },
+    "gap": -2.9,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
   },
   {
     "company": "Vanguard",
@@ -1782,6 +2560,25 @@
     "composite": 33
   },
   {
+    "company": "3M CO",
+    "ticker": "MMM",
+    "industry": "tech",
+    "hi_composite": 50,
+    "esg_composite": 52.8,
+    "esg_components": {
+      "environmental": 52,
+      "social": 55.4,
+      "governance": 51.5
+    },
+    "gap": -2.8,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
+  },
+  {
     "company": "DoorDash",
     "ticker": "",
     "industry": "tech",
@@ -1837,25 +2634,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 59
-  },
-  {
-    "company": "EXELON CORP",
-    "ticker": "EXC",
-    "industry": "energy",
-    "hi_composite": 58,
-    "esg_composite": 55.3,
-    "esg_components": {
-      "environmental": 41,
-      "social": 58.4,
-      "governance": 67.0
-    },
-    "gap": 2.7,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 58
   },
   {
     "company": "Zara / Inditex",
@@ -1953,25 +2731,6 @@
     "composite": 25
   },
   {
-    "company": "Spotify",
-    "ticker": "",
-    "industry": "default",
-    "hi_composite": 56,
-    "esg_composite": 58.5,
-    "esg_components": {
-      "environmental": 51,
-      "social": 74.8,
-      "governance": 52.0
-    },
-    "gap": -2.5,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 56
-  },
-  {
     "company": "New Belgium Brewing",
     "ticker": "",
     "industry": "food",
@@ -2030,626 +2789,6 @@
     "composite": 57
   },
   {
-    "company": "AMEREN CORP",
-    "ticker": "AEE",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "American Water Works Company, Inc.",
-    "ticker": "AWK",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "ATMOS ENERGY CORP",
-    "ticker": "ATO",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "CONSOLIDATED EDISON INC",
-    "ticker": "ED",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "DOMINION ENERGY, INC",
-    "ticker": "D",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "PUBLIC SERVICE ENTERPRISE GROUP INC",
-    "ticker": "PEG",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "REPUBLIC SERVICES, INC.",
-    "ticker": "RSG",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "SLB LIMITED/NV",
-    "ticker": "SLB",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "SOUTHERN CO",
-    "ticker": "SO",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "WASTE MANAGEMENT INC",
-    "ticker": "WM",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "AMERICAN ELECTRIC POWER CO INC",
-    "ticker": "AEP",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "EVERSOURCE ENERGY",
-    "ticker": "ES",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "SEMPRA",
-    "ticker": "SRE",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "Duke Energy CORP",
-    "ticker": "DUK",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "FIRSTENERGY CORP",
-    "ticker": "FE",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "WEC ENERGY GROUP, INC.",
-    "ticker": "WEC",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "XCEL ENERGY INC",
-    "ticker": "XEL",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "KINDER MORGAN, INC.",
-    "ticker": "KMI",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "ONEOK INC /NEW/",
-    "ticker": "OKE",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "DTE ENERGY CO",
-    "ticker": "DTE",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "WILLIAMS COMPANIES, INC.",
-    "ticker": "WMB",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "CMS ENERGY CORP",
-    "ticker": "CMS",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "OCCIDENTAL PETROLEUM CORP /DE/",
-    "ticker": "OXY",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "Targa Resources Corp.",
-    "ticker": "TRGP",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "Coterra Energy Inc.",
-    "ticker": "CTRA",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "DEVON ENERGY CORP/DE",
-    "ticker": "DVN",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "Diamondback Energy, Inc.",
-    "ticker": "FANG",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "EOG RESOURCES INC",
-    "ticker": "EOG",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "Marathon Petroleum Corp",
-    "ticker": "MPC",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "Phillips 66",
-    "ticker": "PSX",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
-    "company": "VALERO ENERGY CORP/TX",
-    "ticker": "VLO",
-    "industry": "energy",
-    "hi_composite": 56,
-    "esg_composite": 53.7,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 67.0
-    },
-    "gap": 2.3,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 53.7",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
     "company": "BP",
     "ticker": "",
     "industry": "energy",
@@ -2705,26 +2844,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 62
-  },
-  {
-    "company": "HALLIBURTON CO",
-    "ticker": "HAL",
-    "industry": "energy",
-    "hi_composite": 57,
-    "esg_composite": 54.8,
-    "esg_components": {
-      "environmental": 41,
-      "social": 53.0,
-      "governance": 70.0
-    },
-    "gap": 2.2,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 57 but ESG only 54.8",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 57
   },
   {
     "company": "Aptiv PLC",
@@ -2839,25 +2958,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 63
-  },
-  {
-    "company": "ELECTRONIC ARTS INC.",
-    "ticker": "EA",
-    "industry": "tech",
-    "hi_composite": 51,
-    "esg_composite": 53.1,
-    "esg_components": {
-      "environmental": 52,
-      "social": 47.6,
-      "governance": 59.0
-    },
-    "gap": -2.1,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
-    "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
-    ],
-    "composite": 51
   },
   {
     "company": "Biogen",
@@ -2991,25 +3091,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 58
-  },
-  {
-    "company": "Snap Inc",
-    "ticker": "SNAP",
-    "industry": "tech",
-    "hi_composite": 52,
-    "esg_composite": 54.0,
-    "esg_components": {
-      "environmental": 52,
-      "social": 47.0,
-      "governance": 62.0
-    },
-    "gap": -2.0,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
-    "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
-    ],
-    "composite": 52
   },
   {
     "company": "Impossible Foods",
@@ -3219,25 +3300,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 60
-  },
-  {
-    "company": "Coinbase",
-    "ticker": "",
-    "industry": "default",
-    "hi_composite": 51,
-    "esg_composite": 52.9,
-    "esg_components": {
-      "environmental": 51,
-      "social": 61.4,
-      "governance": 47.5
-    },
-    "gap": -1.9,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
-    "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
-    ],
-    "composite": 51
   },
   {
     "company": "Anthropic",
@@ -5756,26 +5818,6 @@
     "composite": 60
   },
   {
-    "company": "DuPont de Nemours, Inc.",
-    "ticker": "DD",
-    "industry": "healthcare",
-    "hi_composite": 56,
-    "esg_composite": 54.6,
-    "esg_components": {
-      "environmental": 55,
-      "social": 55.4,
-      "governance": 53.5
-    },
-    "gap": 1.4,
-    "arbitrage_type": "hidden_gem",
-    "arbitrage_label": "Hidden Gem",
-    "gap_reasons": [
-      "HI composite 56 but ESG only 54.6",
-      "Genuinely human company not recognized by traditional ESG"
-    ],
-    "composite": 56
-  },
-  {
     "company": "Tesla",
     "ticker": "TSLA",
     "industry": "manufacturing",
@@ -5907,25 +5949,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 61
-  },
-  {
-    "company": "B&G Foods, Inc.",
-    "ticker": "BGS",
-    "industry": "food",
-    "hi_composite": 55,
-    "esg_composite": 56.3,
-    "esg_components": {
-      "environmental": 52,
-      "social": 53.0,
-      "governance": 63.5
-    },
-    "gap": -1.3,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 55
   },
   {
     "company": "PayPal",
@@ -6384,25 +6407,6 @@
     "composite": 33
   },
   {
-    "company": "Dr. Bronner's",
-    "ticker": "",
-    "industry": "default",
-    "hi_composite": 66,
-    "esg_composite": 67.0,
-    "esg_components": {
-      "environmental": 68,
-      "social": 82.2,
-      "governance": 53.0
-    },
-    "gap": -1.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 66
-  },
-  {
     "company": "Aon plc",
     "ticker": "AON",
     "industry": "finance",
@@ -6650,25 +6654,6 @@
     "composite": 60
   },
   {
-    "company": "Merck & Co., Inc.",
-    "ticker": "MRK",
-    "industry": "healthcare",
-    "hi_composite": 57,
-    "esg_composite": 56.0,
-    "esg_components": {
-      "environmental": 55,
-      "social": 60.2,
-      "governance": 53.5
-    },
-    "gap": 1.0,
-    "arbitrage_type": "aligned",
-    "arbitrage_label": "Aligned",
-    "gap_reasons": [
-      "HI and ESG agree \u2014 strong across both frameworks"
-    ],
-    "composite": 57
-  },
-  {
     "company": "Tentree",
     "ticker": "",
     "industry": "retail",
@@ -6820,25 +6805,6 @@
       "Low on both HI and ESG \u2014 significant risk across all dimensions"
     ],
     "composite": 52
-  },
-  {
-    "company": "BP p.l.c.",
-    "ticker": "BP",
-    "industry": "energy",
-    "hi_composite": 51,
-    "esg_composite": 50.0,
-    "esg_components": {
-      "environmental": 46,
-      "social": 50.0,
-      "governance": 54.0
-    },
-    "gap": 1.0,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
-    "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
-    ],
-    "composite": 51
   },
   {
     "company": "Starbucks Corporation",
@@ -7922,25 +7888,6 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 58
-  },
-  {
-    "company": "3M CO",
-    "ticker": "MMM",
-    "industry": "tech",
-    "hi_composite": 52,
-    "esg_composite": 52.8,
-    "esg_components": {
-      "environmental": 52,
-      "social": 55.4,
-      "governance": 51.5
-    },
-    "gap": -0.8,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
-    "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
-    ],
-    "composite": 52
   },
   {
     "company": "Dropbox",
@@ -14765,5 +14712,24 @@
       "Low on both HI and ESG \u2014 significant risk across all dimensions"
     ],
     "composite": 41
+  },
+  {
+    "company": "BP p.l.c.",
+    "ticker": "BP",
+    "industry": "energy",
+    "hi_composite": 50,
+    "esg_composite": 50.0,
+    "esg_components": {
+      "environmental": 46,
+      "social": 50.0,
+      "governance": 54.0
+    },
+    "gap": 0.0,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 50
   }
 ]

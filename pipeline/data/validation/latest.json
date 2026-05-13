@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-05-12T08:41:43.419490",
-  "total_issues": 362,
+  "timestamp": "2026-05-13T08:48:27.510563",
+  "total_issues": 407,
   "critical": 0,
-  "warnings": 76,
+  "warnings": 121,
   "info": 286,
   "blocked": false,
   "stats": {
     "total_companies": 773,
-    "avg_composite": 56.0,
-    "stdev": 8.2,
+    "avg_composite": 55.6,
+    "stdev": 8.3,
     "min_score": 13,
     "max_score": 85,
     "pct_90_100": 0.0,
-    "pct_40_70": 91.1,
+    "pct_40_70": 91.2,
     "pct_0_20": 0.6,
     "gold_count": 2,
     "gold_pct": 0.3,
@@ -20,6 +20,105 @@
     "single_source_dimensions": 73
   },
   "issues": [
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Microsoft Corporation",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~73)",
+      "value": 50,
+      "expected": 73
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Salesforce",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~69)",
+      "value": 50,
+      "expected": 69
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Dr. Bronner's",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~66)",
+      "value": 50,
+      "expected": 66
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "EXELON CORP",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~58)",
+      "value": 50,
+      "expected": 58
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "HALLIBURTON CO",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~57)",
+      "value": 50,
+      "expected": 57
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Amazon.com, Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~60)",
+      "value": 50,
+      "expected": 60
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "AMEREN CORP",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "American Water Works Company, Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "ATMOS ENERGY CORP",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "CONSOLIDATED EDISON INC",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "DOMINION ENERGY, INC",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
     {
       "layer": 1,
       "severity": "warning",
@@ -31,12 +130,309 @@
     },
     {
       "layer": 1,
+      "severity": "warning",
+      "company": "PUBLIC SERVICE ENTERPRISE GROUP INC",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "REPUBLIC SERVICES, INC.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "SLB LIMITED/NV",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "SOUTHERN CO",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "WASTE MANAGEMENT INC",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Adobe",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~60)",
+      "value": 50,
+      "expected": 60
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "AMERICAN ELECTRIC POWER CO INC",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "EVERSOURCE ENERGY",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "SEMPRA",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Duke Energy CORP",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "FIRSTENERGY CORP",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Alphabet Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~58)",
+      "value": 50,
+      "expected": 58
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Uber",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~59)",
+      "value": 50,
+      "expected": 59
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "WEC ENERGY GROUP, INC.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "XCEL ENERGY INC",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "KINDER MORGAN, INC.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "ONEOK INC /NEW/",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "DTE ENERGY CO",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "WILLIAMS COMPANIES, INC.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "CMS ENERGY CORP",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "CONOCOPHILLIPS",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~58)",
+      "value": 50,
+      "expected": 58
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "DuPont de Nemours, Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Merck & Co., Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~57)",
+      "value": 50,
+      "expected": 57
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "OCCIDENTAL PETROLEUM CORP /DE/",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Spotify",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Targa Resources Corp.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Coterra Energy Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "DEVON ENERGY CORP/DE",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Diamondback Energy, Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "EOG RESOURCES INC",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Marathon Petroleum Corp",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
       "severity": "info",
       "company": "Marvell Technology, Inc.",
       "field": "data_sources",
       "message": "Only 1 data source \u2014 score may be unreliable",
       "value": 1,
       "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Phillips 66",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "VALERO ENERGY CORP/TX",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
     },
     {
       "layer": 1,
@@ -910,6 +1306,15 @@
       "message": "Only 1 data source \u2014 score may be unreliable",
       "value": 1,
       "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "B&G Foods, Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~55)",
+      "value": 50,
+      "expected": 55
     },
     {
       "layer": 1,
@@ -2896,7 +3301,7 @@
       "severity": "warning",
       "company": "synchrony",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 83, 'U.2': 93}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 82, 'U.2': 92}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
