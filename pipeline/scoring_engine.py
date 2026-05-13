@@ -5,7 +5,7 @@ Merges signals from 24 sub-signals across 40 data sources into HUMAN dimension s
 
 Follows HUMAN_Grade_Methodology_Spec v1.2.0. See SPEC.md for canonical sub-signal names.
 3 gates: Dimensions, Evidence, Momentum (gate logic from v1.1.0; unchanged in v1.2.0).
-Floor rule (v1.2.0): any HUMAN dimension < 30 caps composite at 50.
+Floor rule (v1.2.1): any HUMAN dimension < 42 caps composite at 50.
 Defaults: All sub-signals default to 50 (neutral) when no data is available.
 Rounding: down unless decimal is .6 or higher (whole numbers only).
 
@@ -1214,9 +1214,9 @@ def round_score(val):
 
 
 def compute_composite(D_H, D_U, D_M, D_A, D_N):
-    """v1.2.0: composite is the mean of the five HUMAN dimensions, with one floor rule.
+    """v1.2.1: composite is the mean of the five HUMAN dimensions, with one floor rule.
 
-    FLOOR RULE: if ANY dimension < 30, composite is capped at 50.
+    FLOOR RULE: if ANY dimension < 42, composite is capped at 50.
     Severe failure in any single HUMAN dimension means the company cannot earn a
     composite above 50, even if the other four dimensions average it higher. This
     protects users from companies with one severely failing dimension (e.g.,
@@ -1230,14 +1230,14 @@ def compute_composite(D_H, D_U, D_M, D_A, D_N):
     api_server caller can serialize a stable schema without churn. Schedule for
     full removal in v1.3 once iOS / extension consumers are audited.
 
-    floor_triggered fires whenever min_dim < 30, even if the mean was already ≤ 50
+    floor_triggered fires whenever min_dim < 42, even if the mean was already ≤ 50
     (signals "severe single-dim failure" to UI consumers regardless of cap effect).
     """
     composite = (D_H + D_U + D_M + D_A + D_N) / 5
     dims = {"H": D_H, "U": D_U, "M": D_M, "A": D_A, "N": D_N}
     min_dim_value = min(dims.values())
 
-    if min_dim_value < 30:
+    if min_dim_value < 42:
         composite = min(composite, 50)
         triggering_dimension = min(dims, key=dims.get)
         return round_score(composite), True, False, triggering_dimension
@@ -1615,7 +1615,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": "Estimated", "spec_version": "1.2.0",
+        "confidence": "Estimated", "spec_version": "1.2.1",
         "data_sources": all_sources,
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
         "humanwashing_flags": hw_flags,
