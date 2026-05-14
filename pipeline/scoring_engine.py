@@ -613,6 +613,70 @@ def compute_harm_penalty(ticker, company_name=""):
     }
 
 
+# ═══ HEARTBEAT DECAY PENALTY (v1.2.1) ══════════════════════════════════
+# Critical Heartbeat decay → H dimension penalty. Severe cases trip the
+# floor rule (any dim < 42 → cap at 50), naturally pulling decaying
+# companies below the HUMAN 100 cutoff. Mirrors compute_harm_penalty
+# architecture so the score itself reflects active human cost — no
+# separate index-level filter required.
+
+DECAY_PENALTIES = {
+    "stable":   0,
+    "watch":    0,
+    "warning": -10,
+    "critical": -25,
+}
+
+_HEARTBEAT_INDEX = None
+
+
+def _load_heartbeat_data():
+    """Lazy-load heartbeats.json into a ticker-keyed index.
+
+    Source file is a LIST of records, each with a "ticker" key. We build
+    a dict for O(1) lookups. Mirrors the _load_harm_data + _HARM_INDEX
+    pattern used for HD records.
+    """
+    global _HEARTBEAT_INDEX
+    if _HEARTBEAT_INDEX is not None:
+        return
+    _HEARTBEAT_INDEX = {}
+    heartbeat_file = Path("data/heartbeat/heartbeats.json")
+    if heartbeat_file.exists():
+        try:
+            data = json.load(open(heartbeat_file))
+            if isinstance(data, list):
+                for entry in data:
+                    if isinstance(entry, dict) and entry.get("ticker"):
+                        _HEARTBEAT_INDEX[entry["ticker"].upper()] = entry
+        except Exception:
+            pass
+
+
+def compute_decay_penalty(ticker):
+    """Compute Heartbeat decay penalty — applies to H dimension only.
+
+    Mirrors compute_harm_penalty (HD on M). Critical decay is intended
+    to push H below 42, tripping the composite floor and capping at 50,
+    so the score itself reflects "company is actively bleeding humanity
+    right now" without needing a separate HUMAN 100 exclusion filter.
+    """
+    if not ticker:
+        return {"has_decay": False, "decay_level": "stable", "penalties": {"H": 0}}
+
+    _load_heartbeat_data()
+    entry = _HEARTBEAT_INDEX.get(ticker.upper(), {})
+    decay_level = "stable"
+    if isinstance(entry, dict):
+        decay_level = entry.get("decay_level", "stable")
+    penalty = DECAY_PENALTIES.get(decay_level, 0)
+    return {
+        "has_decay": decay_level in ("warning", "critical"),
+        "decay_level": decay_level,
+        "penalties": {"H": penalty},
+    }
+
+
 def _score_from_inclusion_tier(tier_score):
     """Map HRC CEI / DEI score to U.3 contribution using tier structure.
     
@@ -1564,6 +1628,14 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
     if harm_doc["has_harm"]:
         D_M = clamp(D_M + harm_doc["penalties"]["M"])
 
+    # ═══ HEARTBEAT DECAY — Direct H dimension penalty (v1.2.1) ═══════════
+    # Critical decay penalizes H heavily — often trips the floor rule
+    # (any dim < 42 → cap at 50). Same architectural pattern as HD on M.
+    # Replaces the previous practice of separate index-level filters with
+    # score-as-ground-truth.
+    decay_pen = compute_decay_penalty(ticker)
+    if decay_pen["has_decay"]:
+        D_H = clamp(D_H + decay_pen["penalties"]["H"])
 
     # Round dimensions after all adjustments
     D_H, D_U, D_M, D_A, D_N = round_score(D_H), round_score(D_U), round_score(D_M), round_score(D_A), round_score(D_N)
