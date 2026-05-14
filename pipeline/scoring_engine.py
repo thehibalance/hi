@@ -1277,6 +1277,27 @@ def round_score(val):
     return int(math.ceil(val)) if remainder >= 0.6 else int(math.floor(val))
 
 
+def _compute_confidence(real_count, total):
+    """v1.2.1: derive confidence label from real-data coverage.
+
+    Replaces the hardcoded "Estimated" stamp at API response time.
+    Real-data percentage drives the label users see in the iOS app,
+    Chrome extension, and web detail page.
+
+    Coca-Cola at 17/19 (89%) → "Verified"
+    Typical well-covered S&P 500 at 12-15/19 → "Strong"
+    Companies with thin data → "Partial" / "Limited" / "Estimated"
+    """
+    if total <= 0:
+        return "Estimated"
+    pct = real_count / total
+    if pct >= 0.84: return "Verified"
+    if pct >= 0.63: return "Strong"
+    if pct >= 0.42: return "Partial"
+    if pct >= 0.21: return "Limited"
+    return "Estimated"
+
+
 def compute_composite(D_H, D_U, D_M, D_A, D_N):
     """v1.2.1: composite is the mean of the five HUMAN dimensions, with one floor rule.
 
@@ -1687,7 +1708,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": "Estimated", "spec_version": "1.2.1",
+        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.2.1",
         "data_sources": all_sources,
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
         "humanwashing_flags": hw_flags,
