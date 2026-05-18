@@ -1,4 +1,4 @@
-# HI Grade Evidence Audit
+# HI Grade™ Evidence Audit
 _Journalist-ready documentation of every number in the system_
 _2026-04-22 11:38:58_
 
@@ -8,7 +8,7 @@ _2026-04-22 11:38:58_
 
 ---
 
-## 1. AHI (Algorithmic Harm Index) — Evidence Binder
+## 1. AHI™ (Algorithmic Harm Index) — Evidence Binder
 
 _Each AHI-tagged company: score, penalties applied, harm flags with citations_
 
@@ -540,7 +540,7 @@ _Each HD-tagged company: penalty value, rubric components, source citations_
 
 ---
 
-## 3. HW (Humanwashing) — Evidence Binder
+## 3. HW (Humanwashing™) — Evidence Binder
 
 **72 HW-flagged companies**
 
@@ -657,7 +657,7 @@ _Companies whose scores come from editorial curation rather than live data feeds
 
 ---
 
-## 5. Balanced Board — Membership Audit
+## 5. Balanced Board™ — Membership Audit
 
 **4 companies on Balanced Board**
 

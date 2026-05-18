@@ -1,4 +1,4 @@
-# HI Grade Score Audit
+# HI Grade™ Score Audit
 
 Generated: 2026-04-28T09:41:21.113843
 

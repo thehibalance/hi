@@ -7,7 +7,7 @@
 
 ---
 
-## 1. Gold HI Grade — 3-Gate System (replaces 10-gate system)
+## 1. Gold HI Grade™ — 3-Gate System (replaces 10-gate system)
 
 ### Previous (v1.0)
 10 gates across 3 categories: Score (1 gate), Balance (1 gate), 8 HUMAN Features (8 gates).
@@ -51,7 +51,7 @@ Replace Section 2.3 (Tier Classification) with:
 The Algorithmic Harm Index was a cross-cutting penalty applied to H, U, M, and N dimensions. It was informational and not connected to Gold HI Grade status.
 
 ### Updated
-The AHI now serves dual purpose:
+The AHI™ now serves dual purpose:
 1. Cross-cutting penalty on dimensions (unchanged)
 2. Gate 3 component: AHI score ≥ 30 blocks Gold HI Grade
 
@@ -230,7 +230,7 @@ Add new Section 24.9 (Automated Validation) to Data Integrity Firewall:
 - 25 companies have `subsidiaries` arrays mapped
 - 9 companies have `primary_contractors` arrays mapped
 - 38 companies have improved `notes` with specific citations
-- Header updated: "The Nahum Foundation" → "The HI Balance"
+- Header updated: "The Nahum Foundation" → "The HI Balance™"
 
 ### New Fields in Company Record
 ```json

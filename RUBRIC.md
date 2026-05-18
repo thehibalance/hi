@@ -102,7 +102,7 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 
 ### U.4 — Simulated Empathy Detection
 **Status:** PARTIAL  
-**Inputs:** Algorithmic Harm Index (AHI) computation from incident database (ACLU, AlgorithmWatch, Brookings, FTC settlements)  
+**Inputs:** Algorithmic Harm Index (AHI™) computation from incident database (ACLU, AlgorithmWatch, Brookings, FTC settlements)  
 **Ladder:** Editorial. AHI 0-25 = no impact, 25-50 = moderate, 50+ = severe. Blast-radius weighting (millions vs thousands affected) is editorial.  
 **Path forward:** AlgorithmWatch publishes harm tier classifications that could replace internal cutoffs.
 

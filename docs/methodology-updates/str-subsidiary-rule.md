@@ -2,7 +2,7 @@
 
 ## The Gap
 
-Section 8.4.7 of the whitepaper identifies Supply Chain Laundering: companies moving low-scoring operations into separate legal entities to clean their parent profile. The Contagion Effect Score (CES) detects the gap between a parent's score and its supply chain — but CES is informational only. It never touches the actual HUMAN Grade. A company can show massive downstream displacement in its CES report and still earn Gold HI Grade.
+Section 8.4.7 of the whitepaper identifies Supply Chain Laundering: companies moving low-scoring operations into separate legal entities to clean their parent profile. The Contagion Effect Score (CES) detects the gap between a parent's score and its supply chain — but CES is informational only. It never touches the actual HUMAN Grade. A company can show massive downstream displacement in its CES report and still earn Gold HI Grade™.
 
 ## The Fix
 
@@ -124,7 +124,7 @@ This can be implemented in phases:
 
 ## Whitepaper Language
 
-Add to Part V (Humanwashing) or Part VI (Data Integrity):
+Add to Part V (Humanwashing™) or Part VI (Data Integrity):
 
 > **Subsidiary Transparency Rule.** A company cannot earn a high HI Grade by moving low-scoring operations into subsidiaries or contractors. When a parent company's known subsidiaries score 20+ points below the parent, a penalty of up to 15 points is applied to the parent's composite score before Gold HI Grade gates are evaluated. You can't hide displacement in a shell company. The data follows the humans.
 

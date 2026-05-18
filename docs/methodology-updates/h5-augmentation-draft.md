@@ -120,4 +120,4 @@ For the whitepaper's H dimension section (Part III, Section 3.1), replace the H.
 
 - **No company's score decreases.** The augmentation bonus is additive only. Companies without augmentation data score identically to today (augmentation_signal defaults to 0).
 - **Some companies may increase by up to 4 points on composite.** The maximum H.5 bonus is +20 points, and H.5 carries a 0.20 weight within H, which carries a 0.20 weight in the composite. Maximum composite impact: 20 × 0.20 × 0.20 = 0.8 points. In practice, companies with strong augmentation programs might see H dimension increases of 2-4 points and composite increases of 0.4-0.8 points.
-- **Gold HI Grade eligibility is unaffected.** The threshold is adaptive and will absorb any upward drift naturally.
+- **Gold HI Grade™ eligibility is unaffected.** The threshold is adaptive and will absorb any upward drift naturally.

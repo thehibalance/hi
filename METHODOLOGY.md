@@ -1,4 +1,4 @@
-# HI Grade Methodology
+# HI Grade™ Methodology
 ## The math behind being human kind.
 
 **Version 1.1.0 · April 2026 · Apache 2.0 · [thehibalance.org](https://thehibalance.org)**
@@ -16,7 +16,7 @@
 3. [The 19 sub-signals](#3-the-19-sub-signals)
 4. [Gold HI Grade — the v1.1.0 gate](#4-gold-hi-grade--the-v110-gate)
 5. [The AI-HI Balance principle](#5-the-ai-hi-balance-principle)
-6. [Humanwashing, AHI, and PHI](#6-humanwashing-ahi-and-phi)
+6. [Humanwashing™, AHI™, and PHI](#6-humanwashing-ahi-and-phi)
 7. [The 42 data sources](#7-the-42-data-sources)
 8. [What we measure vs. what we don't](#8-what-we-measure-vs-what-we-dont)
 9. [Open source and how to verify](#9-open-source-and-how-to-verify)

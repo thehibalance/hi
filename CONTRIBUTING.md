@@ -1,4 +1,4 @@
-# Contributing to HI Grade
+# Contributing to HI Grade™
 
 Thanks for showing up. HI Grade gets better when people challenge it.
 

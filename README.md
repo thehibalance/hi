@@ -18,7 +18,7 @@
 
 ---
 
-## What is HI Grade?
+## What is HI Grade™?
 
 For 500 years we've made decisions using four filters: **cost, time, convenience, risk.** We left out a fifth — **verified human impact.** Not "does this company feel ethical?" but _"does it treat humans well in ways that leave a data trail?"_
 
@@ -52,11 +52,11 @@ Five dimensions. Each measures something AI can't replace.
 
 **Composite Floor Rule.** If any HUMAN dimension scores below 42, the composite is capped at 50. Replaces an earlier multi-tier floor system with one clear, defensible threshold. See `RUBRIC.md` for examples (J&J, Costco, Apple).
 
-**Standardized harm rendering across surfaces.** Web detail page and Chrome extension panel now show identical evidence blocks: ⚠ Harm Documentation (J&J-class public-record harm with linked sources), ⚡ Algorithmic Harm Index with components mini-bars (Meta-class algorithmic decision-making at scale), and 🚩 Humanwashing (filtered to true HW flags only — no duplication across blocks).
+**Standardized harm rendering across surfaces.** Web detail page and Chrome extension panel now show identical evidence blocks: ⚠ Harm Documentation (J&J-class public-record harm with linked sources), ⚡ Algorithmic Harm Index with components mini-bars (Meta-class algorithmic decision-making at scale), and 🚩 Humanwashing™ (filtered to true HW flags only — no duplication across blocks).
 
 **Coverage expansion.** S&P 500 + Russell 1000 universe (589 US tickers) now feeds SEC EDGAR, FMP, and Yahoo pipelines. Earlier list was 315 tickers.
 
-## The Balanced Board
+## The Balanced Board™
 
 Most frameworks hide weak dimensions inside a composite average. HI refuses. The **Balanced Board** highlights companies where **every one of the five HUMAN dimensions scores ≥ 60**. No gaps. No hiding.
 
@@ -98,7 +98,7 @@ All free, public, auditable. No proprietary databases. No purchased ratings. No 
 | 💼 **Financial** | 7 | FMP, Finnhub, Yahoo Finance, Alpha Vantage, FRED, OpenCorporates, NewsAPI |
 | 📊 **Public Datasets** | 17 | Glassdoor, HRC CEI, Disability:IN DEI, CDP (Climate/Water/Forests), GRI, SBTi, IRS 990, WARN Act, iFixit, BBB, HIBP, Layoffs.fyi |
 | ✅ **Certifications** | 5 | B Corp, Fair Trade USA, USDA Organic, Climate Neutral, 1% for the Planet |
-| 🧮 **Computed Aggregates** | 10 | Harm Documentation, AHI, CEO Accountability, RPE, Heartbeat Decay Index |
+| 🧮 **Computed Aggregates** | 10 | Harm Documentation, AHI™, CEO Accountability, RPE, Heartbeat Decay Index |
 
 Full list and methodology per source: **[thehibalance.org/#sources](https://thehibalance.org/#sources)**
 
@@ -286,7 +286,7 @@ Trademarks (HI Grade™, Humanwashing™, Algorithmic Harm Index™, Human kind?
 
 [thehibalance.org](https://thehibalance.org) · [Chrome Extension](https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg) · [iOS App](https://apps.apple.com/app/hi/id6761270596) · [API](https://api.thehibalance.org) · [Methodology](https://thehibalance.org/#methodology) · [Sources](https://thehibalance.org/#sources)
 
-The HI Balance · Patent Pending · HI Grade™ · Humanwashing™ · Algorithmic Harm Index™
+The HI Balance™ · Patent Pending · HI Grade™ · Humanwashing™ · Algorithmic Harm Index™
 Morf Innovations LLC · [@thehibalance](https://twitter.com/thehibalance) · [hi@thehibalance.org](mailto:hi@thehibalance.org)
 
 </div>

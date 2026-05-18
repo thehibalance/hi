@@ -59,4 +59,4 @@ Not currently set up. Use email.
 
 ---
 
-Thank you for making HI Grade safer.
+Thank you for making HI Grade™ safer.
