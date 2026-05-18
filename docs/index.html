@@ -220,6 +220,24 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div id="page-app" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
 <div class="subpage">
 <h1><img src="/logo-512.png" alt="hi." style="height:40px;vertical-align:middle"> Mobile App <span style="font-size:14px;font-weight:600;color:#16A34A;background:#16A34A15;padding:4px 12px;border-radius:12px;vertical-align:middle">FREE</span></h1>
+<style>
+.app-screenshots-v1{margin:32px -24px 24px;padding:0 24px;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.app-screenshots-v1::-webkit-scrollbar{display:none}
+.app-screenshots-v1 .app-shot{flex:0 0 260px;scroll-snap-align:center;display:flex;flex-direction:column;align-items:center}
+.app-screenshots-v1 .app-shot img{width:100%;height:auto;border-radius:32px;box-shadow:0 16px 40px rgba(15,26,46,.10),0 4px 12px rgba(15,26,46,.04);border:1px solid #f0f0f0;background:#fff}
+.app-screenshots-v1 .app-shot-cap{margin-top:18px;text-align:center;max-width:240px}
+.app-screenshots-v1 .app-shot-title{display:block;color:var(--navy);font-weight:700;font-size:14px;margin-bottom:4px;letter-spacing:.2px}
+.app-screenshots-v1 .app-shot-desc{display:block;color:var(--muted);font-size:12px;line-height:1.5}
+@media(min-width:900px){.app-screenshots-v1{justify-content:center;margin:32px 0 24px;padding:0;overflow-x:visible;flex-wrap:nowrap;gap:18px}.app-screenshots-v1 .app-shot{flex:0 0 200px}}
+</style>
+<div class="app-screenshots-v1">
+<div class="app-shot"><img src="/screenshots/app-home.png" alt="HI App Home Screen showing 734 brands scored"><div class="app-shot-cap"><span class="app-shot-title">Home</span><span class="app-shot-desc">734 brands scored. 42 data sources. The fifth check before every decision.</span></div></div>
+<div class="app-shot"><img src="/screenshots/app-human100.png" alt="HUMAN 100 ranking"><div class="app-shot-cap"><span class="app-shot-title">HUMAN 100&trade;</span><span class="app-shot-desc">The 100 most-human public companies, ranked. Coca-Cola at 75, NextEra at 70.</span></div></div>
+<div class="app-shot"><img src="/screenshots/app-lens.png" alt="HUMAN Lens revealing ESG vs HI Grade gaps"><div class="app-shot-cap"><span class="app-shot-title">HUMAN Lens</span><span class="app-shot-desc">Where ESG and HI Grade disagree. Microsoft scores 86 on ESG, 50 on HI.</span></div></div>
+<div class="app-shot"><img src="/screenshots/app-extension.png" alt="Phone Extension with Siri integration"><div class="app-shot-cap"><span class="app-shot-title">Phone Extension</span><span class="app-shot-desc">"Hey Siri, what's the HI Grade for Starbucks?" Score appears on every app you open.</span></div></div>
+<div class="app-shot"><img src="/screenshots/app-widget.png" alt="iOS home screen widget showing Balanced Board insight"><div class="app-shot-cap"><span class="app-shot-title">Widget</span><span class="app-shot-desc">Daily insights from your home screen. Ambient awareness, no app required.</span></div></div>
+</div>
+
 <p class="subpage-sub">The HI Grade™ in your pocket. Available free on iOS. Search, Siri, Widget, Shortcuts.</p>
 
 <div style="text-align:center;margin:24px 0">
@@ -236,7 +254,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light);text-align:center">
 <div style="font-size:28px;margin-bottom:8px">🔍</div>
 <div style="font-weight:700;color:var(--navy);font-size:13px">Search</div>
-<div style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5">Any of 740+ scored companies. Full dimension breakdown.</div>
+<div style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5">Any of 700+ scored companies. Full dimension breakdown.</div>
 </div>
 <div style="padding:20px;background:var(--white);border-radius:12px;border:1px solid var(--light);text-align:center">
 <div style="font-size:28px;margin-bottom:8px">🏆</div>
@@ -341,7 +359,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <p class="subpage-sub">Integrate HI Grades™ into procurement platforms, investment tools, ESG dashboards, and consumer products.</p>
 
 <div class="about-card" style="text-align:center;border-left:4px solid var(--navy)">
-<p style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px">740+ companies · 42 data sources · 32 endpoints</p>
+<p style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px">700+ companies · 42 data sources · 32 endpoints</p>
 <p style="margin:0;color:var(--muted)">HUMAN Heartbeat · HUMAN Genome · HUMAN 100 Index™ · HUMAN Lens · Real-time decay detection</p>
 </div>
 
@@ -955,7 +973,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>CFPB complaints power U.1 (Customer Empathy) and M.1 (Pricing Ethics). Banks, credit cards, mortgages, debt collectors are covered well. A coffee company isn't. For ~80% of companies we score, CFPB returns zero — not because they're saints, but because CFPB doesn't regulate that sector.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> BBB complaints (now ingested), FTC actions (already scoring), CPSC SaferProducts (already scoring). Per-sector regulators being audited.</p></div></details>
 
 <details class="about-card" style="margin-bottom:14px;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:17px;color:var(--navy);font-weight:600">iFixit repairability covers ~15 companies</summary>
-<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>iFixit publishes detailed repairability scores for consumer electronics — Apple, Samsung, Dell, HP, Microsoft Surface, ~10 others. For the other 740+ companies, A.4 (Product Lifecycle) falls back to industry defaults.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> EU Extended Producer Responsibility datasets publish repairability scores. Ingestion planned for v1.2.</p></div></details>
+<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>iFixit publishes detailed repairability scores for consumer electronics — Apple, Samsung, Dell, HP, Microsoft Surface, ~10 others. For the other 700+ companies, A.4 (Product Lifecycle) falls back to industry defaults.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> EU Extended Producer Responsibility datasets publish repairability scores. Ingestion planned for v1.2.</p></div></details>
 
 <details class="about-card" style="margin-bottom:14px;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:17px;color:var(--navy);font-weight:600">Harm Documentation strong post-2020, limited before</summary>
 <div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>Harm Documentation covers 14 categories with strong coverage from 2020 onward. For historical events — tobacco, asbestos, J&amp;J talc — we maintain a curated Major Harm Events dictionary encoding court settlements. Confident in the dictionary, but incomplete.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> systematic backfill from EPA Superfund site attributions, state AG settlement databases, academic attribution studies.</p></div></details>
