@@ -949,7 +949,7 @@ def stats():
         "floor_rule_triggered": sum(1 for c in ALL_COMPANIES if c.get("floor_triggered")),
         "balance_floor_triggered": sum(1 for c in ALL_COMPANIES if c.get("balance_floor")),
         "data_sources": get_dynamic_source_count(),
-        "spec_version": "1.2.0",
+        "spec_version": "1.2.1",
         "brand": {
             "name": "HI.", "tagline": "Find the HI balance.",
             "domain": "thehibalance.org", "foundation": "The HI Balance",
