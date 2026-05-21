@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-20T09:08:28.746737",
+  "timestamp": "2026-05-21T09:12:28.045209",
   "total_issues": 474,
   "critical": 0,
   "warnings": 188,
   "info": 286,
   "blocked": false,
   "stats": {
-    "total_companies": 735,
+    "total_companies": 734,
     "avg_composite": 55.2,
     "stdev": 7.7,
     "min_score": 13,
@@ -842,15 +842,6 @@
     {
       "layer": 1,
       "severity": "warning",
-      "company": "Spotify",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~56)",
-      "value": 50,
-      "expected": 56
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
       "company": "Booking Holdings Inc.",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~54)",
@@ -946,15 +937,6 @@
       "message": "Composite 50 doesn't match dimensions (expected ~56)",
       "value": 50,
       "expected": 56
-    },
-    {
-      "layer": 1,
-      "severity": "info",
-      "company": "Coinbase",
-      "field": "data_sources",
-      "message": "Only 1 data source \u2014 score may be unreliable",
-      "value": 1,
-      "expected": ">= 2"
     },
     {
       "layer": 1,
@@ -3646,6 +3628,24 @@
       "message": "Only 1 data source \u2014 score may be unreliable",
       "value": 1,
       "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "Coinbase",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Spotify",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
     },
     {
       "layer": 2,
