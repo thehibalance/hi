@@ -178,6 +178,14 @@ def main():
     if seed_path.exists():
         run(f"python3 merge_seed.py --seed {seed_path} --scores {args.data}/all_scores.json",
             "Phase 4a: Merge Seed Data (private companies)")
+
+        # Phase 4a-i: Enrich domains from sp500_domains.DOMAIN_MAP so dedupe can match by domain
+        run(f"python3 enrich_domains.py --apply --root ..",
+            "Phase 4a-i: Enrich domains for dedupe")
+
+        # Phase 4a-ii: Dedupe same-domain + same-name duplicates (Coinbase pattern)
+        run(f"python3 dedupe_scores_v3.py --scores {args.data}/all_scores.json",
+            "Phase 4a-ii: Dedupe records")
     else:
         print("\n  ⏭ Phase 4a: No seed-data.js found, skipping merge")
 
