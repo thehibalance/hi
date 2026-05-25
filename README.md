@@ -7,7 +7,7 @@
 **Score every company. Five dimensions AI can't replace.**
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Spec](https://img.shields.io/badge/spec-v1.2.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
+[![Spec](https://img.shields.io/badge/spec-v1.2.1-1B3A5C.svg)](https://thehibalance.org/#methodology)
 [![API](https://img.shields.io/badge/API-live-16A34A.svg)](https://api.thehibalance.org)
 [![Chrome](https://img.shields.io/badge/Chrome-Extension-C49B20.svg)](https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg)
 [![iOS](https://img.shields.io/badge/iOS-App%20Store-000.svg)](https://apps.apple.com/app/hi/id6761270596)
