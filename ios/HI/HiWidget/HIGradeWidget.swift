@@ -32,15 +32,15 @@ private let staticFacts: [DYKFact] = [
         icon: "✨",
         body: "**The Balanced Board is rare.** Only a handful of companies pass — earning all five HUMAN dimensions ≥ 60 with verified public data and no critical decay."
     ),
-    // Card 1 — J&J / Moral & Ethical Conduct
+    // Card 1 — Meta AI rapid displacement (matches homepage Spotlight #2)
     DYKFact(
-        icon: "⚠️",
-        body: "**Johnson & Johnson scored 0 in Moral & Ethical Conduct.** Documented harm from talc settlements ($12.5B, ~50,000 deaths attributed). ESG gives them a pass — HI Grade does not."
+        icon: "🤖",
+        body: "**AI rapid displacement: Meta.** 21,000+ employees laid off in 2022–2023. In January 2025, AI announced to replace mid-level engineers. The H dimension reflects it — months before layoffs hit headlines."
     ),
-    // Card 2 — Meta / Algorithmic Harm
+    // Card 2 — Floor rule (matches homepage Spotlight #3)
     DYKFact(
-        icon: "⚡",
-        body: "**Meta scored 50 on HI Grade.** Algorithmic harm flags from Instagram teen wellbeing, feed manipulation, and chronological-feed removal flow into H, U, M, N dimensions."
+        icon: "📐",
+        body: "**A composite of 50 with four 90s.** The floor rule caps composite at 50 if any HUMAN dimension falls below 42. Greatness in three areas doesn't excuse failure in a fourth. 42 = Douglas Adams said so."
     ),
     // Card 3 — HUMAN Decline
     DYKFact(
@@ -52,10 +52,10 @@ private let staticFacts: [DYKFact] = [
         icon: "🏆",
         body: "**The Balanced Board features rare leaders.** Companies that earn all five HUMAN dimensions above 60 with verified public data, every dimension grounded in real metrics."
     ),
-    // Card 5 — Zero AI
+    // Card 5 — The credit-rating mission (matches homepage Spotlight #5)
     DYKFact(
-        icon: "⏱️",
-        body: "**HI Grade uses ZERO AI in scoring.** 42 public data sources, 19 sub-signals, deterministic math. Every score is reconstructable from the raw data — no LLM summaries, no neural networks."
+        icon: "📊",
+        body: "**The first credit-rating-style score for being human.** No AI. Deterministic math. Edge-to-cloud. 42 public data sources. No ESG raters. No certification fees. No paid placements. Just the math."
     ),
 ]
 
@@ -132,13 +132,13 @@ struct HIGradeProvider: TimelineProvider {
             .sorted { ($0.composite ?? 0) > ($1.composite ?? 0) }
 
         let n = balanced.count
-        let totalRounded = "740"   // matches website default until /stats endpoint is wired
+        let totalRounded = "700"   // matches website default until /stats endpoint is wired
 
         // ── Card 0 — count + names ─────────────────────────────────────
         if n == 0 {
             facts[0] = DYKFact(
                 icon: "✨",
-                body: "**No companies currently pass the Balanced Board.** Earning all five HUMAN dimensions above 60 with verified public data is rare — and the bar moves with the data."
+                body: "**No companies currently pass the Balanced Board.** Earning all five HUMAN dimensions above 60 with verified public data is rare. The math is strict on purpose."
             )
         } else if n == 1, let c = balanced.first, let name = c.company {
             facts[0] = DYKFact(
@@ -177,7 +177,7 @@ struct HIGradeProvider: TimelineProvider {
         } else {
             facts[4] = DYKFact(
                 icon: "🏆",
-                body: "**The Balanced Board is empty today.** The decay system caught quality drift in companies that previously passed. The bar moves with the data."
+                body: "**The Balanced Board is empty today.** The decay system caught quality drift in companies that previously passed. The math is strict on purpose."
             )
         }
 
@@ -201,7 +201,7 @@ struct HIGradeSmallView: View {
             HStack(alignment: .top, spacing: 8) {
                 Text(entry.fact.icon)
                     .font(.system(size: 18))
-                Text("DID YOU KNOW")
+                Text("HUMAN SPOTLIGHT")
                     .font(.system(size: 8, weight: .heavy))
                     .tracking(1.5)
                     .foregroundColor(gold)
@@ -235,11 +235,11 @@ struct HIGradeMediumView: View {
                 Text(entry.fact.icon)
                     .font(.system(size: 22))
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("DID YOU KNOW")
+                    Text("HUMAN SPOTLIGHT")
                         .font(.system(size: 9, weight: .heavy))
                         .tracking(1.8)
                         .foregroundColor(gold)
-                    Text("hi. · The HI Balance")
+                    Text("hi.™ · The HI Balance™")
                         .font(.system(size: 10, weight: .medium))
                         .foregroundColor(.secondary)
                 }
@@ -299,8 +299,8 @@ struct HIGradeWidget: Widget {
         StaticConfiguration(kind: kind, provider: HIGradeProvider()) { entry in
             HIGradeWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Did You Know — hi.")
-        .description("Rotating insights from the HI Balance framework. Live-updated with the Balanced Board.")
+        .configurationDisplayName("HUMAN Spotlight — hi.")
+        .description("Rotating insights from the HI Balance™ framework. Live-updated with the Balanced Board™.")
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
