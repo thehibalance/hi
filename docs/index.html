@@ -125,7 +125,7 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 <script>
 (function(){
 const SPOTLIGHTS = [
-  {title:"Only 2 of 730 companies pass.",body:"Our Balanced Board\u2122 requires every HUMAN dimension above 60, with verified evidence, with healthy momentum. Coca-Cola and NextEra Energy made it. The bar moves up quarterly \u2014 the companies set it themselves by performing."},
+  {title:"Only 2 of 730 companies pass.",body:"Our Balanced Board\u2122 requires every HUMAN dimension above 60, with verified evidence and healthy momentum. Coca-Cola and NextEra Energy made it. Most companies haven\u0027t \u2014 and the data shows why."},
   {title:"AI rapid displacement: Meta.",body:"Meta laid off 21,000+ employees in 2022-2023, then announced AI would replace mid-level engineers in January 2025. Their H dimension reflects it. We detected the trajectory months before layoffs hit the headlines."},
   {title:"A composite of 50 with four 90s.",body:"Our floor rule caps composite at 50 if any HUMAN dimension falls below 42. Greatness in three areas doesn't excuse failure in a fourth. The bar is 42 \u2014 Douglas Adams said so."},
   {title:"42 public sources. Zero ESG ratings.",body:"SEC EDGAR. EPA ECHO. BLS. CFPB. FEC. FDA. 36 more. If you can verify our score, you can verify your own. Methodology is open source under Apache 2.0."},
@@ -137,9 +137,9 @@ const SPOTLIGHTS = [
   {title:"Notable is compressed by design.",body:"D_N currently ranges 29-64. Three N sub-signals (audit quality, disclosure frequency, humanwashing detection) are spec'd but not yet wired \u2014 v1.3 activates the rest. We tell you this because hiding it would be hypocritical."}
 ];
 
-let spotIdx = 0;
+let spotIdx = 4;
 try { spotIdx = parseInt(sessionStorage.getItem('spotIdx') || '0'); } catch(e) {}
-if (isNaN(spotIdx) || spotIdx < 0 || spotIdx >= SPOTLIGHTS.length) spotIdx = Math.floor(Math.random() * SPOTLIGHTS.length);
+if (isNaN(spotIdx) || spotIdx < 0 || spotIdx >= SPOTLIGHTS.length) spotIdx = 4;
 
 function renderSpot() {
   const s = SPOTLIGHTS[spotIdx];
