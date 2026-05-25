@@ -179,7 +179,7 @@ Each response includes `score_status`: `verified`, `estimated`, or `pending` —
          ┌───────────────────┼───────────────────┐
          ▼                   ▼                   ▼
    REST API (32)     Chrome Extension     iOS App
-   api.thehibalance    441+ brands        App Store
+   api.thehibalance    700+ brands        App Store
 ```
 
 **Nightly pipeline:** GitHub Actions at midnight CST. Full pipeline runs in ~60-90 min; skip-collect quarterly re-score in ~5 min. Validation stops publication if anything looks wrong.
