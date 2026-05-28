@@ -20,7 +20,7 @@ struct HomeView: View {
                         Text("Human kind?")
                             .font(.system(size: 15, weight: .medium))
                             .foregroundColor(.hiGold)
-                        Text("The fifth check before every decision.")
+                        Text("The first check before every decision.")
                             .font(.system(size: 12, weight: .regular))
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)

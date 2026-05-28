@@ -38,15 +38,15 @@ struct AboutView: View {
                             .foregroundColor(.hiGold)
                     }.padding(.top, 20)
                     
-                    // SECTION 1 — The Fifth Check (NEW)
+                    // SECTION 1 — The First Check (NEW)
                     VStack(alignment: .leading, spacing: 10) {
                         HStack(spacing: 6) {
                             Text("💡").font(.system(size: 18))
-                            Text("The Fifth Check")
+                            Text("The First Check")
                                 .font(.system(size: 17, weight: .bold, design: .serif))
                                 .foregroundColor(.hiNavy)
                         }
-                        Text("For centuries, we've made decisions through four filters: cost, time, convenience, risk. HI Grade adds the missing one — verified human impact.")
+                        Text("For centuries, we've made decisions through four filters: cost, time, convenience, risk. HI Grade asks what should come first — verified human impact.")
                             .font(.system(size: 14))
                             .foregroundColor(.secondary)
                             .lineSpacing(3)
