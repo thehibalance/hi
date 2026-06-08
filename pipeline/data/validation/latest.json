@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-06-07T08:59:32.532813",
-  "total_issues": 472,
+  "timestamp": "2026-06-08T10:33:39.261246",
+  "total_issues": 480,
   "critical": 0,
-  "warnings": 187,
+  "warnings": 195,
   "info": 285,
   "blocked": false,
   "stats": {
@@ -17,7 +17,7 @@
     "gold_count": 2,
     "gold_pct": 0.3,
     "mssi_violations": 0,
-    "single_source_dimensions": 73
+    "single_source_dimensions": 81
   },
   "issues": [
     {
@@ -3731,6 +3731,24 @@
     {
       "layer": 3,
       "severity": "warning",
+      "company": "ibm",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "ibm",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
       "company": "optum",
       "field": "U_sources",
       "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
@@ -3868,7 +3886,7 @@
       "severity": "warning",
       "company": "discover_financial",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 80, 'U.2': 90}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 79, 'U.2': 89}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -4001,6 +4019,24 @@
     {
       "layer": 3,
       "severity": "warning",
+      "company": "meta",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "meta",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
       "company": "disney",
       "field": "M_sources",
       "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
@@ -4055,6 +4091,24 @@
     {
       "layer": 3,
       "severity": "warning",
+      "company": "oracle",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "oracle",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
       "company": "ups",
       "field": "M_sources",
       "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
@@ -4076,6 +4130,24 @@
       "company": "verizon",
       "field": "U_sources",
       "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "verizon",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "verizon",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
