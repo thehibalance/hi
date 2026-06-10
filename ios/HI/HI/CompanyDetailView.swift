@@ -13,7 +13,7 @@ struct CompanyDetailView: View {
 
     private var dimensionRows: [(String, String, String, String, Double)] {
         [
-            ("H", "Human Consciousness", "🧠", "brain.head.profile", c.D_H ?? 0),
+            ("H", "Human", "🧠", "brain.head.profile", c.D_H ?? 0),
             ("U", "Understanding & Empathy", "💙", "heart.fill", c.D_U ?? 0),
             ("M", "Moral & Ethical Conduct", "⚖️", "scale.3d", c.D_M ?? 0),
             ("A", "Alive & Environmental", "🌍", "leaf.fill", c.D_A ?? 0),
@@ -249,7 +249,7 @@ struct CompanyDetailView: View {
         "H": ["H.1", "H.2", "H.3", "H.4", "H.5"],
         "U": ["U.1", "U.2", "U.3", "U.4", "U.5"],
         "M": ["M.1", "M.2", "M.3", "M.4", "M.5"],
-        "A": ["A.1", "A.2", "A.3", "A.4", "A.5"],
+        "A": ["A.1", "A.2", "A.3", "A.4"],
         "N": ["N.1", "N.2", "N.3", "N.4", "N.5"],
     ]
 
@@ -268,7 +268,7 @@ struct CompanyDetailView: View {
         }
         
         let sortedKeys = scores.keys.sorted().filter { !(Self.subSignalNames[$0] ?? "").contains("(deferred)") }
-        let isSeed = sources.contains("Public Reporting") || sources.contains("Seed Estimate") || sources.contains("Manual Scoring") || (scores.count > 1 && Set(scores.values.map { Int($0) }).count == 1 && sources.isEmpty)
+        let isSeed = sources.contains("Seed Estimate") || (scores.count > 1 && Set(scores.values.map { Int($0) }).count == 1 && sources.isEmpty)
         let realCount = isSeed ? 0 : scores.values.filter { Int($0) < 45 || Int($0) > 55 }.count
 
         return VStack(alignment: .leading, spacing: 6) {

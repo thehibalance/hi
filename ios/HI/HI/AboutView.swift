@@ -16,7 +16,7 @@ struct AboutView: View {
     private var beforeYouRows: [(icon: String, title: String, desc: String)] {
         [
             ("cart.fill",           "Before you buy",      "Scan or search a brand. Know if the humans behind the product are being invested in or replaced."),
-            ("briefcase.fill",      "Before you work",     "Look up the company before the interview. HI Grade tells you what Glassdoor can't."),
+            ("briefcase.fill",      "Before you work",     "Look up the company before the interview. HI Grade™ tells you what Glassdoor can't."),
             ("chart.line.uptrend.xyaxis", "Before you invest", "Know what you're funding. HI Grade reveals the human cost of every portfolio."),
             ("person.2.fill",       "Before you recommend", "Don't vouch for a brand you haven't checked. Ask Human kind? before your reputation is on it."),
         ]
@@ -57,22 +57,6 @@ struct AboutView: View {
                             .padding(.top, 4)
                     }.padding().frame(maxWidth: .infinity, alignment: .leading)
                      .background(Color.hiSystemBg).cornerRadius(16)
-                    
-                    // SECTION 2 — We're not anti-AI
-                    VStack(spacing: 12) {
-                        Text("We're not anti-AI. We're pro-balance.")
-                            .font(.system(size: 17, weight: .bold))
-                            .foregroundColor(.hiNavy)
-                            .multilineTextAlignment(.center)
-                        Text("Brands that empower humans score well. Brands that replace, divide, or addict them score poorly.")
-                            .font(.system(size: 14))
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.center)
-                        Text("We reward companies that use AI to empower their people.")
-                            .font(.system(size: 14, weight: .medium))
-                            .foregroundColor(.hiNavy)
-                            .multilineTextAlignment(.center)
-                    }.padding().background(Color.hiSystemBg).cornerRadius(16)
                     
                     // SECTION 3 — The HUMAN Framework
                     VStack(alignment: .leading, spacing: 14) {
@@ -237,7 +221,7 @@ struct AboutView: View {
                     
                     // Footer
                     VStack(spacing: 8) {
-                        Text("The HI Balance · Patent Pending · HI Grade™")
+                        Text("The HI Balance™ · Patent Pending · HI Grade™")
                             .font(.system(size: 11)).foregroundColor(.secondary)
                         Text("Humanwashing™ · Algorithmic Harm Index™")
                             .font(.system(size: 11)).foregroundColor(.secondary)

@@ -7,7 +7,7 @@ struct GetHIGradeIntent: AppIntent {
     static var title: LocalizedStringResource = "Get HI Grade"
     static var description = IntentDescription(
         "Look up a company's Human Intelligence score",
-        categoryName: "HI Grade"
+        categoryName: "HI Grade™"
     )
     static var openAppWhenRun: Bool = false
     
@@ -67,7 +67,7 @@ struct QuickHIGradeIntent: AppIntent {
     static var title: LocalizedStringResource = "Quick HI Grade"
     static var description = IntentDescription(
         "Quickly check a company's HI Grade score",
-        categoryName: "HI Grade"
+        categoryName: "HI Grade™"
     )
     static var openAppWhenRun: Bool = false
     
@@ -115,7 +115,7 @@ struct GetHIGradeForAppIntent: AppIntent {
     static var title: LocalizedStringResource = "Get HI Grade for App"
     static var description = IntentDescription(
         "Get the HI Grade for the company behind an app",
-        categoryName: "HI Grade"
+        categoryName: "HI Grade™"
     )
     static var openAppWhenRun: Bool = false
     
@@ -166,7 +166,7 @@ struct SearchHIGradeIntent: AppIntent {
     static var title: LocalizedStringResource = "Search HI Grade"
     static var description = IntentDescription(
         "Search for a company by name or ticker",
-        categoryName: "HI Grade"
+        categoryName: "HI Grade™"
     )
     static var openAppWhenRun: Bool = false
     

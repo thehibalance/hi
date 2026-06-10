@@ -6,6 +6,7 @@ struct HomeView: View {
     @State private var searchText = ""
     @State private var results: [Company] = []
     @State private var topCompanies: [Company] = []
+    @FocusState private var isSearchFocused: Bool
     
     var body: some View {
         NavigationStack {
@@ -70,6 +71,7 @@ struct HomeView: View {
                     Spacer(minLength: 40)
                 }
             }
+            .scrollDismissesKeyboard(.immediately)
             .background(Color.hiBackground)
             .navigationDestination(for: Company.self) { CompanyDetailView(company: $0) }
         }
@@ -94,9 +96,13 @@ struct HomeView: View {
             Image(systemName: "magnifyingglass").foregroundColor(.secondary)
             TextField("Search any company...", text: $searchText)
                 .textFieldStyle(.plain).autocorrectionDisabled()
-                .onSubmit { Task { await doSearch() } }
+                .focused($isSearchFocused)
+                .onSubmit {
+                    isSearchFocused = false
+                    Task { await doSearch() }
+                }
             if !searchText.isEmpty {
-                Button { searchText = ""; results = [] } label: {
+                Button { searchText = ""; results = []; isSearchFocused = false } label: {
                     Image(systemName: "xmark.circle.fill").foregroundColor(.secondary)
                 }
             }
@@ -114,6 +120,9 @@ struct HomeView: View {
                 NavigationLink(value: company) {
                     CompanyRow(company: company, threshold: api.goldThreshold)
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    isSearchFocused = false
+                })
                 Divider().padding(.leading, 60)
             }
         }

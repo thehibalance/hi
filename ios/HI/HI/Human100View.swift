@@ -20,7 +20,7 @@ struct Human100View: View {
                     }.listStyle(.plain)
                 }
             }
-            .navigationTitle("HUMAN 100").navigationBarTitleDisplayMode(.large)
+            .navigationTitle("HUMAN 100™").navigationBarTitleDisplayMode(.large)
             .navigationDestination(for: Company.self) { CompanyDetailView(company: $0) }
         }
         .task {
