@@ -1,3 +1,4 @@
+// v1.2y-seed-tickers: applied 20260422-115555
 const SEED_COMPANIES = [
   {
     "id": "apple",
@@ -346,6 +347,7 @@ const SEED_COMPANIES = [
   },
   {
     "id": "tiktok",
+    "ticker": "BYTEDANCE",
     "name": "TikTok / ByteDance",
     "domains": [
       "tiktok.com"
@@ -940,6 +942,7 @@ const SEED_COMPANIES = [
   },
   {
     "id": "wish",
+    "ticker": "WISH",
     "name": "Wish / ContextLogic",
     "domains": [
       "wish.com"
@@ -958,6 +961,7 @@ const SEED_COMPANIES = [
   },
   {
     "id": "alibaba",
+    "ticker": "BABA",
     "name": "Alibaba Group",
     "domains": [
       "alibaba.com",
@@ -1824,7 +1828,6 @@ const SEED_COMPANIES = [
   },
   {
     "id": "rivian",
-    "ticker": "RIVN",
     "name": "Rivian",
     "domains": [
       "rivian.com"
@@ -1898,6 +1901,7 @@ const SEED_COMPANIES = [
   },
   {
     "id": "bp",
+    "ticker": "BP",
     "name": "BP",
     "domains": [
       "bp.com"
@@ -2317,6 +2321,7 @@ const SEED_COMPANIES = [
   },
   {
     "id": "clearview_ai",
+    "ticker": "CVIEW",
     "name": "Clearview AI",
     "domains": [
       "clearview.ai"
@@ -2594,6 +2599,7 @@ const SEED_COMPANIES = [
   {
     "id": "spacex",
     "name": "SpaceX",
+    "ticker": "SPCX",
     "domains": [
       "spacex.com"
     ],
@@ -3346,41 +3352,6 @@ const SEED_COMPANIES = [
     "confidence": "estimated"
   },
   {
-    "id": "mjolk",
-    "name": "Le Creuset",
-    "domains": [
-      "lecreuset.com"
-    ],
-    "tags": [
-      "housewares",
-      "cookware"
-    ],
-    "h": 78,
-    "u": 65,
-    "m": 68,
-    "a": 55,
-    "n": 58,
-    "notes": "French artisan cookware since 1925. Hand-cast and hand-inspected. Lifetime warranty.",
-    "confidence": "estimated"
-  },
-  {
-    "id": "birkenstocks",
-    "name": "Birkenstock",
-    "domains": [
-      "birkenstock.com"
-    ],
-    "tags": [
-      "footwear"
-    ],
-    "h": 72,
-    "u": 60,
-    "m": 62,
-    "a": 58,
-    "n": 55,
-    "notes": "German-manufactured since 1774. Cork and natural materials. Durable design. Heritage craft.",
-    "confidence": "estimated"
-  },
-  {
     "id": "grove_collab",
     "name": "Grove Collaborative",
     "domains": [
@@ -3697,79 +3668,6 @@ const SEED_COMPANIES = [
     "a": 90,
     "n": 85,
     "notes": "Patagonia's food arm. Regenerative organic. Supply chain transparency.",
-    "confidence": "estimated"
-  },
-  {
-    "id": "leatherman",
-    "name": "Leatherman",
-    "domains": [
-      "leatherman.com"
-    ],
-    "tags": [
-      "tools",
-      "manufacturing"
-    ],
-    "h": 78,
-    "u": 65,
-    "m": 72,
-    "a": 55,
-    "n": 62,
-    "notes": "US-manufactured multi-tools. 25-year warranty. Skilled craftspeople.",
-    "confidence": "estimated"
-  },
-  {
-    "id": "filson",
-    "name": "Filson",
-    "domains": [
-      "filson.com"
-    ],
-    "tags": [
-      "apparel",
-      "outdoor",
-      "heritage"
-    ],
-    "h": 80,
-    "u": 70,
-    "m": 72,
-    "a": 58,
-    "n": 65,
-    "notes": "US-manufactured since 1897. Lifetime guarantee. Heritage craft.",
-    "confidence": "estimated"
-  },
-  {
-    "id": "red_wing",
-    "name": "Red Wing Shoes",
-    "domains": [
-      "redwingshoes.com"
-    ],
-    "tags": [
-      "footwear",
-      "manufacturing"
-    ],
-    "h": 82,
-    "u": 72,
-    "m": 75,
-    "a": 55,
-    "n": 68,
-    "notes": "US-manufactured work boots since 1905. Resoling program. Multi-generational craft.",
-    "confidence": "estimated"
-  },
-  {
-    "id": "vitamix",
-    "name": "Vitamix",
-    "domains": [
-      "vitamix.com"
-    ],
-    "tags": [
-      "housewares",
-      "manufacturing"
-    ],
-    "h": 75,
-    "u": 68,
-    "m": 72,
-    "a": 55,
-    "n": 62,
-    "notes": "US-manufactured since 1921. Family-owned. 10-year warranty.",
     "confidence": "estimated"
   },
   {
