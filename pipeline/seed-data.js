@@ -2599,6 +2599,7 @@ const SEED_COMPANIES = [
   {
     "id": "spacex",
     "name": "SpaceX",
+    "ticker": "SPCX",
     "domains": [
       "spacex.com"
     ],

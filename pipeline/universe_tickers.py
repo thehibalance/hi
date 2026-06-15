@@ -104,7 +104,7 @@ RUSSELL_1000_ADDITIONS = [
     "ACLS","LSCC","AMBA","POWI","DIOD","MTSI","ALGM",
     
     # Space / Defense
-    "RKLB","LUNR","ASTS","SPCE","RDW","BKSY","MNTS",
+    "RKLB","LUNR","ASTS","SPCE","RDW","BKSY","MNTS","SPCX",
     "HEI","KTOS","MRCY","AVAV",
 ]
 
