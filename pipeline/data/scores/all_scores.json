@@ -2,21 +2,21 @@
   {
     "company": "Coca-Cola Company",
     "ticker": "KO",
-    "industry": "food",
-    "sic": "2080",
-    "sic_description": "Beverages",
-    "D_H": 70,
-    "D_U": 75,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 65,
+    "D_U": 73,
     "D_M": 67,
     "D_A": 73,
-    "D_N": 90,
-    "composite": 75,
+    "D_N": 55,
+    "composite": 67,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
     "balance_floor": false,
     "triggering_dimension": null,
-    "confidence": "Verified",
+    "confidence": "Strong",
     "spec_version": "1.2.1",
     "data_sources": [
       "1% for the Planet",
@@ -26,10 +26,9 @@
       "Glassdoor",
       "HIBP",
       "HRC CEI",
-      "Jobs",
-      "SEC"
+      "Jobs"
     ],
-    "signal_coverage": "17/19 sub-signals with real data",
+    "signal_coverage": "15/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -54,8 +53,8 @@
       "H": {
         "scores": {
           "H.1": 80,
-          "H.2": 65,
-          "H.3": 55,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 80
         },
         "sources": [
@@ -67,7 +66,7 @@
           "U.1": 73.8,
           "U.2": 69.8,
           "U.3": 83.1,
-          "U.4": 72.2
+          "U.4": 64.2
         },
         "sources": [
           "Glassdoor",
@@ -85,9 +84,9 @@
         },
         "sources": [
           "Fair Trade",
-          "HIBP",
+          "1% for the Planet",
           "Glassdoor",
-          "1% for the Planet"
+          "HIBP"
         ]
       },
       "A": {
@@ -98,19 +97,18 @@
           "A.4": 70.0
         },
         "sources": [
+          "Fair Trade",
           "1% for the Planet",
-          "CDP",
-          "Fair Trade"
+          "CDP"
         ]
       },
       "N": {
         "scores": {
           "N.2": 90,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
-          "CDP",
-          "SEC"
+          "CDP"
         ]
       }
     },
@@ -124,9 +122,9 @@
       "cdp_climate": "A-",
       "epa_violations": null
     },
-    "hi_balanced": true,
+    "hi_balanced": false,
     "hi_balanced_gates": {
-      "dimensions": true,
+      "dimensions": false,
       "evidence": true,
       "momentum": true,
       "_detail": {
@@ -135,7 +133,7 @@
           "U": true,
           "M": true,
           "A": true,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -162,20 +160,20 @@
   {
     "company": "Apple Inc.",
     "ticker": "AAPL",
-    "industry": "tech",
-    "sic": "3571",
-    "sic_description": "Electronic Computers",
-    "D_H": 40,
-    "D_U": 71,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 45,
+    "D_U": 72,
     "D_M": 77,
     "D_A": 72,
-    "D_N": 95,
-    "composite": 50,
+    "D_N": 60,
+    "composite": 65,
     "hi_grade": "scored",
     "satire": "",
-    "floor_triggered": true,
+    "floor_triggered": false,
     "balance_floor": false,
-    "triggering_dimension": "H",
+    "triggering_dimension": null,
     "confidence": "Verified",
     "spec_version": "1.2.1",
     "data_sources": [
@@ -194,11 +192,10 @@
       "Industry+EPA",
       "Jobs",
       "SBTi",
-      "SEC",
       "SEC DEF 14A",
       "iFixit"
     ],
-    "signal_coverage": "19/19 sub-signals with real data",
+    "signal_coverage": "17/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 22.0,
@@ -233,8 +230,8 @@
       "H": {
         "scores": {
           "H.1": 60,
-          "H.2": 40,
-          "H.3": 42,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 60
         },
         "sources": [
@@ -246,7 +243,7 @@
           "U.1": 72.0,
           "U.2": 66.5,
           "U.3": 83.5,
-          "U.4": 61.7
+          "U.4": 66.5
         },
         "sources": [
           "CFPB",
@@ -266,13 +263,13 @@
           "M.5": 85
         },
         "sources": [
-          "Glassdoor",
+          "HIBP",
+          "FTC",
           "FDA",
+          "CFPB",
+          "Glassdoor",
           "SEC DEF 14A",
           "FEC",
-          "FTC",
-          "CFPB",
-          "HIBP",
           "EEOC"
         ]
       },
@@ -284,21 +281,20 @@
           "A.4": 60
         },
         "sources": [
-          "SBTi",
           "CDP",
           "iFixit",
+          "SBTi",
           "Industry+EPA"
         ]
       },
       "N": {
         "scores": {
           "N.2": 100,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
           "CDP",
-          "GRI",
-          "SEC"
+          "GRI"
         ]
       }
     },
@@ -353,21 +349,21 @@
   {
     "company": "PepsiCo, Inc.",
     "ticker": "PEP",
-    "industry": "food",
-    "sic": "2080",
-    "sic_description": "Beverages",
-    "D_H": 55,
-    "D_U": 70,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 50,
+    "D_U": 68,
     "D_M": 74,
     "D_A": 75,
-    "D_N": 95,
-    "composite": 74,
+    "D_N": 60,
+    "composite": 65,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
     "balance_floor": false,
     "triggering_dimension": null,
-    "confidence": "Verified",
+    "confidence": "Strong",
     "spec_version": "1.2.1",
     "data_sources": [
       "BBB",
@@ -383,10 +379,9 @@
       "Industry",
       "Industry+EPA",
       "SBTi",
-      "SEC",
       "SEC DEF 14A"
     ],
-    "signal_coverage": "17/19 sub-signals with real data",
+    "signal_coverage": "15/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -411,8 +406,8 @@
       "H": {
         "scores": {
           "H.1": 50,
-          "H.2": 65,
-          "H.3": 55,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 50
         },
         "sources": []
@@ -422,7 +417,7 @@
           "U.1": 72.0,
           "U.2": 59.8,
           "U.3": 82.0,
-          "U.4": 68.5
+          "U.4": 60.5
         },
         "sources": [
           "CFPB",
@@ -441,12 +436,12 @@
           "M.5": 70
         },
         "sources": [
-          "Glassdoor",
+          "HIBP",
           "FDA",
-          "SEC DEF 14A",
-          "FEC",
           "CFPB",
-          "HIBP"
+          "Glassdoor",
+          "SEC DEF 14A",
+          "FEC"
         ]
       },
       "A": {
@@ -457,21 +452,20 @@
           "A.4": 75
         },
         "sources": [
-          "SBTi",
-          "CDP",
           "Industry",
+          "CDP",
+          "SBTi",
           "Industry+EPA"
         ]
       },
       "N": {
         "scores": {
           "N.2": 100,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
           "CDP",
-          "GRI",
-          "SEC"
+          "GRI"
         ]
       }
     },
@@ -526,14 +520,14 @@
   {
     "company": "Microsoft Corporation",
     "ticker": "MSFT",
-    "industry": "tech",
-    "sic": "7372",
-    "sic_description": "Services-Prepackaged Software",
-    "D_H": 25,
-    "D_U": 74,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 30,
+    "D_U": 75,
     "D_M": 82,
     "D_A": 77,
-    "D_N": 95,
+    "D_N": 60,
     "composite": 50,
     "hi_grade": "scored",
     "satire": "",
@@ -557,11 +551,10 @@
       "Industry+EPA",
       "Jobs",
       "SBTi",
-      "SEC",
       "SEC DEF 14A",
       "iFixit"
     ],
-    "signal_coverage": "18/19 sub-signals with real data",
+    "signal_coverage": "16/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 26.2,
@@ -596,8 +589,8 @@
       "H": {
         "scores": {
           "H.1": 30,
-          "H.2": 40,
-          "H.3": 42,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 30
         },
         "sources": [
@@ -609,7 +602,7 @@
           "U.1": 72.0,
           "U.2": 75.0,
           "U.3": 84.2,
-          "U.4": 64.0
+          "U.4": 68.8
         },
         "sources": [
           "CFPB",
@@ -629,12 +622,12 @@
           "M.5": 95
         },
         "sources": [
-          "Glassdoor",
-          "FDA",
-          "SEC DEF 14A",
-          "FTC",
-          "CFPB",
           "HIBP",
+          "FTC",
+          "FDA",
+          "CFPB",
+          "Glassdoor",
+          "SEC DEF 14A",
           "EEOC"
         ]
       },
@@ -646,21 +639,20 @@
           "A.4": 50
         },
         "sources": [
-          "SBTi",
           "CDP",
           "iFixit",
+          "SBTi",
           "Industry+EPA"
         ]
       },
       "N": {
         "scores": {
           "N.2": 100,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
           "CDP",
-          "GRI",
-          "SEC"
+          "GRI"
         ]
       }
     },
@@ -719,14 +711,14 @@
   {
     "company": "Nike, Inc.",
     "ticker": "NKE",
-    "industry": "apparel",
-    "sic": "3021",
-    "sic_description": "Rubber & Plastics Footwear",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
     "D_H": 40,
-    "D_U": 73,
+    "D_U": 72,
     "D_M": 76,
     "D_A": 66,
-    "D_N": 95,
+    "D_N": 60,
     "composite": 50,
     "hi_grade": "scored",
     "satire": "",
@@ -748,7 +740,6 @@
       "Industry",
       "Industry+EPA",
       "SBTi",
-      "SEC",
       "SEC DEF 14A"
     ],
     "signal_coverage": "15/19 sub-signals with real data",
@@ -787,7 +778,7 @@
           "U.1": 72.0,
           "U.2": 68.8,
           "U.3": 83.1,
-          "U.4": 70.2
+          "U.4": 64.2
         },
         "sources": [
           "CFPB",
@@ -806,11 +797,11 @@
           "M.5": 78
         },
         "sources": [
-          "Glassdoor",
+          "HIBP",
           "FDA",
-          "SEC DEF 14A",
           "CFPB",
-          "HIBP"
+          "Glassdoor",
+          "SEC DEF 14A"
         ]
       },
       "A": {
@@ -821,21 +812,20 @@
           "A.4": 55
         },
         "sources": [
-          "SBTi",
-          "CDP",
           "Industry",
+          "CDP",
+          "SBTi",
           "Industry+EPA"
         ]
       },
       "N": {
         "scores": {
           "N.2": 100,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
           "CDP",
-          "GRI",
-          "SEC"
+          "GRI"
         ]
       }
     },
@@ -886,42 +876,30 @@
   },
   {
     "company": "Starbucks Corporation",
-    "ticker": "SBUX",
-    "industry": "food",
-    "sic": "5810",
-    "sic_description": "Retail-Eating & Drinking Places",
-    "D_H": 60,
-    "D_U": 69,
-    "D_M": 70,
-    "D_A": 60,
-    "D_N": 85,
-    "composite": 69,
+    "ticker": "",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 65,
+    "D_U": 60,
+    "D_M": 59,
+    "D_A": 62,
+    "D_N": 45,
+    "composite": 58,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
     "balance_floor": false,
     "triggering_dimension": null,
-    "confidence": "Verified",
+    "confidence": "Strong",
     "spec_version": "1.2.1",
     "data_sources": [
-      "BBB",
       "CDP",
-      "CFPB",
-      "Disability:IN DEI",
-      "FDA",
       "Fair Trade",
-      "GRI",
       "Glassdoor",
-      "HIBP",
-      "HRC CEI",
-      "Industry",
-      "Industry+EPA",
-      "Jobs",
-      "SBTi",
-      "SEC",
-      "SEC DEF 14A"
+      "Jobs"
     ],
-    "signal_coverage": "19/19 sub-signals with real data",
+    "signal_coverage": "14/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -946,8 +924,8 @@
       "H": {
         "scores": {
           "H.1": 80,
-          "H.2": 65,
-          "H.3": 55,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 80
         },
         "sources": [
@@ -956,59 +934,47 @@
       },
       "U": {
         "scores": {
-          "U.1": 72.0,
+          "U.1": 63.8,
           "U.2": 55.0,
-          "U.3": 81.6,
-          "U.4": 66.2
+          "U.3": 62.5,
+          "U.4": 58.2
         },
         "sources": [
-          "CFPB",
-          "BBB",
-          "Glassdoor",
-          "HRC CEI",
-          "Disability:IN DEI"
+          "Glassdoor"
         ]
       },
       "M": {
         "scores": {
-          "M.1": 80,
-          "M.2": 80,
-          "M.3": 66.0,
-          "M.4": 58.0,
+          "M.1": 50,
+          "M.2": 50,
+          "M.3": 76.0,
+          "M.4": 55.0,
           "M.5": 65
         },
         "sources": [
-          "Glassdoor",
-          "FDA",
-          "SEC DEF 14A",
-          "CFPB",
           "Fair Trade",
-          "HIBP"
+          "Glassdoor"
         ]
       },
       "A": {
         "scores": {
-          "A.1": 85,
+          "A.1": 70,
           "A.2": 60,
-          "A.3": 20,
-          "A.4": 75
+          "A.3": 50,
+          "A.4": 70.0
         },
         "sources": [
-          "SBTi",
-          "CDP",
-          "Industry",
-          "Industry+EPA"
+          "Fair Trade",
+          "CDP"
         ]
       },
       "N": {
         "scores": {
-          "N.2": 80,
-          "N.5": 90
+          "N.2": 70,
+          "N.5": 20
         },
         "sources": [
-          "CDP",
-          "GRI",
-          "SEC"
+          "CDP"
         ]
       }
     },
@@ -1024,16 +990,16 @@
     },
     "hi_balanced": false,
     "hi_balanced_gates": {
-      "dimensions": true,
+      "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
           "U": true,
-          "M": true,
+          "M": false,
           "A": true,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -1042,8 +1008,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -1053,22 +1018,20 @@
       "food",
       "beverage",
       "retail"
-    ],
-    "decay_level": "warning",
-    "decay_index": 30
+    ]
   },
   {
     "company": "Home Depot, Inc.",
     "ticker": "HD",
-    "industry": "retail",
-    "sic": "5211",
-    "sic_description": "Retail-Lumber & Other Building Materials Dealers",
-    "D_H": 70,
-    "D_U": 68,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 72,
+    "D_U": 67,
     "D_M": 75,
     "D_A": 55,
-    "D_N": 80,
-    "composite": 70,
+    "D_N": 45,
+    "composite": 63,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -1086,10 +1049,9 @@
       "Industry",
       "Industry+EPA",
       "Jobs",
-      "SEC",
       "SEC DEF 14A"
     ],
-    "signal_coverage": "18/19 sub-signals with real data",
+    "signal_coverage": "16/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -1114,8 +1076,8 @@
       "H": {
         "scores": {
           "H.1": 95,
-          "H.2": 45,
-          "H.3": 45,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 95
         },
         "sources": [
@@ -1127,7 +1089,7 @@
           "U.1": 70.0,
           "U.2": 58.8,
           "U.3": 81.6,
-          "U.4": 61.0
+          "U.4": 59.0
         },
         "sources": [
           "CFPB",
@@ -1144,11 +1106,11 @@
           "M.5": 75
         },
         "sources": [
-          "Glassdoor",
+          "HIBP",
           "FDA",
-          "SEC DEF 14A",
           "CFPB",
-          "HIBP"
+          "Glassdoor",
+          "SEC DEF 14A"
         ]
       },
       "A": {
@@ -1159,19 +1121,18 @@
           "A.4": 65
         },
         "sources": [
-          "CDP",
           "Industry",
+          "CDP",
           "Industry+EPA"
         ]
       },
       "N": {
         "scores": {
           "N.2": 70,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
-          "CDP",
-          "SEC"
+          "CDP"
         ]
       }
     },
@@ -1196,7 +1157,7 @@
           "U": true,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -1222,15 +1183,15 @@
   {
     "company": "NextEra Energy, Inc.",
     "ticker": "NEE",
-    "industry": "energy",
-    "sic": "4911",
-    "sic_description": "Electric Services",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
     "D_H": 62,
     "D_U": 64,
     "D_M": 73,
     "D_A": 60,
-    "D_N": 90,
-    "composite": 70,
+    "D_N": 55,
+    "composite": 63,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -1247,8 +1208,7 @@
       "HIBP",
       "Industry",
       "Industry+EPA",
-      "Jobs",
-      "SEC"
+      "Jobs"
     ],
     "signal_coverage": "16/19 sub-signals with real data",
     "humanwashing_flags": [],
@@ -1304,11 +1264,11 @@
           "M.5": 55
         },
         "sources": [
-          "Glassdoor",
+          "HIBP",
           "FDA",
-          "FEC",
           "CFPB",
-          "HIBP"
+          "Glassdoor",
+          "FEC"
         ]
       },
       "A": {
@@ -1319,19 +1279,18 @@
           "A.4": 50
         },
         "sources": [
-          "CDP",
           "Industry",
+          "CDP",
           "Industry+EPA"
         ]
       },
       "N": {
         "scores": {
           "N.2": 90,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
-          "CDP",
-          "SEC"
+          "CDP"
         ]
       }
     },
@@ -1345,9 +1304,9 @@
       "cdp_climate": "A-",
       "epa_violations": null
     },
-    "hi_balanced": true,
+    "hi_balanced": false,
     "hi_balanced_gates": {
-      "dimensions": true,
+      "dimensions": false,
       "evidence": true,
       "momentum": true,
       "_detail": {
@@ -1356,7 +1315,7 @@
           "U": true,
           "M": true,
           "A": true,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -1462,11 +1421,11 @@
           "M.5": 85.0
         },
         "sources": [
-          "Glassdoor",
           "B Corp",
-          "1% for the Planet",
+          "USDA Organic",
           "Fair Trade",
-          "USDA Organic"
+          "Glassdoor",
+          "1% for the Planet"
         ]
       },
       "A": {
@@ -1478,10 +1437,10 @@
         },
         "sources": [
           "B Corp",
-          "Fair Trade",
           "CDP",
-          "1% for the Planet",
-          "USDA Organic"
+          "USDA Organic",
+          "Fair Trade",
+          "1% for the Planet"
         ]
       },
       "N": {
@@ -1538,41 +1497,31 @@
   },
   {
     "company": "Salesforce",
-    "ticker": "CRM",
-    "industry": "tech",
-    "sic": "7372",
-    "sic_description": "Services-Prepackaged Software",
-    "D_H": 13,
-    "D_U": 73,
-    "D_M": 79,
-    "D_A": 61,
-    "D_N": 95,
-    "composite": 50,
+    "ticker": "",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 42,
+    "D_U": 76,
+    "D_M": 68,
+    "D_A": 60,
+    "D_N": 55,
+    "composite": 60,
     "hi_grade": "scored",
     "satire": "",
-    "floor_triggered": true,
+    "floor_triggered": false,
     "balance_floor": false,
-    "triggering_dimension": "H",
-    "confidence": "Verified",
+    "triggering_dimension": null,
+    "confidence": "Strong",
     "spec_version": "1.2.1",
     "data_sources": [
-      "BBB",
       "CDP",
-      "CFPB",
       "Disability:IN DEI",
-      "FDA",
-      "FTC",
-      "GRI",
       "Glassdoor",
-      "HIBP",
       "HRC CEI",
-      "Industry",
-      "Industry+EPA",
-      "Jobs",
-      "SEC",
-      "SEC DEF 14A"
+      "Jobs"
     ],
-    "signal_coverage": "18/19 sub-signals with real data",
+    "signal_coverage": "13/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -1597,8 +1546,8 @@
       "H": {
         "scores": {
           "H.1": 35,
-          "H.2": 40,
-          "H.3": 42,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 35
         },
         "sources": [
@@ -1607,14 +1556,12 @@
       },
       "U": {
         "scores": {
-          "U.1": 72.0,
+          "U.1": 78.8,
           "U.2": 72.5,
           "U.3": 84.2,
-          "U.4": 62.5
+          "U.4": 67.2
         },
         "sources": [
-          "CFPB",
-          "BBB",
           "Glassdoor",
           "HRC CEI",
           "Disability:IN DEI"
@@ -1622,43 +1569,34 @@
       },
       "M": {
         "scores": {
-          "M.1": 80,
-          "M.2": 80.5,
-          "M.3": 80,
-          "M.4": 73.8,
+          "M.1": 50,
+          "M.2": 50,
+          "M.3": 85,
+          "M.4": 72.5,
           "M.5": 82
         },
         "sources": [
-          "Glassdoor",
-          "FDA",
-          "SEC DEF 14A",
-          "FTC",
-          "CFPB",
-          "HIBP"
+          "Glassdoor"
         ]
       },
       "A": {
         "scores": {
           "A.1": 85,
           "A.2": 50,
-          "A.3": 65,
-          "A.4": 45
+          "A.3": 50,
+          "A.4": 55
         },
         "sources": [
-          "CDP",
-          "Industry",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
         "scores": {
-          "N.2": 100,
-          "N.5": 90
+          "N.2": 90,
+          "N.5": 20
         },
         "sources": [
-          "CDP",
-          "GRI",
-          "SEC"
+          "CDP"
         ]
       }
     },
@@ -1676,14 +1614,14 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
           "U": true,
           "M": true,
           "A": true,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -1692,8 +1630,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 60
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -1703,22 +1640,20 @@
       "technology",
       "software",
       "cloud"
-    ],
-    "decay_level": "critical",
-    "decay_index": 60
+    ]
   },
   {
     "company": "Walmart Inc.",
     "ticker": "WMT",
-    "industry": "retail",
-    "sic": "5331",
-    "sic_description": "Retail-Variety Stores",
-    "D_H": 50,
-    "D_U": 61,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 52,
+    "D_U": 60,
     "D_M": 65,
     "D_A": 72,
-    "D_N": 95,
-    "composite": 69,
+    "D_N": 60,
+    "composite": 62,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -1743,11 +1678,10 @@
       "Industry+EPA",
       "Jobs",
       "SBTi",
-      "SEC",
       "SEC DEF 14A",
       "USDA Organic"
     ],
-    "signal_coverage": "19/19 sub-signals with real data",
+    "signal_coverage": "17/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 24.0,
@@ -1779,8 +1713,8 @@
       "H": {
         "scores": {
           "H.1": 75,
-          "H.2": 45,
-          "H.3": 45,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 75
         },
         "sources": [
@@ -1792,7 +1726,7 @@
           "U.1": 72.0,
           "U.2": 35.0,
           "U.3": 80.1,
-          "U.4": 55.8
+          "U.4": 53.8
         },
         "sources": [
           "CFPB",
@@ -1812,14 +1746,14 @@
           "M.5": 68
         },
         "sources": [
-          "Glassdoor",
-          "FDA",
-          "SEC DEF 14A",
-          "FTC",
-          "CFPB",
-          "Fair Trade",
           "HIBP",
+          "FTC",
           "USDA Organic",
+          "Fair Trade",
+          "FDA",
+          "CFPB",
+          "Glassdoor",
+          "SEC DEF 14A",
           "EEOC"
         ]
       },
@@ -1831,22 +1765,21 @@
           "A.4": 65
         },
         "sources": [
-          "SBTi",
           "Industry",
           "Industry+EPA",
-          "CDP",
-          "USDA Organic"
+          "USDA Organic",
+          "SBTi",
+          "CDP"
         ]
       },
       "N": {
         "scores": {
           "N.2": 100,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
           "CDP",
-          "GRI",
-          "SEC"
+          "GRI"
         ]
       }
     },
@@ -1897,15 +1830,15 @@
   {
     "company": "Pfizer, Inc.",
     "ticker": "PFE",
-    "industry": "healthcare",
-    "sic": "2834",
-    "sic_description": "Pharmaceutical Preparations",
-    "D_H": 52,
-    "D_U": 72,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 45,
+    "D_U": 71,
     "D_M": 63,
     "D_A": 61,
-    "D_N": 85,
-    "composite": 67,
+    "D_N": 50,
+    "composite": 58,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -1925,10 +1858,9 @@
       "Industry",
       "Industry+EPA",
       "Jobs",
-      "SEC",
       "SEC DEF 14A"
     ],
-    "signal_coverage": "19/19 sub-signals with real data",
+    "signal_coverage": "17/19 sub-signals with real data",
     "humanwashing_flags": [
       "HD: Harm settlements: $2.8B (5y)",
       "HD: Concealment findings: 2"
@@ -1970,8 +1902,8 @@
       "H": {
         "scores": {
           "H.1": 60,
-          "H.2": 70,
-          "H.3": 60,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 60
         },
         "sources": [
@@ -1983,7 +1915,7 @@
           "U.1": 70.0,
           "U.2": 67.8,
           "U.3": 82.8,
-          "U.4": 68.8
+          "U.4": 62.8
         },
         "sources": [
           "CFPB",
@@ -2001,11 +1933,11 @@
           "M.5": 78
         },
         "sources": [
-          "Glassdoor",
+          "HIBP",
           "FDA",
-          "SEC DEF 14A",
           "CFPB",
-          "HIBP"
+          "Glassdoor",
+          "SEC DEF 14A"
         ]
       },
       "A": {
@@ -2016,20 +1948,19 @@
           "A.4": 55
         },
         "sources": [
-          "CDP",
           "Industry",
+          "CDP",
           "Industry+EPA"
         ]
       },
       "N": {
         "scores": {
           "N.2": 80,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
           "CDP",
-          "GRI",
-          "SEC"
+          "GRI"
         ]
       }
     },
@@ -2054,7 +1985,7 @@
           "U": true,
           "M": true,
           "A": true,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -2080,15 +2011,15 @@
   {
     "company": "General Motors Company",
     "ticker": "GM",
-    "industry": "manufacturing",
-    "sic": "3711",
-    "sic_description": "Motor Vehicles & Passenger Car Bodies",
-    "D_H": 49,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 45,
     "D_U": 69,
     "D_M": 50,
     "D_A": 65,
-    "D_N": 90,
-    "composite": 65,
+    "D_N": 55,
+    "composite": 57,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -2106,10 +2037,9 @@
       "HRC CEI",
       "Industry",
       "Industry+EPA",
-      "Jobs",
-      "SEC"
+      "Jobs"
     ],
-    "signal_coverage": "19/19 sub-signals with real data",
+    "signal_coverage": "17/19 sub-signals with real data",
     "humanwashing_flags": [
       "HD: Documented deaths attributed: 124",
       "HD: Concealment findings: 1"
@@ -2150,8 +2080,8 @@
       "H": {
         "scores": {
           "H.1": 60,
-          "H.2": 60,
-          "H.3": 55,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 60
         },
         "sources": [
@@ -2182,9 +2112,9 @@
         },
         "sources": [
           "Glassdoor",
-          "HIBP",
           "FDA",
-          "CFPB"
+          "CFPB",
+          "HIBP"
         ]
       },
       "A": {
@@ -2195,19 +2125,18 @@
           "A.4": 60
         },
         "sources": [
-          "CDP",
           "Industry",
+          "CDP",
           "Industry+EPA"
         ]
       },
       "N": {
         "scores": {
           "N.2": 90,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
-          "CDP",
-          "SEC"
+          "CDP"
         ]
       }
     },
@@ -2232,7 +2161,7 @@
           "U": true,
           "M": false,
           "A": true,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -2490,9 +2419,9 @@
         },
         "sources": [
           "Fair Trade",
+          "USDA Organic",
           "B Corp",
-          "Glassdoor",
-          "USDA Organic"
+          "Glassdoor"
         ]
       },
       "A": {
@@ -2503,8 +2432,8 @@
           "A.4": 86.7
         },
         "sources": [
-          "Fair Trade",
           "B Corp",
+          "Fair Trade",
           "USDA Organic"
         ]
       },
@@ -2559,42 +2488,29 @@
   },
   {
     "company": "Goldman Sachs Group, Inc.",
-    "ticker": "GS",
-    "industry": "finance",
-    "sic": "6211",
-    "sic_description": "Security Brokers, Dealers & Flotation Companies",
-    "D_H": 17,
-    "D_U": 59,
-    "D_M": 76,
-    "D_A": 67,
-    "D_N": 85,
-    "composite": 50,
+    "ticker": "",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 42,
+    "D_U": 62,
+    "D_M": 67,
+    "D_A": 56,
+    "D_N": 45,
+    "composite": 54,
     "hi_grade": "scored",
     "satire": "",
-    "floor_triggered": true,
+    "floor_triggered": false,
     "balance_floor": false,
-    "triggering_dimension": "H",
-    "confidence": "Verified",
+    "triggering_dimension": null,
+    "confidence": "Strong",
     "spec_version": "1.2.1",
     "data_sources": [
-      "BBB",
       "CDP",
-      "CFPB",
-      "Disability:IN DEI",
-      "EEOC",
-      "FDA",
-      "GRI",
       "Glassdoor",
-      "HIBP",
-      "HRC CEI",
-      "Industry",
-      "Industry+EPA",
-      "Jobs",
-      "SBTi",
-      "SEC",
-      "SEC DEF 14A"
+      "Jobs"
     ],
-    "signal_coverage": "18/19 sub-signals with real data",
+    "signal_coverage": "13/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -2619,8 +2535,8 @@
       "H": {
         "scores": {
           "H.1": 35,
-          "H.2": 45,
-          "H.3": 53,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 35
         },
         "sources": [
@@ -2629,60 +2545,45 @@
       },
       "U": {
         "scores": {
-          "U.1": 72.0,
-          "U.2": 33.5,
-          "U.3": 77.8,
-          "U.4": 54.5
+          "U.1": 67.5,
+          "U.2": 53.5,
+          "U.3": 65.0,
+          "U.4": 60.5
         },
         "sources": [
-          "CFPB",
-          "BBB",
-          "Glassdoor",
-          "EEOC",
-          "HRC CEI",
-          "Disability:IN DEI"
+          "Glassdoor"
         ]
       },
       "M": {
         "scores": {
-          "M.1": 80,
-          "M.2": 80,
-          "M.3": 70,
-          "M.4": 69.7,
+          "M.1": 50,
+          "M.2": 50,
+          "M.3": 85,
+          "M.4": 68.0,
           "M.5": 80
         },
         "sources": [
-          "Glassdoor",
-          "FDA",
-          "SEC DEF 14A",
-          "CFPB",
-          "HIBP",
-          "EEOC"
+          "Glassdoor"
         ]
       },
       "A": {
         "scores": {
-          "A.1": 78,
+          "A.1": 70,
           "A.2": 50,
-          "A.3": 70,
-          "A.4": 70
+          "A.3": 50,
+          "A.4": 55
         },
         "sources": [
-          "SBTi",
-          "CDP",
-          "Industry",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
         "scores": {
-          "N.2": 80,
-          "N.5": 90
+          "N.2": 70,
+          "N.5": 20
         },
         "sources": [
-          "CDP",
-          "GRI",
-          "SEC"
+          "CDP"
         ]
       }
     },
@@ -2700,14 +2601,14 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
-          "U": false,
+          "U": true,
           "M": true,
-          "A": true,
-          "N": true
+          "A": false,
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -2716,8 +2617,7 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 52
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -2727,9 +2627,7 @@
     "tags": [
       "finance",
       "investment banking"
-    ],
-    "decay_level": "critical",
-    "decay_index": 52
+    ]
   },
   {
     "company": "US BANCORP \\DE\\",
@@ -3165,20 +3063,20 @@
   {
     "company": "Costco Wholesale Corporation",
     "ticker": "COST",
-    "industry": "retail",
-    "sic": "5331",
-    "sic_description": "Retail-Variety Stores",
-    "D_H": 60,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 62,
     "D_U": 69,
     "D_M": 78,
     "D_A": 46,
-    "D_N": 62,
-    "composite": 63,
+    "D_N": 27,
+    "composite": 50,
     "hi_grade": "scored",
     "satire": "",
-    "floor_triggered": false,
+    "floor_triggered": true,
     "balance_floor": false,
-    "triggering_dimension": null,
+    "triggering_dimension": "N",
     "confidence": "Verified",
     "spec_version": "1.2.1",
     "data_sources": [
@@ -3196,11 +3094,10 @@
       "Industry+EPA",
       "Jobs",
       "SBTi",
-      "SEC",
       "SEC DEF 14A",
       "USDA Organic"
     ],
-    "signal_coverage": "18/19 sub-signals with real data",
+    "signal_coverage": "16/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 11.2,
@@ -3232,8 +3129,8 @@
       "H": {
         "scores": {
           "H.1": 95,
-          "H.2": 45,
-          "H.3": 45,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 95
         },
         "sources": [
@@ -3245,7 +3142,7 @@
           "U.1": 72.0,
           "U.2": 67.2,
           "U.3": 74.2,
-          "U.4": 64.8
+          "U.4": 62.8
         },
         "sources": [
           "CFPB",
@@ -3264,13 +3161,13 @@
           "M.5": 88
         },
         "sources": [
-          "Glassdoor",
-          "FDA",
-          "SEC DEF 14A",
-          "CFPB",
-          "Fair Trade",
           "HIBP",
-          "USDA Organic"
+          "USDA Organic",
+          "Fair Trade",
+          "FDA",
+          "CFPB",
+          "Glassdoor",
+          "SEC DEF 14A"
         ]
       },
       "A": {
@@ -3281,22 +3178,21 @@
           "A.4": 65
         },
         "sources": [
-          "SBTi",
           "Industry",
           "Industry+EPA",
-          "CDP",
-          "USDA Organic"
+          "USDA Organic",
+          "SBTi",
+          "CDP"
         ]
       },
       "N": {
         "scores": {
           "N.2": 35,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
           "CDP",
-          "GRI",
-          "SEC"
+          "GRI"
         ]
       }
     },
@@ -3321,7 +3217,7 @@
           "U": true,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -3799,64 +3695,41 @@
   },
   {
     "company": "Netflix",
-    "ticker": "NFLX",
-    "industry": "media",
-    "sic": "7841",
-    "sic_description": "Services-Video Tape Rental",
-    "D_H": 32,
-    "D_U": 66,
-    "D_M": 78,
-    "D_A": 60,
-    "D_N": 65,
+    "ticker": "",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 57,
+    "D_U": 71,
+    "D_M": 68,
+    "D_A": 51,
+    "D_N": 35,
     "composite": 50,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
     "balance_floor": false,
-    "triggering_dimension": "H",
-    "confidence": "Verified",
+    "triggering_dimension": "N",
+    "confidence": "Partial",
     "spec_version": "1.2.1",
     "data_sources": [
-      "BBB",
-      "CFPB",
       "Disability:IN DEI",
-      "FDA",
-      "FTC",
-      "GRI",
       "Glassdoor",
-      "HIBP",
       "HRC CEI",
-      "Industry",
-      "Industry+EPA",
-      "Jobs",
-      "SEC",
-      "SEC DEF 14A"
+      "Jobs"
     ],
-    "signal_coverage": "18/19 sub-signals with real data",
-    "humanwashing_flags": [
-      "AH: Autoplay next episode",
-      "AH: Algorithmic thumbnails personalized to maximize clicks"
-    ],
+    "signal_coverage": "11/19 sub-signals with real data",
+    "humanwashing_flags": [],
     "algo_harm": {
-      "algo_harm_score": 42.0,
+      "algo_harm_score": 0,
       "penalties": {
-        "H": -1.7,
-        "U": -2.6,
-        "M": -2.6,
-        "N": -1.7
+        "H": 0,
+        "U": 0,
+        "M": 0,
+        "N": 0
       },
-      "flags": [
-        "Autoplay next episode",
-        "Algorithmic thumbnails personalized to maximize clicks"
-      ],
-      "has_harm": true,
-      "components": {
-        "division": 15,
-        "addiction": 60,
-        "manipulation": 30,
-        "transparency": 35,
-        "human_override": 50
-      }
+      "flags": [],
+      "has_harm": false
     },
     "harm_documentation": {
       "has_harm": false,
@@ -3870,8 +3743,8 @@
       "H": {
         "scores": {
           "H.1": 65,
-          "H.2": 55,
-          "H.3": 53,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 65
         },
         "sources": [
@@ -3880,14 +3753,12 @@
       },
       "U": {
         "scores": {
-          "U.1": 72.0,
+          "U.1": 76.2,
           "U.2": 66.2,
           "U.3": 75.4,
-          "U.4": 63.8
+          "U.4": 65.8
         },
         "sources": [
-          "CFPB",
-          "BBB",
           "Glassdoor",
           "HRC CEI",
           "Disability:IN DEI"
@@ -3895,42 +3766,31 @@
       },
       "M": {
         "scores": {
-          "M.1": 80,
-          "M.2": 80.5,
-          "M.3": 90,
-          "M.4": 75.1,
+          "M.1": 50,
+          "M.2": 50,
+          "M.3": 85,
+          "M.4": 74.0,
           "M.5": 80
         },
         "sources": [
-          "Glassdoor",
-          "FDA",
-          "SEC DEF 14A",
-          "FTC",
-          "CFPB",
-          "HIBP"
+          "Glassdoor"
         ]
       },
       "A": {
         "scores": {
-          "A.1": 60,
+          "A.1": 50,
           "A.2": 50,
-          "A.3": 70,
-          "A.4": 60
+          "A.3": 50,
+          "A.4": 55
         },
-        "sources": [
-          "Industry",
-          "Industry+EPA"
-        ]
+        "sources": []
       },
       "N": {
         "scores": {
-          "N.2": 45,
-          "N.5": 90
+          "N.2": 50,
+          "N.5": 20
         },
-        "sources": [
-          "GRI",
-          "SEC"
-        ]
+        "sources": []
       }
     },
     "key_signals": {
@@ -3946,25 +3806,24 @@
     "hi_balanced": false,
     "hi_balanced_gates": {
       "dimensions": false,
-      "evidence": true,
-      "momentum": false,
+      "evidence": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
           "U": true,
           "M": true,
-          "A": true,
-          "N": true
+          "A": false,
+          "N": false
         },
         "evidence_pass": {
           "H": true,
           "U": true,
           "M": true,
-          "A": true,
-          "N": true
+          "A": false,
+          "N": false
         },
-        "decay_level": "critical",
-        "decay_index": 58
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -3974,44 +3833,32 @@
       "technology",
       "entertainment",
       "streaming"
-    ],
-    "decay_level": "critical",
-    "decay_index": 58
+    ]
   },
   {
     "company": "UnitedHealth Group Incorporated",
-    "ticker": "UNH",
-    "industry": "finance",
-    "sic": "6324",
-    "sic_description": "Hospital & Medical Service Plans",
-    "D_H": 29,
-    "D_U": 64,
-    "D_M": 75,
-    "D_A": 64,
-    "D_N": 67,
+    "ticker": "",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 55,
+    "D_U": 59,
+    "D_M": 63,
+    "D_A": 51,
+    "D_N": 35,
     "composite": 50,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
     "balance_floor": false,
-    "triggering_dimension": "H",
-    "confidence": "Verified",
+    "triggering_dimension": "N",
+    "confidence": "Partial",
     "spec_version": "1.2.1",
     "data_sources": [
-      "CFPB",
-      "Disability:IN DEI",
-      "FDA",
-      "GRI",
       "Glassdoor",
-      "HIBP",
-      "HRC CEI",
-      "Industry",
-      "Industry+EPA",
-      "Jobs",
-      "SEC",
-      "SEC DEF 14A"
+      "Jobs"
     ],
-    "signal_coverage": "18/19 sub-signals with real data",
+    "signal_coverage": "11/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -4036,8 +3883,8 @@
       "H": {
         "scores": {
           "H.1": 60,
-          "H.2": 45,
-          "H.3": 53,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 60
         },
         "sources": [
@@ -4046,55 +3893,42 @@
       },
       "U": {
         "scores": {
-          "U.1": 70.0,
+          "U.1": 62.5,
           "U.2": 55.0,
-          "U.3": 81.2,
-          "U.4": 51.5
+          "U.3": 60.0,
+          "U.4": 57.5
         },
         "sources": [
-          "CFPB",
-          "Glassdoor",
-          "HRC CEI",
-          "Disability:IN DEI"
+          "Glassdoor"
         ]
       },
       "M": {
         "scores": {
-          "M.1": 80,
-          "M.2": 80,
+          "M.1": 50,
+          "M.2": 50,
           "M.3": 85,
-          "M.4": 60.7,
+          "M.4": 58.0,
           "M.5": 70
         },
         "sources": [
-          "Glassdoor",
-          "FDA",
-          "SEC DEF 14A",
-          "CFPB",
-          "HIBP"
+          "Glassdoor"
         ]
       },
       "A": {
         "scores": {
-          "A.1": 65,
+          "A.1": 50,
           "A.2": 50,
-          "A.3": 70,
-          "A.4": 70
+          "A.3": 50,
+          "A.4": 55
         },
-        "sources": [
-          "Industry",
-          "Industry+EPA"
-        ]
+        "sources": []
       },
       "N": {
         "scores": {
-          "N.2": 45,
-          "N.5": 90
+          "N.2": 50,
+          "N.5": 20
         },
-        "sources": [
-          "GRI",
-          "SEC"
-        ]
+        "sources": []
       }
     },
     "key_signals": {
@@ -4110,69 +3944,59 @@
     "hi_balanced": false,
     "hi_balanced_gates": {
       "dimensions": false,
-      "evidence": true,
-      "momentum": false,
+      "evidence": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
-          "U": true,
+          "U": false,
           "M": true,
-          "A": true,
-          "N": true
+          "A": false,
+          "N": false
         },
         "evidence_pass": {
           "H": true,
           "U": true,
           "M": true,
-          "A": true,
-          "N": true
+          "A": false,
+          "N": false
         },
-        "decay_level": "critical",
-        "decay_index": 68
+        "decay_level": "stable"
       }
     },
     "domains": [
-      "unitedhealthgroup.com",
-      "uhc.com"
+      "unitedhealthgroup.com"
     ],
     "tags": [
       "healthcare",
       "insurance"
-    ],
-    "decay_level": "critical",
-    "decay_index": 68
+    ]
   },
   {
     "company": "Etsy",
-    "ticker": "ETSY",
-    "industry": "tech",
-    "sic": "7389",
-    "sic_description": "Services-Business Services, NEC",
-    "D_H": 40,
-    "D_U": 69,
-    "D_M": 78,
-    "D_A": 52,
-    "D_N": 70,
+    "ticker": "",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 55,
+    "D_U": 71,
+    "D_M": 66,
+    "D_A": 57,
+    "D_N": 35,
     "composite": 50,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
     "balance_floor": false,
-    "triggering_dimension": "H",
-    "confidence": "Verified",
+    "triggering_dimension": "N",
+    "confidence": "Partial",
     "spec_version": "1.2.1",
     "data_sources": [
       "B Corp",
-      "CFPB",
-      "FDA",
       "Glassdoor",
-      "HIBP",
-      "Industry",
-      "Industry+EPA",
-      "Jobs",
-      "SEC"
+      "Jobs"
     ],
-    "signal_coverage": "16/19 sub-signals with real data",
+    "signal_coverage": "11/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -4197,8 +4021,8 @@
       "H": {
         "scores": {
           "H.1": 60,
-          "H.2": 40,
-          "H.3": 42,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 60
         },
         "sources": [
@@ -4207,53 +4031,46 @@
       },
       "U": {
         "scores": {
-          "U.1": 70.0,
+          "U.1": 72.5,
           "U.2": 67.5,
           "U.3": 79.2,
-          "U.4": 58.7
+          "U.4": 63.5
         },
         "sources": [
-          "CFPB",
           "Glassdoor",
           "B Corp"
         ]
       },
       "M": {
         "scores": {
-          "M.1": 80,
-          "M.2": 80,
+          "M.1": 50,
+          "M.2": 50,
           "M.3": 85,
-          "M.4": 65.2,
+          "M.4": 63.0,
           "M.5": 80.0
         },
         "sources": [
           "Glassdoor",
-          "B Corp",
-          "FDA",
-          "CFPB",
-          "HIBP"
+          "B Corp"
         ]
       },
       "A": {
         "scores": {
           "A.1": 50,
           "A.2": 50,
-          "A.3": 65,
-          "A.4": 45
+          "A.3": 50,
+          "A.4": 80.0
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "B Corp"
         ]
       },
       "N": {
         "scores": {
           "N.2": 50,
-          "N.5": 90
+          "N.5": 20
         },
-        "sources": [
-          "SEC"
-        ]
+        "sources": []
       }
     },
     "key_signals": {
@@ -4269,25 +4086,24 @@
     "hi_balanced": false,
     "hi_balanced_gates": {
       "dimensions": false,
-      "evidence": true,
-      "momentum": false,
+      "evidence": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
           "U": true,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
           "U": true,
           "M": true,
           "A": true,
-          "N": true
+          "N": false
         },
-        "decay_level": "warning",
-        "decay_index": 33
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -4297,9 +4113,7 @@
       "retail",
       "marketplace",
       "handmade"
-    ],
-    "decay_level": "warning",
-    "decay_index": 33
+    ]
   },
   {
     "company": "ORACLE CORP",
@@ -4601,37 +4415,30 @@
   },
   {
     "company": "Visa",
-    "ticker": "V",
-    "industry": "tech",
-    "sic": "7389",
-    "sic_description": "Services-Business Services, NEC",
-    "D_H": 25,
-    "D_U": 72,
-    "D_M": 75,
-    "D_A": 52,
-    "D_N": 75,
+    "ticker": "",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 55,
+    "D_U": 75,
+    "D_M": 69,
+    "D_A": 51,
+    "D_N": 35,
     "composite": 50,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
     "balance_floor": false,
-    "triggering_dimension": "H",
-    "confidence": "Verified",
+    "triggering_dimension": "N",
+    "confidence": "Partial",
     "spec_version": "1.2.1",
     "data_sources": [
-      "CFPB",
       "Disability:IN DEI",
-      "FDA",
-      "GRI",
       "Glassdoor",
       "HRC CEI",
-      "Industry",
-      "Industry+EPA",
-      "Jobs",
-      "SEC",
-      "SEC DEF 14A"
+      "Jobs"
     ],
-    "signal_coverage": "16/19 sub-signals with real data",
+    "signal_coverage": "11/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -4656,8 +4463,8 @@
       "H": {
         "scores": {
           "H.1": 60,
-          "H.2": 40,
-          "H.3": 42,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 60
         },
         "sources": [
@@ -4666,13 +4473,12 @@
       },
       "U": {
         "scores": {
-          "U.1": 70.0,
+          "U.1": 76.2,
           "U.2": 75.2,
           "U.3": 83.5,
-          "U.4": 61.0
+          "U.4": 65.8
         },
         "sources": [
-          "CFPB",
           "Glassdoor",
           "HRC CEI",
           "Disability:IN DEI"
@@ -4680,40 +4486,31 @@
       },
       "M": {
         "scores": {
-          "M.1": 80,
+          "M.1": 50,
           "M.2": 50,
           "M.3": 85,
-          "M.4": 74.2,
+          "M.4": 73.0,
           "M.5": 88
         },
         "sources": [
-          "Glassdoor",
-          "SEC DEF 14A",
-          "FDA",
-          "CFPB"
+          "Glassdoor"
         ]
       },
       "A": {
         "scores": {
           "A.1": 50,
           "A.2": 50,
-          "A.3": 65,
-          "A.4": 45
+          "A.3": 50,
+          "A.4": 55
         },
-        "sources": [
-          "Industry",
-          "Industry+EPA"
-        ]
+        "sources": []
       },
       "N": {
         "scores": {
-          "N.2": 60,
-          "N.5": 90
+          "N.2": 50,
+          "N.5": 20
         },
-        "sources": [
-          "GRI",
-          "SEC"
-        ]
+        "sources": []
       }
     },
     "key_signals": {
@@ -4729,32 +4526,26 @@
     "hi_balanced": false,
     "hi_balanced_gates": {
       "dimensions": false,
-      "evidence": true,
-      "momentum": false,
+      "evidence": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
           "U": true,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
           "U": true,
           "M": true,
-          "A": true,
-          "N": true
+          "A": false,
+          "N": false
         },
-        "decay_level": "critical",
-        "decay_index": 56
+        "decay_level": "stable"
       }
-    },
-    "domains": [
-      "visa.com"
-    ],
-    "decay_level": "critical",
-    "decay_index": 56
+    }
   },
   {
     "company": "AUTOMATIC DATA PROCESSING INC",
@@ -6797,43 +6588,34 @@
   },
   {
     "company": "Target Corporation",
-    "ticker": "TGT",
-    "industry": "retail",
-    "sic": "5331",
-    "sic_description": "Retail-Variety Stores",
-    "D_H": 37,
-    "D_U": 65,
-    "D_M": 65,
-    "D_A": 59,
-    "D_N": 75,
-    "composite": 50,
+    "ticker": "",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 70,
+    "D_U": 57,
+    "D_M": 60,
+    "D_A": 60,
+    "D_N": 45,
+    "composite": 58,
     "hi_grade": "scored",
     "satire": "",
-    "floor_triggered": true,
+    "floor_triggered": false,
     "balance_floor": false,
-    "triggering_dimension": "H",
+    "triggering_dimension": null,
     "confidence": "Strong",
     "spec_version": "1.2.1",
     "data_sources": [
-      "BBB",
-      "CFPB",
-      "Disability:IN DEI",
-      "FDA",
+      "CDP",
       "Fair Trade",
-      "GRI",
-      "HIBP",
-      "HRC CEI",
-      "Industry",
-      "Industry+EPA",
-      "SBTi",
-      "SEC",
-      "SEC DEF 14A",
+      "Glassdoor",
+      "Jobs",
       "USDA Organic"
     ],
-    "signal_coverage": "14/19 sub-signals with real data",
+    "signal_coverage": "15/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
-      "algo_harm_score": 22.2,
+      "algo_harm_score": 0,
       "penalties": {
         "H": 0,
         "U": 0,
@@ -6841,14 +6623,7 @@
         "N": 0
       },
       "flags": [],
-      "has_harm": false,
-      "components": {
-        "division": 5,
-        "addiction": 15,
-        "manipulation": 15,
-        "transparency": 45,
-        "human_override": 60
-      }
+      "has_harm": false
     },
     "harm_documentation": {
       "has_harm": false,
@@ -6861,66 +6636,60 @@
     "genome": {
       "H": {
         "scores": {
-          "H.1": 50,
-          "H.2": 45,
-          "H.3": 45,
-          "H.5": 50
+          "H.1": 90,
+          "H.2": 50,
+          "H.3": 50,
+          "H.5": 90
         },
-        "sources": []
+        "sources": [
+          "Jobs"
+        ]
       },
       "U": {
         "scores": {
-          "U.1": 72.0,
-          "U.2": 50,
-          "U.3": 85.0,
-          "U.4": 55
+          "U.1": 61.2,
+          "U.2": 52.2,
+          "U.3": 60.0,
+          "U.4": 56.8
         },
         "sources": [
-          "CFPB",
-          "BBB",
-          "HRC CEI",
-          "Disability:IN DEI"
+          "Glassdoor"
         ]
       },
       "M": {
         "scores": {
-          "M.1": 80,
-          "M.2": 80,
-          "M.3": 63.0,
-          "M.4": 50.5,
-          "M.5": 50
+          "M.1": 50,
+          "M.2": 50,
+          "M.3": 73.0,
+          "M.4": 55.0,
+          "M.5": 70
         },
         "sources": [
-          "FDA",
-          "SEC DEF 14A",
-          "CFPB",
           "Fair Trade",
-          "HIBP",
-          "USDA Organic"
+          "USDA Organic",
+          "Glassdoor"
         ]
       },
       "A": {
         "scores": {
-          "A.1": 65,
-          "A.2": 50,
-          "A.3": 55.5,
-          "A.4": 65
+          "A.1": 70,
+          "A.2": 45,
+          "A.3": 60,
+          "A.4": 65.0
         },
         "sources": [
-          "SBTi",
-          "Industry",
-          "USDA Organic",
-          "Industry+EPA"
+          "Fair Trade",
+          "CDP",
+          "USDA Organic"
         ]
       },
       "N": {
         "scores": {
-          "N.2": 60,
-          "N.5": 90
+          "N.2": 70,
+          "N.5": 20
         },
         "sources": [
-          "GRI",
-          "SEC"
+          "CDP"
         ]
       }
     },
@@ -6929,33 +6698,32 @@
       "headcount_change_pct": null,
       "revenue_per_employee": null,
       "displacement_signal": null,
-      "ai_hiring_ratio": null,
-      "glassdoor_rating": null,
-      "cdp_climate": null,
+      "ai_hiring_ratio": 0.02,
+      "glassdoor_rating": 3.5,
+      "cdp_climate": "B",
       "epa_violations": null
     },
     "hi_balanced": false,
     "hi_balanced_gates": {
       "dimensions": false,
-      "evidence": false,
-      "momentum": false,
+      "evidence": true,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
-          "H": false,
-          "U": true,
+          "H": true,
+          "U": false,
           "M": true,
-          "A": false,
-          "N": true
+          "A": true,
+          "N": false
         },
         "evidence_pass": {
-          "H": false,
+          "H": true,
           "U": true,
           "M": true,
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 39
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -6963,9 +6731,7 @@
     ],
     "tags": [
       "retail"
-    ],
-    "decay_level": "warning",
-    "decay_index": 39
+    ]
   },
   {
     "company": "TRUIST FINANCIAL CORP",
@@ -11319,15 +11085,15 @@
   {
     "company": "Amazon.com, Inc.",
     "ticker": "AMZN",
-    "industry": "retail",
-    "sic": "5961",
-    "sic_description": "Retail-Catalog & Mail-Order Houses",
-    "D_H": 12,
-    "D_U": 59,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 14,
+    "D_U": 58,
     "D_M": 67,
     "D_A": 53,
-    "D_N": 82,
-    "composite": 50,
+    "D_N": 47,
+    "composite": 48,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
@@ -11351,12 +11117,11 @@
       "Industry+EPA",
       "Jobs",
       "SBTi",
-      "SEC",
       "SEC DEF 14A",
       "USDA Organic",
       "iFixit"
     ],
-    "signal_coverage": "18/19 sub-signals with real data",
+    "signal_coverage": "16/19 sub-signals with real data",
     "humanwashing_flags": [
       "AH: Dynamic pricing algorithms",
       "AH: Dark patterns in Prime cancellation",
@@ -11396,8 +11161,8 @@
       "H": {
         "scores": {
           "H.1": 35,
-          "H.2": 45,
-          "H.3": 45,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 35
         },
         "sources": [
@@ -11409,7 +11174,7 @@
           "U.1": 72.0,
           "U.2": 41.2,
           "U.3": 80.9,
-          "U.4": 58.0
+          "U.4": 56.0
         },
         "sources": [
           "CFPB",
@@ -11429,14 +11194,14 @@
           "M.5": 72
         },
         "sources": [
-          "Glassdoor",
-          "FDA",
-          "SEC DEF 14A",
-          "FTC",
-          "CFPB",
-          "Fair Trade",
           "HIBP",
+          "FTC",
           "USDA Organic",
+          "Fair Trade",
+          "FDA",
+          "CFPB",
+          "Glassdoor",
+          "SEC DEF 14A",
           "EEOC"
         ]
       },
@@ -11448,22 +11213,21 @@
           "A.4": 40
         },
         "sources": [
-          "SBTi",
-          "iFixit",
           "Industry+EPA",
-          "CDP",
-          "USDA Organic"
+          "USDA Organic",
+          "iFixit",
+          "SBTi",
+          "CDP"
         ]
       },
       "N": {
         "scores": {
           "N.2": 80,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
           "CDP",
-          "GRI",
-          "SEC"
+          "GRI"
         ]
       }
     },
@@ -11488,7 +11252,7 @@
           "U": false,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -14972,34 +14736,28 @@
   },
   {
     "company": "Palantir",
-    "ticker": "PLTR",
-    "industry": "tech",
-    "sic": "7372",
-    "sic_description": "Services-Prepackaged Software",
-    "D_H": 15,
-    "D_U": 66,
-    "D_M": 79,
-    "D_A": 52,
-    "D_N": 70,
+    "ticker": "",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 30,
+    "D_U": 68,
+    "D_M": 67,
+    "D_A": 51,
+    "D_N": 35,
     "composite": 50,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
     "balance_floor": false,
     "triggering_dimension": "H",
-    "confidence": "Verified",
+    "confidence": "Partial",
     "spec_version": "1.2.1",
     "data_sources": [
-      "CFPB",
-      "FDA",
       "Glassdoor",
-      "HIBP",
-      "Industry",
-      "Industry+EPA",
-      "Jobs",
-      "SEC"
+      "Jobs"
     ],
-    "signal_coverage": "16/19 sub-signals with real data",
+    "signal_coverage": "11/19 sub-signals with real data",
     "humanwashing_flags": [
       "HW.3: AI roles dominate job postings (>35%)"
     ],
@@ -15026,8 +14784,8 @@
       "H": {
         "scores": {
           "H.1": 10,
-          "H.2": 40,
-          "H.3": 42,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 10
         },
         "sources": [
@@ -15036,51 +14794,42 @@
       },
       "U": {
         "scores": {
-          "U.1": 70.0,
+          "U.1": 73.8,
           "U.2": 62.8,
           "U.3": 72.5,
-          "U.4": 59.5
+          "U.4": 64.2
         },
         "sources": [
-          "CFPB",
           "Glassdoor"
         ]
       },
       "M": {
         "scores": {
-          "M.1": 80,
-          "M.2": 80,
+          "M.1": 50,
+          "M.2": 50,
           "M.3": 85,
-          "M.4": 72.0,
+          "M.4": 70.5,
           "M.5": 78
         },
         "sources": [
-          "Glassdoor",
-          "HIBP",
-          "FDA",
-          "CFPB"
+          "Glassdoor"
         ]
       },
       "A": {
         "scores": {
           "A.1": 50,
           "A.2": 50,
-          "A.3": 65,
-          "A.4": 45
+          "A.3": 50,
+          "A.4": 55
         },
-        "sources": [
-          "Industry",
-          "Industry+EPA"
-        ]
+        "sources": []
       },
       "N": {
         "scores": {
           "N.2": 50,
-          "N.5": 90
+          "N.5": 20
         },
-        "sources": [
-          "SEC"
-        ]
+        "sources": []
       }
     },
     "key_signals": {
@@ -15096,25 +14845,24 @@
     "hi_balanced": false,
     "hi_balanced_gates": {
       "dimensions": false,
-      "evidence": true,
-      "momentum": false,
+      "evidence": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
           "U": true,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
           "U": true,
           "M": true,
-          "A": true,
-          "N": true
+          "A": false,
+          "N": false
         },
-        "decay_level": "warning",
-        "decay_index": 38
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -15124,9 +14872,7 @@
       "technology",
       "data analytics",
       "defense"
-    ],
-    "decay_level": "warning",
-    "decay_index": 38
+    ]
   },
   {
     "company": "PRUDENTIAL FINANCIAL INC",
@@ -17267,36 +17013,30 @@
   },
   {
     "company": "Adobe",
-    "ticker": "ADBE",
-    "industry": "tech",
-    "sic": "7372",
-    "sic_description": "Services-Prepackaged Software",
-    "D_H": 28,
-    "D_U": 61,
-    "D_M": 66,
-    "D_A": 57,
-    "D_N": 80,
-    "composite": 50,
+    "ticker": "",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 42,
+    "D_U": 59,
+    "D_M": 57,
+    "D_A": 56,
+    "D_N": 45,
+    "composite": 52,
     "hi_grade": "scored",
     "satire": "",
-    "floor_triggered": true,
+    "floor_triggered": false,
     "balance_floor": false,
-    "triggering_dimension": "H",
-    "confidence": "Verified",
+    "triggering_dimension": null,
+    "confidence": "Partial",
     "spec_version": "1.2.1",
     "data_sources": [
       "CDP",
-      "CFPB",
       "Disability:IN DEI",
-      "FDA",
-      "HIBP",
       "HRC CEI",
-      "Industry",
-      "Industry+EPA",
-      "Jobs",
-      "SEC"
+      "Jobs"
     ],
-    "signal_coverage": "16/19 sub-signals with real data",
+    "signal_coverage": "8/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -17321,8 +17061,8 @@
       "H": {
         "scores": {
           "H.1": 35,
-          "H.2": 40,
-          "H.3": 42,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 35
         },
         "sources": [
@@ -17331,52 +17071,44 @@
       },
       "U": {
         "scores": {
-          "U.1": 70.0,
+          "U.1": 50,
           "U.2": 50,
           "U.3": 85.0,
-          "U.4": 38
+          "U.4": 50
         },
         "sources": [
-          "CFPB",
           "HRC CEI",
           "Disability:IN DEI"
         ]
       },
       "M": {
         "scores": {
-          "M.1": 80,
-          "M.2": 60,
+          "M.1": 50,
+          "M.2": 50,
           "M.3": 85,
-          "M.4": 53.5,
+          "M.4": 50,
           "M.5": 50
         },
-        "sources": [
-          "FDA",
-          "HIBP",
-          "CFPB"
-        ]
+        "sources": []
       },
       "A": {
         "scores": {
           "A.1": 70,
           "A.2": 50,
-          "A.3": 65,
-          "A.4": 45
+          "A.3": 50,
+          "A.4": 55
         },
         "sources": [
-          "CDP",
-          "Industry",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
         "scores": {
           "N.2": 70,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
-          "CDP",
-          "SEC"
+          "CDP"
         ]
       }
     },
@@ -17393,25 +17125,24 @@
     "hi_balanced": false,
     "hi_balanced_gates": {
       "dimensions": false,
-      "evidence": true,
-      "momentum": false,
+      "evidence": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
-          "U": true,
-          "M": true,
+          "U": false,
+          "M": false,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
           "U": true,
-          "M": true,
+          "M": false,
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 37
+        "decay_level": "stable"
       }
     },
     "domains": [
@@ -17421,9 +17152,7 @@
       "technology",
       "software",
       "creative"
-    ],
-    "decay_level": "warning",
-    "decay_index": 37
+    ]
   },
   {
     "company": "ADVANCED MICRO DEVICES INC",
@@ -18143,20 +17872,20 @@
   {
     "company": "Caterpillar",
     "ticker": "CAT",
-    "industry": "tech",
-    "sic": "3531",
-    "sic_description": "Construction Machinery & Equip",
-    "D_H": 35,
-    "D_U": 58,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 40,
+    "D_U": 61,
     "D_M": 64,
     "D_A": 52,
-    "D_N": 70,
+    "D_N": 35,
     "composite": 50,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
     "balance_floor": false,
-    "triggering_dimension": "H",
+    "triggering_dimension": "N",
     "confidence": "Partial",
     "spec_version": "1.2.1",
     "data_sources": [
@@ -18164,10 +17893,9 @@
       "Disability:IN DEI",
       "FDA",
       "Industry",
-      "Industry+EPA",
-      "SEC"
+      "Industry+EPA"
     ],
-    "signal_coverage": "11/19 sub-signals with real data",
+    "signal_coverage": "8/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -18192,8 +17920,8 @@
       "H": {
         "scores": {
           "H.1": 50,
-          "H.2": 40,
-          "H.3": 42,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 50
         },
         "sources": []
@@ -18203,7 +17931,7 @@
           "U.1": 70.0,
           "U.2": 50,
           "U.3": 75.0,
-          "U.4": 38
+          "U.4": 50
         },
         "sources": [
           "CFPB",
@@ -18238,11 +17966,9 @@
       "N": {
         "scores": {
           "N.2": 50,
-          "N.5": 90
+          "N.5": 20
         },
-        "sources": [
-          "SEC"
-        ]
+        "sources": []
       }
     },
     "key_signals": {
@@ -18263,17 +17989,17 @@
       "_detail": {
         "dim_pass": {
           "H": false,
-          "U": false,
+          "U": true,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": false,
           "U": true,
           "M": true,
           "A": true,
-          "N": true
+          "N": false
         },
         "decay_level": "warning",
         "decay_index": 33
@@ -22286,29 +22012,28 @@
   {
     "company": "Walt Disney Company",
     "ticker": "DIS",
-    "industry": "hospitality",
-    "sic": "7990",
-    "sic_description": "Services-Miscellaneous Amusement & Recreation",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
     "D_H": 50,
-    "D_U": 64,
+    "D_U": 59,
     "D_M": 63,
     "D_A": 51,
-    "D_N": 70,
-    "composite": 60,
+    "D_N": 35,
+    "composite": 50,
     "hi_grade": "scored",
     "satire": "",
-    "floor_triggered": false,
+    "floor_triggered": true,
     "balance_floor": false,
-    "triggering_dimension": null,
+    "triggering_dimension": "N",
     "confidence": "Limited",
     "spec_version": "1.2.1",
     "data_sources": [
       "Disability:IN DEI",
       "HIBP",
-      "HRC CEI",
-      "SEC"
+      "HRC CEI"
     ],
-    "signal_coverage": "6/19 sub-signals with real data",
+    "signal_coverage": "5/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -22344,7 +22069,7 @@
           "U.1": 50,
           "U.2": 50,
           "U.3": 85.0,
-          "U.4": 72
+          "U.4": 50
         },
         "sources": [
           "HRC CEI",
@@ -22375,11 +22100,9 @@
       "N": {
         "scores": {
           "N.2": 50,
-          "N.5": 90
+          "N.5": 20
         },
-        "sources": [
-          "SEC"
-        ]
+        "sources": []
       }
     },
     "key_signals": {
@@ -22400,17 +22123,17 @@
       "_detail": {
         "dim_pass": {
           "H": false,
-          "U": true,
+          "U": false,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": false,
           "U": true,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "decay_level": "watch",
         "decay_index": 23
@@ -24685,7 +24408,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": true,
+      "momentum": false,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -24701,12 +24424,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 28
+        "decay_level": "warning",
+        "decay_index": 38
       }
     },
-    "decay_level": "watch",
-    "decay_index": 28
+    "decay_level": "warning",
+    "decay_index": 38
   },
   {
     "company": "Duke Energy CORP",
@@ -25564,15 +25287,15 @@
   {
     "company": "Alphabet Inc.",
     "ticker": "GOOGL",
-    "industry": "tech",
-    "sic": "7370",
-    "sic_description": "Services-Computer Programming, Data Processing, Etc.",
-    "D_H": 5,
-    "D_U": 63,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 10,
+    "D_U": 64,
     "D_M": 72,
     "D_A": 56,
-    "D_N": 70,
-    "composite": 50,
+    "D_N": 35,
+    "composite": 47,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
@@ -25595,10 +25318,9 @@
       "Industry+EPA",
       "Jobs",
       "SBTi",
-      "SEC",
       "SEC DEF 14A"
     ],
-    "signal_coverage": "18/19 sub-signals with real data",
+    "signal_coverage": "16/19 sub-signals with real data",
     "humanwashing_flags": [
       "AH: YouTube autoplay radicalization pipeline",
       "AH: Kids content algorithm failures"
@@ -25636,8 +25358,8 @@
       "H": {
         "scores": {
           "H.1": 30,
-          "H.2": 40,
-          "H.3": 42,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 30
         },
         "sources": [
@@ -25649,7 +25371,7 @@
           "U.1": 72.0,
           "U.2": 59.8,
           "U.3": 84.6,
-          "U.4": 64.7
+          "U.4": 69.5
         },
         "sources": [
           "CFPB",
@@ -25669,12 +25391,12 @@
           "M.5": 88
         },
         "sources": [
-          "Glassdoor",
-          "FDA",
-          "SEC DEF 14A",
-          "FTC",
-          "CFPB",
           "HIBP",
+          "FTC",
+          "FDA",
+          "CFPB",
+          "Glassdoor",
+          "SEC DEF 14A",
           "EEOC"
         ]
       },
@@ -25686,19 +25408,18 @@
           "A.4": 45
         },
         "sources": [
-          "SBTi",
           "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "SBTi"
         ]
       },
       "N": {
         "scores": {
           "N.2": 60,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
-          "GRI",
-          "SEC"
+          "GRI"
         ]
       }
     },
@@ -25723,7 +25444,7 @@
           "U": true,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -27898,62 +27619,41 @@
   },
   {
     "company": "Uber",
-    "ticker": "UBER",
-    "industry": "tech",
-    "sic": "7389",
-    "sic_description": "Services-Business Services, NEC",
-    "D_H": 11,
-    "D_U": 63,
-    "D_M": 74,
-    "D_A": 52,
-    "D_N": 68,
+    "ticker": "",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 42,
+    "D_U": 67,
+    "D_M": 65,
+    "D_A": 51,
+    "D_N": 35,
     "composite": 50,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
     "balance_floor": false,
-    "triggering_dimension": "H",
-    "confidence": "Verified",
+    "triggering_dimension": "N",
+    "confidence": "Partial",
     "spec_version": "1.2.1",
     "data_sources": [
-      "CFPB",
       "Disability:IN DEI",
-      "FDA",
       "Glassdoor",
-      "HIBP",
       "HRC CEI",
-      "Industry",
-      "Industry+EPA",
-      "Jobs",
-      "SEC"
+      "Jobs"
     ],
-    "signal_coverage": "16/19 sub-signals with real data",
-    "humanwashing_flags": [
-      "AH: Surge pricing exploits demand spikes",
-      "AH: Driver gamification manipulation",
-      "AH: Algorithmic wage suppression"
-    ],
+    "signal_coverage": "11/19 sub-signals with real data",
+    "humanwashing_flags": [],
     "algo_harm": {
-      "algo_harm_score": 44.2,
+      "algo_harm_score": 0,
       "penalties": {
-        "H": -2.0,
-        "U": -3.1,
-        "M": -3.1,
-        "N": -2.0
+        "H": 0,
+        "U": 0,
+        "M": 0,
+        "N": 0
       },
-      "flags": [
-        "Surge pricing exploits demand spikes",
-        "Driver gamification manipulation",
-        "Algorithmic wage suppression"
-      ],
-      "has_harm": true,
-      "components": {
-        "division": 10,
-        "addiction": 30,
-        "manipulation": 55,
-        "transparency": 25,
-        "human_override": 20
-      }
+      "flags": [],
+      "has_harm": false
     },
     "harm_documentation": {
       "has_harm": false,
@@ -27967,8 +27667,8 @@
       "H": {
         "scores": {
           "H.1": 35,
-          "H.2": 40,
-          "H.3": 42,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 35
         },
         "sources": [
@@ -27977,13 +27677,12 @@
       },
       "U": {
         "scores": {
-          "U.1": 70.0,
+          "U.1": 68.8,
           "U.2": 61.0,
           "U.3": 78.1,
-          "U.4": 56.5
+          "U.4": 61.2
         },
         "sources": [
-          "CFPB",
           "Glassdoor",
           "HRC CEI",
           "Disability:IN DEI"
@@ -27991,39 +27690,31 @@
       },
       "M": {
         "scores": {
-          "M.1": 80,
-          "M.2": 80,
+          "M.1": 50,
+          "M.2": 50,
           "M.3": 85,
-          "M.4": 66.4,
+          "M.4": 66.0,
           "M.5": 75
         },
         "sources": [
-          "Glassdoor",
-          "HIBP",
-          "FDA",
-          "CFPB"
+          "Glassdoor"
         ]
       },
       "A": {
         "scores": {
           "A.1": 50,
           "A.2": 50,
-          "A.3": 65,
-          "A.4": 45
+          "A.3": 50,
+          "A.4": 55
         },
-        "sources": [
-          "Industry",
-          "Industry+EPA"
-        ]
+        "sources": []
       },
       "N": {
         "scores": {
           "N.2": 50,
-          "N.5": 90
+          "N.5": 20
         },
-        "sources": [
-          "SEC"
-        ]
+        "sources": []
       }
     },
     "key_signals": {
@@ -28039,38 +27730,34 @@
     "hi_balanced": false,
     "hi_balanced_gates": {
       "dimensions": false,
-      "evidence": true,
-      "momentum": false,
+      "evidence": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
           "U": true,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
           "U": true,
           "M": true,
-          "A": true,
-          "N": true
+          "A": false,
+          "N": false
         },
-        "decay_level": "critical",
-        "decay_index": 66
+        "decay_level": "stable"
       }
     },
     "domains": [
-      "uber.com",
-      "ubereats.com"
+      "uber.com"
     ],
     "tags": [
       "technology",
       "transportation",
       "gig economy"
-    ],
-    "decay_level": "critical",
-    "decay_index": 66
+    ]
   },
   {
     "company": "VERTEX PHARMACEUTICALS INC / MA",
@@ -29788,20 +29475,20 @@
   {
     "company": "Deere",
     "ticker": "DE",
-    "industry": "tech",
-    "sic": "3523",
-    "sic_description": "Farm Machinery & Equipment",
-    "D_H": 45,
-    "D_U": 58,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 50,
+    "D_U": 61,
     "D_M": 64,
     "D_A": 52,
-    "D_N": 70,
-    "composite": 58,
+    "D_N": 35,
+    "composite": 50,
     "hi_grade": "scored",
     "satire": "",
-    "floor_triggered": false,
+    "floor_triggered": true,
     "balance_floor": false,
-    "triggering_dimension": null,
+    "triggering_dimension": "N",
     "confidence": "Partial",
     "spec_version": "1.2.1",
     "data_sources": [
@@ -29809,10 +29496,9 @@
       "Disability:IN DEI",
       "FDA",
       "Industry",
-      "Industry+EPA",
-      "SEC"
+      "Industry+EPA"
     ],
-    "signal_coverage": "11/19 sub-signals with real data",
+    "signal_coverage": "8/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -29837,8 +29523,8 @@
       "H": {
         "scores": {
           "H.1": 50,
-          "H.2": 40,
-          "H.3": 42,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 50
         },
         "sources": []
@@ -29848,7 +29534,7 @@
           "U.1": 70.0,
           "U.2": 50,
           "U.3": 75.0,
-          "U.4": 38
+          "U.4": 50
         },
         "sources": [
           "CFPB",
@@ -29883,11 +29569,9 @@
       "N": {
         "scores": {
           "N.2": 50,
-          "N.5": 90
+          "N.5": 20
         },
-        "sources": [
-          "SEC"
-        ]
+        "sources": []
       }
     },
     "key_signals": {
@@ -29908,17 +29592,17 @@
       "_detail": {
         "dim_pass": {
           "H": false,
-          "U": false,
+          "U": true,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": false,
           "U": true,
           "M": true,
           "A": true,
-          "N": true
+          "N": false
         },
         "decay_level": "watch",
         "decay_index": 18
@@ -30364,28 +30048,27 @@
   {
     "company": "Ford Motor Company",
     "ticker": "F",
-    "industry": "manufacturing",
-    "sic": "3711",
-    "sic_description": "Motor Vehicles & Passenger Car Bodies",
-    "D_H": 54,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 50,
     "D_U": 59,
     "D_M": 63,
-    "D_A": 49,
-    "D_N": 70,
-    "composite": 59,
+    "D_A": 51,
+    "D_N": 35,
+    "composite": 50,
     "hi_grade": "scored",
     "satire": "",
-    "floor_triggered": false,
+    "floor_triggered": true,
     "balance_floor": false,
-    "triggering_dimension": null,
+    "triggering_dimension": "N",
     "confidence": "Limited",
     "spec_version": "1.2.1",
     "data_sources": [
       "HIBP",
-      "HRC CEI",
-      "SEC"
+      "HRC CEI"
     ],
-    "signal_coverage": "7/19 sub-signals with real data",
+    "signal_coverage": "5/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -30410,8 +30093,8 @@
       "H": {
         "scores": {
           "H.1": 50,
-          "H.2": 60,
-          "H.3": 55,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 50
         },
         "sources": []
@@ -30441,21 +30124,19 @@
       },
       "A": {
         "scores": {
-          "A.1": 45,
+          "A.1": 50,
           "A.2": 50,
           "A.3": 50,
-          "A.4": 50
+          "A.4": 55
         },
         "sources": []
       },
       "N": {
         "scores": {
           "N.2": 50,
-          "N.5": 90
+          "N.5": 20
         },
-        "sources": [
-          "SEC"
-        ]
+        "sources": []
       }
     },
     "key_signals": {
@@ -30479,14 +30160,14 @@
           "U": false,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": false,
           "U": true,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "decay_level": "watch",
         "decay_index": 18
@@ -34699,36 +34380,29 @@
   },
   {
     "company": "CVS Health",
-    "ticker": "CVS",
-    "industry": "retail",
-    "sic": "5912",
-    "sic_description": "Retail-Drug Stores and Proprietary Stores",
-    "D_H": 22,
-    "D_U": 60,
-    "D_M": 68,
-    "D_A": 51,
-    "D_N": 67,
-    "composite": 50,
+    "ticker": "",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 50,
+    "D_U": 55,
+    "D_M": 56,
+    "D_A": 50,
+    "D_N": 32,
+    "composite": 49,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
     "balance_floor": false,
-    "triggering_dimension": "H",
-    "confidence": "Strong",
+    "triggering_dimension": "N",
+    "confidence": "Partial",
     "spec_version": "1.2.1",
     "data_sources": [
       "CDP",
-      "CFPB",
-      "Disability:IN DEI",
-      "FDA",
       "Glassdoor",
-      "HIBP",
-      "HRC CEI",
-      "Industry",
-      "Industry+EPA",
-      "SEC"
+      "HRC CEI"
     ],
-    "signal_coverage": "15/19 sub-signals with real data",
+    "signal_coverage": "8/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -34753,62 +34427,54 @@
       "H": {
         "scores": {
           "H.1": 50,
-          "H.2": 45,
-          "H.3": 45,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 50
         },
         "sources": []
       },
       "U": {
         "scores": {
-          "U.1": 70.0,
+          "U.1": 50.0,
           "U.2": 40.2,
           "U.3": 79.4,
-          "U.4": 52.0
+          "U.4": 50.0
         },
         "sources": [
-          "CFPB",
           "Glassdoor",
-          "HRC CEI",
-          "Disability:IN DEI"
+          "HRC CEI"
         ]
       },
       "M": {
         "scores": {
-          "M.1": 80,
-          "M.2": 80,
+          "M.1": 50,
+          "M.2": 50,
           "M.3": 85,
-          "M.4": 47.5,
+          "M.4": 45.0,
           "M.5": 50
         },
         "sources": [
-          "Glassdoor",
-          "HIBP",
-          "FDA",
-          "CFPB"
+          "Glassdoor"
         ]
       },
       "A": {
         "scores": {
           "A.1": 45,
           "A.2": 50,
-          "A.3": 45,
-          "A.4": 65
+          "A.3": 50,
+          "A.4": 55
         },
         "sources": [
-          "CDP",
-          "Industry",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
         "scores": {
           "N.2": 45,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
-          "CDP",
-          "SEC"
+          "CDP"
         ]
       }
     },
@@ -34826,14 +34492,14 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
-          "U": true,
-          "M": true,
+          "U": false,
+          "M": false,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": false,
@@ -34842,21 +34508,17 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 68
+        "decay_level": "stable"
       }
     },
     "domains": [
-      "cvs.com",
-      "cvshealth.com"
+      "cvs.com"
     ],
     "tags": [
       "healthcare",
       "pharmacy",
       "retail"
-    ],
-    "decay_level": "critical",
-    "decay_index": 68
+    ]
   },
   {
     "company": "DIGITAL REALTY TRUST, INC.",
@@ -38307,28 +37969,27 @@
   {
     "company": "Exxon Mobil Corporation",
     "ticker": "XOM",
-    "industry": "energy",
-    "sic": "2911",
-    "sic_description": "Petroleum Refining",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
     "D_H": 40,
     "D_U": 59,
     "D_M": 63,
-    "D_A": 46,
-    "D_N": 70,
+    "D_A": 51,
+    "D_N": 35,
     "composite": 50,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
     "balance_floor": false,
-    "triggering_dimension": "H",
+    "triggering_dimension": "N",
     "confidence": "Limited",
     "spec_version": "1.2.1",
     "data_sources": [
       "HIBP",
-      "HRC CEI",
-      "SEC"
+      "HRC CEI"
     ],
-    "signal_coverage": "6/19 sub-signals with real data",
+    "signal_coverage": "5/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -38384,7 +38045,7 @@
       },
       "A": {
         "scores": {
-          "A.1": 30,
+          "A.1": 50,
           "A.2": 50,
           "A.3": 50,
           "A.4": 55
@@ -38394,11 +38055,9 @@
       "N": {
         "scores": {
           "N.2": 50,
-          "N.5": 90
+          "N.5": 20
         },
-        "sources": [
-          "SEC"
-        ]
+        "sources": []
       }
     },
     "key_signals": {
@@ -38422,14 +38081,14 @@
           "U": false,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": false,
           "U": true,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "decay_level": "warning",
         "decay_index": 30
@@ -38725,141 +38384,6 @@
     },
     "decay_level": "watch",
     "decay_index": 10
-  },
-  {
-    "company": "McDonald's Corporation",
-    "ticker": "",
-    "industry": "default",
-    "sic": "",
-    "sic_description": "",
-    "D_H": 62,
-    "D_U": 56,
-    "D_M": 61,
-    "D_A": 56,
-    "D_N": 45,
-    "composite": 56,
-    "hi_grade": "scored",
-    "satire": "",
-    "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
-    "confidence": "Strong",
-    "spec_version": "1.2.1",
-    "data_sources": [
-      "CDP",
-      "Glassdoor",
-      "Jobs"
-    ],
-    "signal_coverage": "13/19 sub-signals with real data",
-    "humanwashing_flags": [],
-    "algo_harm": {
-      "algo_harm_score": 0,
-      "penalties": {
-        "H": 0,
-        "U": 0,
-        "M": 0,
-        "N": 0
-      },
-      "flags": [],
-      "has_harm": false
-    },
-    "harm_documentation": {
-      "has_harm": false,
-      "penalties": {
-        "M": 0
-      },
-      "flags": [],
-      "sources": []
-    },
-    "genome": {
-      "H": {
-        "scores": {
-          "H.1": 75,
-          "H.2": 50,
-          "H.3": 50,
-          "H.5": 75
-        },
-        "sources": [
-          "Jobs"
-        ]
-      },
-      "U": {
-        "scores": {
-          "U.1": 60.0,
-          "U.2": 50.0,
-          "U.3": 57.5,
-          "U.4": 56.0
-        },
-        "sources": [
-          "Glassdoor"
-        ]
-      },
-      "M": {
-        "scores": {
-          "M.1": 50,
-          "M.2": 50,
-          "M.3": 85,
-          "M.4": 51.5,
-          "M.5": 70
-        },
-        "sources": [
-          "Glassdoor"
-        ]
-      },
-      "A": {
-        "scores": {
-          "A.1": 70,
-          "A.2": 45,
-          "A.3": 50,
-          "A.4": 60
-        },
-        "sources": [
-          "CDP"
-        ]
-      },
-      "N": {
-        "scores": {
-          "N.2": 70,
-          "N.5": 20
-        },
-        "sources": [
-          "CDP"
-        ]
-      }
-    },
-    "key_signals": {
-      "headcount": null,
-      "headcount_change_pct": null,
-      "revenue_per_employee": null,
-      "displacement_signal": null,
-      "ai_hiring_ratio": 0.03,
-      "glassdoor_rating": 3.5,
-      "cdp_climate": "B",
-      "epa_violations": null
-    },
-    "hi_balanced": false,
-    "hi_balanced_gates": {
-      "dimensions": false,
-      "evidence": true,
-      "momentum": true,
-      "_detail": {
-        "dim_pass": {
-          "H": true,
-          "U": false,
-          "M": true,
-          "A": false,
-          "N": false
-        },
-        "evidence_pass": {
-          "H": true,
-          "U": true,
-          "M": true,
-          "A": true,
-          "N": true
-        },
-        "decay_level": "stable"
-      }
-    }
   },
   {
     "company": "Merck & Co., Inc.",
@@ -43500,21 +43024,21 @@
   {
     "company": "Boeing Company",
     "ticker": "BA",
-    "industry": "manufacturing",
-    "sic": "3721",
-    "sic_description": "Aircraft",
-    "D_H": 59,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 55,
     "D_U": 67,
     "D_M": 0,
     "D_A": 54,
-    "D_N": 85,
-    "composite": 50,
+    "D_N": 50,
+    "composite": 45,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
     "balance_floor": false,
     "triggering_dimension": "M",
-    "confidence": "Verified",
+    "confidence": "Strong",
     "spec_version": "1.2.1",
     "data_sources": [
       "CDP",
@@ -43527,10 +43051,9 @@
       "Industry",
       "Industry+EPA",
       "Jobs",
-      "SEC",
       "SEC DEF 14A"
     ],
-    "signal_coverage": "17/19 sub-signals with real data",
+    "signal_coverage": "15/19 sub-signals with real data",
     "humanwashing_flags": [
       "HD: Defense products (30% defense revenue)",
       "HD: Harm settlements: $4.3B (5y)",
@@ -43575,8 +43098,8 @@
       "H": {
         "scores": {
           "H.1": 60,
-          "H.2": 60,
-          "H.3": 55,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 60
         },
         "sources": [
@@ -43620,20 +43143,19 @@
           "A.4": 60
         },
         "sources": [
-          "CDP",
           "Industry",
+          "CDP",
           "Industry+EPA"
         ]
       },
       "N": {
         "scores": {
           "N.2": 80,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
           "CDP",
-          "GRI",
-          "SEC"
+          "GRI"
         ]
       }
     },
@@ -43658,7 +43180,7 @@
           "U": true,
           "M": false,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -43680,14 +43202,14 @@
   {
     "company": "Chevron Corporation",
     "ticker": "CVX",
-    "industry": "energy",
-    "sic": "2911",
-    "sic_description": "Petroleum Refining",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
     "D_H": 55,
     "D_U": 71,
     "D_M": 73,
     "D_A": 24,
-    "D_N": 62,
+    "D_N": 27,
     "composite": 50,
     "hi_grade": "scored",
     "satire": "",
@@ -43708,7 +43230,6 @@
       "Industry+EPA",
       "Jobs",
       "SBTi",
-      "SEC",
       "SEC DEF 14A"
     ],
     "signal_coverage": "15/19 sub-signals with real data",
@@ -43781,21 +43302,20 @@
           "A.4": 50
         },
         "sources": [
-          "SBTi",
-          "CDP",
           "Industry",
+          "CDP",
+          "SBTi",
           "Industry+EPA"
         ]
       },
       "N": {
         "scores": {
           "N.2": 35,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
           "CDP",
-          "GRI",
-          "SEC"
+          "GRI"
         ]
       }
     },
@@ -43820,7 +43340,7 @@
           "U": true,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -43995,41 +43515,31 @@
   },
   {
     "company": "Johnson & Johnson",
-    "ticker": "JNJ",
-    "industry": "healthcare",
-    "sic": "2834",
-    "sic_description": "Pharmaceutical Preparations",
-    "D_H": 37,
+    "ticker": "",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 55,
     "D_U": 73,
     "D_M": 0,
-    "D_A": 75,
-    "D_N": 95,
+    "D_A": 69,
+    "D_N": 55,
     "composite": 50,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
     "balance_floor": false,
     "triggering_dimension": "M",
-    "confidence": "Verified",
+    "confidence": "Strong",
     "spec_version": "1.2.1",
     "data_sources": [
       "CDP",
-      "CFPB",
       "Disability:IN DEI",
-      "FDA",
-      "FEC",
-      "GRI",
       "Glassdoor",
-      "HIBP",
       "HRC CEI",
-      "Industry",
-      "Industry+EPA",
-      "Jobs",
-      "SBTi",
-      "SEC",
-      "SEC DEF 14A"
+      "Jobs"
     ],
-    "signal_coverage": "19/19 sub-signals with real data",
+    "signal_coverage": "14/19 sub-signals with real data",
     "humanwashing_flags": [
       "HD: Harm settlements: $12.5B (5y)",
       "HD: Documented deaths attributed: 50,000",
@@ -44075,8 +43585,8 @@
       "H": {
         "scores": {
           "H.1": 60,
-          "H.2": 70,
-          "H.3": 60,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 60
         },
         "sources": [
@@ -44085,13 +43595,12 @@
       },
       "U": {
         "scores": {
-          "U.1": 70.0,
+          "U.1": 73.8,
           "U.2": 71.0,
           "U.3": 83.1,
-          "U.4": 70.2
+          "U.4": 64.2
         },
         "sources": [
-          "CFPB",
           "Glassdoor",
           "HRC CEI",
           "Disability:IN DEI"
@@ -44099,44 +43608,34 @@
       },
       "M": {
         "scores": {
-          "M.1": 80,
-          "M.2": 80,
+          "M.1": 50,
+          "M.2": 50,
           "M.3": 85,
-          "M.4": 67.5,
-          "M.5": 40
+          "M.4": 70.5,
+          "M.5": 82
         },
         "sources": [
-          "Glassdoor",
-          "FDA",
-          "SEC DEF 14A",
-          "FEC",
-          "CFPB",
-          "HIBP"
+          "Glassdoor"
         ]
       },
       "A": {
         "scores": {
-          "A.1": 100,
+          "A.1": 85,
           "A.2": 85,
-          "A.3": 60,
+          "A.3": 50,
           "A.4": 55
         },
         "sources": [
-          "SBTi",
-          "CDP",
-          "Industry",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
         "scores": {
-          "N.2": 100,
-          "N.5": 90
+          "N.2": 90,
+          "N.5": 20
         },
         "sources": [
-          "CDP",
-          "GRI",
-          "SEC"
+          "CDP"
         ]
       }
     },
@@ -44154,14 +43653,14 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
           "U": true,
           "M": false,
           "A": true,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -44170,33 +43669,29 @@
           "A": true,
           "N": true
         },
-        "decay_level": "critical",
-        "decay_index": 55
+        "decay_level": "stable"
       }
     },
     "domains": [
-      "jnj.com",
-      "johnsonandjohnson.com"
+      "jnj.com"
     ],
     "tags": [
       "healthcare",
       "pharmaceutical"
-    ],
-    "decay_level": "critical",
-    "decay_index": 55
+    ]
   },
   {
     "company": "Lockheed Martin Corporation",
     "ticker": "LMT",
-    "industry": "manufacturing",
-    "sic": "3760",
-    "sic_description": "Guided Missiles & Space Vehicles & Parts",
-    "D_H": 59,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 55,
     "D_U": 72,
     "D_M": 0,
     "D_A": 56,
-    "D_N": 80,
-    "composite": 50,
+    "D_N": 45,
+    "composite": 46,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
@@ -44215,10 +43710,9 @@
       "Industry",
       "Industry+EPA",
       "Jobs",
-      "SEC",
       "SEC DEF 14A"
     ],
-    "signal_coverage": "18/19 sub-signals with real data",
+    "signal_coverage": "16/19 sub-signals with real data",
     "humanwashing_flags": [
       "HD: Weapons manufacturer (78% defense revenue)",
       "HD: Concealment findings: 2"
@@ -44262,8 +43756,8 @@
       "H": {
         "scores": {
           "H.1": 60,
-          "H.2": 60,
-          "H.3": 55,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 60
         },
         "sources": [
@@ -44293,11 +43787,11 @@
           "M.5": 82
         },
         "sources": [
-          "Glassdoor",
+          "HIBP",
           "FDA",
-          "SEC DEF 14A",
           "CFPB",
-          "HIBP"
+          "Glassdoor",
+          "SEC DEF 14A"
         ]
       },
       "A": {
@@ -44308,19 +43802,18 @@
           "A.4": 60
         },
         "sources": [
-          "CDP",
           "Industry",
+          "CDP",
           "Industry+EPA"
         ]
       },
       "N": {
         "scores": {
           "N.2": 70,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
-          "CDP",
-          "SEC"
+          "CDP"
         ]
       }
     },
@@ -44345,7 +43838,7 @@
           "U": true,
           "M": false,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -44371,15 +43864,15 @@
   {
     "company": "Meta Platforms, Inc.",
     "ticker": "META",
-    "industry": "tech",
-    "sic": "7370",
-    "sic_description": "Services-Computer Programming, Data Processing, Etc.",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
     "D_H": 0,
-    "D_U": 57,
+    "D_U": 58,
     "D_M": 63,
     "D_A": 56,
-    "D_N": 78,
-    "composite": 50,
+    "D_N": 43,
+    "composite": 44,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
@@ -44402,12 +43895,11 @@
       "Industry+EPA",
       "Jobs",
       "SBTi",
-      "SEC",
       "SEC DEF 14A",
       "SEC Form 4",
       "iFixit"
     ],
-    "signal_coverage": "18/19 sub-signals with real data",
+    "signal_coverage": "16/19 sub-signals with real data",
     "humanwashing_flags": [
       "HW.3: AI roles dominate job postings (>35%)",
       "AH: Instagram teen mental health crisis",
@@ -44449,8 +43941,8 @@
       "H": {
         "scores": {
           "H.1": 10,
-          "H.2": 40,
-          "H.3": 42,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 10
         },
         "sources": [
@@ -44462,7 +43954,7 @@
           "U.1": 65.0,
           "U.2": 61.0,
           "U.3": 83.5,
-          "U.4": 61.0
+          "U.4": 65.8
         },
         "sources": [
           "CFPB",
@@ -44482,13 +43974,13 @@
           "M.5": 75
         },
         "sources": [
-          "Glassdoor",
-          "FDA",
-          "SEC DEF 14A",
-          "SEC Form 4",
-          "FTC",
-          "CFPB",
           "HIBP",
+          "FTC",
+          "FDA",
+          "CFPB",
+          "Glassdoor",
+          "SEC Form 4",
+          "SEC DEF 14A",
           "EEOC"
         ]
       },
@@ -44500,21 +43992,20 @@
           "A.4": 30
         },
         "sources": [
-          "SBTi",
           "CDP",
           "iFixit",
+          "SBTi",
           "Industry+EPA"
         ]
       },
       "N": {
         "scores": {
           "N.2": 80,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
           "CDP",
-          "GRI",
-          "SEC"
+          "GRI"
         ]
       }
     },
@@ -44539,7 +44030,7 @@
           "U": false,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -44571,14 +44062,14 @@
   {
     "company": "NVIDIA",
     "ticker": "NVDA",
-    "industry": "tech",
-    "sic": "3674",
-    "sic_description": "Semiconductors & Related Devices",
-    "D_H": 15,
-    "D_U": 76,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 20,
+    "D_U": 78,
     "D_M": 81,
     "D_A": 54,
-    "D_N": 72,
+    "D_N": 37,
     "composite": 50,
     "hi_grade": "scored",
     "satire": "",
@@ -44597,11 +44088,10 @@
       "Industry+EPA",
       "Jobs",
       "SBTi",
-      "SEC",
       "SEC DEF 14A",
       "iFixit"
     ],
-    "signal_coverage": "18/19 sub-signals with real data",
+    "signal_coverage": "16/19 sub-signals with real data",
     "humanwashing_flags": [
       "HW.3: AI roles dominate job postings (>35%)"
     ],
@@ -44628,8 +44118,8 @@
       "H": {
         "scores": {
           "H.1": 10,
-          "H.2": 40,
-          "H.3": 42,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 10
         },
         "sources": [
@@ -44641,7 +44131,7 @@
           "U.1": 70.0,
           "U.2": 83.8,
           "U.3": 85.0,
-          "U.4": 67.0
+          "U.4": 71.8
         },
         "sources": [
           "CFPB",
@@ -44657,11 +44147,11 @@
           "M.5": 97
         },
         "sources": [
-          "Glassdoor",
+          "HIBP",
           "FDA",
-          "SEC DEF 14A",
           "CFPB",
-          "HIBP"
+          "Glassdoor",
+          "SEC DEF 14A"
         ]
       },
       "A": {
@@ -44672,21 +44162,20 @@
           "A.4": 60
         },
         "sources": [
-          "SBTi",
           "CDP",
           "iFixit",
+          "SBTi",
           "Industry+EPA"
         ]
       },
       "N": {
         "scores": {
           "N.2": 55,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
           "CDP",
-          "GRI",
-          "SEC"
+          "GRI"
         ]
       }
     },
@@ -44711,7 +44200,7 @@
           "U": true,
           "M": true,
           "A": false,
-          "N": true
+          "N": false
         },
         "evidence_pass": {
           "H": true,
@@ -45064,15 +44553,15 @@
   {
     "company": "Tesla",
     "ticker": "TSLA",
-    "industry": "manufacturing",
-    "sic": "3711",
-    "sic_description": "Motor Vehicles & Passenger Car Bodies",
-    "D_H": 21,
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 17,
     "D_U": 48,
     "D_M": 64,
     "D_A": 32,
-    "D_N": 55,
-    "composite": 44,
+    "D_N": 20,
+    "composite": 36,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
@@ -45093,12 +44582,11 @@
       "Industry+EPA",
       "Jobs",
       "SBTi",
-      "SEC",
       "SEC DEF 14A",
       "SEC Form 4",
       "iFixit"
     ],
-    "signal_coverage": "18/19 sub-signals with real data",
+    "signal_coverage": "16/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
       "algo_harm_score": 0,
@@ -45123,8 +44611,8 @@
       "H": {
         "scores": {
           "H.1": 35,
-          "H.2": 60,
-          "H.3": 55,
+          "H.2": 50,
+          "H.3": 50,
           "H.5": 35
         },
         "sources": [
@@ -45154,13 +44642,13 @@
           "M.5": 68
         },
         "sources": [
-          "Glassdoor",
-          "FDA",
-          "SEC DEF 14A",
-          "SEC Form 4",
-          "FTC",
-          "CFPB",
           "HIBP",
+          "FTC",
+          "FDA",
+          "CFPB",
+          "Glassdoor",
+          "SEC Form 4",
+          "SEC DEF 14A",
           "EEOC"
         ]
       },
@@ -45172,21 +44660,20 @@
           "A.4": 30
         },
         "sources": [
-          "SBTi",
           "CDP",
           "iFixit",
+          "SBTi",
           "Industry+EPA"
         ]
       },
       "N": {
         "scores": {
           "N.2": 20,
-          "N.5": 90
+          "N.5": 20
         },
         "sources": [
           "CDP",
-          "GRI",
-          "SEC"
+          "GRI"
         ]
       }
     },
@@ -48086,12 +47573,12 @@
       "evidence": false,
       "momentum": true,
       "_detail": {
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Ben & Jerry's",
@@ -50122,132 +49609,90 @@
   },
   {
     "company": "Rivian",
-    "ticker": "RIVN",
-    "industry": "manufacturing",
-    "sic": "3711",
-    "sic_description": "Motor Vehicles & Passenger Car Bodies",
-    "D_H": 54,
-    "D_U": 50,
-    "D_M": 63,
-    "D_A": 49,
-    "D_N": 70,
+    "ticker": "",
+    "industry": "auto",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 55,
+    "D_U": 52,
+    "D_M": 58,
+    "D_A": 65,
+    "D_N": 55,
     "composite": 57,
     "hi_grade": "scored",
+    "hi_balanced": false,
     "satire": "",
     "floor_triggered": false,
     "balance_floor": false,
     "triggering_dimension": null,
-    "confidence": "Limited",
-    "spec_version": "1.2.1",
+    "confidence": "Estimated from public reporting",
     "data_sources": [
-      "HIBP",
-      "SEC"
+      "Manual Scoring"
     ],
-    "signal_coverage": "6/19 sub-signals with real data",
+    "signal_coverage": "Estimated from public reporting",
     "humanwashing_flags": [],
     "algo_harm": {
-      "algo_harm_score": 0,
-      "penalties": {
-        "H": 0,
-        "U": 0,
-        "M": 0,
-        "N": 0
-      },
-      "flags": [],
-      "has_harm": false
-    },
-    "harm_documentation": {
       "has_harm": false,
-      "penalties": {
-        "M": 0
-      },
-      "flags": [],
-      "sources": []
+      "algo_harm_score": 0,
+      "flags": []
     },
     "genome": {
       "H": {
         "scores": {
-          "H.1": 50,
-          "H.2": 60,
+          "H.1": 55,
+          "H.2": 55,
           "H.3": 55,
-          "H.5": 50
+          "H.5": 55
         },
-        "sources": []
+        "sources": [
+          "Seed Estimate"
+        ]
       },
       "U": {
         "scores": {
-          "U.1": 50,
-          "U.2": 50,
-          "U.3": 50,
-          "U.4": 50
+          "U.1": 52,
+          "U.2": 52,
+          "U.3": 52,
+          "U.4": 52
         },
-        "sources": []
+        "sources": [
+          "Seed Estimate"
+        ]
       },
       "M": {
         "scores": {
-          "M.1": 50,
-          "M.2": 80,
-          "M.3": 85,
-          "M.4": 50,
-          "M.5": 50
+          "M.1": 58,
+          "M.2": 58,
+          "M.3": 58,
+          "M.4": 58,
+          "M.5": 58
         },
         "sources": [
-          "HIBP"
+          "Seed Estimate"
         ]
       },
       "A": {
         "scores": {
-          "A.1": 45,
-          "A.2": 50,
-          "A.3": 50,
-          "A.4": 50
+          "A.1": 65,
+          "A.2": 65,
+          "A.3": 65,
+          "A.4": 65
         },
-        "sources": []
+        "sources": [
+          "Seed Estimate"
+        ]
       },
       "N": {
         "scores": {
-          "N.2": 50,
-          "N.5": 90
+          "N.2": 55,
+          "N.5": 55
         },
         "sources": [
-          "SEC"
+          "Seed Estimate"
         ]
       }
     },
-    "key_signals": {
-      "headcount": null,
-      "headcount_change_pct": null,
-      "revenue_per_employee": null,
-      "displacement_signal": null,
-      "ai_hiring_ratio": null,
-      "glassdoor_rating": null,
-      "cdp_climate": null,
-      "epa_violations": null
-    },
-    "hi_balanced": false,
-    "hi_balanced_gates": {
-      "dimensions": false,
-      "evidence": false,
-      "momentum": true,
-      "_detail": {
-        "dim_pass": {
-          "H": false,
-          "U": false,
-          "M": true,
-          "A": false,
-          "N": true
-        },
-        "evidence_pass": {
-          "H": false,
-          "U": false,
-          "M": true,
-          "A": false,
-          "N": true
-        },
-        "decay_level": "watch",
-        "decay_index": 10
-      }
-    },
+    "key_signals": {},
     "domains": [
       "rivian.com"
     ],
@@ -50255,8 +49700,8 @@
       "automotive",
       "electric"
     ],
-    "decay_level": "watch",
-    "decay_index": 10
+    "notes": "EV-only manufacturer. Conservation focus. Growing workforce.",
+    "_source": "seed"
   },
   {
     "company": "Subaru",
@@ -50355,132 +49800,90 @@
   },
   {
     "company": "Shell plc",
-    "ticker": "SHEL",
+    "ticker": "",
     "industry": "energy",
-    "sic": "1311",
-    "sic_description": "Crude Petroleum & Natural Gas",
-    "D_H": 50,
-    "D_U": 50,
-    "D_M": 63,
-    "D_A": 46,
-    "D_N": 70,
-    "composite": 56,
+    "sic": "",
+    "sic_description": "",
+    "D_H": 45,
+    "D_U": 32,
+    "D_M": 18,
+    "D_A": 15,
+    "D_N": 22,
+    "composite": 26,
     "hi_grade": "scored",
+    "hi_balanced": false,
     "satire": "",
-    "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
-    "confidence": "Limited",
-    "spec_version": "1.2.1",
+    "floor_triggered": true,
+    "balance_floor": true,
+    "triggering_dimension": "A",
+    "confidence": "Estimated from public reporting",
     "data_sources": [
-      "HIBP",
-      "SEC"
+      "Manual Scoring"
     ],
-    "signal_coverage": "5/19 sub-signals with real data",
+    "signal_coverage": "Estimated from public reporting",
     "humanwashing_flags": [],
     "algo_harm": {
-      "algo_harm_score": 0,
-      "penalties": {
-        "H": 0,
-        "U": 0,
-        "M": 0,
-        "N": 0
-      },
-      "flags": [],
-      "has_harm": false
-    },
-    "harm_documentation": {
       "has_harm": false,
-      "penalties": {
-        "M": 0
-      },
-      "flags": [],
-      "sources": []
+      "algo_harm_score": 0,
+      "flags": []
     },
     "genome": {
       "H": {
         "scores": {
-          "H.1": 50,
-          "H.2": 50,
-          "H.3": 50,
-          "H.5": 50
+          "H.1": 45,
+          "H.2": 45,
+          "H.3": 45,
+          "H.5": 45
         },
-        "sources": []
+        "sources": [
+          "Seed Estimate"
+        ]
       },
       "U": {
         "scores": {
-          "U.1": 50,
-          "U.2": 50,
-          "U.3": 50,
-          "U.4": 50
+          "U.1": 32,
+          "U.2": 32,
+          "U.3": 32,
+          "U.4": 32
         },
-        "sources": []
+        "sources": [
+          "Seed Estimate"
+        ]
       },
       "M": {
         "scores": {
-          "M.1": 50,
-          "M.2": 80,
-          "M.3": 85,
-          "M.4": 50,
-          "M.5": 50
+          "M.1": 18,
+          "M.2": 18,
+          "M.3": 18,
+          "M.4": 18,
+          "M.5": 18
         },
         "sources": [
-          "HIBP"
+          "Seed Estimate"
         ]
       },
       "A": {
         "scores": {
-          "A.1": 30,
-          "A.2": 50,
-          "A.3": 50,
-          "A.4": 55
+          "A.1": 15,
+          "A.2": 15,
+          "A.3": 15,
+          "A.4": 15
         },
-        "sources": []
+        "sources": [
+          "Seed Estimate"
+        ]
       },
       "N": {
         "scores": {
-          "N.2": 50,
-          "N.5": 90
+          "N.2": 22,
+          "N.5": 22
         },
         "sources": [
-          "SEC"
+          "Seed Estimate"
         ]
       }
     },
-    "key_signals": {
-      "headcount": null,
-      "headcount_change_pct": null,
-      "revenue_per_employee": null,
-      "displacement_signal": null,
-      "ai_hiring_ratio": null,
-      "glassdoor_rating": null,
-      "cdp_climate": null,
-      "epa_violations": null
-    },
-    "hi_balanced": false,
-    "hi_balanced_gates": {
-      "dimensions": false,
-      "evidence": false,
-      "momentum": true,
-      "_detail": {
-        "dim_pass": {
-          "H": false,
-          "U": false,
-          "M": true,
-          "A": false,
-          "N": true
-        },
-        "evidence_pass": {
-          "H": false,
-          "U": false,
-          "M": true,
-          "A": false,
-          "N": true
-        },
-        "decay_level": "stable",
-        "decay_index": 5
-      }
-    },
+    "key_signals": {},
     "domains": [
       "shell.com"
     ],
@@ -50489,8 +49892,8 @@
       "oil",
       "gas"
     ],
-    "decay_level": "stable",
-    "decay_index": 5
+    "notes": "Nigerian delta controversies. Climate pledges but continued fossil expansion.",
+    "_source": "seed"
   },
   {
     "company": "The New York Times",
@@ -51172,12 +50575,12 @@
       "evidence": false,
       "momentum": true,
       "_detail": {
-        "decay_level": "watch",
-        "decay_index": 19
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 19
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "NSO Group",
@@ -52436,88 +51839,129 @@
     "company": "SpaceX",
     "ticker": "SPCX",
     "industry": "tech",
-    "sic": "",
-    "sic_description": "",
-    "D_H": 58,
-    "D_U": 30,
-    "D_M": 35,
-    "D_A": 35,
-    "D_N": 22,
-    "composite": 36,
+    "sic": "7370",
+    "sic_description": "Services-Computer Programming, Data Processing, Etc.",
+    "D_H": 47,
+    "D_U": 47,
+    "D_M": 57,
+    "D_A": 47,
+    "D_N": 70,
+    "composite": 54,
     "hi_grade": "scored",
-    "hi_balanced": false,
     "satire": "",
-    "floor_triggered": true,
-    "balance_floor": true,
-    "triggering_dimension": "N",
-    "confidence": "Estimated from public reporting",
+    "floor_triggered": false,
+    "balance_floor": false,
+    "triggering_dimension": null,
+    "confidence": "Limited",
+    "spec_version": "1.2.1",
     "data_sources": [
-      "Manual Scoring"
+      "SEC"
     ],
-    "signal_coverage": "Estimated from public reporting",
+    "signal_coverage": "6/19 sub-signals with real data",
     "humanwashing_flags": [],
     "algo_harm": {
-      "has_harm": false,
       "algo_harm_score": 0,
-      "flags": []
+      "penalties": {
+        "H": 0,
+        "U": 0,
+        "M": 0,
+        "N": 0
+      },
+      "flags": [],
+      "has_harm": false
+    },
+    "harm_documentation": {
+      "has_harm": false,
+      "penalties": {
+        "M": 0
+      },
+      "flags": [],
+      "sources": []
     },
     "genome": {
       "H": {
         "scores": {
-          "H.1": 58,
-          "H.2": 58,
-          "H.3": 58,
-          "H.5": 58
+          "H.1": 50,
+          "H.2": 40,
+          "H.3": 47,
+          "H.5": 50
         },
         "sources": [
-          "Seed Estimate"
+          "SEC"
         ]
       },
       "U": {
         "scores": {
-          "U.1": 30,
-          "U.2": 30,
-          "U.3": 30,
-          "U.4": 30
+          "U.1": 50,
+          "U.2": 50,
+          "U.3": 50,
+          "U.4": 38
         },
-        "sources": [
-          "Seed Estimate"
-        ]
+        "sources": []
       },
       "M": {
         "scores": {
-          "M.1": 35,
-          "M.2": 35,
-          "M.3": 35,
-          "M.4": 35,
-          "M.5": 35
+          "M.1": 50,
+          "M.2": 50,
+          "M.3": 85,
+          "M.4": 50,
+          "M.5": 50
         },
-        "sources": [
-          "Seed Estimate"
-        ]
+        "sources": []
       },
       "A": {
         "scores": {
-          "A.1": 35,
-          "A.2": 35,
-          "A.3": 35,
-          "A.4": 35
+          "A.1": 50,
+          "A.2": 50,
+          "A.3": 50,
+          "A.4": 40
         },
-        "sources": [
-          "Seed Estimate"
-        ]
+        "sources": []
       },
       "N": {
         "scores": {
-          "N.2": 22,
-          "N.5": 22
+          "N.2": 50,
+          "N.5": 90
         },
         "sources": [
-          "Seed Estimate"
+          "SEC"
         ]
       }
     },
-    "key_signals": {},
+    "key_signals": {
+      "headcount": "22000",
+      "headcount_change_pct": null,
+      "revenue_per_employee": null,
+      "displacement_signal": null,
+      "ai_hiring_ratio": null,
+      "glassdoor_rating": null,
+      "cdp_climate": null,
+      "epa_violations": null
+    },
+    "hi_balanced": false,
+    "hi_balanced_gates": {
+      "dimensions": false,
+      "evidence": false,
+      "momentum": true,
+      "_detail": {
+        "dim_pass": {
+          "H": false,
+          "U": false,
+          "M": false,
+          "A": false,
+          "N": true
+        },
+        "evidence_pass": {
+          "H": true,
+          "U": false,
+          "M": false,
+          "A": false,
+          "N": true
+        },
+        "decay_level": "stable",
+        "decay_index": 5
+      }
+    },
     "domains": [
       "spacex.com"
     ],
@@ -52525,17 +51969,6 @@
       "aerospace",
       "technology"
     ],
-    "notes": "Deep engineering craft. Grueling work culture. Worker burnout reports.",
-    "_source": "seed",
-    "hi_balanced_gates": {
-      "dimensions": false,
-      "evidence": false,
-      "momentum": true,
-      "_detail": {
-        "decay_level": "stable",
-        "decay_index": 5
-      }
-    },
     "decay_level": "stable",
     "decay_index": 5
   },
@@ -66604,12 +66037,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 9
+        "decay_level": "watch",
+        "decay_index": 19
       }
     },
-    "decay_level": "stable",
-    "decay_index": 9
+    "decay_level": "watch",
+    "decay_index": 19
   },
   {
     "company": "Momentus Inc.",
@@ -73306,12 +72739,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "FRANKLIN RESOURCES INC",
@@ -73821,12 +73254,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Hewlett Packard Enterprise Co",
@@ -74741,11 +74174,11 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 15
+        "decay_index": 25
       }
     },
     "decay_level": "watch",
-    "decay_index": 15
+    "decay_index": 25
   },
   {
     "company": "KKR & Co. Inc.",
@@ -74868,12 +74301,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 8
+        "decay_level": "watch",
+        "decay_index": 18
       }
     },
-    "decay_level": "stable",
-    "decay_index": 8
+    "decay_level": "watch",
+    "decay_index": 18
   },
   {
     "company": "KOHLS Corp",
@@ -76020,12 +75453,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "NORTHERN TRUST CORP",
@@ -96994,5 +96427,278 @@
     ],
     "decay_level": "watch",
     "decay_index": 15
+  },
+  {
+    "company": "Johnson Johnson",
+    "ticker": "JNJ",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 25,
+    "D_U": 64,
+    "D_M": 0,
+    "D_A": 57,
+    "D_N": 40,
+    "composite": 37,
+    "hi_grade": "scored",
+    "satire": "",
+    "floor_triggered": true,
+    "balance_floor": false,
+    "triggering_dimension": "M",
+    "confidence": "Strong",
+    "spec_version": "1.2.1",
+    "data_sources": [
+      "CFPB",
+      "Disability:IN DEI",
+      "FDA",
+      "FEC",
+      "GRI",
+      "HIBP",
+      "HRC CEI",
+      "Industry",
+      "Industry+EPA",
+      "SBTi",
+      "SEC DEF 14A"
+    ],
+    "signal_coverage": "12/19 sub-signals with real data",
+    "humanwashing_flags": [
+      "HD: Harm settlements: $12.5B (5y)",
+      "HD: Documented deaths attributed: 50,000",
+      "HD: Concealment findings: 3"
+    ],
+    "algo_harm": {
+      "algo_harm_score": 0,
+      "penalties": {
+        "H": 0,
+        "U": 0,
+        "M": 0,
+        "N": 0
+      },
+      "flags": [],
+      "has_harm": false
+    },
+    "harm_documentation": {
+      "has_harm": true,
+      "penalties": {
+        "M": -70
+      },
+      "flags": [
+        "Harm settlements: $12.5B (5y)",
+        "Documented deaths attributed: 50,000",
+        "Concealment findings: 3"
+      ],
+      "sources": [
+        "https://www.justice.gov/opa/pr/johnson-johnson-and-johnson-johnson-consumer-pay-700-million",
+        "https://www.reuters.com/legal/jj-faces-89-billion-talc-settlement-2023",
+        "https://www.cdc.gov/drugoverdose/data/statedeaths.html"
+      ],
+      "settlement_5yr": 12500000000,
+      "deaths_attributed": 50000,
+      "concealment_findings": [
+        "talc_asbestos_internal_documents_1971_2018",
+        "opioid_marketing_concealment_1990s_2010s",
+        "vaginal_mesh_safety_concealment"
+      ],
+      "remediation_status": "active",
+      "review_date": "2026-04-15"
+    },
+    "genome": {
+      "H": {
+        "scores": {
+          "H.1": 50,
+          "H.2": 50,
+          "H.3": 50,
+          "H.5": 50
+        },
+        "sources": []
+      },
+      "U": {
+        "scores": {
+          "U.1": 70.0,
+          "U.2": 50,
+          "U.3": 85.0,
+          "U.4": 50
+        },
+        "sources": [
+          "CFPB",
+          "HRC CEI",
+          "Disability:IN DEI"
+        ]
+      },
+      "M": {
+        "scores": {
+          "M.1": 80,
+          "M.2": 80,
+          "M.3": 85,
+          "M.4": 49.0,
+          "M.5": 40
+        },
+        "sources": [
+          "HIBP",
+          "FDA",
+          "CFPB",
+          "SEC DEF 14A",
+          "FEC"
+        ]
+      },
+      "A": {
+        "scores": {
+          "A.1": 65,
+          "A.2": 50,
+          "A.3": 60,
+          "A.4": 55
+        },
+        "sources": [
+          "Industry",
+          "Industry+EPA",
+          "SBTi"
+        ]
+      },
+      "N": {
+        "scores": {
+          "N.2": 60,
+          "N.5": 20
+        },
+        "sources": [
+          "GRI"
+        ]
+      }
+    },
+    "key_signals": {
+      "headcount": null,
+      "headcount_change_pct": null,
+      "revenue_per_employee": null,
+      "displacement_signal": null,
+      "ai_hiring_ratio": null,
+      "glassdoor_rating": null,
+      "cdp_climate": null,
+      "epa_violations": null
+    },
+    "hi_balanced": false,
+    "hi_balanced_gates": {
+      "dimensions": false,
+      "evidence": false,
+      "momentum": false,
+      "_detail": {
+        "dim_pass": {
+          "H": false,
+          "U": true,
+          "M": false,
+          "A": false,
+          "N": false
+        },
+        "evidence_pass": {
+          "H": false,
+          "U": true,
+          "M": true,
+          "A": true,
+          "N": true
+        },
+        "decay_level": "critical",
+        "decay_index": 55
+      }
+    },
+    "domains": [
+      "jnj.com",
+      "johnsonandjohnson.com"
+    ],
+    "decay_level": "critical",
+    "decay_index": 55
+  },
+  {
+    "company": "Burt's Bees",
+    "ticker": "",
+    "industry": "default",
+    "sic": "",
+    "sic_description": "",
+    "D_H": 62,
+    "D_U": 58,
+    "D_M": 65,
+    "D_A": 68,
+    "D_N": 60,
+    "composite": 63,
+    "hi_grade": "scored",
+    "hi_balanced": false,
+    "satire": "",
+    "floor_triggered": false,
+    "balance_floor": false,
+    "triggering_dimension": null,
+    "confidence": "Estimated from public reporting",
+    "data_sources": [
+      "Manual Scoring"
+    ],
+    "signal_coverage": "Estimated from public reporting",
+    "humanwashing_flags": [],
+    "algo_harm": {
+      "has_harm": false,
+      "algo_harm_score": 0,
+      "flags": []
+    },
+    "genome": {
+      "H": {
+        "scores": {
+          "H.1": 62,
+          "H.2": 62,
+          "H.3": 62,
+          "H.5": 62
+        },
+        "sources": [
+          "Seed Estimate"
+        ]
+      },
+      "U": {
+        "scores": {
+          "U.1": 58,
+          "U.2": 58,
+          "U.3": 58,
+          "U.4": 58
+        },
+        "sources": [
+          "Seed Estimate"
+        ]
+      },
+      "M": {
+        "scores": {
+          "M.1": 65,
+          "M.2": 65,
+          "M.3": 65,
+          "M.4": 65,
+          "M.5": 65
+        },
+        "sources": [
+          "Seed Estimate"
+        ]
+      },
+      "A": {
+        "scores": {
+          "A.1": 68,
+          "A.2": 68,
+          "A.3": 68,
+          "A.4": 68
+        },
+        "sources": [
+          "Seed Estimate"
+        ]
+      },
+      "N": {
+        "scores": {
+          "N.2": 60,
+          "N.5": 60
+        },
+        "sources": [
+          "Seed Estimate"
+        ]
+      }
+    },
+    "key_signals": {},
+    "domains": [
+      "burtsbees.com"
+    ],
+    "tags": [
+      "personal care",
+      "natural"
+    ],
+    "notes": "Natural ingredients focus. B Corp.",
+    "_source": "seed"
   }
 ]

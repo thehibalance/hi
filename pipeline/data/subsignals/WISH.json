@@ -1,0 +1,86 @@
+{
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "Wish / ContextLogic",
+      "ticker": "WISH",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-06-16T10:56:54.096028",
+      "source": "CFPB"
+    }
+  },
+  "fec": {
+    "M.5": 85,
+    "raw": {
+      "company": "Wish / ContextLogic",
+      "ticker": "WISH",
+      "committees_found": 0,
+      "total_receipts": 0,
+      "total_disbursements": 0,
+      "fetched": "2026-06-16T10:56:54.347908",
+      "source": "FEC"
+    }
+  },
+  "hibp": {
+    "M.2": 30,
+    "raw": {
+      "company": "Wish / ContextLogic",
+      "ticker": "WISH",
+      "domain": "wish.com",
+      "breach_count": 2,
+      "breaches": [
+        {
+          "name": "Wishbone",
+          "date": "2016-08-07",
+          "pwn_count": 2247314,
+          "data_classes": [
+            "Auth tokens",
+            "Dates of birth",
+            "Email addresses",
+            "Genders",
+            "Names",
+            "Phone numbers",
+            "Usernames"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "Wishbone2020",
+          "date": "2020-01-27",
+          "pwn_count": 9705172,
+          "data_classes": [
+            "Auth tokens",
+            "Dates of birth",
+            "Email addresses",
+            "Genders",
+            "Geographic locations",
+            "IP addresses",
+            "Names",
+            "Passwords",
+            "Phone numbers",
+            "Profile photos",
+            "Social media profiles",
+            "Usernames"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 11952486,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-06-16T10:56:54.608912",
+      "source": "HIBP"
+    }
+  },
+  "hardware": {
+    "A.4": 65,
+    "source": "Industry"
+  },
+  "land": {
+    "A.3": 45,
+    "source": "Industry+EPA"
+  }
+}

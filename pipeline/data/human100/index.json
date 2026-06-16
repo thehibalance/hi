@@ -4,13 +4,13 @@
     "company": "Coca-Cola Company",
     "ticker": "KO",
     "hi_grade": "scored",
-    "composite": 75,
-    "D_H": 70,
-    "D_U": 75,
+    "composite": 67,
+    "D_H": 65,
+    "D_U": 73,
     "D_M": 67,
     "D_A": 73,
-    "D_N": 90,
-    "industry": "food",
+    "D_N": 55,
+    "industry": "default",
     "data_sources": [
       "1% for the Planet",
       "CDP",
@@ -19,8 +19,7 @@
       "Glassdoor",
       "HIBP",
       "HRC CEI",
-      "Jobs",
-      "SEC"
+      "Jobs"
     ],
     "balance_floor": false,
     "decay_index": 10,
@@ -29,99 +28,6 @@
   },
   {
     "rank": 2,
-    "company": "PepsiCo, Inc.",
-    "ticker": "PEP",
-    "hi_grade": "scored",
-    "composite": 74,
-    "D_H": 55,
-    "D_U": 70,
-    "D_M": 74,
-    "D_A": 75,
-    "D_N": 95,
-    "industry": "food",
-    "data_sources": [
-      "BBB",
-      "CDP",
-      "CFPB",
-      "Disability:IN DEI",
-      "FDA",
-      "FEC",
-      "GRI",
-      "Glassdoor",
-      "HIBP",
-      "HRC CEI",
-      "Industry",
-      "Industry+EPA",
-      "SBTi",
-      "SEC",
-      "SEC DEF 14A"
-    ],
-    "balance_floor": false,
-    "decay_index": 20,
-    "decay_level": "watch",
-    "humanwashing_flags": 0
-  },
-  {
-    "rank": 3,
-    "company": "Home Depot, Inc.",
-    "ticker": "HD",
-    "hi_grade": "scored",
-    "composite": 70,
-    "D_H": 70,
-    "D_U": 68,
-    "D_M": 75,
-    "D_A": 55,
-    "D_N": 80,
-    "industry": "retail",
-    "data_sources": [
-      "CDP",
-      "CFPB",
-      "FDA",
-      "Glassdoor",
-      "HIBP",
-      "HRC CEI",
-      "Industry",
-      "Industry+EPA",
-      "Jobs",
-      "SEC",
-      "SEC DEF 14A"
-    ],
-    "balance_floor": false,
-    "decay_index": 22,
-    "decay_level": "watch",
-    "humanwashing_flags": 0
-  },
-  {
-    "rank": 4,
-    "company": "NextEra Energy, Inc.",
-    "ticker": "NEE",
-    "hi_grade": "scored",
-    "composite": 70,
-    "D_H": 62,
-    "D_U": 64,
-    "D_M": 73,
-    "D_A": 60,
-    "D_N": 90,
-    "industry": "energy",
-    "data_sources": [
-      "CDP",
-      "CFPB",
-      "FDA",
-      "FEC",
-      "Glassdoor",
-      "HIBP",
-      "Industry",
-      "Industry+EPA",
-      "Jobs",
-      "SEC"
-    ],
-    "balance_floor": false,
-    "decay_index": 15,
-    "decay_level": "watch",
-    "humanwashing_flags": 0
-  },
-  {
-    "rank": 5,
     "company": "GENERAL MILLS INC",
     "ticker": "GIS",
     "hi_grade": "scored",
@@ -146,6 +52,96 @@
     ],
     "balance_floor": false,
     "decay_index": 10,
+    "decay_level": "watch",
+    "humanwashing_flags": 0
+  },
+  {
+    "rank": 3,
+    "company": "PepsiCo, Inc.",
+    "ticker": "PEP",
+    "hi_grade": "scored",
+    "composite": 65,
+    "D_H": 50,
+    "D_U": 68,
+    "D_M": 74,
+    "D_A": 75,
+    "D_N": 60,
+    "industry": "default",
+    "data_sources": [
+      "BBB",
+      "CDP",
+      "CFPB",
+      "Disability:IN DEI",
+      "FDA",
+      "FEC",
+      "GRI",
+      "Glassdoor",
+      "HIBP",
+      "HRC CEI",
+      "Industry",
+      "Industry+EPA",
+      "SBTi",
+      "SEC DEF 14A"
+    ],
+    "balance_floor": false,
+    "decay_index": 20,
+    "decay_level": "watch",
+    "humanwashing_flags": 0
+  },
+  {
+    "rank": 4,
+    "company": "Home Depot, Inc.",
+    "ticker": "HD",
+    "hi_grade": "scored",
+    "composite": 63,
+    "D_H": 72,
+    "D_U": 67,
+    "D_M": 75,
+    "D_A": 55,
+    "D_N": 45,
+    "industry": "default",
+    "data_sources": [
+      "CDP",
+      "CFPB",
+      "FDA",
+      "Glassdoor",
+      "HIBP",
+      "HRC CEI",
+      "Industry",
+      "Industry+EPA",
+      "Jobs",
+      "SEC DEF 14A"
+    ],
+    "balance_floor": false,
+    "decay_index": 22,
+    "decay_level": "watch",
+    "humanwashing_flags": 0
+  },
+  {
+    "rank": 5,
+    "company": "NextEra Energy, Inc.",
+    "ticker": "NEE",
+    "hi_grade": "scored",
+    "composite": 63,
+    "D_H": 62,
+    "D_U": 64,
+    "D_M": 73,
+    "D_A": 60,
+    "D_N": 55,
+    "industry": "default",
+    "data_sources": [
+      "CDP",
+      "CFPB",
+      "FDA",
+      "FEC",
+      "Glassdoor",
+      "HIBP",
+      "Industry",
+      "Industry+EPA",
+      "Jobs"
+    ],
+    "balance_floor": false,
+    "decay_index": 15,
     "decay_level": "watch",
     "humanwashing_flags": 0
   },
@@ -1709,29 +1705,6 @@
   },
   {
     "rank": 69,
-    "company": "Walt Disney Company",
-    "ticker": "DIS",
-    "hi_grade": "scored",
-    "composite": 60,
-    "D_H": 50,
-    "D_U": 64,
-    "D_M": 63,
-    "D_A": 51,
-    "D_N": 70,
-    "industry": "hospitality",
-    "data_sources": [
-      "Disability:IN DEI",
-      "HIBP",
-      "HRC CEI",
-      "SEC"
-    ],
-    "balance_floor": false,
-    "decay_index": 23,
-    "decay_level": "watch",
-    "humanwashing_flags": 0
-  },
-  {
-    "rank": 70,
     "company": "YUM BRANDS INC",
     "ticker": "YUM",
     "hi_grade": "scored",
@@ -1755,7 +1728,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 71,
+    "rank": 70,
     "company": "Zoom Communications, Inc.",
     "ticker": "ZM",
     "hi_grade": "scored",
@@ -1781,7 +1754,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 72,
+    "rank": 71,
     "company": "Aptiv PLC",
     "ticker": "APTV",
     "hi_grade": "scored",
@@ -1805,7 +1778,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 73,
+    "rank": 72,
     "company": "CINTAS CORP",
     "ticker": "CTAS",
     "hi_grade": "scored",
@@ -1829,29 +1802,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 74,
-    "company": "Ford Motor Company",
-    "ticker": "F",
-    "hi_grade": "scored",
-    "composite": 59,
-    "D_H": 54,
-    "D_U": 59,
-    "D_M": 63,
-    "D_A": 49,
-    "D_N": 70,
-    "industry": "manufacturing",
-    "data_sources": [
-      "HIBP",
-      "HRC CEI",
-      "SEC"
-    ],
-    "balance_floor": false,
-    "decay_index": 18,
-    "decay_level": "watch",
-    "humanwashing_flags": 0
-  },
-  {
-    "rank": 75,
+    "rank": 73,
     "company": "LAS VEGAS SANDS CORP",
     "ticker": "LVS",
     "hi_grade": "scored",
@@ -1875,7 +1826,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 76,
+    "rank": 74,
     "company": "MGM Resorts International",
     "ticker": "MGM",
     "hi_grade": "scored",
@@ -1899,7 +1850,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 77,
+    "rank": 75,
     "company": "PACCAR INC",
     "ticker": "PCAR",
     "hi_grade": "scored",
@@ -1923,7 +1874,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 78,
+    "rank": 76,
     "company": "Toyota Motor Corporation",
     "ticker": "TM",
     "hi_grade": "scored",
@@ -1946,7 +1897,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 79,
+    "rank": 77,
     "company": "WYNN RESORTS LTD",
     "ticker": "WYNN",
     "hi_grade": "scored",
@@ -1970,7 +1921,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 80,
+    "rank": 78,
     "company": "Wayfair Inc.",
     "ticker": "W",
     "hi_grade": "scored",
@@ -1995,7 +1946,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 81,
+    "rank": 79,
     "company": "ALEXANDRIA REAL ESTATE EQUITIES, INC.",
     "ticker": "ARE",
     "hi_grade": "scored",
@@ -2019,7 +1970,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 82,
+    "rank": 80,
     "company": "AMERICAN TOWER CORP /MA/",
     "ticker": "AMT",
     "hi_grade": "scored",
@@ -2043,7 +1994,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 83,
+    "rank": 81,
     "company": "AVALONBAY COMMUNITIES INC",
     "ticker": "AVB",
     "hi_grade": "scored",
@@ -2067,7 +2018,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 84,
+    "rank": 82,
     "company": "CARNIVAL CORP",
     "ticker": "CCL",
     "hi_grade": "scored",
@@ -2091,7 +2042,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 85,
+    "rank": 83,
     "company": "CROWN CASTLE INC.",
     "ticker": "CCI",
     "hi_grade": "scored",
@@ -2115,7 +2066,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 86,
+    "rank": 84,
     "company": "CUMMINS INC",
     "ticker": "CMI",
     "hi_grade": "scored",
@@ -2140,7 +2091,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 87,
+    "rank": 85,
     "company": "DIGITAL REALTY TRUST, INC.",
     "ticker": "DLR",
     "hi_grade": "scored",
@@ -2164,7 +2115,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 88,
+    "rank": 86,
     "company": "DOMINOS PIZZA INC",
     "ticker": "DPZ",
     "hi_grade": "scored",
@@ -2188,32 +2139,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 89,
-    "company": "Deere",
-    "ticker": "DE",
-    "hi_grade": "scored",
-    "composite": 58,
-    "D_H": 45,
-    "D_U": 58,
-    "D_M": 64,
-    "D_A": 52,
-    "D_N": 70,
-    "industry": "tech",
-    "data_sources": [
-      "CFPB",
-      "Disability:IN DEI",
-      "FDA",
-      "Industry",
-      "Industry+EPA",
-      "SEC"
-    ],
-    "balance_floor": false,
-    "decay_index": 18,
-    "decay_level": "watch",
-    "humanwashing_flags": 0
-  },
-  {
-    "rank": 90,
+    "rank": 87,
     "company": "EQUINIX INC",
     "ticker": "EQIX",
     "hi_grade": "scored",
@@ -2237,7 +2163,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 91,
+    "rank": 88,
     "company": "EQUITY RESIDENTIAL",
     "ticker": "EQR",
     "hi_grade": "scored",
@@ -2261,7 +2187,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 92,
+    "rank": 89,
     "company": "FASTENAL CO",
     "ticker": "FAST",
     "hi_grade": "scored",
@@ -2285,7 +2211,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 93,
+    "rank": 90,
     "company": "FREEPORT-MCMORAN INC",
     "ticker": "FCX",
     "hi_grade": "scored",
@@ -2309,7 +2235,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 94,
+    "rank": 91,
     "company": "GENERAL ELECTRIC CO",
     "ticker": "GE",
     "hi_grade": "scored",
@@ -2335,7 +2261,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 95,
+    "rank": 92,
     "company": "GENUINE PARTS CO",
     "ticker": "GPC",
     "hi_grade": "scored",
@@ -2359,7 +2285,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 96,
+    "rank": 93,
     "company": "HORTON D R INC /DE/",
     "ticker": "DHI",
     "hi_grade": "scored",
@@ -2383,7 +2309,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 97,
+    "rank": 94,
     "company": "INTUIT INC.",
     "ticker": "INTU",
     "hi_grade": "scored",
@@ -2408,7 +2334,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 98,
+    "rank": 95,
     "company": "IRON MOUNTAIN INC",
     "ticker": "IRM",
     "hi_grade": "scored",
@@ -2432,7 +2358,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 99,
+    "rank": 96,
     "company": "KROGER CO",
     "ticker": "KR",
     "hi_grade": "scored",
@@ -2458,7 +2384,7 @@
     "humanwashing_flags": 0
   },
   {
-    "rank": 100,
+    "rank": 97,
     "company": "LAM RESEARCH CORP",
     "ticker": "LRCX",
     "hi_grade": "scored",
@@ -2479,6 +2405,78 @@
     ],
     "balance_floor": false,
     "decay_index": 10,
+    "decay_level": "watch",
+    "humanwashing_flags": 0
+  },
+  {
+    "rank": 98,
+    "company": "LENNAR CORP /NEW/",
+    "ticker": "LEN",
+    "hi_grade": "scored",
+    "composite": 58,
+    "D_H": 50,
+    "D_U": 55,
+    "D_M": 64,
+    "D_A": 51,
+    "D_N": 70,
+    "industry": "default",
+    "data_sources": [
+      "CFPB",
+      "FDA",
+      "Industry",
+      "Industry+EPA",
+      "SEC"
+    ],
+    "balance_floor": false,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "humanwashing_flags": 0
+  },
+  {
+    "rank": 99,
+    "company": "MARTIN MARIETTA MATERIALS INC",
+    "ticker": "MLM",
+    "hi_grade": "scored",
+    "composite": 58,
+    "D_H": 50,
+    "D_U": 55,
+    "D_M": 64,
+    "D_A": 51,
+    "D_N": 70,
+    "industry": "default",
+    "data_sources": [
+      "CFPB",
+      "FDA",
+      "Industry",
+      "Industry+EPA",
+      "SEC"
+    ],
+    "balance_floor": false,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "humanwashing_flags": 0
+  },
+  {
+    "rank": 100,
+    "company": "MCKESSON CORP",
+    "ticker": "MCK",
+    "hi_grade": "scored",
+    "composite": 58,
+    "D_H": 47,
+    "D_U": 56,
+    "D_M": 64,
+    "D_A": 51,
+    "D_N": 70,
+    "industry": "retail",
+    "data_sources": [
+      "CFPB",
+      "FDA",
+      "Industry",
+      "Industry+EPA",
+      "SEC"
+    ],
+    "balance_floor": false,
+    "decay_index": 19,
     "decay_level": "watch",
     "humanwashing_flags": 0
   }
