@@ -1,0 +1,37 @@
+{
+  "company": "JD.com, Inc.",
+  "ticker": "JD",
+  "domain": "jd.com",
+  "breach_count": 2,
+  "breaches": [
+    {
+      "name": "JD",
+      "date": "2013-01-01",
+      "pwn_count": 77449341,
+      "data_classes": [
+        "Email addresses",
+        "Passwords",
+        "Phone numbers",
+        "Usernames"
+      ],
+      "is_verified": true
+    },
+    {
+      "name": "JDGroup",
+      "date": "2023-05-31",
+      "pwn_count": 521878,
+      "data_classes": [
+        "Email addresses",
+        "Government issued IDs",
+        "Names",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "is_verified": true
+    }
+  ],
+  "total_records_exposed": 77971219,
+  "sensitive_data_exposed": true,
+  "fetched": "2026-06-16T17:57:00.534581",
+  "source": "HIBP"
+}

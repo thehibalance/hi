@@ -13,6 +13,67 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 35,
+    "raw": {
+      "company": "NIO Inc.",
+      "ticker": "NIO",
+      "domain": "nio.com",
+      "breach_count": 3,
+      "breaches": [
+        {
+          "name": "DiskUnion",
+          "date": "2022-06-24",
+          "pwn_count": 690667,
+          "data_classes": [
+            "Email addresses",
+            "Geographic locations",
+            "Names",
+            "Passwords",
+            "Phone numbers",
+            "Usernames"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "FreedomHostingII",
+          "date": "2017-01-31",
+          "pwn_count": 380830,
+          "data_classes": [
+            "Email addresses",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "SeniorDating",
+          "date": "2024-11-23",
+          "pwn_count": 765517,
+          "data_classes": [
+            "Bios",
+            "Dates of birth",
+            "Drinking habits",
+            "Education levels",
+            "Email addresses",
+            "Genders",
+            "Geographic locations",
+            "Latitude and longitude pairs",
+            "Occupations",
+            "Profile photos",
+            "Relationship statuses",
+            "Smoking habits",
+            "Social media profiles"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 1837014,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-06-16T17:39:51.226184",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 60,
     "source": "Industry"

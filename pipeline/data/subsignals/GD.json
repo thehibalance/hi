@@ -13,6 +13,41 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 30,
+    "raw": {
+      "company": "GENERAL DYNAMICS CORP",
+      "ticker": "GD",
+      "domain": "gd.com",
+      "breach_count": 2,
+      "breaches": [
+        {
+          "name": "Dangdang",
+          "date": "2011-06-01",
+          "pwn_count": 4848734,
+          "data_classes": [
+            "Email addresses"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "StrongholdKingdoms",
+          "date": "2018-07-04",
+          "pwn_count": 5187305,
+          "data_classes": [
+            "Email addresses",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 10036039,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-06-16T17:32:35.963157",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 60,
     "source": "Industry"

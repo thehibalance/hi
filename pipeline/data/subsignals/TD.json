@@ -13,6 +13,65 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 0,
+    "raw": {
+      "company": "Toronto-Dominion Bank",
+      "ticker": "TD",
+      "domain": "td.com",
+      "breach_count": 4,
+      "breaches": [
+        {
+          "name": "JustDate",
+          "date": "2016-09-29",
+          "pwn_count": 24451312,
+          "data_classes": [
+            "Dates of birth",
+            "Email addresses",
+            "Geographic locations",
+            "Names"
+          ],
+          "is_verified": false
+        },
+        {
+          "name": "Rightbiz",
+          "date": "2023-07-09",
+          "pwn_count": 65376,
+          "data_classes": [
+            "Email addresses",
+            "Names",
+            "Phone numbers",
+            "Physical addresses"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "SynthientCredentialStuffingThreatData",
+          "date": "2025-04-11",
+          "pwn_count": 1957476021,
+          "data_classes": [
+            "Email addresses",
+            "Passwords"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "SynthientStealerLogThreatData",
+          "date": "2025-04-11",
+          "pwn_count": 182962095,
+          "data_classes": [
+            "Email addresses",
+            "Passwords"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 2164954804,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-06-16T17:37:09.394774",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 70,
     "source": "Industry"
