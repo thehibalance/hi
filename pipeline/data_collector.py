@@ -791,20 +791,60 @@ def collect_all(companies, keys, core=True, subsignals=True, extended=True, work
     if core:
         save_dir = lambda name: (DATA_DIR / name).mkdir(parents=True, exist_ok=True) or DATA_DIR / name
         
+        def _merge_save(fresh_records, source_dir, source_label):
+            """Merge fresh records with existing all_companies.json by ticker.
+            
+            Critical for incremental runs: companies skipped due to fresh data
+            (--incremental N) must NOT be removed from the combined file.
+            Without this merge, incremental runs would wipe data for any
+            company not freshly collected in that run.
+            """
+            combined_path = source_dir / "all_companies.json"
+            existing = []
+            if combined_path.exists():
+                try:
+                    with open(combined_path) as f:
+                        existing = json.load(f)
+                except (json.JSONDecodeError, IOError) as e:
+                    print(f"  ⚠ Could not read existing {source_label} all_companies.json: {e}")
+                    existing = []
+            
+            # Index existing by ticker for fast overlay
+            by_ticker = {}
+            for r in existing:
+                t = r.get("ticker")
+                if t:
+                    by_ticker[t] = r
+            
+            # Overlay fresh records (these replace existing entries by ticker)
+            fresh_count = 0
+            for r in fresh_records:
+                t = r.get("ticker")
+                if t:
+                    by_ticker[t] = r
+                    fresh_count += 1
+            
+            merged = list(by_ticker.values())
+            with open(combined_path, "w") as f:
+                json.dump(merged, f, indent=2)
+            
+            preserved = len(merged) - fresh_count
+            if preserved > 0:
+                print(f"  {source_label}: {fresh_count} freshly collected, {preserved} preserved from previous runs, {len(merged)} total saved")
+            else:
+                print(f"  {source_label}: {len(merged)} companies saved")
+        
         if sec_results:
             d = save_dir("sec")
-            json.dump(sec_results, open(d / "all_companies.json", "w"), indent=2)
-            print(f"\n  SEC EDGAR: {len(sec_results)} companies saved")
+            _merge_save(sec_results, d, "SEC EDGAR")
         
         if epa_results:
             d = save_dir("epa")
-            json.dump(epa_results, open(d / "all_companies.json", "w"), indent=2)
-            print(f"  EPA ECHO: {len(epa_results)} companies saved")
+            _merge_save(epa_results, d, "EPA ECHO")
         
         if glassdoor_results:
             d = save_dir("glassdoor")
-            json.dump(glassdoor_results, open(d / "all_companies.json", "w"), indent=2)
-            print(f"  Glassdoor (via Finnhub): {len(glassdoor_results)} companies saved")
+            _merge_save(glassdoor_results, d, "Glassdoor (via Finnhub)")
         
         # BLS benchmarks (run once)
         bls_dir = save_dir("bls")
