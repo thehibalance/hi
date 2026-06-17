@@ -1,21 +1,21 @@
 {
-  "timestamp": "2026-06-16T18:22:13.108322",
-  "total_issues": 465,
+  "timestamp": "2026-06-17T10:40:58.190553",
+  "total_issues": 467,
   "critical": 0,
-  "warnings": 180,
+  "warnings": 182,
   "info": 285,
   "blocked": false,
   "stats": {
     "total_companies": 730,
-    "avg_composite": 55.4,
+    "avg_composite": 55.3,
     "stdev": 7.6,
     "min_score": 13,
     "max_score": 85,
     "pct_90_100": 0.0,
     "pct_40_70": 93.2,
     "pct_0_20": 0.7,
-    "gold_count": 2,
-    "gold_pct": 0.3,
+    "gold_count": 1,
+    "gold_pct": 0.1,
     "mssi_violations": 0,
     "single_source_dimensions": 77
   },
@@ -32,20 +32,11 @@
     {
       "layer": 1,
       "severity": "warning",
-      "company": "Nike, Inc.",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~63)",
-      "value": 50,
-      "expected": 63
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
       "company": "Salesforce",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~69)",
+      "message": "Composite 50 doesn't match dimensions (expected ~67)",
       "value": 50,
-      "expected": 69
+      "expected": 67
     },
     {
       "layer": 1,
@@ -86,11 +77,29 @@
     {
       "layer": 1,
       "severity": "warning",
+      "company": "UnitedHealth Group Incorporated",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~60)",
+      "value": 50,
+      "expected": 60
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
       "company": "ORACLE CORP",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~57)",
       "value": 50,
       "expected": 57
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Visa",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~63)",
+      "value": 50,
+      "expected": 63
     },
     {
       "layer": 1,
@@ -520,9 +529,9 @@
       "severity": "warning",
       "company": "Uber",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~59)",
+      "message": "Composite 50 doesn't match dimensions (expected ~57)",
       "value": 50,
-      "expected": 59
+      "expected": 57
     },
     {
       "layer": 1,
@@ -649,6 +658,15 @@
       "message": "Composite 50 doesn't match dimensions (expected ~55)",
       "value": 50,
       "expected": 55
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "CVS Health",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~54)",
+      "value": 50,
+      "expected": 54
     },
     {
       "layer": 1,
