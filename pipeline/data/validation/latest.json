@@ -1,23 +1,23 @@
 {
-  "timestamp": "2026-06-17T10:40:58.190553",
-  "total_issues": 467,
+  "timestamp": "2026-06-18T10:21:32.233570",
+  "total_issues": 475,
   "critical": 0,
-  "warnings": 182,
+  "warnings": 190,
   "info": 285,
   "blocked": false,
   "stats": {
     "total_companies": 730,
-    "avg_composite": 55.3,
+    "avg_composite": 55.2,
     "stdev": 7.6,
     "min_score": 13,
     "max_score": 85,
     "pct_90_100": 0.0,
-    "pct_40_70": 93.2,
+    "pct_40_70": 93.3,
     "pct_0_20": 0.7,
     "gold_count": 1,
     "gold_pct": 0.1,
     "mssi_violations": 0,
-    "single_source_dimensions": 77
+    "single_source_dimensions": 81
   },
   "issues": [
     {
@@ -32,11 +32,20 @@
     {
       "layer": 1,
       "severity": "warning",
+      "company": "Nike, Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~63)",
+      "value": 50,
+      "expected": 63
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
       "company": "Salesforce",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~67)",
+      "message": "Composite 50 doesn't match dimensions (expected ~64)",
       "value": 50,
-      "expected": 67
+      "expected": 64
     },
     {
       "layer": 1,
@@ -46,6 +55,15 @@
       "message": "Composite 50 doesn't match dimensions (expected ~66)",
       "value": 50,
       "expected": 66
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Goldman Sachs Group, Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~61)",
+      "value": 50,
+      "expected": 61
     },
     {
       "layer": 1,
@@ -77,11 +95,29 @@
     {
       "layer": 1,
       "severity": "warning",
+      "company": "Netflix",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~60)",
+      "value": 50,
+      "expected": 60
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
       "company": "UnitedHealth Group Incorporated",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~60)",
       "value": 50,
       "expected": 60
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Etsy",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~62)",
+      "value": 50,
+      "expected": 62
     },
     {
       "layer": 1,
@@ -97,9 +133,9 @@
       "severity": "warning",
       "company": "Visa",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~63)",
+      "message": "Composite 50 doesn't match dimensions (expected ~60)",
       "value": 50,
-      "expected": 63
+      "expected": 60
     },
     {
       "layer": 1,
@@ -268,9 +304,9 @@
       "severity": "warning",
       "company": "Palantir",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~58)",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
       "value": 50,
-      "expected": 58
+      "expected": 56
     },
     {
       "layer": 1,
@@ -340,9 +376,9 @@
       "severity": "warning",
       "company": "Adobe",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~60)",
+      "message": "Composite 50 doesn't match dimensions (expected ~58)",
       "value": 50,
-      "expected": 60
+      "expected": 58
     },
     {
       "layer": 1,
@@ -529,9 +565,9 @@
       "severity": "warning",
       "company": "Uber",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~57)",
+      "message": "Composite 50 doesn't match dimensions (expected ~54)",
       "value": 50,
-      "expected": 57
+      "expected": 54
     },
     {
       "layer": 1,
@@ -3713,6 +3749,24 @@
     {
       "layer": 3,
       "severity": "warning",
+      "company": "ibm",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "ibm",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
       "company": "johnson_johnson",
       "field": "A_sources",
       "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
@@ -4002,6 +4056,24 @@
       "layer": 3,
       "severity": "warning",
       "company": "target",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "oracle",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "oracle",
       "field": "A_sources",
       "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
       "value": 1,
