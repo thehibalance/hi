@@ -607,7 +607,7 @@ def fetch_extended(company_name, ticker, domain=None, industry=None):
 def safe_filename(name, ticker):
     """Sanitize a company name/ticker for use as a filename."""
     raw = ticker or name.replace(' ', '_')
-    return raw.replace('/','_').replace('\\','_').replace(':','_').replace('*','_').replace('?','_').replace('"','_').replace('<','_').replace('>','_').replace('|','_')
+    return raw.replace('/','_').replace('\\','_').replace(':','_').replace('*','_').replace('?','_').replace('"','_').replace('<','_').replace('>','_').replace('|','_').upper()
 
 
 def is_stale(filepath, max_age_hours=24):
