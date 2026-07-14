@@ -36,11 +36,12 @@
     "ticker": "AMZN",
     "hi_grade": "scored",
     "composite": 48,
-    "decay_index": 82,
+    "decay_index": 92,
     "decay_level": "critical",
     "factors": [
       "Heavy layoff coverage (7 articles)",
       "Aggressive AI pivot (19 articles)",
+      "High 8-K activity (20 filings)",
       "Ethics/legal issues (8 articles)",
       "3 humanwashing flag(s)",
       "CEO accountability low (47.5/100)"
@@ -50,7 +51,7 @@
       "ai_news_90d": 19,
       "ethics_news_90d": 8,
       "total_displaced": 0,
-      "material_events_180d": 0,
+      "material_events_180d": 20,
       "humanwashing_flags": 3,
       "media_layoffs": 0,
       "media_ethics": 1,
@@ -59,6 +60,37 @@
       "media_employee": 0,
       "media_environment": 0,
       "ceo_score": 47.5,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "UNITED PARCEL SERVICE INC",
+    "ticker": "UPS",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 80,
+    "decay_level": "critical",
+    "factors": [
+      "Heavy layoff coverage (27 articles)",
+      "Aggressive AI pivot (15 articles)",
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (9 articles)",
+      "CEO accountability critical (20.0/100)"
+    ],
+    "signals": {
+      "layoff_news_90d": 27,
+      "ai_news_90d": 15,
+      "ethics_news_90d": 9,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 1,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 20.0,
       "warn_displaced": 0
     }
   },
@@ -126,32 +158,65 @@
     }
   },
   {
-    "company": "UNITED PARCEL SERVICE INC",
-    "ticker": "UPS",
+    "company": "Morgan Stanley",
+    "ticker": "MS",
     "hi_grade": "scored",
     "composite": 50,
-    "decay_index": 70,
+    "decay_index": 73,
     "decay_level": "critical",
     "factors": [
-      "Heavy layoff coverage (27 articles)",
-      "Aggressive AI pivot (15 articles)",
-      "Ethics/legal issues (9 articles)",
+      "Heavy layoff coverage (11 articles)",
+      "AI acceleration (8 articles)",
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (10 articles)",
       "CEO accountability critical (20.0/100)"
     ],
     "signals": {
-      "layoff_news_90d": 27,
-      "ai_news_90d": 15,
-      "ethics_news_90d": 9,
+      "layoff_news_90d": 11,
+      "ai_news_90d": 8,
+      "ethics_news_90d": 10,
       "total_displaced": 0,
-      "material_events_180d": 0,
+      "material_events_180d": 20,
       "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 1,
+      "media_layoffs": 1,
+      "media_ethics": 0,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
       "media_environment": 0,
       "ceo_score": 20.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "PayPal Holdings, Inc.",
+    "ticker": "PYPL",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 73,
+    "decay_level": "critical",
+    "factors": [
+      "Heavy layoff coverage (6 articles)",
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (13 articles)",
+      "1 humanwashing flag(s)",
+      "Ethics scrutiny in media (12 articles)",
+      "CEO accountability low (40.0/100)"
+    ],
+    "signals": {
+      "layoff_news_90d": 6,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 13,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 1,
+      "media_layoffs": 0,
+      "media_ethics": 12,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 40.0,
       "warn_displaced": 0
     }
   },
@@ -377,36 +442,6 @@
     }
   },
   {
-    "company": "Morgan Stanley",
-    "ticker": "MS",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 63,
-    "decay_level": "critical",
-    "factors": [
-      "Heavy layoff coverage (11 articles)",
-      "AI acceleration (8 articles)",
-      "Ethics/legal issues (10 articles)",
-      "CEO accountability critical (20.0/100)"
-    ],
-    "signals": {
-      "layoff_news_90d": 11,
-      "ai_news_90d": 8,
-      "ethics_news_90d": 10,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 1,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 20.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "Workday, Inc.",
     "ticker": "WDAY",
     "hi_grade": "scored",
@@ -438,33 +473,32 @@
     }
   },
   {
-    "company": "PayPal Holdings, Inc.",
-    "ticker": "PYPL",
+    "company": "C3.ai, Inc.",
+    "ticker": "AI",
     "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 63,
+    "composite": 48,
+    "decay_index": 62,
     "decay_level": "critical",
     "factors": [
-      "Heavy layoff coverage (6 articles)",
-      "Ethics/legal issues (13 articles)",
-      "1 humanwashing flag(s)",
-      "Ethics scrutiny in media (12 articles)",
-      "CEO accountability low (40.0/100)"
+      "Heavy layoff coverage (9 articles)",
+      "AI acceleration (9 articles)",
+      "High 8-K activity (20 filings)",
+      "CEO accountability critical (20.0/100)"
     ],
     "signals": {
-      "layoff_news_90d": 6,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 13,
+      "layoff_news_90d": 9,
+      "ai_news_90d": 9,
+      "ethics_news_90d": 1,
       "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 1,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
       "media_layoffs": 0,
-      "media_ethics": 12,
-      "media_ai_pivot": 0,
+      "media_ethics": 1,
+      "media_ai_pivot": 1,
       "media_ceo": 0,
       "media_employee": 0,
       "media_environment": 0,
-      "ceo_score": 40.0,
+      "ceo_score": 20.0,
       "warn_displaced": 0
     }
   },
@@ -617,6 +651,37 @@
       "media_employee": 0,
       "media_environment": 0,
       "ceo_score": 20.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Snap Inc",
+    "ticker": "SNAP",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 58,
+    "decay_level": "critical",
+    "factors": [
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (6 articles)",
+      "2 humanwashing flag(s)",
+      "Ethics scrutiny in media (3 articles)",
+      "CEO accountability low (40.0/100)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 3,
+      "ethics_news_90d": 6,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 2,
+      "media_layoffs": 0,
+      "media_ethics": 3,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 40.0,
       "warn_displaced": 0
     }
   },
@@ -1075,6 +1140,66 @@
     }
   },
   {
+    "company": "Goldman Sachs Group, Inc.",
+    "ticker": "GS",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 52,
+    "decay_level": "critical",
+    "factors": [
+      "AI acceleration (8 articles)",
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (8 articles)",
+      "CEO accountability critical (20.0/100)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 8,
+      "ethics_news_90d": 8,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 2,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 20.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "ADVANCED MICRO DEVICES INC",
+    "ticker": "AMD",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 52,
+    "decay_level": "critical",
+    "factors": [
+      "Aggressive AI pivot (20 articles)",
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (5 articles)",
+      "CEO accountability low (47.5/100)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 20,
+      "ethics_news_90d": 5,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 1,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 47.5,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Moderna, Inc.",
     "ticker": "MRNA",
     "hi_grade": "scored",
@@ -1101,35 +1226,6 @@
       "media_employee": 0,
       "media_environment": 0,
       "ceo_score": 75.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "C3.ai, Inc.",
-    "ticker": "AI",
-    "hi_grade": "scored",
-    "composite": 48,
-    "decay_index": 52,
-    "decay_level": "critical",
-    "factors": [
-      "Heavy layoff coverage (9 articles)",
-      "AI acceleration (9 articles)",
-      "CEO accountability critical (20.0/100)"
-    ],
-    "signals": {
-      "layoff_news_90d": 9,
-      "ai_news_90d": 9,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 1,
-      "media_ai_pivot": 1,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 20.0,
       "warn_displaced": 0
     }
   },
@@ -1343,27 +1439,27 @@
     }
   },
   {
-    "company": "Snap Inc",
-    "ticker": "SNAP",
+    "company": "General Motors Company",
+    "ticker": "GM",
     "hi_grade": "scored",
-    "composite": 47,
+    "composite": 57,
     "decay_index": 48,
     "decay_level": "warning",
     "factors": [
-      "Ethics/legal issues (6 articles)",
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (8 articles)",
       "2 humanwashing flag(s)",
-      "Ethics scrutiny in media (3 articles)",
       "CEO accountability low (40.0/100)"
     ],
     "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 3,
-      "ethics_news_90d": 6,
+      "layoff_news_90d": 1,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 8,
       "total_displaced": 0,
-      "material_events_180d": 0,
+      "material_events_180d": 20,
       "humanwashing_flags": 2,
-      "media_layoffs": 0,
-      "media_ethics": 3,
+      "media_layoffs": 1,
+      "media_ethics": 0,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
@@ -1701,60 +1797,32 @@
     }
   },
   {
-    "company": "Goldman Sachs Group, Inc.",
-    "ticker": "GS",
+    "company": "Chevron Corporation",
+    "ticker": "CVX",
     "hi_grade": "scored",
     "composite": 50,
-    "decay_index": 42,
+    "decay_index": 43,
     "decay_level": "warning",
     "factors": [
-      "AI acceleration (8 articles)",
-      "Ethics/legal issues (8 articles)",
-      "CEO accountability critical (20.0/100)"
+      "Layoff mentions (3 articles)",
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (16 articles)",
+      "CEO accountability low (30.0/100)"
     ],
     "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 8,
-      "ethics_news_90d": 8,
+      "layoff_news_90d": 3,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 16,
       "total_displaced": 0,
-      "material_events_180d": 0,
+      "material_events_180d": 20,
       "humanwashing_flags": 0,
       "media_layoffs": 0,
       "media_ethics": 0,
-      "media_ai_pivot": 2,
+      "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
       "media_environment": 0,
-      "ceo_score": 20.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "ADVANCED MICRO DEVICES INC",
-    "ticker": "AMD",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 42,
-    "decay_level": "warning",
-    "factors": [
-      "Aggressive AI pivot (20 articles)",
-      "Ethics/legal issues (5 articles)",
-      "CEO accountability low (47.5/100)"
-    ],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 20,
-      "ethics_news_90d": 5,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 1,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 47.5,
+      "ceo_score": 30.0,
       "warn_displaced": 0
     }
   },
@@ -1904,6 +1972,35 @@
     }
   },
   {
+    "company": "Booking Holdings Inc.",
+    "ticker": "BKNG",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 40,
+    "decay_level": "warning",
+    "factors": [
+      "Aggressive AI pivot (11 articles)",
+      "High 8-K activity (20 filings)",
+      "3 humanwashing flag(s)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 11,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 3,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 55.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Marathon Petroleum Corp",
     "ticker": "MPC",
     "hi_grade": "scored",
@@ -1924,6 +2021,35 @@
       "humanwashing_flags": 0,
       "media_layoffs": 0,
       "media_ethics": 9,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Phillips 66",
+    "ticker": "PSX",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 40,
+    "decay_level": "warning",
+    "factors": [
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (40 articles)",
+      "Ethics scrutiny in media (3 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 40,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 3,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
@@ -1991,6 +2117,34 @@
     }
   },
   {
+    "company": "Hewlett Packard Enterprise Co",
+    "ticker": "HPE",
+    "hi_grade": "scored",
+    "composite": 55,
+    "decay_index": 39,
+    "decay_level": "warning",
+    "factors": [
+      "Aggressive AI pivot (14 articles)",
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 14,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 1,
+      "media_ethics": 1,
+      "media_ai_pivot": 2,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 55.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Walmart Inc.",
     "ticker": "WMT",
     "hi_grade": "scored",
@@ -2016,35 +2170,6 @@
       "media_employee": 0,
       "media_environment": 0,
       "ceo_score": 75.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "General Motors Company",
-    "ticker": "GM",
-    "hi_grade": "scored",
-    "composite": 57,
-    "decay_index": 38,
-    "decay_level": "warning",
-    "factors": [
-      "Ethics/legal issues (8 articles)",
-      "2 humanwashing flag(s)",
-      "CEO accountability low (40.0/100)"
-    ],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 8,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 2,
-      "media_layoffs": 1,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 40.0,
       "warn_displaced": 0
     }
   },
@@ -2094,6 +2219,35 @@
       "layoff_news_90d": 5,
       "ai_news_90d": 2,
       "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 40.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "CSX CORP",
+    "ticker": "CSX",
+    "hi_grade": "scored",
+    "composite": 59,
+    "decay_index": 38,
+    "decay_level": "warning",
+    "factors": [
+      "Heavy layoff coverage (5 articles)",
+      "High 8-K activity (20 filings)",
+      "CEO accountability low (40.0/100)"
+    ],
+    "signals": {
+      "layoff_news_90d": 5,
+      "ai_news_90d": 2,
+      "ethics_news_90d": 2,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -2282,6 +2436,35 @@
     }
   },
   {
+    "company": "PINTEREST, INC.",
+    "ticker": "PINS",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 37,
+    "decay_level": "warning",
+    "factors": [
+      "High 8-K activity (20 filings)",
+      "2 humanwashing flag(s)",
+      "Media layoff coverage (5 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 2,
+      "media_layoffs": 5,
+      "media_ethics": 1,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Match Group, Inc.",
     "ticker": "MTCH",
     "hi_grade": "scored",
@@ -2395,6 +2578,64 @@
       "media_employee": 0,
       "media_environment": 0,
       "ceo_score": 40.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "CADENCE DESIGN SYSTEMS INC",
+    "ticker": "CDNS",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 35,
+    "decay_level": "warning",
+    "factors": [
+      "Aggressive AI pivot (22 articles)",
+      "High 8-K activity (20 filings)",
+      "AI pivot in media (3 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 22,
+      "ethics_news_90d": 2,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 3,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 55.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "ROCKWELL AUTOMATION, INC",
+    "ticker": "ROK",
+    "hi_grade": "scored",
+    "composite": 57,
+    "decay_index": 35,
+    "decay_level": "warning",
+    "factors": [
+      "Aggressive AI pivot (124 articles)",
+      "High 8-K activity (20 filings)",
+      "AI pivot in media (3 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 124,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 3,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 55.0,
       "warn_displaced": 0
     }
   },
@@ -2515,6 +2756,35 @@
     }
   },
   {
+    "company": "Arista Networks, Inc.",
+    "ticker": "ANET",
+    "hi_grade": "scored",
+    "composite": 53,
+    "decay_index": 35,
+    "decay_level": "warning",
+    "factors": [
+      "Layoff mentions (2 articles)",
+      "Aggressive AI pivot (11 articles)",
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 2,
+      "ai_news_90d": 11,
+      "ethics_news_90d": 2,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 55.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Baker Hughes Co",
     "ticker": "BKR",
     "hi_grade": "scored",
@@ -2599,6 +2869,35 @@
     }
   },
   {
+    "company": "Aon plc",
+    "ticker": "AON",
+    "hi_grade": "scored",
+    "composite": 60,
+    "decay_index": 33,
+    "decay_level": "warning",
+    "factors": [
+      "AI acceleration (5 articles)",
+      "High 8-K activity (20 filings)",
+      "Ethics scrutiny in media (3 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 5,
+      "ethics_news_90d": 4,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 3,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Etsy",
     "ticker": "ETSY",
     "hi_grade": "scored",
@@ -2653,6 +2952,35 @@
       "media_employee": 0,
       "media_environment": 0,
       "ceo_score": 40.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Caterpillar",
+    "ticker": "CAT",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 33,
+    "decay_level": "warning",
+    "factors": [
+      "AI acceleration (5 articles)",
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (5 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 5,
+      "ethics_news_90d": 5,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
       "warn_displaced": 0
     }
   },
@@ -2715,31 +3043,31 @@
     }
   },
   {
-    "company": "Chevron Corporation",
-    "ticker": "CVX",
+    "company": "KIMBERLY CLARK CORP",
+    "ticker": "KMB",
     "hi_grade": "scored",
     "composite": 50,
     "decay_index": 33,
     "decay_level": "warning",
     "factors": [
-      "Layoff mentions (3 articles)",
-      "Ethics/legal issues (16 articles)",
-      "CEO accountability low (30.0/100)"
+      "Layoff mentions (4 articles)",
+      "High 8-K activity (20 filings)",
+      "CEO accountability low (40.0/100)"
     ],
     "signals": {
-      "layoff_news_90d": 3,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 16,
+      "layoff_news_90d": 4,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 1,
       "total_displaced": 0,
-      "material_events_180d": 0,
+      "material_events_180d": 20,
       "humanwashing_flags": 0,
-      "media_layoffs": 0,
+      "media_layoffs": 1,
       "media_ethics": 0,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
       "media_environment": 0,
-      "ceo_score": 30.0,
+      "ceo_score": 40.0,
       "warn_displaced": 0
     }
   },
@@ -2859,6 +3187,34 @@
     }
   },
   {
+    "company": "Starbucks Corporation",
+    "ticker": "SBUX",
+    "hi_grade": "scored",
+    "composite": 71,
+    "decay_index": 30,
+    "decay_level": "warning",
+    "factors": [
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (5 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 2,
+      "ethics_news_90d": 5,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 1,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 85.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Costco Wholesale Corporation",
     "ticker": "COST",
     "hi_grade": "scored",
@@ -2873,6 +3229,34 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 1,
       "ethics_news_90d": 15,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 1,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "BANK OF AMERICA CORP /DE/",
+    "ticker": "BAC",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 30,
+    "decay_level": "warning",
+    "factors": [
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (11 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 3,
+      "ethics_news_90d": 11,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -2939,6 +3323,34 @@
       "media_employee": 0,
       "media_environment": 0,
       "ceo_score": 55.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Intercontinental Exchange, Inc.",
+    "ticker": "ICE",
+    "hi_grade": "scored",
+    "composite": 60,
+    "decay_index": 30,
+    "decay_level": "warning",
+    "factors": [
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (9 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 3,
+      "ethics_news_90d": 9,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 1,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
       "warn_displaced": 0
     }
   },
@@ -3023,62 +3435,6 @@
       "media_employee": 0,
       "media_environment": 0,
       "ceo_score": 20.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Booking Holdings Inc.",
-    "ticker": "BKNG",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 30,
-    "decay_level": "warning",
-    "factors": [
-      "Aggressive AI pivot (11 articles)",
-      "3 humanwashing flag(s)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 11,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 3,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 55.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Phillips 66",
-    "ticker": "PSX",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 30,
-    "decay_level": "warning",
-    "factors": [
-      "Ethics/legal issues (40 articles)",
-      "Ethics scrutiny in media (3 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 40,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 3,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
       "warn_displaced": 0
     }
   },
@@ -3224,6 +3580,34 @@
     }
   },
   {
+    "company": "HUMANA INC",
+    "ticker": "HUM",
+    "hi_grade": "scored",
+    "composite": 61,
+    "decay_index": 29,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (5 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 5,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 2,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Zscaler, Inc.",
     "ticker": "ZS",
     "hi_grade": "scored",
@@ -3336,33 +3720,6 @@
     }
   },
   {
-    "company": "Hewlett Packard Enterprise Co",
-    "ticker": "HPE",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 29,
-    "decay_level": "watch",
-    "factors": [
-      "Aggressive AI pivot (14 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 14,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 1,
-      "media_ethics": 1,
-      "media_ai_pivot": 2,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 55.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "TERADYNE, INC",
     "ticker": "TER",
     "hi_grade": "scored",
@@ -3437,34 +3794,6 @@
       "ethics_news_90d": 3,
       "total_displaced": 0,
       "material_events_180d": 20,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 40.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "CSX CORP",
-    "ticker": "CSX",
-    "hi_grade": "scored",
-    "composite": 57,
-    "decay_index": 28,
-    "decay_level": "watch",
-    "factors": [
-      "Heavy layoff coverage (5 articles)",
-      "CEO accountability low (40.0/100)"
-    ],
-    "signals": {
-      "layoff_news_90d": 5,
-      "ai_news_90d": 2,
-      "ethics_news_90d": 2,
-      "total_displaced": 0,
-      "material_events_180d": 0,
       "humanwashing_flags": 0,
       "media_layoffs": 0,
       "media_ethics": 0,
@@ -3564,6 +3893,35 @@
     }
   },
   {
+    "company": "Lockheed Martin Corporation",
+    "ticker": "LMT",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 28,
+    "decay_level": "watch",
+    "factors": [
+      "AI acceleration (6 articles)",
+      "High 8-K activity (20 filings)",
+      "2 humanwashing flag(s)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 6,
+      "ethics_news_90d": 3,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 2,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "DOLLAR TREE, INC.",
     "ticker": "DLTR",
     "hi_grade": "scored",
@@ -3640,34 +3998,6 @@
       "material_events_180d": 20,
       "humanwashing_flags": 0,
       "media_layoffs": 1,
-      "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "PINTEREST, INC.",
-    "ticker": "PINS",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 27,
-    "decay_level": "watch",
-    "factors": [
-      "2 humanwashing flag(s)",
-      "Media layoff coverage (5 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 2,
-      "media_layoffs": 5,
       "media_ethics": 1,
       "media_ai_pivot": 0,
       "media_ceo": 0,
@@ -3805,6 +4135,34 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 1,
       "ethics_news_90d": 6,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Cloudflare, Inc.",
+    "ticker": "NET",
+    "hi_grade": "scored",
+    "composite": 57,
+    "decay_index": 25,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (5 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 2,
+      "ethics_news_90d": 5,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -4015,54 +4373,26 @@
     }
   },
   {
-    "company": "CADENCE DESIGN SYSTEMS INC",
-    "ticker": "CDNS",
+    "company": "Snowflake Inc.",
+    "ticker": "SNOW",
     "hi_grade": "scored",
-    "composite": 50,
+    "composite": 57,
     "decay_index": 25,
     "decay_level": "watch",
     "factors": [
-      "Aggressive AI pivot (22 articles)",
-      "AI pivot in media (3 articles)"
+      "Aggressive AI pivot (12 articles)",
+      "High 8-K activity (20 filings)"
     ],
     "signals": {
       "layoff_news_90d": 0,
-      "ai_news_90d": 22,
-      "ethics_news_90d": 2,
+      "ai_news_90d": 12,
+      "ethics_news_90d": 1,
       "total_displaced": 0,
-      "material_events_180d": 0,
+      "material_events_180d": 20,
       "humanwashing_flags": 0,
       "media_layoffs": 0,
       "media_ethics": 0,
-      "media_ai_pivot": 3,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 55.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "ROCKWELL AUTOMATION, INC",
-    "ticker": "ROK",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 25,
-    "decay_level": "watch",
-    "factors": [
-      "Aggressive AI pivot (124 articles)",
-      "AI pivot in media (3 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 124,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 3,
+      "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
       "media_environment": 0,
@@ -4211,6 +4541,34 @@
     }
   },
   {
+    "company": "Archer-Daniels-Midland Co",
+    "ticker": "ADM",
+    "hi_grade": "scored",
+    "composite": 60,
+    "decay_index": 25,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (12 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 12,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "KROGER CO",
     "ticker": "KR",
     "hi_grade": "scored",
@@ -4258,6 +4616,34 @@
       "humanwashing_flags": 0,
       "media_layoffs": 0,
       "media_ethics": 3,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "CONOCOPHILLIPS",
+    "ticker": "COP",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 25,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (6 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 6,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
@@ -4463,6 +4849,34 @@
     }
   },
   {
+    "company": "AMC ENTERTAINMENT HOLDINGS, INC.",
+    "ticker": "AMC",
+    "hi_grade": "scored",
+    "composite": 56,
+    "decay_index": 25,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)",
+      "Ethics scrutiny in media (10 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 10,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "C. H. ROBINSON WORLDWIDE, INC.",
     "ticker": "CHRW",
     "hi_grade": "scored",
@@ -4566,6 +4980,34 @@
       "humanwashing_flags": 0,
       "media_layoffs": 0,
       "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Bath & Body Works, Inc.",
+    "ticker": "BBWI",
+    "hi_grade": "scored",
+    "composite": 55,
+    "decay_index": 25,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)",
+      "Ethics scrutiny in media (7 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 3,
+      "ethics_news_90d": 4,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 7,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
@@ -4743,34 +5185,6 @@
     }
   },
   {
-    "company": "Arista Networks, Inc.",
-    "ticker": "ANET",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 25,
-    "decay_level": "watch",
-    "factors": [
-      "Layoff mentions (2 articles)",
-      "Aggressive AI pivot (11 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 2,
-      "ai_news_90d": 11,
-      "ethics_news_90d": 2,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 55.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "Paycom Software, Inc.",
     "ticker": "PAYC",
     "hi_grade": "scored",
@@ -4818,34 +5232,6 @@
       "humanwashing_flags": 0,
       "media_layoffs": 0,
       "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Aon plc",
-    "ticker": "AON",
-    "hi_grade": "scored",
-    "composite": 58,
-    "decay_index": 23,
-    "decay_level": "watch",
-    "factors": [
-      "AI acceleration (5 articles)",
-      "Ethics scrutiny in media (3 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 5,
-      "ethics_news_90d": 4,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 3,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
@@ -4906,34 +5292,6 @@
       "media_ceo": 0,
       "media_employee": 0,
       "media_environment": 1,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Caterpillar",
-    "ticker": "CAT",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 23,
-    "decay_level": "watch",
-    "factors": [
-      "AI acceleration (5 articles)",
-      "Ethics/legal issues (5 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 5,
-      "ethics_news_90d": 5,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
       "ceo_score": 60.0,
       "warn_displaced": 0
     }
@@ -5023,22 +5381,22 @@
     }
   },
   {
-    "company": "KIMBERLY CLARK CORP",
-    "ticker": "KMB",
+    "company": "Robinhood Markets, Inc.",
+    "ticker": "HOOD",
     "hi_grade": "scored",
-    "composite": 50,
+    "composite": 56,
     "decay_index": 23,
     "decay_level": "watch",
     "factors": [
-      "Layoff mentions (4 articles)",
+      "High 8-K activity (20 filings)",
       "CEO accountability low (40.0/100)"
     ],
     "signals": {
-      "layoff_news_90d": 4,
+      "layoff_news_90d": 1,
       "ai_news_90d": 0,
-      "ethics_news_90d": 1,
+      "ethics_news_90d": 3,
       "total_displaced": 0,
-      "material_events_180d": 0,
+      "material_events_180d": 20,
       "humanwashing_flags": 0,
       "media_layoffs": 1,
       "media_ethics": 0,
@@ -5127,6 +5485,62 @@
       "media_layoffs": 0,
       "media_ethics": 1,
       "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "PTC INC.",
+    "ticker": "PTC",
+    "hi_grade": "scored",
+    "composite": 53,
+    "decay_index": 23,
+    "decay_level": "watch",
+    "factors": [
+      "AI acceleration (7 articles)",
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 7,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 1,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Home Depot, Inc.",
+    "ticker": "HD",
+    "hi_grade": "scored",
+    "composite": 70,
+    "decay_index": 22,
+    "decay_level": "watch",
+    "factors": [
+      "AI acceleration (5 articles)",
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 5,
+      "ethics_news_90d": 2,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 1,
       "media_ceo": 0,
       "media_employee": 0,
       "media_environment": 0,
@@ -5247,6 +5661,34 @@
     }
   },
   {
+    "company": "TWILIO INC",
+    "ticker": "TWLO",
+    "hi_grade": "scored",
+    "composite": 57,
+    "decay_index": 22,
+    "decay_level": "watch",
+    "factors": [
+      "AI acceleration (8 articles)",
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 8,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 1,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Marvell Technology, Inc.",
     "ticker": "MRVL",
     "hi_grade": "scored",
@@ -5261,6 +5703,34 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 5,
       "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 1,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "AXON ENTERPRISE, INC.",
+    "ticker": "AXON",
+    "hi_grade": "scored",
+    "composite": 56,
+    "decay_index": 22,
+    "decay_level": "watch",
+    "factors": [
+      "AI acceleration (7 articles)",
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 7,
+      "ethics_news_90d": 3,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -5331,56 +5801,30 @@
     }
   },
   {
-    "company": "Starbucks Corporation",
-    "ticker": "SBUX",
+    "company": "PepsiCo, Inc.",
+    "ticker": "PEP",
     "hi_grade": "scored",
-    "composite": 69,
+    "composite": 65,
     "decay_index": 20,
     "decay_level": "watch",
     "factors": [
-      "Ethics/legal issues (5 articles)"
+      "Layoff mentions (2 articles)",
+      "High 8-K activity (20 filings)"
     ],
     "signals": {
-      "layoff_news_90d": 0,
+      "layoff_news_90d": 2,
       "ai_news_90d": 2,
-      "ethics_news_90d": 5,
+      "ethics_news_90d": 1,
       "total_displaced": 0,
-      "material_events_180d": 0,
+      "material_events_180d": 20,
       "humanwashing_flags": 0,
-      "media_layoffs": 1,
+      "media_layoffs": 0,
       "media_ethics": 0,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
       "media_environment": 0,
-      "ceo_score": 85.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "BANK OF AMERICA CORP /DE/",
-    "ticker": "BAC",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 20,
-    "decay_level": "watch",
-    "factors": [
-      "Ethics/legal issues (11 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 3,
-      "ethics_news_90d": 11,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
+      "ceo_score": 75.0,
       "warn_displaced": 0
     }
   },
@@ -5458,33 +5902,6 @@
       "material_events_180d": 20,
       "humanwashing_flags": 0,
       "media_layoffs": 1,
-      "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Intercontinental Exchange, Inc.",
-    "ticker": "ICE",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 20,
-    "decay_level": "watch",
-    "factors": [
-      "Ethics/legal issues (9 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 3,
-      "ethics_news_90d": 9,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
       "media_ethics": 1,
       "media_ai_pivot": 0,
       "media_ceo": 0,
@@ -5746,6 +6163,34 @@
     }
   },
   {
+    "company": "WOLFSPEED, INC.",
+    "ticker": "WOLF",
+    "hi_grade": "scored",
+    "composite": 53,
+    "decay_index": 20,
+    "decay_level": "watch",
+    "factors": [
+      "Layoff mentions (2 articles)",
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 2,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Barclays PLC",
     "ticker": "BCS",
     "hi_grade": "scored",
@@ -5800,25 +6245,25 @@
     }
   },
   {
-    "company": "HUMANA INC",
-    "ticker": "HUM",
+    "company": "EQUINIX INC",
+    "ticker": "EQIX",
     "hi_grade": "scored",
-    "composite": 61,
+    "composite": 58,
     "decay_index": 19,
     "decay_level": "watch",
     "factors": [
-      "Ethics/legal issues (5 articles)"
+      "High 8-K activity (20 filings)"
     ],
     "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 5,
+      "layoff_news_90d": 0,
+      "ai_news_90d": 4,
+      "ethics_news_90d": 0,
       "total_displaced": 0,
-      "material_events_180d": 0,
+      "material_events_180d": 20,
       "humanwashing_flags": 0,
-      "media_layoffs": 0,
+      "media_layoffs": 1,
       "media_ethics": 0,
-      "media_ai_pivot": 2,
+      "media_ai_pivot": 1,
       "media_ceo": 0,
       "media_employee": 0,
       "media_environment": 0,
@@ -5845,6 +6290,33 @@
       "humanwashing_flags": 0,
       "media_layoffs": 0,
       "media_ethics": 2,
+      "media_ai_pivot": 1,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "DOMINOS PIZZA INC",
+    "ticker": "DPZ",
+    "hi_grade": "scored",
+    "composite": 58,
+    "decay_index": 19,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 3,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 1,
       "media_ai_pivot": 1,
       "media_ceo": 0,
       "media_employee": 0,
@@ -5899,6 +6371,33 @@
       "humanwashing_flags": 0,
       "media_layoffs": 0,
       "media_ethics": 2,
+      "media_ai_pivot": 1,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "MOHAWK INDUSTRIES INC",
+    "ticker": "MHK",
+    "hi_grade": "scored",
+    "composite": 56,
+    "decay_index": 19,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 1,
       "media_ai_pivot": 1,
       "media_ceo": 0,
       "media_employee": 0,
@@ -6214,6 +6713,34 @@
     }
   },
   {
+    "company": "Eaton Corp plc",
+    "ticker": "ETN",
+    "hi_grade": "scored",
+    "composite": 57,
+    "decay_index": 18,
+    "decay_level": "watch",
+    "factors": [
+      "AI acceleration (5 articles)",
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 5,
+      "ethics_news_90d": 2,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "THERMO FISHER SCIENTIFIC INC.",
     "ticker": "TMO",
     "hi_grade": "scored",
@@ -6354,34 +6881,6 @@
     }
   },
   {
-    "company": "Lockheed Martin Corporation",
-    "ticker": "LMT",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 18,
-    "decay_level": "watch",
-    "factors": [
-      "AI acceleration (6 articles)",
-      "2 humanwashing flag(s)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 6,
-      "ethics_news_90d": 3,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 2,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "Temu",
     "ticker": "",
     "hi_grade": "scored",
@@ -6466,6 +6965,62 @@
     }
   },
   {
+    "company": "KKR & Co. Inc.",
+    "ticker": "KKR",
+    "hi_grade": "scored",
+    "composite": 55,
+    "decay_index": 18,
+    "decay_level": "watch",
+    "factors": [
+      "AI acceleration (6 articles)",
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 6,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "MICROCHIP TECHNOLOGY INC",
+    "ticker": "MCHP",
+    "hi_grade": "scored",
+    "composite": 53,
+    "decay_index": 18,
+    "decay_level": "watch",
+    "factors": [
+      "AI acceleration (5 articles)",
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 5,
+      "ethics_news_90d": 2,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Seagate Technology Holdings plc",
     "ticker": "STX",
     "hi_grade": "scored",
@@ -6480,6 +7035,34 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 6,
       "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "SILICON LABORATORIES INC.",
+    "ticker": "SLAB",
+    "hi_grade": "scored",
+    "composite": 53,
+    "decay_index": 18,
+    "decay_level": "watch",
+    "factors": [
+      "AI acceleration (5 articles)",
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 5,
+      "ethics_news_90d": 0,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -6630,6 +7213,33 @@
     }
   },
   {
+    "company": "LAS VEGAS SANDS CORP",
+    "ticker": "LVS",
+    "hi_grade": "scored",
+    "composite": 59,
+    "decay_index": 15,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 1,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Norwegian Cruise Line Holdings Ltd.",
     "ticker": "NCLH",
     "hi_grade": "scored",
@@ -6657,24 +7267,24 @@
     }
   },
   {
-    "company": "Cloudflare, Inc.",
-    "ticker": "NET",
+    "company": "WYNN RESORTS LTD",
+    "ticker": "WYNN",
     "hi_grade": "scored",
-    "composite": 57,
+    "composite": 59,
     "decay_index": 15,
     "decay_level": "watch",
     "factors": [
-      "Ethics/legal issues (5 articles)"
+      "High 8-K activity (20 filings)"
     ],
     "signals": {
       "layoff_news_90d": 0,
-      "ai_news_90d": 2,
-      "ethics_news_90d": 5,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 4,
       "total_displaced": 0,
-      "material_events_180d": 0,
+      "material_events_180d": 20,
       "humanwashing_flags": 0,
       "media_layoffs": 0,
-      "media_ethics": 0,
+      "media_ethics": 1,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
@@ -6765,29 +7375,29 @@
     }
   },
   {
-    "company": "Snowflake Inc.",
-    "ticker": "SNOW",
+    "company": "LINDE PLC",
+    "ticker": "LIN",
     "hi_grade": "scored",
-    "composite": 57,
+    "composite": 61,
     "decay_index": 15,
     "decay_level": "watch",
     "factors": [
-      "Aggressive AI pivot (12 articles)"
+      "High 8-K activity (20 filings)"
     ],
     "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 12,
-      "ethics_news_90d": 1,
+      "layoff_news_90d": 1,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
       "total_displaced": 0,
-      "material_events_180d": 0,
+      "material_events_180d": 20,
       "humanwashing_flags": 0,
       "media_layoffs": 0,
-      "media_ethics": 0,
+      "media_ethics": 1,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
       "media_environment": 0,
-      "ceo_score": 55.0,
+      "ceo_score": 60.0,
       "warn_displaced": 0
     }
   },
@@ -7035,24 +7645,24 @@
     }
   },
   {
-    "company": "Archer-Daniels-Midland Co",
-    "ticker": "ADM",
+    "company": "SOUTHWEST AIRLINES CO",
+    "ticker": "LUV",
     "hi_grade": "scored",
-    "composite": 60,
+    "composite": 59,
     "decay_index": 15,
     "decay_level": "watch",
     "factors": [
-      "Ethics/legal issues (12 articles)"
+      "High 8-K activity (20 filings)"
     ],
     "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 12,
+      "layoff_news_90d": 1,
+      "ai_news_90d": 2,
+      "ethics_news_90d": 4,
       "total_displaced": 0,
-      "material_events_180d": 0,
+      "material_events_180d": 20,
       "humanwashing_flags": 0,
       "media_layoffs": 0,
-      "media_ethics": 0,
+      "media_ethics": 2,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
@@ -7107,33 +7717,6 @@
       "humanwashing_flags": 0,
       "media_layoffs": 0,
       "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "CONOCOPHILLIPS",
-    "ticker": "COP",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 15,
-    "decay_level": "watch",
-    "factors": [
-      "Ethics/legal issues (6 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 6,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
@@ -7389,6 +7972,33 @@
     }
   },
   {
+    "company": "BIOMARIN PHARMACEUTICAL INC",
+    "ticker": "BMRN",
+    "hi_grade": "scored",
+    "composite": 58,
+    "decay_index": 15,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 1,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "INCYTE CORP",
     "ticker": "INCY",
     "hi_grade": "scored",
@@ -7429,6 +8039,33 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 3,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 1,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "lululemon athletica inc.",
+    "ticker": "LULU",
+    "hi_grade": "scored",
+    "composite": 58,
+    "decay_index": 15,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 1,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -7488,33 +8125,6 @@
       "humanwashing_flags": 0,
       "media_layoffs": 0,
       "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "AMC ENTERTAINMENT HOLDINGS, INC.",
-    "ticker": "AMC",
-    "hi_grade": "scored",
-    "composite": 56,
-    "decay_index": 15,
-    "decay_level": "watch",
-    "factors": [
-      "Ethics scrutiny in media (10 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 10,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
@@ -7632,24 +8242,52 @@
     }
   },
   {
-    "company": "Bath & Body Works, Inc.",
-    "ticker": "BBWI",
+    "company": "B&G Foods, Inc.",
+    "ticker": "BGS",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 15,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)",
+      "1 humanwashing flag(s)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 1,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "BROWN & BROWN, INC.",
+    "ticker": "BRO",
     "hi_grade": "scored",
     "composite": 55,
     "decay_index": 15,
     "decay_level": "watch",
     "factors": [
-      "Ethics scrutiny in media (7 articles)"
+      "High 8-K activity (20 filings)"
     ],
     "signals": {
       "layoff_news_90d": 1,
-      "ai_news_90d": 3,
-      "ethics_news_90d": 4,
+      "ai_news_90d": 4,
+      "ethics_news_90d": 1,
       "total_displaced": 0,
-      "material_events_180d": 0,
+      "material_events_180d": 20,
       "humanwashing_flags": 0,
       "media_layoffs": 0,
-      "media_ethics": 7,
+      "media_ethics": 1,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
@@ -8091,6 +8729,33 @@
     }
   },
   {
+    "company": "LATTICE SEMICONDUCTOR CORP",
+    "ticker": "LSCC",
+    "hi_grade": "scored",
+    "composite": 53,
+    "decay_index": 15,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 3,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 1,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "monday.com Ltd.",
     "ticker": "MNDY",
     "hi_grade": "scored",
@@ -8362,6 +9027,33 @@
     }
   },
   {
+    "company": "AMERICAN INTERNATIONAL GROUP, INC.",
+    "ticker": "AIG",
+    "hi_grade": "scored",
+    "composite": 60,
+    "decay_index": 14,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 4,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 1,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "XCEL ENERGY INC",
     "ticker": "XEL",
     "hi_grade": "scored",
@@ -8497,6 +9189,33 @@
     }
   },
   {
+    "company": "CARDINAL HEALTH INC",
+    "ticker": "CAH",
+    "hi_grade": "scored",
+    "composite": 57,
+    "decay_index": 14,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 1,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "OpenAI",
     "ticker": "",
     "hi_grade": "scored",
@@ -8603,6 +9322,33 @@
     }
   },
   {
+    "company": "CORNING INC /NY",
+    "ticker": "GLW",
+    "hi_grade": "scored",
+    "composite": 56,
+    "decay_index": 14,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 2,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 1,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Howmet Aerospace Inc.",
     "ticker": "HWM",
     "hi_grade": "scored",
@@ -8684,6 +9430,33 @@
     }
   },
   {
+    "company": "AMERICAN EAGLE OUTFITTERS INC",
+    "ticker": "AEO",
+    "hi_grade": "scored",
+    "composite": 55,
+    "decay_index": 14,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 2,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "FRANKLIN RESOURCES INC",
     "ticker": "BEN",
     "hi_grade": "scored",
@@ -8730,6 +9503,33 @@
       "media_layoffs": 0,
       "media_ethics": 0,
       "media_ai_pivot": 1,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Coursera, Inc.",
+    "ticker": "COUR",
+    "hi_grade": "scored",
+    "composite": 54,
+    "decay_index": 14,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 2,
       "media_ceo": 0,
       "media_employee": 0,
       "media_environment": 0,
@@ -9006,141 +9806,6 @@
     }
   },
   {
-    "company": "Robinhood Markets, Inc.",
-    "ticker": "HOOD",
-    "hi_grade": "scored",
-    "composite": 56,
-    "decay_index": 13,
-    "decay_level": "watch",
-    "factors": [
-      "CEO accountability low (40.0/100)"
-    ],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 3,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 1,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 40.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "PTC INC.",
-    "ticker": "PTC",
-    "hi_grade": "scored",
-    "composite": 53,
-    "decay_index": 13,
-    "decay_level": "watch",
-    "factors": [
-      "AI acceleration (7 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 7,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Home Depot, Inc.",
-    "ticker": "HD",
-    "hi_grade": "scored",
-    "composite": 70,
-    "decay_index": 12,
-    "decay_level": "watch",
-    "factors": [
-      "AI acceleration (5 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 5,
-      "ethics_news_90d": 2,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 1,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "TWILIO INC",
-    "ticker": "TWLO",
-    "hi_grade": "scored",
-    "composite": 57,
-    "decay_index": 12,
-    "decay_level": "watch",
-    "factors": [
-      "AI acceleration (8 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 8,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 1,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "AXON ENTERPRISE, INC.",
-    "ticker": "AXON",
-    "hi_grade": "scored",
-    "composite": 56,
-    "decay_index": 12,
-    "decay_level": "watch",
-    "factors": [
-      "AI acceleration (7 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 7,
-      "ethics_news_90d": 3,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 1,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "Coca-Cola Company",
     "ticker": "KO",
     "hi_grade": "scored",
@@ -9168,33 +9833,6 @@
     }
   },
   {
-    "company": "PepsiCo, Inc.",
-    "ticker": "PEP",
-    "hi_grade": "scored",
-    "composite": 65,
-    "decay_index": 10,
-    "decay_level": "watch",
-    "factors": [
-      "Layoff mentions (2 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 2,
-      "ai_news_90d": 2,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 75.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "DARDEN RESTAURANTS INC",
     "ticker": "DRI",
     "hi_grade": "scored",
@@ -9208,6 +9846,33 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "GENERAL MILLS INC",
+    "ticker": "GIS",
+    "hi_grade": "scored",
+    "composite": 65,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 3,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -9465,6 +10130,33 @@
     }
   },
   {
+    "company": "PPG INDUSTRIES INC",
+    "ticker": "PPG",
+    "hi_grade": "scored",
+    "composite": 61,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "TJX COMPANIES INC /DE/",
     "ticker": "TJX",
     "hi_grade": "scored",
@@ -9478,6 +10170,33 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 1,
       "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Air Products & Chemicals, Inc.",
+    "ticker": "APD",
+    "hi_grade": "scored",
+    "composite": 61,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -9519,6 +10238,60 @@
     }
   },
   {
+    "company": "AMEREN CORP",
+    "ticker": "AEE",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "American Water Works Company, Inc.",
+    "ticker": "AWK",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "ATMOS ENERGY CORP",
     "ticker": "ATO",
     "hi_grade": "scored",
@@ -9532,6 +10305,87 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 2,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "BEST BUY CO INC",
+    "ticker": "BBY",
+    "hi_grade": "scored",
+    "composite": 61,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 4,
+      "ethics_news_90d": 2,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "CHIPOTLE MEXICAN GRILL INC",
+    "ticker": "CMG",
+    "hi_grade": "scored",
+    "composite": 61,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 4,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "CUMMINS INC",
+    "ticker": "CMI",
+    "hi_grade": "scored",
+    "composite": 58,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 3,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -9654,6 +10508,33 @@
     }
   },
   {
+    "company": "PUBLIC SERVICE ENTERPRISE GROUP INC",
+    "ticker": "PEG",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "REGENERON PHARMACEUTICALS, INC.",
     "ticker": "REGN",
     "hi_grade": "scored",
@@ -9735,6 +10616,33 @@
     }
   },
   {
+    "company": "SLB LIMITED/NV",
+    "ticker": "SLB",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 2,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "STRYKER CORP",
     "ticker": "SYK",
     "hi_grade": "scored",
@@ -9789,6 +10697,33 @@
     }
   },
   {
+    "company": "CARRIER GLOBAL Corp",
+    "ticker": "CARR",
+    "hi_grade": "scored",
+    "composite": 57,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 4,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 75.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Celanese Corp",
     "ticker": "CE",
     "hi_grade": "scored",
@@ -9802,6 +10737,33 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Chubb Ltd",
+    "ticker": "CB",
+    "hi_grade": "scored",
+    "composite": 60,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 2,
+      "ethics_news_90d": 2,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -9855,6 +10817,33 @@
     "signals": {
       "layoff_news_90d": 0,
       "ai_news_90d": 2,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "EVERSOURCE ENERGY",
+    "ticker": "ES",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
       "ethics_news_90d": 0,
       "total_displaced": 0,
       "material_events_180d": 20,
@@ -9978,6 +10967,60 @@
     }
   },
   {
+    "company": "INTERNATIONAL FLAVORS & FRAGRANCES INC",
+    "ticker": "IFF",
+    "hi_grade": "scored",
+    "composite": 61,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Kraft Heinz Co",
+    "ticker": "KHC",
+    "hi_grade": "scored",
+    "composite": 62,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Parker-Hannifin Corp",
     "ticker": "PH",
     "hi_grade": "scored",
@@ -10018,6 +11061,33 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Verisk Analytics, Inc.",
+    "ticker": "VRSK",
+    "hi_grade": "scored",
+    "composite": 57,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 2,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -10126,6 +11196,33 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 3,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "CHURCH & DWIGHT CO INC /DE/",
+    "ticker": "CHD",
+    "hi_grade": "scored",
+    "composite": 61,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -10464,6 +11561,33 @@
     }
   },
   {
+    "company": "CAMPBELL'S Co",
+    "ticker": "CPB",
+    "hi_grade": "scored",
+    "composite": 60,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "CHARTER COMMUNICATIONS, INC. /MO/",
     "ticker": "CHTR",
     "hi_grade": "scored",
@@ -10504,6 +11628,33 @@
       "layoff_news_90d": 1,
       "ai_news_90d": 1,
       "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "FASTENAL CO",
+    "ticker": "FAST",
+    "hi_grade": "scored",
+    "composite": 58,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 1,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -10680,6 +11831,33 @@
     }
   },
   {
+    "company": "MOLSON COORS BEVERAGE CO",
+    "ticker": "TAP",
+    "hi_grade": "scored",
+    "composite": 60,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Monster Beverage Corp",
     "ticker": "MNST",
     "hi_grade": "scored",
@@ -10692,6 +11870,87 @@
     "signals": {
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "ONEOK INC /NEW/",
+    "ticker": "OKE",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 3,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "REALTY INCOME CORP",
+    "ticker": "O",
+    "hi_grade": "scored",
+    "composite": 58,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "STEEL DYNAMICS INC",
+    "ticker": "STLD",
+    "hi_grade": "scored",
+    "composite": 58,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
       "ethics_news_90d": 1,
       "total_displaced": 0,
       "material_events_180d": 20,
@@ -10720,6 +11979,33 @@
       "layoff_news_90d": 1,
       "ai_news_90d": 1,
       "ethics_news_90d": 3,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "DTE ENERGY CO",
+    "ticker": "DTE",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 2,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -10869,6 +12155,33 @@
     }
   },
   {
+    "company": "WILLIAMS COMPANIES, INC.",
+    "ticker": "WMB",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 2,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "AMERICAN TOWER CORP /MA/",
     "ticker": "AMT",
     "hi_grade": "scored",
@@ -10936,6 +12249,33 @@
       "layoff_news_90d": 1,
       "ai_news_90d": 0,
       "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "HORTON D R INC /DE/",
+    "ticker": "DHI",
+    "hi_grade": "scored",
+    "composite": 58,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 4,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -11085,6 +12425,33 @@
     }
   },
   {
+    "company": "W.W. GRAINGER, INC.",
+    "ticker": "GWW",
+    "hi_grade": "scored",
+    "composite": 58,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "ALEXANDRIA REAL ESTATE EQUITIES, INC.",
     "ticker": "ARE",
     "hi_grade": "scored",
@@ -11098,6 +12465,33 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 3,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Targa Resources Corp.",
+    "ticker": "TRGP",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -11220,6 +12614,33 @@
     }
   },
   {
+    "company": "EOG RESOURCES INC",
+    "ticker": "EOG",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Shein",
     "ticker": "",
     "hi_grade": "scored",
@@ -11299,6 +12720,33 @@
     }
   },
   {
+    "company": "Allbirds, Inc.",
+    "ticker": "BIRD",
+    "hi_grade": "scored",
+    "composite": 61,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "BEYOND MEAT, INC.",
     "ticker": "BYND",
     "hi_grade": "scored",
@@ -11339,6 +12787,33 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 1,
       "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "ALNYLAM PHARMACEUTICALS, INC.",
+    "ticker": "ALNY",
+    "hi_grade": "scored",
+    "composite": 58,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 2,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -11434,6 +12909,33 @@
     }
   },
   {
+    "company": "CHARLES RIVER LABORATORIES INTERNATIONAL, INC.",
+    "ticker": "CRL",
+    "hi_grade": "scored",
+    "composite": 58,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Crinetics Pharmaceuticals, Inc.",
     "ticker": "CRNX",
     "hi_grade": "scored",
@@ -11474,6 +12976,33 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Dutch Bros Inc.",
+    "ticker": "BROS",
+    "hi_grade": "scored",
+    "composite": 58,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 2,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -11879,6 +13408,60 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "YETI Holdings, Inc.",
+    "ticker": "YETI",
+    "hi_grade": "scored",
+    "composite": 57,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "AeroVironment Inc",
+    "ticker": "AVAV",
+    "hi_grade": "scored",
+    "composite": 56,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 3,
+      "ethics_news_90d": 1,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -12325,6 +13908,60 @@
     }
   },
   {
+    "company": "TransDigm Group INC",
+    "ticker": "TDG",
+    "hi_grade": "scored",
+    "composite": 56,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "VEEVA SYSTEMS INC",
+    "ticker": "VEEV",
+    "hi_grade": "scored",
+    "composite": 56,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Virgin Galactic Holdings, Inc",
     "ticker": "SPCE",
     "hi_grade": "scored",
@@ -12622,6 +14259,60 @@
     }
   },
   {
+    "company": "CAMDEN PROPERTY TRUST",
+    "ticker": "CPT",
+    "hi_grade": "scored",
+    "composite": 55,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "CASEYS GENERAL STORES INC",
+    "ticker": "CASY",
+    "hi_grade": "scored",
+    "composite": 55,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "CITIZENS FINANCIAL GROUP INC/RI",
     "ticker": "CFG",
     "hi_grade": "scored",
@@ -12634,6 +14325,33 @@
     "signals": {
       "layoff_news_90d": 1,
       "ai_news_90d": 1,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Clean Energy Fuels Corp.",
+    "ticker": "CLNE",
+    "hi_grade": "scored",
+    "composite": 55,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
       "ethics_news_90d": 0,
       "total_displaced": 0,
       "material_events_180d": 20,
@@ -12784,6 +14502,33 @@
     }
   },
   {
+    "company": "FEDERAL REALTY INVESTMENT TRUST",
+    "ticker": "FRT",
+    "hi_grade": "scored",
+    "composite": 55,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "FIVE BELOW, INC",
     "ticker": "FIVE",
     "hi_grade": "scored",
@@ -12797,6 +14542,33 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 3,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "GameStop Corp.",
+    "ticker": "GME",
+    "hi_grade": "scored",
+    "composite": 55,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 2,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -12932,6 +14704,33 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 1,
       "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "LKQ CORP",
+    "ticker": "LKQ",
+    "hi_grade": "scored",
+    "composite": 55,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 1,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -13216,6 +15015,33 @@
     }
   },
   {
+    "company": "Rent the Runway, Inc.",
+    "ticker": "RENT",
+    "hi_grade": "scored",
+    "composite": 55,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Riot Platforms, Inc.",
     "ticker": "RIOT",
     "hi_grade": "scored",
@@ -13270,6 +15096,33 @@
     }
   },
   {
+    "company": "SiteOne Landscape Supply, Inc.",
+    "ticker": "SITE",
+    "hi_grade": "scored",
+    "composite": 55,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "STAG Industrial, Inc.",
     "ticker": "STAG",
     "hi_grade": "scored",
@@ -13310,6 +15163,33 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "TE Connectivity plc",
+    "ticker": "TEL",
+    "hi_grade": "scored",
+    "composite": 55,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 3,
+      "ethics_news_90d": 2,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -13391,6 +15271,33 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Vistra Corp.",
+    "ticker": "VST",
+    "hi_grade": "scored",
+    "composite": 55,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 2,
+      "ethics_news_90d": 3,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -13675,6 +15582,33 @@
     }
   },
   {
+    "company": "Asana, Inc.",
+    "ticker": "ASAN",
+    "hi_grade": "scored",
+    "composite": 53,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 4,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "AST SpaceMobile, Inc.",
     "ticker": "ASTS",
     "hi_grade": "scored",
@@ -13891,6 +15825,33 @@
     }
   },
   {
+    "company": "FIRST SOLAR, INC.",
+    "ticker": "FSLR",
+    "hi_grade": "scored",
+    "composite": 53,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "GENERAC HOLDINGS INC.",
     "ticker": "GNRC",
     "hi_grade": "scored",
@@ -13931,6 +15892,33 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 2,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "MACOM Technology Solutions Holdings, Inc.",
+    "ticker": "MTSI",
+    "hi_grade": "scored",
+    "composite": 53,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 2,
+      "ethics_news_90d": 3,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -13999,6 +15987,60 @@
     }
   },
   {
+    "company": "Motorola Solutions, Inc.",
+    "ticker": "MSI",
+    "hi_grade": "scored",
+    "composite": 53,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 2,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Otis Worldwide Corp",
+    "ticker": "OTIS",
+    "hi_grade": "scored",
+    "composite": 53,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "PLUG POWER INC",
     "ticker": "PLUG",
     "hi_grade": "scored",
@@ -14038,6 +16080,33 @@
     "signals": {
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Qorvo, Inc.",
+    "ticker": "QRVO",
+    "hi_grade": "scored",
+    "composite": 53,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 1,
       "ethics_news_90d": 0,
       "total_displaced": 0,
       "material_events_180d": 20,
@@ -14269,6 +16338,33 @@
     }
   },
   {
+    "company": "SMITH A O CORP",
+    "ticker": "AOS",
+    "hi_grade": "scored",
+    "composite": 53,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "SOUNDHOUND AI, INC.",
     "ticker": "SOUN",
     "hi_grade": "scored",
@@ -14377,6 +16473,33 @@
     }
   },
   {
+    "company": "WATERS CORP /DE/",
+    "ticker": "WAT",
+    "hi_grade": "scored",
+    "composite": 53,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "WEST PHARMACEUTICAL SERVICES INC",
     "ticker": "WST",
     "hi_grade": "scored",
@@ -14392,33 +16515,6 @@
       "ethics_news_90d": 0,
       "total_displaced": 0,
       "material_events_180d": 20,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "WOLFSPEED, INC.",
-    "ticker": "WOLF",
-    "hi_grade": "scored",
-    "composite": 53,
-    "decay_index": 10,
-    "decay_level": "watch",
-    "factors": [
-      "Layoff mentions (2 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 2,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
       "humanwashing_flags": 0,
       "media_layoffs": 0,
       "media_ethics": 0,
@@ -14454,56 +16550,6 @@
       "media_employee": 0,
       "media_environment": 0,
       "ceo_score": 75.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "EQUINIX INC",
-    "ticker": "EQIX",
-    "hi_grade": "scored",
-    "composite": 58,
-    "decay_index": 9,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 4,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 1,
-      "media_ethics": 0,
-      "media_ai_pivot": 1,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "DOMINOS PIZZA INC",
-    "ticker": "DPZ",
-    "hi_grade": "scored",
-    "composite": 58,
-    "decay_index": 9,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 3,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 1,
-      "media_ai_pivot": 1,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
       "warn_displaced": 0
     }
   },
@@ -14608,31 +16654,6 @@
     }
   },
   {
-    "company": "MOHAWK INDUSTRIES INC",
-    "ticker": "MHK",
-    "hi_grade": "scored",
-    "composite": 56,
-    "decay_index": 9,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 1,
-      "media_ai_pivot": 1,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "Royal Bank of Canada",
     "ticker": "RY",
     "hi_grade": "scored",
@@ -14700,33 +16721,6 @@
       "media_layoffs": 2,
       "media_ethics": 0,
       "media_ai_pivot": 1,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Eaton Corp plc",
-    "ticker": "ETN",
-    "hi_grade": "scored",
-    "composite": 57,
-    "decay_index": 8,
-    "decay_level": "stable",
-    "factors": [
-      "AI acceleration (5 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 5,
-      "ethics_news_90d": 2,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
       "media_environment": 0,
@@ -14866,187 +16860,6 @@
       "media_employee": 0,
       "media_environment": 0,
       "ceo_score": 40.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "KKR & Co. Inc.",
-    "ticker": "KKR",
-    "hi_grade": "scored",
-    "composite": 55,
-    "decay_index": 8,
-    "decay_level": "stable",
-    "factors": [
-      "AI acceleration (6 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 6,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "MICROCHIP TECHNOLOGY INC",
-    "ticker": "MCHP",
-    "hi_grade": "scored",
-    "composite": 53,
-    "decay_index": 8,
-    "decay_level": "stable",
-    "factors": [
-      "AI acceleration (5 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 5,
-      "ethics_news_90d": 2,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "SILICON LABORATORIES INC.",
-    "ticker": "SLAB",
-    "hi_grade": "scored",
-    "composite": 53,
-    "decay_index": 8,
-    "decay_level": "stable",
-    "factors": [
-      "AI acceleration (5 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 5,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "LAS VEGAS SANDS CORP",
-    "ticker": "LVS",
-    "hi_grade": "scored",
-    "composite": 59,
-    "decay_index": 5,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "WYNN RESORTS LTD",
-    "ticker": "WYNN",
-    "hi_grade": "scored",
-    "composite": 59,
-    "decay_index": 5,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 4,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "LINDE PLC",
-    "ticker": "LIN",
-    "hi_grade": "scored",
-    "composite": 61,
-    "decay_index": 5,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "SOUTHWEST AIRLINES CO",
-    "ticker": "LUV",
-    "hi_grade": "scored",
-    "composite": 59,
-    "decay_index": 5,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 2,
-      "ethics_news_90d": 4,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 2,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
       "warn_displaced": 0
     }
   },
@@ -15801,56 +17614,6 @@
     }
   },
   {
-    "company": "BIOMARIN PHARMACEUTICAL INC",
-    "ticker": "BMRN",
-    "hi_grade": "scored",
-    "composite": 58,
-    "decay_index": 5,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "lululemon athletica inc.",
-    "ticker": "LULU",
-    "hi_grade": "scored",
-    "composite": 58,
-    "decay_index": 5,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "Novartis AG",
     "ticker": "NVS",
     "hi_grade": "scored",
@@ -15892,83 +17655,6 @@
       "humanwashing_flags": 0,
       "media_layoffs": 0,
       "media_ethics": 2,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "B&G Foods, Inc.",
-    "ticker": "BGS",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 5,
-    "decay_level": "stable",
-    "factors": [
-      "1 humanwashing flag(s)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 1,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "BROWN & BROWN, INC.",
-    "ticker": "BRO",
-    "hi_grade": "scored",
-    "composite": 55,
-    "decay_index": 5,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 4,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "LATTICE SEMICONDUCTOR CORP",
-    "ticker": "LSCC",
-    "hi_grade": "scored",
-    "composite": 53,
-    "decay_index": 5,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 3,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 1,
-      "media_ethics": 0,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
@@ -16064,56 +17750,6 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 1,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "AMERICAN INTERNATIONAL GROUP, INC.",
-    "ticker": "AIG",
-    "hi_grade": "scored",
-    "composite": 60,
-    "decay_index": 4,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 4,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 1,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "CARDINAL HEALTH INC",
-    "ticker": "CAH",
-    "hi_grade": "scored",
-    "composite": 57,
-    "decay_index": 4,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 1,
       "total_displaced": 0,
       "material_events_180d": 0,
       "humanwashing_flags": 0,
@@ -16303,56 +17939,6 @@
     }
   },
   {
-    "company": "CORNING INC /NY",
-    "ticker": "GLW",
-    "hi_grade": "scored",
-    "composite": 56,
-    "decay_index": 4,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 2,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 1,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "AMERICAN EAGLE OUTFITTERS INC",
-    "ticker": "AEO",
-    "hi_grade": "scored",
-    "composite": 55,
-    "decay_index": 4,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 2,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "Hut 8 Corp.",
     "ticker": "HUT",
     "hi_grade": "scored",
@@ -16370,31 +17956,6 @@
       "media_layoffs": 0,
       "media_ethics": 0,
       "media_ai_pivot": 1,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Coursera, Inc.",
-    "ticker": "COUR",
-    "hi_grade": "scored",
-    "composite": 54,
-    "decay_index": 4,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 2,
       "media_ceo": 0,
       "media_employee": 0,
       "media_environment": 0,
@@ -16453,656 +18014,6 @@
     }
   },
   {
-    "company": "GENERAL MILLS INC",
-    "ticker": "GIS",
-    "hi_grade": "scored",
-    "composite": 65,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 3,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "PPG INDUSTRIES INC",
-    "ticker": "PPG",
-    "hi_grade": "scored",
-    "composite": 61,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Air Products & Chemicals, Inc.",
-    "ticker": "APD",
-    "hi_grade": "scored",
-    "composite": 61,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "AMEREN CORP",
-    "ticker": "AEE",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "American Water Works Company, Inc.",
-    "ticker": "AWK",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "BEST BUY CO INC",
-    "ticker": "BBY",
-    "hi_grade": "scored",
-    "composite": 61,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 4,
-      "ethics_news_90d": 2,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "CHIPOTLE MEXICAN GRILL INC",
-    "ticker": "CMG",
-    "hi_grade": "scored",
-    "composite": 61,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 4,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "CUMMINS INC",
-    "ticker": "CMI",
-    "hi_grade": "scored",
-    "composite": 58,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 3,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "PUBLIC SERVICE ENTERPRISE GROUP INC",
-    "ticker": "PEG",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "SLB LIMITED/NV",
-    "ticker": "SLB",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 2,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "CARRIER GLOBAL Corp",
-    "ticker": "CARR",
-    "hi_grade": "scored",
-    "composite": 57,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 4,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 75.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Chubb Ltd",
-    "ticker": "CB",
-    "hi_grade": "scored",
-    "composite": 60,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 2,
-      "ethics_news_90d": 2,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "EVERSOURCE ENERGY",
-    "ticker": "ES",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "INTERNATIONAL FLAVORS & FRAGRANCES INC",
-    "ticker": "IFF",
-    "hi_grade": "scored",
-    "composite": 61,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Kraft Heinz Co",
-    "ticker": "KHC",
-    "hi_grade": "scored",
-    "composite": 62,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Verisk Analytics, Inc.",
-    "ticker": "VRSK",
-    "hi_grade": "scored",
-    "composite": 57,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 2,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "CHURCH & DWIGHT CO INC /DE/",
-    "ticker": "CHD",
-    "hi_grade": "scored",
-    "composite": 61,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "CAMPBELL'S Co",
-    "ticker": "CPB",
-    "hi_grade": "scored",
-    "composite": 60,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "FASTENAL CO",
-    "ticker": "FAST",
-    "hi_grade": "scored",
-    "composite": 58,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "MOLSON COORS BEVERAGE CO",
-    "ticker": "TAP",
-    "hi_grade": "scored",
-    "composite": 60,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "ONEOK INC /NEW/",
-    "ticker": "OKE",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 3,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "REALTY INCOME CORP",
-    "ticker": "O",
-    "hi_grade": "scored",
-    "composite": 58,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "STEEL DYNAMICS INC",
-    "ticker": "STLD",
-    "hi_grade": "scored",
-    "composite": 58,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "DTE ENERGY CO",
-    "ticker": "DTE",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 2,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "WILLIAMS COMPANIES, INC.",
-    "ticker": "WMB",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 2,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "HORTON D R INC /DE/",
-    "ticker": "DHI",
-    "hi_grade": "scored",
-    "composite": 58,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 4,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "Spotify Technology S.A.",
     "ticker": "SPOT",
     "hi_grade": "scored",
@@ -17113,81 +18024,6 @@
     "signals": {
       "layoff_news_90d": 0,
       "ai_news_90d": 4,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "W.W. GRAINGER, INC.",
-    "ticker": "GWW",
-    "hi_grade": "scored",
-    "composite": 58,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Targa Resources Corp.",
-    "ticker": "TRGP",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "EOG RESOURCES INC",
-    "ticker": "EOG",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
       "ethics_news_90d": 1,
       "total_displaced": 0,
       "material_events_180d": 0,
@@ -18453,31 +19289,6 @@
     }
   },
   {
-    "company": "Allbirds, Inc.",
-    "ticker": "BIRD",
-    "hi_grade": "scored",
-    "composite": 61,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "Toyota Motor Corporation",
     "ticker": "TM",
     "hi_grade": "scored",
@@ -18489,56 +19300,6 @@
       "layoff_news_90d": 1,
       "ai_news_90d": 1,
       "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "ALNYLAM PHARMACEUTICALS, INC.",
-    "ticker": "ALNY",
-    "hi_grade": "scored",
-    "composite": 58,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 2,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "CHARLES RIVER LABORATORIES INTERNATIONAL, INC.",
-    "ticker": "CRL",
-    "hi_grade": "scored",
-    "composite": 58,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 1,
       "total_displaced": 0,
       "material_events_180d": 0,
       "humanwashing_flags": 0,
@@ -18578,31 +19339,6 @@
     }
   },
   {
-    "company": "Dutch Bros Inc.",
-    "ticker": "BROS",
-    "hi_grade": "scored",
-    "composite": 58,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 2,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "Legend Biotech Corp",
     "ticker": "LEGN",
     "hi_grade": "scored",
@@ -18613,56 +19349,6 @@
     "signals": {
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "YETI Holdings, Inc.",
-    "ticker": "YETI",
-    "hi_grade": "scored",
-    "composite": 57,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "AeroVironment Inc",
-    "ticker": "AVAV",
-    "hi_grade": "scored",
-    "composite": 56,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 3,
       "ethics_news_90d": 1,
       "total_displaced": 0,
       "material_events_180d": 0,
@@ -18753,56 +19439,6 @@
     }
   },
   {
-    "company": "TransDigm Group INC",
-    "ticker": "TDG",
-    "hi_grade": "scored",
-    "composite": 56,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "VEEVA SYSTEMS INC",
-    "ticker": "VEEV",
-    "hi_grade": "scored",
-    "composite": 56,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "XPENG INC.",
     "ticker": "XPEV",
     "hi_grade": "scored",
@@ -18812,56 +19448,6 @@
     "factors": [],
     "signals": {
       "layoff_news_90d": 1,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "CAMDEN PROPERTY TRUST",
-    "ticker": "CPT",
-    "hi_grade": "scored",
-    "composite": 55,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "CASEYS GENERAL STORES INC",
-    "ticker": "CASY",
-    "hi_grade": "scored",
-    "composite": 55,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 1,
       "total_displaced": 0,
@@ -18903,206 +19489,6 @@
     }
   },
   {
-    "company": "Clean Energy Fuels Corp.",
-    "ticker": "CLNE",
-    "hi_grade": "scored",
-    "composite": 55,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "FEDERAL REALTY INVESTMENT TRUST",
-    "ticker": "FRT",
-    "hi_grade": "scored",
-    "composite": 55,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "GameStop Corp.",
-    "ticker": "GME",
-    "hi_grade": "scored",
-    "composite": 55,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 2,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "LKQ CORP",
-    "ticker": "LKQ",
-    "hi_grade": "scored",
-    "composite": 55,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Rent the Runway, Inc.",
-    "ticker": "RENT",
-    "hi_grade": "scored",
-    "composite": 55,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "SiteOne Landscape Supply, Inc.",
-    "ticker": "SITE",
-    "hi_grade": "scored",
-    "composite": 55,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "TE Connectivity plc",
-    "ticker": "TEL",
-    "hi_grade": "scored",
-    "composite": 55,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 3,
-      "ethics_news_90d": 2,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Vistra Corp.",
-    "ticker": "VST",
-    "hi_grade": "scored",
-    "composite": 55,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 2,
-      "ethics_news_90d": 3,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "MARSH & MCLENNAN COMPANIES, INC.",
     "ticker": "MRSH",
     "hi_grade": "scored",
@@ -19113,31 +19499,6 @@
     "signals": {
       "layoff_news_90d": 0,
       "ai_news_90d": 1,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Asana, Inc.",
-    "ticker": "ASAN",
-    "hi_grade": "scored",
-    "composite": 53,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 4,
       "ethics_news_90d": 1,
       "total_displaced": 0,
       "material_events_180d": 0,
@@ -19166,31 +19527,6 @@
       "ethics_news_90d": 1,
       "total_displaced": 0,
       "material_events_180d": 1,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "FIRST SOLAR, INC.",
-    "ticker": "FSLR",
-    "hi_grade": "scored",
-    "composite": 53,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
       "humanwashing_flags": 0,
       "media_layoffs": 0,
       "media_ethics": 0,
@@ -19278,31 +19614,6 @@
     }
   },
   {
-    "company": "MACOM Technology Solutions Holdings, Inc.",
-    "ticker": "MTSI",
-    "hi_grade": "scored",
-    "composite": 53,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 2,
-      "ethics_news_90d": 3,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "Maxeon Solar Technologies, Ltd.",
     "ticker": "MAXN",
     "hi_grade": "scored",
@@ -19328,106 +19639,6 @@
     }
   },
   {
-    "company": "Motorola Solutions, Inc.",
-    "ticker": "MSI",
-    "hi_grade": "scored",
-    "composite": 53,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 2,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Otis Worldwide Corp",
-    "ticker": "OTIS",
-    "hi_grade": "scored",
-    "composite": 53,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Qorvo, Inc.",
-    "ticker": "QRVO",
-    "hi_grade": "scored",
-    "composite": 53,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "SMITH A O CORP",
-    "ticker": "AOS",
-    "hi_grade": "scored",
-    "composite": 53,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "Solventum Corp",
     "ticker": "SOLV",
     "hi_grade": "scored",
@@ -19438,31 +19649,6 @@
     "signals": {
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "WATERS CORP /DE/",
-    "ticker": "WAT",
-    "hi_grade": "scored",
-    "composite": 53,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
       "ethics_news_90d": 1,
       "total_displaced": 0,
       "material_events_180d": 0,

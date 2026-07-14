@@ -1,21 +1,21 @@
 {
-  "timestamp": "2026-07-13T10:46:54.467584",
-  "total_issues": 475,
+  "timestamp": "2026-07-14T08:01:54.963595",
+  "total_issues": 472,
   "critical": 0,
-  "warnings": 190,
+  "warnings": 187,
   "info": 285,
   "blocked": false,
   "stats": {
     "total_companies": 730,
-    "avg_composite": 55.2,
+    "avg_composite": 55.3,
     "stdev": 7.6,
     "min_score": 13,
     "max_score": 85,
     "pct_90_100": 0.0,
-    "pct_40_70": 93.3,
+    "pct_40_70": 93.2,
     "pct_0_20": 0.7,
-    "gold_count": 2,
-    "gold_pct": 0.3,
+    "gold_count": 1,
+    "gold_pct": 0.1,
     "mssi_violations": 0,
     "single_source_dimensions": 81
   },
@@ -61,9 +61,9 @@
       "severity": "warning",
       "company": "Goldman Sachs Group, Inc.",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~61)",
+      "message": "Composite 50 doesn't match dimensions (expected ~64)",
       "value": 50,
-      "expected": 61
+      "expected": 64
     },
     {
       "layer": 1,
@@ -338,15 +338,6 @@
     {
       "layer": 1,
       "severity": "warning",
-      "company": "ROCKWELL AUTOMATION, INC",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~55)",
-      "value": 50,
-      "expected": 55
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
       "company": "SLB LIMITED/NV",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~56)",
@@ -385,9 +376,9 @@
       "severity": "warning",
       "company": "ADVANCED MICRO DEVICES INC",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~55)",
+      "message": "Composite 50 doesn't match dimensions (expected ~58)",
       "value": 50,
-      "expected": 55
+      "expected": 58
     },
     {
       "layer": 1,
@@ -424,15 +415,6 @@
       "message": "Composite 50 doesn't match dimensions (expected ~56)",
       "value": 50,
       "expected": 56
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
-      "company": "Intercontinental Exchange, Inc.",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~58)",
-      "value": 50,
-      "expected": 58
     },
     {
       "layer": 1,
@@ -2062,15 +2044,6 @@
       "message": "Only 1 data source \u2014 score may be unreliable",
       "value": 1,
       "expected": ">= 2"
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
-      "company": "Hewlett Packard Enterprise Co",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~53)",
-      "value": 50,
-      "expected": 53
     },
     {
       "layer": 1,
@@ -4048,7 +4021,7 @@
       "severity": "warning",
       "company": "target",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 86, 'U.2': 96}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 85, 'U.2': 95}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },

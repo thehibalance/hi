@@ -84,8 +84,8 @@
         },
         "sources": [
           "1% for the Planet",
-          "Glassdoor",
           "Fair Trade",
+          "Glassdoor",
           "HIBP"
         ]
       },
@@ -98,8 +98,8 @@
         },
         "sources": [
           "1% for the Planet",
-          "CDP",
-          "Fair Trade"
+          "Fair Trade",
+          "CDP"
         ]
       },
       "N": {
@@ -236,8 +236,8 @@
           "H.5": 60
         },
         "sources": [
-          "SEC",
-          "Jobs"
+          "Jobs",
+          "SEC"
         ]
       },
       "U": {
@@ -265,14 +265,14 @@
           "M.5": 85
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
-          "FTC",
-          "FEC",
           "Glassdoor",
-          "EEOC"
+          "EEOC",
+          "FTC",
+          "CFPB",
+          "HIBP",
+          "FEC"
         ]
       },
       "A": {
@@ -285,8 +285,8 @@
         "sources": [
           "iFixit",
           "SBTi",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP"
         ]
       },
       "N": {
@@ -439,12 +439,12 @@
           "M.5": 70
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
-          "FEC",
-          "Glassdoor"
+          "Glassdoor",
+          "CFPB",
+          "HIBP",
+          "FEC"
         ]
       },
       "A": {
@@ -455,10 +455,10 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
           "SBTi",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry",
+          "CDP"
         ]
       },
       "N": {
@@ -503,7 +503,7 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 10
+        "decay_index": 20
       }
     },
     "domains": [
@@ -518,7 +518,7 @@
       "snacks"
     ],
     "decay_level": "watch",
-    "decay_index": 10
+    "decay_index": 20
   },
   {
     "company": "Microsoft Corporation",
@@ -598,8 +598,8 @@
           "H.5": 30
         },
         "sources": [
-          "SEC",
-          "Jobs"
+          "Jobs",
+          "SEC"
         ]
       },
       "U": {
@@ -627,13 +627,13 @@
           "M.5": 95
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
-          "FTC",
           "Glassdoor",
-          "EEOC"
+          "EEOC",
+          "FTC",
+          "CFPB",
+          "HIBP"
         ]
       },
       "A": {
@@ -646,8 +646,8 @@
         "sources": [
           "iFixit",
           "SBTi",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP"
         ]
       },
       "N": {
@@ -803,11 +803,11 @@
           "M.5": 78
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
-          "Glassdoor"
+          "Glassdoor",
+          "CFPB",
+          "HIBP"
         ]
       },
       "A": {
@@ -818,10 +818,10 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
           "SBTi",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry",
+          "CDP"
         ]
       },
       "N": {
@@ -886,12 +886,12 @@
     "industry": "food",
     "sic": "5810",
     "sic_description": "Retail-Eating & Drinking Places",
-    "D_H": 60,
+    "D_H": 70,
     "D_U": 69,
     "D_M": 70,
     "D_A": 60,
     "D_N": 85,
-    "composite": 69,
+    "composite": 71,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -974,12 +974,12 @@
           "M.5": 65
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
-          "Fair Trade",
-          "Glassdoor"
+          "Glassdoor",
+          "CFPB",
+          "HIBP",
+          "Fair Trade"
         ]
       },
       "A": {
@@ -990,10 +990,10 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
           "SBTi",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry",
+          "CDP"
         ]
       },
       "N": {
@@ -1018,11 +1018,11 @@
       "cdp_climate": "B",
       "epa_violations": null
     },
-    "hi_balanced": true,
+    "hi_balanced": false,
     "hi_balanced_gates": {
       "dimensions": true,
       "evidence": true,
-      "momentum": true,
+      "momentum": false,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -1038,8 +1038,8 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "warning",
+        "decay_index": 30
       }
     },
     "domains": [
@@ -1050,8 +1050,8 @@
       "beverage",
       "retail"
     ],
-    "decay_level": "watch",
-    "decay_index": 20
+    "decay_level": "warning",
+    "decay_index": 30
   },
   {
     "company": "Home Depot, Inc.",
@@ -1115,8 +1115,8 @@
           "H.5": 95
         },
         "sources": [
-          "SEC",
-          "Jobs"
+          "Jobs",
+          "SEC"
         ]
       },
       "U": {
@@ -1141,11 +1141,11 @@
           "M.5": 75
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
-          "Glassdoor"
+          "Glassdoor",
+          "CFPB",
+          "HIBP"
         ]
       },
       "A": {
@@ -1157,8 +1157,8 @@
         },
         "sources": [
           "Industry",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP"
         ]
       },
       "N": {
@@ -1203,7 +1203,7 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 12
+        "decay_index": 22
       }
     },
     "domains": [
@@ -1214,7 +1214,7 @@
       "home improvement"
     ],
     "decay_level": "watch",
-    "decay_index": 12
+    "decay_index": 22
   },
   {
     "company": "NextEra Energy, Inc.",
@@ -1277,8 +1277,8 @@
           "H.5": 75
         },
         "sources": [
-          "SEC",
-          "Jobs"
+          "Jobs",
+          "SEC"
         ]
       },
       "U": {
@@ -1302,11 +1302,11 @@
           "M.5": 55
         },
         "sources": [
+          "FDA",
+          "Glassdoor",
           "CFPB",
           "HIBP",
-          "FDA",
-          "FEC",
-          "Glassdoor"
+          "FEC"
         ]
       },
       "A": {
@@ -1318,8 +1318,8 @@
         },
         "sources": [
           "Industry",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP"
         ]
       },
       "N": {
@@ -1460,11 +1460,11 @@
           "M.5": 85.0
         },
         "sources": [
-          "USDA Organic",
-          "1% for the Planet",
+          "Glassdoor",
           "B Corp",
+          "1% for the Planet",
           "Fair Trade",
-          "Glassdoor"
+          "USDA Organic"
         ]
       },
       "A": {
@@ -1475,11 +1475,11 @@
           "A.4": 73.3
         },
         "sources": [
-          "USDA Organic",
+          "B Corp",
           "CDP",
           "1% for the Planet",
-          "B Corp",
-          "Fair Trade"
+          "Fair Trade",
+          "USDA Organic"
         ]
       },
       "N": {
@@ -1627,12 +1627,12 @@
           "M.5": 82
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
+          "Glassdoor",
           "FTC",
-          "Glassdoor"
+          "CFPB",
+          "HIBP"
         ]
       },
       "A": {
@@ -1644,8 +1644,8 @@
         },
         "sources": [
           "Industry",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP"
         ]
       },
       "N": {
@@ -1809,15 +1809,15 @@
           "M.5": 68
         },
         "sources": [
-          "CFPB",
-          "USDA Organic",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
-          "FTC",
-          "Fair Trade",
           "Glassdoor",
-          "EEOC"
+          "EEOC",
+          "FTC",
+          "CFPB",
+          "HIBP",
+          "Fair Trade",
+          "USDA Organic"
         ]
       },
       "A": {
@@ -1828,11 +1828,11 @@
           "A.4": 65
         },
         "sources": [
-          "USDA Organic",
-          "CDP",
           "Industry+EPA",
+          "CDP",
           "SBTi",
-          "Industry"
+          "Industry",
+          "USDA Organic"
         ]
       },
       "N": {
@@ -1996,11 +1996,11 @@
           "M.5": 78
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
-          "Glassdoor"
+          "Glassdoor",
+          "CFPB",
+          "HIBP"
         ]
       },
       "A": {
@@ -2012,8 +2012,8 @@
         },
         "sources": [
           "Industry",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP"
         ]
       },
       "N": {
@@ -2174,9 +2174,9 @@
           "M.5": 78
         },
         "sources": [
-          "CFPB",
-          "Glassdoor",
           "FDA",
+          "Glassdoor",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -2189,8 +2189,8 @@
         },
         "sources": [
           "Industry",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP"
         ]
       },
       "N": {
@@ -2234,7 +2234,7 @@
           "N": true
         },
         "decay_level": "warning",
-        "decay_index": 38
+        "decay_index": 48
       }
     },
     "domains": [
@@ -2246,7 +2246,7 @@
       "automotive"
     ],
     "decay_level": "warning",
-    "decay_index": 38
+    "decay_index": 48
   },
   {
     "company": "Hilton Worldwide Holdings Inc.",
@@ -2481,10 +2481,10 @@
           "M.5": 90.0
         },
         "sources": [
+          "Fair Trade",
           "USDA Organic",
           "Glassdoor",
-          "B Corp",
-          "Fair Trade"
+          "B Corp"
         ]
       },
       "A": {
@@ -2495,9 +2495,9 @@
           "A.4": 86.7
         },
         "sources": [
+          "Fair Trade",
           "USDA Organic",
-          "B Corp",
-          "Fair Trade"
+          "B Corp"
         ]
       },
       "N": {
@@ -2555,7 +2555,7 @@
     "industry": "finance",
     "sic": "6211",
     "sic_description": "Security Brokers, Dealers & Flotation Companies",
-    "D_H": 17,
+    "D_H": 32,
     "D_U": 59,
     "D_M": 76,
     "D_A": 67,
@@ -2644,12 +2644,12 @@
           "M.5": 80
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
           "Glassdoor",
-          "EEOC"
+          "EEOC",
+          "CFPB",
+          "HIBP"
         ]
       },
       "A": {
@@ -2660,10 +2660,10 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
           "SBTi",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry",
+          "CDP"
         ]
       },
       "N": {
@@ -2708,8 +2708,8 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 42
+        "decay_level": "critical",
+        "decay_index": 52
       }
     },
     "domains": [
@@ -2720,8 +2720,8 @@
       "finance",
       "investment banking"
     ],
-    "decay_level": "warning",
-    "decay_index": 42
+    "decay_level": "critical",
+    "decay_index": 52
   },
   {
     "company": "US BANCORP \\DE\\",
@@ -2873,12 +2873,12 @@
     "industry": "finance",
     "sic": "6411",
     "sic_description": "Insurance Agents, Brokers & Service",
-    "D_H": 42,
+    "D_H": 52,
     "D_U": 51,
     "D_M": 64,
     "D_A": 64,
     "D_N": 70,
-    "composite": 58,
+    "composite": 60,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -2946,8 +2946,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -2986,7 +2986,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": true,
+      "momentum": false,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -3002,12 +3002,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 23
+        "decay_level": "warning",
+        "decay_index": 33
       }
     },
-    "decay_level": "watch",
-    "decay_index": 23
+    "decay_level": "warning",
+    "decay_index": 33
   },
   {
     "company": "CAPITAL ONE FINANCIAL CORP",
@@ -3257,13 +3257,13 @@
           "M.5": 88
         },
         "sources": [
-          "CFPB",
-          "USDA Organic",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
+          "Glassdoor",
+          "CFPB",
+          "HIBP",
           "Fair Trade",
-          "Glassdoor"
+          "USDA Organic"
         ]
       },
       "A": {
@@ -3274,11 +3274,11 @@
           "A.4": 65
         },
         "sources": [
-          "USDA Organic",
-          "CDP",
           "Industry+EPA",
+          "CDP",
           "SBTi",
-          "Industry"
+          "Industry",
+          "USDA Organic"
         ]
       },
       "N": {
@@ -3621,8 +3621,8 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
     "domains": [
@@ -3632,8 +3632,8 @@
       "food",
       "consumer goods"
     ],
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "INTERNATIONAL BUSINESS MACHINES CORP",
@@ -3894,12 +3894,12 @@
           "M.5": 80
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
+          "Glassdoor",
           "FTC",
-          "Glassdoor"
+          "CFPB",
+          "HIBP"
         ]
       },
       "A": {
@@ -4059,11 +4059,11 @@
           "M.5": 70
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
-          "Glassdoor"
+          "Glassdoor",
+          "CFPB",
+          "HIBP"
         ]
       },
       "A": {
@@ -4219,11 +4219,11 @@
           "M.5": 80.0
         },
         "sources": [
-          "CFPB",
-          "HIBP",
           "FDA",
+          "Glassdoor",
           "B Corp",
-          "Glassdoor"
+          "CFPB",
+          "HIBP"
         ]
       },
       "A": {
@@ -4679,10 +4679,10 @@
           "M.5": 88
         },
         "sources": [
-          "CFPB",
-          "Glassdoor",
           "SEC DEF 14A",
-          "FDA"
+          "FDA",
+          "Glassdoor",
+          "CFPB"
         ]
       },
       "A": {
@@ -5026,7 +5026,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": true,
+      "momentum": false,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -5042,15 +5042,15 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "warning",
+        "decay_index": 30
       }
     },
     "domains": [
       "bankofamerica.com"
     ],
-    "decay_level": "watch",
-    "decay_index": 20,
+    "decay_level": "warning",
+    "decay_index": 30,
     "tags": [
       "finance",
       "banking"
@@ -5135,8 +5135,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -5277,8 +5277,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -5572,8 +5572,8 @@
         "sources": [
           "FDA",
           "CFPB",
-          "EEOC",
-          "HIBP"
+          "HIBP",
+          "EEOC"
         ]
       },
       "A": {
@@ -6010,8 +6010,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -6206,12 +6206,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "watch",
+        "decay_index": 15
       }
     },
-    "decay_level": "stable",
-    "decay_index": 5
+    "decay_level": "watch",
+    "decay_index": 15
   },
   {
     "company": "Medtronic plc",
@@ -6436,8 +6436,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -6736,8 +6736,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -6878,9 +6878,9 @@
           "M.5": 70
         },
         "sources": [
+          "Fair Trade",
           "USDA Organic",
-          "Glassdoor",
-          "Fair Trade"
+          "Glassdoor"
         ]
       },
       "A": {
@@ -6891,9 +6891,9 @@
           "A.4": 65.0
         },
         "sources": [
+          "Fair Trade",
           "USDA Organic",
-          "CDP",
-          "Fair Trade"
+          "CDP"
         ]
       },
       "N": {
@@ -7025,8 +7025,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -7167,8 +7167,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -7223,12 +7223,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "watch",
+        "decay_index": 15
       }
     },
-    "decay_level": "stable",
-    "decay_index": 5
+    "decay_level": "watch",
+    "decay_index": 15
   },
   {
     "company": "AbbVie Inc.",
@@ -7458,8 +7458,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -7604,8 +7604,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -8041,9 +8041,9 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "USDA Organic",
           "FDA",
+          "USDA Organic",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -8055,9 +8055,9 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
           "USDA Organic",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -8249,14 +8249,14 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 15
+        "decay_index": 25
       }
     },
     "domains": [
       "cloudflare.com"
     ],
     "decay_level": "watch",
-    "decay_index": 15
+    "decay_index": 25
   },
   {
     "company": "Coinbase Global, Inc.",
@@ -8492,9 +8492,9 @@
           "M.5": 65.0
         },
         "sources": [
-          "CFPB",
-          "USDA Organic",
           "FDA",
+          "USDA Organic",
+          "CFPB",
           "B Corp"
         ]
       },
@@ -8506,9 +8506,9 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
           "USDA Organic",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -9071,8 +9071,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -9506,8 +9506,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
           "FDA",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -9808,8 +9808,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -10392,9 +10392,9 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -10450,14 +10450,14 @@
           "N": true
         },
         "decay_level": "critical",
-        "decay_index": 63
+        "decay_index": 73
       }
     },
     "domains": [
       "morganstanley.com"
     ],
     "decay_level": "critical",
-    "decay_index": 63
+    "decay_index": 73
   },
   {
     "company": "PPG INDUSTRIES INC",
@@ -10538,8 +10538,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -10594,12 +10594,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "SYNOPSYS INC",
@@ -10820,8 +10820,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -11166,12 +11166,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "ALLSTATE CORP",
@@ -11429,15 +11429,15 @@
           "M.5": 72
         },
         "sources": [
-          "CFPB",
-          "USDA Organic",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
-          "FTC",
-          "Fair Trade",
           "Glassdoor",
-          "EEOC"
+          "EEOC",
+          "FTC",
+          "CFPB",
+          "HIBP",
+          "Fair Trade",
+          "USDA Organic"
         ]
       },
       "A": {
@@ -11448,11 +11448,11 @@
           "A.4": 40
         },
         "sources": [
-          "USDA Organic",
-          "CDP",
-          "Industry+EPA",
           "iFixit",
-          "SBTi"
+          "Industry+EPA",
+          "CDP",
+          "SBTi",
+          "USDA Organic"
         ]
       },
       "N": {
@@ -11497,7 +11497,7 @@
           "N": true
         },
         "decay_level": "critical",
-        "decay_index": 82
+        "decay_index": 92
       }
     },
     "domains": [
@@ -11517,7 +11517,7 @@
       "cloud"
     ],
     "decay_level": "critical",
-    "decay_index": 82
+    "decay_index": 92
   },
   {
     "company": "AMEREN CORP",
@@ -11652,12 +11652,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "American Water Works Company, Inc.",
@@ -11738,8 +11738,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -11794,12 +11794,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "AMGEN INC",
@@ -11882,8 +11882,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -12367,8 +12367,8 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
     "domains": [
@@ -12378,8 +12378,8 @@
       "retail",
       "electronics"
     ],
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "BlackRock, Inc.",
@@ -12605,8 +12605,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -12785,7 +12785,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": true,
+      "momentum": false,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -12801,12 +12801,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "warning",
+        "decay_index": 35
       }
     },
-    "decay_level": "watch",
-    "decay_index": 25
+    "decay_level": "warning",
+    "decay_index": 35
   },
   {
     "company": "CHIPOTLE MEXICAN GRILL INC",
@@ -12943,8 +12943,8 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
     "domains": [
@@ -12954,8 +12954,8 @@
       "food",
       "restaurant"
     ],
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Cigna Group",
@@ -13189,9 +13189,9 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
           "FDA",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -13536,12 +13536,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "DELTA AIR LINES, INC.",
@@ -13627,8 +13627,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
           "FDA",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -13920,8 +13920,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -14349,8 +14349,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -14495,9 +14495,9 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
+          "FDA",
           "USDA Organic",
-          "FDA"
+          "CFPB"
         ]
       },
       "A": {
@@ -14508,9 +14508,9 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
           "USDA Organic",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -14696,14 +14696,14 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 19
+        "decay_index": 29
       }
     },
     "domains": [
       "humana.com"
     ],
     "decay_level": "watch",
-    "decay_index": 19
+    "decay_index": 29
   },
   {
     "company": "LINDE PLC",
@@ -14838,12 +14838,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "watch",
+        "decay_index": 15
       }
     },
-    "decay_level": "stable",
-    "decay_index": 5
+    "decay_level": "watch",
+    "decay_index": 15
   },
   {
     "company": "OLD DOMINION FREIGHT LINE, INC.",
@@ -14924,8 +14924,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -15072,9 +15072,9 @@
           "M.5": 78
         },
         "sources": [
-          "CFPB",
-          "Glassdoor",
           "FDA",
+          "Glassdoor",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -15420,12 +15420,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "REGENERON PHARMACEUTICALS, INC.",
@@ -15506,8 +15506,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -15858,17 +15858,17 @@
     "industry": "tech",
     "sic": "3829",
     "sic_description": "Measuring & Controlling Devices, NEC",
-    "D_H": 37,
+    "D_H": 47,
     "D_U": 52,
     "D_M": 64,
     "D_A": 52,
     "D_N": 70,
-    "composite": 50,
+    "composite": 57,
     "hi_grade": "scored",
     "satire": "",
-    "floor_triggered": true,
+    "floor_triggered": false,
     "balance_floor": false,
-    "triggering_dimension": "H",
+    "triggering_dimension": null,
     "confidence": "Partial",
     "spec_version": "1.2.1",
     "data_sources": [
@@ -15931,8 +15931,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -15971,7 +15971,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": true,
+      "momentum": false,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -15987,12 +15987,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "warning",
+        "decay_index": 35
       }
     },
-    "decay_level": "watch",
-    "decay_index": 25
+    "decay_level": "warning",
+    "decay_index": 35
   },
   {
     "company": "ROSS STORES, INC.",
@@ -16216,8 +16216,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -16358,8 +16358,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -16414,15 +16414,15 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
     "domains": [
       "slb.com"
     ],
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Snowflake Inc.",
@@ -16558,14 +16558,14 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 15
+        "decay_index": 25
       }
     },
     "domains": [
       "snowflake.com"
     ],
     "decay_level": "watch",
-    "decay_index": 15
+    "decay_index": 25
   },
   {
     "company": "SOUTHERN CO",
@@ -16929,8 +16929,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -17378,8 +17378,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
           "FDA",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -17392,8 +17392,8 @@
         },
         "sources": [
           "Industry",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP"
         ]
       },
       "N": {
@@ -17458,7 +17458,7 @@
     "industry": "tech",
     "sic": "3674",
     "sic_description": "Semiconductors & Related Devices",
-    "D_H": 22,
+    "D_H": 37,
     "D_U": 52,
     "D_M": 64,
     "D_A": 61,
@@ -17534,9 +17534,9 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -17593,15 +17593,15 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 42
+        "decay_level": "critical",
+        "decay_index": 52
       }
     },
     "domains": [
       "amd.com"
     ],
-    "decay_level": "warning",
-    "decay_index": 42
+    "decay_level": "critical",
+    "decay_index": 52
   },
   {
     "company": "AMERICAN ELECTRIC POWER CO INC",
@@ -18162,12 +18162,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Caterpillar",
@@ -18175,7 +18175,7 @@
     "industry": "default",
     "sic": "",
     "sic_description": "",
-    "D_H": 40,
+    "D_H": 50,
     "D_U": 61,
     "D_M": 64,
     "D_A": 52,
@@ -18247,8 +18247,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -18285,7 +18285,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": true,
+      "momentum": false,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -18301,16 +18301,16 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 23
+        "decay_level": "warning",
+        "decay_index": 33
       }
     },
     "domains": [
       "caterpillar.com",
       "cat.com"
     ],
-    "decay_level": "watch",
-    "decay_index": 23
+    "decay_level": "warning",
+    "decay_index": 33
   },
   {
     "company": "Celanese Corp",
@@ -18585,12 +18585,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "CONAGRA BRANDS INC.",
@@ -18671,8 +18671,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -18956,8 +18956,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -19098,8 +19098,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -19437,12 +19437,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "HUBSPOT INC",
@@ -19523,8 +19523,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -19808,8 +19808,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -19950,8 +19950,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -20019,17 +20019,17 @@
     "industry": "finance",
     "sic": "6200",
     "sic_description": "Security & Commodity Brokers, Dealers, Exchanges & Services",
-    "D_H": 41,
+    "D_H": 51,
     "D_U": 51,
     "D_M": 64,
     "D_A": 64,
     "D_N": 70,
-    "composite": 50,
+    "composite": 60,
     "hi_grade": "scored",
     "satire": "",
-    "floor_triggered": true,
+    "floor_triggered": false,
     "balance_floor": false,
-    "triggering_dimension": "H",
+    "triggering_dimension": null,
     "confidence": "Partial",
     "spec_version": "1.2.1",
     "data_sources": [
@@ -20092,8 +20092,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -20132,7 +20132,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": true,
+      "momentum": false,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -20148,12 +20148,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "warning",
+        "decay_index": 30
       }
     },
-    "decay_level": "watch",
-    "decay_index": 20
+    "decay_level": "warning",
+    "decay_index": 30
   },
   {
     "company": "INTERNATIONAL FLAVORS & FRAGRANCES INC",
@@ -20234,8 +20234,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -20290,12 +20290,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "INTUITIVE SURGICAL INC",
@@ -20520,8 +20520,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
           "FDA",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -20577,8 +20577,8 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
     "domains": [
@@ -20588,8 +20588,8 @@
       "food",
       "consumer goods"
     ],
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "LOWES COMPANIES INC",
@@ -21261,8 +21261,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -22121,8 +22121,8 @@
         "sources": [
           "FDA",
           "CFPB",
-          "EEOC",
-          "HIBP"
+          "HIBP",
+          "EEOC"
         ]
       },
       "A": {
@@ -22178,7 +22178,7 @@
           "N": true
         },
         "decay_level": "critical",
-        "decay_index": 70
+        "decay_index": 80
       }
     },
     "domains": [
@@ -22189,7 +22189,7 @@
       "shipping"
     ],
     "decay_level": "critical",
-    "decay_index": 70
+    "decay_index": 80
   },
   {
     "company": "Verisk Analytics, Inc.",
@@ -22270,8 +22270,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -22326,12 +22326,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Walt Disney Company",
@@ -22558,8 +22558,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -22840,8 +22840,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -23331,12 +23331,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 4
+        "decay_level": "watch",
+        "decay_index": 14
       }
     },
-    "decay_level": "stable",
-    "decay_index": 4
+    "decay_level": "watch",
+    "decay_index": 14
   },
   {
     "company": "ANALOG DEVICES INC",
@@ -23417,8 +23417,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -24036,15 +24036,15 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
     "domains": [
       "churchdwight.com"
     ],
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "CITIGROUP INC",
@@ -24415,8 +24415,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -24557,8 +24557,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -24629,12 +24629,12 @@
     "industry": "transportation",
     "sic": "4011",
     "sic_description": "Railroads, Line-Haul Operating",
-    "D_H": 43,
+    "D_H": 53,
     "D_U": 55,
     "D_M": 64,
     "D_A": 51,
     "D_N": 70,
-    "composite": 57,
+    "composite": 59,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -24702,8 +24702,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -24742,7 +24742,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": true,
+      "momentum": false,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -24758,12 +24758,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 28
+        "decay_level": "warning",
+        "decay_index": 38
       }
     },
-    "decay_level": "watch",
-    "decay_index": 28
+    "decay_level": "warning",
+    "decay_index": 38
   },
   {
     "company": "Duke Energy CORP",
@@ -24844,8 +24844,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -25129,8 +25129,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -25185,12 +25185,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 9
+        "decay_level": "watch",
+        "decay_index": 19
       }
     },
-    "decay_level": "stable",
-    "decay_index": 9
+    "decay_level": "watch",
+    "decay_index": 19
   },
   {
     "company": "FIRSTENERGY CORP",
@@ -25558,8 +25558,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -25731,13 +25731,13 @@
           "M.5": 88
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
-          "FTC",
           "Glassdoor",
-          "EEOC"
+          "EEOC",
+          "FTC",
+          "CFPB",
+          "HIBP"
         ]
       },
       "A": {
@@ -25748,9 +25748,9 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
           "SBTi",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -26035,8 +26035,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -26322,8 +26322,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -26467,8 +26467,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -27316,8 +27316,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -27462,8 +27462,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
           "FDA",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -27519,8 +27519,8 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "watch",
+        "decay_index": 15
       }
     },
     "domains": [
@@ -27530,8 +27530,8 @@
       "transportation",
       "airline"
     ],
-    "decay_level": "stable",
-    "decay_index": 5
+    "decay_level": "watch",
+    "decay_index": 15
   },
   {
     "company": "T-Mobile US, Inc.",
@@ -27619,8 +27619,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
           "FDA",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -27768,8 +27768,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -28073,9 +28073,9 @@
           "M.5": 75
         },
         "sources": [
-          "CFPB",
-          "Glassdoor",
           "FDA",
+          "Glassdoor",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -28226,8 +28226,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -28648,8 +28648,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -28793,8 +28793,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -28990,11 +28990,11 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 15
+        "decay_index": 25
       }
     },
     "decay_level": "watch",
-    "decay_index": 15
+    "decay_index": 25
   },
   {
     "company": "AVALONBAY COMMUNITIES INC",
@@ -29409,16 +29409,16 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
     "domains": [
       "campbellsoupcompany.com",
       "campbells.com"
     ],
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "CENTENE CORP",
@@ -29944,8 +29944,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -30089,8 +30089,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
           "FDA",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -30240,8 +30240,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -30436,12 +30436,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Ford Motor Company",
@@ -30799,8 +30799,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -31085,8 +31085,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -31520,8 +31520,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -31802,8 +31802,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -32084,8 +32084,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -32140,12 +32140,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Monster Beverage Corp",
@@ -32369,8 +32369,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -32511,8 +32511,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -32707,12 +32707,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Palo Alto Networks Inc",
@@ -32793,8 +32793,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -33014,7 +33014,7 @@
           "N": true
         },
         "decay_level": "critical",
-        "decay_index": 63
+        "decay_index": 73
       }
     },
     "domains": [
@@ -33027,7 +33027,7 @@
       "payments"
     ],
     "decay_level": "critical",
-    "decay_index": 63
+    "decay_index": 73
   },
   {
     "company": "REALTY INCOME CORP",
@@ -33162,12 +33162,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "SHERWIN WILLIAMS CO",
@@ -33248,8 +33248,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -33584,12 +33584,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "TEXAS INSTRUMENTS INC",
@@ -33956,8 +33956,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -34276,8 +34276,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
           "FDA",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -34426,8 +34426,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -34883,9 +34883,9 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "Glassdoor",
           "FDA",
+          "Glassdoor",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -34898,8 +34898,8 @@
         },
         "sources": [
           "Industry",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP"
         ]
       },
       "N": {
@@ -35178,8 +35178,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -35234,12 +35234,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Eaton Corp plc",
@@ -35320,8 +35320,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -35376,12 +35376,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 8
+        "decay_level": "watch",
+        "decay_index": 18
       }
     },
-    "decay_level": "stable",
-    "decay_index": 8
+    "decay_level": "watch",
+    "decay_index": 18
   },
   {
     "company": "FISERV INC",
@@ -35927,7 +35927,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": true,
+      "momentum": false,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -35943,15 +35943,15 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 23
+        "decay_level": "warning",
+        "decay_index": 33
       }
     },
     "domains": [
       "kimberly-clark.com"
     ],
-    "decay_level": "watch",
-    "decay_index": 23
+    "decay_level": "warning",
+    "decay_index": 33
   },
   {
     "company": "KLA CORP",
@@ -36032,8 +36032,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -36174,8 +36174,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -36316,8 +36316,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -36651,7 +36651,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": true,
+      "momentum": false,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -36667,8 +36667,8 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 27
+        "decay_level": "warning",
+        "decay_index": 37
       }
     },
     "domains": [
@@ -36678,8 +36678,8 @@
       "technology",
       "social media"
     ],
-    "decay_level": "watch",
-    "decay_index": 27
+    "decay_level": "warning",
+    "decay_index": 37
   },
   {
     "company": "SHOPIFY INC.",
@@ -36910,8 +36910,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -37055,8 +37055,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -37341,8 +37341,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
           "FDA",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -37546,12 +37546,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "AMERICAN TOWER CORP /MA/",
@@ -37973,14 +37973,14 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 15
+        "decay_index": 25
       }
     },
     "domains": [
       "conocophillips.com"
     ],
     "decay_level": "watch",
-    "decay_index": 15
+    "decay_index": 25
   },
   {
     "company": "CROWN CASTLE INC.",
@@ -38255,15 +38255,15 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 9
+        "decay_level": "watch",
+        "decay_index": 19
       }
     },
     "domains": [
       "dominos.com"
     ],
-    "decay_level": "stable",
-    "decay_index": 9
+    "decay_level": "watch",
+    "decay_index": 19
   },
   {
     "company": "DuPont de Nemours, Inc.",
@@ -38360,8 +38360,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -38695,12 +38695,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "LENNAR CORP /NEW/",
@@ -39086,8 +39086,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -39226,8 +39226,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -39366,8 +39366,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -39506,8 +39506,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -39646,8 +39646,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -39789,8 +39789,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -39932,8 +39932,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
           "FDA",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -40081,8 +40081,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -40234,8 +40234,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -40378,8 +40378,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -40435,14 +40435,14 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 12
+        "decay_index": 22
       }
     },
     "domains": [
       "twilio.com"
     ],
     "decay_level": "watch",
-    "decay_index": 12
+    "decay_index": 22
   },
   {
     "company": "W.W. GRAINGER, INC.",
@@ -40521,8 +40521,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -40577,12 +40577,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Warner Bros. Discovery, Inc.",
@@ -40661,8 +40661,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -40826,8 +40826,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
           "FDA",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -40974,8 +40974,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -41129,8 +41129,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -41186,7 +41186,7 @@
           "N": true
         },
         "decay_level": "warning",
-        "decay_index": 30
+        "decay_index": 40
       }
     },
     "domains": [
@@ -41195,7 +41195,7 @@
       "kayak.com"
     ],
     "decay_level": "warning",
-    "decay_index": 30
+    "decay_index": 40
   },
   {
     "company": "Broadcom Inc.",
@@ -41274,8 +41274,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -41417,8 +41417,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -41473,12 +41473,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 4
+        "decay_level": "watch",
+        "decay_index": 14
       }
     },
-    "decay_level": "stable",
-    "decay_index": 4
+    "decay_level": "watch",
+    "decay_index": 14
   },
   {
     "company": "Match Group, Inc.",
@@ -41557,8 +41557,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -41697,8 +41697,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -41753,12 +41753,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "VICI PROPERTIES INC.",
@@ -41837,8 +41837,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -41977,8 +41977,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -42257,8 +42257,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -42397,8 +42397,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -42537,8 +42537,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -42593,15 +42593,15 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
     "domains": [
       "eogresources.com"
     ],
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Marathon Petroleum Corp",
@@ -42680,8 +42680,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -42948,8 +42948,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -43005,11 +43005,11 @@
           "N": true
         },
         "decay_level": "warning",
-        "decay_index": 30
+        "decay_index": 40
       }
     },
     "decay_level": "warning",
-    "decay_index": 30
+    "decay_index": 40
   },
   {
     "company": "VALERO ENERGY CORP/TX",
@@ -43088,8 +43088,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -43244,8 +43244,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
           "FDA",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -43321,12 +43321,12 @@
     "industry": "tech",
     "sic": "7370",
     "sic_description": "Services-Computer Programming, Data Processing, Etc.",
-    "D_H": 15,
+    "D_H": 30,
     "D_U": 45,
     "D_M": 59,
     "D_A": 52,
     "D_N": 65,
-    "composite": 47,
+    "composite": 50,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": true,
@@ -43406,8 +43406,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
           "FDA",
+          "CFPB",
           "HIBP"
         ]
       },
@@ -43463,8 +43463,8 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 48
+        "decay_level": "critical",
+        "decay_index": 58
       }
     },
     "domains": [
@@ -43475,8 +43475,8 @@
       "technology",
       "social media"
     ],
-    "decay_level": "warning",
-    "decay_index": 48
+    "decay_level": "critical",
+    "decay_index": 58
   },
   {
     "company": "Boeing Company",
@@ -43587,10 +43587,10 @@
           "M.5": 45
         },
         "sources": [
-          "CFPB",
-          "Glassdoor",
           "SEC DEF 14A",
-          "FDA"
+          "FDA",
+          "Glassdoor",
+          "CFPB"
         ]
       },
       "A": {
@@ -43602,8 +43602,8 @@
         },
         "sources": [
           "Industry",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP"
         ]
       },
       "N": {
@@ -43748,10 +43748,10 @@
           "M.5": 80
         },
         "sources": [
-          "CFPB",
-          "Glassdoor",
           "SEC DEF 14A",
-          "FDA"
+          "FDA",
+          "Glassdoor",
+          "CFPB"
         ]
       },
       "A": {
@@ -43762,10 +43762,10 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
           "SBTi",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry",
+          "CDP"
         ]
       },
       "N": {
@@ -43811,14 +43811,14 @@
           "N": true
         },
         "decay_level": "warning",
-        "decay_index": 33
+        "decay_index": 43
       }
     },
     "domains": [
       "chevron.com"
     ],
     "decay_level": "warning",
-    "decay_index": 33
+    "decay_index": 43
   },
   {
     "company": "HUNTINGTON INGALLS INDUSTRIES, INC.",
@@ -43911,8 +43911,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -44249,11 +44249,11 @@
           "M.5": 82
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
-          "Glassdoor"
+          "Glassdoor",
+          "CFPB",
+          "HIBP"
         ]
       },
       "A": {
@@ -44265,8 +44265,8 @@
         },
         "sources": [
           "Industry",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP"
         ]
       },
       "N": {
@@ -44311,7 +44311,7 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 18
+        "decay_index": 28
       }
     },
     "domains": [
@@ -44322,7 +44322,7 @@
       "aerospace"
     ],
     "decay_level": "watch",
-    "decay_index": 18
+    "decay_index": 28
   },
   {
     "company": "Meta Platforms, Inc.",
@@ -44438,14 +44438,14 @@
           "M.5": 75
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
-          "SEC Form 4",
           "FDA",
-          "FTC",
           "Glassdoor",
-          "EEOC"
+          "SEC Form 4",
+          "EEOC",
+          "FTC",
+          "CFPB",
+          "HIBP"
         ]
       },
       "A": {
@@ -44458,8 +44458,8 @@
         "sources": [
           "iFixit",
           "SBTi",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP"
         ]
       },
       "N": {
@@ -44613,11 +44613,11 @@
           "M.5": 97
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
-          "Glassdoor"
+          "Glassdoor",
+          "CFPB",
+          "HIBP"
         ]
       },
       "A": {
@@ -44630,8 +44630,8 @@
         "sources": [
           "iFixit",
           "SBTi",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP"
         ]
       },
       "N": {
@@ -44785,8 +44785,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -44950,8 +44950,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -45110,14 +45110,14 @@
           "M.5": 68
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
-          "SEC Form 4",
           "FDA",
-          "FTC",
           "Glassdoor",
-          "EEOC"
+          "SEC Form 4",
+          "EEOC",
+          "FTC",
+          "CFPB",
+          "HIBP"
         ]
       },
       "A": {
@@ -45130,8 +45130,8 @@
         "sources": [
           "iFixit",
           "SBTi",
-          "CDP",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP"
         ]
       },
       "N": {
@@ -45288,8 +45288,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -45444,8 +45444,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -45604,8 +45604,8 @@
           "M.5": 50
         },
         "sources": [
-          "CFPB",
-          "FDA"
+          "FDA",
+          "CFPB"
         ]
       },
       "A": {
@@ -56071,9 +56071,9 @@
         },
         "sources": [
           "1% for the Planet",
-          "B Corp",
           "Fair Trade",
-          "HIBP"
+          "HIBP",
+          "B Corp"
         ]
       },
       "A": {
@@ -56085,8 +56085,8 @@
         },
         "sources": [
           "1% for the Planet",
-          "B Corp",
-          "Fair Trade"
+          "Fair Trade",
+          "B Corp"
         ]
       },
       "N": {
@@ -56222,8 +56222,8 @@
         },
         "sources": [
           "1% for the Planet",
-          "B Corp",
-          "HIBP"
+          "HIBP",
+          "B Corp"
         ]
       },
       "A": {
@@ -56235,8 +56235,8 @@
         },
         "sources": [
           "1% for the Planet",
-          "B Corp",
-          "Climate Neutral"
+          "Climate Neutral",
+          "B Corp"
         ]
       },
       "N": {
@@ -56279,8 +56279,8 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
     "domains": [
@@ -56290,8 +56290,8 @@
       "apparel",
       "footwear"
     ],
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "BEYOND MEAT, INC.",
@@ -57104,12 +57104,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "AstraZeneca plc",
@@ -57747,12 +57747,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "watch",
+        "decay_index": 15
       }
     },
-    "decay_level": "stable",
-    "decay_index": 5
+    "decay_level": "watch",
+    "decay_index": 15
   },
   {
     "company": "Celsius Holdings, Inc.",
@@ -58006,12 +58006,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Crinetics Pharmaceuticals, Inc.",
@@ -58649,12 +58649,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "EASTMAN CHEMICAL CO",
@@ -60326,8 +60326,8 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "watch",
+        "decay_index": 15
       }
     },
     "domains": [
@@ -60337,8 +60337,8 @@
       "apparel",
       "athletic"
     ],
-    "decay_level": "stable",
-    "decay_index": 5
+    "decay_level": "watch",
+    "decay_index": 15
   },
   {
     "company": "Novartis AG",
@@ -62352,8 +62352,8 @@
           "M.5": 65.0
         },
         "sources": [
-          "B Corp",
-          "HIBP"
+          "HIBP",
+          "B Corp"
         ]
       },
       "A": {
@@ -62546,8 +62546,8 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
     "domains": [
@@ -62557,8 +62557,8 @@
       "outdoor",
       "housewares"
     ],
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Accenture plc",
@@ -62824,12 +62824,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "ALASKA AIR GROUP, INC.",
@@ -63081,14 +63081,14 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 15
+        "decay_index": 25
       }
     },
     "domains": [
       "amctheatres.com"
     ],
     "decay_level": "watch",
-    "decay_index": 15
+    "decay_index": 25
   },
   {
     "company": "Amcor plc",
@@ -63340,11 +63340,11 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 12
+        "decay_index": 22
       }
     },
     "decay_level": "watch",
-    "decay_index": 12
+    "decay_index": 22
   },
   {
     "company": "BHP Group Limited",
@@ -64256,12 +64256,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 4
+        "decay_level": "watch",
+        "decay_index": 14
       }
     },
-    "decay_level": "stable",
-    "decay_index": 4
+    "decay_level": "watch",
+    "decay_index": 14
   },
   {
     "company": "Corteva, Inc.",
@@ -66322,12 +66322,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 9
+        "decay_level": "watch",
+        "decay_index": 19
       }
     },
-    "decay_level": "stable",
-    "decay_index": 9
+    "decay_level": "watch",
+    "decay_index": 19
   },
   {
     "company": "Momentus Inc.",
@@ -67487,7 +67487,7 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 13
+        "decay_index": 23
       }
     },
     "domains": [
@@ -67498,7 +67498,7 @@
       "fintech"
     ],
     "decay_level": "watch",
-    "decay_index": 13
+    "decay_index": 23
   },
   {
     "company": "Rocket Lab Corp",
@@ -68009,12 +68009,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "TREX CO INC",
@@ -68272,15 +68272,15 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
     "domains": [
       "veeva.com"
     ],
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Virgin Galactic Holdings, Inc",
@@ -69302,12 +69302,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 4
+        "decay_level": "watch",
+        "decay_index": 14
       }
     },
-    "decay_level": "stable",
-    "decay_index": 4
+    "decay_level": "watch",
+    "decay_index": 14
   },
   {
     "company": "AMERIPRISE FINANCIAL INC",
@@ -70202,12 +70202,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "watch",
+        "decay_index": 15
       }
     },
-    "decay_level": "stable",
-    "decay_index": 5
+    "decay_level": "watch",
+    "decay_index": 15
   },
   {
     "company": "Bath & Body Works, Inc.",
@@ -70331,11 +70331,11 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 15
+        "decay_index": 25
       }
     },
     "decay_level": "watch",
-    "decay_index": 15
+    "decay_index": 25
   },
   {
     "company": "BED BATH & BEYOND, INC.",
@@ -70714,12 +70714,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "watch",
+        "decay_index": 15
       }
     },
-    "decay_level": "stable",
-    "decay_index": 5
+    "decay_level": "watch",
+    "decay_index": 15
   },
   {
     "company": "Builders FirstSource, Inc.",
@@ -70970,12 +70970,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "CASEYS GENERAL STORES INC",
@@ -71098,12 +71098,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Cencora, Inc.",
@@ -71482,12 +71482,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "CLEANSPARK, INC.",
@@ -72768,12 +72768,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "FIFTH THIRD BANCORP",
@@ -73280,15 +73280,15 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
     "domains": [
       "gamestop.com"
     ],
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "GLOBE LIFE INC.",
@@ -73552,17 +73552,17 @@
     "industry": "tech",
     "sic": "3570",
     "sic_description": "Computer & office Equipment",
-    "D_H": 35,
+    "D_H": 45,
     "D_U": 56,
     "D_M": 57,
     "D_A": 47,
     "D_N": 70,
-    "composite": 50,
+    "composite": 55,
     "hi_grade": "scored",
     "satire": "",
-    "floor_triggered": true,
+    "floor_triggered": false,
     "balance_floor": false,
-    "triggering_dimension": "H",
+    "triggering_dimension": null,
     "confidence": "Limited",
     "spec_version": "1.2.1",
     "data_sources": [
@@ -73656,7 +73656,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": true,
+      "momentum": false,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -73672,12 +73672,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 29
+        "decay_level": "warning",
+        "decay_index": 39
       }
     },
-    "decay_level": "watch",
-    "decay_index": 29
+    "decay_level": "warning",
+    "decay_index": 39
   },
   {
     "company": "HP INC",
@@ -74586,12 +74586,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 8
+        "decay_level": "watch",
+        "decay_index": 18
       }
     },
-    "decay_level": "stable",
-    "decay_index": 8
+    "decay_level": "watch",
+    "decay_index": 18
   },
   {
     "company": "KOHLS Corp",
@@ -74970,12 +74970,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "M&T BANK CORP",
@@ -77018,12 +77018,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Riot Platforms, Inc.",
@@ -77542,12 +77542,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "SoFi Technologies, Inc.",
@@ -78449,12 +78449,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "TRACTOR SUPPLY CO /DE/",
@@ -79217,12 +79217,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "WEIS MARKETS INC",
@@ -79873,8 +79873,8 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 4
+        "decay_level": "watch",
+        "decay_index": 14
       }
     },
     "domains": [
@@ -79884,8 +79884,8 @@
       "education",
       "technology"
     ],
-    "decay_level": "stable",
-    "decay_index": 4
+    "decay_level": "watch",
+    "decay_index": 14
   },
   {
     "company": "DoorDash, Inc.",
@@ -82011,17 +82011,17 @@
     "industry": "tech",
     "sic": "3576",
     "sic_description": "Computer Communications Equipment",
-    "D_H": 35,
+    "D_H": 45,
     "D_U": 47,
     "D_M": 57,
     "D_A": 47,
     "D_N": 70,
-    "composite": 50,
+    "composite": 53,
     "hi_grade": "scored",
     "satire": "",
-    "floor_triggered": true,
+    "floor_triggered": false,
     "balance_floor": false,
-    "triggering_dimension": "H",
+    "triggering_dimension": null,
     "confidence": "Limited",
     "spec_version": "1.2.1",
     "data_sources": [
@@ -82110,7 +82110,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": true,
+      "momentum": false,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -82126,12 +82126,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 25
+        "decay_level": "warning",
+        "decay_index": 35
       }
     },
-    "decay_level": "watch",
-    "decay_index": 25
+    "decay_level": "warning",
+    "decay_index": 35
   },
   {
     "company": "Array Technologies, Inc.",
@@ -82382,12 +82382,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "ASML Holding N.V.",
@@ -83666,11 +83666,11 @@
           "N": true
         },
         "decay_level": "critical",
-        "decay_index": 52
+        "decay_index": 62
       }
     },
     "decay_level": "critical",
-    "decay_index": 52
+    "decay_index": 62
   },
   {
     "company": "ChargePoint Holdings, Inc.",
@@ -84948,15 +84948,15 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
     "domains": [
       "firstsolar.com"
     ],
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Five9, Inc.",
@@ -86619,12 +86619,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "watch",
+        "decay_index": 15
       }
     },
-    "decay_level": "stable",
-    "decay_index": 5
+    "decay_level": "watch",
+    "decay_index": 15
   },
   {
     "company": "MACOM Technology Solutions Holdings, Inc.",
@@ -86747,12 +86747,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Maxeon Solar Technologies, Ltd.",
@@ -87390,12 +87390,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 8
+        "decay_level": "watch",
+        "decay_index": 18
       }
     },
-    "decay_level": "stable",
-    "decay_index": 8
+    "decay_level": "watch",
+    "decay_index": 18
   },
   {
     "company": "MICRON TECHNOLOGY INC",
@@ -87902,12 +87902,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "NetApp, Inc.",
@@ -88286,12 +88286,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Paycom Software, Inc.",
@@ -88927,11 +88927,11 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 13
+        "decay_index": 23
       }
     },
     "decay_level": "watch",
-    "decay_index": 13
+    "decay_index": 23
   },
   {
     "company": "Qorvo, Inc.",
@@ -89054,12 +89054,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "QUALYS, INC.",
@@ -90974,12 +90974,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 8
+        "decay_level": "watch",
+        "decay_index": 18
       }
     },
-    "decay_level": "stable",
-    "decay_index": 8
+    "decay_level": "watch",
+    "decay_index": 18
   },
   {
     "company": "SITIME Corp",
@@ -91358,12 +91358,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "SOLAREDGE TECHNOLOGIES, INC.",
@@ -93159,12 +93159,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "WEST PHARMACEUTICAL SERVICES INC",
@@ -93544,11 +93544,11 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 10
+        "decay_index": 20
       }
     },
     "decay_level": "watch",
-    "decay_index": 10
+    "decay_index": 20
   },
   {
     "company": "ZEBRA TECHNOLOGIES CORP",
@@ -96824,10 +96824,10 @@
           "M.5": 40
         },
         "sources": [
-          "CFPB",
           "SEC DEF 14A",
-          "HIBP",
           "FDA",
+          "CFPB",
+          "HIBP",
           "FEC"
         ]
       },
@@ -96839,9 +96839,9 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
           "SBTi",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
