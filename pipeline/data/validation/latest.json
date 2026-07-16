@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-15T08:06:27.808014",
+  "timestamp": "2026-07-16T08:11:18.282114",
   "total_issues": 475,
   "critical": 0,
   "warnings": 190,
@@ -3596,7 +3596,7 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "disney",
+      "company": "tyson",
       "field": "M_sources",
       "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
       "value": 1,
@@ -3605,9 +3605,108 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "disney",
+      "company": "tyson",
       "field": "A_sources",
       "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "mcdonalds",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "samsung",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 86}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "microsoft",
+      "field": "U_sources",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "microsoft",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "bank_of_america",
+      "field": "U_sources",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 80, 'U.2': 90}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "verizon",
+      "field": "U_sources",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "verizon",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "verizon",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "costco",
+      "field": "U_sources",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "costco",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "capital_one",
+      "field": "U_sources",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 80, 'U.2': 90}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -3623,16 +3722,7 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "jpmorgan",
-      "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 92, 'U.2': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "jpmorgan",
+      "company": "boeing",
       "field": "M_sources",
       "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
       "value": 1,
@@ -3641,7 +3731,7 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "jpmorgan",
+      "company": "boeing",
       "field": "A_sources",
       "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
       "value": 1,
@@ -3650,16 +3740,7 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "meta",
-      "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "meta",
+      "company": "ups",
       "field": "M_sources",
       "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
       "value": 1,
@@ -3668,7 +3749,7 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "meta",
+      "company": "ups",
       "field": "A_sources",
       "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
       "value": 1,
@@ -3677,16 +3758,7 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "synchrony",
-      "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 82, 'U.2': 92}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "tesla",
+      "company": "comcast",
       "field": "U_sources",
       "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
       "value": 1,
@@ -3695,7 +3767,7 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "tesla",
+      "company": "comcast",
       "field": "M_sources",
       "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
       "value": 1,
@@ -3704,7 +3776,7 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "tesla",
+      "company": "comcast",
       "field": "A_sources",
       "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
       "value": 1,
@@ -3713,9 +3785,27 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "optum",
-      "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
+      "company": "johnson_johnson",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "fedex",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "fedex",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -3749,207 +3839,9 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "ibm",
-      "field": "M_sources",
-      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "ibm",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "johnson_johnson",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "walmart",
-      "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "walmart",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "home_depot",
-      "field": "M_sources",
-      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "home_depot",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "t-mobile",
-      "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "intel",
-      "field": "M_sources",
-      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "intel",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "microsoft",
-      "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "microsoft",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "amazon",
-      "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 96, 'U.2': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "amazon",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "boeing",
-      "field": "M_sources",
-      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "boeing",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "atandt",
-      "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
       "company": "uber",
       "field": "U_sources",
       "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "discover_financial",
-      "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 80, 'U.2': 90}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "ups",
-      "field": "M_sources",
-      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "ups",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "starbucks",
-      "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "starbucks",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -3974,7 +3866,16 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "ford",
+      "company": "goldman",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.2': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "intel",
       "field": "M_sources",
       "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
       "value": 1,
@@ -3983,52 +3884,7 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "ford",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "verizon",
-      "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "verizon",
-      "field": "M_sources",
-      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "verizon",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "costco",
-      "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "costco",
+      "company": "intel",
       "field": "A_sources",
       "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
       "value": 1,
@@ -4046,42 +3902,6 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "target",
-      "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 85, 'U.2': 95}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "target",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "oracle",
-      "field": "M_sources",
-      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "oracle",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
       "company": "pepsico",
       "field": "A_sources",
       "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
@@ -4091,9 +3911,9 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "mcdonalds",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "company": "atandt",
+      "field": "U_sources",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -4127,72 +3947,18 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "bank_of_america",
+      "company": "walmart",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 80, 'U.2': 90}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
     {
       "layer": 3,
       "severity": "warning",
-      "company": "tyson",
-      "field": "M_sources",
-      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "tyson",
+      "company": "walmart",
       "field": "A_sources",
       "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "unitedhealth",
-      "field": "M_sources",
-      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "unitedhealth",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "att",
-      "field": "M_sources",
-      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "att",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "capital_one",
-      "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 80, 'U.2': 90}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -4208,27 +3974,9 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "comcast",
+      "company": "synchrony",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "comcast",
-      "field": "M_sources",
-      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "comcast",
-      "field": "A_sources",
-      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 82, 'U.2': 92}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -4244,45 +3992,18 @@
     {
       "layer": 3,
       "severity": "warning",
-      "company": "citibank",
+      "company": "amazon",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 81, 'U.2': 91}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 96, 'U.2': 100}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
     {
       "layer": 3,
       "severity": "warning",
-      "company": "goldman",
-      "field": "M_sources",
-      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.2': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "fedex",
-      "field": "M_sources",
-      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "fedex",
+      "company": "amazon",
       "field": "A_sources",
       "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
-      "value": 1,
-      "expected": ">= 2 for extreme values"
-    },
-    {
-      "layer": 3,
-      "severity": "warning",
-      "company": "samsung",
-      "field": "M_sources",
-      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 86}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -4292,6 +4013,285 @@
       "company": "goldman_sachs",
       "field": "U_sources",
       "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 88, 'U.2': 98}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "meta",
+      "field": "U_sources",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "meta",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "meta",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "optum",
+      "field": "U_sources",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "discover_financial",
+      "field": "U_sources",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 80, 'U.2': 90}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "tesla",
+      "field": "U_sources",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "tesla",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "tesla",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "starbucks",
+      "field": "U_sources",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "starbucks",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "oracle",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "oracle",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "ibm",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "ibm",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "ford",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "ford",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "disney",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "disney",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "jpmorgan",
+      "field": "U_sources",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 92, 'U.2': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "jpmorgan",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "jpmorgan",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "citibank",
+      "field": "U_sources",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 81, 'U.2': 91}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "target",
+      "field": "U_sources",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 86, 'U.2': 96}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "target",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "t-mobile",
+      "field": "U_sources",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 100, 'U.2': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "att",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "att",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "unitedhealth",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "unitedhealth",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "home_depot",
+      "field": "M_sources",
+      "message": "Dimension M has only 1 source(s) but extreme scores: {'M.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "home_depot",
+      "field": "A_sources",
+      "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     }
