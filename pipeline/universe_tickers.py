@@ -106,6 +106,10 @@ RUSSELL_1000_ADDITIONS = [
     # Space / Defense
     "RKLB","LUNR","ASTS","SPCE","RDW","BKSY","MNTS","SPCX",
     "HEI","KTOS","MRCY","AVAV",
+    # July 2026 mid-cap expansion (batch 1)
+    "SNOW", "PTON", "TDOC", "LMND", "HIMS", "DOCS",
+    "BURL", "OATL", "SHAK", "DPZ",
+
 ]
 
 def get_all_tickers():
