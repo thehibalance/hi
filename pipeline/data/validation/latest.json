@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-07-17T08:10:21.776826",
-  "total_issues": 475,
+  "timestamp": "2026-07-18T07:42:29.196971",
+  "total_issues": 476,
   "critical": 0,
   "warnings": 190,
-  "info": 285,
+  "info": 286,
   "blocked": false,
   "stats": {
-    "total_companies": 730,
+    "total_companies": 731,
     "avg_composite": 55.2,
     "stdev": 7.6,
     "min_score": 13,
@@ -3579,6 +3579,15 @@
       "layer": 1,
       "severity": "info",
       "company": "British American Tobacco p.l.c.",
+      "field": "data_sources",
+      "message": "Only 1 data source \u2014 score may be unreliable",
+      "value": 1,
+      "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "info",
+      "company": "PELOTON INTERACTIVE, INC.",
       "field": "data_sources",
       "message": "Only 1 data source \u2014 score may be unreliable",
       "value": 1,
