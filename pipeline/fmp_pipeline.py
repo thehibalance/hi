@@ -23,7 +23,7 @@ BASE = "https://financialmodelingprep.com/stable"
 
 
 def get_api_key():
-    key = os.environ.get("FMP_KEY", "")
+    key = os.environ.get("FMP_API_KEY", "") or os.environ.get("FMP_KEY", "")
     if not key:
         kf = Path("data/fmp_key.txt")
         if kf.exists(): key = kf.read_text().strip()
