@@ -53,7 +53,7 @@ SERIES = {
 
 
 def get_api_key():
-    key = os.environ.get("FRED_KEY", "")
+    key = os.environ.get("FRED_API_KEY", "") or os.environ.get("FRED_KEY", "")
     if not key:
         kf = Path("data/fred_key.txt")
         if kf.exists(): key = kf.read_text().strip()

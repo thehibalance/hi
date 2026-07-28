@@ -31,7 +31,7 @@ ENV_KEYWORDS = ["emissions", "carbon", "climate", "pollution", "environmental", 
 
 
 def get_api_key():
-    key = os.environ.get("FINNHUB_KEY", "")
+    key = os.environ.get("FINNHUB_API_KEY", "") or os.environ.get("FINNHUB_KEY", "")
     if not key:
         kf = Path("data/finnhub_key.txt")
         if kf.exists(): key = kf.read_text().strip()
