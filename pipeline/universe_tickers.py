@@ -110,6 +110,15 @@ RUSSELL_1000_ADDITIONS = [
     "SNOW", "PTON", "TDOC", "LMND", "HIMS", "DOCS",
     "BURL", "OATL", "SHAK", "DPZ",
 
+    # August 2026 batch 2 expansion
+    "PSTG", "APPN", "GLBE", "FLYW", "ULTA", "BJ",
+    "PSMT", "OLLI", "WING", "TXRH", "CAVA", "MOH",
+    "UHS", "THC", "PEN", "ILMN", "XYL", "BMBL",
+    "IAC", "AEE", "ATO", "CMS", "JBLU", "SAVE",
+    "SAIA", "LSTR", "AMH", "IFF", "ALB", "CF",
+    "VMC", "WRB", "L", "MMC", "ENTG", "LDOS",
+    "BWXT", "CW",
+
 ]
 
 def get_all_tickers():
