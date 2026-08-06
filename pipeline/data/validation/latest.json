@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-08-05T21:51:51.281514",
-  "total_issues": 484,
+  "timestamp": "2026-08-06T08:35:06.308384",
+  "total_issues": 485,
   "critical": 0,
-  "warnings": 190,
+  "warnings": 191,
   "info": 294,
   "blocked": false,
   "stats": {
@@ -2170,6 +2170,15 @@
       "message": "Only 1 data source \u2014 score may be unreliable",
       "value": 1,
       "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Macy's, Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~53)",
+      "value": 50,
+      "expected": 53
     },
     {
       "layer": 1,
