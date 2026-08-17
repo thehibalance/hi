@@ -83,10 +83,10 @@
           "M.5": 60.0
         },
         "sources": [
-          "Fair Trade",
           "HIBP",
-          "1% for the Planet",
-          "Glassdoor"
+          "Fair Trade",
+          "Glassdoor",
+          "1% for the Planet"
         ]
       },
       "A": {
@@ -97,8 +97,8 @@
           "A.4": 70.0
         },
         "sources": [
-          "CDP",
           "Fair Trade",
+          "CDP",
           "1% for the Planet"
         ]
       },
@@ -236,8 +236,8 @@
           "H.5": 60
         },
         "sources": [
-          "Jobs",
-          "SEC"
+          "SEC",
+          "Jobs"
         ]
       },
       "U": {
@@ -265,14 +265,14 @@
           "M.5": 85
         },
         "sources": [
-          "HIBP",
-          "FDA",
-          "Glassdoor",
           "FTC",
-          "FEC",
           "SEC DEF 14A",
+          "Glassdoor",
+          "CFPB",
+          "HIBP",
           "EEOC",
-          "CFPB"
+          "FDA",
+          "FEC"
         ]
       },
       "A": {
@@ -283,10 +283,10 @@
           "A.4": 60
         },
         "sources": [
-          "CDP",
           "iFixit",
-          "SBTi",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP",
+          "SBTi"
         ]
       },
       "N": {
@@ -439,12 +439,12 @@
           "M.5": 70
         },
         "sources": [
-          "FDA",
-          "Glassdoor",
-          "FEC",
           "SEC DEF 14A",
+          "Glassdoor",
+          "CFPB",
           "HIBP",
-          "CFPB"
+          "FDA",
+          "FEC"
         ]
       },
       "A": {
@@ -455,10 +455,10 @@
           "A.4": 75
         },
         "sources": [
-          "CDP",
-          "SBTi",
+          "Industry+EPA",
           "Industry",
-          "Industry+EPA"
+          "CDP",
+          "SBTi"
         ]
       },
       "N": {
@@ -598,8 +598,8 @@
           "H.5": 30
         },
         "sources": [
-          "Jobs",
-          "SEC"
+          "SEC",
+          "Jobs"
         ]
       },
       "U": {
@@ -627,13 +627,13 @@
           "M.5": 95
         },
         "sources": [
-          "HIBP",
-          "FDA",
-          "Glassdoor",
           "FTC",
           "SEC DEF 14A",
+          "Glassdoor",
+          "CFPB",
+          "HIBP",
           "EEOC",
-          "CFPB"
+          "FDA"
         ]
       },
       "A": {
@@ -644,10 +644,10 @@
           "A.4": 50
         },
         "sources": [
-          "CDP",
           "iFixit",
-          "SBTi",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP",
+          "SBTi"
         ]
       },
       "N": {
@@ -803,11 +803,11 @@
           "M.5": 78
         },
         "sources": [
-          "FDA",
-          "Glassdoor",
           "SEC DEF 14A",
+          "Glassdoor",
+          "CFPB",
           "HIBP",
-          "CFPB"
+          "FDA"
         ]
       },
       "A": {
@@ -818,10 +818,10 @@
           "A.4": 55
         },
         "sources": [
-          "CDP",
-          "SBTi",
+          "Industry+EPA",
           "Industry",
-          "Industry+EPA"
+          "CDP",
+          "SBTi"
         ]
       },
       "N": {
@@ -974,12 +974,12 @@
           "M.5": 65
         },
         "sources": [
-          "FDA",
-          "Glassdoor",
-          "Fair Trade",
           "SEC DEF 14A",
+          "Glassdoor",
+          "CFPB",
           "HIBP",
-          "CFPB"
+          "Fair Trade",
+          "FDA"
         ]
       },
       "A": {
@@ -990,10 +990,10 @@
           "A.4": 75
         },
         "sources": [
-          "CDP",
-          "SBTi",
+          "Industry+EPA",
           "Industry",
-          "Industry+EPA"
+          "CDP",
+          "SBTi"
         ]
       },
       "N": {
@@ -1018,11 +1018,11 @@
       "cdp_climate": "B",
       "epa_violations": null
     },
-    "hi_balanced": false,
+    "hi_balanced": true,
     "hi_balanced_gates": {
       "dimensions": true,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": true,
@@ -1038,8 +1038,8 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "watch",
+        "decay_index": 20
       }
     },
     "domains": [
@@ -1050,8 +1050,8 @@
       "beverage",
       "retail"
     ],
-    "decay_level": "warning",
-    "decay_index": 30
+    "decay_level": "watch",
+    "decay_index": 20
   },
   {
     "company": "Home Depot, Inc.",
@@ -1115,8 +1115,8 @@
           "H.5": 95
         },
         "sources": [
-          "Jobs",
-          "SEC"
+          "SEC",
+          "Jobs"
         ]
       },
       "U": {
@@ -1141,11 +1141,11 @@
           "M.5": 75
         },
         "sources": [
-          "FDA",
-          "Glassdoor",
           "SEC DEF 14A",
+          "Glassdoor",
+          "CFPB",
           "HIBP",
-          "CFPB"
+          "FDA"
         ]
       },
       "A": {
@@ -1156,9 +1156,9 @@
           "A.4": 65
         },
         "sources": [
-          "CDP",
+          "Industry+EPA",
           "Industry",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
@@ -1277,8 +1277,8 @@
           "H.5": 75
         },
         "sources": [
-          "Jobs",
-          "SEC"
+          "SEC",
+          "Jobs"
         ]
       },
       "U": {
@@ -1302,11 +1302,11 @@
           "M.5": 55
         },
         "sources": [
-          "FDA",
           "Glassdoor",
-          "FEC",
+          "CFPB",
           "HIBP",
-          "CFPB"
+          "FDA",
+          "FEC"
         ]
       },
       "A": {
@@ -1317,9 +1317,9 @@
           "A.4": 50
         },
         "sources": [
-          "CDP",
+          "Industry+EPA",
           "Industry",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
@@ -1477,8 +1477,8 @@
         "sources": [
           "USDA Organic",
           "Fair Trade",
-          "1% for the Planet",
           "CDP",
+          "1% for the Planet",
           "B Corp"
         ]
       },
@@ -1627,12 +1627,12 @@
           "M.5": 82
         },
         "sources": [
-          "FDA",
-          "Glassdoor",
           "FTC",
           "SEC DEF 14A",
+          "Glassdoor",
+          "CFPB",
           "HIBP",
-          "CFPB"
+          "FDA"
         ]
       },
       "A": {
@@ -1643,9 +1643,9 @@
           "A.4": 45
         },
         "sources": [
-          "CDP",
+          "Industry+EPA",
           "Industry",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
@@ -1809,15 +1809,15 @@
           "M.5": 68
         },
         "sources": [
-          "FDA",
-          "Glassdoor",
           "FTC",
-          "USDA Organic",
-          "Fair Trade",
           "SEC DEF 14A",
-          "HIBP",
+          "Glassdoor",
           "CFPB",
-          "EEOC"
+          "USDA Organic",
+          "HIBP",
+          "Fair Trade",
+          "EEOC",
+          "FDA"
         ]
       },
       "A": {
@@ -1828,11 +1828,11 @@
           "A.4": 65
         },
         "sources": [
+          "Industry",
           "SBTi",
-          "Industry+EPA",
           "USDA Organic",
           "CDP",
-          "Industry"
+          "Industry+EPA"
         ]
       },
       "N": {
@@ -1996,11 +1996,11 @@
           "M.5": 78
         },
         "sources": [
-          "FDA",
-          "Glassdoor",
           "SEC DEF 14A",
+          "Glassdoor",
+          "CFPB",
           "HIBP",
-          "CFPB"
+          "FDA"
         ]
       },
       "A": {
@@ -2011,9 +2011,9 @@
           "A.4": 55
         },
         "sources": [
-          "CDP",
+          "Industry+EPA",
           "Industry",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
@@ -2175,9 +2175,9 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
+          "CFPB",
           "Glassdoor",
-          "CFPB"
+          "FDA"
         ]
       },
       "A": {
@@ -2188,9 +2188,9 @@
           "A.4": 60
         },
         "sources": [
-          "CDP",
+          "Industry+EPA",
           "Industry",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
@@ -2388,7 +2388,7 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 23
+        "decay_index": 13
       }
     },
     "domains": [
@@ -2399,7 +2399,7 @@
       "hotel"
     ],
     "decay_level": "watch",
-    "decay_index": 23
+    "decay_index": 13
   },
   {
     "company": "Dr. Bronner's",
@@ -2481,8 +2481,8 @@
           "M.5": 90.0
         },
         "sources": [
-          "Fair Trade",
           "Glassdoor",
+          "Fair Trade",
           "B Corp",
           "USDA Organic"
         ]
@@ -2495,8 +2495,8 @@
           "A.4": 86.7
         },
         "sources": [
-          "Fair Trade",
           "B Corp",
+          "Fair Trade",
           "USDA Organic"
         ]
       },
@@ -2555,7 +2555,7 @@
     "industry": "finance",
     "sic": "6211",
     "sic_description": "Security Brokers, Dealers & Flotation Companies",
-    "D_H": 32,
+    "D_H": 17,
     "D_U": 59,
     "D_M": 76,
     "D_A": 67,
@@ -2644,12 +2644,12 @@
           "M.5": 80
         },
         "sources": [
-          "FDA",
-          "Glassdoor",
           "SEC DEF 14A",
-          "HIBP",
+          "Glassdoor",
           "CFPB",
-          "EEOC"
+          "HIBP",
+          "EEOC",
+          "FDA"
         ]
       },
       "A": {
@@ -2660,10 +2660,10 @@
           "A.4": 70
         },
         "sources": [
-          "CDP",
-          "SBTi",
+          "Industry+EPA",
           "Industry",
-          "Industry+EPA"
+          "CDP",
+          "SBTi"
         ]
       },
       "N": {
@@ -2946,8 +2946,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -2958,8 +2958,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -3257,13 +3257,13 @@
           "M.5": 88
         },
         "sources": [
-          "FDA",
-          "Glassdoor",
-          "USDA Organic",
-          "Fair Trade",
           "SEC DEF 14A",
+          "Glassdoor",
+          "CFPB",
+          "USDA Organic",
           "HIBP",
-          "CFPB"
+          "Fair Trade",
+          "FDA"
         ]
       },
       "A": {
@@ -3274,11 +3274,11 @@
           "A.4": 65
         },
         "sources": [
+          "Industry",
           "SBTi",
-          "Industry+EPA",
           "USDA Organic",
           "CDP",
-          "Industry"
+          "Industry+EPA"
         ]
       },
       "N": {
@@ -3894,12 +3894,12 @@
           "M.5": 80
         },
         "sources": [
-          "FDA",
-          "Glassdoor",
           "FTC",
           "SEC DEF 14A",
+          "Glassdoor",
+          "CFPB",
           "HIBP",
-          "CFPB"
+          "FDA"
         ]
       },
       "A": {
@@ -3910,8 +3910,8 @@
           "A.4": 60
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4059,11 +4059,11 @@
           "M.5": 70
         },
         "sources": [
-          "FDA",
-          "Glassdoor",
           "SEC DEF 14A",
+          "Glassdoor",
+          "CFPB",
           "HIBP",
-          "CFPB"
+          "FDA"
         ]
       },
       "A": {
@@ -4074,8 +4074,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4219,11 +4219,11 @@
           "M.5": 80.0
         },
         "sources": [
-          "FDA",
           "Glassdoor",
+          "CFPB",
           "HIBP",
-          "B Corp",
-          "CFPB"
+          "FDA",
+          "B Corp"
         ]
       },
       "A": {
@@ -4234,8 +4234,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -4679,10 +4679,10 @@
           "M.5": 88
         },
         "sources": [
-          "SEC DEF 14A",
-          "FDA",
           "Glassdoor",
-          "CFPB"
+          "SEC DEF 14A",
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -4693,8 +4693,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -5135,8 +5135,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -5147,8 +5147,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -5277,8 +5277,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -5289,8 +5289,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -5571,9 +5571,9 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
           "CFPB",
-          "EEOC"
+          "EEOC",
+          "FDA"
         ]
       },
       "A": {
@@ -5584,8 +5584,8 @@
           "A.4": 40
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -6010,8 +6010,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -6022,8 +6022,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -6436,8 +6436,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -6448,8 +6448,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -6736,8 +6736,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -6748,8 +6748,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -6878,8 +6878,8 @@
           "M.5": 70
         },
         "sources": [
-          "Fair Trade",
           "Glassdoor",
+          "Fair Trade",
           "USDA Organic"
         ]
       },
@@ -6891,8 +6891,8 @@
           "A.4": 65.0
         },
         "sources": [
-          "CDP",
           "Fair Trade",
+          "CDP",
           "USDA Organic"
         ]
       },
@@ -7025,8 +7025,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -7037,8 +7037,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -7167,8 +7167,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -7179,8 +7179,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -7458,8 +7458,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -7470,8 +7470,8 @@
           "A.4": 40
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -7604,8 +7604,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -7616,8 +7616,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -7951,14 +7951,14 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 22
+        "decay_index": 12
       }
     },
     "domains": [
       "bms.com"
     ],
     "decay_level": "watch",
-    "decay_index": 22
+    "decay_index": 12
   },
   {
     "company": "CLOROX CO /DE/",
@@ -8041,10 +8041,10 @@
           "M.5": 50
         },
         "sources": [
-          "USDA Organic",
           "HIBP",
+          "CFPB",
           "FDA",
-          "CFPB"
+          "USDA Organic"
         ]
       },
       "A": {
@@ -8055,9 +8055,9 @@
           "A.4": 55
         },
         "sources": [
+          "Industry+EPA",
           "Industry",
-          "USDA Organic",
-          "Industry+EPA"
+          "USDA Organic"
         ]
       },
       "N": {
@@ -8492,10 +8492,10 @@
           "M.5": 65.0
         },
         "sources": [
-          "USDA Organic",
-          "FDA",
           "B Corp",
-          "CFPB"
+          "CFPB",
+          "FDA",
+          "USDA Organic"
         ]
       },
       "A": {
@@ -8506,9 +8506,9 @@
           "A.4": 55
         },
         "sources": [
+          "Industry+EPA",
           "Industry",
-          "USDA Organic",
-          "Industry+EPA"
+          "USDA Organic"
         ]
       },
       "N": {
@@ -9071,8 +9071,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -9083,8 +9083,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -9507,8 +9507,8 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -9519,8 +9519,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -9808,8 +9808,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -9820,8 +9820,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -10153,7 +10153,7 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 15
+        "decay_index": 25
       }
     },
     "domains": [
@@ -10164,7 +10164,7 @@
       "hotel"
     ],
     "decay_level": "watch",
-    "decay_index": 15
+    "decay_index": 25
   },
   {
     "company": "McDonald",
@@ -10393,8 +10393,8 @@
         },
         "sources": [
           "SEC DEF 14A",
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -10405,8 +10405,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -10538,8 +10538,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -10550,8 +10550,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -10820,8 +10820,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -10832,8 +10832,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -10876,16 +10876,16 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
     "domains": [
       "tjmaxx.com",
       "marshalls.com"
     ],
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "YUM BRANDS INC",
@@ -11429,15 +11429,15 @@
           "M.5": 72
         },
         "sources": [
-          "FDA",
-          "Glassdoor",
           "FTC",
-          "USDA Organic",
-          "Fair Trade",
           "SEC DEF 14A",
-          "HIBP",
+          "Glassdoor",
           "CFPB",
-          "EEOC"
+          "USDA Organic",
+          "HIBP",
+          "Fair Trade",
+          "EEOC",
+          "FDA"
         ]
       },
       "A": {
@@ -11449,10 +11449,10 @@
         },
         "sources": [
           "SBTi",
-          "Industry+EPA",
-          "USDA Organic",
           "iFixit",
-          "CDP"
+          "USDA Organic",
+          "CDP",
+          "Industry+EPA"
         ]
       },
       "N": {
@@ -11738,8 +11738,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -11750,8 +11750,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -11882,8 +11882,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -11894,8 +11894,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -12605,8 +12605,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -12617,8 +12617,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -13189,10 +13189,10 @@
           "M.5": 50
         },
         "sources": [
-          "SEC DEF 14A",
           "HIBP",
-          "FDA",
-          "CFPB"
+          "SEC DEF 14A",
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -13203,8 +13203,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -13628,8 +13628,8 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -13640,8 +13640,8 @@
           "A.4": 40
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -13920,8 +13920,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -13932,8 +13932,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -14272,12 +14272,12 @@
     "industry": "manufacturing",
     "sic": "3724",
     "sic_description": "Aircraft Engines & Engine Parts",
-    "D_H": 46,
+    "D_H": 56,
     "D_U": 62,
     "D_M": 64,
     "D_A": 50,
     "D_N": 70,
-    "composite": 58,
+    "composite": 60,
     "hi_grade": "scored",
     "satire": "",
     "floor_triggered": false,
@@ -14349,8 +14349,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -14361,8 +14361,8 @@
           "A.4": 60
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -14495,9 +14495,9 @@
           "M.5": 50
         },
         "sources": [
-          "USDA Organic",
+          "CFPB",
           "FDA",
-          "CFPB"
+          "USDA Organic"
         ]
       },
       "A": {
@@ -14508,9 +14508,9 @@
           "A.4": 75
         },
         "sources": [
+          "Industry+EPA",
           "Industry",
-          "USDA Organic",
-          "Industry+EPA"
+          "USDA Organic"
         ]
       },
       "N": {
@@ -14924,8 +14924,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -14936,8 +14936,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -14980,12 +14980,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "Palantir",
@@ -15073,9 +15073,9 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
+          "CFPB",
           "Glassdoor",
-          "CFPB"
+          "FDA"
         ]
       },
       "A": {
@@ -15086,8 +15086,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -15506,8 +15506,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -15518,8 +15518,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -15931,8 +15931,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -15943,8 +15943,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -16216,8 +16216,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -16228,8 +16228,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -16358,8 +16358,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -16370,8 +16370,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -16929,8 +16929,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -16941,8 +16941,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -17379,8 +17379,8 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -17391,9 +17391,9 @@
           "A.4": 45
         },
         "sources": [
-          "CDP",
+          "Industry+EPA",
           "Industry",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
@@ -17535,8 +17535,8 @@
         },
         "sources": [
           "SEC DEF 14A",
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -17548,8 +17548,8 @@
         },
         "sources": [
           "iFixit",
-          "SBTi",
-          "Industry+EPA"
+          "Industry+EPA",
+          "SBTi"
         ]
       },
       "N": {
@@ -17863,7 +17863,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -17879,12 +17879,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 34
+        "decay_level": "watch",
+        "decay_index": 24
       }
     },
-    "decay_level": "warning",
-    "decay_index": 34
+    "decay_level": "watch",
+    "decay_index": 24
   },
   {
     "company": "Bank of New York Mellon Corp",
@@ -18247,8 +18247,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -18259,8 +18259,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -18671,8 +18671,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -18683,8 +18683,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -18956,8 +18956,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -18968,8 +18968,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -19098,8 +19098,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -19110,8 +19110,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -19154,12 +19154,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "DOCUSIGN, INC.",
@@ -19437,12 +19437,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "HUBSPOT INC",
@@ -19523,8 +19523,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -19535,8 +19535,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -19579,15 +19579,15 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
     "domains": [
       "hubspot.com"
     ],
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "IDEXX LABORATORIES INC /DE",
@@ -19808,8 +19808,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -19820,8 +19820,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -19950,8 +19950,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -19962,8 +19962,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -20092,8 +20092,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -20104,8 +20104,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -20234,8 +20234,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -20246,8 +20246,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -20521,8 +20521,8 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -20533,8 +20533,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -21261,8 +21261,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -21273,8 +21273,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -22120,9 +22120,9 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
           "CFPB",
-          "EEOC"
+          "EEOC",
+          "FDA"
         ]
       },
       "A": {
@@ -22133,8 +22133,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -22270,8 +22270,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -22282,8 +22282,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -22460,7 +22460,7 @@
           "N": false
         },
         "decay_level": "watch",
-        "decay_index": 13
+        "decay_index": 23
       }
     },
     "domains": [
@@ -22477,7 +22477,7 @@
       "streaming"
     ],
     "decay_level": "watch",
-    "decay_index": 13
+    "decay_index": 23
   },
   {
     "company": "ZILLOW GROUP, INC.",
@@ -22558,8 +22558,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -22570,8 +22570,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -22840,8 +22840,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -22852,8 +22852,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -23417,8 +23417,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -23429,8 +23429,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -24415,8 +24415,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -24427,8 +24427,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -24557,8 +24557,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -24569,8 +24569,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -24702,8 +24702,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -24714,8 +24714,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -24844,8 +24844,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -24856,8 +24856,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -25129,8 +25129,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -25141,8 +25141,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -25558,8 +25558,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -25570,8 +25570,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -25615,14 +25615,14 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 25
+        "decay_index": 15
       }
     },
     "domains": [
       "gilead.com"
     ],
     "decay_level": "watch",
-    "decay_index": 25
+    "decay_index": 15
   },
   {
     "company": "Alphabet Inc.",
@@ -25731,13 +25731,13 @@
           "M.5": 88
         },
         "sources": [
-          "HIBP",
-          "FDA",
-          "Glassdoor",
           "FTC",
           "SEC DEF 14A",
+          "Glassdoor",
+          "CFPB",
+          "HIBP",
           "EEOC",
-          "CFPB"
+          "FDA"
         ]
       },
       "A": {
@@ -25748,9 +25748,9 @@
           "A.4": 45
         },
         "sources": [
-          "SBTi",
+          "Industry+EPA",
           "Industry",
-          "Industry+EPA"
+          "SBTi"
         ]
       },
       "N": {
@@ -25794,7 +25794,7 @@
           "N": true
         },
         "decay_level": "critical",
-        "decay_index": 67
+        "decay_index": 77
       }
     },
     "domains": [
@@ -25814,7 +25814,7 @@
       "advertising"
     ],
     "decay_level": "critical",
-    "decay_index": 67
+    "decay_index": 77
   },
   {
     "company": "MCCORMICK & CO INC",
@@ -26035,8 +26035,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -26047,8 +26047,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -26322,8 +26322,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -26334,8 +26334,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -26467,8 +26467,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -26479,8 +26479,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -27316,8 +27316,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -27328,8 +27328,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -27463,8 +27463,8 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -27475,8 +27475,8 @@
           "A.4": 40
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -27620,8 +27620,8 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -27632,8 +27632,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -27768,8 +27768,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -27780,8 +27780,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -28074,9 +28074,9 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
+          "CFPB",
           "Glassdoor",
-          "CFPB"
+          "FDA"
         ]
       },
       "A": {
@@ -28087,8 +28087,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -28226,8 +28226,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -28238,8 +28238,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -28562,12 +28562,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "Workday, Inc.",
@@ -28648,8 +28648,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -28660,8 +28660,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -28793,8 +28793,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -28805,8 +28805,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -29944,8 +29944,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -29956,8 +29956,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -29998,16 +29998,16 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable",
+        "decay_index": 8
       }
     },
     "domains": [
       "deere.com",
       "johndeere.com"
     ],
-    "decay_level": "watch",
-    "decay_index": 18
+    "decay_level": "stable",
+    "decay_index": 8
   },
   {
     "company": "EBAY INC",
@@ -30090,8 +30090,8 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -30102,8 +30102,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -30240,8 +30240,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -30252,8 +30252,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -30436,12 +30436,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Ford Motor Company",
@@ -30799,8 +30799,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -30811,8 +30811,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -31085,8 +31085,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -31097,8 +31097,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -31520,8 +31520,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -31532,8 +31532,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -31802,8 +31802,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -31814,8 +31814,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -32084,8 +32084,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -32096,8 +32096,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -32369,8 +32369,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -32381,8 +32381,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -32511,8 +32511,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -32523,8 +32523,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -32793,8 +32793,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -32805,8 +32805,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -33248,8 +33248,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -33260,8 +33260,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -33708,7 +33708,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": true,
+      "momentum": false,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -33724,15 +33724,15 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 20
+        "decay_level": "warning",
+        "decay_index": 30
       }
     },
     "domains": [
       "ti.com"
     ],
-    "decay_level": "watch",
-    "decay_index": 20
+    "decay_level": "warning",
+    "decay_index": 30
   },
   {
     "company": "Trade Desk, Inc.",
@@ -33956,8 +33956,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -33968,8 +33968,8 @@
           "A.4": 40
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -34277,8 +34277,8 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -34289,8 +34289,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -34426,8 +34426,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -34438,8 +34438,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -34884,9 +34884,9 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
+          "CFPB",
           "Glassdoor",
-          "CFPB"
+          "FDA"
         ]
       },
       "A": {
@@ -34897,9 +34897,9 @@
           "A.4": 65
         },
         "sources": [
-          "CDP",
+          "Industry+EPA",
           "Industry",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
@@ -35178,8 +35178,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -35190,8 +35190,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -35320,8 +35320,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -35332,8 +35332,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -36032,8 +36032,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -36044,8 +36044,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -36174,8 +36174,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -36186,8 +36186,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -36316,8 +36316,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -36328,8 +36328,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -36910,8 +36910,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -36922,8 +36922,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -37055,8 +37055,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -37067,8 +37067,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -37342,8 +37342,8 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -37354,8 +37354,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -38115,12 +38115,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "DOMINOS PIZZA INC",
@@ -38360,8 +38360,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -38372,8 +38372,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -39086,8 +39086,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -39098,8 +39098,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -39226,8 +39226,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -39238,8 +39238,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -39366,8 +39366,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -39378,8 +39378,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -39506,8 +39506,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -39518,8 +39518,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -39562,12 +39562,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "ROKU, INC",
@@ -39646,8 +39646,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -39658,8 +39658,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -39702,15 +39702,15 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable",
+        "decay_index": 8
       }
     },
     "domains": [
       "roku.com"
     ],
-    "decay_level": "watch",
-    "decay_index": 18
+    "decay_level": "stable",
+    "decay_index": 8
   },
   {
     "company": "SIMON PROPERTY GROUP INC.",
@@ -39789,8 +39789,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -39801,8 +39801,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -39933,8 +39933,8 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -39945,8 +39945,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -40081,8 +40081,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -40093,8 +40093,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -40234,8 +40234,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -40246,8 +40246,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -40378,8 +40378,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -40390,8 +40390,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -40521,8 +40521,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -40533,8 +40533,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -40661,8 +40661,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -40673,8 +40673,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -40827,8 +40827,8 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -40839,8 +40839,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -40974,8 +40974,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -40986,8 +40986,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -41129,8 +41129,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -41141,8 +41141,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -41274,8 +41274,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -41286,8 +41286,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -41417,8 +41417,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -41429,8 +41429,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -41557,8 +41557,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -41569,8 +41569,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -41697,8 +41697,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -41709,8 +41709,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -41837,8 +41837,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -41849,8 +41849,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -41977,8 +41977,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -41989,8 +41989,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -42033,12 +42033,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Coterra Energy Inc.",
@@ -42257,8 +42257,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -42269,8 +42269,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -42397,8 +42397,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -42409,8 +42409,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -42537,8 +42537,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -42549,8 +42549,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -42680,8 +42680,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -42692,8 +42692,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -42948,8 +42948,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -42960,8 +42960,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -43088,8 +43088,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -43100,8 +43100,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -43245,8 +43245,8 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -43257,8 +43257,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -43407,8 +43407,8 @@
         },
         "sources": [
           "HIBP",
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -43419,8 +43419,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -43587,10 +43587,10 @@
           "M.5": 45
         },
         "sources": [
-          "SEC DEF 14A",
-          "FDA",
           "Glassdoor",
-          "CFPB"
+          "SEC DEF 14A",
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -43601,9 +43601,9 @@
           "A.4": 60
         },
         "sources": [
-          "CDP",
+          "Industry+EPA",
           "Industry",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
@@ -43748,10 +43748,10 @@
           "M.5": 80
         },
         "sources": [
-          "SEC DEF 14A",
-          "FDA",
           "Glassdoor",
-          "CFPB"
+          "SEC DEF 14A",
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -43762,10 +43762,10 @@
           "A.4": 50
         },
         "sources": [
-          "CDP",
-          "SBTi",
+          "Industry+EPA",
           "Industry",
-          "Industry+EPA"
+          "CDP",
+          "SBTi"
         ]
       },
       "N": {
@@ -43911,8 +43911,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -43923,8 +43923,8 @@
           "A.4": 60
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -43967,12 +43967,12 @@
           "A": true,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable",
+        "decay_index": 5
       }
     },
-    "decay_level": "watch",
-    "decay_index": 15
+    "decay_level": "stable",
+    "decay_index": 5
   },
   {
     "company": "Johnson & Johnson",
@@ -44249,11 +44249,11 @@
           "M.5": 82
         },
         "sources": [
-          "FDA",
-          "Glassdoor",
           "SEC DEF 14A",
+          "Glassdoor",
+          "CFPB",
           "HIBP",
-          "CFPB"
+          "FDA"
         ]
       },
       "A": {
@@ -44264,9 +44264,9 @@
           "A.4": 60
         },
         "sources": [
-          "CDP",
+          "Industry+EPA",
           "Industry",
-          "Industry+EPA"
+          "CDP"
         ]
       },
       "N": {
@@ -44438,14 +44438,14 @@
           "M.5": 75
         },
         "sources": [
-          "HIBP",
-          "FDA",
-          "Glassdoor",
           "FTC",
-          "SEC Form 4",
           "SEC DEF 14A",
+          "SEC Form 4",
+          "Glassdoor",
+          "CFPB",
+          "HIBP",
           "EEOC",
-          "CFPB"
+          "FDA"
         ]
       },
       "A": {
@@ -44456,10 +44456,10 @@
           "A.4": 30
         },
         "sources": [
-          "CDP",
           "iFixit",
-          "SBTi",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP",
+          "SBTi"
         ]
       },
       "N": {
@@ -44613,11 +44613,11 @@
           "M.5": 97
         },
         "sources": [
-          "FDA",
-          "Glassdoor",
           "SEC DEF 14A",
+          "Glassdoor",
+          "CFPB",
           "HIBP",
-          "CFPB"
+          "FDA"
         ]
       },
       "A": {
@@ -44628,10 +44628,10 @@
           "A.4": 60
         },
         "sources": [
-          "CDP",
           "iFixit",
-          "SBTi",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP",
+          "SBTi"
         ]
       },
       "N": {
@@ -44785,8 +44785,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -44797,8 +44797,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -44950,8 +44950,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -44962,8 +44962,8 @@
           "A.4": 60
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -45110,14 +45110,14 @@
           "M.5": 68
         },
         "sources": [
-          "HIBP",
-          "FDA",
-          "Glassdoor",
           "FTC",
-          "SEC Form 4",
           "SEC DEF 14A",
+          "SEC Form 4",
+          "Glassdoor",
+          "CFPB",
+          "HIBP",
           "EEOC",
-          "CFPB"
+          "FDA"
         ]
       },
       "A": {
@@ -45128,10 +45128,10 @@
           "A.4": 30
         },
         "sources": [
-          "CDP",
           "iFixit",
-          "SBTi",
-          "Industry+EPA"
+          "Industry+EPA",
+          "CDP",
+          "SBTi"
         ]
       },
       "N": {
@@ -45288,8 +45288,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -45300,8 +45300,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -45444,8 +45444,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -45456,8 +45456,8 @@
           "A.4": 60
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -45604,8 +45604,8 @@
           "M.5": 50
         },
         "sources": [
-          "FDA",
-          "CFPB"
+          "CFPB",
+          "FDA"
         ]
       },
       "A": {
@@ -45616,8 +45616,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "Industry+EPA"
+          "Industry+EPA",
+          "Industry"
         ]
       },
       "N": {
@@ -56070,8 +56070,8 @@
           "M.5": 67.5
         },
         "sources": [
-          "Fair Trade",
           "HIBP",
+          "Fair Trade",
           "B Corp",
           "1% for the Planet"
         ]
@@ -56084,8 +56084,8 @@
           "A.4": 75.0
         },
         "sources": [
-          "B Corp",
           "Fair Trade",
+          "B Corp",
           "1% for the Planet"
         ]
       },
@@ -56234,9 +56234,9 @@
           "A.4": 72.5
         },
         "sources": [
+          "Climate Neutral",
           "B Corp",
-          "1% for the Planet",
-          "Climate Neutral"
+          "1% for the Planet"
         ]
       },
       "N": {
@@ -60720,12 +60720,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Sarepta Therapeutics, Inc.",
@@ -61104,12 +61104,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "Ultragenyx Pharmaceutical Inc.",
@@ -61233,11 +61233,11 @@
           "N": true
         },
         "decay_level": "critical",
-        "decay_index": 68
+        "decay_index": 58
       }
     },
     "decay_level": "critical",
-    "decay_index": 68
+    "decay_index": 58
   },
   {
     "company": "Vaxcyte, Inc.",
@@ -62673,7 +62673,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -62689,8 +62689,8 @@
           "A": false,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 34
+        "decay_level": "watch",
+        "decay_index": 24
       }
     },
     "domains": [
@@ -62700,8 +62700,8 @@
       "consulting",
       "technology"
     ],
-    "decay_level": "warning",
-    "decay_index": 34
+    "decay_level": "watch",
+    "decay_index": 24
   },
   {
     "company": "AeroVironment Inc",
@@ -63081,14 +63081,14 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 25
+        "decay_index": 15
       }
     },
     "domains": [
       "amctheatres.com"
     ],
     "decay_level": "watch",
-    "decay_index": 25
+    "decay_index": 15
   },
   {
     "company": "Amcor plc",
@@ -66450,12 +66450,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "NEWS CORP",
@@ -67487,7 +67487,7 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 23
+        "decay_index": 13
       }
     },
     "domains": [
@@ -67498,7 +67498,7 @@
       "fintech"
     ],
     "decay_level": "watch",
-    "decay_index": 23
+    "decay_index": 13
   },
   {
     "company": "Rocket Lab Corp",
@@ -68403,12 +68403,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "WESTINGHOUSE AIR BRAKE TECHNOLOGIES CORP",
@@ -69942,12 +69942,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable",
+        "decay_index": 8
       }
     },
-    "decay_level": "watch",
-    "decay_index": 18
+    "decay_level": "stable",
+    "decay_index": 8
   },
   {
     "company": "ASSURANT, INC.",
@@ -72384,12 +72384,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "ESSEX PROPERTY TRUST, INC.",
@@ -73656,7 +73656,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -73672,12 +73672,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 39
+        "decay_level": "watch",
+        "decay_index": 29
       }
     },
-    "decay_level": "warning",
-    "decay_index": 39
+    "decay_level": "watch",
+    "decay_index": 29
   },
   {
     "company": "HP INC",
@@ -74330,12 +74330,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "KEYCORP /NEW/",
@@ -74842,12 +74842,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "LKQ CORP",
@@ -76250,12 +76250,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "PPL Corp",
@@ -77670,15 +77670,15 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable",
+        "decay_index": 5
       }
     },
     "domains": [
       "sofi.com"
     ],
-    "decay_level": "watch",
-    "decay_index": 15
+    "decay_level": "stable",
+    "decay_index": 5
   },
   {
     "company": "Sprouts Farmers Market, Inc.",
@@ -78062,12 +78062,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 14
+        "decay_level": "stable",
+        "decay_index": 4
       }
     },
-    "decay_level": "watch",
-    "decay_index": 14
+    "decay_level": "stable",
+    "decay_index": 4
   },
   {
     "company": "Strategy Inc",
@@ -81614,12 +81614,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "AMETEK INC/",
@@ -82641,12 +82641,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "AXCELIS TECHNOLOGIES INC",
@@ -83153,12 +83153,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "Blink Charging Co.",
@@ -84306,11 +84306,11 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 18
+        "decay_index": 28
       }
     },
     "decay_level": "watch",
-    "decay_index": 18
+    "decay_index": 28
   },
   {
     "company": "DIODES INC /DEL/",
@@ -86107,12 +86107,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "Intuitive Machines, Inc.",
@@ -86747,12 +86747,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "Maxeon Solar Technologies, Ltd.",
@@ -88415,11 +88415,11 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 15
+        "decay_index": 25
       }
     },
     "decay_level": "watch",
-    "decay_index": 15
+    "decay_index": 25
   },
   {
     "company": "PLUG POWER INC",
@@ -90206,12 +90206,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "Samsara Inc.",
@@ -92772,12 +92772,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "stable",
-        "decay_index": 0
+        "decay_level": "watch",
+        "decay_index": 10
       }
     },
-    "decay_level": "stable",
-    "decay_index": 0
+    "decay_level": "watch",
+    "decay_index": 10
   },
   {
     "company": "UiPath, Inc.",
@@ -96824,11 +96824,11 @@
           "M.5": 40
         },
         "sources": [
-          "FDA",
-          "FEC",
           "SEC DEF 14A",
+          "CFPB",
           "HIBP",
-          "CFPB"
+          "FDA",
+          "FEC"
         ]
       },
       "A": {
@@ -96839,9 +96839,9 @@
           "A.4": 55
         },
         "sources": [
-          "SBTi",
+          "Industry+EPA",
           "Industry",
-          "Industry+EPA"
+          "SBTi"
         ]
       },
       "N": {
@@ -97383,12 +97383,12 @@
           "A": false,
           "N": true
         },
-        "decay_level": "watch",
-        "decay_index": 14
+        "decay_level": "stable",
+        "decay_index": 4
       }
     },
-    "decay_level": "watch",
-    "decay_index": 14
+    "decay_level": "stable",
+    "decay_index": 4
   },
   {
     "company": "TENET HEALTHCARE CORP",

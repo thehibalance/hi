@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-16T06:49:16.068769",
+  "timestamp": "2026-08-17T07:07:00.902507",
   "total_issues": 484,
   "critical": 0,
   "warnings": 190,
@@ -14,8 +14,8 @@
     "pct_90_100": 0.0,
     "pct_40_70": 93.4,
     "pct_0_20": 0.7,
-    "gold_count": 1,
-    "gold_pct": 0.1,
+    "gold_count": 2,
+    "gold_pct": 0.3,
     "mssi_violations": 0,
     "single_source_dimensions": 81
   },
@@ -61,9 +61,9 @@
       "severity": "warning",
       "company": "Goldman Sachs Group, Inc.",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~64)",
+      "message": "Composite 50 doesn't match dimensions (expected ~61)",
       "value": 50,
-      "expected": 64
+      "expected": 61
     },
     {
       "layer": 1,
@@ -3859,7 +3859,7 @@
       "severity": "warning",
       "company": "synchrony",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 82, 'U.2': 92}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 81, 'U.2': 91}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
