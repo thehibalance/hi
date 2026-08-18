@@ -1,21 +1,21 @@
 {
-  "timestamp": "2026-08-17T07:07:00.902507",
-  "total_issues": 484,
+  "timestamp": "2026-08-18T06:56:08.893298",
+  "total_issues": 482,
   "critical": 0,
-  "warnings": 190,
+  "warnings": 188,
   "info": 294,
   "blocked": false,
   "stats": {
     "total_companies": 739,
-    "avg_composite": 55.2,
+    "avg_composite": 55.3,
     "stdev": 7.5,
     "min_score": 13,
     "max_score": 85,
     "pct_90_100": 0.0,
-    "pct_40_70": 93.4,
+    "pct_40_70": 93.2,
     "pct_0_20": 0.7,
-    "gold_count": 2,
-    "gold_pct": 0.3,
+    "gold_count": 1,
+    "gold_pct": 0.1,
     "mssi_violations": 0,
     "single_source_dimensions": 81
   },
@@ -1318,15 +1318,6 @@
     },
     {
       "layer": 1,
-      "severity": "warning",
-      "company": "Accenture plc",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~54)",
-      "value": 50,
-      "expected": 54
-    },
-    {
-      "layer": 1,
       "severity": "info",
       "company": "AeroVironment Inc",
       "field": "data_sources",
@@ -2062,15 +2053,6 @@
       "message": "Only 1 data source \u2014 score may be unreliable",
       "value": 1,
       "expected": ">= 2"
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
-      "company": "Hewlett Packard Enterprise Co",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~53)",
-      "value": 50,
-      "expected": 53
     },
     {
       "layer": 1,
@@ -4309,7 +4291,7 @@
       "severity": "warning",
       "company": "goldman_sachs",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 88, 'U.2': 98}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 87, 'U.2': 97}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
