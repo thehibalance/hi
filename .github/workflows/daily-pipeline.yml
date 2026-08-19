@@ -17,12 +17,11 @@ on:
           - daily
           - quarterly
           - features-only
-          - force-refresh
 
 jobs:
   score:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 60
 
     steps:
       - name: Checkout repo
@@ -63,13 +62,10 @@ jobs:
 
           if [ "$MODE" = "quarterly" ]; then
             echo "Quarterly run"
-            python3 run_all.py --skip-collect --quarterly
+            python3 run_all.py --workers 8 --quarterly
           elif [ "$MODE" = "features-only" ]; then
             echo "Features only"
             python3 run_all.py --skip-collect --features-only
-          elif [ "$MODE" = "force-refresh" ]; then
-            echo "Force refresh — ignoring --incremental, full data fetch for all companies"
-            python3 run_all.py --workers 8
           else
             echo "Daily run"
             python3 run_all.py --workers 8 --incremental 24
