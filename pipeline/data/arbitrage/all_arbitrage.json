@@ -113,27 +113,6 @@
     "composite": 50
   },
   {
-    "company": "Netflix",
-    "ticker": "NFLX",
-    "industry": "media",
-    "hi_composite": 50,
-    "esg_composite": 66.9,
-    "esg_components": {
-      "environmental": 60,
-      "social": 69.6,
-      "governance": 71.5
-    },
-    "gap": -16.9,
-    "arbitrage_type": "esg_washing",
-    "arbitrage_label": "ESG Washing",
-    "gap_reasons": [
-      "H dimension at 32 \u2014 ESG ignores human consciousness",
-      "Algorithmic Harm score 42.0 \u2014 ESG doesn't measure this",
-      "2 humanwashing flags \u2014 ESG misses performative claims"
-    ],
-    "composite": 50
-  },
-  {
     "company": "Visa",
     "ticker": "V",
     "industry": "tech",
@@ -3283,6 +3262,25 @@
       "Low on both HI and ESG \u2014 significant risk across all dimensions"
     ],
     "composite": 48
+  },
+  {
+    "company": "Netflix",
+    "ticker": "NFLX",
+    "industry": "media",
+    "hi_composite": 63,
+    "esg_composite": 66.9,
+    "esg_components": {
+      "environmental": 60,
+      "social": 69.6,
+      "governance": 71.5
+    },
+    "gap": -3.9,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 63
   },
   {
     "company": "Chevron Corporation",
