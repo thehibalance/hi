@@ -618,6 +618,26 @@ def is_stale(filepath, max_age_hours=24):
     return age > (max_age_hours * 3600)
 
 
+def _to_num(v):  # HI-PATCH:headcount-typeerror:v1
+    """Coerce headcount/revenue to a number. FMP returns employees as a string."""
+    if v is None or isinstance(v, bool):
+        return None
+    if isinstance(v, dict):
+        v = v.get("value")
+        if v is None:
+            return None
+    if isinstance(v, (int, float)):
+        return v if v else None
+    if isinstance(v, str):
+        t = v.strip().replace(",", "").replace("$", "")
+        try:
+            f = float(t)
+        except ValueError:
+            return None
+        return f if f else None
+    return None
+
+
 def collect_one(company, keys, core, subsignals, extended, data_dir, incremental_hours=0):
     """Collect all data for a single company. Thread-safe."""
     name = company["name"]
@@ -699,8 +719,14 @@ def collect_one(company, keys, core, subsignals, extended, data_dir, incremental
                     # FMP profile doesn't include revenue; that field stays missing
             
             # Compute revenue_per_employee from whatever we have
-            if current_hc and current_rev:
-                h_sigs["revenue_per_employee"] = round(current_rev / current_hc)
+            # HI-PATCH:headcount-typeerror:v1
+            _hc, _rev = _to_num(current_hc), _to_num(current_rev)
+            if _hc:
+                h_sigs["headcount"] = {"value": int(_hc)}
+            if _rev:
+                m_sigs["revenue"] = _rev
+            if _hc and _rev:
+                h_sigs["revenue_per_employee"] = round(_rev / _hc)
         # ──────────────────────────────────────────────────────────────────
     
     if subsignals:
