@@ -253,6 +253,37 @@
     }
   },
   {
+    "company": "AUTOMATIC DATA PROCESSING INC",
+    "ticker": "ADP",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 68,
+    "decay_level": "critical",
+    "factors": [
+      "Heavy layoff coverage (6 articles)",
+      "AI acceleration (5 articles)",
+      "High 8-K activity (20 filings)",
+      "Ethics/legal issues (5 articles)",
+      "CEO accountability critical (20.0/100)"
+    ],
+    "signals": {
+      "layoff_news_90d": 6,
+      "ai_news_90d": 5,
+      "ethics_news_90d": 5,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 20.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "CVS Health",
     "ticker": "CVS",
     "hi_grade": "scored",
@@ -555,36 +586,6 @@
       "humanwashing_flags": 2,
       "media_layoffs": 0,
       "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 20.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "AUTOMATIC DATA PROCESSING INC",
-    "ticker": "ADP",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 58,
-    "decay_level": "critical",
-    "factors": [
-      "Heavy layoff coverage (6 articles)",
-      "AI acceleration (5 articles)",
-      "Ethics/legal issues (5 articles)",
-      "CEO accountability critical (20.0/100)"
-    ],
-    "signals": {
-      "layoff_news_90d": 6,
-      "ai_news_90d": 5,
-      "ethics_news_90d": 5,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
@@ -2119,7 +2120,7 @@
     "company": "Hewlett Packard Enterprise Co",
     "ticker": "HPE",
     "hi_grade": "scored",
-    "composite": 55,
+    "composite": 50,
     "decay_index": 39,
     "decay_level": "warning",
     "factors": [
@@ -2427,6 +2428,35 @@
       "media_layoffs": 0,
       "media_ethics": 0,
       "media_ai_pivot": 1,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "PINTEREST, INC.",
+    "ticker": "PINS",
+    "hi_grade": "scored",
+    "composite": 50,
+    "decay_index": 37,
+    "decay_level": "warning",
+    "factors": [
+      "High 8-K activity (20 filings)",
+      "2 humanwashing flag(s)",
+      "Media layoff coverage (5 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 2,
+      "media_layoffs": 5,
+      "media_ethics": 1,
+      "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
       "media_environment": 0,
@@ -2786,7 +2816,7 @@
     "company": "Accenture plc",
     "ticker": "ACN",
     "hi_grade": "scored",
-    "composite": 56,
+    "composite": 50,
     "decay_index": 34,
     "decay_level": "warning",
     "factors": [
@@ -3100,6 +3130,35 @@
     }
   },
   {
+    "company": "Samsara Inc.",
+    "ticker": "IOT",
+    "hi_grade": "scored",
+    "composite": 53,
+    "decay_index": 33,
+    "decay_level": "warning",
+    "factors": [
+      "AI acceleration (6 articles)",
+      "High 8-K activity (20 filings)",
+      "AI pivot in media (3 articles)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 6,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 1,
+      "media_ai_pivot": 3,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "Nike, Inc.",
     "ticker": "NKE",
     "hi_grade": "scored",
@@ -3131,7 +3190,7 @@
     "company": "Starbucks Corporation",
     "ticker": "SBUX",
     "hi_grade": "scored",
-    "composite": 71,
+    "composite": 69,
     "decay_index": 30,
     "decay_level": "warning",
     "factors": [
@@ -3243,7 +3302,7 @@
     "company": "HONEYWELL INTERNATIONAL INC",
     "ticker": "HON",
     "hi_grade": "scored",
-    "composite": 60,
+    "composite": 58,
     "decay_index": 30,
     "decay_level": "warning",
     "factors": [
@@ -3967,34 +4026,6 @@
       "material_events_180d": 20,
       "humanwashing_flags": 0,
       "media_layoffs": 1,
-      "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "PINTEREST, INC.",
-    "ticker": "PINS",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 27,
-    "decay_level": "watch",
-    "factors": [
-      "2 humanwashing flag(s)",
-      "Media layoff coverage (5 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 2,
-      "media_layoffs": 5,
       "media_ethics": 1,
       "media_ai_pivot": 0,
       "media_ceo": 0,
@@ -5537,34 +5568,6 @@
       "media_layoffs": 0,
       "media_ethics": 1,
       "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Samsara Inc.",
-    "ticker": "IOT",
-    "hi_grade": "scored",
-    "composite": 50,
-    "decay_index": 23,
-    "decay_level": "watch",
-    "factors": [
-      "AI acceleration (6 articles)",
-      "AI pivot in media (3 articles)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 6,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 1,
-      "media_ai_pivot": 3,
       "media_ceo": 0,
       "media_employee": 0,
       "media_environment": 0,
@@ -7508,6 +7511,33 @@
     }
   },
   {
+    "company": "METLIFE INC",
+    "ticker": "MET",
+    "hi_grade": "scored",
+    "composite": 61,
+    "decay_index": 15,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 1,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 1,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "ALBEMARLE CORP",
     "ticker": "ALB",
     "hi_grade": "scored",
@@ -8172,6 +8202,33 @@
       "layoff_news_90d": 0,
       "ai_news_90d": 0,
       "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 1,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "Redwire Corp",
+    "ticker": "RDW",
+    "hi_grade": "scored",
+    "composite": 56,
+    "decay_index": 15,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 1,
       "total_displaced": 0,
       "material_events_180d": 20,
       "humanwashing_flags": 0,
@@ -8853,6 +8910,34 @@
       "humanwashing_flags": 0,
       "media_layoffs": 0,
       "media_ethics": 1,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
+    "company": "TEXTRON INC",
+    "ticker": "TXT",
+    "hi_grade": "scored",
+    "composite": 48,
+    "decay_index": 15,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)",
+      "1 humanwashing flag(s)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 1,
+      "ethics_news_90d": 1,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 1,
+      "media_layoffs": 0,
+      "media_ethics": 0,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
@@ -13122,6 +13207,33 @@
     }
   },
   {
+    "company": "Editas Medicine, Inc.",
+    "ticker": "EDIT",
+    "hi_grade": "scored",
+    "composite": 58,
+    "decay_index": 10,
+    "decay_level": "watch",
+    "factors": [
+      "High 8-K activity (20 filings)"
+    ],
+    "signals": {
+      "layoff_news_90d": 0,
+      "ai_news_90d": 0,
+      "ethics_news_90d": 0,
+      "total_displaced": 0,
+      "material_events_180d": 20,
+      "humanwashing_flags": 0,
+      "media_layoffs": 0,
+      "media_ethics": 0,
+      "media_ai_pivot": 0,
+      "media_ceo": 0,
+      "media_employee": 0,
+      "media_environment": 0,
+      "ceo_score": 60.0,
+      "warn_displaced": 0
+    }
+  },
+  {
     "company": "FMC CORP",
     "ticker": "FMC",
     "hi_grade": "scored",
@@ -16998,31 +17110,6 @@
     }
   },
   {
-    "company": "METLIFE INC",
-    "ticker": "MET",
-    "hi_grade": "scored",
-    "composite": 61,
-    "decay_index": 5,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 1,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "Anthropic",
     "ticker": "",
     "hi_grade": "scored",
@@ -17798,31 +17885,6 @@
     }
   },
   {
-    "company": "Redwire Corp",
-    "ticker": "RDW",
-    "hi_grade": "scored",
-    "composite": 56,
-    "decay_index": 5,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
     "company": "Sea Ltd",
     "ticker": "SE",
     "hi_grade": "scored",
@@ -17839,33 +17901,6 @@
       "humanwashing_flags": 0,
       "media_layoffs": 0,
       "media_ethics": 1,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "TEXTRON INC",
-    "ticker": "TXT",
-    "hi_grade": "scored",
-    "composite": 48,
-    "decay_index": 5,
-    "decay_level": "stable",
-    "factors": [
-      "1 humanwashing flag(s)"
-    ],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 1,
-      "ethics_news_90d": 1,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 1,
-      "media_layoffs": 0,
-      "media_ethics": 0,
       "media_ai_pivot": 0,
       "media_ceo": 0,
       "media_employee": 0,
@@ -19510,31 +19545,6 @@
     "signals": {
       "layoff_news_90d": 0,
       "ai_news_90d": 1,
-      "ethics_news_90d": 0,
-      "total_displaced": 0,
-      "material_events_180d": 0,
-      "humanwashing_flags": 0,
-      "media_layoffs": 0,
-      "media_ethics": 0,
-      "media_ai_pivot": 0,
-      "media_ceo": 0,
-      "media_employee": 0,
-      "media_environment": 0,
-      "ceo_score": 60.0,
-      "warn_displaced": 0
-    }
-  },
-  {
-    "company": "Editas Medicine, Inc.",
-    "ticker": "EDIT",
-    "hi_grade": "scored",
-    "composite": 58,
-    "decay_index": 0,
-    "decay_level": "stable",
-    "factors": [],
-    "signals": {
-      "layoff_news_90d": 0,
-      "ai_news_90d": 0,
       "ethics_news_90d": 0,
       "total_displaced": 0,
       "material_events_180d": 0,
