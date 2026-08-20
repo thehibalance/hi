@@ -286,7 +286,14 @@ def run_backtest(history_dir=HISTORY_DIR, prices_dir=PRICES_DIR, output_dir="dat
     prev_date = None
 
     for date in dates:
-        snapshot = json.load(open(history_path / f"{date}.json"))
+        # HI-PATCH:backtest-missing-snapshot:v1
+        # History has gaps (e.g. 2026-04-17 -> 2026-04-30). Guard the snapshot
+        # load the same way price_file is guarded below, or one missing day
+        # kills the entire backtest.
+        snapshot_file = history_path / f"{date}.json"
+        if not snapshot_file.exists():
+            continue
+        snapshot = json.load(open(snapshot_file))
         price_file = Path(prices_dir) / f"{date}.json"
 
         if not price_file.exists():
