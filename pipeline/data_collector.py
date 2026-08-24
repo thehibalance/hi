@@ -161,6 +161,20 @@ def load_company_list():
         if _t not in name_lookup:
             name_lookup[_t] = _n
 
+    # HI-PATCH:sec-index:v1
+    try:
+        from sec_index import load_sec_index
+        _sec = load_sec_index()
+        _filled = 0
+        for _t, _e in _sec.items():
+            if _e.get("title") and (not name_lookup.get(_t) or name_lookup.get(_t) == _t):
+                name_lookup[_t] = _e["title"]
+                _filled += 1
+        if _filled:
+            print(f"  SEC index supplied {_filled} company names")
+    except Exception as _e:
+        print(f"  SEC name backfill unavailable: {_e}")
+
     # Add universe tickers not already in scores
     try:
         from universe_tickers import get_all_tickers

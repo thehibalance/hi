@@ -83,16 +83,15 @@ def fetch_json(url):
         return None
 
 
-def get_cik_from_ticker(ticker):
-    """Look up CIK number from ticker symbol using SEC company tickers file."""
-    url = "https://www.sec.gov/files/company_tickers.json"
-    data = fetch_json(url)
-    if not data:
-        return None
-    for entry in data.values():
-        if entry.get("ticker", "").upper() == ticker.upper():
-            return str(entry["cik_str"]).zfill(10)
-    return None
+def get_cik_from_ticker(ticker):  # HI-PATCH:sec-index:v1
+    """CIK from ticker via the cached SEC index.
+
+    Previously re-downloaded the full ~794 KB company_tickers.json once per
+    company (~700 MB per run). Also handles BRK.B -> BRK-B; SEC writes share
+    classes with a dash and only 1 of its 10,000+ entries uses a dot.
+    """
+    from sec_index import get_cik
+    return get_cik(ticker)
 
 
 def get_submissions(cik):
