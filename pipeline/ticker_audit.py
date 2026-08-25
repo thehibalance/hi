@@ -69,9 +69,39 @@ def main():
     except Exception as e: print(f"  sp500_companies unavailable: {e}")
     try:
         import universe_tickers as u
-        for t in list(getattr(u,"SP500",[]))+list(getattr(u,"RUSSELL_1000_ADDITIONS",[])):
+        # HI-PATCH:all-ticker-lists:v1
+        _all = []
+        for _n in dir(u):
+            if _n.isupper():
+                _v = getattr(u, _n)
+                if isinstance(_v, list) and _v and all(isinstance(x, str) for x in _v):
+                    _all.extend(_v)
+        for t in _all:
             if isinstance(t,str): put(t, "")
     except Exception as e: print(f"  universe_tickers unavailable: {e}")
+
+    # HI-PATCH:local-names:v1
+    # Names from our own previously-fetched data. SEC cannot name a ticker that
+    # is no longer in SEC's file, but data/sec/MMC.json remembers "Marsh McLennan"
+    # from when it was fetched — which is exactly what the reverse lookup needs.
+    # data/sec/ is ticker-named; data/subsignals/ is SOURCE-prefixed
+    # (CFPB_AAPL.json, FEC_AAPL.json) and must not be read as tickers.
+    # Only ever NAME a ticker already in the universe — never invent one.
+    for f in Path("data", "sec").glob("*.json"):
+        stem = f.stem.strip().upper()
+        if stem in ("ALL_COMPANIES",) or stem not in pairs:
+            continue
+        cur = pairs.get(stem, "")
+        if cur and cur.upper() != stem:
+            continue
+        try:
+            rec = json.load(open(f))
+        except Exception:
+            continue
+        if not isinstance(rec, dict): continue
+        nm = rec.get("company") or rec.get("name")
+        if isinstance(nm, str) and nm.strip():
+            pairs[stem] = nm.strip()
     print(f"universe: {len(pairs):,} tickers\n")
 
     ok=[]; fmt=[]; renamed=[]; mismatch=[]; dead=[]; noname=[]

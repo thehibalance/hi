@@ -128,7 +128,7 @@ def get_all_tickers():
     (.L, .T, .DE, .HK etc.) are excluded. SEC EDGAR cannot fetch them, and
     they previously caused ghost records in the SEC aggregate."""
     all_tickers = set()
-    for t in SP500 + RUSSELL_1000_ADDITIONS:
+    for t in SP500 + RUSSELL_1000_ADDITIONS + SP400_MIDCAP:
         t = t.strip().upper()
         if t:
             all_tickers.add(t)
@@ -157,3 +157,34 @@ if __name__ == "__main__":
     print(f"Total unique tickers: {len(tickers)}")
     print(f"S&P 500: {len(SP500)} tickers")
     print(f"Russell additions: {len(RUSSELL_1000_ADDITIONS)} tickers")
+
+
+# HI-PATCH:index-sp400:v1
+# 335 constituents, each verified against SEC's ticker index at import
+SP400_MIDCAP = [
+    "AA","AAL","ACI","ACM","ADC","AEIS","AFG","AGCO","AHR","AIT","ALLY","ALSN","ALV","AM",
+    "AMG","AMKR","AN","APG","APPF","AR","ARMK","ARW","ARWR","ASB","ASH","ATI","ATR","AVNT",
+    "AVT","AVTR","AXTA","AYI","BAH","BC","BCO","BDC","BHF","BKH","BRKR","BRX","BSY","BTSG",
+    "BYD","CACI","CAR","CART","CBSH","CBT","CCK","CDE","CDP","CFR","CG","CGNX","CHDN","CHE",
+    "CHH","CHRD","CLF","CLH","CMC","CNH","CNM","CNO","CNX","COKE","COLB","COLM","CPRI","CR",
+    "CRBG","CROX","CRS","CSL","CTRE","CUBE","CUZ","CVLT","CXT","CYTK","DAR","DCI","DINO",
+    "DLB","DOCN","DT","DTM","DY","EEFT","EGP","EHC","ELAN","ELF","ENS","ENSG","EPR","EQH",
+    "ESAB","ESNT","EVR","EWBC","EXEL","EXLS","EXP","EXPO","FAF","FBIN","FCFS","FCN","FFIN",
+    "FHI","FHN","FLG","FLR","FLS","FN","FNB","FND","FNF","FOUR","FR","FTI","G","GAP","GATX",
+    "GBCI","GEF","GGG","GHC","GLPI","GMED","GNTX","GPK","GWRE","GXO","H","HAE","HGV","HL",
+    "HLI","HLNE","HOG","HOMB","HQY","HR","HRB","HWC","HXL","IBOC","IDA","IDCC","IESC",
+    "INGR","IPGP","IRT","ITT","JAZZ","JEF","JLL","KBH","KBR","KD","KEX","KNF","KNSL","KNX",
+    "KRC","KRG","KRYS","LAD","LAMR","LEA","LECO","LFUS","LIVN","LNTH","LOPE","LPX","MANH",
+    "MAT","MEDP","MIDD","MKSI","MLI","MMS","MOG.A","MORN","MP","MSA","MSM","MTDR","MTG",
+    "MTN","MTZ","MUR","MUSA","MZTI","NBIX","NEU","NFG","NJR","NLY","NOV","NOVT","NTNX",
+    "NVST","NVT","NWE","NXST","NXT","NYT","OC","OGE","OGS","OLED","OLN","ONB","ONTO","OPCH",
+    "ORA","ORI","OSK","OVV","OZK","P","PAG","PB","PBF","PCTY","PEGA","PFGC","PII","PK",
+    "PLNT","PNFP","POR","PPC","PR","PRI","PSN","PVH","R","RBA","RBC","REXR","RGA","RGEN",
+    "RGLD","RH","RLI","RNR","ROIV","RPM","RRC","RRX","RS","RYAN","RYN","SAIC","SANM","SARO",
+    "SBRA","SCI","SEIC","SF","SGI","SHC","SIGI","SIRI","SLGN","SLM","SMG","SMTC","SN","SNX",
+    "SOLS","SON","SPXC","SR","SSB","SSD","ST","STRL","STWD","SWX","SYNA","TCBI","TEX","THG",
+    "THO","TKR","TLN","TNL","TOL","TRU","TTEK","TTMI","TXNM","UBSI","UFPI","UGI","ULS",
+    "UMBF","UNM","USFD","UTHR","VAL","VC","VFC","VIAV","VICR","VLY","VMI","VNO","VNOM",
+    "VNT","VOYA","VVV","WAL","WCC","WEX","WFRD","WH","WHR","WLK","WMG","WMS","WPC","WSO",
+    "WTFC","WTRG","WTS","WWD","XPO","ZION",
+]

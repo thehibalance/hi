@@ -80,6 +80,21 @@ def main():
     sys.path.insert(0, str(SCRIPT_DIR))
     try:
         from universe_tickers import SP500, RUSSELL_1000_ADDITIONS
+        # HI-PATCH:all-ticker-lists:v1
+        # regen imported only SP500 + RUSSELL_1000_ADDITIONS by name, so any NEW list
+        # (SP400_MIDCAP, SP600_SMALLCAP...) was invisible and its tickers never reached
+        # sp500_companies.py — which is the file every collector actually reads.
+        import universe_tickers as _ut
+        _extra = []
+        for _n in dir(_ut):
+            if _n.isupper() and _n not in ("SP500", "RUSSELL_1000_ADDITIONS"):
+                _v = getattr(_ut, _n)
+                if isinstance(_v, list) and _v and all(isinstance(x, str) for x in _v):
+                    _extra.extend(_v)
+        if _extra:
+            RUSSELL_1000_ADDITIONS = list(RUSSELL_1000_ADDITIONS) + _extra
+            print(f"  + {len(_extra)} tickers from additional universe lists")
+
     except ImportError as e:
         sys.exit(f"ABORT — couldn't import universe_tickers SP500/RUSSELL_1000_ADDITIONS: {e}")
 
