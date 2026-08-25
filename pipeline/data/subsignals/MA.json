@@ -13,6 +13,35 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 70,
+    "raw": {
+      "company": "Mastercard Inc",
+      "ticker": "MA",
+      "domain": "mastercard.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "MastercardPricelessSpecials",
+          "date": "2019-08-20",
+          "pwn_count": 89388,
+          "data_classes": [
+            "Email addresses",
+            "IP addresses",
+            "Names",
+            "Partial credit card data",
+            "Phone numbers",
+            "Salutations"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 89388,
+      "sensitive_data_exposed": false,
+      "fetched": "2026-08-25T00:16:04.420691",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 45,
     "source": "Industry"

@@ -13,6 +13,32 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 60,
+    "raw": {
+      "company": "COMCAST CORP",
+      "ticker": "CMCSA",
+      "domain": "comcast.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "Comcast",
+          "date": "2015-11-08",
+          "pwn_count": 616882,
+          "data_classes": [
+            "Email addresses",
+            "Passwords",
+            "Physical addresses"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 616882,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-08-25T00:20:02.727479",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 50,
     "source": "Industry"
