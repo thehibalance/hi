@@ -25,6 +25,47 @@
       "source": "FEC"
     }
   },
+  "hibp": {
+    "M.2": 30,
+    "raw": {
+      "company": "DOMINOS PIZZA INC",
+      "ticker": "DPZ",
+      "domain": "dominos.com",
+      "breach_count": 2,
+      "breaches": [
+        {
+          "name": "Dominos",
+          "date": "2014-06-13",
+          "pwn_count": 648231,
+          "data_classes": [
+            "Email addresses",
+            "Names",
+            "Passwords",
+            "Phone numbers",
+            "Physical addresses"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "DominosIndia",
+          "date": "2021-03-24",
+          "pwn_count": 22527655,
+          "data_classes": [
+            "Email addresses",
+            "Names",
+            "Phone numbers",
+            "Physical addresses",
+            "Purchases"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 23175886,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-08-25T00:24:26.198484",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 65,
     "source": "Industry"
