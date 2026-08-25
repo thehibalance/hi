@@ -25,6 +25,32 @@
       "source": "FEC"
     }
   },
+  "hibp": {
+    "M.2": 60,
+    "raw": {
+      "company": "AUTOMATIC DATA PROCESSING INC",
+      "ticker": "ADP",
+      "domain": "adp.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "Adpost",
+          "date": "2025-02-14",
+          "pwn_count": 3339512,
+          "data_classes": [
+            "Email addresses",
+            "Names",
+            "Usernames"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 3339512,
+      "sensitive_data_exposed": false,
+      "fetched": "2026-08-25T16:44:55.446528",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 45,
     "source": "Industry"

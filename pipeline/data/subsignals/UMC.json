@@ -13,12 +13,38 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 60,
+    "raw": {
+      "company": "UNITED MICROELECTRONICS CORP",
+      "ticker": "UMC",
+      "domain": "umc.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "ForumCommunity",
+          "date": "2016-06-01",
+          "pwn_count": 776648,
+          "data_classes": [
+            "Email addresses",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 776648,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-08-25T16:56:02.982018",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
-    "A.4": 55,
+    "A.4": 45,
     "source": "Industry"
   },
   "land": {
-    "A.3": 50,
+    "A.3": 65,
     "source": "Industry+EPA"
   }
 }

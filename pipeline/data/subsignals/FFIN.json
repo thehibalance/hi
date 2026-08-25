@@ -1,0 +1,60 @@
+{
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "FIRST FINANCIAL BANKSHARES INC",
+      "ticker": "FFIN",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-08-25T16:59:54.286627",
+      "source": "CFPB"
+    }
+  },
+  "hibp": {
+    "M.2": 20,
+    "raw": {
+      "company": "FIRST FINANCIAL BANKSHARES INC",
+      "ticker": "FFIN",
+      "domain": "ffin.com",
+      "breach_count": 2,
+      "breaches": [
+        {
+          "name": "FurAffinity",
+          "date": "2016-05-17",
+          "pwn_count": 1270564,
+          "data_classes": [
+            "Email addresses",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "SynthientCredentialStuffingThreatData",
+          "date": "2025-04-11",
+          "pwn_count": 1957476021,
+          "data_classes": [
+            "Email addresses",
+            "Passwords"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 1958746585,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-08-25T16:59:54.870266",
+      "source": "HIBP"
+    }
+  },
+  "hardware": {
+    "A.4": 55,
+    "source": "Industry"
+  },
+  "land": {
+    "A.3": 50,
+    "source": "Industry+EPA"
+  }
+}

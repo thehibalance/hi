@@ -13,6 +13,51 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 35,
+    "raw": {
+      "company": "POWER INTEGRATIONS INC",
+      "ticker": "POWI",
+      "domain": "power.com",
+      "breach_count": 2,
+      "breaches": [
+        {
+          "name": "PaddyPower",
+          "date": "2010-10-25",
+          "pwn_count": 590954,
+          "data_classes": [
+            "Account balances",
+            "Dates of birth",
+            "Email addresses",
+            "IP addresses",
+            "Names",
+            "Phone numbers",
+            "Physical addresses",
+            "Security questions and answers",
+            "Usernames",
+            "Website activity"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "Powerbot",
+          "date": "2014-09-01",
+          "pwn_count": 503501,
+          "data_classes": [
+            "Email addresses",
+            "IP addresses",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 1094455,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-08-25T16:53:50.750572",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 45,
     "source": "Industry"

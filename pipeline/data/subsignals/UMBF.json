@@ -1,0 +1,49 @@
+{
+  "hibp": {
+    "M.2": 30,
+    "raw": {
+      "company": "UMB FINANCIAL CORP",
+      "ticker": "UMBF",
+      "domain": "umb.com",
+      "breach_count": 2,
+      "breaches": [
+        {
+          "name": "QuantumBooter",
+          "date": "2014-03-18",
+          "pwn_count": 48592,
+          "data_classes": [
+            "Email addresses",
+            "IP addresses",
+            "Passwords",
+            "Private messages",
+            "Usernames",
+            "Website activity"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "Tumblr",
+          "date": "2013-02-28",
+          "pwn_count": 65469298,
+          "data_classes": [
+            "Email addresses",
+            "Passwords"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 65517890,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-08-25T17:06:12.990780",
+      "source": "HIBP"
+    }
+  },
+  "hardware": {
+    "A.4": 55,
+    "source": "Industry"
+  },
+  "land": {
+    "A.3": 50,
+    "source": "Industry+EPA"
+  }
+}

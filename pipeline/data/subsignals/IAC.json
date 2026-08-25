@@ -25,6 +25,43 @@
       "source": "FEC"
     }
   },
+  "hibp": {
+    "M.2": 55,
+    "raw": {
+      "company": "IAC",
+      "ticker": "IAC",
+      "domain": "iac.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "Astoria",
+          "date": "2021-01-26",
+          "pwn_count": 11498146,
+          "data_classes": [
+            "Bank account numbers",
+            "Credit status information",
+            "Dates of birth",
+            "Email addresses",
+            "Employers",
+            "Health insurance information",
+            "Income levels",
+            "IP addresses",
+            "Names",
+            "Personal health data",
+            "Phone numbers",
+            "Physical addresses",
+            "Smoking habits",
+            "Social security numbers"
+          ],
+          "is_verified": false
+        }
+      ],
+      "total_records_exposed": 11498146,
+      "sensitive_data_exposed": false,
+      "fetched": "2026-08-25T17:01:08.381717",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 55,
     "source": "Industry"

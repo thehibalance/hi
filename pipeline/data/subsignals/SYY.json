@@ -13,6 +13,37 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 60,
+    "raw": {
+      "company": "SYSCO CORP",
+      "ticker": "SYY",
+      "domain": "sysco.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "Sysco",
+          "date": "2026-06-15",
+          "pwn_count": 2691852,
+          "data_classes": [
+            "Customer feedback",
+            "Email addresses",
+            "Employers",
+            "Job titles",
+            "Names",
+            "Phone numbers",
+            "Physical addresses",
+            "Usernames"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 2691852,
+      "sensitive_data_exposed": false,
+      "fetched": "2026-08-25T16:48:36.809675",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 65,
     "source": "Industry"

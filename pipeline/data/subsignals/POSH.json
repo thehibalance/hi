@@ -13,6 +13,35 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 45,
+    "raw": {
+      "company": "POSH",
+      "ticker": "POSH",
+      "domain": "poshmark.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "Poshmark",
+          "date": "2018-05-16",
+          "pwn_count": 36395491,
+          "data_classes": [
+            "Email addresses",
+            "Genders",
+            "Geographic locations",
+            "Names",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 36395491,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-08-25T17:03:59.026736",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 55,
     "source": "Industry"

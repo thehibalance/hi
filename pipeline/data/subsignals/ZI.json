@@ -13,6 +13,76 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 10,
+    "raw": {
+      "company": "ZI",
+      "ticker": "ZI",
+      "domain": "zoominfo.com",
+      "breach_count": 4,
+      "breaches": [
+        {
+          "name": "Spyzie",
+          "date": "2024-02-22",
+          "pwn_count": 518643,
+          "data_classes": [
+            "Email addresses"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "VNG",
+          "date": "2015-05-19",
+          "pwn_count": 24853850,
+          "data_classes": [
+            "Dates of birth",
+            "Email addresses",
+            "Genders",
+            "IP addresses",
+            "Marital statuses",
+            "Names",
+            "Occupations",
+            "Passwords",
+            "Phone numbers",
+            "Physical addresses",
+            "Usernames"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "WiziShop",
+          "date": "2020-07-14",
+          "pwn_count": 2856769,
+          "data_classes": [
+            "Dates of birth",
+            "Email addresses",
+            "IP addresses",
+            "Names",
+            "Passwords",
+            "Phone numbers",
+            "Physical addresses"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "Zilvia",
+          "date": "2025-11-06",
+          "pwn_count": 287863,
+          "data_classes": [
+            "Email addresses",
+            "IP addresses",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 28517125,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-08-25T17:07:17.630875",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 55,
     "source": "Industry"

@@ -1,0 +1,39 @@
+{
+  "hibp": {
+    "M.2": 60,
+    "raw": {
+      "company": "Ally Financial Inc.",
+      "ticker": "ALLY",
+      "domain": "ally.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "Locally",
+          "date": "2022-10-01",
+          "pwn_count": 362619,
+          "data_classes": [
+            "Email addresses",
+            "Partial credit card data",
+            "Passwords",
+            "Phone numbers",
+            "Physical addresses",
+            "Purchases"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 362619,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-08-25T16:56:30.135480",
+      "source": "HIBP"
+    }
+  },
+  "hardware": {
+    "A.4": 55,
+    "source": "Industry"
+  },
+  "land": {
+    "A.3": 50,
+    "source": "Industry+EPA"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "company": "STOR",
+  "ticker": "STOR",
+  "domain": "storecapital.com",
+  "breach_count": 3,
+  "breaches": [
+    {
+      "name": "Storenvy",
+      "date": "2019-04-04",
+      "pwn_count": 11052071,
+      "data_classes": [
+        "Dates of birth",
+        "Email addresses",
+        "Genders",
+        "Geographic locations",
+        "IP addresses",
+        "Passwords",
+        "Usernames"
+      ],
+      "is_verified": true
+    },
+    {
+      "name": "StoryBird",
+      "date": "2015-08-07",
+      "pwn_count": 1047200,
+      "data_classes": [
+        "Email addresses",
+        "Names",
+        "Passwords",
+        "Usernames"
+      ],
+      "is_verified": true
+    },
+    {
+      "name": "Astoria",
+      "date": "2021-01-26",
+      "pwn_count": 11498146,
+      "data_classes": [
+        "Bank account numbers",
+        "Credit status information",
+        "Dates of birth",
+        "Email addresses",
+        "Employers",
+        "Health insurance information",
+        "Income levels",
+        "IP addresses",
+        "Names",
+        "Personal health data",
+        "Phone numbers",
+        "Physical addresses",
+        "Smoking habits",
+        "Social security numbers"
+      ],
+      "is_verified": false
+    }
+  ],
+  "total_records_exposed": 23597417,
+  "sensitive_data_exposed": true,
+  "fetched": "2026-08-25T17:05:26.894688",
+  "source": "HIBP"
+}

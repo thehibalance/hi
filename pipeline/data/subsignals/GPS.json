@@ -13,6 +13,49 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 45,
+    "raw": {
+      "company": "GPS",
+      "ticker": "GPS",
+      "domain": "gap.com",
+      "breach_count": 2,
+      "breaches": [
+        {
+          "name": "ColorDating",
+          "date": "2018-09-05",
+          "pwn_count": 220503,
+          "data_classes": [
+            "Bios",
+            "Dates of birth",
+            "Email addresses",
+            "Geographic locations",
+            "Names",
+            "Passwords",
+            "Profile photos"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "GPSUnderground",
+          "date": "2016-07-01",
+          "pwn_count": 669584,
+          "data_classes": [
+            "Dates of birth",
+            "Email addresses",
+            "IP addresses",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 890087,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-08-25T17:00:40.304551",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 55,
     "source": "Industry"

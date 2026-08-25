@@ -13,6 +13,33 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 50,
+    "raw": {
+      "company": "INTERNATIONAL FLAVORS & FRAGRANCES INC",
+      "ticker": "IFF",
+      "domain": "iff.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "DatPiff",
+          "date": "2021-08-25",
+          "pwn_count": 7476940,
+          "data_classes": [
+            "Email addresses",
+            "Passwords",
+            "Security questions and answers",
+            "Usernames"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 7476940,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-08-25T16:46:28.371867",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 55,
     "source": "Industry"

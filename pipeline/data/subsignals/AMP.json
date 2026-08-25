@@ -13,6 +13,36 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 70,
+    "raw": {
+      "company": "AMERIPRISE FINANCIAL INC",
+      "ticker": "AMP",
+      "domain": "ameriprise.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "Ameriprise",
+          "date": "2026-03-02",
+          "pwn_count": 502597,
+          "data_classes": [
+            "Email addresses",
+            "Employers",
+            "Financial transactions",
+            "Job titles",
+            "Names",
+            "Phone numbers",
+            "Physical addresses"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 502597,
+      "sensitive_data_exposed": false,
+      "fetched": "2026-08-25T16:51:19.953315",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 70,
     "source": "Industry"

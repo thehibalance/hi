@@ -1,0 +1,48 @@
+{
+  "company": "DOW INC.",
+  "ticker": "DOW",
+  "domain": "dow.com",
+  "breach_count": 3,
+  "breaches": [
+    {
+      "name": "MechoDownload",
+      "date": "2013-10-31",
+      "pwn_count": 437928,
+      "data_classes": [
+        "Email addresses",
+        "IP addresses",
+        "Passwords",
+        "Usernames"
+      ],
+      "is_verified": true
+    },
+    {
+      "name": "Shadow",
+      "date": "2023-09-28",
+      "pwn_count": 543295,
+      "data_classes": [
+        "Dates of birth",
+        "Email addresses",
+        "Names",
+        "Physical addresses"
+      ],
+      "is_verified": true
+    },
+    {
+      "name": "Windows93",
+      "date": "2021-01-01",
+      "pwn_count": 46105,
+      "data_classes": [
+        "Email addresses",
+        "IP addresses",
+        "Passwords",
+        "Usernames"
+      ],
+      "is_verified": true
+    }
+  ],
+  "total_records_exposed": 1027328,
+  "sensitive_data_exposed": true,
+  "fetched": "2026-08-25T16:44:59.219441",
+  "source": "HIBP"
+}

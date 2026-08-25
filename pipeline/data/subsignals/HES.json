@@ -13,6 +13,55 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 30,
+    "raw": {
+      "company": "HES",
+      "ticker": "HES",
+      "domain": "hess.com",
+      "breach_count": 3,
+      "breaches": [
+        {
+          "name": "2844Breaches",
+          "date": "2018-02-19",
+          "pwn_count": 80115532,
+          "data_classes": [
+            "Email addresses",
+            "Passwords"
+          ],
+          "is_verified": false
+        },
+        {
+          "name": "Chess",
+          "date": "2023-11-08",
+          "pwn_count": 1274077,
+          "data_classes": [
+            "Email addresses",
+            "Geographic locations",
+            "Names",
+            "Usernames"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "TheSquare",
+          "date": "2025-06-27",
+          "pwn_count": 107041,
+          "data_classes": [
+            "Email addresses",
+            "Geographic locations",
+            "Names",
+            "Phone numbers"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 81496650,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-08-25T17:00:46.414567",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 55,
     "source": "Industry"

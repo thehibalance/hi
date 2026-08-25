@@ -1,0 +1,49 @@
+{
+  "company": "METTLER TOLEDO INTERNATIONAL INC/",
+  "ticker": "MTD",
+  "domain": "mt.com",
+  "breach_count": 3,
+  "breaches": [
+    {
+      "name": "Amtrak",
+      "date": "2026-04-03",
+      "pwn_count": 2147679,
+      "data_classes": [
+        "Email addresses",
+        "Names",
+        "Physical addresses",
+        "Support tickets"
+      ],
+      "is_verified": true
+    },
+    {
+      "name": "JamTangan",
+      "date": "2021-07-06",
+      "pwn_count": 434784,
+      "data_classes": [
+        "Email addresses",
+        "IP addresses",
+        "Names",
+        "Passwords",
+        "Phone numbers",
+        "Physical addresses"
+      ],
+      "is_verified": true
+    },
+    {
+      "name": "PaySystemTech",
+      "date": "2022-04-29",
+      "pwn_count": 1410764,
+      "data_classes": [
+        "Credit cards",
+        "Email addresses",
+        "Purchases"
+      ],
+      "is_verified": false
+    }
+  ],
+  "total_records_exposed": 3993227,
+  "sensitive_data_exposed": true,
+  "fetched": "2026-08-25T16:53:40.956581",
+  "source": "HIBP"
+}

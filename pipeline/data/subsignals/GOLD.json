@@ -13,12 +13,46 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 70,
+    "raw": {
+      "company": "Gold.com, Inc.",
+      "ticker": "GOLD",
+      "domain": "gold.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "GoldSilver",
+          "date": "2018-10-21",
+          "pwn_count": 242715,
+          "data_classes": [
+            "Bank account numbers",
+            "Email addresses",
+            "IP addresses",
+            "Names",
+            "Partial credit card data",
+            "Passport numbers",
+            "Phone numbers",
+            "Physical addresses",
+            "Purchases",
+            "Security questions and answers",
+            "Social security numbers"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 242715,
+      "sensitive_data_exposed": false,
+      "fetched": "2026-08-25T16:55:39.109053",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
-    "A.4": 55,
+    "A.4": 65,
     "source": "Industry"
   },
   "land": {
-    "A.3": 50,
+    "A.3": 45,
     "source": "Industry+EPA"
   }
 }

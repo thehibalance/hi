@@ -1,0 +1,38 @@
+{
+  "company": "Sea Ltd",
+  "ticker": "SE",
+  "domain": "sea.com",
+  "breach_count": 2,
+  "breaches": [
+    {
+      "name": "ElasticsearchSalesLeads",
+      "date": "2018-10-29",
+      "pwn_count": 5788169,
+      "data_classes": [
+        "Email addresses",
+        "Employers",
+        "Names",
+        "Physical addresses"
+      ],
+      "is_verified": true
+    },
+    {
+      "name": "LandAirSea",
+      "date": "2025-01-12",
+      "pwn_count": 337373,
+      "data_classes": [
+        "Email addresses",
+        "Names",
+        "Partial credit card data",
+        "Passwords",
+        "Physical addresses",
+        "Usernames"
+      ],
+      "is_verified": true
+    }
+  ],
+  "total_records_exposed": 6125542,
+  "sensitive_data_exposed": true,
+  "fetched": "2026-08-25T16:54:03.720616",
+  "source": "HIBP"
+}

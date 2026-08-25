@@ -13,6 +13,32 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 60,
+    "raw": {
+      "company": "SEE",
+      "ticker": "SEE",
+      "domain": "sealedair.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "Seedpeer",
+          "date": "2015-07-12",
+          "pwn_count": 281924,
+          "data_classes": [
+            "Email addresses",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 281924,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-08-25T17:04:46.861028",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 55,
     "source": "Industry"

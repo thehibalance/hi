@@ -13,6 +13,114 @@
       "source": "CFPB"
     }
   },
+  "hibp": {
+    "M.2": 10,
+    "raw": {
+      "company": "Intercontinental Exchange, Inc.",
+      "ticker": "ICE",
+      "domain": "ice.com",
+      "breach_count": 6,
+      "breaches": [
+        {
+          "name": "ClearVoiceSurveys",
+          "date": "2015-08-23",
+          "pwn_count": 15074786,
+          "data_classes": [
+            "Dates of birth",
+            "Email addresses",
+            "Genders",
+            "IP addresses",
+            "Names",
+            "Passwords",
+            "Phone numbers",
+            "Physical addresses"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "eThekwiniMunicipality",
+          "date": "2016-09-07",
+          "pwn_count": 81830,
+          "data_classes": [
+            "Dates of birth",
+            "Deceased date",
+            "Email addresses",
+            "Genders",
+            "Government issued IDs",
+            "Names",
+            "Passport numbers",
+            "Passwords",
+            "Phone numbers",
+            "Physical addresses",
+            "Utility bills"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "HDBFinancialServices",
+          "date": "2023-02-22",
+          "pwn_count": 1658750,
+          "data_classes": [
+            "Dates of birth",
+            "Email addresses",
+            "Genders",
+            "Geographic locations",
+            "Loan information",
+            "Names",
+            "Phone numbers"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "MastercardPricelessSpecials",
+          "date": "2019-08-20",
+          "pwn_count": 89388,
+          "data_classes": [
+            "Email addresses",
+            "IP addresses",
+            "Names",
+            "Partial credit card data",
+            "Phone numbers",
+            "Salutations"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "PlanetIce",
+          "date": "2023-01-14",
+          "pwn_count": 240488,
+          "data_classes": [
+            "Dates of birth",
+            "Email addresses",
+            "Genders",
+            "IP addresses",
+            "Names",
+            "Passwords",
+            "Phone numbers",
+            "Physical addresses",
+            "Purchases"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "PoliceOne",
+          "date": "2014-07-01",
+          "pwn_count": 709926,
+          "data_classes": [
+            "Email addresses",
+            "IP addresses",
+            "Passwords",
+            "Usernames"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 17855168,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-08-25T16:46:27.465256",
+      "source": "HIBP"
+    }
+  },
   "hardware": {
     "A.4": 70,
     "source": "Industry"

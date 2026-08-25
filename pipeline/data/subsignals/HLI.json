@@ -1,0 +1,105 @@
+{
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "HOULIHAN LOKEY, INC.",
+      "ticker": "HLI",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-08-25T17:01:02.316068",
+      "source": "CFPB"
+    }
+  },
+  "hibp": {
+    "M.2": 10,
+    "raw": {
+      "company": "HOULIHAN LOKEY, INC.",
+      "ticker": "HLI",
+      "domain": "hl.com",
+      "breach_count": 4,
+      "breaches": [
+        {
+          "name": "AshleyMadison",
+          "date": "2015-07-19",
+          "pwn_count": 30811934,
+          "data_classes": [
+            "Dates of birth",
+            "Email addresses",
+            "Ethnicities",
+            "Genders",
+            "Names",
+            "Passwords",
+            "Payment histories",
+            "Phone numbers",
+            "Physical addresses",
+            "Security questions and answers",
+            "Sexual orientations",
+            "Usernames",
+            "Website activity"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "DCHealth",
+          "date": "2023-03-06",
+          "pwn_count": 48145,
+          "data_classes": [
+            "Citizenship statuses",
+            "Dates of birth",
+            "Email addresses",
+            "Employers",
+            "Ethnicities",
+            "Genders",
+            "Names",
+            "Phone numbers",
+            "Physical addresses",
+            "Purchases",
+            "Social security numbers"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "HLTV",
+          "date": "2016-06-19",
+          "pwn_count": 611070,
+          "data_classes": [
+            "Email addresses",
+            "Names",
+            "Passwords",
+            "Usernames",
+            "Website activity"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "RalphLauren",
+          "date": "2026-06-11",
+          "pwn_count": 139903,
+          "data_classes": [
+            "Age groups",
+            "Email addresses",
+            "Genders",
+            "Names",
+            "Phone numbers"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 31611052,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-08-25T17:01:02.979707",
+      "source": "HIBP"
+    }
+  },
+  "hardware": {
+    "A.4": 55,
+    "source": "Industry"
+  },
+  "land": {
+    "A.3": 50,
+    "source": "Industry+EPA"
+  }
+}

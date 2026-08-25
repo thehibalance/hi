@@ -1,0 +1,55 @@
+{
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "LEAR CORP",
+      "ticker": "LEA",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-08-25T17:01:56.312566",
+      "source": "CFPB"
+    }
+  },
+  "hibp": {
+    "M.2": 45,
+    "raw": {
+      "company": "LEAR CORP",
+      "ticker": "LEA",
+      "domain": "lear.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "ClearVoiceSurveys",
+          "date": "2015-08-23",
+          "pwn_count": 15074786,
+          "data_classes": [
+            "Dates of birth",
+            "Email addresses",
+            "Genders",
+            "IP addresses",
+            "Names",
+            "Passwords",
+            "Phone numbers",
+            "Physical addresses"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 15074786,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-08-25T17:01:56.887421",
+      "source": "HIBP"
+    }
+  },
+  "hardware": {
+    "A.4": 55,
+    "source": "Industry"
+  },
+  "land": {
+    "A.3": 50,
+    "source": "Industry+EPA"
+  }
+}
