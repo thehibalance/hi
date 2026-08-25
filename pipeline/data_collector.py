@@ -236,15 +236,31 @@ def load_company_list():
     # which is [] for everything scored before the domain cache existed. The
     # new-universe-ticker branch alone misses them — this catches every company
     # regardless of which branch created it.
-    _dfill = 0
+    _dfill = _dfix = 0
+    # HI-PATCH:domains-authoritative:v1
+    # Fill empties, AND correct stored domains that disagree with FMP's live
+    # profile. MRSH had inherited H&M's hm.com from a name-normalization
+    # collision ("H&M" vs "MARSH & MCLENNAN"), and a wrong domain feeds another
+    # company's breach history straight into the M dimension. Curated
+    # DOMAIN_MAP entries are authoritative and never overridden — they carry
+    # multiple domains per company (Apple has four).
+    try:
+        from sp500_domains import DOMAIN_MAP as _CUR
+    except Exception:
+        _CUR = {}
     for c in companies:
+        _t = str(c.get("ticker", "")).strip().upper()
+        _d = _hi_domains(_t)
         if not c.get("domains"):
-            _d = _hi_domains(c.get("ticker", ""))
             if _d:
                 c["domains"] = _d
                 _dfill += 1
-    if _dfill:
-        print(f"  Domain backfill: {_dfill} companies given a domain")
+        elif _d and _t and _t not in _CUR and c["domains"] != _d:
+            print(f"    domain corrected: {_t} {c['domains']} -> {_d}")
+            c["domains"] = _d
+            _dfix += 1
+    if _dfill or _dfix:
+        print(f"  Domains: {_dfill} filled, {_dfix} corrected")
 
     # Also backfill any name='' entries that came from existing scores
     backfilled = 0
