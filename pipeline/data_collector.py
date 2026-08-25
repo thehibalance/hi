@@ -72,6 +72,34 @@ def safe_get(url, params=None, headers=None, timeout=15, _retry_count=0):
         return None
 
 
+# HI-PATCH:domains-from-fmp:v1
+_HI_DOMAIN_CACHE = None
+def _hi_domains(ticker):
+    """Domain for a ticker: curated DOMAIN_MAP first, then the FMP-built cache."""
+    global _HI_DOMAIN_CACHE
+    if _HI_DOMAIN_CACHE is None:
+        _HI_DOMAIN_CACHE = {}
+        try:
+            import json as _j
+            from pathlib import Path as _P
+            f = _P("data/domains_cache.json")
+            if f.exists():
+                _HI_DOMAIN_CACHE = {k.upper(): v for k, v in _j.load(open(f)).items() if v}
+                print(f"  domain cache: {len(_HI_DOMAIN_CACHE)} tickers")
+        except Exception as _e:
+            print(f"  domain cache unavailable: {_e}")
+    t = str(ticker).strip().upper()
+    try:
+        from sp500_domains import DOMAIN_MAP
+        cur = DOMAIN_MAP.get(t) or DOMAIN_MAP.get(ticker)
+        if cur:
+            return list(cur) if isinstance(cur, (list, tuple)) else [cur]
+    except Exception:
+        pass
+    d = _HI_DOMAIN_CACHE.get(t)
+    return [d] if d else []
+
+
 def load_company_list():
     """Load master company list from scores + universe tickers."""
     companies = []
@@ -192,7 +220,7 @@ def load_company_list():
                     "ticker": ticker,
                     "industry": "",
                     "sic": "",
-                    "domains": [],
+                    "domains": _hi_domains(ticker),  # HI-PATCH:domains-from-fmp:v1
                 })
                 seen_tickers.add(ticker.upper())
                 new_count += 1
@@ -202,6 +230,21 @@ def load_company_list():
             print(f"    ⚠ {unresolved_count} of those have no name in sp500_companies or ADR_NAMES — SEC will try to resolve at fetch time")
     except ImportError:
         print("  No universe_tickers.py found, using existing scores only.")
+
+    # HI-PATCH:domains-backfill:v1
+    # Companies already in all_scores.json arrive with their own domains field,
+    # which is [] for everything scored before the domain cache existed. The
+    # new-universe-ticker branch alone misses them — this catches every company
+    # regardless of which branch created it.
+    _dfill = 0
+    for c in companies:
+        if not c.get("domains"):
+            _d = _hi_domains(c.get("ticker", ""))
+            if _d:
+                c["domains"] = _d
+                _dfill += 1
+    if _dfill:
+        print(f"  Domain backfill: {_dfill} companies given a domain")
 
     # Also backfill any name='' entries that came from existing scores
     backfilled = 0
