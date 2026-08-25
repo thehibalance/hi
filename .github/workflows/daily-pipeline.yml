@@ -16,7 +16,7 @@ on:
 jobs:
   score:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 300
 
     steps:
       - name: Checkout repo
@@ -54,8 +54,15 @@ jobs:
             INCREMENTAL=""
             echo "Force refresh — re-fetching every company"
           else
-            INCREMENTAL="--incremental 24"
-            echo "Daily run — skipping companies with data fresher than 24h"
+            # 20h, not 24h. The cron is every 24h and a run takes ~1.5h, so files
+            # written during yesterday's run are ~23h old when today's starts —
+            # under a 24h threshold they read as "fresh" and the whole run collects
+            # nothing. Observed: "Skipped as fresh (<24h): 902" of 904.
+            # 20h guarantees the daily never skips, while still protecting a manual
+            # re-run an hour later from re-fetching everything and burning the
+            # free-tier quotas (Alpha Vantage ~25/day, yfinance throttles).
+            INCREMENTAL="--incremental 20"
+            echo "Daily run — collecting anything older than 20h"
           fi
 
           if [ -f data/scores/all_scores.json ]; then
