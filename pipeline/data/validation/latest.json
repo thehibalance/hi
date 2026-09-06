@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-09-05T10:03:23.068077",
-  "total_issues": 911,
+  "timestamp": "2026-09-06T10:19:37.292685",
+  "total_issues": 912,
   "critical": 0,
-  "warnings": 215,
+  "warnings": 216,
   "info": 696,
   "blocked": false,
   "stats": {
     "total_companies": 1142,
-    "avg_composite": 56.2,
+    "avg_composite": 56.1,
     "stdev": 6.3,
     "min_score": 13,
     "max_score": 85,
@@ -295,9 +295,9 @@
       "severity": "warning",
       "company": "ADVANCED MICRO DEVICES INC",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~58)",
+      "message": "Composite 50 doesn't match dimensions (expected ~55)",
       "value": 50,
-      "expected": 58
+      "expected": 55
     },
     {
       "layer": 1,
@@ -862,8 +862,8 @@
       "severity": "warning",
       "company": "ALTRIA GROUP, INC.",
       "field": "composite",
-      "message": "Composite 46 doesn't match dimensions (expected ~40)",
-      "value": 46,
+      "message": "Composite 44 doesn't match dimensions (expected ~40)",
+      "value": 44,
       "expected": 40
     },
     {
@@ -892,6 +892,15 @@
       "message": "Only 1 data source \u2014 score may be unreliable",
       "value": 1,
       "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "BIOGEN INC.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~55)",
+      "value": 50,
+      "expected": 55
     },
     {
       "layer": 1,
@@ -7738,7 +7747,7 @@
       "severity": "warning",
       "company": "synchrony",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 81, 'U.2': 91}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 82, 'U.2': 92}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
