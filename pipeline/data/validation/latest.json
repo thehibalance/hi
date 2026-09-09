@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-09-08T11:02:36.974172",
-  "total_issues": 911,
+  "timestamp": "2026-09-09T11:20:06.753802",
+  "total_issues": 912,
   "critical": 0,
-  "warnings": 215,
+  "warnings": 216,
   "info": 696,
   "blocked": false,
   "stats": {
     "total_companies": 1142,
-    "avg_composite": 56.2,
+    "avg_composite": 56.1,
     "stdev": 6.3,
     "min_score": 13,
     "max_score": 85,
@@ -91,6 +91,15 @@
       "message": "Composite 50 doesn't match dimensions (expected ~62)",
       "value": 50,
       "expected": 62
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Visa",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~60)",
+      "value": 50,
+      "expected": 60
     },
     {
       "layer": 1,
@@ -7738,7 +7747,7 @@
       "severity": "warning",
       "company": "synchrony",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 81, 'U.2': 91}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 82, 'U.2': 92}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
