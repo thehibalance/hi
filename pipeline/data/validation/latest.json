@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-09-11T11:05:31.476399",
-  "total_issues": 914,
+  "timestamp": "2026-09-12T10:08:14.606932",
+  "total_issues": 913,
   "critical": 0,
-  "warnings": 218,
+  "warnings": 217,
   "info": 696,
   "blocked": false,
   "stats": {
@@ -17,7 +17,7 @@
     "gold_count": 5,
     "gold_pct": 0.4,
     "mssi_violations": 0,
-    "single_source_dimensions": 81
+    "single_source_dimensions": 80
   },
   "issues": [
     {
@@ -86,6 +86,15 @@
     {
       "layer": 1,
       "severity": "warning",
+      "company": "Etsy",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~62)",
+      "value": 50,
+      "expected": 62
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
       "company": "Visa",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~60)",
@@ -97,9 +106,9 @@
       "severity": "warning",
       "company": "DOW INC.",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~59)",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
       "value": 50,
-      "expected": 59
+      "expected": 56
     },
     {
       "layer": 1,
@@ -331,9 +340,9 @@
       "severity": "warning",
       "company": "Mastercard Inc",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~55)",
+      "message": "Composite 50 doesn't match dimensions (expected ~58)",
       "value": 50,
-      "expected": 55
+      "expected": 58
     },
     {
       "layer": 1,
@@ -7276,15 +7285,6 @@
     },
     {
       "layer": 1,
-      "severity": "warning",
-      "company": "KILROY REALTY CORP",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~53)",
-      "value": 50,
-      "expected": 53
-    },
-    {
-      "layer": 1,
       "severity": "info",
       "company": "KILROY REALTY CORP",
       "field": "data_sources",
@@ -7498,15 +7498,6 @@
       "message": "Only 1 data source \u2014 score may be unreliable",
       "value": 1,
       "expected": ">= 2"
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
-      "company": "W. P. Carey Inc.",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~53)",
-      "value": 50,
-      "expected": 53
     },
     {
       "layer": 1,
@@ -7765,7 +7756,7 @@
       "severity": "warning",
       "company": "synchrony",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 82, 'U.2': 92}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 81, 'U.2': 91}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
