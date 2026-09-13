@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-09-12T10:08:14.606932",
-  "total_issues": 913,
+  "timestamp": "2026-09-13T11:09:48.729513",
+  "total_issues": 912,
   "critical": 0,
-  "warnings": 217,
+  "warnings": 216,
   "info": 696,
   "blocked": false,
   "stats": {
     "total_companies": 1142,
-    "avg_composite": 56.2,
+    "avg_composite": 56.1,
     "stdev": 6.3,
     "min_score": 13,
     "max_score": 85,
@@ -17,7 +17,7 @@
     "gold_count": 5,
     "gold_pct": 0.4,
     "mssi_violations": 0,
-    "single_source_dimensions": 80
+    "single_source_dimensions": 81
   },
   "issues": [
     {
@@ -340,9 +340,9 @@
       "severity": "warning",
       "company": "Mastercard Inc",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~58)",
+      "message": "Composite 50 doesn't match dimensions (expected ~55)",
       "value": 50,
-      "expected": 58
+      "expected": 55
     },
     {
       "layer": 1,
@@ -6493,15 +6493,6 @@
     },
     {
       "layer": 1,
-      "severity": "warning",
-      "company": "PBF Energy Inc.",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~53)",
-      "value": 50,
-      "expected": 53
-    },
-    {
-      "layer": 1,
       "severity": "info",
       "company": "PBF Energy Inc.",
       "field": "data_sources",
@@ -7756,7 +7747,7 @@
       "severity": "warning",
       "company": "synchrony",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 81, 'U.2': 91}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 82, 'U.2': 92}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -8206,7 +8197,7 @@
       "severity": "warning",
       "company": "discover_financial",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 80, 'U.2': 90}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 79, 'U.2': 89}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
