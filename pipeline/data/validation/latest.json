@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-09-18T11:43:15.391831",
-  "total_issues": 910,
+  "timestamp": "2026-09-19T10:18:11.615199",
+  "total_issues": 914,
   "critical": 0,
-  "warnings": 214,
+  "warnings": 218,
   "info": 696,
   "blocked": false,
   "stats": {
@@ -122,15 +122,6 @@
     {
       "layer": 1,
       "severity": "warning",
-      "company": "ESTEE LAUDER COMPANIES INC",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~58)",
-      "value": 50,
-      "expected": 58
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
       "company": "EXELON CORP",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~62)",
@@ -244,15 +235,6 @@
       "message": "Composite 50 doesn't match dimensions (expected ~61)",
       "value": 50,
       "expected": 61
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
-      "company": "ROCKWELL AUTOMATION, INC",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~55)",
-      "value": 50,
-      "expected": 55
     },
     {
       "layer": 1,
@@ -482,6 +464,15 @@
     {
       "layer": 1,
       "severity": "warning",
+      "company": "Archer-Daniels-Midland Co",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
       "company": "CENTENE CORP",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~56)",
@@ -502,9 +493,9 @@
       "severity": "warning",
       "company": "EBAY INC",
       "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~53)",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
       "value": 50,
-      "expected": 53
+      "expected": 56
     },
     {
       "layer": 1,
@@ -844,8 +835,8 @@
       "severity": "warning",
       "company": "ALTRIA GROUP, INC.",
       "field": "composite",
-      "message": "Composite 46 doesn't match dimensions (expected ~40)",
-      "value": 46,
+      "message": "Composite 44 doesn't match dimensions (expected ~40)",
+      "value": 44,
       "expected": 40
     },
     {
@@ -7024,6 +7015,15 @@
     },
     {
       "layer": 1,
+      "severity": "warning",
+      "company": "ANTERO RESOURCES Corp",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~53)",
+      "value": 50,
+      "expected": 53
+    },
+    {
+      "layer": 1,
       "severity": "info",
       "company": "ANTERO RESOURCES Corp",
       "field": "data_sources",
@@ -7084,6 +7084,15 @@
       "message": "Only 1 data source \u2014 score may be unreliable",
       "value": 1,
       "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Brighthouse Financial, Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~53)",
+      "value": 50,
+      "expected": 53
     },
     {
       "layer": 1,
@@ -7186,12 +7195,30 @@
     },
     {
       "layer": 1,
+      "severity": "warning",
+      "company": "EASTGROUP PROPERTIES INC",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~53)",
+      "value": 50,
+      "expected": 53
+    },
+    {
+      "layer": 1,
       "severity": "info",
       "company": "EASTGROUP PROPERTIES INC",
       "field": "data_sources",
       "message": "Only 1 data source \u2014 score may be unreliable",
       "value": 1,
       "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "EPR PROPERTIES",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~53)",
+      "value": 50,
+      "expected": 53
     },
     {
       "layer": 1,
@@ -7264,15 +7291,6 @@
       "message": "Only 1 data source \u2014 score may be unreliable",
       "value": 1,
       "expected": ">= 2"
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
-      "company": "KITE REALTY GROUP TRUST",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~53)",
-      "value": 50,
-      "expected": 53
     },
     {
       "layer": 1,
@@ -7480,6 +7498,15 @@
       "message": "Only 1 data source \u2014 score may be unreliable",
       "value": 1,
       "expected": ">= 2"
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "W. P. Carey Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~53)",
+      "value": 50,
+      "expected": 53
     },
     {
       "layer": 1,
@@ -7729,7 +7756,7 @@
       "severity": "warning",
       "company": "wells_fargo",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 75, 'U.2': 85}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 76, 'U.2': 86}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -7738,7 +7765,7 @@
       "severity": "warning",
       "company": "synchrony",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.2': 73}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.2': 74}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -7837,7 +7864,7 @@
       "severity": "warning",
       "company": "goldman_sachs",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 79, 'U.2': 89}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 80, 'U.2': 90}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -7847,6 +7874,15 @@
       "company": "cocacola",
       "field": "A_sources",
       "message": "Dimension A has only 1 source(s) but extreme scores: {'A.3': 100}",
+      "value": 1,
+      "expected": ">= 2 for extreme values"
+    },
+    {
+      "layer": 3,
+      "severity": "warning",
+      "company": "paypal",
+      "field": "U_sources",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.2': 71}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -7900,7 +7936,7 @@
       "severity": "warning",
       "company": "bank_of_america",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.2': 77}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.2': 79}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -7909,7 +7945,7 @@
       "severity": "warning",
       "company": "atandt",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 73, 'U.2': 83}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 72, 'U.2': 82}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -8017,7 +8053,7 @@
       "severity": "warning",
       "company": "citibank",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 80, 'U.2': 90}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 79, 'U.2': 89}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -8188,7 +8224,7 @@
       "severity": "warning",
       "company": "american_express",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 80, 'U.2': 90}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 77, 'U.2': 87}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
