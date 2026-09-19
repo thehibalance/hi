@@ -18,7 +18,7 @@ Key fixes in v2.1:
   - AHI weights aligned with spec v1.1
 """
 
-import json, os, sys
+import json, math, os, sys
 from pathlib import Path
 
 # Canonical names for companies known by multiple names
@@ -98,11 +98,22 @@ CANONICAL_NAMES = {
     "the procter & gamble": "Procter & Gamble Company",
 }
 
+# HI-PATCH:industry-calibration:v130
+# Calibrated from the scored universe (n=633 with RPE), Sept 2026. The median
+# company in each industry scores 65 by construction. Previous values were
+# invented and off by up to 2.9x, which flagged 39 companies as humanwashing in
+# error (KO, CPB, SYY, BMY...). See FINDING-industry-rpe-miscalibration.md
 INDUSTRY_RPE_MEDIANS = {
-    "tech": 500000, "retail": 200000, "finance": 600000,
-    "healthcare": 250000, "energy": 1500000, "manufacturing": 300000,
-    "food": 150000, "media": 400000, "telecom": 500000,
-    "defense": 350000, "auto": 300000, "default": 350000,
+    "tech": 380265, "finance": 1125674, "energy": 1174206,
+    "healthcare": 405636, "retail": 342863, "manufacturing": 374602,
+    "food": 429906, "hospitality": 251909, "transportation": 213536,
+    "materials": 463524, "apparel": 447389,
+    # n < 10 - provisional, revisit as coverage grows
+    "telecom": 920304, "auto": 298165, "mining": 609479,
+    "construction": 672929, "media": 262376, "realestate": 206123,
+    "services": 699491,
+    # No "default" key on purpose: an unknown industry has no credible peer
+    # baseline, so H.1 returns no-data rather than dividing by a fiction.
 }
 
 # v1.7.1-industry-classification: applied 20260423-085434
@@ -146,12 +157,36 @@ SIC_TO_INDUSTRY = {
     "82": "services",        # education
     "86": "services",        # membership organizations
     "89": "services",        # miscellaneous services
+    # v1.3.0: heavy industry. 77 companies were falling through to "default"
+    # and scored against a fictional 350,000 baseline. Mapped from SEC's own
+    # sic_description, not from guessing at two-digit codes.
+    "10": "mining", "14": "mining",
+    "33": "materials", "26": "materials", "32": "materials", "24": "materials",
+    "34": "manufacturing", "39": "manufacturing", "22": "manufacturing", "25": "manufacturing",
+    "15": "construction", "16": "construction", "17": "construction",
+    "65": "realestate", "75": "transportation", "46": "energy", "01": "food",
     # (end v1.7.1)
 }
 
 def get_industry(sic_code):
     if not sic_code: return "default"
-    return SIC_TO_INDUSTRY.get(str(sic_code)[:2], "default")
+    # v1.3.0: None, not "default" - an unmapped SIC is unknown, not a category.
+    return SIC_TO_INDUSTRY.get(str(sic_code)[:2])
+
+def _rpe_score(industry_median, rpe):
+    """H.1 revenue-per-employee.  v1.3.0
+
+    Each doubling of employees per dollar of revenue, relative to the industry
+    median, is worth +15 points. The median company scores 65.
+
+    Replaces (median/rpe)*65, which clamped at 100 for anything below 0.65x the
+    median and so pinned 168 companies (15%) at the ceiling, unable to tell a
+    company at half its industry median from one at a tenth.
+    """
+    if not rpe or rpe <= 0 or not industry_median:
+        return 50
+    return round(clamp(65 + 15 * math.log2(industry_median / rpe)), 1)
+
 
 def clamp(v, lo=0, hi=100):
     return max(lo, min(hi, v))
@@ -712,16 +747,19 @@ def score_h_dimension(sec_h, job_data, bls_data, industry, patents=None):
 
     rpe = sec_h.get("revenue_per_employee")
     displacement = sec_h.get("displacement_signal")
-    industry_median = INDUSTRY_RPE_MEDIANS.get(industry, INDUSTRY_RPE_MEDIANS["default"])
+    industry_median = INDUSTRY_RPE_MEDIANS.get(industry)
+    _med_ok = industry_median is not None
+    if not _med_ok:
+        industry_median = 350000  # legacy value, retained only for rpe_ratio below
     ai_ratio = job_data.get("h_signals", {}).get("ai_ratio") if job_data else None
 
     if rpe and ai_ratio is not None:
-        rpe_score = clamp((industry_median / rpe) * 65) if rpe > 0 else 50
+        rpe_score = _rpe_score(industry_median, rpe) if _med_ok else 50
         ai_score = job_data["h_signals"].get("adjusted_score", 50)
         scores["H.1"] = round(rpe_score * 0.5 + ai_score * 0.5, 1)
         sources_used.extend(["SEC", "Jobs"])
     elif rpe:
-        scores["H.1"] = clamp((industry_median / rpe) * 65) if rpe > 0 else 50
+        scores["H.1"] = _rpe_score(industry_median, rpe) if _med_ok else 50
         sources_used.append("SEC")
     elif ai_ratio is not None:
         scores["H.1"] = job_data["h_signals"].get("adjusted_score", 50)
@@ -745,7 +783,9 @@ def score_h_dimension(sec_h, job_data, bls_data, industry, patents=None):
     # More humans per $B revenue = more human decisions. Deeper org = more human judgment.
     h3 = 50
     h3_sources = []
-    if rpe:
+    # v1.3.0: no credible industry baseline -> H.3 skips the RPE term entirely,
+    # rather than deriving a 'human decision depth' from a fictional peer group.
+    if rpe and _med_ok:
         # Lower revenue-per-employee = more humans in the loop = more human decisions
         rpe_ratio = industry_median / max(rpe, 1)
         h3 = clamp(40 + rpe_ratio * 30)  # Range: ~40-70 from RPE alone
@@ -1670,8 +1710,9 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
 
     hw_flags = []
     rpe = sec_h.get("revenue_per_employee")
-    industry_rpe_median = INDUSTRY_RPE_MEDIANS.get(industry, INDUSTRY_RPE_MEDIANS["default"])
-    if rpe and rpe > industry_rpe_median * 4:
+    industry_rpe_median = INDUSTRY_RPE_MEDIANS.get(industry)
+    # v1.3.0: no baseline -> no accusation. Never flag on a guessed median.
+    if rpe and industry_rpe_median and rpe > industry_rpe_median * 4:
         hw_flags.append(f"HW.1: Revenue/employee ${rpe:,.0f} is >4x industry median (${industry_rpe_median:,.0f})")
     displacement = sec_h.get("displacement_signal")
     if displacement and displacement > 30:
@@ -1708,7 +1749,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.2.1",
+        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.3.0",
         "data_sources": all_sources,
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
         "humanwashing_flags": hw_flags,
