@@ -740,11 +740,31 @@ def root():
     })
 
 
+def _data_spec_version():
+    """spec_version of the scores actually loaded in memory. Never hardcode this:
+    /stats reported "1.2.1" for as long as it existed, whatever the data said."""
+    from collections import Counter
+    c = Counter(x.get("spec_version") for x in ALL_COMPANIES if x.get("spec_version"))
+    return c.most_common(1)[0][0] if c else None
+
+
+def _scores_file_mtime():
+    """When all_scores.json on disk last changed. If spec_version is behind what
+    the pipeline last produced, the process loaded old data and needs a restart."""
+    try:
+        f = DATA_DIR / "all_scores.json"
+        return datetime.utcfromtimestamp(f.stat().st_mtime).isoformat() + "Z"
+    except Exception:
+        return None
+
+
 @app.route("/api/v1/health")
 def health():
     return jsonify({
         "status": "ok", "service": "HI. Score API", "version": "1.0.0",
         "companies": len(ALL_COMPANIES), "domains": len(COMPANIES),
+        "spec_version": _data_spec_version(),
+        "scores_file_mtime": _scores_file_mtime(),
         "timestamp": datetime.utcnow().isoformat() + "Z",
     })
 
@@ -949,7 +969,7 @@ def stats():
         "floor_rule_triggered": sum(1 for c in ALL_COMPANIES if c.get("floor_triggered")),
         "balance_floor_triggered": sum(1 for c in ALL_COMPANIES if c.get("balance_floor")),
         "data_sources": get_dynamic_source_count(),
-        "spec_version": "1.2.1",
+        "spec_version": _data_spec_version(),
         "brand": {
             "name": "HI.", "tagline": "Find the HI balance.",
             "domain": "thehibalance.org", "foundation": "The HI Balance",

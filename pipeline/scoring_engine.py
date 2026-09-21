@@ -104,19 +104,57 @@ CANONICAL_NAMES = {
 # invented and off by up to 2.9x, which flagged 39 companies as humanwashing in
 # error (KO, CPB, SYY, BMY...). See FINDING-industry-rpe-miscalibration.md
 INDUSTRY_RPE_MEDIANS = {
-    "tech": 380265, "finance": 1125674, "energy": 1174206,
-    "healthcare": 405636, "retail": 342863, "manufacturing": 374602,
-    "food": 429906, "hospitality": 251909, "transportation": 213536,
-    "materials": 463524, "apparel": 447389,
-    # n < 10 - provisional, revisit as coverage grows
-    "telecom": 920304, "auto": 298165, "mining": 609479,
-    "construction": 672929, "media": 262376, "realestate": 206123,
-    "services": 699491,
+    # Recomputed from the scored universe by recalibrate_medians.py.
+    # The median company in each industry scores 65 on H.1 by construction.
+    # Regenerate whenever the universe or the SIC mapping changes.
+    "tech": 380265,   # n=177
+    "finance": 735992,   # n=90
+    "energy": 1174206,   # n=57
+    "retail": 342863,   # n=52
+    "reit": 3156000,   # n=43
+    "healthcare": 335645,   # n=42
+    "manufacturing": 374602,   # n=38
+    "food": 429906,   # n=34
+    "hospitality": 251909,   # n=15
+    "chemicals": 922786,   # n=14
+    "transportation": 213536,   # n=14
+    "materials": 463524,   # n=14
+    "apparel": 447389,   # n=11
+    # provisional - fewer than 10 companies with RPE data
+    "telecom": 920304,   # n=7
+    "auto": 298165,   # n=5
+    "mining": 609479,   # n=5
+    "construction": 672929,   # n=5
+    "media": 262376,   # n=4
+    "realestate": 206123,   # n=3
     # No "default" key on purpose: an unknown industry has no credible peer
     # baseline, so H.1 returns no-data rather than dividing by a fiction.
 }
 
 # v1.7.1-industry-classification: applied 20260423-085434
+# HI-PATCH:sic3:v131
+# Two-digit SIC is too coarse in two places, and both were costing real accuracy.
+#
+# SIC 28 is chemicals AND pharma AND consumer products. Mapped whole to
+# "healthcare", it scored 16 industrial-chemical companies (DOW, DD, CF, MOS,
+# IFF) against a pharma baseline 2-4x too low. Measured: 283 pharma 348,774 /
+# 284 soap+cosmetics 373,397 / industrial chemicals 955,571.
+#
+# SIC 67 lumped 53 REITs in with banks. REITs run ~2.8x the bank median
+# revenue-per-employee, and 28 of the 53 were floor-capped at composite 50
+# as a direct result. Near-zero headcount is the REIT business model, not a
+# humanity signal.
+SIC3_TO_INDUSTRY = {
+    "283": "healthcare",   # pharmaceutical preparations
+    # 284 (soap/cosmetics: PG, CL, CLX, EL) stays in healthcare. Measured at
+    # 373,397 vs healthcare 332,814 - close enough to share a baseline. The
+    # label reads wrong to a user, but that needs display and peer-group to be
+    # two fields, not a 5-company category that trips the floor rule.
+    "280": "chemicals", "281": "chemicals", "282": "chemicals",
+    "285": "chemicals", "286": "chemicals", "287": "chemicals", "289": "chemicals",
+    "679": "reit",         # real estate investment trusts
+}
+
 SIC_TO_INDUSTRY = {
     # Technology / electronics (SIC 35-38, 73)
     "35": "tech", "36": "tech", "38": "tech", "73": "tech",
@@ -170,8 +208,10 @@ SIC_TO_INDUSTRY = {
 
 def get_industry(sic_code):
     if not sic_code: return "default"
-    # v1.3.0: None, not "default" - an unmapped SIC is unknown, not a category.
-    return SIC_TO_INDUSTRY.get(str(sic_code)[:2])
+    # v1.3.1: 3-digit first, then 2-digit. None if neither - an unmapped SIC
+    # is unknown, not a category.
+    s = str(sic_code)
+    return SIC3_TO_INDUSTRY.get(s[:3]) or SIC_TO_INDUSTRY.get(s[:2])
 
 def _rpe_score(industry_median, rpe):
     """H.1 revenue-per-employee.  v1.3.0
@@ -1749,7 +1789,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.3.0",
+        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.3.1",
         "data_sources": all_sources,
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
         "humanwashing_flags": hw_flags,
