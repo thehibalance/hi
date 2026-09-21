@@ -2278,6 +2278,26 @@
     "composite": 50
   },
   {
+    "company": "REINSURANCE GROUP OF AMERICA INC",
+    "ticker": "RGA",
+    "industry": "finance",
+    "hi_composite": 50,
+    "esg_composite": 55.8,
+    "esg_components": {
+      "environmental": 55,
+      "social": 47.6,
+      "governance": 63.5
+    },
+    "gap": -5.8,
+    "arbitrage_type": "esg_washing",
+    "arbitrage_label": "ESG Washing",
+    "gap_reasons": [
+      "H dimension at 32 \u2014 ESG ignores human consciousness",
+      "1 humanwashing flags \u2014 ESG misses performative claims"
+    ],
+    "composite": 50
+  },
+  {
     "company": "RENAISSANCERE HOLDINGS LTD",
     "ticker": "RNR",
     "industry": "finance",
@@ -3000,44 +3020,6 @@
     "gap_reasons": [
       "H dimension at 34 \u2014 ESG ignores human consciousness",
       "1 humanwashing flags \u2014 ESG misses performative claims"
-    ],
-    "composite": 50
-  },
-  {
-    "company": "Sabra Health Care REIT, Inc.",
-    "ticker": "SBRA",
-    "industry": "reit",
-    "hi_composite": 50,
-    "esg_composite": 55.1,
-    "esg_components": {
-      "environmental": 51,
-      "social": 50.0,
-      "governance": 63.5
-    },
-    "gap": -5.1,
-    "arbitrage_type": "esg_washing",
-    "arbitrage_label": "ESG Washing",
-    "gap_reasons": [
-      "H dimension at 36 \u2014 ESG ignores human consciousness"
-    ],
-    "composite": 50
-  },
-  {
-    "company": "STARWOOD PROPERTY TRUST, INC.",
-    "ticker": "STWD",
-    "industry": "reit",
-    "hi_composite": 50,
-    "esg_composite": 55.1,
-    "esg_components": {
-      "environmental": 51,
-      "social": 50.0,
-      "governance": 63.5
-    },
-    "gap": -5.1,
-    "arbitrage_type": "esg_washing",
-    "arbitrage_label": "ESG Washing",
-    "gap_reasons": [
-      "H dimension at 41 \u2014 ESG ignores human consciousness"
     ],
     "composite": 50
   },
@@ -12027,25 +12009,6 @@
     "composite": 54
   },
   {
-    "company": "REINSURANCE GROUP OF AMERICA INC",
-    "ticker": "RGA",
-    "industry": "finance",
-    "hi_composite": 54,
-    "esg_composite": 55.8,
-    "esg_components": {
-      "environmental": 55,
-      "social": 47.6,
-      "governance": 63.5
-    },
-    "gap": -1.8,
-    "arbitrage_type": "esg_washing",
-    "arbitrage_label": "ESG Washing",
-    "gap_reasons": [
-      "1 humanwashing flags \u2014 ESG misses performative claims"
-    ],
-    "composite": 54
-  },
-  {
     "company": "CHURCH & DWIGHT CO INC /DE/",
     "ticker": "CHD",
     "industry": "healthcare",
@@ -14059,23 +14022,6 @@
     "composite": 56
   },
   {
-    "company": "AGREE REALTY CORP",
-    "ticker": "ADC",
-    "industry": "reit",
-    "hi_composite": 54,
-    "esg_composite": 55.1,
-    "esg_components": {
-      "environmental": 51,
-      "social": 50.0,
-      "governance": 63.5
-    },
-    "gap": -1.1,
-    "arbitrage_type": "esg_washing",
-    "arbitrage_label": "ESG Washing",
-    "gap_reasons": [],
-    "composite": 54
-  },
-  {
     "company": "American Healthcare REIT, Inc.",
     "ticker": "AHR",
     "industry": "reit",
@@ -14092,57 +14038,6 @@
     "gap_reasons": [
       "1 humanwashing flags \u2014 ESG misses performative claims"
     ],
-    "composite": 54
-  },
-  {
-    "company": "CareTrust REIT, Inc.",
-    "ticker": "CTRE",
-    "industry": "reit",
-    "hi_composite": 54,
-    "esg_composite": 55.1,
-    "esg_components": {
-      "environmental": 51,
-      "social": 50.0,
-      "governance": 63.5
-    },
-    "gap": -1.1,
-    "arbitrage_type": "esg_washing",
-    "arbitrage_label": "ESG Washing",
-    "gap_reasons": [],
-    "composite": 54
-  },
-  {
-    "company": "EASTGROUP PROPERTIES INC",
-    "ticker": "EGP",
-    "industry": "reit",
-    "hi_composite": 54,
-    "esg_composite": 55.1,
-    "esg_components": {
-      "environmental": 51,
-      "social": 50.0,
-      "governance": 63.5
-    },
-    "gap": -1.1,
-    "arbitrage_type": "esg_washing",
-    "arbitrage_label": "ESG Washing",
-    "gap_reasons": [],
-    "composite": 54
-  },
-  {
-    "company": "KILROY REALTY CORP",
-    "ticker": "KRC",
-    "industry": "reit",
-    "hi_composite": 54,
-    "esg_composite": 55.1,
-    "esg_components": {
-      "environmental": 51,
-      "social": 50.0,
-      "governance": 63.5
-    },
-    "gap": -1.1,
-    "arbitrage_type": "esg_washing",
-    "arbitrage_label": "ESG Washing",
-    "gap_reasons": [],
     "composite": 54
   },
   {
@@ -16712,9 +16607,104 @@
     "composite": 54
   },
   {
+    "company": "AGREE REALTY CORP",
+    "ticker": "ADC",
+    "industry": "reit",
+    "hi_composite": 56,
+    "esg_composite": 55.1,
+    "esg_components": {
+      "environmental": 51,
+      "social": 50.0,
+      "governance": 63.5
+    },
+    "gap": 0.9,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 56
+  },
+  {
+    "company": "CareTrust REIT, Inc.",
+    "ticker": "CTRE",
+    "industry": "reit",
+    "hi_composite": 56,
+    "esg_composite": 55.1,
+    "esg_components": {
+      "environmental": 51,
+      "social": 50.0,
+      "governance": 63.5
+    },
+    "gap": 0.9,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 56
+  },
+  {
     "company": "CLEVELAND-CLIFFS INC.",
     "ticker": "CLF",
     "industry": "mining",
+    "hi_composite": 56,
+    "esg_composite": 55.1,
+    "esg_components": {
+      "environmental": 51,
+      "social": 50.0,
+      "governance": 63.5
+    },
+    "gap": 0.9,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 56
+  },
+  {
+    "company": "EASTGROUP PROPERTIES INC",
+    "ticker": "EGP",
+    "industry": "reit",
+    "hi_composite": 56,
+    "esg_composite": 55.1,
+    "esg_components": {
+      "environmental": 51,
+      "social": 50.0,
+      "governance": 63.5
+    },
+    "gap": 0.9,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 56
+  },
+  {
+    "company": "KILROY REALTY CORP",
+    "ticker": "KRC",
+    "industry": "reit",
+    "hi_composite": 56,
+    "esg_composite": 55.1,
+    "esg_components": {
+      "environmental": 51,
+      "social": 50.0,
+      "governance": 63.5
+    },
+    "gap": 0.9,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 56
+  },
+  {
+    "company": "STARWOOD PROPERTY TRUST, INC.",
+    "ticker": "STWD",
+    "industry": "reit",
     "hi_composite": 56,
     "esg_composite": 55.1,
     "esg_components": {
@@ -21218,6 +21208,25 @@
       "Low on both HI and ESG \u2014 significant risk across all dimensions"
     ],
     "composite": 53
+  },
+  {
+    "company": "Sabra Health Care REIT, Inc.",
+    "ticker": "SBRA",
+    "industry": "reit",
+    "hi_composite": 55,
+    "esg_composite": 55.1,
+    "esg_components": {
+      "environmental": 51,
+      "social": 50.0,
+      "governance": 63.5
+    },
+    "gap": -0.1,
+    "arbitrage_type": "aligned",
+    "arbitrage_label": "Aligned",
+    "gap_reasons": [
+      "HI and ESG agree \u2014 strong across both frameworks"
+    ],
+    "composite": 55
   },
   {
     "company": "UNIVERSAL DISPLAY CORP \\PA\\",
