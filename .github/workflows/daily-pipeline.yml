@@ -138,14 +138,25 @@ jobs:
       # RAILWAY_TOKEN is set but never used, so Railway is redeploying off the
       # git push above. If so this step can be deleted — it copies ~2,200 files
       # nightly for nothing. Confirm before removing.
-      - name: Deploy to Railway
+      # Railway deploys on push to main by itself. This step used to be a no-op
+      # labelled "Deploy to Railway" that stayed green while the API served stale
+      # scores for days. It now proves the live API picked up what was committed.
+      - name: Verify the live API is serving these scores
         if: success()
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
-          mkdir -p deploy
-          cp -r pipeline/data deploy/
-          cp pipeline/*.py deploy/
-          cp pipeline/requirements.txt deploy/
-          cp pipeline/Procfile deploy/ 2>/dev/null || true
-          echo "Pipeline data ready for Railway deployment"
+          WANT=$(python3 -c "import json;print(json.load(open('pipeline/data/scores/all_scores.json'))[0].get('spec_version'))")
+          COMMITTED_AT=$(TZ=UTC git log -1 --date=format-local:%Y-%m-%dT%H:%M:%SZ --format=%cd -- pipeline/data/scores/all_scores.json)
+          echo "Want spec_version=$WANT, built after $COMMITTED_AT"
+          for i in $(seq 1 30); do
+            GOT=$(curl -s --max-time 10 https://api.thehibalance.org/api/v1/health \
+                  | python3 -c "import json,sys;d=json.load(sys.stdin);print(d.get('spec_version',''),d.get('scores_file_mtime',''))" 2>/dev/null || true)
+            SPEC=${GOT%% *}; MTIME=${GOT##* }
+            if [ "$SPEC" = "$WANT" ] && [[ ! "$MTIME" < "$COMMITTED_AT" ]]; then
+              echo "API live: spec_version=$SPEC scores_file_mtime=$MTIME"
+              exit 0
+            fi
+            echo "  not yet (spec=$SPEC mtime=$MTIME), retry $i/30"
+            sleep 30
+          done
+          echo "::error::Live API did not pick up the new scores within 15 min (spec=$SPEC mtime=$MTIME; wanted $WANT after $COMMITTED_AT)"
+          exit 1
