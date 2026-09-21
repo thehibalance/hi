@@ -585,7 +585,10 @@ def validate_all(data_dir="data", layers=None, strict=False):
     report = ValidationReport()
     data_path = Path(data_dir)
     scores_dir = data_path / "scores"
-    subsignals_dir = data_path / "subsignals"
+    # Per-company H/U/M/A/N score files from the gov collectors (moved Sept 2026)
+    subsignals_dir = data_path / "gov" / "by_company"
+    if not subsignals_dir.exists():
+        subsignals_dir = data_path / "subsignals"
     
     print("\nHI. Pipeline Validation")
     print("─" * 40)

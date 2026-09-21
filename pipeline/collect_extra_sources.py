@@ -260,7 +260,7 @@ def integrate(fec,cpsc,fda,patents,epa,nhtsa,sub_dir):
 if __name__=="__main__":
     import argparse
     p=argparse.ArgumentParser(description="HI. Extra Sources (37-42)")
-    p.add_argument("--output",default="data/gov");p.add_argument("--subsignals",default="data/subsignals")
+    p.add_argument("--output",default="data/gov");p.add_argument("--subsignals",default="data/gov/by_company")
     p.add_argument("--all",action="store_true")
     p.add_argument("--fec",action="store_true");p.add_argument("--cpsc",action="store_true")
     p.add_argument("--fda",action="store_true");p.add_argument("--patents",action="store_true")

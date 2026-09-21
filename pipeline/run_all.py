@@ -90,12 +90,12 @@ def main():
         # Government data (OSHA + CFPB)
         run_if_exists("collect_gov_data.py",
                       "Phase 1b: Government Data (OSHA + CFPB)",
-                      f"--all --output {args.output}/gov --subsignals {args.output}/subsignals")
+                      f"--all --output {args.output}/gov --subsignals {args.output}/gov/by_company")
 
         # Extra gov sources (FEC, CPSC, FDA, USPTO, EPA ECHO, NHTSA)
         run_if_exists("collect_extra_sources.py",
                       "Phase 1c: Extra Gov Sources (FEC, CPSC, FDA, USPTO, EPA ECHO, NHTSA)",
-                      f"--all --output {args.output}/gov --subsignals {args.output}/subsignals")
+                      f"--all --output {args.output}/gov --subsignals {args.output}/gov/by_company")
 
         # ═══════════════════════════════════════════════════════════
         # PHASE 2: Standalone Enrichment Pipelines (Sources 13-42)
