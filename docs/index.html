@@ -852,7 +852,7 @@ fetchBalancedBoardForSpotlight();
 
 
 <h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 12px">The Rubric</h2>
-<p style="color:#444;line-height:1.7;margin-bottom:20px">Every score on thehibalance.org traces back to these formulas. <strong>19 active sub-signals. 5 deferred for v1.2.</strong> Open the table for any dimension to see the math.</p>
+<p style="color:#444;line-height:1.7;margin-bottom:20px">Every score on thehibalance.org traces back to these formulas. <strong>19 active sub-signals. 5 defined but not yet scored.</strong> Open the table for any dimension to see the math.</p>
 
 <!-- H DIMENSION RUBRIC -->
 <details class="about-card" style="margin-bottom:14px;border-left:4px solid #C49B20;padding:16px 20px">
@@ -860,11 +860,11 @@ fetchBalancedBoardForSpotlight();
 <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:14px">
 <thead><tr style="border-bottom:2px solid #E5E7EB"><th style="text-align:left;padding:8px 4px;color:var(--navy)">ID</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Name</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Signal</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Source</th><th style="text-align:center;padding:8px 4px;color:var(--navy)">Status</th></tr></thead>
 <tbody>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">H.1</td><td style="padding:8px 4px">Workforce Valuation</td><td style="padding:8px 4px;color:#444">Layoffs, WARN filings, revenue-per-employee ratio</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">WARN, SEC 10-K, BLS</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">H.2</td><td style="padding:8px 4px">Craft</td><td style="padding:8px 4px;color:#444">Apprenticeship, training investment, craftsmanship signals</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">Glassdoor, Jobs, BLS</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">H.3</td><td style="padding:8px 4px">Human Decision Depth</td><td style="padding:8px 4px;color:#444">AI-disclosed roles vs human roles, decision authority</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC 10-K, Job Boards</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;color:var(--muted);font-weight:700">H.4</td><td style="padding:8px 4px;color:var(--muted)">Leadership Continuity</td><td style="padding:8px 4px;color:var(--muted)">CEO turnover, board stability</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
-<tr><td style="padding:8px 4px;font-weight:700;color:#C49B20">H.5</td><td style="padding:8px 4px">Human Augmentation Index</td><td style="padding:8px 4px;color:#444">AI as tool vs AI as replacement — measured by role composition</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC filings, job boards</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">H.1</td><td style="padding:8px 4px">Workforce Valuation</td><td style="padding:8px 4px;color:#444">Revenue per employee vs the median for its industry, blended with the AI-vs-human hiring mix</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC 10-K, FMP, job boards</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#0891B2">PARTIAL</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">H.2</td><td style="padding:8px 4px">Craft</td><td style="padding:8px 4px;color:#444">Industry craft intensity, adjusted by industry wages vs national</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">In-house table; BLS not yet connected</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">H.3</td><td style="padding:8px 4px">Human Decision Depth</td><td style="padding:8px 4px;color:#444">Humans per dollar of revenue vs industry, workforce depth, AI-displacement penalty</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC 10-K</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:var(--muted)">H.4</td><td style="padding:8px 4px;color:var(--muted)">CEO Accountability</td><td style="padding:8px 4px;color:var(--muted)">Pay-ratio accountability (applied today as an M.3 adjustment)</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
+<tr><td style="padding:8px 4px;font-weight:700;color:#C49B20">H.5</td><td style="padding:8px 4px">Human Augmentation Index</td><td style="padding:8px 4px;color:#444">AI as a tool vs a replacement: R&amp;D growth vs headcount, AI-hiring trend</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC filings, job boards</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#0891B2">PARTIAL</td></tr>
 </tbody>
 </table>
 </details>
@@ -875,11 +875,11 @@ fetchBalancedBoardForSpotlight();
 <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:14px">
 <thead><tr style="border-bottom:2px solid #E5E7EB"><th style="text-align:left;padding:8px 4px;color:var(--navy)">ID</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Name</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Signal</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Source</th><th style="text-align:center;padding:8px 4px;color:var(--navy)">Status</th></tr></thead>
 <tbody>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">U.1</td><td style="padding:8px 4px">Relational Integrity</td><td style="padding:8px 4px;color:#444">Customer complaint volume, complaint response rate</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">CFPB, FTC Sentinel</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">U.2</td><td style="padding:8px 4px">Simulated Empathy Detection</td><td style="padding:8px 4px;color:#444">Chatbot vs human support mix, escalation paths</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">Glassdoor, complaints</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">U.3</td><td style="padding:8px 4px">Culture Authenticity</td><td style="padding:8px 4px;color:#444">Glassdoor trajectory, CEO approval vs recommend gap</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">Glassdoor</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">U.4</td><td style="padding:8px 4px">Inclusion Signal</td><td style="padding:8px 4px;color:#444">HRC CEI score, DEI programs, accessibility</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">HRC, DEI disclosures</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr><td style="padding:8px 4px;color:var(--muted);font-weight:700">U.5</td><td style="padding:8px 4px;color:var(--muted)">Community Investment Depth</td><td style="padding:8px 4px;color:var(--muted)">Philanthropy vs PR measure</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">U.1</td><td style="padding:8px 4px">Customer Empathy</td><td style="padding:8px 4px;color:#444">Consumer complaint volume and timely response, blended with BBB; employee ratings as fallback</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">CFPB, BBB, Glassdoor</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#0891B2">PARTIAL</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">U.2</td><td style="padding:8px 4px">Worker Empathy</td><td style="padding:8px 4px;color:#444">Employee ratings weighted by review count; workplace-safety and wage-enforcement blends</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">Glassdoor; OSHA and DOL not yet producing</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">U.3</td><td style="padding:8px 4px">Relational Integrity</td><td style="padding:8px 4px;color:#444">LGBTQ+ and disability inclusion ratings and B Corp status, blended with employee culture ratings</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">HRC CEI, Disability:IN, B Corp, Glassdoor</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#0891B2">PARTIAL</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">U.4</td><td style="padding:8px 4px">Simulated Empathy Detection</td><td style="padding:8px 4px;color:#444">Industry automation baseline and employee sentiment; algorithmic-harm penalties applied to the dimension</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">AHI™, Glassdoor</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#0891B2">PARTIAL</td></tr>
+<tr><td style="padding:8px 4px;font-weight:700;color:var(--muted)">U.5</td><td style="padding:8px 4px;color:var(--muted)">Moral Courage</td><td style="padding:8px 4px;color:var(--muted)">—</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
 </tbody>
 </table>
 </details>
@@ -890,11 +890,11 @@ fetchBalancedBoardForSpotlight();
 <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:14px">
 <thead><tr style="border-bottom:2px solid #E5E7EB"><th style="text-align:left;padding:8px 4px;color:var(--navy)">ID</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Name</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Signal</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Source</th><th style="text-align:center;padding:8px 4px;color:var(--navy)">Status</th></tr></thead>
 <tbody>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.1</td><td style="padding:8px 4px">Principled Action</td><td style="padding:8px 4px;color:#444">Regulatory violations, SEC enforcement</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC, OSHA, EPA ECHO</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.2</td><td style="padding:8px 4px">Accountability Structure</td><td style="padding:8px 4px;color:#444">Board independence, executive pay ratio</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC DEF 14A</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.3</td><td style="padding:8px 4px">Workplace Safety</td><td style="padding:8px 4px;color:#444">OSHA incident rate, fatality rate vs industry</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">OSHA via DOL</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.4</td><td style="padding:8px 4px">Optimization Harm</td><td style="padding:8px 4px;color:#444">Algorithmic harm, dark pattern detection, AHI™ flags</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">Public reporting, FTC</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
-<tr><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.5</td><td style="padding:8px 4px">CEO Accountability</td><td style="padding:8px 4px;color:#444">Compensation-to-median-worker ratio, public commitments</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC DEF 14A</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.1</td><td style="padding:8px 4px">Pricing Ethics</td><td style="padding:8px 4px;color:#444">Share of consumer complaints about credit, loans, mortgages and debt</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">CFPB</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#0891B2">PARTIAL</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.2</td><td style="padding:8px 4px">Data Ethics</td><td style="padding:8px 4px;color:#444">Breach history and records exposed, blended with FTC privacy actions</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">HIBP, FTC</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#0891B2">PARTIAL</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.3</td><td style="padding:8px 4px">Market Ethics</td><td style="padding:8px 4px;color:#444">Legal penalties blended with certifications; EEOC, pay-ratio and insider-trading adjustments</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC, EPA, EEOC, DEF 14A, Form 4</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#0891B2">PARTIAL</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.4</td><td style="padding:8px 4px">Product Ethics</td><td style="padding:8px 4px;color:#444">Product recalls and injuries, blended with FDA enforcement; management ratings as fallback</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">FDA, Glassdoor; CPSC not yet producing</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#0891B2">PARTIAL</td></tr>
+<tr><td style="padding:8px 4px;font-weight:700;color:#C49B20">M.5</td><td style="padding:8px 4px">Stakeholder Governance</td><td style="padding:8px 4px;color:#444">Stakeholder-centric legal structure, then political spending, then CEO rating</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">B Corp, FEC, Glassdoor</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#0891B2">PARTIAL</td></tr>
 </tbody>
 </table>
 </details>
@@ -905,10 +905,10 @@ fetchBalancedBoardForSpotlight();
 <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:14px">
 <thead><tr style="border-bottom:2px solid #E5E7EB"><th style="text-align:left;padding:8px 4px;color:var(--navy)">ID</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Name</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Signal</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Source</th><th style="text-align:center;padding:8px 4px;color:var(--navy)">Status</th></tr></thead>
 <tbody>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">A.1</td><td style="padding:8px 4px">Climate Integrity</td><td style="padding:8px 4px;color:#444">CDP score, Scope 1+2+3 disclosures, trajectory</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">CDP, SEC Climate</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">A.2</td><td style="padding:8px 4px">Pollution &amp; Compliance</td><td style="padding:8px 4px;color:#444">EPA ECHO violations, remediation history</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">EPA ECHO</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">PARTIAL</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">A.3</td><td style="padding:8px 4px">Land &amp; Water</td><td style="padding:8px 4px;color:#444">Industry baseline, USDA Organic, water stress</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">Industry, EPA, USDA</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
-<tr><td style="padding:8px 4px;font-weight:700;color:#C49B20">A.4</td><td style="padding:8px 4px">AI Infrastructure Cost</td><td style="padding:8px 4px;color:#444">Data center power, water for compute, AI emissions</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC, public disclosures</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">A.1</td><td style="padding:8px 4px">Energy &amp; Emissions</td><td style="padding:8px 4px;color:#444">CDP climate grade blended with environmental certifications; industry default otherwise</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">CDP, SBTi, Climate Neutral, 1% for the Planet</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">A.2</td><td style="padding:8px 4px">Water</td><td style="padding:8px 4px;color:#444">CDP water-security disclosure</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">CDP</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">A.3</td><td style="padding:8px 4px">Land &amp; Habitat</td><td style="padding:8px 4px;color:#444">Organic certification and sector land-use risk; EPA violation count otherwise</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">USDA Organic, EPA ECHO</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
+<tr><td style="padding:8px 4px;font-weight:700;color:#C49B20">A.4</td><td style="padding:8px 4px">Product Lifecycle</td><td style="padding:8px 4px;color:#444">Repairability scores; certifications, CDP Forests or industry default otherwise</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">iFixit, B Corp, Fair Trade, CDP</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#0891B2">PARTIAL</td></tr>
 </tbody>
 </table>
 </details>
@@ -919,11 +919,11 @@ fetchBalancedBoardForSpotlight();
 <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:14px">
 <thead><tr style="border-bottom:2px solid #E5E7EB"><th style="text-align:left;padding:8px 4px;color:var(--navy)">ID</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Name</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Signal</th><th style="text-align:left;padding:8px 4px;color:var(--navy)">Source</th><th style="text-align:center;padding:8px 4px;color:var(--navy)">Status</th></tr></thead>
 <tbody>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;color:var(--muted);font-weight:700">N.1</td><td style="padding:8px 4px;color:var(--muted)">Disclosure Quality</td><td style="padding:8px 4px;color:var(--muted)">Readability vs legalese in material filings</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">N.2</td><td style="padding:8px 4px">Humanwashing Detection</td><td style="padding:8px 4px;color:#444">Revenue-per-employee anomalies, AI-replaces mismatches</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC 10-K, jobs data</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#F59E0B">UNGROUNDED</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;color:var(--muted);font-weight:700">N.3</td><td style="padding:8px 4px;color:var(--muted)">Proactive Disclosure</td><td style="padding:8px 4px;color:var(--muted)">Voluntary reporting beyond legal minimum</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
-<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;color:var(--muted);font-weight:700">N.4</td><td style="padding:8px 4px;color:var(--muted)">Material Event Timing</td><td style="padding:8px 4px;color:var(--muted)">Time-to-disclosure for material events</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
-<tr><td style="padding:8px 4px;font-weight:700;color:#C49B20">N.5</td><td style="padding:8px 4px">Filing Volume</td><td style="padding:8px 4px;color:#444">8-K frequency, 10-K completeness, amendment rate</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC EDGAR</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#16A34A">GROUNDED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:var(--muted)">N.1</td><td style="padding:8px 4px;color:var(--muted)">AI Disclosure</td><td style="padding:8px 4px;color:var(--muted)">—</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:#C49B20">N.2</td><td style="padding:8px 4px">Reporting Quality</td><td style="padding:8px 4px;color:#444">CDP disclosure quality; non-responders receive a mild penalty</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">CDP</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#0891B2">PARTIAL</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:var(--muted)">N.3</td><td style="padding:8px 4px;color:var(--muted)">Labor Auditability</td><td style="padding:8px 4px;color:var(--muted)">—</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
+<tr style="border-bottom:1px solid #F3F4F6"><td style="padding:8px 4px;font-weight:700;color:var(--muted)">N.4</td><td style="padding:8px 4px;color:var(--muted)">Humanwashing Detection</td><td style="padding:8px 4px;color:var(--muted)">Flagged today, not yet a scored sub-signal</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">—</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#9CA3AF">DEFERRED</td></tr>
+<tr><td style="padding:8px 4px;font-weight:700;color:#C49B20">N.5</td><td style="padding:8px 4px">Filing Volume</td><td style="padding:8px 4px;color:#444">SEC filings over the trailing year, with credit for timely material disclosure</td><td style="padding:8px 4px;color:var(--muted);font-size:12px">SEC EDGAR</td><td style="padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#0891B2">PARTIAL</td></tr>
 </tbody>
 </table>
 </details>
@@ -932,10 +932,10 @@ fetchBalancedBoardForSpotlight();
 <div class="about-card" style="background:#F8FAFC;margin-top:20px;margin-bottom:20px">
 <div style="font-family:'DM Serif Display';font-size:16px;color:var(--navy);margin-bottom:10px">Status Legend</div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;font-size:12px;color:#444;line-height:1.6">
-<div><strong style="color:#16A34A">GROUNDED</strong> — Every value traces to a verifiable public record. No estimates.</div>
-<div><strong style="color:#16A34A">PARTIAL</strong> — Some values grounded in real data; coverage gaps filled with industry baselines.</div>
-<div><strong style="color:#F59E0B">UNGROUNDED</strong> — Signal exists but uses proxies or industry defaults. Ladder-to-ground roadmap documented.</div>
-<div><strong style="color:#9CA3AF">DEFERRED</strong> — Sub-signal defined in spec but not yet active. v1.3 roadmap.</div>
+<div><strong style="color:#16A34A">GROUNDED</strong> — Both the data and the scoring ladder come from a published external authority.</div>
+<div><strong style="color:#0891B2">PARTIAL</strong> — The data is authoritative; the cutoffs that turn it into a score were chosen by us.</div>
+<div><strong style="color:#F59E0B">UNGROUNDED</strong> — The data and the cutoffs are both editorial, or the signal runs mostly on industry defaults.</div>
+<div><strong style="color:#9CA3AF">DEFERRED</strong> — Defined in the spec, not yet scored. Contributes nothing to any score.</div>
 </div>
 <div style="margin-top:16px;padding-top:14px;border-top:1px solid #E5E7EB;text-align:center"><a href="https://github.com/thehibalance/hi/blob/main/RUBRIC.md" target="_blank" style="font-size:13px;color:var(--navy);font-weight:600;text-decoration:none">📖 View RUBRIC.md on GitHub →</a></div>
 </div>
@@ -943,11 +943,11 @@ fetchBalancedBoardForSpotlight();
 <h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 16px">The three harm detection systems</h2>
 <p style="color:#444;line-height:1.7;margin-bottom:16px">HI Grade applies three harm-detection systems, all flowing into dimension scores (no separate gates):</p>
 
-<div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:20px;margin-bottom:14px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">Humanwashing™ (HW)</div><div style="font-size:13px;color:#555;line-height:1.6">Selling human craft while operating algorithmically. Detected via revenue-per-employee anomalies (4×+ industry median) and AI-replaces-disclosure mismatches. Penalizes H.1.</div></div>
+<div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:20px;margin-bottom:14px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">Humanwashing™ (HW)</div><div style="font-size:13px;color:#555;line-height:1.6">Selling human craft while operating algorithmically. Detected via revenue-per-employee anomalies (more than 4× the median for the company's industry, measured across every company we score) and AI-replaces-disclosure mismatches. Penalizes H.1.</div></div>
 
 <div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:20px;margin-bottom:14px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">Algorithmic Harm Index™ (AHI)</div><div style="font-size:13px;color:#555;line-height:1.6">Measures algorithmic decision-making at scale. A bank's credit algorithm affects one person at a time. A social media moderation algorithm affects billions. AHI adjusts for blast radius. Penalizes M.3, U.4.</div></div>
 
-<div style="background:#F8FAFC;border:1px dashed var(--light);border-radius:12px;padding:16px 20px;margin-bottom:14px"><div style="font-size:11px;color:var(--muted);letter-spacing:1.5px;font-weight:700;margin-bottom:6px">ARCHITECTURE NOTE</div><div style="font-size:13px;color:#555;line-height:1.6"><strong>What happened to the Product Harm Index (PHI)?</strong><br>In v1.2 we folded product safety signals directly into <strong>M.4 (Product Ethics)</strong> as sub-signal inputs — CPSC recalls, FDA warning letters, NHTSA investigations, HIBP breaches, EPA violations — rather than maintaining them as a separate index. Signals are unchanged; architecture is simpler and more traceable.</div></div>
+<div style="background:#F8FAFC;border:1px dashed var(--light);border-radius:12px;padding:16px 20px;margin-bottom:14px"><div style="font-size:11px;color:var(--muted);letter-spacing:1.5px;font-weight:700;margin-bottom:6px">ARCHITECTURE NOTE</div><div style="font-size:13px;color:#555;line-height:1.6"><strong>What happened to the Product Harm Index (PHI)?</strong><br>In v1.2 we folded product safety signals directly into <strong>M.4 (Product Ethics)</strong> as sub-signal inputs — CPSC recalls and FDA enforcement — rather than maintaining them as a separate index. Breach history lives in M.2 (Data Ethics) and environmental penalties in M.3 (Market Ethics). CPSC recall data isn't producing results yet; see Data Sources for which sources feed today's scores.</div></div>
 
 <div style="background:var(--white);border:1px solid var(--light);border-radius:12px;padding:20px;margin-bottom:24px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">Harm Documentation (HD)</div><div style="font-size:13px;color:#555;line-height:1.6">Public-record harm: court settlements, attributed deaths, concealment findings. Anchored to DOJ/SEC/state AG records, CDC/NIH attribution data, court findings. Penalizes M.3 + M.4 directly.</div></div>
 
@@ -979,12 +979,12 @@ fetchBalancedBoardForSpotlight();
 
 <p style="color:#444;line-height:1.7;margin-bottom:16px">This rule replaces a multi-tier floor system used in earlier specs (any dim &lt; 10 → cap 40, one dim &lt; 42 → cap 49, two+ dims &lt; 42 → cap 41), simplified to one clear, defensible threshold.</p>
 
-<p style="color:#444;line-height:1.7;margin-bottom:8px"><strong>Examples:</strong></p>
+<p style="color:#444;line-height:1.7;margin-bottom:8px"><strong>Examples</strong> (live values, September 2026):</p>
 <ul style="color:#444;line-height:1.8;margin-bottom:16px">
   <li><strong>Johnson &amp; Johnson:</strong> D_M = 0 (Harm Documentation penalty) → composite capped at 50</li>
-  <li><strong>Costco:</strong> D_N = 27 (CDP grade D + thin SEC filings) → composite capped at 50</li>
-  <li><strong>Microsoft:</strong> D_H = 35 (mass layoffs, AI-acceleration penalty) → composite capped at 50</li>
-  <li><strong>Apple:</strong> minimum dimension D_H = 50 → no cap, composite = mean (73)</li>
+  <li><strong>Microsoft:</strong> D_H = 29 (mass layoffs, AI-acceleration penalty) → composite capped at 50</li>
+  <li><strong>Costco:</strong> lowest dimension D_A = 46 → no cap, composite = mean (63)</li>
+  <li><strong>Apple:</strong> lowest dimension D_H = 43 → no cap, composite = mean (72)</li>
 </ul>
 
 <p style="color:#666;line-height:1.7;margin-bottom:16px;font-size:13px;font-style:italic">Note: sub-signal scores below 42 do not trigger the floor. Only dimension-level scores (D_H, D_U, D_M, D_A, D_N) count. Sub-signals are component inputs; the dimension is what matters for floor evaluation.</p>
@@ -1001,33 +1001,33 @@ fetchBalancedBoardForSpotlight();
 <h3 style="font-size:17px;font-weight:700;color:var(--navy);margin:24px 0 8px">Why three gates instead of one composite</h3>
 <p style="color:#444;line-height:1.7;margin-bottom:14px">A single weighted composite — the approach most ESG frameworks use — averages away disqualifying signals. A company can be excellent on four dimensions and ethically compromised on the fifth, and still rate highly. HI Grade refuses to do this. Each dimension is an independent check.</p>
 
-<h3 style="font-size:17px;font-weight:700;color:var(--navy);margin:24px 0 8px">Why momentum — the Oracle problem</h3>
-<p style="color:#444;line-height:1.7;margin-bottom:14px">When Oracle executed mass layoffs in April 2026 affecting an estimated 25,000+ workers, their backward-looking SEC filings still showed the pre-layoff workforce. A scoring system reading only last-quarter's 10-K would have given Oracle a high H score the day thousands of workers were locked out of internal systems at 6 a.m. EST. HI Grade's momentum gate catches this in real time by monitoring news, 8-K filings, WARN Act notices, and other decay signals across a 90-day rolling window.</p>
+<h3 style="font-size:17px;font-weight:700;color:var(--navy);margin:24px 0 8px">Why momentum — the stale-filing problem</h3>
+<p style="color:#444;line-height:1.7;margin-bottom:14px">When a company announces mass layoffs, its most recent 10-K still shows the pre-layoff workforce, sometimes for months. A scoring system reading only last quarter's filings would keep giving that company a high H score while thousands of workers were losing their jobs. HI Grade's momentum gate catches this by monitoring news, 8-K filings, WARN Act notices, and other decay signals across a 90-day rolling window.</p>
 
 <h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 12px">Score Integrity Rules</h2>
-<p style="color:#444;line-height:1.7;margin-bottom:20px">Every score passes through three validation layers. They exist to prevent any single source — including bad data, gaming attempts, or short-term news cycles — from distorting the math.</p>
+<p style="color:#444;line-height:1.7;margin-bottom:20px">Every nightly run passes through three validation layers before anything is published. If a layer finds a critical problem, the run stops and the previous day's scores stay live. Lesser problems are recorded in the run report for review.</p>
 
 <div class="about-card" style="margin-bottom:14px;border-left:4px solid #16A34A">
 <div style="font-family:'DM Mono',monospace;font-size:11px;color:#16A34A;letter-spacing:2px;font-weight:700;margin-bottom:6px">LAYER 1</div>
 <h3 style="font-family:'DM Serif Display';font-size:20px;color:var(--navy);margin-bottom:10px">Input validation</h3>
-<p style="color:#444;line-height:1.7;margin:0">Before any data enters scoring, it's checked for sanity. Negative headcounts, impossible Glassdoor ratings (above 5.0 or below 1.0), revenue-per-employee anomalies, and other physically impossible inputs are rejected at ingestion. The pipeline logs the rejection and continues with verified inputs.</p>
+<p style="color:#444;line-height:1.7;margin:0">Raw inputs are checked for values that can't be real: headcounts above 3 million, revenue per employee above $50 million, headcount swings of more than 80% in a quarter, AI-hiring ratios above 100%, and scores outside 0–100. Critical problems stop the run; the rest are logged.</p>
 </div>
 
 <div class="about-card" style="margin-bottom:14px;border-left:4px solid #16A34A">
 <div style="font-family:'DM Mono',monospace;font-size:11px;color:#16A34A;letter-spacing:2px;font-weight:700;margin-bottom:6px">LAYER 2</div>
 <h3 style="font-family:'DM Serif Display';font-size:20px;color:var(--navy);margin-bottom:10px">Output validation</h3>
-<p style="color:#444;line-height:1.7;margin:0">After scoring, results are checked for stability and shape. Sub-signal scores must fall within their defined ranges. Composite scores are checked against historical stability — large unexplained moves trigger manual review. Distribution shape is monitored — if every company suddenly scored 70+, something broke. Known leaders (companies on the Balanced Board for 6+ months) act as sentinels: sudden drops trigger investigation.</p>
+<p style="color:#444;line-height:1.7;margin:0">After scoring, results are checked for shape and stability. Every score must fall between 0 and 100. Composites that move more than 15 points since the previous run are flagged. A run must produce at least 100 companies, and the overall distribution must look plausible — if nearly every company suddenly scored 90+, something broke.</p>
 </div>
 
 <div class="about-card" style="margin-bottom:32px;border-left:4px solid #C49B20">
 <div style="font-family:'DM Mono',monospace;font-size:11px;color:#C49B20;letter-spacing:2px;font-weight:700;margin-bottom:6px">LAYER 3 · MSSI</div>
 <h3 style="font-family:'DM Serif Display';font-size:20px;color:var(--navy);margin-bottom:10px">Maximum Single-Source Impact</h3>
-<p style="color:#444;line-height:1.7;margin-bottom:10px"><strong>No single source can move a sub-signal score by more than 15 points.</strong> If one CFPB report would change U.1 by 30 points, the impact is capped at 15. The remaining movement requires a corroborating source.</p>
-<p style="color:#444;line-height:1.7;margin:0;font-style:italic">This prevents a single bad data point — or a coordinated gaming attempt — from poisoning a score. The cap exists because we trust no source completely, including ourselves.</p>
+<p style="color:#444;line-height:1.7;margin-bottom:10px"><strong>Any sub-signal that moves more than 15 points on the strength of a single source is flagged.</strong> If one CFPB report would change U.1 by 30 points, that movement shows up in the nightly validation report so it can be checked against a corroborating source. Today this is a check, not an automatic cap.</p>
+<p style="color:#444;line-height:1.7;margin:0;font-style:italic">It makes a single bad data point — or a coordinated gaming attempt — visible instead of silent. The check exists because we trust no source completely, including ourselves.</p>
 </div>
 
 <h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 12px">Verify any score yourself</h2>
-<p style="color:#444;line-height:1.7;margin-bottom:16px">Every HI Grade is reconstructable from public data. The API returns every sub-signal value, every source, every penalty applied. No black boxes.</p>
+<p style="color:#444;line-height:1.7;margin-bottom:16px">Every pipeline-scored HI Grade is reconstructable from public data. The API returns every sub-signal value, the sources behind each dimension, and every penalty applied. No black boxes.</p>
 
 <div class="about-card" style="margin-bottom:14px;background:#0F172A;border:none;color:#E2E8F0;font-family:'DM Mono',monospace">
 <div style="font-size:11px;color:#94A3B8;letter-spacing:2px;margin-bottom:8px">TRY IT</div>
@@ -1036,7 +1036,7 @@ fetchBalancedBoardForSpotlight();
 
 <p style="color:#444;line-height:1.7;margin-bottom:14px">The response contains the full breakdown:</p>
 <ul style="color:#444;line-height:1.8;padding-left:24px;margin-bottom:14px">
-<li>19 sub-signal scores with linked sources</li>
+<li>19 sub-signal scores, and the sources behind each dimension</li>
 <li>5 dimension aggregates with the math</li>
 <li>AHI components (if applicable) — <code style="background:#F3F4F6;padding:2px 6px;border-radius:4px;font-size:12px">division / addiction / manipulation / transparency / human_override</code></li>
 <li>HD rubric (if applicable) — settlements USD, deaths attributed, concealment findings, source URLs</li>
@@ -1044,7 +1044,7 @@ fetchBalancedBoardForSpotlight();
 <li>Confidence level, coverage, and spec version</li>
 </ul>
 
-<p style="color:#444;line-height:1.7;margin-bottom:20px">The entire pipeline source is on <a href="https://github.com/thehibalance/hi" target="_blank" style="color:var(--navy);font-weight:600">GitHub</a> under Apache 2.0. Run it yourself. Get the same answer. <strong>That's the point.</strong></p>
+<p style="color:#444;line-height:1.7;margin-bottom:20px">The entire pipeline source is on <a href="https://github.com/thehibalance/hi" target="_blank" style="color:var(--navy);font-weight:600">GitHub</a> under Apache 2.0. Run it yourself. Get the same answer. <strong>That's the point.</strong> (Financial fundamentals come from FMP, which needs your own API key.)</p>
 
 <h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 12px">How to dispute a score</h2>
 <p style="color:#444;line-height:1.7;margin-bottom:16px">HI Grade is estimated from public data. Sometimes public data is wrong, or missing, or misattributed. When that happens, the score is wrong. We fix it.</p>
@@ -1068,25 +1068,34 @@ fetchBalancedBoardForSpotlight();
 <p style="color:#444;line-height:1.7;margin-bottom:20px">A transparency framework that hides its own limitations is hypocritical. Every limitation below is tracked and has a path forward. The math decides — and when the math is incomplete, we say so.</p>
 
 <details class="about-card" style="margin-bottom:14px;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:17px;color:var(--navy);font-weight:600">Editorial tier cutoffs on authoritative data</summary>
-<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>This is the dominant pattern in v1.2.0. Most scoring uses authoritative data (SEC, CFPB, OSHA, EPA, CDP) with editorial thresholds. The data is ground truth; the score bands (e.g., &lt;100 CFPB complaints per $B = 85 points) were chosen by engine authors.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> grounding thresholds against B Corp quintiles, CFPB published distributions, BLS industry medians.</p></div></details>
+<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>This is the dominant pattern today. Most scoring uses authoritative data (SEC, CFPB, EPA, CDP) with editorial thresholds. The data is ground truth; the score bands (e.g., &lt;100 CFPB complaints per $B = 85 points) were chosen by engine authors.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> grounding thresholds against B Corp quintiles, CFPB published distributions, BLS industry medians.</p></div></details>
 
 <details class="about-card" style="margin-bottom:14px;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:17px;color:var(--navy);font-weight:600">5 sub-signals spec'd but not yet scored</summary>
-<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>Five sub-signals (H.4 Decision Authority, U.5 Moral Courage, N.1 Reporting Quality, N.3 Subsidiary Transparency, N.4 Supply Chain) are spec'd but deferred to v1.3 because the data ladders aren't ready.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> v1.3 target. Each requires either a new data source or a new scoring ladder.</p></div></details>
+<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>Five sub-signals (H.4 CEO Accountability, U.5 Moral Courage, N.1 AI Disclosure, N.3 Labor Auditability, N.4 Humanwashing Detection) are defined but not yet scored, because their data or scoring ladders aren't ready. They contribute nothing to any score today. Humanwashing is still detected and flagged; it just isn't a scored sub-signal yet.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> each requires either a new data source or a new scoring ladder.</p></div></details>
 
 <details class="about-card" style="margin-bottom:14px;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:17px;color:var(--navy);font-weight:600">CFPB covers financial services, not everyone</summary>
-<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>CFPB complaints power U.1 (Customer Empathy) and M.1 (Pricing Ethics). Banks, credit cards, mortgages, debt collectors are covered well. A coffee company isn't. For ~80% of companies we score, CFPB returns zero — not because they're saints, but because CFPB doesn't regulate that sector.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> BBB complaints (now ingested), FTC actions (already scoring), CPSC SaferProducts (already scoring). Per-sector regulators being audited.</p></div></details>
+<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>CFPB complaints power U.1 (Customer Empathy) and M.1 (Pricing Ethics). Banks, credit cards, mortgages, debt collectors are covered well. A coffee company isn't. For about three-quarters of the companies we score, CFPB returns nothing — not because they're saints, but because CFPB doesn't regulate that sector.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> BBB complaints and FTC actions already contribute. CPSC SaferProducts is integrated but not yet producing data. Per-sector regulators being audited.</p></div></details>
 
 <details class="about-card" style="margin-bottom:14px;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:17px;color:var(--navy);font-weight:600">iFixit repairability covers ~15 companies</summary>
-<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>iFixit publishes detailed repairability scores for consumer electronics — Apple, Samsung, Dell, HP, Microsoft Surface, ~10 others. For the other 700+ companies, A.4 (Product Lifecycle) falls back to industry defaults.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> EU Extended Producer Responsibility datasets publish repairability scores. Ingestion planned for v1.2.</p></div></details>
+<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>iFixit publishes detailed repairability scores for consumer electronics — Apple, Samsung, Dell, HP, Microsoft Surface, ~10 others. For every other company, A.4 (Product Lifecycle) falls back to certifications, CDP Forests, or an industry default.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> EU Extended Producer Responsibility datasets publish repairability scores. Not yet ingested.</p></div></details>
 
 <details class="about-card" style="margin-bottom:14px;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:17px;color:var(--navy);font-weight:600">Harm Documentation strong post-2020, limited before</summary>
 <div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>Harm Documentation covers 14 categories with strong coverage from 2020 onward. For historical events — tobacco, asbestos, J&amp;J talc — we maintain a curated Major Harm Events dictionary encoding court settlements. Confident in the dictionary, but incomplete.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> systematic backfill from EPA Superfund site attributions, state AG settlement databases, academic attribution studies.</p></div></details>
 
-<details class="about-card" style="margin-bottom:14px;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:17px;color:var(--navy);font-weight:600">Industry Revenue-Per-Employee medians are hardcoded</summary>
-<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>Many sub-signals normalize by industry. Medians are recomputed from the scored company universe on every release (last: v1.3.1, September 2026).</p><p>When per-company SEC workforce data is unavailable, sub-signals fall back to these industry medians. This affects roughly 30-40% of the S&amp;P 500 universe today and means companies in the same industry can show identical H sub-signals — e.g., Coca-Cola and Starbucks both default to consumer-goods medians until broader workforce data sources are integrated. We disclose rather than mask the fallback; expanding per-company H signal coverage is on the v1.2.1 roadmap.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Done in v1.3.0:</strong> industry medians are now computed from the live company universe instead of hardcoded. The recalibration found the old constants off by up to 2.9&times;. Correcting them and the industry mapping withdrew 50 humanwashing flags that had been issued in error (v1.3.0 and v1.3.1).</p><p style="background:#FFFBEB;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>v1.0.2 renormalization note:</strong> H.4 (CEO Accountability) was removed from the H-dimension calculation. CEO accountability is now reflected in the Heartbeat decay system and in M.4 (Product Ethics). Remaining H sub-signals (H.1, H.2, H.3, H.5) were proportionally rescaled to sum to 1.0.</p><p style="background:#FFFBEB;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>D_N weights note:</strong> D_N (Natural Transparency) currently uses equal 0.5/0.5 weights between N.2 (Reporting Quality) and N.5 (Filing Volume). Sub-signals N.1, N.3, N.4 are deferred to v1.3. Additional grounded signals (DSA transparency, 12b-25 late-filings) are on the v1.3 roadmap.</p></div></details>
+<details class="about-card" style="margin-bottom:14px;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:17px;color:var(--navy);font-weight:600">Industry revenue-per-employee medians — resolved in v1.3.0</summary>
+<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>Until v1.3.0, the industry medians that H.1 and H.3 compare each company against were hand-set constants, off by up to 2.9&times; from reality. The median food company scored 24 on H.1 and the median transportation company 100, so the signal was measuring industry rather than behavior.</p><p>The medians are now recomputed from the companies we score, so the median company in each industry scores 65 by construction. H.1 now uses a log scale: each doubling of employees per dollar of revenue, relative to the industry, is worth 15 points. Correcting the medians and the industry mapping withdrew 50 humanwashing flags that had been issued in error (v1.3.0 and v1.3.1).</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Still open:</strong> other industry-keyed tables (H.2 craft defaults, H.3 industry adjustments, A.1 and A.4 defaults) are still hand-set, and industries with fewer than 10 companies have provisional medians.</p><p style="background:#FFFBEB;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>v1.0.2 renormalization note:</strong> H.4 (CEO Accountability) was removed from the H-dimension calculation. CEO accountability is now reflected in the Heartbeat decay system and, through the pay-ratio adjustment, in M.3 (Market Ethics). Remaining H sub-signals (H.1, H.2, H.3, H.5) were proportionally rescaled to sum to 1.0.</p><p style="background:#FFFBEB;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>D_N weights note:</strong> D_N (Natural Transparency) uses equal 0.5/0.5 weights between N.2 (Reporting Quality) and N.5 (Filing Volume). N.1, N.3 and N.4 are not yet scored. Additional grounded signals (DSA transparency, 12b-25 late filings) are research directions, not commitments.</p></div></details>
+
+<details class="about-card" style="margin-bottom:14px;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:17px;color:var(--navy);font-weight:600">The floor rule is a hard threshold</summary>
+<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>A company whose weakest dimension scores 42.1 keeps its full composite; at 41.9 the composite is capped at 50. That is a cliff, not a slope: a fraction of a point in one dimension can move the published score by ten or more. <span data-live="floor">190</span> companies are capped today, most of them by the H dimension.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> measuring a graduated penalty against the hard cap, so small changes in the data produce small changes in the score.</p></div></details>
+
+<details class="about-card" style="margin-bottom:14px;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:17px;color:var(--navy);font-weight:600">Most scores rest on partial data</summary>
+<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>The median company has real data behind 7 of its 19 sub-signals; the rest are neutral 50s. That pulls scores toward the middle, so most companies land within a few points of each other. Every score carries a confidence level and a coverage count in the API, so you can see how much stands behind it.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> bringing sources that are integrated but not yet producing data (OSHA, DOL, USPTO, CPSC, BLS) online, and showing coverage beside every score on the site.</p></div></details>
+
+<details class="about-card" style="margin-bottom:14px;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:17px;color:var(--navy);font-weight:600">Some companies are scored partly from seed data</summary>
+<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>Companies with no SEC filings, mostly privately held brands, can't be scored by the automated pipeline alone. About 95 companies carry some hand-entered seed data, labelled <code>Manual Scoring</code> in the API. Those parts of their scores aren't reproducible from the pipeline.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> replacing seed data with pipeline sources wherever a public record exists, and marking estimated values distinctly from measured ones.</p></div></details>
 
 <details class="about-card" style="margin-bottom:32px;padding:16px 20px"><summary style="cursor:pointer;font-family:'DM Serif Display';font-size:17px;color:var(--navy);font-weight:600">Heartbeat decay thresholds are editorial</summary>
-<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>The Decay Index aggregates layoff mentions, 8-K filings, WARN notices, CEO accountability into 0-100. Inputs are authoritative; thresholds mapping to Stable / Watch / Warning / Critical are editorial.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> validating against known decay events (Oracle 2026, Twitter 2022, Meta metaverse pivot). Ongoing.</p></div></details>
+<div style="margin-top:14px;color:#444;line-height:1.7;font-size:14px"><p>The Decay Index aggregates layoff mentions, 8-K filings, WARN notices, CEO accountability into 0-100. Inputs are authoritative; thresholds mapping to Stable / Watch / Warning / Critical are editorial.</p><p style="background:#F3F4F6;padding:12px 14px;border-radius:8px;margin-top:10px;font-size:13px"><strong>Path forward:</strong> validating against known decay events (Twitter 2022, Meta's metaverse pivot). Ongoing.</p></div></details>
 
 <h2 style="font-family:'DM Serif Display';font-size:26px;color:var(--navy);margin:36px 0 16px">Measured without AI</h2>
 <p style="color:#444;line-height:1.7;margin-bottom:14px">HI Grade uses no AI in the scoring pipeline. No large language models summarizing reports. No neural networks classifying sentiment. No machine learning inferring "good" or "bad." Every score is a deterministic computation on public data.</p>
@@ -1098,11 +1107,11 @@ fetchBalancedBoardForSpotlight();
 <div id="page-sources" class="page hidden" style="max-width:1100px;margin:0 auto;padding:0 24px">
 <div class="subpage">
 <h1>Data Sources</h1>
-<p class="subpage-sub">42 public sources. Zero AI. Zero black boxes. Run it yourself.</p>
+<p class="subpage-sub"><span data-live="sources">22</span> public sources feed today's scores. Zero AI. Zero black boxes. Run it yourself.</p>
 
 <div style="background:linear-gradient(135deg,#1B3A5C,#0F1A2E);color:#fff;padding:28px 24px;border-radius:14px;margin-bottom:32px;text-align:center">
-<div style="font-family:'DM Serif Display';font-size:22px;color:#E5C44A;margin-bottom:8px">Every score is reproducible from public data.</div>
-<div style="font-size:13px;color:#B4BFCC">No proprietary databases. No purchased ratings. No pay-to-play. Every source independent of HI Grade's funding.</div>
+<div style="font-family:'DM Serif Display';font-size:22px;color:#E5C44A;margin-bottom:8px">Every pipeline score is reproducible from public data.</div>
+<div style="font-size:13px;color:#B4BFCC">No purchased ratings. No pay-to-play. Every source independent of HI Grade's funding. Financial fundamentals come from FMP, a paid data API; everything else is free public data.</div>
 </div>
 
 <!-- HUMAN dimension legend -->
@@ -1119,7 +1128,7 @@ fetchBalancedBoardForSpotlight();
 
 <!-- Government sources -->
 <h2 style="font-family:'DM Serif Display';font-size:24px;color:var(--navy);margin:32px 0 14px">Government &amp; Federal Agencies (13)</h2>
-<p style="color:var(--muted);font-size:13px;margin-bottom:14px">Refreshed nightly. Authoritative regulatory data.</p>
+<p style="color:var(--muted);font-size:13px;margin-bottom:14px">Authoritative regulatory data.</p>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;margin-bottom:24px">
 <div style="background:var(--white);border:1px solid var(--light);border-radius:10px;padding:14px"><div style="font-weight:700;color:var(--navy);font-size:14px;margin-bottom:4px">SEC EDGAR</div><div style="font-size:12px;color:#666;line-height:1.5">10-K, 10-Q, 8-K, DEF 14A, Form 4 filings. Headcount, R&amp;D, pay ratio, litigation.</div><div style="margin-top:8px;display:flex;gap:4px"><span style="background:#FEF3C7;color:#78350F;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">H</span><span style="background:#EDE9FE;color:#4C1D95;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">M</span><span style="background:#FEE2E2;color:#7F1D1D;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">N</span></div></div>
@@ -1151,10 +1160,10 @@ fetchBalancedBoardForSpotlight();
 
 <!-- Financial sources -->
 <h2 style="font-family:'DM Serif Display';font-size:24px;color:var(--navy);margin:32px 0 14px">Financial &amp; Corporate (7)</h2>
-<p style="color:var(--muted);font-size:13px;margin-bottom:14px">Live API. Industry benchmarks and corporate intelligence.</p>
+<p style="color:var(--muted);font-size:13px;margin-bottom:14px">Industry benchmarks and corporate data.</p>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;margin-bottom:24px">
-<div style="background:var(--white);border:1px solid var(--light);border-radius:10px;padding:14px"><div style="font-weight:700;color:var(--navy);font-size:14px;margin-bottom:4px">FMP (Financial Modeling Prep)</div><div style="font-size:12px;color:#666;line-height:1.5">Headcount, R&amp;D spend, financial ratios for ~700 companies.</div><div style="margin-top:8px"><span style="background:#FEF3C7;color:#78350F;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">H</span><span style="background:#EDE9FE;color:#4C1D95;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700;margin-left:4px">M</span></div></div>
+<div style="background:var(--white);border:1px solid var(--light);border-radius:10px;padding:14px"><div style="font-weight:700;color:var(--navy);font-size:14px;margin-bottom:4px">FMP (Financial Modeling Prep)</div><div style="font-size:12px;color:#666;line-height:1.5">Headcount, R&amp;D spend and company websites for the companies we score.</div><div style="margin-top:8px"><span style="background:#FEF3C7;color:#78350F;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">H</span><span style="background:#EDE9FE;color:#4C1D95;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700;margin-left:4px">M</span></div></div>
 
 <div style="background:var(--white);border:1px solid var(--light);border-radius:10px;padding:14px"><div style="font-weight:700;color:var(--navy);font-size:14px;margin-bottom:4px">Finnhub ESG</div><div style="font-size:12px;color:#666;line-height:1.5">ESG profile data, news, company fundamentals.</div><div style="margin-top:8px"><span style="background:#D1FAE5;color:#064E3B;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">A</span><span style="background:#DBEAFE;color:#1E3A8A;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700;margin-left:4px">U</span><span style="background:#FEE2E2;color:#7F1D1D;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700;margin-left:4px">N</span></div></div>
 
@@ -1171,7 +1180,7 @@ fetchBalancedBoardForSpotlight();
 
 <!-- Public datasets -->
 <h2 style="font-family:'DM Serif Display';font-size:24px;color:var(--navy);margin:32px 0 14px">Public Datasets (17)</h2>
-<p style="color:var(--muted);font-size:13px;margin-bottom:14px">Quarterly refresh. Specialized public records.</p>
+<p style="color:var(--muted);font-size:13px;margin-bottom:14px">Specialized public records.</p>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;margin-bottom:24px">
 <div style="background:var(--white);border:1px solid var(--light);border-radius:10px;padding:14px"><div style="font-weight:700;color:var(--navy);font-size:14px;margin-bottom:4px">Glassdoor</div><div style="font-size:12px;color:#666;line-height:1.5">Employee ratings, culture, work-life balance, CEO approval.</div><div style="margin-top:8px"><span style="background:#DBEAFE;color:#1E3A8A;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">U</span><span style="background:#EDE9FE;color:#4C1D95;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700;margin-left:4px">M</span></div></div>
@@ -1202,7 +1211,7 @@ fetchBalancedBoardForSpotlight();
 
 <div style="background:var(--white);border:1px solid var(--light);border-radius:10px;padding:14px"><div style="font-weight:700;color:var(--navy);font-size:14px;margin-bottom:4px">Layoffs.fyi</div><div style="font-size:12px;color:#666;line-height:1.5">Tech industry layoff tracking, scale and timing.</div><div style="margin-top:8px"><span style="background:#FEF3C7;color:#78350F;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">H</span></div></div>
 
-<div style="background:var(--white);border:1px solid var(--light);border-radius:10px;padding:14px"><div style="font-weight:700;color:var(--navy);font-size:14px;margin-bottom:4px">Industry RPE Medians</div><div style="font-size:12px;color:#666;line-height:1.5">BLS-derived revenue-per-employee benchmarks by SIC code.</div><div style="margin-top:8px"><span style="background:#FEF3C7;color:#78350F;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">H</span></div></div>
+<div style="background:var(--white);border:1px solid var(--light);border-radius:10px;padding:14px"><div style="font-weight:700;color:var(--navy);font-size:14px;margin-bottom:4px">Industry RPE Medians</div><div style="font-size:12px;color:#666;line-height:1.5">Revenue-per-employee medians by industry, computed from the companies we score (since v1.3.0).</div><div style="margin-top:8px"><span style="background:#FEF3C7;color:#78350F;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">H</span></div></div>
 
 <div style="background:var(--white);border:1px solid var(--light);border-radius:10px;padding:14px"><div style="font-weight:700;color:var(--navy);font-size:14px;margin-bottom:4px">Job Boards</div><div style="font-size:12px;color:#666;line-height:1.5">Aggregated postings, AI vs non-AI roles ratio.</div><div style="margin-top:8px"><span style="background:#FEF3C7;color:#78350F;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">H</span></div></div>
 
@@ -1211,7 +1220,7 @@ fetchBalancedBoardForSpotlight();
 
 <!-- Certifications -->
 <h2 style="font-family:'DM Serif Display';font-size:24px;color:var(--navy);margin:32px 0 14px">Certification Partners (5)</h2>
-<p style="color:var(--muted);font-size:13px;margin-bottom:14px">Quarterly manual review. Third-party verified standards.</p>
+<p style="color:var(--muted);font-size:13px;margin-bottom:14px">Third-party verified standards.</p>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;margin-bottom:24px">
 <div style="background:var(--white);border:1px solid var(--light);border-radius:10px;padding:14px"><div style="font-weight:700;color:var(--navy);font-size:14px;margin-bottom:4px">B Corp Certification</div><div style="font-size:12px;color:#666;line-height:1.5">Stakeholder-centric legal structure, B Lab assessment (80+ score required).</div><div style="margin-top:8px"><span style="background:#DBEAFE;color:#1E3A8A;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">U</span><span style="background:#EDE9FE;color:#4C1D95;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700;margin-left:4px">M</span><span style="background:#D1FAE5;color:#064E3B;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700;margin-left:4px">A</span></div></div>
@@ -1227,7 +1236,7 @@ fetchBalancedBoardForSpotlight();
 
 <!-- Computed -->
 <h2 style="font-family:'DM Serif Display';font-size:24px;color:var(--navy);margin:32px 0 14px">Computed &amp; Curated (10)</h2>
-<p style="color:var(--muted);font-size:13px;margin-bottom:14px">Derived from above sources or curated public records.</p>
+<p style="color:var(--muted);font-size:13px;margin-bottom:14px">Signals computed from the sources above, or curated public records. Not counted as sources.</p>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;margin-bottom:24px">
 <div style="background:var(--white);border:1px solid var(--light);border-radius:10px;padding:14px"><div style="font-weight:700;color:var(--navy);font-size:14px;margin-bottom:4px">Harm Documentation</div><div style="font-size:12px;color:#666;line-height:1.5">Curated public-record harm: settlements, attributed deaths, concealment findings. DOJ/SEC/CDC anchored.</div><div style="margin-top:8px"><span style="background:#EDE9FE;color:#4C1D95;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">M</span></div></div>
@@ -1236,7 +1245,7 @@ fetchBalancedBoardForSpotlight();
 
 <div style="background:var(--white);border:1px solid var(--light);border-radius:10px;padding:14px"><div style="font-weight:700;color:var(--navy);font-size:14px;margin-bottom:4px">CEO Accountability</div><div style="font-size:12px;color:#666;line-height:1.5">CEO pay ratio, tenure-vs-layoff timing, compensation trend vs headcount.</div><div style="margin-top:8px"><span style="background:#EDE9FE;color:#4C1D95;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">M</span></div></div>
 
-<div style="background:var(--white);border:1px solid var(--light);border-radius:10px;padding:14px"><div style="font-weight:700;color:var(--navy);font-size:14px;margin-bottom:4px">Revenue per Employee</div><div style="font-size:12px;color:#666;line-height:1.5">Computed from SEC + FMP. Compared to BLS industry median for humanwashing flag.</div><div style="margin-top:8px"><span style="background:#FEF3C7;color:#78350F;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">H</span></div></div>
+<div style="background:var(--white);border:1px solid var(--light);border-radius:10px;padding:14px"><div style="font-weight:700;color:var(--navy);font-size:14px;margin-bottom:4px">Revenue per Employee</div><div style="font-size:12px;color:#666;line-height:1.5">Computed from SEC + FMP. Compared to the industry median across scored companies for the humanwashing flag.</div><div style="margin-top:8px"><span style="background:#FEF3C7;color:#78350F;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">H</span></div></div>
 
 <div style="background:var(--white);border:1px solid var(--light);border-radius:10px;padding:14px"><div style="font-weight:700;color:var(--navy);font-size:14px;margin-bottom:4px">Headcount Trajectory</div><div style="font-size:12px;color:#666;line-height:1.5">Multi-quarter SEC headcount delta with WARN cross-reference.</div><div style="margin-top:8px"><span style="background:#FEF3C7;color:#78350F;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700">H</span></div></div>
 
@@ -1254,7 +1263,7 @@ fetchBalancedBoardForSpotlight();
 <!-- Footer note -->
 <div style="background:var(--light);border-radius:12px;padding:24px;margin-top:32px;text-align:center">
 <div style="font-size:14px;color:var(--navy);font-weight:600;margin-bottom:8px">Refresh cadence varies by source.</div>
-<div style="font-size:13px;color:var(--muted);line-height:1.6;max-width:640px;margin:0 auto">Government data pulls nightly. Market data streams live. Public datasets refresh quarterly. Certifications reviewed quarterly. When a source refreshes, every company's score recomputes automatically. <span onclick="showPage('methodology')" style="color:var(--sky);font-weight:600;cursor:pointer">Read the full methodology →</span></div>
+<div style="font-size:13px;color:var(--muted);line-height:1.6;max-width:640px;margin:0 auto">Scores recompute every night from the latest collected data. Each source updates on its own schedule: filings when companies file, certifications when certifiers publish. The badge on each card shows whether that source feeds today's scores. <span onclick="showPage('methodology')" style="color:var(--sky);font-weight:600;cursor:pointer">Read the full methodology →</span></div>
 </div>
 
 </div>
@@ -2217,20 +2226,43 @@ window.addEventListener('hashchange', _hashRoute);
 </script>
 
 <script>
-/* Live site numbers, read from the API so they cannot go stale. The page said
-   "700+ companies" and "42 sources" long after both stopped being true. */
+/* Live site numbers and source status, read from the API so they cannot go stale.
+   The page said "700+ companies" and "42 sources" long after both stopped being true. */
 (function () {
+  // Card title on the Sources page -> source name as it appears in /stats data_sources_list.
+  // "*" = feeds headcount, which the API reports under SEC. Unlisted cards are computed signals.
+  var TAG = {"SEC EDGAR":"SEC","EPA ECHO":"EPA","BLS":"BLS","CFPB":"CFPB","FEC / OpenSecrets":"FEC",
+    "FDA":"FDA","FTC":"FTC","CPSC":"CPSC","OSHA":"OSHA","DOL":"DOL","EEOC":"EEOC","NHTSA":"NHTSA",
+    "USPTO":"USPTO","FMP (Financial Modeling Prep)":"*","Finnhub ESG":"Finnhub","Alpha Vantage":"Alpha Vantage",
+    "FRED":"FRED","OpenCorporates":"OpenCorporates","NewsAPI":"NewsAPI","Glassdoor":"Glassdoor",
+    "HRC Corporate Equality Index":"HRC CEI","Disability:IN DEI Index":"Disability:IN DEI","CDP Climate":"CDP",
+    "CDP Water":"CDP","CDP Forests":"CDP","GRI":"GRI","SBTi":"SBTi","IRS 990":"IRS 990","WARN Act":"WARN",
+    "iFixit":"iFixit","BBB":"BBB","HIBP":"HIBP","Layoffs.fyi":"Layoffs","Job Boards":"Jobs",
+    "B Corp Certification":"B Corp","Fair Trade USA / International":"Fair Trade","USDA Organic":"USDA Organic",
+    "Climate Neutral":"Climate Neutral","1% for the Planet":"1% for the Planet"};
   fetch('https://api.thehibalance.org/api/v1/stats')
     .then(function (r) { return r.json(); })
     .then(function (s) {
       var v = {
         companies: s.total_companies ? Number(s.total_companies).toLocaleString('en-US') : null,
         sources: s.data_sources || null,
-        spec: s.spec_version || null
+        spec: s.spec_version || null,
+        floor: s.floor_rule_triggered != null ? String(s.floor_rule_triggered) : null
       };
       document.querySelectorAll('[data-live]').forEach(function (el) {
         var k = el.getAttribute('data-live');
         if (v[k]) el.textContent = v[k];
+      });
+      var live = s.data_sources_list, page = document.getElementById('page-sources');
+      if (!live || !page) return;
+      page.querySelectorAll('div[style*="border-radius:10px"][style*="padding:14px"]').forEach(function (card) {
+        var t = card.firstElementChild && card.firstElementChild.textContent.trim();
+        if (!(t in TAG)) return;
+        var on = TAG[t] === '*' || live.indexOf(TAG[t]) >= 0, b = document.createElement('div');
+        b.style.cssText = 'margin-top:8px;display:inline-block;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700;' +
+          (on ? 'background:#DCFCE7;color:#166534' : 'background:#F3F4F6;color:#6B7280');
+        b.textContent = on ? 'In scores today' : 'Integrated, not yet producing data';
+        card.appendChild(b);
       });
     })
     .catch(function () {});

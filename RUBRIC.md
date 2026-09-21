@@ -8,7 +8,9 @@ This file accompanies the [Limitations](https://thehibalance.org/#limitations) p
 - **PARTIAL** — the data input is authoritative (regulator, certified third party) but the tier cutoffs that map data to score bands were chosen by the engine authors.
 - **UNGROUNDED** — both the data input source AND the scoring ladder are editorial choices. May be defensible, but does not reproduce a published methodology.
 
-Spec version: **v1.2.1** · Active sub-signals: **19** · Deferred: **5**
+Spec version: **v1.3.1** · Active sub-signals: **19** · Not yet scored: **5**
+
+Every entry below was checked against `pipeline/scoring_engine.py` in September 2026. Where this file and the code disagree, the code is right and this file is a bug.
 
 ---
 
@@ -16,13 +18,15 @@ Spec version: **v1.2.1** · Active sub-signals: **19** · Deferred: **5**
 
 | Status | Count | Meaning |
 |---|---|---|
-| GROUNDED | 1 | Data + ladder both authoritative |
-| PARTIAL | 10 | Authoritative data, editorial ladder |
-| UNGROUNDED | 8 | Editorial data + editorial ladder |
+| GROUNDED | 0 | Data + ladder both authoritative |
+| PARTIAL | 13 | Authoritative data, editorial ladder |
+| UNGROUNDED | 6 | Editorial data + editorial ladder, or mostly industry defaults |
 | **TOTAL ACTIVE** | **19** | |
-| DEFERRED (v1.3 target) | 5 | Spec'd but not yet scored |
+| NOT YET SCORED | 5 | Defined in the spec, contributes nothing |
 
-The dominant pattern is **UNGROUNDED**. We don't hide this — most sub-signal ladders were authored by intuition during the engine build, not by reproducing a published authority. **Grounding these ladders is the active research priority for v1.3 and beyond.**
+The dominant pattern is **PARTIAL**: authoritative data read through cutoffs we chose ourselves. Six sub-signals are UNGROUNDED, and none is fully GROUNDED yet. We don't hide this — most ladders were authored by judgment during the engine build, not by reproducing a published authority. **Grounding them is the active research priority.**
+
+**Status changes in September 2026** (from checking this file against the engine): H.1 UNGROUNDED → PARTIAL (industry medians now measured), H.2 PARTIAL → UNGROUNDED (its BLS adjustment isn't firing), U.3 UNGROUNDED → PARTIAL (now built on HRC and Disability:IN, not just Glassdoor), N.2 UNGROUNDED → PARTIAL (CDP is an authoritative input), N.5 GROUNDED → PARTIAL (its tier cutoffs were set by us, not by the SEC).
 
 ---
 
@@ -41,11 +45,13 @@ When the floor fires:
 
 This rule replaces a multi-tier floor system used in earlier specs (any dim < 10 → 40 / 1 dim < 42 → 49 / 2+ dims < 42 → 41), simplified to one clear, defensible threshold.
 
-**Examples:**
+**Examples** (live values, September 2026 — `curl https://api.thehibalance.org/api/v1/score/ticker/JNJ` for today's):
 - J&J: `D_M = 0` (Harm Documentation penalty) → composite capped at 50
-- Costco: `D_N = 27` (CDP grade D + thin SEC filings) → composite capped at 50
-- Microsoft: `D_H = 35` (mass layoffs, AI-acceleration penalty) → composite capped at 50
-- Apple: min dim `D_H = 50` → no cap, composite = mean (73)
+- Microsoft: `D_H = 29` (mass layoffs, AI-acceleration penalty) → composite capped at 50
+- Costco: lowest dimension `D_A = 46` → no cap, composite = mean (63)
+- Apple: no dimension below 42 → no cap, composite = mean (72)
+
+**Known limitation:** this is a hard threshold. A weakest dimension of 42.1 keeps the full composite; 41.9 caps it at 50, so a fraction of a point can move the published score by ten or more. Measuring a graduated penalty is on the research list.
 
 **Sub-signal scores < 42 do NOT trigger the floor.** Only dimension-level scores (D_H, D_U, D_M, D_A, D_N) count. Sub-signals are component inputs to the dimension score; the dimension is what matters for floor evaluation.
 
@@ -54,21 +60,22 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 ## H — Human Consciousness
 
 ### H.1 — Workforce Valuation
-**Status:** UNGROUNDED  
-**Inputs:** SEC EDGAR `revenue_per_employee`, hardcoded `INDUSTRY_RPE_MEDIANS` dict, job-board AI-vs-human hiring ratio  
-**Ladder:** Editorial. The 12-entry industry RPE median dict ($500k tech, $200k retail, $1.5M energy) was chosen in-house. The `·65` anchor and the 50/50 RPE-vs-job-board blend have no cited source.  
-**Path forward:** BLS QCEW × Compustat for cited RPE benchmarks by GICS sub-industry; Damodaran NYU datasets; distributional anchors (P50/P75) instead of editorial multipliers.
+**Status:** PARTIAL *(was UNGROUNDED; changed in v1.3.0)*  
+**Inputs:** SEC EDGAR / FMP `revenue_per_employee`, industry medians computed from the scored universe, job-board AI-vs-human hiring ratio  
+**Formula:** `65 + 15·log2(industry_median / rpe)`, clamped 0–100; blended 50/50 with the job-board score when that data exists  
+**Ladder:** The medians are now measured, not chosen: each is the median revenue per employee of the companies we score in that industry (`recalibrate_medians.py`), so the median company scores 65 by construction. The 65 anchor and the 15-points-per-doubling slope are editorial; the slope was chosen by testing five candidate formulas against the real distribution. Industries with fewer than 10 companies are marked provisional.  
+**Path forward:** BLS QCEW × Compustat for externally cited benchmarks by sub-industry; ground the 50/50 job-board blend.
 
 ### H.2 — Craft
-**Status:** PARTIAL  
-**Inputs:** BLS industry wage data (cited), `craft_defaults` lookup table (in-house)  
-**Ladder:** BLS wage-vs-national adjustment is grounded. The `craft_defaults` base table that adjusts for industry craft intensity is intuition-based.  
-**Path forward:** DOL registered-apprenticeship density as additional craft signal; replace base table with cited industry-craft framework.
+**Status:** UNGROUNDED *(was PARTIAL; changed September 2026)*  
+**Inputs:** `craft_defaults` lookup table (in-house); BLS industry wage-vs-national adjustment (designed, not currently firing)  
+**Ladder:** The BLS adjustment would be grounded, but no company's H sources include BLS today, so in practice H.2 is the in-house base table.  
+**Path forward:** connect BLS wage data so the adjustment fires; DOL registered-apprenticeship density as an additional craft signal; replace the base table with a cited industry-craft framework.
 
 ### H.3 — Human Decision Depth
 **Status:** UNGROUNDED  
 **Inputs:** SEC EDGAR `revenue_per_employee`, headcount tier (>200k/>50k/>10k), industry bias dict, displacement signal  
-**Ladder:** Every component editorial: the `40 + (median/rpe)·30` anchor, headcount tier cutoffs, industry bias values (healthcare +10, defense +8, retail −5, tech −8, etc.), displacement coefficient.  
+**Ladder:** Editorial apart from the industry median, which is measured since v1.3.0: the `40 + (median/rpe)·30` anchor, headcount tier cutoffs, industry bias values (healthcare +10, defense +8, retail −5, tech −8, etc.), displacement coefficient.  
 **Path forward:** O*NET work-context variables ("Decision Making", "Responsibility for Outcomes") aggregated to industry; OECD PIAAC non-routine task intensity; distributional headcount thresholds.
 
 ### H.5 — Human Augmentation Index
@@ -83,22 +90,22 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 
 ### U.1 — Customer Empathy
 **Status:** PARTIAL  
-**Inputs:** CFPB consumer complaints (financial services), BBB complaints, FTC enforcement actions  
+**Inputs:** CFPB consumer complaints (financial services), BBB complaints (10% blend); Glassdoor overall and culture ratings as fallback  
 **Ladder:** CFPB is an authoritative source. The complaints-per-$B-revenue tier cutoffs (<100 = 85 pts, <500 = 70 pts, <2000 = 55 pts) are editorial.  
 **Coverage gap:** CFPB regulates financial services. ~80% of scored companies fall back to BBB/FTC inputs only.  
 **Path forward:** CFPB published complaint distribution percentiles; per-sector regulators (FCC for telecom, FDA for pharma, NHTSA for auto).
 
 ### U.2 — Worker Empathy
 **Status:** UNGROUNDED  
-**Inputs:** Glassdoor employee ratings, Disability:IN DEI Index, HRC Corporate Equality Index  
-**Ladder:** Glassdoor is a commercial reporter, not an authoritative threshold system. The 50/50 blend across the three sources is arbitrary.  
-**Path forward:** HRC and Disability:IN both publish their own scoring rubrics — reproducing their score-to-tier mappings would ground this. Glassdoor needs distributional anchoring (industry quartiles).
+**Inputs:** Glassdoor employee ratings, weighted by review count; OSHA (15% blend) and DOL (10% blend) — neither OSHA nor DOL is producing data today  
+**Ladder:** Glassdoor is a commercial reporter, not an authoritative threshold system. The blend weights are editorial.  
+**Path forward:** bring OSHA and DOL online; distributional anchoring for Glassdoor (industry quartiles).
 
 ### U.3 — Relational Integrity
-**Status:** UNGROUNDED  
-**Inputs:** Raw Glassdoor culture sub-score, passed through  
-**Ladder:** No cited rationale for choosing the culture sub-score over other Glassdoor dimensions; no industry adjustment.  
-**Path forward:** Candidate for replacement with a published satisfaction-stability metric (J.D. Power, ACSI). Or grounding in a defined "relational integrity" framework from organizational research.
+**Status:** PARTIAL *(was UNGROUNDED; changed September 2026)*  
+**Inputs:** HRC Corporate Equality Index, Disability:IN DEI Index, B Corp status, blended with the Glassdoor culture score  
+**Ladder:** HRC and Disability:IN are authoritative inclusion ratings; the blend weights are editorial.  
+**Path forward:** reproduce HRC's and Disability:IN's own score-to-tier mappings; ground the blend.
 
 ### U.4 — Simulated Empathy Detection
 **Status:** PARTIAL  
@@ -124,21 +131,21 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 
 ### M.3 — Market Ethics
 **Status:** PARTIAL  
-**Inputs:** SEC enforcement actions, DOJ antitrust cases, FEC/OpenSecrets political donations, FTC market actions  
-**Ladder:** Editorial. Sherman Act violations weighted heavier than minor SEC enforcement; political donation concentration > $10M flagged.  
+**Inputs:** SEC litigation and EPA penalties (legal score), blended with certification signals when present (60% certifications, 40% legal); EEOC, pay-ratio (DEF 14A) and insider-trading (Form 4) adjustments  
+**Ladder:** Editorial. The legal-penalty dollar tiers ($1B / $100M / $10M / $1M) and the certification blend weights are in-house.  
 **Path forward:** DOJ/FTC publish their own severity classifications for enforcement actions.
 
 ### M.4 — Product Ethics
 **Status:** PARTIAL  
-**Inputs:** CPSC SaferProducts recalls, NHTSA recalls, FDA recalls, Product Harm Index dictionary  
+**Inputs:** CPSC SaferProducts recalls (integrated, not yet producing data), FDA enforcement (10% blend); Glassdoor management and compensation ratings as fallback  
 **Ladder:** Recall classification (Class I/II/III) is authoritative; mapping to score bands is editorial.  
-**Path forward:** Reproduce CPSC recall severity tiers exactly.
+**Path forward:** bring CPSC online, add NHTSA, reproduce CPSC recall severity tiers exactly, and retire the Glassdoor fallback.
 
 ### M.5 — Stakeholder Governance
 **Status:** PARTIAL  
-**Inputs:** Major Harm Events dictionary (court settlements, attributed deaths, knowing concealment, weapons), DOJ/SEC/state AG records  
-**Ladder:** Penalty magnitudes calibrated against documented attribution (court findings, settlement amounts). Direction grounded; magnitudes editorial.  
-**Path forward:** Pre-2020 historical harm coverage is incomplete — backfilling from EPA Superfund + state AG databases planned.
+**Inputs:** stakeholder-centric legal structure (B Corp and similar signals); FEC political spending when available; Glassdoor CEO rating as a last fallback  
+**Ladder:** B Corp status is authoritative; the FEC spending tiers and the Glassdoor fallback are editorial. Harm Documentation (settlements, attributed deaths, concealment) penalizes M.3 and M.4 directly; it is not an M.5 input.  
+**Path forward:** political-spending thresholds per $B of revenue; retire the Glassdoor fallback.
 
 ---
 
@@ -152,52 +159,51 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 
 ### A.2 — Water
 **Status:** UNGROUNDED  
-**Inputs:** EPA ECHO violations, CDP Water disclosures (when available)  
-**Ladder:** EPA classifies violations (HPV — High Priority Violation) but engine ladder doesn't reproduce that classification.  
-**Path forward:** Map directly to EPA's HPV tier classification.
+**Inputs:** CDP Water disclosures (when available); neutral 50 otherwise  
+**Ladder:** CDP water scores are mapped by an in-house translation. EPA violations feed A.3, not A.2.  
+**Path forward:** reproduce CDP's water tiers; add a water source that covers companies outside CDP.
 
 ### A.3 — Land & Habitat
 **Status:** UNGROUNDED  
-**Inputs:** CDP Forests disclosures (when available), industry deforestation risk dictionary  
-**Ladder:** Forest commitment composite from CDP + sector risk weights, both editorial.  
+**Inputs:** USDA Organic certification (70%) with sector land-use risk (30%); EPA violation counts when neither is available  
+**Ladder:** Sector risk weights and the EPA violation tiers (0 / 3 / 10 / 20) are editorial.  
 **Path forward:** Forest 500 publishes a methodology that could ground the ladder.
 
 ### A.4 — Product Lifecycle
 **Status:** PARTIAL *(for 15 covered companies)*  
 **Inputs:** iFixit repairability scores (consumer electronics, ~15 companies)  
 **Ladder:** Reproduces iFixit's 1-10 repairability tiers, scaled to 0-100. Grounded for covered companies.  
-**Coverage gap:** ~426+ companies fall back to industry default. Path forward: EU Extended Producer Responsibility datasets.
+**Coverage gap:** every other company falls back to certifications, then CDP Forests, then an industry default. Path forward: EU Extended Producer Responsibility datasets.
 
 ---
 
 ## N — Natural Transparency
 
 ### N.2 — Reporting Quality
-**Status:** UNGROUNDED  
-**Inputs:** SEC EDGAR filing count (10-K, 8-K, DEF 14A, Form 4) over trailing 12 months  
-**Ladder:** Filing volume is authoritative input but editorial mapping to "high quality" vs "low quality" reporting.  
+**Status:** PARTIAL *(was UNGROUNDED; changed September 2026)*  
+**Inputs:** reporting-quality level (excellent / good / partial) from CDP disclosure; CDP non-responders receive a mild penalty; neutral 50 otherwise  
+**Ladder:** The mapping from reporting level to score (90 / 70 / 45 / 25) is editorial.  
 **Path forward:** GRI publishes its own reporting quality scoring framework. Reproducing it would ground this.
 
 ### N.5 — Filing Volume
-**Status:** GROUNDED  
+**Status:** PARTIAL *(was GROUNDED; changed September 2026)*  
 **Inputs:** SEC EDGAR filing counts and timeliness (on-time material disclosure)  
-**Ladder:** Reproduces SEC's own materiality + timeliness framework. Companies with consistent on-time material disclosure rank highest.  
-**Notes:** Currently the only fully grounded sub-signal in v1.2.0.
+**Ladder:** The filing data is SEC's own, but the tier cutoffs (8 / 5 / 3 / 1 filings → 90 / 75 / 60 / 40 / 20) are editorial.  
+**Path forward:** Derive the tiers from the distribution of filing counts across all SEC registrants, or from SEC's timeliness rules directly.
 
 ---
 
-## Deferred to v1.3
+## Not yet scored
 
-These 5 sub-signals are spec'd in HUMAN Grade Spec v1.2.0 but not yet scored. They will be added in v1.3. Until then, they receive no contribution to dimension scores.
+These 5 sub-signals are defined in the spec but not yet scored. They contribute nothing to any score.
 
-| ID | Why deferred |
-|---|---|
-| H.4 | Removed in v1.0.2; pay-ratio adjustment moved to M.3. Re-introduction awaits cited "human contribution to value" framework. |
-| U.5 | Removed in v1.0.2; charity-pipeline data was unreliable. Re-introduction awaits multi-year customer/community engagement data. |
-| N.1 | Narrative Integrity — removed in v1.0.2. Re-introduction awaits cited reporting-narrative framework. |
-| N.3 | Stakeholder Engagement — removed in v1.0.2. Re-introduction awaits structured stakeholder dataset. |
-| N.4 | Narrative Courage — removed in v1.0.2. Deceptive-practices signal deferred to Pass 3 rubric authoring. |
-
+| ID | Name | Why not yet |
+|---|---|---|
+| H.4 | CEO Accountability | Removed in v1.0.2; the pay-ratio adjustment moved to M.3. Re-introduction awaits a cited "human contribution to value" framework. |
+| U.5 | Moral Courage | Removed in v1.0.2; charity-pipeline data was unreliable. Re-introduction awaits multi-year customer and community engagement data. |
+| N.1 | AI Disclosure | Defined in the spec; data source and scoring ladder not yet built. |
+| N.3 | Labor Auditability | Defined in the spec; data source and scoring ladder not yet built. |
+| N.4 | Humanwashing Detection | Humanwashing is detected and flagged today; making it a scored sub-signal awaits a rubric. |
 ---
 
 ## What this document is NOT
@@ -221,4 +227,4 @@ We respond to ladder-grounding issues within 5 business days.
 
 ---
 
-*Last updated: April 2026. Spec v1.2.0. Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
+*Last updated: September 2026. Spec v1.3.1. Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
