@@ -117,7 +117,7 @@ def integrate(osha,cfpb,sub_dir):
 
 if __name__=="__main__":
     import argparse
-    p=argparse.ArgumentParser();p.add_argument("--output",default="data/gov");p.add_argument("--subsignals",default="data/subsignals")
+    p=argparse.ArgumentParser();p.add_argument("--output",default="data/gov");p.add_argument("--subsignals",default="data/gov/by_company")
     p.add_argument("--all",action="store_true");p.add_argument("--osha",action="store_true");p.add_argument("--cfpb",action="store_true")
     a=p.parse_args()
     if a.all or(not a.osha and not a.cfpb):

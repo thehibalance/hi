@@ -103,10 +103,15 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "HI. Pipeline Bot"
 
-          git update-index --assume-unchanged pipeline/data/subsignals/ups.json 2>/dev/null || true
-          git update-index --assume-unchanged pipeline/data/subsignals/UPS.json 2>/dev/null || true
 
           git add -A pipeline/data/
+
+          # Paths that differ only by case break every Mac/Windows checkout.
+          DUPS=$(git ls-files | tr 'A-Z' 'a-z' | sort | uniq -d)
+          if [ -n "$DUPS" ]; then
+            echo "::warning::Case-colliding paths would break Mac/Windows clones:"
+            echo "$DUPS"
+          fi
 
           COMPANY_COUNT=$(python3 -c 'import json; print(len(json.load(open("pipeline/data/scores/all_scores.json"))))')
           COMMIT_MSG="Daily pipeline: $(date +%Y-%m-%d) · ${COMPANY_COUNT} companies"
