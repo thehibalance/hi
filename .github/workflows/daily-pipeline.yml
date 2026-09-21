@@ -152,19 +152,23 @@ jobs:
       # scores for days. It now proves the live API picked up what was committed.
       - name: Verify the live API is serving these scores
         if: success()
+        env:
+          # Railway's own *.up.railway.app URL (bypasses Cloudflare). Set with:
+          #   gh variable set API_ORIGIN_URL --body https://<service>.up.railway.app
+          API_BASE: ${{ vars.API_ORIGIN_URL || 'https://api.thehibalance.org' }}
         run: |
           WANT=$(python3 -c "import json;print(json.load(open('pipeline/data/scores/all_scores.json'))[0].get('spec_version'))")
           COMMITTED_AT=$(TZ=UTC git log -1 --date=format-local:%Y-%m-%dT%H:%M:%SZ --format=%cd -- pipeline/data/scores/all_scores.json)
-          echo "Want spec_version=$WANT, built after $COMMITTED_AT"
+          echo "Want spec_version=$WANT, built after $COMMITTED_AT, checking $API_BASE"
           for i in $(seq 1 30); do
-            GOT=$(curl -s --max-time 10 https://api.thehibalance.org/api/v1/health \
-                  | python3 -c "import json,sys;d=json.load(sys.stdin);print(d.get('spec_version',''),d.get('scores_file_mtime',''))" 2>/dev/null || true)
+            CODE=$(curl -s --max-time 10 -o /tmp/health.json -w '%{http_code}' "$API_BASE/api/v1/health" || true)
+            GOT=$(python3 -c "import json;d=json.load(open('/tmp/health.json'));print(d.get('spec_version',''),d.get('scores_file_mtime',''))" 2>/dev/null || true)
             SPEC=${GOT%% *}; MTIME=${GOT##* }
             if [ "$SPEC" = "$WANT" ] && [[ ! "$MTIME" < "$COMMITTED_AT" ]]; then
               echo "API live: spec_version=$SPEC scores_file_mtime=$MTIME"
               exit 0
             fi
-            echo "  not yet (spec=$SPEC mtime=$MTIME), retry $i/30"
+            echo "  not yet (HTTP $CODE from $API_BASE, spec=$SPEC mtime=$MTIME), retry $i/30"
             sleep 30
           done
           echo "::error::Live API did not pick up the new scores within 15 min (spec=$SPEC mtime=$MTIME; wanted $WANT after $COMMITTED_AT)"
