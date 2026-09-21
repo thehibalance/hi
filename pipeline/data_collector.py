@@ -691,6 +691,46 @@ def is_stale(filepath, max_age_hours=24):
     return age > (max_age_hours * 3600)
 
 
+# HI-PATCH:keep-old-values:v1
+# A re-collection must never replace real data with a blank. Yahoo throttles,
+# FMP runs out of calls, an endpoint times out: the fresh record then comes
+# back with None where last run had a value. Without this, one bad night
+# would wipe good data and the score would slide to neutral defaults.
+# Zeros count as blank only for SEC fields whose 0 means "not fetched"
+# (fetch_sec defaults them to 0); a real 0 like an EPA violation count stands.
+_ZERO_MEANS_MISSING = {"revenue", "rd_expense", "total_recent_filings"}
+_KEPT = []  # one entry per preserved value; list.append is thread-safe
+
+
+def _blank(key, v):
+    if v is None or v == "" or v == [] or v == {}:
+        return True
+    return key in _ZERO_MEANS_MISSING and v == 0
+
+
+def fill_missing(new, old):
+    """Fill blanks in `new` from `old`, recursively. Returns `new`."""
+    if not isinstance(new, dict) or not isinstance(old, dict):
+        return new
+    for k, ov in old.items():
+        if _blank(k, ov):
+            continue
+        if k not in new or _blank(k, new[k]):
+            new[k] = ov
+            _KEPT.append(k)
+        elif isinstance(new[k], dict) and isinstance(ov, dict):
+            fill_missing(new[k], ov)
+    return new
+
+
+def _read_json(path):
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return None
+
+
 def _to_num(v):  # HI-PATCH:headcount-typeerror:v1
     """Coerce headcount/revenue to a number. FMP returns employees as a string."""
     if v is None or isinstance(v, bool):
@@ -722,6 +762,10 @@ def collect_one(company, keys, core, subsignals, extended, data_dir, incremental
         return None
     
     safe = safe_filename(name, ticker)
+
+    # HI-PATCH:collect-budget:v1 — out of time: leave this company for tomorrow
+    if _DEADLINE and time.time() > _DEADLINE:
+        return {"skipped": True, "budget": True, "name": name, "ticker": ticker}
     
     # Incremental: skip if data is fresh
     if incremental_hours > 0:
@@ -808,7 +852,9 @@ def collect_one(company, keys, core, subsignals, extended, data_dir, incremental
             ss_dir = data_dir / "subsignals"
             ss_dir.mkdir(parents=True, exist_ok=True)
             ss_file = ss_dir / f"{safe}.json"
-            json.dump(ss, open(ss_file, "w"), indent=2)
+            fill_missing(ss, _read_json(ss_file))  # HI-PATCH:keep-old-values:v1
+            with open(ss_file, "w") as f:
+                json.dump(ss, f, indent=2)
             result["subsignals"] = sum(1 for v in ss.values() if v)
     
     if extended:
@@ -817,15 +863,41 @@ def collect_one(company, keys, core, subsignals, extended, data_dir, incremental
             ext_dir = data_dir / "extended"
             ext_dir.mkdir(parents=True, exist_ok=True)
             ext_file = ext_dir / f"{safe}.json"
-            json.dump({ticker.upper(): ext} if ticker else {name: ext}, open(ext_file, "w"), indent=2)
+            payload = {ticker.upper(): ext} if ticker else {name: ext}
+            fill_missing(payload, _read_json(ext_file))  # HI-PATCH:keep-old-values:v1
+            with open(ext_file, "w") as f:
+                json.dump(payload, f, indent=2)
             result["extended"] = sum(1 for v in ext.values() if v)
     
     return result
 
 
+_DEADLINE = 0.0  # HI-PATCH:collect-budget:v1
+
+
+def _data_age_key(company):
+    """Sort key: companies whose gate files are oldest (or missing) come first."""
+    safe = safe_filename(company.get("name", ""), company.get("ticker", ""))
+    ts = []
+    for sub in ("subsignals", "extended"):
+        f = DATA_DIR / sub / f"{safe}.json"
+        ts.append(f.stat().st_mtime if f.exists() else 0.0)
+    return min(ts)
+
+
 def collect_all(companies, keys, core=True, subsignals=True, extended=True, workers=8, incremental_hours=0):
     """Collect data from all 34 sources for all companies. Parallel + incremental."""
     from concurrent.futures import ThreadPoolExecutor, as_completed
+    global _DEADLINE
+
+    # HI-PATCH:collect-budget:v1
+    # HI_COLLECT_BUDGET_MIN caps collection time so the job can't hit its
+    # timeout and lose the whole night. Oldest data goes first, so whatever
+    # doesn't fit tonight is first in line tomorrow.
+    budget_min = float(os.environ.get("HI_COLLECT_BUDGET_MIN", "0") or 0)
+    _DEADLINE = time.time() + budget_min * 60 if budget_min > 0 else 0.0
+    companies = sorted(companies, key=_data_age_key)
+    budget_skipped = 0
     
     sec_results = []
     epa_results = []
@@ -854,6 +926,9 @@ def collect_all(companies, keys, core=True, subsignals=True, extended=True, work
                 if result is None:
                     continue
                 
+                if result.get("budget"):
+                    budget_skipped += 1
+                    continue
                 if result.get("skipped"):
                     skipped += 1
                     continue
@@ -920,7 +995,7 @@ def collect_all(companies, keys, core=True, subsignals=True, extended=True, work
             for r in fresh_records:
                 t = r.get("ticker")
                 if t:
-                    by_ticker[t] = r
+                    by_ticker[t] = fill_missing(r, by_ticker.get(t))  # HI-PATCH:keep-old-values:v1
                     fresh_count += 1
             
             merged = list(by_ticker.values())
@@ -953,6 +1028,13 @@ def collect_all(companies, keys, core=True, subsignals=True, extended=True, work
     
     if skipped:
         print(f"\n  ⏭ Skipped {skipped} companies (data fresh within {incremental_hours}h)")
+    print(f"  Collected {completed} companies this run")
+    if budget_skipped:
+        print(f"  ⏱ Time budget ({budget_min:g} min) reached: {budget_skipped} companies left for the next run")
+    if _KEPT:
+        from collections import Counter
+        top = ", ".join(f"{k} {n}" for k, n in Counter(_KEPT).most_common(8))
+        print(f"  Kept {len(_KEPT)} previous values where the fresh fetch came back empty ({top})")
     
     return {
         "sec": len(sec_results),
@@ -962,6 +1044,7 @@ def collect_all(companies, keys, core=True, subsignals=True, extended=True, work
         "bls": "loaded",
         "skipped": skipped,
         "collected": completed,
+        "left_for_next_run": budget_skipped,
     }
 
 

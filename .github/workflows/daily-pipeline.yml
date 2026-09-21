@@ -24,6 +24,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Restore data file timestamps from git history
+        run: python3 pipeline/restore_mtimes.py
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -43,6 +46,7 @@ jobs:
           DOL_API_KEY: ${{ secrets.DOL_API_KEY }}
           DATAGOV_API_KEY: ${{ secrets.DATAGOV_API_KEY }}
           PIPELINE_LOG: ${{ runner.temp }}/pipeline.log
+          HI_COLLECT_BUDGET_MIN: '150'
         run: |
           cd pipeline
 
