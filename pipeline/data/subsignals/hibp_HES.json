@@ -2,7 +2,7 @@
   "company": "HES",
   "ticker": "HES",
   "domain": "hess.com",
-  "breach_count": 3,
+  "breach_count": 5,
   "breaches": [
     {
       "name": "2844Breaches",
@@ -27,6 +27,34 @@
       "is_verified": true
     },
     {
+      "name": "Chess2026",
+      "date": "2026-08-03",
+      "pwn_count": 4653212,
+      "data_classes": [
+        "Email addresses",
+        "Geographic locations",
+        "Names",
+        "Usernames"
+      ],
+      "is_verified": true
+    },
+    {
+      "name": "ManchesterAirportsGroup",
+      "date": "2026-08-27",
+      "pwn_count": 8849657,
+      "data_classes": [
+        "Browser user agent details",
+        "Email addresses",
+        "Geographic locations",
+        "IP addresses",
+        "Names",
+        "Phone numbers",
+        "Purchases",
+        "Vehicle registration plates"
+      ],
+      "is_verified": true
+    },
+    {
       "name": "TheSquare",
       "date": "2025-06-27",
       "pwn_count": 107041,
@@ -39,8 +67,8 @@
       "is_verified": true
     }
   ],
-  "total_records_exposed": 81496650,
+  "total_records_exposed": 94999519,
   "sensitive_data_exposed": true,
-  "fetched": "2026-08-25T17:00:46.414567",
+  "fetched": "2026-09-21T17:12:40.428428",
   "source": "HIBP"
 }

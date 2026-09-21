@@ -1,25 +1,11 @@
 {
-  "cfpb": {
-    "U.1": 70.0,
-    "M.1": 80,
-    "raw": {
-      "company": "ELECTRONIC ARTS INC.",
-      "ticker": "EA",
-      "total_complaints_3yr": 0,
-      "products": {},
-      "timely_responses": 0,
-      "timely_rate": 0.0,
-      "fetched": "2026-04-15T09:30:57.714492",
-      "source": "CFPB"
-    }
-  },
   "hibp": {
     "M.2": 0,
     "raw": {
       "company": "ELECTRONIC ARTS INC.",
       "ticker": "EA",
       "domain": "ea.com",
-      "breach_count": 61,
+      "breach_count": 63,
       "breaches": [
         {
           "name": "2844Breaches",
@@ -339,6 +325,7 @@
             "Email addresses",
             "Genders",
             "Geographic locations",
+            "Latitude and longitude pairs",
             "Names",
             "Passwords",
             "Usernames"
@@ -422,6 +409,16 @@
             "IP addresses",
             "Passwords",
             "Usernames"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "June2026StealerLogs",
+          "date": "2026-06-15",
+          "pwn_count": 56278397,
+          "data_classes": [
+            "Email addresses",
+            "Passwords"
           ],
           "is_verified": true
         },
@@ -560,6 +557,19 @@
             "Geographic locations",
             "Passwords",
             "Phone numbers"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "OzHairAndBeauty",
+          "date": "2026-08-15",
+          "pwn_count": 1988331,
+          "data_classes": [
+            "Email addresses",
+            "Geographic locations",
+            "Names",
+            "Phone numbers",
+            "Purchases"
           ],
           "is_verified": true
         },
@@ -800,9 +810,9 @@
           "is_verified": true
         }
       ],
-      "total_records_exposed": 3230785581,
+      "total_records_exposed": 3289052309,
       "sensitive_data_exposed": true,
-      "fetched": "2026-04-15T09:30:58.277113",
+      "fetched": "2026-09-21T17:01:41.614234",
       "source": "HIBP"
     }
   },
@@ -813,5 +823,19 @@
   "land": {
     "A.3": 65,
     "source": "Industry+EPA"
+  },
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "ELECTRONIC ARTS INC.",
+      "ticker": "EA",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-04-15T09:30:57.714492",
+      "source": "CFPB"
+    }
   }
 }

@@ -9,18 +9,30 @@
       "products": {},
       "timely_responses": 0,
       "timely_rate": 0.0,
-      "fetched": "2026-08-25T17:04:26.886207",
+      "fetched": "2026-09-21T17:29:34.013169",
       "source": "CFPB"
     }
   },
   "hibp": {
-    "M.2": 60,
+    "M.2": 30,
     "raw": {
       "company": "RH",
       "ticker": "RH",
       "domain": "rh.com",
-      "breach_count": 1,
+      "breach_count": 2,
       "breaches": [
+        {
+          "name": "Carhartt",
+          "date": "2026-08-13",
+          "pwn_count": 12933413,
+          "data_classes": [
+            "Email addresses",
+            "Names",
+            "Phone numbers",
+            "Physical addresses"
+          ],
+          "is_verified": true
+        },
         {
           "name": "SirHurt",
           "date": "2021-04-23",
@@ -34,18 +46,18 @@
           "is_verified": true
         }
       ],
-      "total_records_exposed": 90655,
+      "total_records_exposed": 13024068,
       "sensitive_data_exposed": true,
-      "fetched": "2026-08-25T17:04:27.528334",
+      "fetched": "2026-09-21T17:29:34.670203",
       "source": "HIBP"
     }
   },
   "hardware": {
-    "A.4": 55,
+    "A.4": 65,
     "source": "Industry"
   },
   "land": {
-    "A.3": 50,
+    "A.3": 45,
     "source": "Industry+EPA"
   }
 }

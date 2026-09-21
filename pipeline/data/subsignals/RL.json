@@ -3,27 +3,41 @@
     "U.1": 70.0,
     "M.1": 80,
     "raw": {
-      "company": "Ralph Lauren Corp",
+      "company": "RALPH LAUREN CORP",
       "ticker": "RL",
       "total_complaints_3yr": 0,
       "products": {},
       "timely_responses": 0,
       "timely_rate": 0.0,
-      "fetched": "2026-03-23T08:49:38.609540",
+      "fetched": "2026-09-21T17:04:28.773317",
       "source": "CFPB"
     }
   },
   "hibp": {
-    "M.2": 90,
+    "M.2": 70,
     "raw": {
       "company": "RALPH LAUREN CORP",
       "ticker": "RL",
       "domain": "ralphlauren.com",
-      "breach_count": 0,
-      "breaches": [],
-      "total_records_exposed": 0,
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "RalphLauren",
+          "date": "2026-06-11",
+          "pwn_count": 139903,
+          "data_classes": [
+            "Age groups",
+            "Email addresses",
+            "Genders",
+            "Names",
+            "Phone numbers"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 139903,
       "sensitive_data_exposed": false,
-      "fetched": "2026-06-16T17:40:00.439777",
+      "fetched": "2026-09-21T17:04:29.430124",
       "source": "HIBP"
     }
   },

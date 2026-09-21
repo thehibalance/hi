@@ -2,7 +2,7 @@
   "company": "TE Connectivity plc",
   "ticker": "TEL",
   "domain": "te.com",
-  "breach_count": 101,
+  "breach_count": 103,
   "breaches": [
     {
       "name": "AlienStealerLogs",
@@ -605,6 +605,22 @@
       "is_verified": true
     },
     {
+      "name": "ManchesterAirportsGroup",
+      "date": "2026-08-27",
+      "pwn_count": 8849657,
+      "data_classes": [
+        "Browser user agent details",
+        "Email addresses",
+        "Geographic locations",
+        "IP addresses",
+        "Names",
+        "Phone numbers",
+        "Purchases",
+        "Vehicle registration plates"
+      ],
+      "is_verified": true
+    },
+    {
       "name": "ManipulatedCaiman",
       "date": "2023-07-16",
       "pwn_count": 39901389,
@@ -853,6 +869,21 @@
         "Private messages",
         "Usernames",
         "Website activity"
+      ],
+      "is_verified": true
+    },
+    {
+      "name": "Questel",
+      "date": "2026-08-01",
+      "pwn_count": 1226209,
+      "data_classes": [
+        "Email addresses",
+        "Employers",
+        "Job titles",
+        "Names",
+        "Phone numbers",
+        "Physical addresses",
+        "Support tickets"
       ],
       "is_verified": true
     },
@@ -1366,8 +1397,8 @@
       "is_verified": true
     }
   ],
-  "total_records_exposed": 2120593301,
+  "total_records_exposed": 2130669167,
   "sensitive_data_exposed": true,
-  "fetched": "2026-08-25T16:52:25.757082",
+  "fetched": "2026-09-21T17:07:02.393114",
   "source": "HIBP"
 }

@@ -1,25 +1,11 @@
 {
-  "cfpb": {
-    "U.1": 70.0,
-    "M.1": 80,
-    "raw": {
-      "company": "Commonwealth Bank of Australia",
-      "ticker": "CMWAY",
-      "total_complaints_3yr": 0,
-      "products": {},
-      "timely_responses": 0,
-      "timely_rate": 0.0,
-      "fetched": "2026-03-23T08:51:37.208683",
-      "source": "CFPB"
-    }
-  },
   "hibp": {
     "M.2": 0,
     "raw": {
       "company": "",
       "ticker": "CMWAY",
       "domain": "commbank.com.au",
-      "breach_count": 1031,
+      "breach_count": 1037,
       "breaches": [
         {
           "name": "000webhost",
@@ -2067,6 +2053,20 @@
           "is_verified": true
         },
         {
+          "name": "BurgerKingRussia",
+          "date": "2024-08-25",
+          "pwn_count": 3155792,
+          "data_classes": [
+            "Dates of birth",
+            "Email addresses",
+            "Genders",
+            "Geographic locations",
+            "Names",
+            "Phone numbers"
+          ],
+          "is_verified": true
+        },
+        {
           "name": "BusinessAcumen",
           "date": "2014-04-25",
           "pwn_count": 26596,
@@ -2225,6 +2225,18 @@
           "data_classes": [
             "Email addresses",
             "IP addresses",
+            "Names",
+            "Phone numbers",
+            "Physical addresses"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "Carhartt",
+          "date": "2026-08-13",
+          "pwn_count": 12933413,
+          "data_classes": [
+            "Email addresses",
             "Names",
             "Phone numbers",
             "Physical addresses"
@@ -2399,6 +2411,18 @@
           "name": "Chess",
           "date": "2023-11-08",
           "pwn_count": 1274077,
+          "data_classes": [
+            "Email addresses",
+            "Geographic locations",
+            "Names",
+            "Usernames"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "Chess2026",
+          "date": "2026-08-03",
+          "pwn_count": 4653212,
           "data_classes": [
             "Email addresses",
             "Geographic locations",
@@ -7325,6 +7349,22 @@
           "is_verified": true
         },
         {
+          "name": "ManchesterAirportsGroup",
+          "date": "2026-08-27",
+          "pwn_count": 8849657,
+          "data_classes": [
+            "Browser user agent details",
+            "Email addresses",
+            "Geographic locations",
+            "IP addresses",
+            "Names",
+            "Phone numbers",
+            "Purchases",
+            "Vehicle registration plates"
+          ],
+          "is_verified": true
+        },
+        {
           "name": "MangaTraders",
           "date": "2014-06-09",
           "pwn_count": 855249,
@@ -7560,6 +7600,22 @@
           "data_classes": [
             "Email addresses",
             "Names",
+            "Phone numbers",
+            "Physical addresses"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "McKesson",
+          "date": "2026-08-21",
+          "pwn_count": 6404340,
+          "data_classes": [
+            "Dates of birth",
+            "Email addresses",
+            "Employers",
+            "Genders",
+            "Names",
+            "Personal health data",
             "Phone numbers",
             "Physical addresses"
           ],
@@ -9662,6 +9718,21 @@
             "Private messages",
             "Usernames",
             "Website activity"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "Questel",
+          "date": "2026-08-01",
+          "pwn_count": 1226209,
+          "data_classes": [
+            "Email addresses",
+            "Employers",
+            "Job titles",
+            "Names",
+            "Phone numbers",
+            "Physical addresses",
+            "Support tickets"
           ],
           "is_verified": true
         },
@@ -13727,9 +13798,9 @@
           "is_verified": true
         }
       ],
-      "total_records_exposed": 17782150561,
+      "total_records_exposed": 17819373184,
       "sensitive_data_exposed": true,
-      "fetched": "2026-08-25T16:58:03.789096",
+      "fetched": "2026-09-21T17:12:22.354527",
       "source": "HIBP"
     }
   },
@@ -13740,5 +13811,19 @@
   "land": {
     "A.3": 50,
     "source": "Industry+EPA"
+  },
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "Commonwealth Bank of Australia",
+      "ticker": "CMWAY",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-03-23T08:51:37.208683",
+      "source": "CFPB"
+    }
   }
 }

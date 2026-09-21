@@ -1,4 +1,53 @@
 {
+  "hibp": {
+    "M.2": 35,
+    "raw": {
+      "company": "STEM, INC.",
+      "ticker": "STEM",
+      "domain": "stem.com",
+      "breach_count": 2,
+      "breaches": [
+        {
+          "name": "LaPosteMobile",
+          "date": "2022-07-04",
+          "pwn_count": 533886,
+          "data_classes": [
+            "Bank account numbers",
+            "Dates of birth",
+            "Email addresses",
+            "Genders",
+            "Names",
+            "Phone numbers",
+            "Physical addresses"
+          ],
+          "is_verified": true
+        },
+        {
+          "name": "PaySystemTech",
+          "date": "2022-04-29",
+          "pwn_count": 1410764,
+          "data_classes": [
+            "Credit cards",
+            "Email addresses",
+            "Purchases"
+          ],
+          "is_verified": false
+        }
+      ],
+      "total_records_exposed": 1944650,
+      "sensitive_data_exposed": true,
+      "fetched": "2026-09-21T17:07:45.214095",
+      "source": "HIBP"
+    }
+  },
+  "hardware": {
+    "A.4": 45,
+    "source": "Industry"
+  },
+  "land": {
+    "A.3": 65,
+    "source": "Industry+EPA"
+  },
   "cfpb": {
     "U.1": 70.0,
     "M.1": 80,
@@ -12,27 +61,5 @@
       "fetched": "2026-03-23T08:53:42.738925",
       "source": "CFPB"
     }
-  },
-  "hibp": {
-    "M.2": 90,
-    "raw": {
-      "company": "Stem Inc",
-      "ticker": "STEM",
-      "domain": "system76.com",
-      "breach_count": 0,
-      "breaches": [],
-      "total_records_exposed": 0,
-      "sensitive_data_exposed": false,
-      "fetched": "2026-03-23T08:53:43.311811",
-      "source": "HIBP"
-    }
-  },
-  "hardware": {
-    "A.4": 45,
-    "source": "Industry"
-  },
-  "land": {
-    "A.3": 65,
-    "source": "Industry+EPA"
   }
 }

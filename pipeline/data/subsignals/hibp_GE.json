@@ -2,7 +2,7 @@
   "company": "GENERAL ELECTRIC CO",
   "ticker": "GE",
   "domain": "ge.com",
-  "breach_count": 38,
+  "breach_count": 39,
   "breaches": [
     {
       "name": "AllegedATT",
@@ -55,6 +55,20 @@
         "Phone numbers",
         "Physical addresses",
         "Taxation records"
+      ],
+      "is_verified": true
+    },
+    {
+      "name": "BurgerKingRussia",
+      "date": "2024-08-25",
+      "pwn_count": 3155792,
+      "data_classes": [
+        "Dates of birth",
+        "Email addresses",
+        "Genders",
+        "Geographic locations",
+        "Names",
+        "Phone numbers"
       ],
       "is_verified": true
     },
@@ -506,8 +520,8 @@
       "is_verified": true
     }
   ],
-  "total_records_exposed": 225241440,
+  "total_records_exposed": 228397232,
   "sensitive_data_exposed": true,
-  "fetched": "2026-08-25T00:17:38.282811",
+  "fetched": "2026-09-21T17:20:13.238758",
   "source": "HIBP"
 }

@@ -2,10 +2,24 @@
   "company": "RALPH LAUREN CORP",
   "ticker": "RL",
   "domain": "ralphlauren.com",
-  "breach_count": 0,
-  "breaches": [],
-  "total_records_exposed": 0,
+  "breach_count": 1,
+  "breaches": [
+    {
+      "name": "RalphLauren",
+      "date": "2026-06-11",
+      "pwn_count": 139903,
+      "data_classes": [
+        "Age groups",
+        "Email addresses",
+        "Genders",
+        "Names",
+        "Phone numbers"
+      ],
+      "is_verified": true
+    }
+  ],
+  "total_records_exposed": 139903,
   "sensitive_data_exposed": false,
-  "fetched": "2026-06-16T17:40:00.439777",
+  "fetched": "2026-09-21T17:04:29.430124",
   "source": "HIBP"
 }

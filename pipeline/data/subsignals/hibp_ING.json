@@ -2,7 +2,7 @@
   "company": "ING GROEP NV",
   "ticker": "ING",
   "domain": "ing.com",
-  "breach_count": 41,
+  "breach_count": 42,
   "breaches": [
     {
       "name": "AdoptMeTradingValues",
@@ -41,6 +41,20 @@
         "Names",
         "Passwords",
         "Usernames"
+      ],
+      "is_verified": true
+    },
+    {
+      "name": "BurgerKingRussia",
+      "date": "2024-08-25",
+      "pwn_count": 3155792,
+      "data_classes": [
+        "Dates of birth",
+        "Email addresses",
+        "Genders",
+        "Geographic locations",
+        "Names",
+        "Phone numbers"
       ],
       "is_verified": true
     },
@@ -551,8 +565,8 @@
       "is_verified": true
     }
   ],
-  "total_records_exposed": 2094624786,
+  "total_records_exposed": 2097780578,
   "sensitive_data_exposed": true,
-  "fetched": "2026-08-25T16:55:40.000077",
+  "fetched": "2026-09-21T17:11:35.381157",
   "source": "HIBP"
 }

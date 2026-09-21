@@ -1,4 +1,39 @@
 {
+  "hibp": {
+    "M.2": 45,
+    "raw": {
+      "company": "Aon plc",
+      "ticker": "AON",
+      "domain": "aon.com",
+      "breach_count": 1,
+      "breaches": [
+        {
+          "name": "RiverCityMedia",
+          "date": "2017-01-01",
+          "pwn_count": 393430309,
+          "data_classes": [
+            "Email addresses",
+            "IP addresses",
+            "Names",
+            "Physical addresses"
+          ],
+          "is_verified": true
+        }
+      ],
+      "total_records_exposed": 393430309,
+      "sensitive_data_exposed": false,
+      "fetched": "2026-09-21T17:13:42.885440",
+      "source": "HIBP"
+    }
+  },
+  "hardware": {
+    "A.4": 70,
+    "source": "Industry"
+  },
+  "land": {
+    "A.3": 70,
+    "source": "Industry+EPA"
+  },
   "cfpb": {
     "U.1": 70.0,
     "M.1": 80,
@@ -24,40 +59,5 @@
       "fetched": "2026-03-30T21:25:57.180531",
       "source": "FEC"
     }
-  },
-  "hibp": {
-    "M.2": 45,
-    "raw": {
-      "company": "Aon plc",
-      "ticker": "AON",
-      "domain": "aon.com",
-      "breach_count": 1,
-      "breaches": [
-        {
-          "name": "RiverCityMedia",
-          "date": "2017-01-01",
-          "pwn_count": 393430309,
-          "data_classes": [
-            "Email addresses",
-            "IP addresses",
-            "Names",
-            "Physical addresses"
-          ],
-          "is_verified": true
-        }
-      ],
-      "total_records_exposed": 393430309,
-      "sensitive_data_exposed": false,
-      "fetched": "2026-08-25T16:44:45.173130",
-      "source": "HIBP"
-    }
-  },
-  "hardware": {
-    "A.4": 70,
-    "source": "Industry"
-  },
-  "land": {
-    "A.3": 70,
-    "source": "Industry+EPA"
   }
 }
