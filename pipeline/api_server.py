@@ -709,6 +709,29 @@ def build_index():
 
 
 # ── Dynamic source count loader (added by patch_api_stats.py) ──
+_NOT_SOURCES = {"Industry", "Manual Scoring", "Defaults", "Seed Estimate"}
+
+
+def get_contributing_sources():
+    """External data providers that feed at least one published score.
+
+    The public "42 sources" figure counted collectors that exist, not ones that
+    contribute. Derived tags (industry defaults, manual scoring) are not data
+    sources; SEC filing types count once as SEC; Industry+EPA counts as EPA.
+    """
+    seen = set()
+    for c in ALL_COMPANIES:
+        for src in (c.get("data_sources") or []):
+            if src in _NOT_SOURCES:
+                continue
+            if src.startswith("SEC"):
+                src = "SEC"
+            elif src == "Industry+EPA":
+                src = "EPA"
+            seen.add(src)
+    return sorted(seen)
+
+
 def get_dynamic_source_count():
     """Read live source count from pipeline data/source_count.json. Falls back to 42."""
     try:
@@ -968,7 +991,9 @@ def stats():
         "humanwashing_flagged": sum(1 for c in ALL_COMPANIES if c.get("humanwashing_flags")),
         "floor_rule_triggered": sum(1 for c in ALL_COMPANIES if c.get("floor_triggered")),
         "balance_floor_triggered": sum(1 for c in ALL_COMPANIES if c.get("balance_floor")),
-        "data_sources": get_dynamic_source_count(),
+        "data_sources": len(get_contributing_sources()),
+        "data_sources_list": get_contributing_sources(),
+        "data_sources_registered": get_dynamic_source_count(),
         "spec_version": _data_spec_version(),
         "brand": {
             "name": "HI.", "tagline": "Find the HI balance.",
