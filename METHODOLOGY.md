@@ -1,4 +1,9 @@
 # HI Grade™ Methodology
+
+> **Note (September 2026):** this file describes the v1.1/v1.2 engine and is being rewritten.
+> The current methodology, including the v1.3 industry calibration and the v1.4 evidence gates, lives at
+> [thehibalance.org/#methodology](https://thehibalance.org/#methodology), and every sub-signal's status is in
+> [`RUBRIC.md`](RUBRIC.md). Where this file and those disagree, they are right and this one is out of date.
 ## The math behind being human kind.
 
 **Version 1.1.0 · April 2026 · Apache 2.0 · [thehibalance.org](https://thehibalance.org)**

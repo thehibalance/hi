@@ -8,7 +8,7 @@ This file accompanies the [Limitations](https://thehibalance.org/#limitations) p
 - **PARTIAL** — the data input is authoritative (regulator, certified third party) but the tier cutoffs that map data to score bands were chosen by the engine authors.
 - **UNGROUNDED** — both the data input source AND the scoring ladder are editorial choices. May be defensible, but does not reproduce a published methodology.
 
-Spec version: **v1.3.1** · Active sub-signals: **19** · Not yet scored: **5**
+Spec version: **v1.4.0** · Active sub-signals: **19** · Not yet scored: **5**
 
 Every entry below was checked against `pipeline/scoring_engine.py` in September 2026. Where this file and the code disagree, the code is right and this file is a bug.
 
@@ -19,8 +19,8 @@ Every entry below was checked against `pipeline/scoring_engine.py` in September 
 | Status | Count | Meaning |
 |---|---|---|
 | GROUNDED | 0 | Data + ladder both authoritative |
-| PARTIAL | 13 | Authoritative data, editorial ladder |
-| UNGROUNDED | 6 | Editorial data + editorial ladder, or mostly industry defaults |
+| PARTIAL | 11 | Authoritative data, editorial ladder |
+| UNGROUNDED | 8 | Editorial data + editorial ladder, or mostly industry defaults |
 | **TOTAL ACTIVE** | **19** | |
 | NOT YET SCORED | 5 | Defined in the spec, contributes nothing |
 
@@ -89,11 +89,10 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 ## U — Understanding & Empathy
 
 ### U.1 — Customer Empathy
-**Status:** PARTIAL  
-**Inputs:** CFPB consumer complaints (financial services), BBB complaints (10% blend); Glassdoor overall and culture ratings as fallback  
-**Ladder:** CFPB is an authoritative source. The complaints-per-$B-revenue tier cutoffs (<100 = 85 pts, <500 = 70 pts, <2000 = 55 pts) are editorial.  
-**Coverage gap:** CFPB regulates financial services. ~80% of scored companies fall back to BBB/FTC inputs only.  
-**Path forward:** CFPB published complaint distribution percentiles; per-sector regulators (FCC for telecom, FDA for pharma, NHTSA for auto).
+**Status:** UNGROUNDED *(was PARTIAL; changed in v1.4.0)*  
+**Inputs:** BBB complaints (10% blend); Glassdoor overall and culture ratings as fallback; neutral 50 when neither exists. **CFPB is withheld** — its company matching returned zero complaints for nearly every company, and zero was being scored as a good record.  
+**Ladder:** Editorial while CFPB is out: the score rests on employee ratings, which are not a measure of customer treatment.  
+**Path forward:** resolve companies (and their subsidiaries) to CFPB's registered entity names, normalize complaints per $B of revenue, publish the counts, then restore U.1 to PARTIAL.
 
 ### U.2 — Worker Empathy
 **Status:** UNGROUNDED  
@@ -118,14 +117,14 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 ## M — Moral & Ethical Conduct
 
 ### M.1 — Pricing Ethics
-**Status:** PARTIAL  
-**Inputs:** CFPB pricing complaints, FTC pricing actions, state AG settlements, predatory pricing dictionary  
+**Status:** UNGROUNDED *(was PARTIAL; changed in v1.4.0)*  
+**Inputs:** FTC pricing actions, state AG settlements, predatory pricing dictionary. **CFPB withheld** (see U.1), so most companies score a neutral 50  
 **Ladder:** Editorial. Settlement >$10M flagged "material"; >$100M = "major." These are not derived from SEC materiality framework.  
 **Path forward:** SEC materiality thresholds (typically 5% of revenue) could ground "material" vs "incidental."
 
 ### M.2 — Data Ethics
 **Status:** PARTIAL  
-**Inputs:** Have I Been Pwned breach records, FTC privacy enforcement, state AG breach notifications  
+**Inputs:** Have I Been Pwned breach records **matched by exact domain since v1.4.0** (the old name-fragment matching attributed other sites' breaches to the wrong company and was withdrawn), FTC privacy enforcement, state AG breach notifications. No known breach is not scored as good practice; it earns no credit. Companies with no domain on file can't be checked  
 **Ladder:** Editorial. <100K records = 80 pts; <1M = 60; <10M = 40; >10M = 20.  
 **Path forward:** California CCPA + EU GDPR define "material" breach thresholds. Mapping to those would ground.
 
@@ -144,7 +143,7 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 ### M.5 — Stakeholder Governance
 **Status:** PARTIAL  
 **Inputs:** stakeholder-centric legal structure (B Corp and similar signals); FEC political spending when available; Glassdoor CEO rating as a last fallback  
-**Ladder:** B Corp status is authoritative; the FEC spending tiers and the Glassdoor fallback are editorial. Harm Documentation (settlements, attributed deaths, concealment) penalizes M.3 and M.4 directly; it is not an M.5 input.  
+**Ladder:** B Corp status is authoritative; the FEC spending tiers and the Glassdoor fallback are editorial. Since v1.4.0 FEC counts only when committees are actually found for that company — "none found" used to be scored as clean political conduct. Harm Documentation (settlements, attributed deaths, concealment) penalizes M.3 and M.4 directly; it is not an M.5 input.  
 **Path forward:** political-spending thresholds per $B of revenue; retire the Glassdoor fallback.
 
 ---
@@ -227,4 +226,4 @@ We respond to ladder-grounding issues within 5 business days.
 
 ---
 
-*Last updated: September 2026. Spec v1.3.1. Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
+*Last updated: September 2026. Spec v1.4.0 (U.1 and M.1 moved to UNGROUNDED when CFPB was withheld). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
