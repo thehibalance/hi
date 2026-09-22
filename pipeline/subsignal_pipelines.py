@@ -46,6 +46,8 @@ CFPB_COMPANY_MAP = {
 
 def fetch_cfpb(company_name, ticker):
     """Fetch CFPB complaint data for a company."""
+    if not ticker:  # v1.4.0: an empty ticker shared one cache file (cfpb_.json) across companies
+        return None
     cache_file = DATA_DIR / f"cfpb_{ticker.upper()}.json"
     if cache_file.exists():
         age_hrs = (time.time() - cache_file.stat().st_mtime) / 3600
@@ -154,6 +156,8 @@ FEC_API = "https://api.open.fec.gov/v1"
 
 def fetch_fec(company_name, ticker, fec_api_key=None):
     """Fetch FEC political donation data. Requires API key from api.open.fec.gov"""
+    if not ticker:  # v1.4.0: an empty ticker shared one cache file (fec_.json) across companies
+        return None
     cache_file = DATA_DIR / f"fec_{ticker.upper()}.json"
     if cache_file.exists():
         age_hrs = (time.time() - cache_file.stat().st_mtime) / 3600
@@ -240,6 +244,8 @@ CPSC_API = "https://www.saferproducts.gov/RestWebServices/Recall"
 
 def fetch_cpsc(company_name, ticker):
     """Fetch CPSC product recall data."""
+    if not ticker:  # v1.4.0: an empty ticker shared one cache file (cpsc_.json) across companies
+        return None
     cache_file = DATA_DIR / f"cpsc_{ticker.upper()}.json"
     if cache_file.exists():
         age_hrs = (time.time() - cache_file.stat().st_mtime) / 3600
@@ -328,7 +334,13 @@ HIBP_API = "https://haveibeenpwned.com/api/v3/breaches"
 
 def fetch_hibp(company_name, domain, ticker):
     """Fetch data breach history from HIBP."""
-    cache_file = DATA_DIR / f"hibp_{ticker.upper()}.json"
+    # v1.4.0: hibp2_ cache — pre-1.4 results used substring matching and are not reused.
+    domain = (domain or "").strip().lower()
+    if domain.startswith("www."):
+        domain = domain[4:]
+    if not ticker or not domain or "." not in domain:
+        return None
+    cache_file = DATA_DIR / f"hibp2_{ticker.upper()}.json"
     if cache_file.exists():
         age_hrs = (time.time() - cache_file.stat().st_mtime) / 3600
         if age_hrs < 168:
@@ -342,26 +354,29 @@ def fetch_hibp(company_name, domain, ticker):
         
         all_breaches = r.json()
         
-        # Find breaches matching this company/domain
+        # v1.4.0: a breach belongs to the company only when HIBP's breached-site domain IS the
+        # company's domain (or a subdomain of it). The old substring test on names matched
+        # "gm" inside "CardingMafia" and, with an empty name, matched every breach on record.
         company_breaches = []
-        search_terms = [company_name.lower(), domain.lower().replace(".com", "").replace(".org", "")]
-        
         for breach in all_breaches:
-            name = breach.get("Name", "").lower()
-            bdomain = breach.get("Domain", "").lower()
-            if any(term in name or term in bdomain for term in search_terms):
+            bdomain = (breach.get("Domain") or "").strip().lower()
+            if bdomain.startswith("www."):
+                bdomain = bdomain[4:]
+            if bdomain and (bdomain == domain or bdomain.endswith("." + domain)):
                 company_breaches.append({
                     "name": breach.get("Name"),
                     "date": breach.get("BreachDate"),
                     "pwn_count": breach.get("PwnCount", 0),
                     "data_classes": breach.get("DataClasses", []),
                     "is_verified": breach.get("IsVerified", False),
+                    "domain": bdomain,
                 })
         
         result = {
             "company": company_name,
             "ticker": ticker,
             "domain": domain,
+            "match": "domain",
             "breach_count": len(company_breaches),
             "breaches": company_breaches,
             "total_records_exposed": sum(b.get("pwn_count", 0) for b in company_breaches),

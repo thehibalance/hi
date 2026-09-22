@@ -97,6 +97,13 @@ def main():
                       "Phase 1c: Extra Gov Sources (FEC, CPSC, FDA, USPTO, EPA ECHO, NHTSA)",
                       f"--all --output {args.output}/gov --subsignals {args.output}/gov/by_company")
 
+        # v1.4.0: fold the per-company files collected above into the aggregates the scoring
+        # engine reads, with evidence gates (see aggregate_collected.py). Before this step the
+        # nightly collection never reached the scores.
+        run_if_exists("aggregate_collected.py",
+                      "Phase 1d: Aggregate collected data (evidence-gated)",
+                      f"--data {args.output}")
+
         # ═══════════════════════════════════════════════════════════
         # PHASE 2: Standalone Enrichment Pipelines (Sources 13-42)
         # These write to data/<source>/ directories.
