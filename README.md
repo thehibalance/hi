@@ -7,7 +7,7 @@
 **Score every company. Five dimensions AI can't replace.**
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Spec](https://img.shields.io/badge/spec-v1.3.1-1B3A5C.svg)](https://thehibalance.org/#methodology)
+[![Spec](https://img.shields.io/badge/spec-v1.4.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
 [![API](https://img.shields.io/badge/API-live-16A34A.svg)](https://api.thehibalance.org)
 [![Chrome](https://img.shields.io/badge/Chrome-Extension-C49B20.svg)](https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg)
 [![iOS](https://img.shields.io/badge/iOS-App%20Store-000.svg)](https://apps.apple.com/app/hi/id6761270596)
@@ -47,6 +47,24 @@ Five dimensions. Each measures something AI can't replace.
 | 🔍 | **N — Natural Transparency** | Reporting quality, filing volume, disclosure depth | N.2 N.5 |
 
 **19 active sub-signals. 5 more defined but not yet scored** (H.4, U.5, N.1, N.3, N.4). Our [methodology page](https://thehibalance.org/#methodology) documents every formula and threshold.
+
+## What's new in v1.4
+
+**The nightly run actually refreshes data again.** Every data file looked new to the pipeline after each checkout, so
+for months it re-scored April data instead of collecting fresh records. Timestamps are now restored from the
+repository's own history, a fetch that comes back empty never overwrites a stored value, and collection works
+through the oldest data first within a time budget.
+
+**Collected data finally reaches the scores.** The engine read summary files that hadn't been rebuilt since April.
+A new step folds each night's results in, with evidence gates: industry defaults never count as evidence, and a
+source has to produce a real record to count at all.
+
+**Three broken matchers found and dealt with.** CFPB returned zero complaints for nearly every company (withdrawn
+until fixed). Have I Been Pwned matched name fragments, blaming companies for other sites' breaches (now matched by
+exact domain). FEC scored "no committees found" as clean political conduct (now only counts real filings).
+
+**What it cost us, on purpose:** average scores moved less than a point, but coverage fell from 7.8 to 7.3 signals
+per company, because evidence we couldn't stand behind was removed.
 
 ## What's new in v1.3
 
@@ -96,7 +114,8 @@ Free and public, apart from one paid financial feed (FMP). No purchased ratings.
 
 | | Sources |
 |---|---|
-| ✅ **In scores today** (examples) | SEC EDGAR, EPA ECHO, CFPB, FTC, FEC, EEOC, FDA, FMP, Yahoo Finance, Glassdoor, HRC CEI, Disability:IN, CDP, BBB, HIBP, iFixit, B Corp, USDA Organic |
+| ✅ **In scores today** (examples) | SEC EDGAR, EPA ECHO, FDA, FTC, FEC, EEOC, FMP, Yahoo Finance, Glassdoor, HRC CEI, Disability:IN, CDP, GRI, SBTi, BBB, iFixit, B Corp, USDA Organic |
+| 🔧 **Withheld or rebuilding** (v1.4.0) | CFPB (matching broken — withdrawn), HIBP (re-matching by domain, company by company) |
 | ⏳ **Integrated, not yet producing data** | OSHA, DOL, USPTO, CPSC, NHTSA, BLS, IRS 990, WARN Act, Layoffs.fyi, FRED, OpenCorporates, NewsAPI, Alpha Vantage, Finnhub |
 
 The live list comes from the API: `curl https://api.thehibalance.org/api/v1/stats` (`data_sources_list`). Per-source details and status badges: **[thehibalance.org/#sources](https://thehibalance.org/#sources)**
@@ -118,15 +137,15 @@ Decay levels: **Stable → Watch → Warning → Critical**. When a company anno
 
 We publish what we haven't solved yet — because a transparency framework that hides its own gaps is hypocritical. See [`RUBRIC.md`](RUBRIC.md) for every sub-signal's status: **GROUNDED**, **PARTIAL**, or **UNGROUNDED**.
 
-**Current state (v1.3.1):**
+**Current state (v1.4.0):**
 
 - **No sub-signal is fully grounded yet.** 13 are PARTIAL (authoritative data, tier cutoffs we chose) and 6 are UNGROUNDED. Grounding them is the research priority.
-- **Most scores rest on partial data.** The median company has real data behind 7 of 19 sub-signals; the rest are neutral 50s, which pulls scores toward the middle.
+- **Most scores rest on partial data.** The median company has real data behind 7 of 19 sub-signals (mean 7.3 after v1.4.0 removed evidence we couldn't stand behind); the rest are neutral 50s, which pulls scores toward the middle.
 - **The floor rule is a cliff.** A dimension at 42.1 keeps the full composite; at 41.9 the composite is capped at 50.
 - **About 95 companies carry hand-entered seed data** (`Manual Scoring` in the API). Those parts of their scores aren't reproducible from the pipeline.
-- **Some raw inputs are months old.** Scores recompute nightly, but a caching bug means collectors have been re-using stored data instead of refreshing it. A fix is in progress.
+- **No customer-complaint data right now.** CFPB scores were withdrawn in v1.4.0 after the company matching proved broken. U.1 and M.1 fall back to employee ratings or a neutral 50 until it's fixed.
+- **Breach history is rebuilding.** Matching is now by exact domain, and companies with no website on file can't be checked yet.
 - 5 sub-signals are defined but not yet scored.
-- CFPB coverage is financial-services-heavy; about three-quarters of companies fall back to neutral defaults for U.1/M.1.
 - iFixit repairability covers 15 companies; everyone else uses certifications, CDP Forests, or an industry default.
 - Harm Documentation covers ~14 categories; pre-2020 harm is limited to the Major Harm Events dictionary.
 
