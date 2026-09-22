@@ -29,7 +29,8 @@ from collections import Counter
 
 WITHHELD_SS = {"cfpb"}   # never folded in, and removed from the aggregate
 HELD_EXT = {"fda"}       # new per-company values not folded in (existing values untouched)
-CACHE = re.compile(r"^[a-z]+_")  # per-source caches like cfpb_AAPL.json
+CACHE = re.compile(r"^[a-z]+\d*_")  # per-source caches like cfpb_AAPL.json, hibp2_AAPL.json
+CACHE_KEY = re.compile(r"^(CFPB|FEC|CPSC|HIBP\d*)_")  # cache files mistaken for tickers (v1.4.0 bug)
 
 
 def blank(v):
@@ -76,6 +77,9 @@ def main():
     ext_path = os.path.join(a.data, "subsignals", "extended", "all_extended.json")
     ss, ext = load(ss_path, {}), load(ext_path, {})
     n = Counter()
+    for k in [k for k in ss if CACHE_KEY.match(k)]:
+        ss.pop(k)
+        n["removed:cache-file-entry"] += 1
 
     for f in glob.glob(os.path.join(a.data, "subsignals", "*.json")):
         b = os.path.basename(f)
