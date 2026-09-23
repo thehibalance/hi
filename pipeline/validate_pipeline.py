@@ -27,6 +27,7 @@ Patent Pending · Morf Innovations LLC · The HI Balance
 
 import json
 import os
+import re
 import sys
 import math
 from pathlib import Path
@@ -477,6 +478,72 @@ def validate_outputs(companies, previous_companies, report):
 # LAYER 3: SOURCE CROSS-REFERENCING (MSSI RULE)
 # ═══════════════════════════════════════════════════════════════════════
 
+ACKNOWLEDGED_CONCENTRATION = {
+    "hrc.U.3": "HRC Corporate Equality Index ratings genuinely cluster at 100, and only rated "
+               "companies appear in the data, so the population is already selected",
+    "dei.U.3": "Disability:IN Index, same reason as hrc.U.3",
+}
+
+CONCENTRATION_KEY = re.compile(r"^(score|raw_score|[HUMAN]\.\d(_adj)?)$")
+
+
+def validate_evidence_concentration(data_path, report):
+    """
+    Layer 2b: catch a source that rewards most of the universe identically.
+
+    Four collectors in a row shipped the same defect — CFPB, HIBP and FEC in v1.4.0, FDA in
+    v1.5.1 — where a lookup that failed was recorded as a favourable fact, so most companies
+    held the source's best score for never having matched it. Uniformity by itself is
+    legitimate: most companies have no SBTi target and no pay-ratio penalty. What is not
+    legitimate is uniformity at a *favourable* value, which is the shape absence-scored-as-virtue
+    always takes. Sources reviewed and believed genuinely uniform are listed above with the
+    reason, and report as info; anything new reports as a warning.
+    """
+    print("  Layer 2b: Evidence concentration...")
+    import collections
+
+    by_key = collections.defaultdict(list)
+    for rel in (("subsignals", "all_subsignals.json"),
+                ("subsignals", "extended", "all_extended.json")):
+        p = Path(data_path).joinpath(*rel)
+        if not p.exists():
+            continue
+        try:
+            agg = json.load(open(p))
+        except Exception:
+            continue
+        for ticker, row in (agg or {}).items():
+            if not isinstance(row, dict):
+                continue
+            for source, value in row.items():
+                if not isinstance(value, dict):
+                    continue
+                for k, x in value.items():
+                    if CONCENTRATION_KEY.match(k) and isinstance(x, (int, float)):
+                        by_key[source + "." + k].append(x)
+
+    for name, values in sorted(by_key.items()):
+        if len(values) < 50:
+            continue
+        value, count = collections.Counter(values).most_common(1)[0]
+        share = count / len(values)
+        favourable = value > 0 if name.endswith("_adj") else value >= 70
+        if not (share > 0.5 and favourable):
+            continue
+        known = ACKNOWLEDGED_CONCENTRATION.get(name)
+        if known:
+            report.add(2, "info", "PIPELINE", name,
+                       f"{name}: {count} of {len(values)} ({share:.0%}) score {value} — reviewed: {known}")
+        else:
+            report.add(2, "warning", "PIPELINE", name,
+                       f"{name}: {count} of {len(values)} companies ({share:.0%}) all score "
+                       f"{value}. A favourable score held by most of the universe usually means a "
+                       f"failed lookup is being recorded as a good record. Check the collector "
+                       f"before trusting this source; if it is genuinely uniform, add it to "
+                       f"ACKNOWLEDGED_CONCENTRATION with the reason",
+                       f"{share:.0%} at {value}", "< 50% at any favourable value")
+
+
 def validate_source_crossref(companies, subsignals_dir, report):
     """
     Layer 3: Enforce MSSI — Maximum Single-Source Impact.
@@ -627,6 +694,9 @@ def validate_all(data_dir="data", layers=None, strict=False):
     if 2 in layers and companies:
         validate_outputs(companies, previous, report)
     
+    if 2 in layers:
+        validate_evidence_concentration(data_path, report)
+
     if 3 in layers:
         validate_source_crossref(companies, 
                                 subsignals_dir if subsignals_dir.exists() else None,
