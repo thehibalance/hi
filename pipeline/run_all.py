@@ -97,6 +97,11 @@ def main():
                       "Phase 1c: Extra Gov Sources (FEC, CPSC, FDA, USPTO, EPA ECHO, NHTSA)",
                       f"--all --output {args.output}/gov --subsignals {args.output}/gov/by_company")
 
+        # v1.5.0: CFPB complaints, matched to CFPB's own registered company names.
+        run_if_exists("cfpb_pipeline.py",
+                      "Phase 1c-ii: CFPB complaints (matched to registered names)",
+                      f"--data {args.output}")
+
         # v1.4.0: fold the per-company files collected above into the aggregates the scoring
         # engine reads, with evidence gates (see aggregate_collected.py). Before this step the
         # nightly collection never reached the scores.

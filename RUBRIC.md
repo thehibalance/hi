@@ -19,14 +19,14 @@ Every entry below was checked against `pipeline/scoring_engine.py` in September 
 | Status | Count | Meaning |
 |---|---|---|
 | GROUNDED | 0 | Data + ladder both authoritative |
-| PARTIAL | 11 | Authoritative data, editorial ladder |
-| UNGROUNDED | 8 | Editorial data + editorial ladder, or mostly industry defaults |
+| PARTIAL | 13 | Authoritative data, editorial ladder |
+| UNGROUNDED | 6 | Editorial data + editorial ladder, or mostly industry defaults |
 | **TOTAL ACTIVE** | **19** | |
 | NOT YET SCORED | 5 | Defined in the spec, contributes nothing |
 
 The dominant pattern is **PARTIAL**: authoritative data read through cutoffs we chose ourselves. Six sub-signals are UNGROUNDED, and none is fully GROUNDED yet. We don't hide this — most ladders were authored by judgment during the engine build, not by reproducing a published authority. **Grounding them is the active research priority.**
 
-**Status changes in September 2026** (from checking this file against the engine): H.1 UNGROUNDED → PARTIAL (industry medians now measured), H.2 PARTIAL → UNGROUNDED (its BLS adjustment isn't firing), U.3 UNGROUNDED → PARTIAL (now built on HRC and Disability:IN, not just Glassdoor), N.2 UNGROUNDED → PARTIAL (CDP is an authoritative input), N.5 GROUNDED → PARTIAL (its tier cutoffs were set by us, not by the SEC).
+**Status changes in September 2026** (from checking this file against the engine): H.1 UNGROUNDED → PARTIAL (industry medians now measured), H.2 PARTIAL → UNGROUNDED (its BLS adjustment isn't firing), U.3 UNGROUNDED → PARTIAL (now built on HRC and Disability:IN, not just Glassdoor), N.2 UNGROUNDED → PARTIAL (CDP is an authoritative input), N.5 GROUNDED → PARTIAL (its tier cutoffs were set by us, not by the SEC). **v1.5.0:** U.1 and M.1 UNGROUNDED → PARTIAL, after CFPB matching was rebuilt against the regulator's own registered-entity names and verified company by company.
 
 ---
 
@@ -89,10 +89,10 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 ## U — Understanding & Empathy
 
 ### U.1 — Customer Empathy
-**Status:** UNGROUNDED *(was PARTIAL; changed in v1.4.0)*  
-**Inputs:** BBB complaints (10% blend); Glassdoor overall and culture ratings as fallback; neutral 50 when neither exists. **CFPB is withheld** — its company matching returned zero complaints for nearly every company, and zero was being scored as a good record.  
-**Ladder:** Editorial while CFPB is out: the score rests on employee ratings, which are not a measure of customer treatment.  
-**Path forward:** resolve companies (and their subsidiaries) to CFPB's registered entity names, normalize complaints per $B of revenue, publish the counts, then restore U.1 to PARTIAL.
+**Status:** PARTIAL *(was UNGROUNDED; restored in v1.5.0)*  
+**Inputs:** CFPB consumer complaints over three years, normalized per 10,000 employees, for the 37 companies whose name resolves to a CFPB-registered entity; BBB complaints (10% blend); Glassdoor overall and culture ratings as fallback; neutral 50 when none exists.  
+**Ladder:** Editorial, but now on a stated scale: 30 complaints per 10,000 employees scores 85, and every tenfold increase costs 15 points, clamped to [25, 85]. The constants were frozen from a dated snapshot of the 37 scoreable companies (35 to 2,643,987 per 10k) rather than computed live, so one company's score never moves because another company's data changed.  
+**Path forward:** ground the scale against CFPB's own published complaint distributions instead of our snapshot; extend matching to wholly-owned subsidiaries (see the captive-finance limitation) so Ford Motor Credit can be attributed to Ford.
 
 ### U.2 — Worker Empathy
 **Status:** UNGROUNDED  
@@ -117,8 +117,8 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 ## M — Moral & Ethical Conduct
 
 ### M.1 — Pricing Ethics
-**Status:** UNGROUNDED *(was PARTIAL; changed in v1.4.0)*  
-**Inputs:** FTC pricing actions, state AG settlements, predatory pricing dictionary. **CFPB withheld** (see U.1), so most companies score a neutral 50  
+**Status:** PARTIAL *(was UNGROUNDED; restored in v1.5.0)*  
+**Inputs:** CFPB complaint volume (see U.1), capped so the same evidence never scores higher here than on U.1; FTC pricing actions, state AG settlements, predatory pricing dictionary. Companies with no CFPB record score a neutral 50  
 **Ladder:** Editorial. Settlement >$10M flagged "material"; >$100M = "major." These are not derived from SEC materiality framework.  
 **Path forward:** SEC materiality thresholds (typically 5% of revenue) could ground "material" vs "incidental."
 
@@ -226,4 +226,4 @@ We respond to ladder-grounding issues within 5 business days.
 
 ---
 
-*Last updated: September 2026. Spec v1.4.0 (U.1 and M.1 moved to UNGROUNDED when CFPB was withheld). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
+*Last updated: September 2026. Spec v1.5.0 (U.1 and M.1 restored to PARTIAL with verified CFPB matching). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
