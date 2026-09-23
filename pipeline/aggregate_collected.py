@@ -8,9 +8,10 @@ not been rebuilt since April 2026. This step closes that gap, with evidence gate
 
   * A blank fetch never overwrites a stored value.
   * Industry defaults (source "Industry", "Industry+EPA") are not evidence and are not folded in.
-  * CFPB is withheld entirely: its company matching returns 0 complaints for almost every
-    company (Bank of America, Wells Fargo, Capital One included), and "0 complaints" was being
-    scored as a good record. It returns once matching is fixed and verified.
+  * CFPB counts only when cfpb_pipeline.py matched the company to CFPB's own registered names
+    (match: "suggest-exact"). The old collector queried with our name, got 0 complaints for
+    almost every company (Bank of America, Wells Fargo, Capital One included), and "0" was
+    scored as a clean record; those values are still withheld.
   * HIBP counts only when a breach is matched by exact domain (collector fix in v1.4.0) and at
     least one is found. Older records used substring matching ("gm" matched "CardingMafia") and
     are dropped. "No known breach" is not proof of good data practice and earns no credit.
@@ -111,12 +112,25 @@ def main():
                 cur[k] = v
                 n["ext:" + k] += 1
 
+    # CFPB, re-matched against CFPB's own registered company names (cfpb_pipeline.py).
+    # Only rows that carry the matched names and a count are folded in.
+    cfpb = load(os.path.join(a.data, "cfpb", "all_companies.json"), {})
+    for t, row in (cfpb or {}).items():
+        if not isinstance(row, dict) or row.get("match") != "suggest-exact":
+            continue
+        if row.get("U.1") is None or not row.get("cfpb_names"):
+            continue
+        ss.setdefault(t.upper(), {})["cfpb"] = {"U.1": row["U.1"], "M.1": row["M.1"], "raw": row}
+        n["ss:cfpb(matched)"] += 1
+
     # Gates apply to what was already stored, too.
     for t, d in ss.items():
         if not isinstance(d, dict):
             continue
         for k in WITHHELD_SS:
-            if d.pop(k, None) is not None:
+            v = d.get(k)
+            if v is not None and (v.get("raw") or {}).get("match") != "suggest-exact":
+                d.pop(k)
                 n["removed:" + k] += 1
         if "hibp" in d and not hibp_ok(d["hibp"]):
             d.pop("hibp")

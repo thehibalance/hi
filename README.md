@@ -7,7 +7,7 @@
 **Score every company. Five dimensions AI can't replace.**
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Spec](https://img.shields.io/badge/spec-v1.4.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
+[![Spec](https://img.shields.io/badge/spec-v1.5.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
 [![API](https://img.shields.io/badge/API-live-16A34A.svg)](https://api.thehibalance.org)
 [![Chrome](https://img.shields.io/badge/Chrome-Extension-C49B20.svg)](https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg)
 [![iOS](https://img.shields.io/badge/iOS-App%20Store-000.svg)](https://apps.apple.com/app/hi/id6761270596)
@@ -47,6 +47,37 @@ Five dimensions. Each measures something AI can't replace.
 | 🔍 | **N — Natural Transparency** | Reporting quality, filing volume, disclosure depth | N.2 N.5 |
 
 **19 active sub-signals. 5 more defined but not yet scored** (H.4, U.5, N.1, N.3, N.4). Our [methodology page](https://thehibalance.org/#methodology) documents every formula and threshold.
+
+## What's new in v1.5
+
+**Consumer complaint data is back, and this time the names are right.** v1.4.0 withdrew CFPB
+because the matcher keyed on the first word of a company name and returned zero complaints for
+nearly everyone. v1.5.0 resolves each company against CFPB's own registered-entity autocomplete
+and accepts a name only on an exact match, or on the same name plus bank-charter words. Verified
+counts: JPMorgan Chase 67,548 complaints over three years, Bank of America 54,691, Wells Fargo
+54,708, Capital One 84,440, Equifax 3,965,981.
+
+**We rejected more matches than we kept.** The first rule accepted the company name plus any
+financial word, which handed Westlake Corp — a chemicals company — 9,491 auto-loan complaints
+belonging to Westlake Services, an unrelated California lender. Southern Company picked up
+Southern Trust Mortgage; F5 picked up F5 Mortgage. The rule is now narrow enough to reject all
+of them, and narrow enough to reject Ford Motor Credit and Toyota Motor Credit too, which
+genuinely *are* captives of Ford and Toyota. We would rather under-attribute than accuse the
+wrong company.
+
+**A near-zero complaint count is no longer a good grade.** Meta matched one complaint against
+75,472 employees and would have scored near the top. Below 100 complaints in three years, CFPB
+now contributes nothing at all — no score, no coverage credit. That is the same rule v1.4.0
+applied to "zero complaints", carried to its logical end.
+
+**Complaints are measured per 10,000 employees, not per dollar of revenue.** The SEC reports
+revenue as zero for Wells Fargo, American Express, Goldman Sachs, Morgan Stanley and Truist,
+because banks file interest income rather than the `Revenues` tag — so the old denominator was
+silently deleting the very companies CFPB covers best. Headcount is on file for 99% of the
+universe against 62% for revenue.
+
+**Measured:** 37 companies scored, 20 held under the evidence floor, mean composite +0.02,
+26 companies moved, largest move 5 points, none above 10. Every mover is a financial company.
 
 ## What's new in v1.4
 
@@ -114,8 +145,8 @@ Free and public, apart from one paid financial feed (FMP). No purchased ratings.
 
 | | Sources |
 |---|---|
-| ✅ **In scores today** (examples) | SEC EDGAR, EPA ECHO, FDA, FTC, FEC, EEOC, FMP, Yahoo Finance, Glassdoor, HRC CEI, Disability:IN, CDP, GRI, SBTi, BBB, iFixit, B Corp, USDA Organic |
-| 🔧 **Withheld or rebuilding** (v1.4.0) | CFPB (matching broken — withdrawn), HIBP (re-matching by domain, company by company) |
+| ✅ **In scores today** (examples) | SEC EDGAR, EPA ECHO, CFPB, FDA, FTC, FEC, EEOC, FMP, Yahoo Finance, Glassdoor, HRC CEI, Disability:IN, CDP, GRI, SBTi, BBB, iFixit, B Corp, USDA Organic |
+| 🔧 **Withheld or rebuilding** (v1.5.0) | HIBP (re-matching by domain, company by company) |
 | ⏳ **Integrated, not yet producing data** | OSHA, DOL, USPTO, CPSC, NHTSA, BLS, IRS 990, WARN Act, Layoffs.fyi, FRED, OpenCorporates, NewsAPI, Alpha Vantage, Finnhub |
 
 The live list comes from the API: `curl https://api.thehibalance.org/api/v1/stats` (`data_sources_list`). Per-source details and status badges: **[thehibalance.org/#sources](https://thehibalance.org/#sources)**
@@ -137,13 +168,22 @@ Decay levels: **Stable → Watch → Warning → Critical**. When a company anno
 
 We publish what we haven't solved yet — because a transparency framework that hides its own gaps is hypocritical. See [`RUBRIC.md`](RUBRIC.md) for every sub-signal's status: **GROUNDED**, **PARTIAL**, or **UNGROUNDED**.
 
-**Current state (v1.4.0):**
+**Current state (v1.5.0):**
 
 - **No sub-signal is fully grounded yet.** 13 are PARTIAL (authoritative data, tier cutoffs we chose) and 6 are UNGROUNDED. Grounding them is the research priority.
 - **Most scores rest on partial data.** The median company has real data behind 7 of 19 sub-signals (mean 7.3 after v1.4.0 removed evidence we couldn't stand behind); the rest are neutral 50s, which pulls scores toward the middle.
 - **The floor rule is a cliff.** A dimension at 42.1 keeps the full composite; at 41.9 the composite is capped at 50.
 - **About 95 companies carry hand-entered seed data** (`Manual Scoring` in the API). Those parts of their scores aren't reproducible from the pipeline.
-- **No customer-complaint data right now.** CFPB scores were withdrawn in v1.4.0 after the company matching proved broken. U.1 and M.1 fall back to employee ratings or a neutral 50 until it's fixed.
+- **Customer-complaint data covers 37 companies.** CFPB only regulates consumer financial
+  services, so most companies have no complaint record and score a neutral 50 on U.1 and M.1.
+  Coverage is not a judgment about them.
+- **Wholly-owned finance arms aren't attributed to their parent.** Ford Motor Credit's 1,712
+  complaints and Toyota Motor Credit's 4,980 are not counted against Ford or Toyota. Telling a
+  real captive apart from an unrelated lender with the same root name needs corporate-hierarchy
+  data we don't have yet, and attributing the wrong company's record is the worse error.
+- **One CFPB result we don't believe.** Flagstar Bank matches its registered name exactly and
+  returns zero complaints over three years. Flagstar is a major mortgage servicer; that isn't
+  credible. It is held under the evidence floor rather than published as a clean record.
 - **Breach history is rebuilding.** Matching is now by exact domain, and companies with no website on file can't be checked yet.
 - 5 sub-signals are defined but not yet scored.
 - iFixit repairability covers 15 companies; everyone else uses certifications, CDP Forests, or an industry default.
