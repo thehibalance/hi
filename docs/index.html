@@ -1652,11 +1652,22 @@ function renderDet(c) {
     h += '</div></details>';
   }
   // v1.10.1: HW moved to story section above
-  var sources = c.data_sources || [];
-  if (sources.length > 0) {
+  // A prior is not a source. These tags mean "no company-specific data existed, so an industry
+  // baseline was used" -- they inform the score but are not evidence about the company, and the
+  // API excludes them from its contributing-source count for the same reason.
+  var PRIOR_TAGS = ['Industry', 'Defaults', 'Seed Estimate', 'Manual Scoring'];
+  var allTags = c.data_sources || [];
+  var sources = allTags.filter(function(s) { return PRIOR_TAGS.indexOf(s) < 0; });
+  var priors = allTags.filter(function(s) { return PRIOR_TAGS.indexOf(s) >= 0; });
+  if (allTags.length > 0) {
     h += '<details style="margin-bottom:16px;border:1px solid #E5E7EB;border-radius:12px;background:white"><summary style="padding:18px 20px;cursor:pointer;font-weight:700;color:var(--navy);font-size:15px;display:flex;align-items:center;justify-content:space-between"><span>Sources & Methodology</span><span style="font-size:12px;color:var(--muted);font-weight:500">' + sources.length + ' sources</span></summary>';
     h += '<div style="padding:0 20px 20px">';
-    h += '<div style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:16px">' + sources.join(' \u00b7 ') + '</div>';
+    h += '<div style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:12px">' + (sources.join(' \u00b7 ') || 'No company-specific sources yet') + '</div>';
+    if (priors.length) {
+      h += '<div style="font-size:12px;color:#6B7280;line-height:1.6;margin-bottom:16px;padding:10px 12px;background:#F9FAFB;border-radius:8px;border:1px solid #E5E7EB">' +
+           '<strong>Priors, not evidence:</strong> ' + priors.join(' \u00b7 ') +
+           '. Where nothing specific to this company is known, an industry baseline stands in. It shapes the score but does not count toward coverage.</div>';
+    }
     
     // v1.10.1: methodology sub-expandables
     h += '<details style="margin-bottom:8px;background:#F9FAFB;border-radius:8px;border:1px solid #E5E7EB"><summary style="padding:12px 14px;cursor:pointer;font-size:13px;font-weight:600;color:var(--navy)">How was this score calculated?</summary>';
