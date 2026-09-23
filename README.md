@@ -195,7 +195,11 @@ We publish what we haven't solved yet — because a transparency framework that 
 **Current state (v1.5.1):**
 
 - **No sub-signal is fully grounded yet.** 12 are PARTIAL (authoritative data, tier cutoffs we chose) and 7 are UNGROUNDED. Grounding them is the research priority.
-- **Most scores rest on partial data.** The median company has real data behind 7 of 19 sub-signals (mean 7.3 after v1.4.0 removed evidence we couldn't stand behind); the rest are neutral 50s, which pulls scores toward the middle.
+- **Most scores rest on partial data.** The median company has real data behind **5 of 19**
+  sub-signals (mean 5.5); the rest are neutral 50s or industry priors, which pulls scores toward
+  the middle. That figure used to read 7 of 19. It was wrong: we were counting our own industry
+  lookup tables as evidence about the company. v1.6.0 stopped. No score changed — only the honesty
+  of the number describing it.
 - **The floor rule is a cliff.** A dimension at 42.1 keeps the full composite; at 41.9 the composite is capped at 50.
 - **About 95 companies carry hand-entered seed data** (`Manual Scoring` in the API). Those parts of their scores aren't reproducible from the pipeline.
 - **Customer-complaint data covers 37 companies.** CFPB only regulates consumer financial

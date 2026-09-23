@@ -206,6 +206,17 @@ SIC_TO_INDUSTRY = {
     # (end v1.7.1)
 }
 
+# Sub-signal keys whose value for the company being scored came from an industry constant
+# rather than from evidence about that company. Reset at the top of score_company().
+#
+# v1.4.0 established the rule one layer up: aggregate_collected.py refuses any sub-signal whose
+# source starts with "Industry", because an industry default is not evidence. The engine's own
+# internal constants were never held to the same rule -- it generated them and then counted them
+# as real data. Measured across 1,046 companies, that was 1.78 sub-signals per company, and moved
+# the published median coverage from an honest 5/19 to 7/19.
+INDUSTRY_DERIVED = set()
+
+
 def get_industry(sic_code):
     if not sic_code: return "default"
     # v1.3.1: 3-digit first, then 2-digit. None if neither - an unmapped SIC
@@ -811,12 +822,15 @@ def score_h_dimension(sec_h, job_data, bls_data, industry, patents=None):
                       "auto": 55, "retail": 45, "tech": 40, "finance": 45,
                       "media": 55, "telecom": 40, "energy": 50, "default": 50}
     base_craft = craft_defaults.get(industry, 50)
+    INDUSTRY_DERIVED.add("H.2")
+    if "Industry" not in sources_used: sources_used.append("Industry")
     if bls_data:
         ind_data = bls_data.get("industries", {}).get(industry, {})
         wage_ratio = ind_data.get("wage_vs_national")
         if wage_ratio:
             base_craft = clamp(base_craft + (wage_ratio - 1.0) * 20)
             sources_used.append("BLS")
+            INDUSTRY_DERIVED.discard("H.2")
     scores["H.2"] = round(base_craft, 1)
     
     # H.3 Human Decision Depth — deterministic heuristic
@@ -1209,6 +1223,8 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None, tick
                     "healthcare": 55, "retail": 50, "food": 55, "media": 60,
                     "telecom": 45, "defense": 40, "auto": 40, "default": 50}
         scores["A.1"] = defaults.get(industry, 50)
+        INDUSTRY_DERIVED.add("A.1")
+        if "Industry" not in sources_used: sources_used.append("Industry")
 
     # v1.2x Layered: fold SBTi.A.1_adj into A.1
     if sbti is not None and isinstance(sbti, dict):
@@ -1216,6 +1232,7 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None, tick
         if a1_adj != 0:
             scores["A.1"] = clamp(scores["A.1"] + a1_adj)
             if "SBTi" not in sources_used: sources_used.append("SBTi")
+            INDUSTRY_DERIVED.discard("A.1")
 
     # A.2 Water — CDP water
     if cdp_a.get("cdp_water_score") is not None:
@@ -1285,6 +1302,8 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None, tick
         else:
             hw_defaults = {"tech": 40, "telecom": 45, "manufacturing": 50, "default": 55}
             scores["A.4"] = hw_defaults.get(industry, 55)
+            INDUSTRY_DERIVED.add("A.4")
+            if "Industry" not in sources_used: sources_used.append("Industry")
 
     # v1.2v UNIFORM: All 4 active sub-signals weighted equally at 0.25.
     # Was 0.30/0.25/0.20/0.25. SBTi bonus applies downstream.
@@ -1648,6 +1667,7 @@ def compute_algo_harm(ticker):
 def score_company(company_name, ticker="", sec_data=None, epa_data=None,
                   bls_data=None, cdp_data=None, job_data=None, glassdoor_data=None,
                   subsignal_data=None):
+    INDUSTRY_DERIVED.clear()
     sic = sec_data.get("n_signals", {}).get("sic", "") if sec_data else ""
     industry = get_industry(sic)
     
@@ -1746,7 +1766,9 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
     all_sources = sorted(set(h_src + u_src + m_src + a_src + n_src)) or ["Defaults"]
 
     all_details = {**h_detail, **u_detail, **m_detail, **a_detail, **n_detail}
-    real_count = sum(1 for v in all_details.values() if v != 50)
+    # A value that is not 50 still is not evidence if an industry constant produced it.
+    real_count = sum(1 for k, v in all_details.items()
+                     if v != 50 and k not in INDUSTRY_DERIVED)
 
     hw_flags = []
     rpe = sec_h.get("revenue_per_employee")
@@ -1789,7 +1811,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.5.3",
+        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.6.0",
         "data_sources": all_sources,
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
         "humanwashing_flags": hw_flags,
