@@ -27,6 +27,10 @@ jobs:
       - name: Restore data file timestamps from git history
         run: python3 pipeline/restore_mtimes.py
 
+      - name: Check published numbers agree with the engine
+        run: python3 pipeline/check_continuity.py
+
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
