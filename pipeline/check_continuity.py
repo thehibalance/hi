@@ -31,6 +31,53 @@ SURFACES = [
 ]
 
 
+NOT_SOURCES = {"Industry", "Manual Scoring", "Defaults", "Seed Estimate"}
+
+
+def contributing_sources():
+    """Count sources the same way api_server.get_contributing_sources does, so the README's
+    claim is checked against the same rule the live /stats endpoint applies."""
+    import json
+    p = ROOT / "pipeline/data/scores/all_scores.json"
+    if not p.exists():
+        return None
+    try:
+        companies = json.load(open(p))
+    except (OSError, ValueError):
+        return None
+    seen = set()
+    for c in companies:
+        for src in (c.get("data_sources") or []):
+            if src in NOT_SOURCES:
+                continue
+            if src.startswith("SEC"):
+                src = "SEC"
+            elif src == "Industry+EPA":
+                src = "EPA"
+            seen.add(src)
+    return len(seen)
+
+
+def check_source_count():
+    """Warn, do not fail: this runs before the nightly pipeline regenerates scores, so a change
+    published tonight shows up here tomorrow."""
+    actual = contributing_sources()
+    if actual is None:
+        return
+    readme = (ROOT / "README.md").read_text(errors="ignore")
+    claims = set(int(m) for m in re.findall(r"\*\*?(\d+) sources feed today's scores", readme))
+    claims |= set(int(m) for m in re.findall(r"(\d+) sources feed today's scores", readme))
+    if not claims:
+        print("  ?  README makes no 'N sources feed today's scores' claim")
+        return
+    for c in sorted(claims):
+        mark = "OK" if c == actual else "!!"
+        print(f"  {mark} README source count      claims {c}, scores show {actual}")
+    if claims != {actual}:
+        print(f"  !! README's source count is stale. Live figure: "
+              f"curl https://api.thehibalance.org/api/v1/stats | jq .data_sources")
+
+
 def main():
     spec = engine_spec()
     if not spec:
@@ -52,6 +99,8 @@ def main():
             print(f"  {'OK' if ok else 'XX'} {label:24} {rel} -> v{v}")
             if not ok:
                 bad.append(f"{label} ({rel}) says v{v}, engine says v{spec}")
+    check_source_count()
+
     if bad:
         print("\n  Continuity check FAILED:")
         for b in bad:
