@@ -17,7 +17,11 @@ not been rebuilt since April 2026. This step closes that gap, with evidence gate
     are dropped. "No known breach" is not proof of good data practice and earns no credit.
   * FEC counts only when committees were actually found for that ticker. "0 committees" was
     scored as clean political conduct (M.5 85), and tickerless companies shared one cache file.
-  * FDA from the per-company files is held back pending a matching audit.
+  * FDA is withdrawn entirely (v1.5.1). The audit found 1,041 of 1,422 collected rows scoring 85
+    because openFDA returns 404 when nothing matches and the collector recorded that as "0 recalls",
+    228 more scoring 25 because an empty company name searches as a wildcard, and 123 carrying
+    ALDI's recalls because every tickerless company shared one cache file. It returns when the
+    collector is rebuilt and verified.
 
 Run from pipeline/:  python3 aggregate_collected.py [--data data] [--dry-run]
 """
@@ -29,7 +33,7 @@ import re
 from collections import Counter
 
 WITHHELD_SS = {"cfpb"}   # never folded in, and removed from the aggregate
-HELD_EXT = {"fda"}       # new per-company values not folded in (existing values untouched)
+HELD_EXT = {"fda"}       # never folded in, and removed from the aggregate
 CACHE = re.compile(r"^[a-z]+\d*_")  # per-source caches like cfpb_AAPL.json, hibp2_AAPL.json
 CACHE_KEY = re.compile(r"^(CFPB|FEC|CPSC|HIBP\d*)_")  # cache files mistaken for tickers (v1.4.0 bug)
 
@@ -138,6 +142,13 @@ def main():
         if "fec" in d and not fec_ok(d["fec"]):
             d.pop("fec")
             n["removed:fec-no-committees"] += 1
+
+    for t, e in ext.items():
+        if not isinstance(e, dict):
+            continue
+        for k in HELD_EXT:
+            if e.pop(k, None) is not None:
+                n["removed:" + k] += 1
 
     print(f"  aggregate_collected: {len(ss)} subsignal tickers, {len(ext)} extended tickers")
     for k, v in sorted(n.items()):

@@ -7,7 +7,7 @@
 **Score every company. Five dimensions AI can't replace.**
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Spec](https://img.shields.io/badge/spec-v1.5.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
+[![Spec](https://img.shields.io/badge/spec-v1.5.1-1B3A5C.svg)](https://thehibalance.org/#methodology)
 [![API](https://img.shields.io/badge/API-live-16A34A.svg)](https://api.thehibalance.org)
 [![Chrome](https://img.shields.io/badge/Chrome-Extension-C49B20.svg)](https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg)
 [![iOS](https://img.shields.io/badge/iOS-App%20Store-000.svg)](https://apps.apple.com/app/hi/id6761270596)
@@ -47,6 +47,24 @@ Five dimensions. Each measures something AI can't replace.
 | 🔍 | **N — Natural Transparency** | Reporting quality, filing volume, disclosure depth | N.2 N.5 |
 
 **19 active sub-signals. 5 more defined but not yet scored** (H.4, U.5, N.1, N.3, N.4). Our [methodology page](https://thehibalance.org/#methodology) documents every formula and threshold.
+
+## What's new in v1.5.1
+
+**FDA recall data is withdrawn.** Auditing it turned up the same defect that had just been fixed
+elsewhere, three more times over. openFDA returns 404 when a company name matches nothing, and the
+collector recorded that as "no recalls" — so **1,041 of 1,422 companies held the top FDA score for
+never having matched.** An empty company name searched as a wildcard, giving 228 more the *worst*
+score. And every company without a ticker shared one cache file, so Ben & Jerry's, Oatly, Nestlé and
+Newman's Own were all carrying ALDI's recalls.
+
+Rather than publish any of it while we rebuild, M.4 falls back to CPSC and employee ratings.
+Measured: 297 companies lose their FDA tag, 35 composites move by a point, none by more.
+
+**The nightly validator now watches for this whole class of bug.** If any source's best score is
+held by more than half the companies that have it, the run flags it, because a favourable score
+that most of the universe shares is usually a failed lookup being recorded as a good record.
+Sources that are genuinely uniform — HRC and Disability:IN ratings really do cluster at 100 — are
+listed in the check with the reason they're believed.
 
 ## What's new in v1.5
 
@@ -145,8 +163,8 @@ Free and public, apart from one paid financial feed (FMP). No purchased ratings.
 
 | | Sources |
 |---|---|
-| ✅ **In scores today** (examples) | SEC EDGAR, EPA ECHO, CFPB, FDA, FTC, FEC, EEOC, FMP, Yahoo Finance, Glassdoor, HRC CEI, Disability:IN, CDP, GRI, SBTi, BBB, iFixit, B Corp, USDA Organic |
-| 🔧 **Withheld or rebuilding** (v1.5.0) | HIBP (re-matching by domain, company by company) |
+| ✅ **In scores today** (examples) | SEC EDGAR, EPA ECHO, CFPB, FTC, FEC, EEOC, FMP, Yahoo Finance, Glassdoor, HRC CEI, Disability:IN, CDP, GRI, SBTi, BBB, iFixit, B Corp, USDA Organic |
+| 🔧 **Withheld or rebuilding** (v1.5.1) | FDA (matching broken — withdrawn), HIBP (re-matching by domain, company by company) |
 | ⏳ **Integrated, not yet producing data** | OSHA, DOL, USPTO, CPSC, NHTSA, BLS, IRS 990, WARN Act, Layoffs.fyi, FRED, OpenCorporates, NewsAPI, Alpha Vantage, Finnhub |
 
 The live list comes from the API: `curl https://api.thehibalance.org/api/v1/stats` (`data_sources_list`). Per-source details and status badges: **[thehibalance.org/#sources](https://thehibalance.org/#sources)**
@@ -168,9 +186,9 @@ Decay levels: **Stable → Watch → Warning → Critical**. When a company anno
 
 We publish what we haven't solved yet — because a transparency framework that hides its own gaps is hypocritical. See [`RUBRIC.md`](RUBRIC.md) for every sub-signal's status: **GROUNDED**, **PARTIAL**, or **UNGROUNDED**.
 
-**Current state (v1.5.0):**
+**Current state (v1.5.1):**
 
-- **No sub-signal is fully grounded yet.** 13 are PARTIAL (authoritative data, tier cutoffs we chose) and 6 are UNGROUNDED. Grounding them is the research priority.
+- **No sub-signal is fully grounded yet.** 12 are PARTIAL (authoritative data, tier cutoffs we chose) and 7 are UNGROUNDED. Grounding them is the research priority.
 - **Most scores rest on partial data.** The median company has real data behind 7 of 19 sub-signals (mean 7.3 after v1.4.0 removed evidence we couldn't stand behind); the rest are neutral 50s, which pulls scores toward the middle.
 - **The floor rule is a cliff.** A dimension at 42.1 keeps the full composite; at 41.9 the composite is capped at 50.
 - **About 95 companies carry hand-entered seed data** (`Manual Scoring` in the API). Those parts of their scores aren't reproducible from the pipeline.

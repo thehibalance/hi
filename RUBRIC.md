@@ -19,14 +19,14 @@ Every entry below was checked against `pipeline/scoring_engine.py` in September 
 | Status | Count | Meaning |
 |---|---|---|
 | GROUNDED | 0 | Data + ladder both authoritative |
-| PARTIAL | 13 | Authoritative data, editorial ladder |
-| UNGROUNDED | 6 | Editorial data + editorial ladder, or mostly industry defaults |
+| PARTIAL | 12 | Authoritative data, editorial ladder |
+| UNGROUNDED | 7 | Editorial data + editorial ladder, or mostly industry defaults |
 | **TOTAL ACTIVE** | **19** | |
 | NOT YET SCORED | 5 | Defined in the spec, contributes nothing |
 
-The dominant pattern is **PARTIAL**: authoritative data read through cutoffs we chose ourselves. Six sub-signals are UNGROUNDED, and none is fully GROUNDED yet. We don't hide this — most ladders were authored by judgment during the engine build, not by reproducing a published authority. **Grounding them is the active research priority.**
+The dominant pattern is **PARTIAL**: authoritative data read through cutoffs we chose ourselves. Seven sub-signals are UNGROUNDED, and none is fully GROUNDED yet. We don't hide this — most ladders were authored by judgment during the engine build, not by reproducing a published authority. **Grounding them is the active research priority.**
 
-**Status changes in September 2026** (from checking this file against the engine): H.1 UNGROUNDED → PARTIAL (industry medians now measured), H.2 PARTIAL → UNGROUNDED (its BLS adjustment isn't firing), U.3 UNGROUNDED → PARTIAL (now built on HRC and Disability:IN, not just Glassdoor), N.2 UNGROUNDED → PARTIAL (CDP is an authoritative input), N.5 GROUNDED → PARTIAL (its tier cutoffs were set by us, not by the SEC). **v1.5.0:** U.1 and M.1 UNGROUNDED → PARTIAL, after CFPB matching was rebuilt against the regulator's own registered-entity names and verified company by company.
+**Status changes in September 2026** (from checking this file against the engine): H.1 UNGROUNDED → PARTIAL (industry medians now measured), H.2 PARTIAL → UNGROUNDED (its BLS adjustment isn't firing), U.3 UNGROUNDED → PARTIAL (now built on HRC and Disability:IN, not just Glassdoor), N.2 UNGROUNDED → PARTIAL (CDP is an authoritative input), N.5 GROUNDED → PARTIAL (its tier cutoffs were set by us, not by the SEC). **v1.5.0:** U.1 and M.1 UNGROUNDED → PARTIAL, after CFPB matching was rebuilt against the regulator's own registered-entity names and verified company by company. **v1.5.1:** M.4 PARTIAL → UNGROUNDED, after an audit found the FDA collector was scoring failed lookups as clean records.
 
 ---
 
@@ -135,10 +135,10 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 **Path forward:** DOJ/FTC publish their own severity classifications for enforcement actions.
 
 ### M.4 — Product Ethics
-**Status:** PARTIAL  
-**Inputs:** CPSC SaferProducts recalls (integrated, not yet producing data), FDA enforcement (10% blend); Glassdoor management and compensation ratings as fallback  
-**Ladder:** Recall classification (Class I/II/III) is authoritative; mapping to score bands is editorial.  
-**Path forward:** bring CPSC online, add NHTSA, reproduce CPSC recall severity tiers exactly, and retire the Glassdoor fallback.
+**Status:** UNGROUNDED *(was PARTIAL; changed in v1.5.1 when FDA was withdrawn)*  
+**Inputs:** CPSC SaferProducts recalls (integrated, not yet producing data); Glassdoor management and compensation ratings as fallback. **FDA is withdrawn** — an audit found 1,041 of 1,422 collected rows scoring 85 because openFDA returns 404 when nothing matches and the collector recorded that as "no recalls", and 228 more scoring 25 because an empty company name searches as a wildcard.  
+**Ladder:** Editorial while FDA is out: the score rests on employee ratings, which are not a measure of product safety.  
+**Path forward:** rebuild the FDA collector on the v1.5.0 pattern — refuse an empty name or ticker, never convert a miss into evidence, read the true count from `meta.results.total`, verify the returned `recalling_firm` against the company, and query food and device enforcement as well as drug. Then bring CPSC online and add NHTSA.
 
 ### M.5 — Stakeholder Governance
 **Status:** PARTIAL  
@@ -226,4 +226,4 @@ We respond to ladder-grounding issues within 5 business days.
 
 ---
 
-*Last updated: September 2026. Spec v1.5.0 (U.1 and M.1 restored to PARTIAL with verified CFPB matching). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
+*Last updated: September 2026. Spec v1.5.1 (FDA withdrawn; M.4 moved to UNGROUNDED). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
