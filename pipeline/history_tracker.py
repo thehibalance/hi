@@ -44,10 +44,21 @@ def take_snapshot(scores_dir="data/scores", history_dir=HISTORY_DIR):
     snapshot_file = Path(history_dir) / f"{today}.json"
 
     # Extract only what we need for history (keep it lean)
+    # The engine's spec version goes into every snapshot. Without it the series cannot tell a
+    # methodology correction from a company changing: v1.5.0 rebuilt CFPB matching and v1.5.1
+    # withdrew FDA, and both show up as score movement that no company caused.
+    spec_counts = {}
+    for c in scores:
+        v = c.get("spec_version") or "unknown"
+        spec_counts[v] = spec_counts.get(v, 0) + 1
+    spec_version = max(spec_counts, key=spec_counts.get) if spec_counts else "unknown"
+
     snapshot = {
         "date": today,
         "timestamp": datetime.now().isoformat(),
         "total_companies": len(scores),
+        "spec_version": spec_version,
+        "spec_versions": spec_counts,
         "companies": []
     }
 
@@ -98,6 +109,7 @@ def take_snapshot(scores_dir="data/scores", history_dir=HISTORY_DIR):
         "total_companies": len(scores),
         "gold_count": gold_count,
         "avg_composite": snapshot["summary"]["avg_composite"],
+        "spec_version": spec_version,
     })
     index["snapshots"].sort(key=lambda x: x["date"])
     index["last_updated"] = datetime.now().isoformat()
@@ -356,11 +368,25 @@ def run_backtest(history_dir=HISTORY_DIR, prices_dir=PRICES_DIR, output_dir="dat
     tradeable.sort(key=lambda x: -x.get("composite", 0))
     human100 = tradeable[:100]
 
+    specs_covered = {}
+    for d in dates:
+        f = Path(history_dir) / f"{d}.json"
+        if f.exists():
+            try:
+                v = json.load(open(f)).get("spec_version", "unknown")
+            except Exception:
+                v = "unknown"
+            specs_covered[v] = specs_covered.get(v, 0) + 1
+
     report = {
         "generated_at": datetime.now().isoformat(),
         "data_days": len(dates),
         "trading_days": len(daily_returns),
         "period": {"start": dates[0], "end": dates[-1]},
+        "spec_versions_covered": specs_covered,
+        "spec_caveat": ("The index is rebuilt from scores as they stood on each date. Where this "
+                        "window spans more than one spec version, part of the return difference "
+                        "reflects changes to our methodology rather than to the companies."),
         "status": "live" if len(daily_returns) >= 5 else "accumulating",
         "returns": {
             "human100_total": h100_total_return,
@@ -434,11 +460,13 @@ def calculate_trends(history_dir=HISTORY_DIR, output_dir="data"):
         if not snap_file.exists():
             continue
         snapshot = json.load(open(snap_file))
+        snap_spec = snapshot.get("spec_version", "unknown")
         for c in snapshot.get("companies", []):
             key = c.get("ticker") or c.get("company", "")
             if key:
                 company_history[key].append({
                     "date": date,
+                    "spec_version": snap_spec,
                     "composite": c.get("composite", 0),
                     "D_H": c.get("D_H", 0),
                     "D_U": c.get("D_U", 0),
@@ -459,6 +487,14 @@ def calculate_trends(history_dir=HISTORY_DIR, output_dir="data"):
         history.sort(key=lambda x: x["date"])
         first = history[0]
         last = history[-1]
+
+        # A change that straddles a spec bump is not the company moving, it is us correcting
+        # ourselves. Measure the current era separately and report both.
+        current_spec = last.get("spec_version", "unknown")
+        era = [h for h in history if h.get("spec_version", "unknown") == current_spec]
+        era_start = era[0] if era else last
+        spans_change = len({h.get("spec_version", "unknown") for h in history}) > 1
+        change_in_era = last["composite"] - era_start["composite"] if len(era) >= 2 else None
 
         composite_change = last["composite"] - first["composite"]
         dim_changes = {
@@ -485,19 +521,55 @@ def calculate_trends(history_dir=HISTORY_DIR, output_dir="data"):
             "dimension_changes": dim_changes,
             "data_points": len(history),
             "period": {"start": first["date"], "end": last["date"]},
+            "spec_version": current_spec,
+            "spans_methodology_change": spans_change,
+            "change_within_spec": change_in_era,
+            "period_within_spec": {"start": era_start["date"], "end": last["date"],
+                                   "data_points": len(era)},
         }
 
-        if composite_change > 3:
-            movers_up.append((key, composite_change))
-        elif composite_change < -3:
-            movers_down.append((key, composite_change))
+        # Movers are reported only from movement inside one methodology era. A company whose
+        # score fell because we withdrew evidence we could not stand behind has not declined,
+        # and publishing it as a drop would be a false accusation. Companies with fewer than two
+        # snapshots since the last spec bump are simply absent until the series catches up.
+        #
+        # Dead series are excluded too. The history key is `ticker or company`, so a company that
+        # gained a ticker later splits into two series, and the abandoned half keeps reporting the
+        # movement it had on the day it stopped updating. XOM and "Exxon Mobil Corporation" are
+        # the same company; only the one still being written to is current.
+        if change_in_era is None or last["date"] != dates[-1]:
+            continue
+        if change_in_era > 3:
+            movers_up.append((key, change_in_era))
+        elif change_in_era < -3:
+            movers_down.append((key, change_in_era))
 
     # Save trends
     trend_file = Path(output_dir) / "score_trends.json"
+    spec_by_date = {}
+    for date in dates:
+        f = history_path / f"{date}.json"
+        if f.exists():
+            try:
+                spec_by_date[date] = json.load(open(f)).get("spec_version", "unknown")
+            except Exception:
+                spec_by_date[date] = "unknown"
+    boundaries, prev_spec = [], None
+    for date in dates:
+        v = spec_by_date.get(date, "unknown")
+        if prev_spec is not None and v != prev_spec:
+            boundaries.append({"date": date, "from": prev_spec, "to": v})
+        prev_spec = v
+
     output = {
         "generated_at": datetime.now().isoformat(),
         "companies_tracked": len(trends),
         "period": {"start": dates[0], "end": dates[-1]},
+        "spec_version": spec_by_date.get(dates[-1], "unknown"),
+        "methodology_changes": boundaries,
+        "movers_note": ("Gains and drops are measured only within the current methodology era. "
+                        "Score movement across a spec change reflects corrections to our own "
+                        "data, not company behaviour."),
         "biggest_gains": sorted(movers_up, key=lambda x: -x[1])[:20],
         "biggest_drops": sorted(movers_down, key=lambda x: x[1])[:20],
         "trends": trends,
