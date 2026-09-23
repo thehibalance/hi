@@ -1,26 +1,4 @@
 {
-  "hibp": {
-    "M.2": 90,
-    "raw": {
-      "company": "Baker Hughes Co",
-      "ticker": "BKR",
-      "domain": "bakerhughes.com",
-      "breach_count": 0,
-      "breaches": [],
-      "total_records_exposed": 0,
-      "sensitive_data_exposed": false,
-      "fetched": "2026-09-21T17:19:24.819873",
-      "source": "HIBP"
-    }
-  },
-  "hardware": {
-    "A.4": 45,
-    "source": "Industry"
-  },
-  "land": {
-    "A.3": 65,
-    "source": "Industry+EPA"
-  },
   "cfpb": {
     "U.1": 70.0,
     "M.1": 80,
@@ -31,8 +9,31 @@
       "products": {},
       "timely_responses": 0,
       "timely_rate": 0.0,
-      "fetched": "2026-03-18T17:08:21.134228",
+      "fetched": "2026-09-23T10:40:48.948926",
       "source": "CFPB"
     }
+  },
+  "hibp": {
+    "M.2": 90,
+    "raw": {
+      "company": "Baker Hughes Co",
+      "ticker": "BKR",
+      "domain": "bakerhughes.com",
+      "match": "domain",
+      "breach_count": 0,
+      "breaches": [],
+      "total_records_exposed": 0,
+      "sensitive_data_exposed": false,
+      "fetched": "2026-09-23T10:40:49.744633",
+      "source": "HIBP"
+    }
+  },
+  "hardware": {
+    "A.4": 45,
+    "source": "Industry"
+  },
+  "land": {
+    "A.3": 65,
+    "source": "Industry+EPA"
   }
 }

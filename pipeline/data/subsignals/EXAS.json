@@ -14,12 +14,13 @@
     }
   },
   "hibp": {
-    "M.2": 40,
+    "M.2": 55,
     "raw": {
       "company": "EXAS",
       "ticker": "EXAS",
       "domain": "exactsciences.com",
-      "breach_count": 2,
+      "match": "domain",
+      "breach_count": 1,
       "breaches": [
         {
           "name": "ExactSciences",
@@ -34,25 +35,13 @@
             "Phone numbers",
             "Physical addresses"
           ],
-          "is_verified": true
-        },
-        {
-          "name": "RepublicanPartyOfTexas",
-          "date": "2021-09-11",
-          "pwn_count": 72596,
-          "data_classes": [
-            "Browser user agent details",
-            "Email addresses",
-            "Geographic locations",
-            "IP addresses",
-            "Names"
-          ],
-          "is_verified": true
+          "is_verified": true,
+          "domain": "exactsciences.com"
         }
       ],
-      "total_records_exposed": 10942139,
+      "total_records_exposed": 10869543,
       "sensitive_data_exposed": false,
-      "fetched": "2026-09-21T17:12:29.414692",
+      "fetched": "2026-09-23T10:52:55.337412",
       "source": "HIBP"
     }
   },

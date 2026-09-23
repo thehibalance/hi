@@ -1,11 +1,26 @@
 {
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "THS",
+      "ticker": "THS",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-09-23T10:53:29.397026",
+      "source": "CFPB"
+    }
+  },
   "hibp": {
-    "M.2": 70,
+    "M.2": 90,
     "raw": {
       "company": "THS",
       "ticker": "THS",
       "domain": "treehousefoods.com",
-      "breach_count": 1,
+      "match": "domain",
+      "breach_count": 0,
       "breaches": [
         {
           "name": "HTHStudios",
@@ -25,9 +40,9 @@
           "is_verified": true
         }
       ],
-      "total_records_exposed": 411755,
+      "total_records_exposed": 0,
       "sensitive_data_exposed": false,
-      "fetched": "2026-09-21T17:13:17.583555",
+      "fetched": "2026-09-23T10:53:30.060014",
       "source": "HIBP"
     }
   },
@@ -38,19 +53,5 @@
   "land": {
     "A.3": 50,
     "source": "Industry+EPA"
-  },
-  "cfpb": {
-    "U.1": 70.0,
-    "M.1": 80,
-    "raw": {
-      "company": "TreeHouse Foods Inc",
-      "ticker": "THS",
-      "total_complaints_3yr": 0,
-      "products": {},
-      "timely_responses": 0,
-      "timely_rate": 0.0,
-      "fetched": "2026-03-23T08:54:00.972062",
-      "source": "CFPB"
-    }
   }
 }

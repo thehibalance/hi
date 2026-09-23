@@ -1,11 +1,26 @@
 {
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "GENERAL ELECTRIC CO",
+      "ticker": "GE",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-09-23T10:42:14.421511",
+      "source": "CFPB"
+    }
+  },
   "hibp": {
-    "M.2": 0,
+    "M.2": 90,
     "raw": {
       "company": "GENERAL ELECTRIC CO",
       "ticker": "GE",
       "domain": "ge.com",
-      "breach_count": 39,
+      "match": "domain",
+      "breach_count": 0,
       "breaches": [
         {
           "name": "AllegedATT",
@@ -523,9 +538,9 @@
           "is_verified": true
         }
       ],
-      "total_records_exposed": 228397232,
-      "sensitive_data_exposed": true,
-      "fetched": "2026-09-21T17:20:13.238758",
+      "total_records_exposed": 0,
+      "sensitive_data_exposed": false,
+      "fetched": "2026-09-23T10:42:15.151363",
       "source": "HIBP"
     }
   },
@@ -536,19 +551,5 @@
   "land": {
     "A.3": 65,
     "source": "Industry+EPA"
-  },
-  "cfpb": {
-    "U.1": 70.0,
-    "M.1": 80,
-    "raw": {
-      "company": "GENERAL ELECTRIC CO",
-      "ticker": "GE",
-      "total_complaints_3yr": 0,
-      "products": {},
-      "timely_responses": 0,
-      "timely_rate": 0.0,
-      "fetched": "2026-04-15T09:25:14.771991",
-      "source": "CFPB"
-    }
   }
 }

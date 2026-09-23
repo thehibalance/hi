@@ -14,12 +14,13 @@
     }
   },
   "hibp": {
-    "M.2": 30,
+    "M.2": 45,
     "raw": {
       "company": "JD.com, Inc.",
       "ticker": "JD",
       "domain": "jd.com",
-      "breach_count": 2,
+      "match": "domain",
+      "breach_count": 1,
       "breaches": [
         {
           "name": "JD",
@@ -31,25 +32,13 @@
             "Phone numbers",
             "Usernames"
           ],
-          "is_verified": true
-        },
-        {
-          "name": "JDGroup",
-          "date": "2023-05-31",
-          "pwn_count": 521878,
-          "data_classes": [
-            "Email addresses",
-            "Government issued IDs",
-            "Names",
-            "Phone numbers",
-            "Physical addresses"
-          ],
-          "is_verified": true
+          "is_verified": true,
+          "domain": "jd.com"
         }
       ],
-      "total_records_exposed": 77971219,
+      "total_records_exposed": 77449341,
       "sensitive_data_exposed": true,
-      "fetched": "2026-09-21T17:10:53.393951",
+      "fetched": "2026-09-23T10:51:25.778211",
       "source": "HIBP"
     }
   },

@@ -1,26 +1,4 @@
 {
-  "hibp": {
-    "M.2": 90,
-    "raw": {
-      "company": "IDEXX LABORATORIES INC /DE",
-      "ticker": "IDXX",
-      "domain": "idexx.com",
-      "breach_count": 0,
-      "breaches": [],
-      "total_records_exposed": 0,
-      "sensitive_data_exposed": false,
-      "fetched": "2026-09-21T17:19:41.007463",
-      "source": "HIBP"
-    }
-  },
-  "hardware": {
-    "A.4": 55,
-    "source": "Industry"
-  },
-  "land": {
-    "A.3": 60,
-    "source": "Industry+EPA"
-  },
   "cfpb": {
     "U.1": 70.0,
     "M.1": 80,
@@ -31,8 +9,31 @@
       "products": {},
       "timely_responses": 0,
       "timely_rate": 0.0,
-      "fetched": "2026-03-18T17:06:10.893055",
+      "fetched": "2026-09-23T10:41:09.232728",
       "source": "CFPB"
     }
+  },
+  "hibp": {
+    "M.2": 90,
+    "raw": {
+      "company": "IDEXX LABORATORIES INC /DE",
+      "ticker": "IDXX",
+      "domain": "idexx.com",
+      "match": "domain",
+      "breach_count": 0,
+      "breaches": [],
+      "total_records_exposed": 0,
+      "sensitive_data_exposed": false,
+      "fetched": "2026-09-23T10:41:09.971787",
+      "source": "HIBP"
+    }
+  },
+  "hardware": {
+    "A.4": 55,
+    "source": "Industry"
+  },
+  "land": {
+    "A.3": 60,
+    "source": "Industry+EPA"
   }
 }

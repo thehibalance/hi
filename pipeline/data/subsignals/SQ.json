@@ -1,11 +1,26 @@
 {
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "SQ",
+      "ticker": "SQ",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-09-23T10:53:26.693307",
+      "source": "CFPB"
+    }
+  },
   "hibp": {
-    "M.2": 10,
+    "M.2": 90,
     "raw": {
       "company": "SQ",
       "ticker": "SQ",
       "domain": "squareup.com",
-      "breach_count": 5,
+      "match": "domain",
+      "breach_count": 0,
       "breaches": [
         {
           "name": "AtlasQuantum",
@@ -67,9 +82,9 @@
           "is_verified": true
         }
       ],
-      "total_records_exposed": 27729737,
-      "sensitive_data_exposed": true,
-      "fetched": "2026-09-21T17:13:13.594919",
+      "total_records_exposed": 0,
+      "sensitive_data_exposed": false,
+      "fetched": "2026-09-23T10:53:27.446229",
       "source": "HIBP"
     }
   },
@@ -80,19 +95,5 @@
   "land": {
     "A.3": 50,
     "source": "Industry+EPA"
-  },
-  "cfpb": {
-    "U.1": 70.0,
-    "M.1": 80,
-    "raw": {
-      "company": "SQ",
-      "ticker": "SQ",
-      "total_complaints_3yr": 0,
-      "products": {},
-      "timely_responses": 0,
-      "timely_rate": 0.0,
-      "fetched": "2026-05-06T14:26:44.412675",
-      "source": "CFPB"
-    }
   }
 }

@@ -1,26 +1,4 @@
 {
-  "hibp": {
-    "M.2": 90,
-    "raw": {
-      "company": "SOUTHERN CO",
-      "ticker": "SO",
-      "domain": "southerncompany.com",
-      "breach_count": 0,
-      "breaches": [],
-      "total_records_exposed": 0,
-      "sensitive_data_exposed": false,
-      "fetched": "2026-09-21T17:19:21.658446",
-      "source": "HIBP"
-    }
-  },
-  "hardware": {
-    "A.4": 50,
-    "source": "Industry"
-  },
-  "land": {
-    "A.3": 35,
-    "source": "Industry+EPA"
-  },
   "cfpb": {
     "U.1": 70.0,
     "M.1": 80,
@@ -31,8 +9,31 @@
       "products": {},
       "timely_responses": 0,
       "timely_rate": 0.0,
-      "fetched": "2026-04-15T09:30:22.558629",
+      "fetched": "2026-09-23T10:40:35.642168",
       "source": "CFPB"
     }
+  },
+  "hibp": {
+    "M.2": 90,
+    "raw": {
+      "company": "SOUTHERN CO",
+      "ticker": "SO",
+      "domain": "southerncompany.com",
+      "match": "domain",
+      "breach_count": 0,
+      "breaches": [],
+      "total_records_exposed": 0,
+      "sensitive_data_exposed": false,
+      "fetched": "2026-09-23T10:40:36.410490",
+      "source": "HIBP"
+    }
+  },
+  "hardware": {
+    "A.4": 50,
+    "source": "Industry"
+  },
+  "land": {
+    "A.3": 35,
+    "source": "Industry+EPA"
   }
 }

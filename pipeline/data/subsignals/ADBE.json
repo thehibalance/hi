@@ -1,10 +1,25 @@
 {
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "Adobe",
+      "ticker": "ADBE",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-09-23T10:40:47.308810",
+      "source": "CFPB"
+    }
+  },
   "hibp": {
     "M.2": 35,
     "raw": {
       "company": "Adobe",
       "ticker": "ADBE",
       "domain": "adobe.com",
+      "match": "domain",
       "breach_count": 1,
       "breaches": [
         {
@@ -17,12 +32,13 @@
             "Passwords",
             "Usernames"
           ],
-          "is_verified": true
+          "is_verified": true,
+          "domain": "adobe.com"
         }
       ],
       "total_records_exposed": 152445165,
       "sensitive_data_exposed": true,
-      "fetched": "2026-09-21T17:19:21.358099",
+      "fetched": "2026-09-23T10:40:48.266767",
       "source": "HIBP"
     }
   },
@@ -33,19 +49,5 @@
   "land": {
     "A.3": 65,
     "source": "Industry+EPA"
-  },
-  "cfpb": {
-    "U.1": 70.0,
-    "M.1": 80,
-    "raw": {
-      "company": "Adobe",
-      "ticker": "ADBE",
-      "total_complaints_3yr": 0,
-      "products": {},
-      "timely_responses": 0,
-      "timely_rate": 0.0,
-      "fetched": "2026-03-18T17:20:56.945554",
-      "source": "CFPB"
-    }
   }
 }

@@ -1,26 +1,4 @@
 {
-  "hibp": {
-    "M.2": 90,
-    "raw": {
-      "company": "EMERSON ELECTRIC CO",
-      "ticker": "EMR",
-      "domain": "emerson.com",
-      "breach_count": 0,
-      "breaches": [],
-      "total_records_exposed": 0,
-      "sensitive_data_exposed": false,
-      "fetched": "2026-09-21T17:14:07.176945",
-      "source": "HIBP"
-    }
-  },
-  "hardware": {
-    "A.4": 45,
-    "source": "Industry"
-  },
-  "land": {
-    "A.3": 65,
-    "source": "Industry+EPA"
-  },
   "cfpb": {
     "U.1": 70.0,
     "M.1": 80,
@@ -31,9 +9,32 @@
       "products": {},
       "timely_responses": 0,
       "timely_rate": 0.0,
-      "fetched": "2026-04-15T09:28:11.036721",
+      "fetched": "2026-09-23T10:39:26.920244",
       "source": "CFPB"
     }
+  },
+  "hibp": {
+    "M.2": 90,
+    "raw": {
+      "company": "EMERSON ELECTRIC CO",
+      "ticker": "EMR",
+      "domain": "emerson.com",
+      "match": "domain",
+      "breach_count": 0,
+      "breaches": [],
+      "total_records_exposed": 0,
+      "sensitive_data_exposed": false,
+      "fetched": "2026-09-23T10:39:27.940645",
+      "source": "HIBP"
+    }
+  },
+  "hardware": {
+    "A.4": 45,
+    "source": "Industry"
+  },
+  "land": {
+    "A.3": 65,
+    "source": "Industry+EPA"
   },
   "fec": {
     "M.5": 70,

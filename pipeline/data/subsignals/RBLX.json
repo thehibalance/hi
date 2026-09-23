@@ -1,23 +1,27 @@
 {
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "Roblox Corp",
+      "ticker": "RBLX",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-09-23T10:40:24.270203",
+      "source": "CFPB"
+    }
+  },
   "hibp": {
-    "M.2": 55,
+    "M.2": 70,
     "raw": {
       "company": "Roblox Corp",
       "ticker": "RBLX",
       "domain": "roblox.com",
-      "breach_count": 3,
+      "match": "domain",
+      "breach_count": 1,
       "breaches": [
-        {
-          "name": "RobloxDeveloperConference2024",
-          "date": "2024-07-04",
-          "pwn_count": 10386,
-          "data_classes": [
-            "Email addresses",
-            "IP addresses",
-            "Names"
-          ],
-          "is_verified": true
-        },
         {
           "name": "Roblox",
           "date": "2016-07-31",
@@ -29,28 +33,13 @@
             "Purchases",
             "Usernames"
           ],
-          "is_verified": true
-        },
-        {
-          "name": "RobloxDeveloperConference",
-          "date": "2020-12-18",
-          "pwn_count": 3943,
-          "data_classes": [
-            "Clothing sizes",
-            "Dates of birth",
-            "Email addresses",
-            "IP addresses",
-            "Names",
-            "Phone numbers",
-            "Physical addresses",
-            "Usernames"
-          ],
-          "is_verified": true
+          "is_verified": true,
+          "domain": "roblox.com"
         }
       ],
-      "total_records_exposed": 66787,
+      "total_records_exposed": 52458,
       "sensitive_data_exposed": false,
-      "fetched": "2026-09-21T17:19:21.201198",
+      "fetched": "2026-09-23T10:40:25.041729",
       "source": "HIBP"
     }
   },
@@ -61,19 +50,5 @@
   "land": {
     "A.3": 65,
     "source": "Industry+EPA"
-  },
-  "cfpb": {
-    "U.1": 70.0,
-    "M.1": 80,
-    "raw": {
-      "company": "Roblox Corp",
-      "ticker": "RBLX",
-      "total_complaints_3yr": 0,
-      "products": {},
-      "timely_responses": 0,
-      "timely_rate": 0.0,
-      "fetched": "2026-04-15T09:28:36.038837",
-      "source": "CFPB"
-    }
   }
 }

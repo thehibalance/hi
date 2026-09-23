@@ -1,10 +1,25 @@
 {
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "DROPBOX, INC.",
+      "ticker": "DBX",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-09-23T10:49:11.183627",
+      "source": "CFPB"
+    }
+  },
   "hibp": {
     "M.2": 45,
     "raw": {
       "company": "DROPBOX, INC.",
       "ticker": "DBX",
       "domain": "dropbox.com",
+      "match": "domain",
       "breach_count": 1,
       "breaches": [
         {
@@ -15,12 +30,13 @@
             "Email addresses",
             "Passwords"
           ],
-          "is_verified": true
+          "is_verified": true,
+          "domain": "dropbox.com"
         }
       ],
       "total_records_exposed": 68648009,
       "sensitive_data_exposed": true,
-      "fetched": "2026-09-21T17:07:36.359686",
+      "fetched": "2026-09-23T10:49:11.865886",
       "source": "HIBP"
     }
   },
@@ -31,19 +47,5 @@
   "land": {
     "A.3": 65,
     "source": "Industry+EPA"
-  },
-  "cfpb": {
-    "U.1": 70.0,
-    "M.1": 80,
-    "raw": {
-      "company": "Dropbox Inc",
-      "ticker": "DBX",
-      "total_complaints_3yr": 0,
-      "products": {},
-      "timely_responses": 0,
-      "timely_rate": 0.0,
-      "fetched": "2026-03-23T08:51:47.488992",
-      "source": "CFPB"
-    }
   }
 }

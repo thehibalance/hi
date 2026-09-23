@@ -1,10 +1,25 @@
 {
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "Snap Inc",
+      "ticker": "SNAP",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-09-23T10:44:29.242157",
+      "source": "CFPB"
+    }
+  },
   "hibp": {
     "M.2": 60,
     "raw": {
       "company": "Snap Inc",
       "ticker": "SNAP",
       "domain": "snapchat.com",
+      "match": "domain",
       "breach_count": 1,
       "breaches": [
         {
@@ -16,12 +31,13 @@
             "Phone numbers",
             "Usernames"
           ],
-          "is_verified": true
+          "is_verified": true,
+          "domain": "snapchat.com"
         }
       ],
       "total_records_exposed": 4609615,
       "sensitive_data_exposed": false,
-      "fetched": "2026-09-21T17:01:47.985645",
+      "fetched": "2026-09-23T10:44:29.949753",
       "source": "HIBP"
     }
   },
@@ -32,19 +48,5 @@
   "land": {
     "A.3": 65,
     "source": "Industry+EPA"
-  },
-  "cfpb": {
-    "U.1": 70.0,
-    "M.1": 80,
-    "raw": {
-      "company": "Snap Inc",
-      "ticker": "SNAP",
-      "total_complaints_3yr": 0,
-      "products": {},
-      "timely_responses": 0,
-      "timely_rate": 0.0,
-      "fetched": "2026-04-15T09:30:58.077373",
-      "source": "CFPB"
-    }
   }
 }
