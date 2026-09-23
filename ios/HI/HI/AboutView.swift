@@ -128,7 +128,7 @@ struct AboutView: View {
                         Text("How Scoring Works")
                             .font(.system(size: 15, weight: .bold))
                             .foregroundColor(.hiNavy)
-                        Text("Every company is scored 0–100 across five dimensions using 42 free public data sources. No AI in the scoring. No surveys. No pay-to-play. Pass all 3 gates — Dimensions, Evidence, and Momentum — and you're Gold HI Grade™.")
+                        Text("Every company is scored 0–100 across five dimensions from free public data. 42 sources are integrated; the number feeding today’s scores is shown above. No AI in the scoring. No surveys. No pay-to-play. Pass all 3 gates — Dimensions, Evidence, and Momentum — and you're Gold HI Grade™.")
                             .font(.system(size: 13))
                             .foregroundColor(.secondary)
                         Text("Floor rule: if any HUMAN dimension scores below 30, the composite is capped at 50. One severely failing dimension can't be averaged away.")
@@ -167,7 +167,7 @@ struct AboutView: View {
                     
                     // SECTION 8 — Data Sources
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Data Sources (42)")
+                        Text("Data Sources (42 integrated)")
                             .font(.system(size: 18, weight: .bold, design: .serif))
                             .foregroundColor(.hiNavy)
                         Text("SEC EDGAR (10-K, 8-K, DEF 14A, Form 4), EPA ECHO, BLS, CDP, Glassdoor, Disability:IN DEI Index, HRC Corporate Equality Index, Yahoo Finance, FMP, Alpha Vantage, Finnhub, FRED, NewsAPI, Layoffs.fyi, WARN Act, CEO monitoring, CFPB, FEC, CPSC, Have I Been Pwned, iFixit, OSHA, FTC, EEOC, USPTO, FDA, DOL, BBB, GRI, SBTi, IRS 990, B Corp Directory, Fair Trade, USDA Organic, Climate Neutral, 1% for the Planet, NHTSA, and industry deforestation risk data.")
@@ -227,7 +227,7 @@ struct AboutView: View {
                             .font(.system(size: 11)).foregroundColor(.secondary)
                         Text("Morf Innovations LLC")
                             .font(.system(size: 11)).foregroundColor(.secondary)
-                        Text("Gold HI Grade requires all 5 HUMAN dimensions ≥ 60, each verified by public data, and no critical decay (90-day Heartbeat). Spec v1.2.0. Scores are estimated from public data. Not financial or legal advice.")
+                        Text("Gold HI Grade requires all 5 HUMAN dimensions ≥ 60, each verified by public data, and no critical decay (90-day Heartbeat). Spec v1.6.0. Scores are estimated from public data. Not financial or legal advice.")
                             .font(.system(size: 9))
                             .foregroundColor(.secondary.opacity(0.7))
                             .multilineTextAlignment(.center)

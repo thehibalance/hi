@@ -252,4 +252,4 @@ We respond to ladder-grounding issues within 5 business days.
 
 ---
 
-*Last updated: September 2026. Spec v1.5.1 (FDA withdrawn; M.4 moved to UNGROUNDED). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
+*Last updated: September 2026. Spec v1.6.0 (industry constants no longer count as evidence; median coverage 5/19). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*

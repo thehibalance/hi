@@ -1,12 +1,16 @@
 # HI Grade™ Methodology
 
-> **Note (September 2026):** this file describes the v1.1/v1.2 engine and is being rewritten.
-> The current methodology, including the v1.3 industry calibration and the v1.4 evidence gates, lives at
+> **Note (September 2026):** this file describes the v1.1/v1.2 engine and is being rewritten. It is
+> five spec versions behind. Since it was written we recalibrated industry baselines (v1.3),
+> introduced evidence gates (v1.4), rebuilt CFPB matching and withdrew FDA (v1.5), and stopped
+> counting industry constants as evidence — which moved published median coverage from 7 of 19
+> sub-signals to a truthful 5 of 19 (v1.6).
+> The current methodology lives at
 > [thehibalance.org/#methodology](https://thehibalance.org/#methodology), and every sub-signal's status is in
 > [`RUBRIC.md`](RUBRIC.md). Where this file and those disagree, they are right and this one is out of date.
 ## The math behind being human kind.
 
-**Version 1.1.0 · April 2026 · Apache 2.0 · [thehibalance.org](https://thehibalance.org)**
+**Document version 1.1.0 · April 2026 · describes the v1.1/v1.2 engine, not the current one · Apache 2.0 · [thehibalance.org](https://thehibalance.org)**
 
 ---
 
