@@ -37,12 +37,35 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 CACHE_HOURS = 168  # 1 week
 
 def load_cache(ticker, source):
+    """Cache for one company, aged by when we fetched it.
+
+    Two rules learned the hard way. A company without a ticker must never read or write a cache
+    file, or every tickerless company shares `{source}_.json` — that is how ALDI's FDA recalls
+    ended up on Ben & Jerry's, Oatly, Nestle and Newman's Own. And age comes from the timestamp
+    inside the file, never the file's mtime: a fresh checkout resets mtimes, which is exactly how
+    the pipeline stopped refreshing data for five months (PR #9).
+    """
+    if not ticker or not str(ticker).strip():
+        return None
     f = DATA_DIR / f"{source}_{ticker.upper()}.json"
-    if f.exists() and (time.time() - f.stat().st_mtime) / 3600 < CACHE_HOURS:
-        return json.load(open(f))
-    return None
+    if not f.exists():
+        return None
+    try:
+        data = json.load(open(f))
+    except (OSError, ValueError):
+        return None
+    fetched = data.get("fetched") if isinstance(data, dict) else None
+    if not fetched:
+        return None
+    try:
+        age_h = (datetime.now() - datetime.fromisoformat(fetched)).total_seconds() / 3600
+    except (TypeError, ValueError):
+        return None
+    return data if age_h < CACHE_HOURS else None
 
 def save_cache(ticker, source, data):
+    if not ticker or not str(ticker).strip():
+        return
     f = DATA_DIR / f"{source}_{ticker.upper()}.json"
     json.dump(data, open(f, "w"), indent=2)
 
@@ -54,6 +77,9 @@ def save_cache(ticker, source, data):
 OSHA_API = "https://enforcedata.dol.gov/api/osha_inspection"
 
 def fetch_osha(company_name, ticker):
+    # A blank name searches as a wildcard and matches every record in the database.
+    if not ticker or not (company_name or "").strip():
+        return None
     cached = load_cache(ticker, "osha")
     if cached: return cached
     try:
@@ -82,7 +108,11 @@ def fetch_osha(company_name, ticker):
         return None
 
 def score_osha(data):
+    """Inspections on file with no serious violations IS evidence of a safe workplace. Finding no
+    inspections at all is not — it means we did not match the company, or it has never been
+    inspected. Scoring that 85 is the mistake that made 1,041 companies look clean on FDA."""
     if not data: return None
+    if not data.get("inspections"): return None
     v = data.get("serious_violations", 0)
     p = data.get("total_penalties", 0)
     if v == 0 and p == 0: return 85
@@ -187,6 +217,9 @@ def score_eeoc(ticker):
 USPTO_API = "https://developer.uspto.gov/ibd-api/v1/application/publications"
 
 def fetch_patents(company_name, ticker):
+    # A blank name searches as a wildcard and matches every record in the database.
+    if not ticker or not (company_name or "").strip():
+        return None
     cached = load_cache(ticker, "patents")
     if cached: return cached
     try:
@@ -259,6 +292,9 @@ def score_patents(data):
 FDA_API = "https://api.fda.gov/drug/enforcement.json"
 
 def fetch_fda(company_name, ticker):
+    # A blank name searches as a wildcard and matches every record in the database.
+    if not ticker or not (company_name or "").strip():
+        return None
     cached = load_cache(ticker, "fda")
     if cached: return cached
     try:
@@ -311,6 +347,9 @@ def score_fda(data):
 DOL_WHD_API = "https://enforcedata.dol.gov/api/whd_whisard"
 
 def fetch_dol_wages(company_name, ticker):
+    # A blank name searches as a wildcard and matches every record in the database.
+    if not ticker or not (company_name or "").strip():
+        return None
     cached = load_cache(ticker, "dol")
     if cached: return cached
     try:
@@ -335,11 +374,13 @@ def fetch_dol_wages(company_name, ticker):
         return None
 
 def score_dol(data):
+    """The WHD database records wage-and-hour cases, so it can show a company behaved badly but
+    never that it behaved well. No matching case means no evidence, not a clean record."""
     if not data: return None
     bw = data.get("total_backwages", 0)
     v = data.get("violations", 0)
-    
-    if v == 0: return 85
+
+    if v == 0: return None
     elif bw < 100000 and v <= 3: return 70
     elif bw < 1000000: return 55
     elif bw < 10000000: return 40

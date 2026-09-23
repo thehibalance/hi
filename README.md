@@ -167,6 +167,12 @@ Free and public, apart from one paid financial feed (FMP). No purchased ratings.
 | 🔧 **Withheld or rebuilding** (v1.5.1) | FDA (matching broken — withdrawn), HIBP (re-matching by domain, company by company) |
 | ⏳ **Integrated, not yet producing data** | OSHA, DOL, USPTO, CPSC, NHTSA, BLS, IRS 990, WARN Act, Layoffs.fyi, FRED, OpenCorporates, NewsAPI, Alpha Vantage, Finnhub |
 
+**Some of these are curated, not live.** FTC actions (15 companies), EEOC actions (13), CEO pay
+ratios (44), BBB ratings (27), GRI reporting (34), SBTi targets (28) and IRS 990 charity levels (16)
+are hand-compiled tables in the source rather than agency pulls. They're accurate for the companies
+they name and silent for everyone else — a company that isn't in one gets a neutral zero, not a
+guess. [`RUBRIC.md`](RUBRIC.md) lists the coverage counts.
+
 The live list comes from the API: `curl https://api.thehibalance.org/api/v1/stats` (`data_sources_list`). Per-source details and status badges: **[thehibalance.org/#sources](https://thehibalance.org/#sources)**
 
 ## The HUMAN Heartbeat

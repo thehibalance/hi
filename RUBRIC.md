@@ -8,7 +8,25 @@ This file accompanies the [Limitations](https://thehibalance.org/#limitations) p
 - **PARTIAL** — the data input is authoritative (regulator, certified third party) but the tier cutoffs that map data to score bands were chosen by the engine authors.
 - **UNGROUNDED** — both the data input source AND the scoring ladder are editorial choices. May be defensible, but does not reproduce a published methodology.
 
-Spec version: **v1.4.0** · Active sub-signals: **19** · Not yet scored: **5**
+### Curated tables, and how far they reach
+
+Seven inputs are **hand-compiled lookup tables in the source, not live feeds**. They are accurate
+for the companies they name and silent for everyone else — a company that is missing from one
+receives a neutral adjustment of zero and the source is not credited in its `data_sources`. They
+are listed here so nobody mistakes them for an agency pull:
+
+| Input | Companies covered | Where it lives |
+|---|---|---|
+| CEO pay ratio | 44 | `PAY_RATIOS` |
+| GRI reporting | 34 | `GRI_REPORTERS` |
+| SBTi targets | 28 | `SBTI_STATUS` |
+| BBB ratings | 27 | `BBB_RATINGS` |
+| IRS 990 charity | 16 | `CHARITY_LEVELS` |
+| FTC actions | 15 | `FTC_ACTIONS` |
+| EEOC actions | 13 | `EEOC_DATA` |
+| Insider-sale flags | 4 | `INSIDER_FLAGS` |
+
+Spec version: **v1.5.3** · Active sub-signals: **19** · Not yet scored: **5**
 
 Every entry below was checked against `pipeline/scoring_engine.py` in September 2026. Where this file and the code disagree, the code is right and this file is a bug.
 
