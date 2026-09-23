@@ -26,7 +26,15 @@ are listed here so nobody mistakes them for an agency pull:
 | EEOC actions | 13 | `EEOC_DATA` |
 | Insider-sale flags | 4 | `INSIDER_FLAGS` |
 
-Spec version: **v1.5.3** · Active sub-signals: **19** · Not yet scored: **5**
+Spec version: **v1.6.0** · Active sub-signals: **19** · Not yet scored: **5**
+
+**Industry constants are not evidence (v1.6.0).** Where a sub-signal's value comes from an
+industry lookup table rather than from anything about the company, it no longer counts toward that
+company's coverage or confidence. It still contributes to the score as a prior, and the company's
+`data_sources` says `Industry`. This applies the rule `aggregate_collected.py` has enforced since
+v1.4.0 to the engine's own internal defaults: H.2 craft baselines, and the A.1 and A.4 fallbacks.
+The effect was 1.78 sub-signals per company, which moved published median coverage from 7/19 to a
+truthful **5/19**. No score changed.
 
 Every entry below was checked against `pipeline/scoring_engine.py` in September 2026. Where this file and the code disagree, the code is right and this file is a bug.
 
