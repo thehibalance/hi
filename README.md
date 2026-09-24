@@ -7,7 +7,7 @@
 **Score every company. Five dimensions AI can't replace.**
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Spec](https://img.shields.io/badge/spec-v1.7.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
+[![Spec](https://img.shields.io/badge/spec-v1.8.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
 [![API](https://img.shields.io/badge/API-live-16A34A.svg)](https://api.thehibalance.org)
 [![Chrome](https://img.shields.io/badge/Chrome-Extension-C49B20.svg)](https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg)
 [![iOS](https://img.shields.io/badge/iOS-App%20Store-000.svg)](https://apps.apple.com/app/hi/id6761270596)
@@ -22,7 +22,7 @@
 
 For 500 years we've made decisions using four filters: **cost, time, convenience, risk.** We left out a fifth — **verified human impact.** Not "does this company feel ethical?" but _"does it treat humans well in ways that leave a data trail?"_
 
-**HI Grade** measures how human a company is across five dimensions. Every company gets a score from 0 to 100, built from 19 active sub-signals and public data: 22 sources feed today's scores, out of 42 integrated. Zero AI in the scoring engine. Zero pay-to-play. Every pipeline-scored company can be reconstructed from public data.
+**HI Grade** measures how human a company is across five dimensions. Every company gets a score from 0 to 100, built from 19 active sub-signals and public data: 21 sources feed today's scores, out of 42 integrated. Zero AI in the scoring engine. Zero pay-to-play. Every pipeline-scored company can be reconstructed from public data.
 
 Whether you're shopping, investing, hiring, researching, or building, HI Grade gives you one number with full audit trail.
 
@@ -159,7 +159,7 @@ This is why Lockheed Martin's composite dropped from 69 to 53 when weapons HD sh
 
 ## Public Data, Zero AI
 
-Free and public, apart from one paid financial feed (FMP). No purchased ratings. No pay-to-play. No LLMs. **22 sources feed today's scores; 42 are integrated.**
+Free and public, apart from one paid financial feed (FMP). No purchased ratings. No pay-to-play. No LLMs. **21 sources feed today's scores; 42 are integrated.**
 
 | | Sources |
 |---|---|
@@ -192,14 +192,24 @@ Decay levels: **Stable → Watch → Warning → Critical**. When a company anno
 
 We publish what we haven't solved yet — because a transparency framework that hides its own gaps is hypocritical. See [`RUBRIC.md`](RUBRIC.md) for every sub-signal's status: **GROUNDED**, **PARTIAL**, or **UNGROUNDED**.
 
-**Current state (v1.5.1):**
+**Current state (v1.8.0):**
 
-- **No sub-signal is fully grounded yet.** 12 are PARTIAL (authoritative data, tier cutoffs we chose) and 7 are UNGROUNDED. Grounding them is the research priority.
+- **No sub-signal is fully grounded yet.** 11 are PARTIAL (authoritative data, tier cutoffs we chose) and 8 are UNGROUNDED. Grounding them is the research priority.
 - **Most scores rest on partial data.** The median company has real data behind **4 of 19**
-  sub-signals (mean 5.5); the rest are neutral 50s or industry priors, which pulls scores toward
+  sub-signals (mean 4.7); the rest are neutral 50s or industry priors, which pulls scores toward
   the middle. That figure used to read 7 of 19. It was wrong: we were counting our own industry
   lookup tables as evidence about the company. v1.6.0 stopped. No score changed — only the honesty
   of the number describing it.
+- **One company, one score (v1.8.0).** 94 of 1,140 companies were being scored twice: once
+  under the name the SEC files them as (`BANK OF AMERICA CORP /DE/`) and once under the name
+  CDP, Glassdoor and the job boards use (`Bank of America Corporation`). Each copy saw only
+  the evidence its own spelling matched, and one copy was discarded at the end of the run.
+  Six companies had real evidence in both halves and now score on all of it: JPMorgan
+  57 → 66 (10 → 15 sub-signals), Bank of America 63 → 70, Starbucks 65 → 70, McDonald's
+  66 → 69, Johnson & Johnson 49 → 50, and Sony, which the SEC carries twice. The source
+  count moved 22 → 21 in the same release: `FDA` was kept alive by two rows frozen at spec
+  1.2.1 since March, because the nightly merge could only ever add companies, never retire
+  them. It can retire them now.
 - **The floor rule is a cliff.** A dimension at 42.1 keeps the full composite; at 41.9 the composite is capped at 50.
 - **About 95 companies carry hand-entered seed data** (`Manual Scoring` in the API). Those parts of their scores aren't reproducible from the pipeline.
 - **Customer-complaint data covers 37 companies.** CFPB only regulates consumer financial
