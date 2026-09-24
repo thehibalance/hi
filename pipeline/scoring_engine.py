@@ -18,7 +18,7 @@ Key fixes in v2.1:
   - AHI weights aligned with spec v1.1
 """
 
-import json, math, os, sys
+import json, math, os, re, sys
 from pathlib import Path
 
 # Canonical names for companies known by multiple names
@@ -268,6 +268,78 @@ def normalize_name(name):
     n = n.rstrip('.,')
     return n
 
+# ── One spelling per company (v1.8.0) ────────────────────────────────
+# normalize_name() strips a fixed suffix list in one pass. That leaves SEC's
+# "BANK OF AMERICA CORP /DE/" and CDP's "Bank of America Corporation" as two
+# different companies: each is scored on the half of the evidence its own
+# spelling matched, and the dedupe pass at the end throws one of them away.
+# 94 of 1,140 companies were split this way. canon_name() strips SEC registrant
+# artifacts (/DE/, /NEW/), ampersands, possessives and corporate suffixes until
+# the name stops changing, so every source lands on one record.
+_CANON_SUFFIXES = (" incorporated", " corporation", " international", " technologies",
+                   " technology", " enterprises", " solutions", " platforms",
+                   " provisions", " holdings", " holding", " group", " companies",
+                   " company", " inc", " corp", " llc", " ltd", " limited", " co",
+                   " plc", " sa", " ag", " nv", " se", " s")
+
+# A name that reduces to one of these is not an identity — "American International
+# Group" must never collide with "American Airlines". These get no name key.
+_CANON_TOO_GENERIC = {"american", "united", "general", "national", "first", "global",
+                      "standard", "continental", "pacific", "atlantic", "new", "the",
+                      "premier", "allied", "universal"}
+
+
+def canon_name(name):
+    n = (name or "").lower().strip()
+    n = re.sub(r"/[a-z]{2,4}/", " ", n)          # SEC registrant artifacts: /DE/, /NEW/, /MA/
+    n = n.replace("&", " ")
+    n = re.sub(r"[,.\-'\"()\[\]/]", " ", n)
+    n = re.sub(r"\s+", " ", n).strip()
+    if n.startswith("the "):
+        n = n[4:]
+    n = re.sub(r"\band\b", " ", n)
+    n = re.sub(r"\s+", " ", n).strip()
+    changed = True
+    while changed:
+        changed = False
+        for s in _CANON_SUFFIXES:
+            if n.endswith(s):
+                rest = n[: -len(s)].strip()
+                if rest:
+                    n, changed = rest, True
+                    break
+    return "" if n in _CANON_TOO_GENERIC else n
+
+
+def _otc_foreign(t):
+    """5-letter OTC lines for foreign issuers end in F (foreign ordinary) or Y (ADR)."""
+    t = (t or "").upper()
+    return len(t) == 5 and t[-1] in ("F", "Y")
+
+
+def _prefer_ticker(current, candidate):
+    """Sony files with the SEC as SNEJF and trades as SONY; Honda as HNDAF and HMC. Once
+    both records are one company, the primary listing is what the API, the extension and
+    the app look up, so it wins. Otherwise precedence is unchanged: later source wins."""
+    c = (candidate or "").strip()
+    if not c:
+        return current
+    if not current:
+        return c
+    if _otc_foreign(c) and not _otc_foreign(current):
+        return current
+    return c
+
+
+def _claim(idx, key, record):
+    """Later spellings still win a shared key, except that an OTC foreign line never
+    displaces a primary listing."""
+    prev = idx.get(key)
+    if prev is not None and _otc_foreign(record.get("ticker")) and not _otc_foreign(prev.get("ticker")):
+        return
+    idx[key] = record
+
+
 def index_by_company(records, key="company"):
     idx = {}
     for r in records:
@@ -275,7 +347,9 @@ def index_by_company(records, key="company"):
         if name: idx[name] = r
         # Also index by normalized name
         norm = normalize_name(name)
-        if norm and norm != name: idx[norm] = r
+        if norm and norm != name: _claim(idx, norm, r)
+        c = canon_name(name)
+        if c: _claim(idx, c, r)
         ticker = r.get("ticker", "")
         if ticker: idx[f"ticker:{ticker.upper()}"] = r
     return idx
@@ -288,6 +362,11 @@ def find_match(company_name, ticker, index):
     norm = normalize_name(company_name)
     result = index.get(norm)
     if result: return result
+    # 2b. Canonical name match (v1.8.0): one spelling per company across sources
+    c = canon_name(company_name)
+    if c:
+        result = index.get(c)
+        if result: return result
     # 3. Ticker match (most reliable cross-source link)
     if ticker:
         result = index.get(f"ticker:{ticker.upper()}")
@@ -1814,7 +1893,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.7.0",
+        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.8.0",
         "data_sources": all_sources,
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
         "humanwashing_flags": hw_flags,
@@ -1898,7 +1977,7 @@ def main():
     for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx]:
         for key in idx:
             if not key.startswith("ticker:"):
-                all_companies.add(normalize_name(key))
+                all_companies.add(canon_name(key) or normalize_name(key))
 
     print(f"\n  Total unique companies: {len(all_companies)}")
     print("=" * 60)
@@ -1911,7 +1990,7 @@ def main():
         for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx]:
             for key in [company_lower, norm]:
                 if key in idx and idx[key].get("ticker"):
-                    ticker = idx[key]["ticker"]
+                    ticker = _prefer_ticker(ticker, idx[key]["ticker"])
                     break
             if ticker: break
 
@@ -1925,7 +2004,7 @@ def main():
         for source in [sec, epa, cdp, job, gd]:
             if source:
                 name = source.get("company", name)
-                ticker = source.get("ticker", ticker) or ticker
+                ticker = _prefer_ticker(ticker, source.get("ticker"))
 
         # Apply canonical name for known duplicates
         name_check = name.lower().strip()

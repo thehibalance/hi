@@ -26,7 +26,7 @@ are listed here so nobody mistakes them for an agency pull:
 | EEOC actions | 13 | `EEOC_DATA` |
 | Insider-sale flags | 4 | `INSIDER_FLAGS` |
 
-Spec version: **v1.7.0** · Active sub-signals: **19** · Not yet scored: **5**
+Spec version: **v1.8.0** · Active sub-signals: **19** · Not yet scored: **5**
 
 **Industry constants are not evidence (v1.6.0).** Where a sub-signal's value comes from an
 industry lookup table rather than from anything about the company, it no longer counts toward that
@@ -37,6 +37,17 @@ The effect was 1.78 sub-signals per company, which moved published median covera
 5/19. **v1.7.0 found one more:** U.4 reads like a Glassdoor blend, but only about 37 of 1,141
 companies have a Glassdoor record, so for the other 692 affected companies it was the industry
 table alone. Median coverage is now a truthful **4/19**. No score changed in either release.
+
+**One company, one score (v1.8.0).** The engine matched sources by a name normalizer that
+stripped a fixed suffix list once. SEC spellings (`BANK OF AMERICA CORP /DE/`) and
+sustainability-data spellings (`Bank of America Corporation`) therefore described two
+different companies, each scored on half the evidence, with one copy dropped at the end of
+the run — 94 of 1,140 companies. `canon_name()` now gives every source one spelling. Five
+composites moved, all upward, all because the company now sees evidence it already had:
+JPM 57→66, BAC 63→70, SBUX 65→70, MCD 66→69, JNJ 49→50. In the same release the nightly
+score merge stopped preserving rows the engine no longer produces: four had been frozen at
+spec 1.2.1 since March, and two of them were the last place FDA evidence — withdrawn in
+v1.5.1 — still appeared. Published sources: 22 → 21.
 
 Every entry below was checked against `pipeline/scoring_engine.py` in September 2026. Where this file and the code disagree, the code is right and this file is a bug.
 
@@ -254,4 +265,4 @@ We respond to ladder-grounding issues within 5 business days.
 
 ---
 
-*Last updated: September 2026. Spec v1.7.0 (U.4 counted as an industry constant; median coverage 4/19; invented BLS benchmarks removed). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
+*Last updated: September 2026. Spec v1.8.0 (one spelling per company; fossil rows expire; 21 sources). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
