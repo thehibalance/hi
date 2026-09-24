@@ -296,42 +296,22 @@ def fetch_sec(company_name, ticker):
     
     result = {"company": company_name, "ticker": ticker}
     
-    # Get CIK from ticker
-    try:
-        r = requests.get(f"https://efts.sec.gov/LATEST/search-index?q={ticker}&dateRange=custom&startdt=2020-01-01&forms=10-K",
-                        headers=SEC_HEADERS, timeout=10)
-        # Try company tickers endpoint
-        tickers_url = "https://efts.sec.gov/LATEST/search-index?q=\"{}\"&forms=10-K".format(ticker)
-    except:
-        pass
     
-    # EDGAR full-text search for recent 10-K
-    try:
-        search = safe_get(
-            "https://efts.sec.gov/LATEST/search-index",
-            params={"q": f'"{ticker}"', "forms": "10-K", "dateRange": "custom",
-                    "startdt": "2023-01-01", "enddt": datetime.now().strftime("%Y-%m-%d")},
-            headers=SEC_HEADERS
-        )
-    except:
-        search = None
     
     # Get company facts (structured data)
     try:
-        # First get CIK
-        ticker_map = safe_get("https://www.sec.gov/files/company_tickers.json", headers=SEC_HEADERS)
-        cik = None
-        if ticker_map:
-            # v1.2.0 fix: SEC uses HYPHEN for class shares (BRK-B, BF-B) while
-            # everyone else uses DOT (BRK.B, BF.B). Try both forms in lookup.
-            ticker_upper = ticker.upper()
-            ticker_hyphen = ticker_upper.replace(".", "-")
-            for entry in ticker_map.values():
-                entry_ticker = entry.get("ticker", "").upper()
-                if entry_ticker == ticker_upper or entry_ticker == ticker_hyphen:
-                    cik = str(entry["cik_str"]).zfill(10)
-                    result["company"] = entry.get("title", company_name)
-                    break
+        # v1.8.1: one cached copy of SEC's ticker file for the whole run
+        # (sec_index.py), not a fresh ~800 KB download per company. Dot/hyphen
+        # share classes (BRK.B vs BRK-B) are handled there, as is a symbol SEC
+        # has dropped from its directory but whose CIK we already resolved.
+        # The company name follows SEC's title, so a filer that renames is
+        # published under the name it files under.
+        import sec_index
+        cik = sec_index.get_cik(ticker)
+        if cik:
+            _sec_title = sec_index.get_title(ticker)
+            if _sec_title:
+                result["company"] = _sec_title
         
         if cik:
             facts = safe_get(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json", headers=SEC_HEADERS)
