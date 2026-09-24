@@ -7,7 +7,7 @@ One local cache of SEC's company_tickers.json, serving two problems at once:
      for every filer.
 Also normalizes share classes: SEC writes BRK-B; universes carry BRK.B.
 """
-import json, time
+import atexit, json, time
 from pathlib import Path
 from urllib.request import Request, urlopen
 
@@ -16,6 +16,53 @@ USER_AGENT = "HI-Pipeline/1.0 (thehibalance.org; contact@thehibalance.org)"
 CACHE = Path("data/sec_index.json")
 MAX_AGE_HOURS = 168
 _INDEX = None
+
+# ── Remembered CIKs (v1.8.1) ─────────────────────────────────────────────
+# SEC's ticker directory churns. AvalonBay and Equity Residential both dropped
+# out of company_tickers.json between two runs a week apart while filing
+# normally; 39 universe symbols are unlisted on any given day. A CIK is an
+# identifier, not a measurement, so once we have resolved one we keep it and
+# say so when we use it. This is not the score ratchet v1.8.0 removed: a score
+# must be re-earned every night, a company's CIK does not change because a JSON
+# file dropped a row.
+LEARNED_PATH = Path("data/cik_map.json")
+_LEARNED = None
+_LEARNED_DIRTY = False
+_NOTED = set()
+
+
+def _learned():
+    global _LEARNED
+    if _LEARNED is None:
+        try:
+            _LEARNED = json.load(open(LEARNED_PATH))
+        except Exception:
+            _LEARNED = {}
+    return _LEARNED
+
+
+def _remember(ticker, cik, title):
+    global _LEARNED_DIRTY
+    m = _learned()
+    if m.get(ticker, {}).get("cik") != cik:
+        m[ticker] = {"cik": cik, "title": title}
+        _LEARNED_DIRTY = True
+
+
+def flush_learned():
+    if not _LEARNED_DIRTY or not _LEARNED:
+        return
+    try:
+        LEARNED_PATH.parent.mkdir(parents=True, exist_ok=True)
+        tmp = LEARNED_PATH.with_suffix(".tmp")
+        json.dump(_LEARNED, open(tmp, "w"), indent=2, sort_keys=True)
+        tmp.replace(LEARNED_PATH)
+    except OSError as e:
+        print(f"  could not save the CIK map: {e}")
+
+
+atexit.register(flush_learned)
+
 
 def _variants(ticker):
     t = str(ticker).strip().upper()
@@ -62,13 +109,26 @@ def load_sec_index(force=False):
 def get_cik(ticker):
     idx = load_sec_index()
     for v in _variants(ticker):
-        if v in idx: return idx[v]["cik"]
+        if v in idx:
+            _remember(v, idx[v]["cik"], idx[v]["title"])
+            return idx[v]["cik"]
+    m = _learned()
+    for v in _variants(ticker):
+        if v in m:
+            if v not in _NOTED:
+                _NOTED.add(v)
+                print(f"    SEC's directory no longer lists {v}; using the CIK "
+                      f"resolved earlier ({m[v]['cik']}) — {m[v].get('title', '')}")
+            return m[v]["cik"]
     return None
 
 def get_title(ticker):
     idx = load_sec_index()
     for v in _variants(ticker):
         if v in idx: return idx[v]["title"]
+    m = _learned()
+    for v in _variants(ticker):
+        if v in m: return m[v].get("title")
     return None
 
 def verify(ticker, expected_name):

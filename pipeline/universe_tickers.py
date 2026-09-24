@@ -20,13 +20,13 @@ SP500 = [
     "NOC","CMCSA","DUK","ADBE","DELL","HWM","EQIX","GD","TT","WM",
     "CVS","STX","ICE","WMB","BX","PWR","MAR","AMT","ADP","MRSH",
     "FDX","UPS","SNPS","JCI","PNC","KKR","CDNS","FCX","USB","NKE",
-    "BK","REGN","ABNB","MCO","MSI","SHW","MMM","ITW","CMI","CTAS",
+    "BNY","REGN","ABNB","MCO","MSI","SHW","MMM","ITW","CMI","CTAS",
     "ECL","EOG","CSX","ORLY","EMR","RCL","KMI","MNST","MDLZ","DASH",
     "VLO","AEP","CL","CI","MPC","PSX","LHX","RSG","CRH","AON",
     "SLB","WBD","TDG","HLT","HOOD","ROST","GM","ELV","TRV","APO",
     "NSC","COR","APD","SRE","SPG","CARR","AIG","FITB","FAST","ROP",
     "GEHC","CMG","AMP","PAYX","AFL","TFC","DLR","FIS","HES","PSA",
-    "MSCI","SQ","FICO","O","OKE","AZO","ODFL","BKR","CTVA","GWW",
+    "MSCI","XYZ","FICO","O","OKE","AZO","ODFL","BKR","CTVA","GWW",
     "VRSK","CPRT","NDAQ","D","AJG","MCHP","PCG","ALL","DHI","EW",
     "A","URI","DAL","OTIS","TEL","CTSH","DD","PPG","F","HAL",
     "KDP","AXON","YUM","MTD","IDXX","FANG","ON","ROK","CHTR","BDX",
@@ -53,12 +53,12 @@ RUSSELL_1000_ADDITIONS = [
     # Tech
     "SNAP","PINS","ZM","DBX","PATH","DDOG","ZS","OKTA","MDB","TWLO",
     "ESTC","NET","BILL","HUBS","VEEV","TEAM","WDAY","COIN","U","RBLX",
-    "DUOL","CHGG","ROKU","TTD","SHOP","SE","MELI","SPOT","SQ",
-    "DOCU","FIVN","ASAN","ZI","GTLB","CFLT","MNDY","PCOR","S","IOT",
+    "DUOL","CHGG","ROKU","TTD","SHOP","SE","MELI","SPOT","XYZ",
+    "DOCU","FIVN","ASAN","GTM","GTLB","CFLT","MNDY","PCOR","S","IOT",
     "CWAN","AI","SOUN","ASTS","IONQ","RGTI","QUBT",
     
     # Fintech / Financial
-    "SOFI","AFRM","UPST","LC","PYPL","TOST","MARQ","FI","GPN",
+    "SOFI","AFRM","UPST","LC","PYPL","TOST","MQ","FISV","GPN",
     
     # Healthcare / Biotech
     "MRNA","BIIB","EXAS","HALO","SGEN","IONS","SRPT","ALNY","BMRN",
@@ -66,21 +66,21 @@ RUSSELL_1000_ADDITIONS = [
     "INSM","TGTX","RYTM","DAWN","AXSM","CRNX",
     
     # Consumer / Retail
-    "LULU","DECK","BIRD","OATLY","BYND","WRBY","CHWY","W","ETSY",
-    "COUR","BROS","DTC","YETI","FIGS","SFIX","RENT","POSH",
+    "LULU","DECK","BIRD","OTLY","BYND","WRBY","CHWY","W","ETSY",
+    "COUR","BROS","SBDS","YETI","FIGS","SFIX","RENT","POSH",
     "ANF","GPS","AEO","URBN","KSS","M","JWN","DKS","FIVE","DLTR",
-    "DG","BBY","GME","BBBY","KR","SFM","CASY","WMK",
+    "DG","BBY","GME","NXH","KR","SFM","CASY","WMK",
     
     # Auto / EV
     "RIVN","LCID","RIVN","FSR","NIO","XPEV","LI","PSNY",
     "QS","BLNK","CHPT","EVGO",
     
     # Energy / Clean
-    "ENPH","SEDG","FSLR","RUN","NOVA","ARRY","MAXN",
+    "ENPH","SEDG","FSLR","RUN","NOVA","ARRY",
     "PLUG","BE","BLDP","CLNE","STEM",
     
     # Real Estate / REITs
-    "INVH","SUI","ELS","MPW","OHI","STAG","NNN","STOR",
+    "INVH","SUI","ELS","MPT","OHI","STAG","NNN","STOR",
     
     # Industrial
     "GNRC","TTC","SITE","AZEK","TREX","AAON",
@@ -108,7 +108,7 @@ RUSSELL_1000_ADDITIONS = [
     "HEI","KTOS","MRCY","AVAV",
     # July 2026 mid-cap expansion (batch 1)
     "SNOW", "PTON", "TDOC", "LMND", "HIMS", "DOCS",
-    "BURL", "OATL", "SHAK", "DPZ",
+    "BURL",  "SHAK", "DPZ",
 
     # August 2026 batch 2 expansion
     "PSTG", "APPN", "GLBE", "FLYW", "ULTA", "BJ",
@@ -116,7 +116,7 @@ RUSSELL_1000_ADDITIONS = [
     "UHS", "THC", "PEN", "ILMN", "XYL", "BMBL",
     "IAC", "AEE", "ATO", "CMS", "JBLU", "SAVE",
     "SAIA", "LSTR", "AMH", "IFF", "ALB", "CF",
-    "VMC", "WRB", "L", "MMC", "ENTG", "LDOS",
+    "VMC", "WRB", "L",  "ENTG", "LDOS",
     "BWXT", "CW",
 
 ]

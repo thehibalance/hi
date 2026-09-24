@@ -21,8 +21,10 @@ What this script does:
   2. Fetches SEC's company_tickers.json (public endpoint, no auth) for
      ticker→company_name lookup
   3. Writes new pipeline/sp500_companies.py with (ticker, name) tuples
-  4. Falls back to ticker-as-name for the rare ticker SEC doesn't recognize
-     (only used for display/logging in pipelines; CIK lookup uses ticker)
+  4. Keeps a ticker SEC doesn't recognise OUT of SP500 and lists it under
+     UNRESOLVED instead. It used to fall back to ticker-as-name, which put 41
+     unidentifiable symbols in the universe to be collected against nightly,
+     resolving to nothing and saying nothing.
 
 Safety guards:
   - Aborts if SEC fetch fails (no overwrite with empty data)
