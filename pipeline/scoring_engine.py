@@ -1977,7 +1977,16 @@ def main():
     for idx in [sec_idx, epa_idx, cdp_idx, job_idx, gd_idx]:
         for key in idx:
             if not key.startswith("ticker:"):
-                all_companies.add(canon_name(key) or normalize_name(key))
+                # normalize_name() strips " group" and then " international" in the same
+                # pass, so "AMERICAN INTERNATIONAL GROUP, INC." left a key of just
+                # "american" — and the engine scored the leftover as its own company
+                # (composite 39, 2 of 19 signals, no ticker, industry "default"). The
+                # record it came from is always in the universe under its full name too,
+                # so dropping the generic remnant loses nothing. v1.8.1 refused to match
+                # on a bare generic word; v1.8.2 refuses to create one.
+                _k = canon_name(key) or normalize_name(key)
+                if _k and _k not in _CANON_TOO_GENERIC:
+                    all_companies.add(_k)
 
     print(f"\n  Total unique companies: {len(all_companies)}")
     print("=" * 60)

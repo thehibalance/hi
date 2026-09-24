@@ -265,4 +265,4 @@ We respond to ladder-grounding issues within 5 business days.
 
 ---
 
-*Last updated: September 2026. Spec v1.8.0 (one spelling per company; fossil rows expire; 21 sources). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
+*Last updated: September 2026. Spec v1.8.0 (one spelling per company; fossil rows expire; 21 sources; METHODOLOGY.md corrected to the engine and the coverage figure put under CI). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
