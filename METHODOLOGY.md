@@ -1,16 +1,20 @@
 # HI Grade™ Methodology
 
-> **Note (September 2026):** this file describes the v1.1/v1.2 engine and is being rewritten. It is
-> five spec versions behind. Since it was written we recalibrated industry baselines (v1.3),
-> introduced evidence gates (v1.4), rebuilt CFPB matching and withdrew FDA (v1.5), and stopped
-> counting industry constants as evidence — which moved published median coverage from 7 of 19
-> sub-signals to a truthful 5 of 19 (v1.6).
-> The current methodology lives at
-> [thehibalance.org/#methodology](https://thehibalance.org/#methodology), and every sub-signal's status is in
-> [`RUBRIC.md`](RUBRIC.md). Where this file and those disagree, they are right and this one is out of date.
+> **Note (September 2026):** this file has been corrected to the current engine, spec v1.8.0. What
+> changed since it was first written: industry baselines were recalibrated (v1.3); evidence gates
+> were added so a lookup that finds nothing can no longer be recorded as a favourable fact (v1.4);
+> CFPB matching was rebuilt against the regulator's own registered entity names and FDA was
+> withdrawn entirely (v1.5); industry constants stopped counting as evidence about a company, which
+> moved published median coverage from 7 of 19 sub-signals to 5 and then to **4 of 19** (v1.6, v1.7);
+> and each company is now scored once, under one name, with retired scores expiring instead of being
+> republished (v1.8).
+> Every sub-signal's grounding status is in [`RUBRIC.md`](RUBRIC.md) — **0 GROUNDED, 11 PARTIAL,
+> 8 UNGROUNDED** — and the live figures are at
+> [api.thehibalance.org/api/v1/stats](https://api.thehibalance.org/api/v1/stats). Where this file and
+> those disagree, they are right and this one is a bug.
 ## The math behind being human kind.
 
-**Document version 1.1.0 · April 2026 · describes the v1.1/v1.2 engine, not the current one · Apache 2.0 · [thehibalance.org](https://thehibalance.org)**
+**Document version 1.8.0 · September 2026 · Apache 2.0 · [thehibalance.org](https://thehibalance.org)**
 
 ---
 
@@ -115,28 +119,30 @@ A company can score well on all five while being deeply AI-enabled. That's the p
 
 ## 3. The 19 sub-signals
 
-Each HUMAN dimension is computed from 2-5 sub-signals. The current v1.1.0 engine scores **19 sub-signals**. Five additional sub-signals (H.4, N.1, N.3, N.4, U.5) are defined in the spec but not yet scored — they're in active development for v1.2+.
+Each HUMAN dimension is computed from 2-5 sub-signals. The current engine (spec v1.8.0) scores **19 sub-signals**. Five more (H.4, N.1, N.3, N.4, U.5) are defined in the spec and contribute nothing yet.
+
+For the median company, only **4 of those 19** have direct evidence about that company. The rest are neutral 50s or industry priors, which pulls scores toward the middle. Priors still inform a score, but they are not counted as coverage or confidence, and the company's `data_sources` says `Industry` when one is used.
 
 ### H — Human Consciousness (4 sub-signals)
 
-- **H.1 Workforce Valuation** — Revenue-per-employee vs. BLS industry median. Humanwashing flag triggers above 4× median.
-- **H.2 Craft** — BLS wage data vs. national average, weighted by industry and certification presence.
+- **H.1 Workforce Valuation** — Revenue-per-employee vs. the *measured* median for the company's industry, computed from the scored universe (v1.3.0 recalibration; not BLS). Humanwashing flag triggers above 4× median.
+- **H.2 Craft** — an in-house industry craft baseline, weighted by certification presence. A BLS wage-vs-national adjustment is defined in the engine but **not connected** — nothing publishes the field it reads, and the invented benchmark file that stood in for it was deleted in v1.7.0. Grounding H.2 against BLS is the active research priority.
 - **H.3 Human Decision Depth** — SEC headcount disclosures, R&D per employee ratios, CEO pay ratio analysis.
 - **H.5 Human Augmentation Index** — AI displacement signals from SEC filings, news monitoring, and headcount changes. *The AI-balance signal.*
 
 ### U — Understanding & Empathy (4 sub-signals)
 
-- **U.1 Customer Empathy** — CFPB consumer complaint volume per revenue, complaint resolution rates, BBB ratings where available.
+- **U.1 Customer Empathy** — CFPB consumer complaints per 10,000 employees on a log scale, matched to the regulator's own registered entity names, with a 100-complaint evidence floor below which no score is given either way (v1.5.0). BBB ratings where available.
 - **U.2 Worker Empathy** — Glassdoor employee ratings, OSHA violation severity, DOL wage/hour enforcement, BLS industry wage benchmarks.
 - **U.3 Relational Integrity** — HRC Corporate Equality Index, Disability:IN DEI Index, EEOC discrimination charges, B Corp certification for stakeholder treatment.
-- **U.4 Simulated Empathy Detection** — Glassdoor culture scores weighted against industry baseline for signal of AI-scripted vs. human-generated interactions.
+- **U.4 Simulated Empathy Detection** — a 15-entry industry automation table blended 40/30/30 with Glassdoor culture and overall ratings **where a Glassdoor record exists**, which is about 37 of ~1,140 companies. For everyone else it is the industry constant alone, which is why v1.7.0 stopped counting it as evidence.
 
 ### M — Morals & Ethics (5 sub-signals)
 
 - **M.1 Pricing Ethics** — CFPB pricing-related complaints normalized to revenue.
 - **M.2 Data Ethics** — Have I Been Pwned breach history, records exposed, breach frequency.
 - **M.3 Market Ethics** — SEC litigation disclosure, EPA penalty totals, Fair Trade certification, USDA Organic certification (federal third-party supply chain verification).
-- **M.4 Product Ethics** — CPSC recall counts, FDA warning letters, NHTSA investigations, Glassdoor management scores.
+- **M.4 Product Ethics** — Glassdoor management scores, and EPA/enforcement signals. **FDA was withdrawn in v1.5.1**: an audit found the collector recording failed lookups as clean records, so 1,399 of 1,422 rows were artifacts. CPSC and NHTSA are integrated but not yet producing data.
 - **M.5 Stakeholder Governance** — B Corp certification (stakeholder-centric legal structure), 1% for the Planet membership (revenue-bound environmental pledge), FEC political donation concentration, IRS 990 corporate foundation giving.
 
 ### A — Alive & Environmental (4 sub-signals)
@@ -155,7 +161,7 @@ For the full scoring ladder per sub-signal — exact thresholds, data sources, a
 
 ---
 
-## 4. Gold HI Grade — the v1.1.0 gate
+## 4. Gold HI Grade — the three gates
 
 A Gold HI Grade is the highest recognition HI Grade awards. It signals that a company has achieved balanced, documented, and currently-maintained performance across all five HUMAN dimensions.
 
@@ -173,7 +179,7 @@ No single weak dimension is allowed. A company with H=72, U=71, M=68, A=70, N=59
 
 A company cannot earn Gold on industry defaults alone. If H.1 for a company defaults to the industry median because we have no SEC data, no job-board data, and no HRC data, that dimension fails the evidence gate — even if the default happens to be 75.
 
-Acceptable sources include SEC, EPA, BLS, CDP, Glassdoor, HRC, Disability:IN, B Corp, Fair Trade, USDA Organic, Climate Neutral, 1% for the Planet, and the other 30+ sources in the pipeline. Manual seed estimates do not count. Industry defaults do not count.
+Acceptable sources include SEC, EPA, CDP, Glassdoor, HRC, Disability:IN, B Corp, Fair Trade, USDA Organic, Climate Neutral, 1% for the Planet and the other contributing sources in the pipeline. Manual seed estimates do not count. Industry priors do not count. As of this writing, **3 of ~1,140 companies earn Gold**, and each of the three clears the evidence gate on real sources in all five dimensions, not on priors.
 
 **Gate 3 — Momentum:** The company must not be in **warning or critical decay**.
 
@@ -268,7 +274,7 @@ HI Grade identifies three specific patterns that reveal AI-HI imbalance. Each is
 
 Humanwashing is the practice of selling human craft while operating algorithmically. A company markets itself as handcrafted, personal, or artisanal — but their revenue-per-employee suggests most of the actual output comes from automation.
 
-**How we detect it:** Revenue-per-employee (RPE) compared to the BLS industry median for the company's SIC code. A company at 1-2× its industry median is normal. A company at 4× or more triggers the humanwashing flag.
+**How we detect it:** Revenue-per-employee (RPE) compared to the measured median for the company's SIC code, computed from the scored universe. A company at 1-2× its industry median is normal. A company at 4× or more triggers the humanwashing flag. The first version of this compared against baselines that were wrong for several industries and produced 37 false accusations; they were cleared in v1.3.0 and the recalibration is in the commit history.
 
 **Why it matters:** If a coffee brand sells its product with stories of farmers and small roasters, but their RPE is 8× the industry median, something doesn't add up. Either the "handcrafted" story is aspirational marketing covering extensive automation, or the company is extracting value at a rate that the "small, human" narrative disguises.
 
@@ -288,7 +294,7 @@ AHI measures the *scale* at which a company's algorithmic decisions affect human
 
 PHI measures physical or digital safety failures of a company's products. Recalls, warning letters, breach disclosures, safety violations.
 
-**How we detect it:** CPSC recalls (physical products), FDA warning letters (regulated products), NHTSA investigations (vehicles), HIBP breach records (digital products), EPA violations (environmental products).
+**How we detect it:** HIBP breach records matched by exact domain (digital products) and EPA violations (environmental products). FDA warning letters were withdrawn in v1.5.1 after an audit found failed lookups being recorded as clean records; CPSC and NHTSA are integrated but not yet producing data. Rebuilding FDA on the v1.5.0 matching pattern is queued.
 
 **Why it matters:** Product quality is a proxy for how seriously a company takes its obligation to the humans using its products.
 
@@ -305,11 +311,14 @@ A company can be clean on all three. Many are. A company can be compromised on j
 
 ---
 
-## 7. The 42 data sources
+## 7. The data sources — 42 integrated, 21 contributing
 
-Every HI Grade is computed from 42 public data sources across five categories:
+42 public data sources are integrated. **21 of them currently contribute to a published score**; the
+rest are wired up but not yet producing data for any company, and we count them separately rather
+than implying every source feeds every grade. The contributing count is served live at
+[/api/v1/stats](https://api.thehibalance.org/api/v1/stats) and checked against the scores in CI.
 
-- **13 government & federal agencies** (SEC, EPA, BLS, CFPB, FEC, FDA, FTC, CPSC, OSHA, DOL, EEOC, NHTSA, USPTO) — refreshed nightly
+- **13 government & federal agencies** (SEC, EPA, CFPB, FEC, FTC, EEOC — contributing; BLS, FDA, CPSC, OSHA, DOL, NHTSA, USPTO — integrated, not yet producing) — collected nightly
 - **7 financial & corporate sources** (Yahoo Finance, Finnhub, FMP, FRED, OpenCorporates, NewsAPI, CEO monitoring) — live API
 - **17 public datasets** (Glassdoor, HRC CEI, Disability:IN DEI, CDP Climate/Water/Forests, GRI, SBTi, IRS 990, WARN Act, iFixit, BBB, HIBP, Alpha Vantage, layoff tracking, industry deforestation risk, industry RPE medians) — quarterly refresh
 - **5 certification partners** (B Corp, Fair Trade USA/International, USDA Organic, Climate Neutral, 1% for the Planet) — quarterly manual review
@@ -327,7 +336,7 @@ This section exists because credibility requires honesty about limitations.
 
 ### Coverage
 
-HI Grade currently scores **817 companies**. The coverage is skewed toward:
+HI Grade currently scores about **1,140 companies** (the live count is at [/api/v1/stats](https://api.thehibalance.org/api/v1/stats)). The coverage is skewed toward:
 
 - Public US companies with SEC filings (high coverage)
 - Major consumer brands (high coverage)
@@ -350,9 +359,9 @@ This means a score reflects the current best-available data, but some slow-movin
 ### What we don't score
 
 We do not currently score:
-- Board composition (planned for v1.2)
-- Supply chain depth beyond certified partners (planned for v1.2)
-- Real-time AI usage disclosure (planned for v1.2)
+- Board composition (defined, not yet scored)
+- Supply chain depth beyond certified partners (defined, not yet scored)
+- Real-time AI usage disclosure (defined, not yet scored)
 - Geopolitical exposure (not planned)
 - Short-term stock performance (intentionally excluded — HI Grade is not a financial signal)
 
@@ -410,9 +419,9 @@ Found a bug in a score or methodology: [github.com/thehibalance/hi/issues](https
 
 ## Version and license
 
-**HI Grade Methodology v1.1.0**
+**HI Grade Methodology v1.8.0**
 
-Published: April 2026
+Published: April 2026 · corrected to the current engine September 2026
 License: Apache 2.0
 Source: [github.com/thehibalance/hi](https://github.com/thehibalance/hi)
 

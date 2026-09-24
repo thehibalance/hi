@@ -32,6 +32,7 @@ import os
 import re
 from collections import Counter
 
+DIMENSIONS = set("HUMAN")  # a key named for a dimension is a payload shape, not a sub-signal
 WITHHELD_SS = {"cfpb"}   # never folded in, and removed from the aggregate
 HELD_EXT = {"fda"}       # never folded in, and removed from the aggregate
 CACHE = re.compile(r"^[a-z]+\d*_")  # per-source caches like cfpb_AAPL.json, hibp2_AAPL.json
@@ -111,6 +112,11 @@ def main():
                 continue
             cur = ext.setdefault(t.upper(), {})
             for k, v in e.items():
+                # A {"U": {"scores": ...}} payload leaked in once and was folded as if "U"
+                # were a sub-signal. It is clean today; this keeps it clean.
+                if k in DIMENSIONS or len(k) < 2:
+                    n["skipped:schema-key"] += 1
+                    continue
                 if k in HELD_EXT or blank(v) or all_blank(v):
                     continue
                 cur[k] = v

@@ -1,5 +1,5 @@
 /**
- * HI. Grade Filter Engine — v1.2.0
+ * HI. Grade Filter Engine — v1.8.0
  * 
  * Pure deterministic logic for:
  *   - Computing composite HUMAN scores (HI Grades)
@@ -7,7 +7,11 @@
  *   - Filtering companies against user's personal thresholds
  *   - Detecting humanwashing flags (rule-based)
  * 
- * SPECIFICATION REFERENCE: HUMAN Methodology Spec v1.2.0
+ * SPECIFICATION REFERENCE: HUMAN Methodology Spec v1.8.0
+ *   Gate logic is unchanged since v1.1.0 and was re-verified against
+ *   pipeline/scoring_engine.py check_hi_certified() in September 2026. This file is a
+ *   second implementation of those gates and is now covered by
+ *   pipeline/check_continuity.py so the version claim cannot drift again.
  * Governed by: Morf Innovations LLC
  * Brand: HI. — Human kind?
  * 

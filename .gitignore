@@ -104,7 +104,10 @@ v12_*.py
 swap_*.py
 update_*.py
 collect_*.py.bak
-check_*.py
+# narrowed in v1.8.2: the blanket rule hid check_continuity.py from CI
+# until it was force-added. Ignore scratch checkers by name instead.
+check_tmp*.py
+check_scratch*.py
 
 # ─── PIPELINE OUTPUTS (mostly-tracked — adjust as needed) ─────
 # Large volatile data files
