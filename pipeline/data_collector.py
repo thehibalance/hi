@@ -467,23 +467,18 @@ def fetch_epa(company_name, ticker):
 # SOURCE 3: BLS (free, no key for public data)
 # ═══════════════════════════════════════════════════════════════════════
 
-def fetch_bls_benchmarks():
-    """Fetch BLS industry benchmarks (run once, not per-company)."""
-    benchmarks = {}
-    # Use pre-compiled industry data
-    # BLS API is series-based, not company-based
-    # We use industry averages for normalization
-    benchmarks = {
-        "Technology": {"avg_wage": 120000, "employment_growth": 3.2},
-        "Retail": {"avg_wage": 35000, "employment_growth": -1.1},
-        "Healthcare": {"avg_wage": 75000, "employment_growth": 5.8},
-        "Financial Services": {"avg_wage": 95000, "employment_growth": 1.5},
-        "Manufacturing": {"avg_wage": 55000, "employment_growth": -0.8},
-        "Energy": {"avg_wage": 85000, "employment_growth": -2.1},
-        "Consumer Goods": {"avg_wage": 45000, "employment_growth": 0.3},
-        "Telecommunications": {"avg_wage": 80000, "employment_growth": -1.5},
-    }
-    return benchmarks
+# fetch_bls_benchmarks() was removed in v1.7.0. It made no API call -- it returned eight
+# hand-typed figures (Technology 120000, Retail 35000, ...) and wrote them to
+# data/bls/industry_benchmarks.json, where the directory name and the log line "BLS: 8 industry
+# benchmarks saved" made them read as Bureau of Labor Statistics data. Nothing downstream could
+# use them anyway: scoring_engine reads bls_data["industries"][slug]["wage_vs_national"], and that
+# file had no "industries" key, used title-case names instead of the engine's lowercase slugs, and
+# carried avg_wage / employment_growth rather than wage_vs_national.
+#
+# bls_pipeline.py is the real fetcher and already writes the {"industries": {...}} shape. Grounding
+# H.2 needs three things: wire bls_pipeline.py into run_all.py, have it emit wage_vs_national
+# (industry average hourly earnings over the national average), and key it by the same slugs
+# get_industry() returns.
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -1020,11 +1015,10 @@ def collect_all(companies, keys, core=True, subsignals=True, extended=True, work
             d = save_dir("glassdoor")
             _merge_save(glassdoor_results, d, "Glassdoor (via Finnhub)")
         
-        # BLS benchmarks (run once)
-        bls_dir = save_dir("bls")
-        bls = fetch_bls_benchmarks()
-        json.dump(bls, open(bls_dir / "industry_benchmarks.json", "w"), indent=2)
-        print(f"  BLS: {len(bls)} industry benchmarks saved")
+        # BLS: removed in v1.7.0. fetch_bls_benchmarks() returned eight hand-typed numbers and
+        # wrote them to data/bls/industry_benchmarks.json, which reads as agency data to anyone
+        # browsing the repo. bls_pipeline.py is the real fetcher; see its docstring for what
+        # wiring it in would take.
     
     if skipped:
         print(f"\n  ⏭ Skipped {skipped} companies (data fresh within {incremental_hours}h)")

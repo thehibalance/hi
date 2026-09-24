@@ -7,7 +7,7 @@
 **Score every company. Five dimensions AI can't replace.**
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Spec](https://img.shields.io/badge/spec-v1.6.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
+[![Spec](https://img.shields.io/badge/spec-v1.7.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
 [![API](https://img.shields.io/badge/API-live-16A34A.svg)](https://api.thehibalance.org)
 [![Chrome](https://img.shields.io/badge/Chrome-Extension-C49B20.svg)](https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg)
 [![iOS](https://img.shields.io/badge/iOS-App%20Store-000.svg)](https://apps.apple.com/app/hi/id6761270596)
@@ -195,7 +195,7 @@ We publish what we haven't solved yet — because a transparency framework that 
 **Current state (v1.5.1):**
 
 - **No sub-signal is fully grounded yet.** 12 are PARTIAL (authoritative data, tier cutoffs we chose) and 7 are UNGROUNDED. Grounding them is the research priority.
-- **Most scores rest on partial data.** The median company has real data behind **5 of 19**
+- **Most scores rest on partial data.** The median company has real data behind **4 of 19**
   sub-signals (mean 5.5); the rest are neutral 50s or industry priors, which pulls scores toward
   the middle. That figure used to read 7 of 19. It was wrong: we were counting our own industry
   lookup tables as evidence about the company. v1.6.0 stopped. No score changed — only the honesty

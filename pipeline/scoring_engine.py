@@ -1022,6 +1022,7 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=N
                    "manufacturing": 50, "media": 45, "apparel": 65, "auto": 50,
                    "energy": 50, "defense": 55, "default": 50}
     u4 = u4_industry.get(industry, 50)
+    INDUSTRY_DERIVED.add("U.4")
     
     # Glassdoor culture + overall as empathy proxy — high scores = genuine human care
     if gd.get("culture_score") is not None and gd.get("overall_score") is not None:
@@ -1029,8 +1030,10 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=N
         overall = gd["overall_score"]
         # Blend industry baseline with actual employee sentiment
         u4 = round(u4 * 0.4 + culture * 0.3 + overall * 0.3, 1)
+        INDUSTRY_DERIVED.discard("U.4")
     elif gd.get("overall_score") is not None:
         u4 = round(u4 * 0.5 + gd["overall_score"] * 0.5, 1)
+        INDUSTRY_DERIVED.discard("U.4")
     
     scores["U.4"] = round(clamp(u4), 1)
 
@@ -1811,7 +1814,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.6.0",
+        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.7.0",
         "data_sources": all_sources,
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
         "humanwashing_flags": hw_flags,
@@ -1876,7 +1879,10 @@ def main():
 
     print(f"  SEC EDGAR:  {len(sec_records)} companies")
     print(f"  EPA ECHO:   {len(epa_records)} companies")
-    print(f"  BLS:        {'loaded' if bls_data else 'not found'}")
+    # H.2 reads bls_data["industries"][industry]["wage_vs_national"]. Nothing writes that field,
+    # so say what is true rather than "loaded".
+    _bls_ok = bool((bls_data or {}).get("industries"))
+    print(f"  BLS:        {'connected' if _bls_ok else 'not connected (H.2 craft adjustment inert)'}")
     print(f"  CDP:        {len(cdp_records)} companies")
     print(f"  Job Boards: {len(job_records)} companies")
     print(f"  Glassdoor:  {len(gd_records)} companies")

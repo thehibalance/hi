@@ -227,7 +227,7 @@ struct AboutView: View {
                             .font(.system(size: 11)).foregroundColor(.secondary)
                         Text("Morf Innovations LLC")
                             .font(.system(size: 11)).foregroundColor(.secondary)
-                        Text("Gold HI Grade requires all 5 HUMAN dimensions ≥ 60, each verified by public data, and no critical decay (90-day Heartbeat). Spec v1.6.0. Scores are estimated from public data. Not financial or legal advice.")
+                        Text("Gold HI Grade requires all 5 HUMAN dimensions ≥ 60, each verified by public data, and no critical decay (90-day Heartbeat). Spec v1.7.0. Scores are estimated from public data. Not financial or legal advice.")
                             .font(.system(size: 9))
                             .foregroundColor(.secondary.opacity(0.7))
                             .multilineTextAlignment(.center)
