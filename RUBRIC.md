@@ -26,15 +26,17 @@ are listed here so nobody mistakes them for an agency pull:
 | EEOC actions | 13 | `EEOC_DATA` |
 | Insider-sale flags | 4 | `INSIDER_FLAGS` |
 
-Spec version: **v1.6.0** · Active sub-signals: **19** · Not yet scored: **5**
+Spec version: **v1.7.0** · Active sub-signals: **19** · Not yet scored: **5**
 
 **Industry constants are not evidence (v1.6.0).** Where a sub-signal's value comes from an
 industry lookup table rather than from anything about the company, it no longer counts toward that
 company's coverage or confidence. It still contributes to the score as a prior, and the company's
 `data_sources` says `Industry`. This applies the rule `aggregate_collected.py` has enforced since
 v1.4.0 to the engine's own internal defaults: H.2 craft baselines, and the A.1 and A.4 fallbacks.
-The effect was 1.78 sub-signals per company, which moved published median coverage from 7/19 to a
-truthful **5/19**. No score changed.
+The effect was 1.78 sub-signals per company, which moved published median coverage from 7/19 to
+5/19. **v1.7.0 found one more:** U.4 reads like a Glassdoor blend, but only about 37 of 1,141
+companies have a Glassdoor record, so for the other 692 affected companies it was the industry
+table alone. Median coverage is now a truthful **4/19**. No score changed in either release.
 
 Every entry below was checked against `pipeline/scoring_engine.py` in September 2026. Where this file and the code disagree, the code is right and this file is a bug.
 
@@ -45,12 +47,12 @@ Every entry below was checked against `pipeline/scoring_engine.py` in September 
 | Status | Count | Meaning |
 |---|---|---|
 | GROUNDED | 0 | Data + ladder both authoritative |
-| PARTIAL | 12 | Authoritative data, editorial ladder |
-| UNGROUNDED | 7 | Editorial data + editorial ladder, or mostly industry defaults |
+| PARTIAL | 11 | Authoritative data, editorial ladder |
+| UNGROUNDED | 8 | Editorial data + editorial ladder, or mostly industry defaults |
 | **TOTAL ACTIVE** | **19** | |
 | NOT YET SCORED | 5 | Defined in the spec, contributes nothing |
 
-The dominant pattern is **PARTIAL**: authoritative data read through cutoffs we chose ourselves. Seven sub-signals are UNGROUNDED, and none is fully GROUNDED yet. We don't hide this — most ladders were authored by judgment during the engine build, not by reproducing a published authority. **Grounding them is the active research priority.**
+The dominant pattern is **PARTIAL**: authoritative data read through cutoffs we chose ourselves. Eight sub-signals are UNGROUNDED, and none is fully GROUNDED yet. We don't hide this — most ladders were authored by judgment during the engine build, not by reproducing a published authority. **Grounding them is the active research priority.**
 
 **Status changes in September 2026** (from checking this file against the engine): H.1 UNGROUNDED → PARTIAL (industry medians now measured), H.2 PARTIAL → UNGROUNDED (its BLS adjustment isn't firing), U.3 UNGROUNDED → PARTIAL (now built on HRC and Disability:IN, not just Glassdoor), N.2 UNGROUNDED → PARTIAL (CDP is an authoritative input), N.5 GROUNDED → PARTIAL (its tier cutoffs were set by us, not by the SEC). **v1.5.0:** U.1 and M.1 UNGROUNDED → PARTIAL, after CFPB matching was rebuilt against the regulator's own registered-entity names and verified company by company. **v1.5.1:** M.4 PARTIAL → UNGROUNDED, after an audit found the FDA collector was scoring failed lookups as clean records.
 
@@ -133,10 +135,10 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 **Path forward:** reproduce HRC's and Disability:IN's own score-to-tier mappings; ground the blend.
 
 ### U.4 — Simulated Empathy Detection
-**Status:** PARTIAL  
-**Inputs:** Algorithmic Harm Index (AHI™) computation from incident database (ACLU, AlgorithmWatch, Brookings, FTC settlements)  
-**Ladder:** Editorial. AHI 0-25 = no impact, 25-50 = moderate, 50+ = severe. Blast-radius weighting (millions vs thousands affected) is editorial.  
-**Path forward:** AlgorithmWatch publishes harm tier classifications that could replace internal cutoffs.
+**Status:** UNGROUNDED *(was listed as PARTIAL; corrected in v1.7.0 — this entry described the AHI, which is a downstream penalty, not U.4's input)*  
+**Inputs:** a 15-entry industry automation table (in-house), blended 40/30/30 with Glassdoor culture and overall ratings **where a Glassdoor record exists — it does for about 37 of 1,141 companies**. For everyone else U.4 is the industry constant alone.  
+**Ladder:** Editorial in both halves: the industry values (hospitality 72, food 70, healthcare 65 … telecom 32, insurance 30) and the 40/30/30 blend were chosen by us.  
+**Path forward:** the AHI incident database (ACLU, AlgorithmWatch, Brookings, FTC settlements) is the intended input and is computed today as a separate penalty — wiring it into U.4 proper is the fix. AlgorithmWatch publishes harm tier classifications that could replace the internal cutoffs.
 
 ---
 
@@ -252,4 +254,4 @@ We respond to ladder-grounding issues within 5 business days.
 
 ---
 
-*Last updated: September 2026. Spec v1.6.0 (industry constants no longer count as evidence; median coverage 5/19). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
+*Last updated: September 2026. Spec v1.7.0 (U.4 counted as an industry constant; median coverage 4/19; invented BLS benchmarks removed). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
