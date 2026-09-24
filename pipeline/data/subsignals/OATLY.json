@@ -1,11 +1,17 @@
 {
-  "hardware": {
-    "A.4": 75,
-    "source": "Industry"
-  },
-  "land": {
-    "A.3": 30,
-    "source": "Industry+EPA"
+  "cfpb": {
+    "U.1": 70.0,
+    "M.1": 80,
+    "raw": {
+      "company": "OATLY",
+      "ticker": "OATLY",
+      "total_complaints_3yr": 0,
+      "products": {},
+      "timely_responses": 0,
+      "timely_rate": 0.0,
+      "fetched": "2026-09-24T11:06:46.838605",
+      "source": "CFPB"
+    }
   },
   "hibp": {
     "M.2": 90,
@@ -13,6 +19,7 @@
       "company": "OATLY",
       "ticker": "OATLY",
       "domain": "oatly.com",
+      "match": "domain",
       "breach_count": 0,
       "breaches": [
         {
@@ -131,22 +138,16 @@
       ],
       "total_records_exposed": 0,
       "sensitive_data_exposed": false,
-      "fetched": "2026-09-21T17:13:30.934829",
+      "fetched": "2026-09-24T11:06:47.568477",
       "source": "HIBP"
     }
   },
-  "cfpb": {
-    "U.1": 70.0,
-    "M.1": 80,
-    "raw": {
-      "company": "OATLY",
-      "ticker": "OATLY",
-      "total_complaints_3yr": 0,
-      "products": {},
-      "timely_responses": 0,
-      "timely_rate": 0.0,
-      "fetched": "2026-05-06T14:20:57.589149",
-      "source": "CFPB"
-    }
+  "hardware": {
+    "A.4": 55,
+    "source": "Industry"
+  },
+  "land": {
+    "A.3": 50,
+    "source": "Industry+EPA"
   }
 }
