@@ -177,3 +177,7 @@ patcher_*.py
 
 # never commit API keys (Sept 2026)
 *_key*.txt
+
+# post_process_balanced_board.py writes this before its atomic swap.
+# Local safety net, not repo content — the glob *.bak never matched it.
+*.bb_bak
