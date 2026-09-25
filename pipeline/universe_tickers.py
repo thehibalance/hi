@@ -32,6 +32,8 @@ SP500 = [
     "KDP","AXON","YUM","MTD","IDXX","FANG","ON","ROK","CHTR","BDX",
     "AME","TTWO","EA","RMD","HSY","KEYS","IQV","XEL","ZTS","EXC",
     "SYY","LYV","MRVL","KHC","DXCM","ED","WEC","WTW","GPN","ANSS",
+    "SYF",
+    "TGT",
     "IR","HUBB","DOW","TRGP","VST","WAB","CBRE","STZ","HPQ","HPE",
     "DOV","TSCO","MTB","MPWR","ZBRA","FTV","AWK","EFX","VICI","CHD",
     "BR","GLT","WY","TDY","ACGL","IT","PTC","CNC","HBAN","EBAY",
