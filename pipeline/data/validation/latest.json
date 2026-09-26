@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-09-25T13:04:28.258253",
-  "total_issues": 163,
+  "timestamp": "2026-09-26T11:38:16.960940",
+  "total_issues": 162,
   "critical": 0,
-  "warnings": 160,
+  "warnings": 159,
   "info": 3,
   "blocked": false,
   "stats": {
-    "total_companies": 1138,
+    "total_companies": 1139,
     "avg_composite": 56.2,
     "stdev": 6.1,
     "min_score": 13,
     "max_score": 85,
     "pct_90_100": 0.0,
-    "pct_40_70": 96.0,
+    "pct_40_70": 95.9,
     "pct_0_20": 0.4,
     "gold_count": 3,
     "gold_pct": 0.3,
@@ -167,15 +167,6 @@
     {
       "layer": 1,
       "severity": "warning",
-      "company": "Block, Inc.",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~53)",
-      "value": 50,
-      "expected": 53
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
       "company": "CARDINAL HEALTH INC",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~54)",
@@ -266,15 +257,6 @@
     {
       "layer": 1,
       "severity": "warning",
-      "company": "DOW INC.",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~55)",
-      "value": 50,
-      "expected": 55
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
       "company": "Dr. Bronner's",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~66)",
@@ -285,6 +267,15 @@
       "layer": 1,
       "severity": "warning",
       "company": "DTE ENERGY CO",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~54)",
+      "value": 50,
+      "expected": 54
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Duke Energy CORP",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~54)",
       "value": 50,
@@ -383,15 +374,6 @@
     {
       "layer": 1,
       "severity": "warning",
-      "company": "Hims & Hers Health, Inc.",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~56)",
-      "value": 50,
-      "expected": 56
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
       "company": "HP INC",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~55)",
@@ -442,6 +424,15 @@
       "message": "Composite 50 doesn't match dimensions (expected ~54)",
       "value": 50,
       "expected": 54
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Macy's, Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~53)",
+      "value": 50,
+      "expected": 53
     },
     {
       "layer": 1,
@@ -527,6 +518,15 @@
     {
       "layer": 1,
       "severity": "warning",
+      "company": "PBF Energy Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~53)",
+      "value": 50,
+      "expected": 53
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
       "company": "PUBLIC SERVICE ENTERPRISE GROUP INC",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~58)",
@@ -541,15 +541,6 @@
       "message": "Composite 50 doesn't match dimensions (expected ~55)",
       "value": 50,
       "expected": 55
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
-      "company": "RENAISSANCERE HOLDINGS LTD",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~53)",
-      "value": 50,
-      "expected": 53
     },
     {
       "layer": 1,
@@ -1006,7 +997,7 @@
       "severity": "warning",
       "company": "citibank",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 80, 'U.2': 90}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 78, 'U.2': 88}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -1105,7 +1096,7 @@
       "severity": "warning",
       "company": "synchrony",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.2': 75}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.2': 74}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -1177,7 +1168,7 @@
       "severity": "warning",
       "company": "paypal",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.2': 71}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.2': 73}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -1231,7 +1222,7 @@
       "severity": "warning",
       "company": "meta",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 94, 'U.2': 100}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 95, 'U.2': 100}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -1339,7 +1330,7 @@
       "severity": "warning",
       "company": "american_express",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 71, 'U.2': 81}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.2': 80}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -1366,7 +1357,7 @@
       "severity": "warning",
       "company": "wells_fargo",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 78, 'U.2': 88}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 75, 'U.2': 85}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -1411,7 +1402,7 @@
       "severity": "warning",
       "company": "goldman_sachs",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 79, 'U.2': 89}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 78, 'U.2': 88}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
@@ -1447,7 +1438,7 @@
       "severity": "warning",
       "company": "bank_of_america",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.2': 77}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.2': 78}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
