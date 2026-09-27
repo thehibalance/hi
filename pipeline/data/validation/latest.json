@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-09-26T11:38:16.960940",
-  "total_issues": 162,
+  "timestamp": "2026-09-27T12:08:46.388452",
+  "total_issues": 164,
   "critical": 0,
-  "warnings": 159,
+  "warnings": 161,
   "info": 3,
   "blocked": false,
   "stats": {
     "total_companies": 1139,
-    "avg_composite": 56.2,
+    "avg_composite": 56.1,
     "stdev": 6.1,
     "min_score": 13,
     "max_score": 85,
     "pct_90_100": 0.0,
-    "pct_40_70": 95.9,
+    "pct_40_70": 96.0,
     "pct_0_20": 0.4,
     "gold_count": 3,
     "gold_pct": 0.3,
@@ -257,6 +257,15 @@
     {
       "layer": 1,
       "severity": "warning",
+      "company": "DOW INC.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~55)",
+      "value": 50,
+      "expected": 55
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
       "company": "Dr. Bronner's",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~66)",
@@ -267,15 +276,6 @@
       "layer": 1,
       "severity": "warning",
       "company": "DTE ENERGY CO",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~54)",
-      "value": 50,
-      "expected": 54
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
-      "company": "Duke Energy CORP",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~54)",
       "value": 50,
@@ -347,6 +347,15 @@
     {
       "layer": 1,
       "severity": "warning",
+      "company": "GARTNER INC",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~53)",
+      "value": 50,
+      "expected": 53
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
       "company": "Goldman Sachs Group, Inc.",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~58)",
@@ -370,6 +379,15 @@
       "message": "Composite 50 doesn't match dimensions (expected ~55)",
       "value": 50,
       "expected": 55
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Hims & Hers Health, Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
     },
     {
       "layer": 1,
@@ -446,6 +464,15 @@
     {
       "layer": 1,
       "severity": "warning",
+      "company": "Merck & Co., Inc.",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~53)",
+      "value": 50,
+      "expected": 53
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
       "company": "Microsoft Corporation",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~69)",
@@ -514,15 +541,6 @@
       "message": "Composite 50 doesn't match dimensions (expected ~56)",
       "value": 50,
       "expected": 56
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
-      "company": "PBF Energy Inc.",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~53)",
-      "value": 50,
-      "expected": 53
     },
     {
       "layer": 1,
@@ -997,7 +1015,7 @@
       "severity": "warning",
       "company": "citibank",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 78, 'U.2': 88}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.1': 80, 'U.2': 90}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
