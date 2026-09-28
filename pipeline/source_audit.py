@@ -49,14 +49,13 @@ SOURCE_REGISTRY = [
     {"id": 24, "name": "IRS 990 Charity",      "dir": "subsignals/extended", "file": "all_extended.json", "feeds": "U.5",                   "type": "extended", "key": "charity"},
 
     # Government sources 25-30 (collect_gov_data.py + collect_extra_sources.py)
-    {"id": 25, "name": "OSHA via DOL",         "dir": "gov",          "file": "osha_violations.json",    "feeds": "M.3, A.3",              "type": "gov"},
-    {"id": 26, "name": "CFPB (gov direct)",    "dir": "gov",          "file": "cfpb_complaints.json",    "feeds": "U.1, U.2",              "type": "gov"},
-    {"id": 27, "name": "FEC Spending",         "dir": "gov",          "file": "fec_spending.json",       "feeds": "M.2",                   "type": "gov"},
-    {"id": 28, "name": "CPSC (gov direct)",    "dir": "gov",          "file": "cpsc_recalls.json",       "feeds": "M.3",                   "type": "gov"},
-    {"id": 29, "name": "FDA (gov direct)",     "dir": "gov",          "file": "fda_warnings.json",       "feeds": "M.3",                   "type": "gov"},
-    {"id": 30, "name": "USPTO (gov direct)",   "dir": "gov",          "file": "patent_analysis.json",    "feeds": "H.5",                   "type": "gov"},
-    {"id": 31, "name": "EPA ECHO (gov direct)","dir": "gov",          "file": "epa_echo.json",           "feeds": "A.3",                   "type": "gov"},
-    {"id": 32, "name": "NHTSA Vehicle Safety", "dir": "gov",          "file": "nhtsa_complaints.json",   "feeds": "M.3",                   "type": "gov"},
+    {"id": 25, "name": "OSHA via DOL",         "dir": "gov",          "file": "osha_violations.json",    "feeds": "(collected, not scored)",              "type": "gov"},
+    {"id": 27, "name": "FEC Spending",         "dir": "gov",          "file": "fec_donations.json",       "feeds": "(collected, not scored)",                   "type": "gov"},
+    {"id": 28, "name": "CPSC (gov direct)",    "dir": "gov",          "file": "cpsc_recalls.json",       "feeds": "(collected, not scored)",                   "type": "gov"},
+    {"id": 29, "name": "FDA (gov direct)",     "dir": "gov",          "file": "fda_enforcement.json",       "feeds": "(collected, not scored)",                   "type": "gov"},
+    {"id": 30, "name": "USPTO (gov direct)",   "dir": "gov",          "file": "uspto_patents.json",    "feeds": "(collected, not scored)",                   "type": "gov"},
+    {"id": 31, "name": "EPA ECHO (gov direct)","dir": "gov",          "file": "epa_echo.json",           "feeds": "(collected, not scored)",                   "type": "gov"},
+    {"id": 32, "name": "NHTSA Vehicle Safety", "dir": "gov",          "file": "nhtsa_complaints.json",   "feeds": "(collected, not scored)",                   "type": "gov"},
 
     # Standalone enrichment pipelines 33-42
     {"id": 33, "name": "FMP Financial",        "dir": "fmp",          "file": "all_companies.json",      "feeds": "H.1, H.4, H.5, M",     "type": "standalone"},

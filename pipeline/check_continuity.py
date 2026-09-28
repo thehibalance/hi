@@ -134,6 +134,57 @@ def check_source_count():
               f"curl https://api.thehibalance.org/api/v1/stats | jq .data_sources")
 
 
+def registry_total():
+    """How many sources source_audit.py actually registers. The docs quoted 42 in seven
+    places and nothing checked any of them, so removing one retired collector would have
+    left every one of those claims wrong and the build green."""
+    p = ROOT / "pipeline/source_audit.py"
+    if not p.exists():
+        return None
+    return len(re.findall(r'\{"id":\s*\d+,', p.read_text(errors="ignore"))) or None
+
+
+# Anchored on wording specific to the source count. The composite floor rule also uses the
+# number 42; these patterns must never match it.
+REGISTRY_CLAIMS = [
+    ("README.md", r"sources feed today's scores, out of (\d+) integrated"),
+    ("README.md", r"sources feed today's scores; (\d+) are integrated"),
+    ("README.md", r"\(\d+ producing, (\d+) wired\)"),
+    ("METHODOLOGY.md", r"pipelines pull data from (\d+) public sources"),
+    ("METHODOLOGY.md", r"The data sources — (\d+) integrated"),
+    ("METHODOLOGY.md", r"(\d+) public data sources are integrated"),
+    ("docs/index.html", r"(\d+) public sources\. Zero ESG ratings"),
+    ("docs/index.html", r"Edge-to-cloud\. (\d+) public data sources"),
+    ("docs/index.html", r"reconstructable from (\d+) public sources"),
+    ("docs/index.html", r"ZERO AI in scoring\.</strong> (\d+) public data sources"),
+]
+
+
+def check_registry_total():
+    """Fails the build, unlike the source count and coverage median: this figure comes from
+    the registry in the repo, not from last night's data, so it can be checked exactly."""
+    actual = registry_total()
+    if actual is None:
+        return []
+    bad = []
+    for rel, pattern in REGISTRY_CLAIMS:
+        p = ROOT / rel
+        if not p.exists():
+            continue
+        found = set(re.findall(pattern, p.read_text(errors="ignore")))
+        if not found:
+            print(f"  ?  {rel:20} makes no registered-source claim matching {pattern!r}")
+            continue
+        for v in sorted(found):
+            ok = int(v) == actual
+            print(f"  {'OK' if ok else 'XX'} registered sources      {rel} claims {v}, "
+                  f"source_audit registers {actual}")
+            if not ok:
+                bad.append(f"{rel} claims {v} integrated sources, "
+                           f"source_audit.py registers {actual}")
+    return bad
+
+
 def main():
     spec = engine_spec()
     if not spec:
@@ -157,6 +208,7 @@ def main():
                 bad.append(f"{label} ({rel}) says v{v}, engine says v{spec}")
     check_source_count()
     check_coverage()
+    bad += check_registry_total()
 
     if bad:
         print("\n  Continuity check FAILED:")

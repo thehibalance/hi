@@ -715,7 +715,7 @@ _NOT_SOURCES = {"Industry", "Manual Scoring", "Defaults", "Seed Estimate"}
 def get_contributing_sources():
     """External data providers that feed at least one published score.
 
-    The public "42 sources" figure counted collectors that exist, not ones that
+    The public "41 sources" figure counts collectors that exist, not ones that
     contribute. Derived tags (industry defaults, manual scoring) are not data
     sources; SEC filing types count once as SEC; Industry+EPA counts as EPA.
     """
@@ -733,14 +733,14 @@ def get_contributing_sources():
 
 
 def get_dynamic_source_count():
-    """Read live source count from pipeline data/source_count.json. Falls back to 42."""
+    """Read live source count from pipeline data/source_count.json. Falls back to 41."""
     try:
         import json as _json
         from pathlib import Path as _Path
         sc_path = _Path("data/source_count.json")
         if sc_path.exists():
             data = _json.load(open(sc_path))
-            return data.get("total_registered", 42)
+            return data.get("total_registered", 41)
     except Exception:
         pass
     return 42
