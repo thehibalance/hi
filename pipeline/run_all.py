@@ -145,8 +145,6 @@ def main():
             run_if_exists("newsapi_pipeline.py",
                           "Phase 2b: NewsAPI Media Monitoring (100 calls/day)")
 
-            run_if_exists("alpha_vantage_pipeline.py",
-                          "Phase 2b: Alpha Vantage Fundamentals (25 calls/day)")
 
             run_if_exists("yahoo_pipeline.py",
                           "Phase 2b: Yahoo Finance Market Data")
