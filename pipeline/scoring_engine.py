@@ -871,7 +871,7 @@ def _score_from_inclusion_tier(tier_score):
 
 # ── Dimension Scoring ─────────────────────────────────────────────────
 
-def score_h_dimension(sec_h, job_data, bls_data, industry, patents=None):
+def score_h_dimension(sec_h, job_data, industry, patents=None):
     scores = {}
     sources_used = []
 
@@ -897,20 +897,31 @@ def score_h_dimension(sec_h, job_data, bls_data, industry, patents=None):
     else:
         scores["H.1"] = 50
 
+    # H.2 Craft — an editorial prior, declared as one (v1.9.0).
+    #
+    # This table is a judgment about where hands-on human work still carries the output:
+    # food service and healthcare high, tech and telecom low. It is not measured, and it
+    # is not currently measurable — so H.2 always stays in INDUSTRY_DERIVED and never
+    # counts toward a company's coverage or confidence.
+    #
+    # A BLS wage-vs-national adjustment used to sit here, inert since nothing wrote the
+    # field it read. It was removed rather than connected, for two reasons. It moved the
+    # score by only about +/-8 points on a base of 40-70 while claiming full coverage
+    # credit, which would have re-admitted an industry constant as evidence. And wages
+    # measure the opposite construct: Information earns ~1.44x the total-private average
+    # and Leisure/Hospitality ~0.64x, so a wage-derived H.2 would rank tech as high-craft
+    # and food service as low-craft. That is a different sub-signal wearing this one's name.
+    #
+    # What would ground it: BLS OEWS occupational mix by industry (share of employment in
+    # hands-on and skilled-trade occupations), or O*NET routine-task-intensity aggregated
+    # to industry. Both measure the composition of the work rather than its pay.
+    # See claude/FINDING-h2-wages-are-not-craft.md.
     craft_defaults = {"food": 65, "manufacturing": 60, "healthcare": 70, "defense": 55,
                       "auto": 55, "retail": 45, "tech": 40, "finance": 45,
                       "media": 55, "telecom": 40, "energy": 50, "default": 50}
-    base_craft = craft_defaults.get(industry, 50)
     INDUSTRY_DERIVED.add("H.2")
     if "Industry" not in sources_used: sources_used.append("Industry")
-    if bls_data:
-        ind_data = bls_data.get("industries", {}).get(industry, {})
-        wage_ratio = ind_data.get("wage_vs_national")
-        if wage_ratio:
-            base_craft = clamp(base_craft + (wage_ratio - 1.0) * 20)
-            sources_used.append("BLS")
-            INDUSTRY_DERIVED.discard("H.2")
-    scores["H.2"] = round(base_craft, 1)
+    scores["H.2"] = round(craft_defaults.get(industry, 50), 1)
     
     # H.3 Human Decision Depth — deterministic heuristic
     # More humans per $B revenue = more human decisions. Deeper org = more human judgment.
@@ -1747,7 +1758,7 @@ def compute_algo_harm(ticker):
 
 
 def score_company(company_name, ticker="", sec_data=None, epa_data=None,
-                  bls_data=None, cdp_data=None, job_data=None, glassdoor_data=None,
+                  cdp_data=None, job_data=None, glassdoor_data=None,
                   subsignal_data=None):
     INDUSTRY_DERIVED.clear()
     sic = sec_data.get("n_signals", {}).get("sic", "") if sec_data else ""
@@ -1784,7 +1795,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
             pass
 
     D_H, h_detail, h_src = score_h_dimension(
-        sec_h, job_data, bls_data, industry,
+        sec_h, job_data, industry,
         patents=ext.get("patents"))
     D_U, u_detail, u_src = score_u_dimension(
         sec_u, glassdoor_data, industry, ss,
@@ -1933,7 +1944,6 @@ def main():
     parser = argparse.ArgumentParser(description="HI. HUMAN Scoring Engine v2")
     parser.add_argument("--sec", default="data/sec")
     parser.add_argument("--epa", default="data/epa")
-    parser.add_argument("--bls", default="data/bls")
     parser.add_argument("--cdp", default="data/cdp")
     parser.add_argument("--jobs", default="data/jobs")
     parser.add_argument("--glassdoor", default="data/glassdoor")
@@ -1948,20 +1958,13 @@ def main():
 
     sec_records = load_source(args.sec)
     epa_records = load_source(args.epa)
-    bls_data = None
-    bls_path = Path(args.bls) / "industry_benchmarks.json"
-    if bls_path.exists():
-        with open(bls_path) as f: bls_data = json.load(f)
     cdp_records = load_source(args.cdp)
     job_records = load_source(args.jobs)
     gd_records = load_source(args.glassdoor)
 
     print(f"  SEC EDGAR:  {len(sec_records)} companies")
     print(f"  EPA ECHO:   {len(epa_records)} companies")
-    # H.2 reads bls_data["industries"][industry]["wage_vs_national"]. Nothing writes that field,
-    # so say what is true rather than "loaded".
-    _bls_ok = bool((bls_data or {}).get("industries"))
-    print(f"  BLS:        {'connected' if _bls_ok else 'not connected (H.2 craft adjustment inert)'}")
+    print("  BLS:        no consumer (H.2 is a declared prior; see RUBRIC H.2)")
     print(f"  CDP:        {len(cdp_records)} companies")
     print(f"  Job Boards: {len(job_records)} companies")
     print(f"  Glassdoor:  {len(gd_records)} companies")
@@ -2032,7 +2035,7 @@ def main():
         if sec and sec.get("error") and not any([epa, cdp, job, gd]):
             continue
 
-        result = score_company(name, ticker, sec, epa, bls_data, cdp, job, gd)
+        result = score_company(name, ticker, sec, epa, cdp, job, gd)
         all_scores.append(result)
         sources = ", ".join(result["data_sources"])
         print(f"  {result['hi_grade']:12s} {result['composite']:5.1f}  {name:30s}  [{sources}]")
