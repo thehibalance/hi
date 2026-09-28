@@ -22,7 +22,7 @@
 
 For 500 years we've made decisions using four filters: **cost, time, convenience, risk.** We left out a fifth — **verified human impact.** Not "does this company feel ethical?" but _"does it treat humans well in ways that leave a data trail?"_
 
-**HI Grade** measures how human a company is across five dimensions. Every company gets a score from 0 to 100, built from 19 active sub-signals and public data: 21 sources feed today's scores, out of 42 integrated. Zero AI in the scoring engine. Zero pay-to-play. Every pipeline-scored company can be reconstructed from public data.
+**HI Grade** measures how human a company is across five dimensions. Every company gets a score from 0 to 100, built from 19 active sub-signals and public data: 21 sources feed today's scores, out of 41 integrated. Zero AI in the scoring engine. Zero pay-to-play. Every pipeline-scored company can be reconstructed from public data.
 
 Whether you're shopping, investing, hiring, researching, or building, HI Grade gives you one number with full audit trail.
 
@@ -159,7 +159,7 @@ This is why Lockheed Martin's composite dropped from 69 to 53 when weapons HD sh
 
 ## Public Data, Zero AI
 
-Free and public, apart from one paid financial feed (FMP). No purchased ratings. No pay-to-play. No LLMs. **21 sources feed today's scores; 42 are integrated.**
+Free and public, apart from one paid financial feed (FMP). No purchased ratings. No pay-to-play. No LLMs. **21 sources feed today's scores; 41 are integrated.**
 
 | | Sources |
 |---|---|
@@ -267,7 +267,7 @@ Each response includes `score_status`: `verified`, `estimated`, or `pending` —
 ┌─ Data Collection (nightly) ────────────────────────────────┐
 │  SEC · EPA · CFPB · FEC · FDA · FTC · EEOC · FMP · Yahoo   │
 │  Glassdoor · CDP · HRC · Disability:IN · BBB · HIBP        │
-│  iFixit · B Corp · USDA Organic  (22 producing, 42 wired)  │
+│  iFixit · B Corp · USDA Organic  (22 producing, 41 wired)  │
 └────────────────────────────┬───────────────────────────────┘
                              │
 ┌─ Scoring Engine (deterministic, no AI) ────────────────────┐

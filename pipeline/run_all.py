@@ -87,9 +87,9 @@ def main():
         else:
             print("\n  ⏭ Phase 1a: Data collection skipped (--skip-collect)")
 
-        # Government data (OSHA + CFPB)
+        # Government data (OSHA). CFPB is Phase 1c-ii, from CFPB's registered names.
         run_if_exists("collect_gov_data.py",
-                      "Phase 1b: Government Data (OSHA + CFPB)",
+                      "Phase 1b: Government Data (OSHA)",
                       f"--all --output {args.output}/gov --subsignals {args.output}/gov/by_company")
 
         # Extra gov sources (FEC, CPSC, FDA, USPTO, EPA ECHO, NHTSA)

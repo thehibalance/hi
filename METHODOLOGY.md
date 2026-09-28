@@ -30,7 +30,7 @@
 4. [Gold HI Grade — the v1.1.0 gate](#4-gold-hi-grade--the-v110-gate)
 5. [The AI-HI Balance principle](#5-the-ai-hi-balance-principle)
 6. [Humanwashing™, AHI™, and PHI](#6-humanwashing-ahi-and-phi)
-7. [The 42 data sources](#7-the-42-data-sources)
+7. [The data sources](#7-the-data-sources--41-integrated-21-contributing)
 8. [What we measure vs. what we don't](#8-what-we-measure-vs-what-we-dont)
 9. [Open source and how to verify](#9-open-source-and-how-to-verify)
 
@@ -202,7 +202,7 @@ A company that passes all three is not just scoring well on paper — it's curre
 
 At the highest level:
 
-1. **Collection** — Every night, pipelines pull data from 42 public sources
+1. **Collection** — Every night, pipelines pull data from 41 public sources
 2. **Sub-signal scoring** — Each sub-signal applies its published ladder (or documented heuristic) to produce a 0-100 score
 3. **Dimension aggregation** — Sub-signals within a dimension are weighted and summed
 4. **Composite calculation** — Dimensions are weighted and averaged for the composite score
@@ -311,9 +311,9 @@ A company can be clean on all three. Many are. A company can be compromised on j
 
 ---
 
-## 7. The data sources — 42 integrated, 21 contributing
+## 7. The data sources — 41 integrated, 21 contributing
 
-42 public data sources are integrated. **21 of them currently contribute to a published score**; the
+41 public data sources are integrated. **21 of them currently contribute to a published score**; the
 rest are wired up but not yet producing data for any company, and we count them separately rather
 than implying every source feeds every grade. The contributing count is served live at
 [/api/v1/stats](https://api.thehibalance.org/api/v1/stats) and checked against the scores in CI.
