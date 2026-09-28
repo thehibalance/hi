@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-27T12:08:46.388452",
+  "timestamp": "2026-09-28T15:45:25.751836",
   "total_issues": 164,
   "critical": 0,
   "warnings": 161,
@@ -464,15 +464,6 @@
     {
       "layer": 1,
       "severity": "warning",
-      "company": "Merck & Co., Inc.",
-      "field": "composite",
-      "message": "Composite 50 doesn't match dimensions (expected ~53)",
-      "value": 50,
-      "expected": 53
-    },
-    {
-      "layer": 1,
-      "severity": "warning",
       "company": "Microsoft Corporation",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~69)",
@@ -627,6 +618,15 @@
       "layer": 1,
       "severity": "warning",
       "company": "SOUTHERN CO",
+      "field": "composite",
+      "message": "Composite 50 doesn't match dimensions (expected ~56)",
+      "value": 50,
+      "expected": 56
+    },
+    {
+      "layer": 1,
+      "severity": "warning",
+      "company": "Synchrony Financial",
       "field": "composite",
       "message": "Composite 50 doesn't match dimensions (expected ~56)",
       "value": 50,
@@ -1114,7 +1114,7 @@
       "severity": "warning",
       "company": "synchrony",
       "field": "U_sources",
-      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.2': 74}",
+      "message": "Dimension U has only 1 source(s) but extreme scores: {'U.2': 75}",
       "value": 1,
       "expected": ">= 2 for extreme values"
     },
