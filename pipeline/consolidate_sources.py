@@ -355,27 +355,6 @@ def main():
             merged_count += 1
     print(f"  SEC 8-K:        {len(sec8k_idx)} companies merged")
 
-    # ─── Alpha Vantage ───────────────────────────────────────────────
-    av_data = load_json(base / "alphavantage" / "all_companies.json")
-    av_idx = index_by_ticker(av_data)
-    if av_idx:
-        sources_found.append(f"Alpha Vantage: {len(av_idx)} companies")
-        for ticker, d in av_idx.items():
-            if ticker not in all_ext:
-                all_ext[ticker] = {}
-
-            # Alpha Vantage provides overview/fundamentals
-            pe_ratio = d.get("pe_ratio") or d.get("PERatio")
-            profit_margin = d.get("profit_margin") or d.get("ProfitMargin")
-
-            if pe_ratio is not None or profit_margin is not None:
-                all_ext[ticker]["alpha_vantage"] = {
-                    "pe_ratio": pe_ratio,
-                    "profit_margin": profit_margin,
-                    "source": "Alpha Vantage"
-                }
-
-            merged_count += 1
     print(f"  Alpha Vantage:  {len(av_idx)} companies merged")
 
     # ─── Yahoo Finance ───────────────────────────────────────────────

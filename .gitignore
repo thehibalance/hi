@@ -181,3 +181,9 @@ patcher_*.py
 # post_process_balanced_board.py writes this before its atomic swap.
 # Local safety net, not repo content — the glob *.bak never matched it.
 *.bb_bak
+
+# Editor and patch backups. Two copies of data_collector.py were tracked at
+# 42KB and 37KB, and still referenced a key removed from the live file.
+*.save
+*.backup
+*_bak

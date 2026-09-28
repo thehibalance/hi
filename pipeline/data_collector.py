@@ -13,7 +13,6 @@ Usage:
 API Keys (put in data/ directory or set env vars):
   - FINNHUB_KEY: finnhub.io (free 60 calls/min)
   - FMP_KEY: financialmodelingprep.com (free 250 calls/day)
-  - ALPHA_VANTAGE_KEY: alphavantage.co (free 25 calls/day)
   - FRED_KEY: fred.stlouisfed.org (free)
   - NEWSAPI_KEY: newsapi.org (free 100 calls/day)
 """
@@ -1054,7 +1053,6 @@ def main():
     keys = {
         "finnhub": load_key("finnhub"),
         "fmp": load_key("fmp"),
-        "alpha_vantage": load_key("alpha_vantage"),
         "fred": load_key("fred"),
         "newsapi": load_key("newsapi"),
     }
