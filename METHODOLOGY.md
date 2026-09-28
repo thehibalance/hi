@@ -126,7 +126,7 @@ For the median company, only **4 of those 19** have direct evidence about that c
 ### H — Human Consciousness (4 sub-signals)
 
 - **H.1 Workforce Valuation** — Revenue-per-employee vs. the *measured* median for the company's industry, computed from the scored universe (v1.3.0 recalibration; not BLS). Humanwashing flag triggers above 4× median.
-- **H.2 Craft** — an in-house industry craft baseline, weighted by certification presence. A BLS wage-vs-national adjustment is defined in the engine but **not connected** — nothing publishes the field it reads, and the invented benchmark file that stood in for it was deleted in v1.7.0. Grounding H.2 against BLS is the active research priority.
+- **H.2 Craft** — an in-house industry craft baseline, weighted by certification presence, and **declared a prior**: it never counts toward a company's coverage or confidence. A BLS wage-vs-national adjustment used to sit here unconnected; v1.9.0 removed it rather than wiring it, because industry wages rank tech above food service on craft — the reverse of what this signal asserts. Grounding it means measuring the composition of the work (BLS OEWS occupational mix, or O*NET routine-task intensity), not its pay.
 - **H.3 Human Decision Depth** — SEC headcount disclosures, R&D per employee ratios, CEO pay ratio analysis.
 - **H.5 Human Augmentation Index** — AI displacement signals from SEC filings, news monitoring, and headcount changes. *The AI-balance signal.*
 

@@ -49,6 +49,14 @@ score merge stopped preserving rows the engine no longer produces: four had been
 spec 1.2.1 since March, and two of them were the last place FDA evidence — withdrawn in
 v1.5.1 — still appeared. Published sources: 22 → 21.
 
+**A measurement of the wrong thing is not grounding (v1.9.0).** H.2 had a BLS wage adjustment
+waiting to be connected, and connecting it would have inverted the sub-signal — wage data ranks
+tech above food service on "craft," which is the reverse of what the table asserts and of what the
+signal is for. It was removed instead, and H.2 is now documented as an editorial prior that never
+counts toward coverage. The rule this sets: a sub-signal is grounded when an authoritative source
+measures *the construct we claim*, not when an authoritative number is available to multiply by.
+
+
 Every entry below was checked against `pipeline/scoring_engine.py` in September 2026. Where this file and the code disagree, the code is right and this file is a bug.
 
 ---
@@ -107,9 +115,10 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 
 ### H.2 — Craft
 **Status:** UNGROUNDED *(was PARTIAL; changed September 2026)*  
-**Inputs:** `craft_defaults` lookup table (in-house); BLS industry wage-vs-national adjustment (designed, not currently firing)  
-**Ladder:** The BLS adjustment would be grounded, but no company's H sources include BLS today, so in practice H.2 is the in-house base table.  
-**Path forward:** connect BLS wage data so the adjustment fires; DOL registered-apprenticeship density as an additional craft signal; replace the base table with a cited industry-craft framework.
+**Inputs:** a 12-entry `craft_defaults` industry table (in-house). Nothing else. **Always excluded from coverage and confidence.**  
+**Ladder:** Editorial throughout. The table encodes a judgment — that hands-on human work still carries the output in food service (65), healthcare (70) and manufacturing (60), and carries less of it in tech (40), telecom (40) and retail (45).  
+**Why the BLS adjustment was removed rather than connected (v1.9.0):** a wage-vs-national term sat here, inert since nothing wrote the field it read. Connecting it would have moved H.2 by only about ±8 points on a base of 40–70 while claiming full coverage credit for the sub-signal — re-admitting an industry constant as evidence, which is what v1.6.0 removed. Worse, it measures the opposite construct: Information earns roughly 1.44× the total-private average and Leisure/Hospitality about 0.64×, so a wage-derived H.2 would rank tech as high-craft and food service as low-craft. Wages are a real measurement of a different thing.  
+**Path forward:** BLS **OEWS** occupational mix by industry — the share of employment in hands-on and skilled-trade occupations — or O\*NET routine-task-intensity aggregated to industry. Both measure the composition of the work rather than its pay. Until one of them is wired and tested, H.2 stays a declared prior. See `claude/FINDING-h2-wages-are-not-craft.md`.
 
 ### H.3 — Human Decision Depth
 **Status:** UNGROUNDED  
@@ -265,4 +274,4 @@ We respond to ladder-grounding issues within 5 business days.
 
 ---
 
-*Last updated: September 2026. Spec v1.8.0 (one spelling per company; fossil rows expire; 21 sources; METHODOLOGY.md corrected to the engine and the coverage figure put under CI). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
+*Last updated: September 2026. Spec v1.8.0 (one spelling per company; fossil rows expire; 21 sources; METHODOLOGY.md corrected to the engine; H.2's inert BLS adjustment removed rather than connected — wages measure a different construct). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
