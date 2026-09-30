@@ -1,6 +1,6 @@
 # HI Grade™ Methodology
 
-> **Note (September 2026):** this file has been corrected to the current engine, spec v1.8.0. What
+> **Note (September 2026):** this file has been corrected to the current engine, spec v1.9.0. What
 > changed since it was first written: industry baselines were recalibrated (v1.3); evidence gates
 > were added so a lookup that finds nothing can no longer be recorded as a favourable fact (v1.4);
 > CFPB matching was rebuilt against the regulator's own registered entity names and FDA was
@@ -14,7 +14,7 @@
 > those disagree, they are right and this one is a bug.
 ## The math behind being human kind.
 
-**Document version 1.8.0 · September 2026 · Apache 2.0 · [thehibalance.org](https://thehibalance.org)**
+**Document version 1.9.0 · September 2026 · Apache 2.0 · [thehibalance.org](https://thehibalance.org)**
 
 ---
 
@@ -119,7 +119,7 @@ A company can score well on all five while being deeply AI-enabled. That's the p
 
 ## 3. The 19 sub-signals
 
-Each HUMAN dimension is computed from 2-5 sub-signals. The current engine (spec v1.8.0) scores **19 sub-signals**. Five more (H.4, N.1, N.3, N.4, U.5) are defined in the spec and contribute nothing yet.
+Each HUMAN dimension is computed from 2-5 sub-signals. The current engine (spec v1.9.0) scores **19 sub-signals**. Five more (H.4, N.1, N.3, N.4, U.5) are defined in the spec and contribute nothing yet.
 
 For the median company, only **4 of those 19** have direct evidence about that company. The rest are neutral 50s or industry priors, which pulls scores toward the middle. Priors still inform a score, but they are not counted as coverage or confidence, and the company's `data_sources` says `Industry` when one is used.
 
@@ -132,7 +132,7 @@ For the median company, only **4 of those 19** have direct evidence about that c
 
 ### U — Understanding & Empathy (4 sub-signals)
 
-- **U.1 Customer Empathy** — CFPB consumer complaints per 10,000 employees on a log scale, matched to the regulator's own registered entity names, with a 100-complaint evidence floor below which no score is given either way (v1.5.0). BBB ratings where available.
+- **U.1 Customer Empathy** — how a company resolves complaints, measured against CFPB's own published relief rate for each product it sells (Consumer Response Annual Report, Table 1), matched to the regulator's registered entity names, with a 100-complaint floor per company-product below which no score is given either way. Complaint *volume* is disclosed beside the score and never folded into it (v1.10.0). BBB ratings where available.
 - **U.2 Worker Empathy** — Glassdoor employee ratings, OSHA violation severity, DOL wage/hour enforcement, BLS industry wage benchmarks.
 - **U.3 Relational Integrity** — HRC Corporate Equality Index, Disability:IN DEI Index, EEOC discrimination charges, B Corp certification for stakeholder treatment.
 - **U.4 Simulated Empathy Detection** — a 15-entry industry automation table blended 40/30/30 with Glassdoor culture and overall ratings **where a Glassdoor record exists**, which is about 37 of ~1,140 companies. For everyone else it is the industry constant alone, which is why v1.7.0 stopped counting it as evidence.
@@ -419,7 +419,7 @@ Found a bug in a score or methodology: [github.com/thehibalance/hi/issues](https
 
 ## Version and license
 
-**HI Grade Methodology v1.8.0**
+**HI Grade Methodology v1.9.0**
 
 Published: April 2026 · corrected to the current engine September 2026
 License: Apache 2.0
