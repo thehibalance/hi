@@ -26,7 +26,7 @@ are listed here so nobody mistakes them for an agency pull:
 | EEOC actions | 13 | `EEOC_DATA` |
 | Insider-sale flags | 4 | `INSIDER_FLAGS` |
 
-Spec version: **v1.8.0** · Active sub-signals: **19** · Not yet scored: **5**
+Spec version: **v1.9.0** · Active sub-signals: **19** · Not yet scored: **5**
 
 **Industry constants are not evidence (v1.6.0).** Where a sub-signal's value comes from an
 industry lookup table rather than from anything about the company, it no longer counts toward that
@@ -136,11 +136,13 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 
 ## U — Understanding & Empathy
 
-### U.1 — Customer Empathy
-**Status:** PARTIAL *(was UNGROUNDED; restored in v1.5.0)*  
-**Inputs:** CFPB consumer complaints over three years, normalized per 10,000 employees, for the 37 companies whose name resolves to a CFPB-registered entity; BBB complaints (10% blend); Glassdoor overall and culture ratings as fallback; neutral 50 when none exists.  
-**Ladder:** Editorial, but now on a stated scale: 30 complaints per 10,000 employees scores 85, and every tenfold increase costs 15 points, clamped to [25, 85]. The constants were frozen from a dated snapshot of the 37 scoreable companies (35 to 2,643,987 per 10k) rather than computed live, so one company's score never moves because another company's data changed.  
-**Path forward:** ground the scale against CFPB's own published complaint distributions instead of our snapshot; extend matching to wholly-owned subsidiaries (see the captive-finance limitation) so Ford Motor Credit can be attributed to Ford.
+### U.1 — Customer Empathy  
+**Status:** PARTIAL — *anchor grounded, slope editorial* *(construct replaced in v1.10.0)*  
+**Inputs:** CFPB complaint outcomes by product, for the 27 companies with at least 100 complaints in a product CFPB publishes a rate for; BBB complaints (10% blend); Glassdoor overall and culture ratings as fallback; neutral 50 when none exists.  
+**Ladder:** `50 + (company relief rate − CFPB's published relief rate for that product)`, volume-weighted across the company's products and across CY2023 and CY2024, clamped to [25, 85]. **The neutral point is CFPB's own published figure** (Consumer Response Annual Report, Table 1, p.18), not a constant we chose — the first anchor in this system taken from an outside authority. The slope of one score point per percentage point remains editorial, and is 1:1 because that is the least tunable choice available and a reader can check it by hand.  
+**Role rule:** credit reporting and debt collection are scored only for SIC 732x (consumer credit reporting and collection agencies). For everyone else those benchmarks are set by a different kind of company: of 22 measured in credit reporting, 21 were furnishers answering disputes about data they reported and sat 20–52 points below, while the single actual bureau was the only one above. Verisk is gated out on SIC 7374 despite running consumer-reporting products — a close call, recorded rather than hidden.  
+**Known limitations:** volume is disclosed, not scored, so a company that generates enormous complaint volume and resolves it well scores well; whether that is right is a judgment this project cannot settle alone. A relief rate also cannot distinguish a company that prevents problems upstream from one that refuses relief — CFPB's `company_public_response` field would separate them but is voluntary, with median coverage of 0% and 25 of 57 companies silent. Coverage fell from 39 companies to 27 when the evidence floor was applied; CFPB regulates financial services and nothing else, so ~1,100 companies need a source that does not exist.  
+**Path forward:** extend matching to wholly-owned subsidiaries so Ford Motor Credit can be attributed to Ford; find per-sector regulators for the industries CFPB does not cover.
 
 ### U.2 — Worker Empathy
 **Status:** UNGROUNDED  
@@ -274,4 +276,4 @@ We respond to ladder-grounding issues within 5 business days.
 
 ---
 
-*Last updated: September 2026. Spec v1.8.0 (one spelling per company; fossil rows expire; 21 sources; METHODOLOGY.md corrected to the engine; H.2's inert BLS adjustment removed rather than connected — wages measure a different construct). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
+*Last updated: September 2026. Spec v1.9.0 (one spelling per company; fossil rows expire; 21 sources; METHODOLOGY.md corrected to the engine; U.1 measured against CFPB's published per-product relief rates rather than per employee). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*

@@ -1904,8 +1904,13 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.8.0",
+        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.9.0",
         "data_sources": all_sources,
+        # Published beside the score, never folded into it: the complaint volume a
+        # resolution-based U.1 cannot express. Equifax resolves slightly better than
+        # its published benchmark AND carries about a third of every complaint CFPB
+        # receives. Both are true. A reader gets to see both.
+        "cfpb_disclosure": (ss.get("cfpb", {}).get("raw") or {}).get("disclosure"),
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
         "humanwashing_flags": hw_flags,
         "algo_harm": algo_harm,

@@ -1728,7 +1728,19 @@ function renderDet(c) {
   }
   h += '</div>';
   h += '</div>';
-  h += '<div style="margin-top:18px;font-size:11px;color:#94A3B8;line-height:1.6">HI Grades are estimated from public data and are not financial, legal, or investment advice. Not affiliated with or endorsed by ' + (c.company || 'this company') + '. Methodology: HUMAN Grade Spec v' + (c.spec_version || '1.8.0') + ' (Apache 2.0). HI Grade\u2122 Morf Innovations LLC.</div>';
+  if (c.cfpb_disclosure && c.cfpb_disclosure.complaints_3yr) {
+    var cd = c.cfpb_disclosure;
+    h += '<div style="margin-top:18px;padding:12px 14px;border-radius:8px;background:rgba(255,255,255,0.06);font-size:12px;color:#CBD5E1;line-height:1.7">';
+    h += '<strong style="color:#fff">CFPB complaints, disclosed</strong><br>';
+    h += Number(cd.complaints_3yr).toLocaleString() + ' complaints filed with the Consumer Financial Protection Bureau over three years.';
+    if (cd.relief_vs_benchmark_pts !== null && cd.relief_vs_benchmark_pts !== undefined) {
+      h += ' Of those, this company resolved <strong style="color:#fff">' + (cd.relief_vs_benchmark_pts >= 0 ? '+' : '') + cd.relief_vs_benchmark_pts + ' points</strong> ';
+      h += (cd.relief_vs_benchmark_pts >= 0 ? 'more' : 'fewer') + ' with relief than CFPB reports nationally for the same products.';
+    }
+    h += '<br><span style="color:#94A3B8">U.1 scores the resolution rate, not the volume. Both are shown because they can disagree.</span>';
+    h += '</div>';
+  }
+  h += '<div style="margin-top:18px;font-size:11px;color:#94A3B8;line-height:1.6">HI Grades are estimated from public data and are not financial, legal, or investment advice. Not affiliated with or endorsed by ' + (c.company || 'this company') + '. Methodology: HUMAN Grade Spec v' + (c.spec_version || '1.9.0') + ' (Apache 2.0). HI Grade\u2122 Morf Innovations LLC.</div>';
   // v1.10.2: close navy footer band
   h += '</div></div>';
 
