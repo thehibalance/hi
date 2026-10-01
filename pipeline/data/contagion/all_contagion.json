@@ -276,6 +276,29 @@
     "industry_peer_count": 9
   },
   {
+    "company": "Tesla",
+    "ticker": "TSLA",
+    "industry": "manufacturing",
+    "composite": 43,
+    "industry_average": 57,
+    "gap_from_industry": -14.1,
+    "influence_weight": 0.563,
+    "contagion_magnitude": 8.0,
+    "is_positive_leader": false,
+    "is_negative_leader": true,
+    "negative_contagion_leader": true,
+    "dimension_gaps": {
+      "H": -34.3,
+      "U": -10.2,
+      "M": 6.2,
+      "A": -17.8,
+      "N": -15.3
+    },
+    "worst_dimension": "H",
+    "best_dimension": "M",
+    "industry_peer_count": 62
+  },
+  {
     "company": "Coca-Cola Company",
     "ticker": "KO",
     "industry": "food",
@@ -322,29 +345,6 @@
     "industry_peer_count": 21
   },
   {
-    "company": "Tesla",
-    "ticker": "TSLA",
-    "industry": "manufacturing",
-    "composite": 45,
-    "industry_average": 57,
-    "gap_from_industry": -12.2,
-    "influence_weight": 0.563,
-    "contagion_magnitude": 6.8,
-    "is_positive_leader": false,
-    "is_negative_leader": true,
-    "negative_contagion_leader": true,
-    "dimension_gaps": {
-      "H": -34.3,
-      "U": -1.4,
-      "M": 6.2,
-      "A": -17.8,
-      "N": -15.3
-    },
-    "worst_dimension": "H",
-    "best_dimension": "M",
-    "industry_peer_count": 62
-  },
-  {
     "company": "Amazon.com, Inc.",
     "ticker": "AMZN",
     "industry": "retail",
@@ -373,15 +373,15 @@
     "industry": "finance",
     "composite": 50,
     "industry_average": 57,
-    "gap_from_industry": -6.6,
+    "gap_from_industry": -6.5,
     "influence_weight": 1.0,
-    "contagion_magnitude": 6.6,
+    "contagion_magnitude": 6.5,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -17.9,
-      "U": 14.2,
+      "U": 14.5,
       "M": 2.6,
       "A": 7.5,
       "N": -2.6
@@ -419,15 +419,15 @@
     "industry": "manufacturing",
     "composite": 63,
     "industry_average": 57,
-    "gap_from_industry": 5.8,
+    "gap_from_industry": 5.9,
     "influence_weight": 1.0,
-    "contagion_magnitude": 5.8,
+    "contagion_magnitude": 5.9,
     "is_positive_leader": false,
     "is_negative_leader": false,
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -12.3,
-      "U": 15.6,
+      "U": 15.8,
       "M": -7.8,
       "A": 15.2,
       "N": 19.7
@@ -575,12 +575,35 @@
     "industry_peer_count": 15
   },
   {
+    "company": "Bank of America Corporation",
+    "ticker": "BAC",
+    "industry": "finance",
+    "composite": 71,
+    "industry_average": 57,
+    "gap_from_industry": 14.5,
+    "influence_weight": 0.277,
+    "contagion_magnitude": 4.0,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 3.1,
+      "U": 15.5,
+      "M": 4.6,
+      "A": 20.5,
+      "N": 25.4
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 156
+  },
+  {
     "company": "JPMorgan Chase & Co.",
     "ticker": "JPM",
     "industry": "finance",
     "composite": 66,
     "industry_average": 57,
-    "gap_from_industry": 9.4,
+    "gap_from_industry": 9.5,
     "influence_weight": 0.425,
     "contagion_magnitude": 4.0,
     "is_positive_leader": false,
@@ -588,7 +611,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -10.9,
-      "U": 15.2,
+      "U": 12.5,
       "M": 8.6,
       "A": 7.5,
       "N": 25.4
@@ -644,52 +667,6 @@
     "industry_peer_count": 66
   },
   {
-    "company": "Bank of America Corporation",
-    "ticker": "BAC",
-    "industry": "finance",
-    "composite": 70,
-    "industry_average": 57,
-    "gap_from_industry": 13.4,
-    "influence_weight": 0.277,
-    "contagion_magnitude": 3.7,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 3.1,
-      "U": 13.2,
-      "M": 4.6,
-      "A": 20.5,
-      "N": 25.4
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 156
-  },
-  {
-    "company": "Cigna Group",
-    "ticker": "CI",
-    "industry": "finance",
-    "composite": 50,
-    "industry_average": 57,
-    "gap_from_industry": -6.6,
-    "influence_weight": 0.525,
-    "contagion_magnitude": 3.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -15.9,
-      "U": 7.2,
-      "M": 0.6,
-      "A": 7.5,
-      "N": 0.4
-    },
-    "worst_dimension": "H",
-    "best_dimension": "A",
-    "industry_peer_count": 156
-  },
-  {
     "company": "HCA Healthcare, Inc.",
     "ticker": "HCA",
     "industry": "healthcare",
@@ -711,6 +688,29 @@
     "worst_dimension": "U",
     "best_dimension": "H",
     "industry_peer_count": 85
+  },
+  {
+    "company": "Cigna Group",
+    "ticker": "CI",
+    "industry": "finance",
+    "composite": 50,
+    "industry_average": 57,
+    "gap_from_industry": -6.5,
+    "influence_weight": 0.525,
+    "contagion_magnitude": 3.4,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -15.9,
+      "U": 7.5,
+      "M": 0.6,
+      "A": 7.5,
+      "N": 0.4
+    },
+    "worst_dimension": "H",
+    "best_dimension": "U",
+    "industry_peer_count": 156
   },
   {
     "company": "CBRE GROUP, INC.",
@@ -764,7 +764,7 @@
     "industry": "manufacturing",
     "composite": 50,
     "industry_average": 57,
-    "gap_from_industry": -7.2,
+    "gap_from_industry": -7.1,
     "influence_weight": 0.453,
     "contagion_magnitude": 3.2,
     "is_positive_leader": false,
@@ -772,7 +772,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 3.7,
-      "U": 12.6,
+      "U": 12.8,
       "M": -52.8,
       "A": 4.2,
       "N": 14.7
@@ -879,7 +879,7 @@
     "industry": "manufacturing",
     "composite": 50,
     "industry_average": 57,
-    "gap_from_industry": -7.2,
+    "gap_from_industry": -7.1,
     "influence_weight": 0.393,
     "contagion_magnitude": 2.8,
     "is_positive_leader": false,
@@ -887,7 +887,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 1.7,
-      "U": 19.6,
+      "U": 19.8,
       "M": -52.8,
       "A": 6.2,
       "N": 9.7
@@ -902,7 +902,7 @@
     "industry": "manufacturing",
     "composite": 50,
     "industry_average": 57,
-    "gap_from_industry": -7.2,
+    "gap_from_industry": -7.1,
     "influence_weight": 0.39,
     "contagion_magnitude": 2.8,
     "is_positive_leader": false,
@@ -910,7 +910,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 3.7,
-      "U": 6.6,
+      "U": 6.8,
       "M": -47.8,
       "A": 0.2,
       "N": -0.3
@@ -925,7 +925,7 @@
     "industry": "finance",
     "composite": 50,
     "industry_average": 57,
-    "gap_from_industry": -6.6,
+    "gap_from_industry": -6.5,
     "influence_weight": 0.414,
     "contagion_magnitude": 2.7,
     "is_positive_leader": false,
@@ -933,7 +933,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -14.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": 6.6,
       "A": 7.5,
       "N": 0.4
@@ -1017,7 +1017,7 @@
     "industry": "manufacturing",
     "composite": 47,
     "industry_average": 57,
-    "gap_from_industry": -10.2,
+    "gap_from_industry": -10.1,
     "influence_weight": 0.246,
     "contagion_magnitude": 2.5,
     "is_positive_leader": false,
@@ -1025,7 +1025,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 3.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": -52.8,
       "A": 0.2,
       "N": -0.3
@@ -2282,7 +2282,7 @@
     "industry": "finance",
     "composite": 34,
     "industry_average": 57,
-    "gap_from_industry": -22.6,
+    "gap_from_industry": -22.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 1.1,
     "is_positive_leader": false,
@@ -2290,7 +2290,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 1.1,
-      "U": -12.8,
+      "U": -12.5,
       "M": -35.4,
       "A": -18.5,
       "N": -49.6
@@ -2420,7 +2420,7 @@
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.286,
     "contagion_magnitude": 1.0,
     "is_positive_leader": false,
@@ -2428,13 +2428,13 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": 7.2,
+      "U": 7.5,
       "M": -0.4,
       "A": 7.5,
       "N": 0.4
     },
     "worst_dimension": "H",
-    "best_dimension": "A",
+    "best_dimension": "U",
     "industry_peer_count": 156
   },
   {
@@ -2627,7 +2627,7 @@
     "industry": "finance",
     "composite": 61,
     "industry_average": 57,
-    "gap_from_industry": 4.4,
+    "gap_from_industry": 4.5,
     "influence_weight": 0.21,
     "contagion_magnitude": 0.9,
     "is_positive_leader": false,
@@ -2635,13 +2635,13 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 5.1,
-      "U": 7.2,
+      "U": 7.5,
       "M": -1.4,
       "A": 7.5,
       "N": 0.4
     },
     "worst_dimension": "M",
-    "best_dimension": "A",
+    "best_dimension": "U",
     "industry_peer_count": 156
   },
   {
@@ -2857,7 +2857,7 @@
     "industry": "manufacturing",
     "composite": 75,
     "industry_average": 57,
-    "gap_from_industry": 17.8,
+    "gap_from_industry": 17.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.9,
     "is_positive_leader": false,
@@ -2865,7 +2865,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 23.7,
-      "U": 22.6,
+      "U": 22.8,
       "M": 27.2,
       "A": 15.2,
       "N": 1.7
@@ -2995,7 +2995,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 0.8,
+    "gap_from_industry": 0.9,
     "influence_weight": 0.92,
     "contagion_magnitude": 0.8,
     "is_positive_leader": false,
@@ -3003,7 +3003,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -6.3,
-      "U": 6.6,
+      "U": 6.8,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -3110,7 +3110,7 @@
     "industry": "finance",
     "composite": 49,
     "industry_average": 57,
-    "gap_from_industry": -7.6,
+    "gap_from_industry": -7.5,
     "influence_weight": 0.106,
     "contagion_magnitude": 0.8,
     "is_positive_leader": false,
@@ -3118,13 +3118,13 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -26.9,
-      "U": 8.2,
+      "U": 6.5,
       "M": -27.4,
       "A": 7.5,
       "N": 0.4
     },
     "worst_dimension": "M",
-    "best_dimension": "U",
+    "best_dimension": "A",
     "industry_peer_count": 156
   },
   {
@@ -3248,7 +3248,7 @@
     "industry": "finance",
     "composite": 40,
     "industry_average": 57,
-    "gap_from_industry": -16.6,
+    "gap_from_industry": -16.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.8,
     "is_positive_leader": false,
@@ -3256,7 +3256,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -8.9,
-      "U": -5.8,
+      "U": -5.5,
       "M": -17.4,
       "A": -21.5,
       "N": -29.6
@@ -3639,7 +3639,7 @@
     "industry": "finance",
     "composite": 42,
     "industry_average": 57,
-    "gap_from_industry": -14.6,
+    "gap_from_industry": -14.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.7,
     "is_positive_leader": false,
@@ -3647,7 +3647,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -3.9,
-      "U": -5.8,
+      "U": -5.5,
       "M": -19.4,
       "A": -16.5,
       "N": -27.6
@@ -3685,7 +3685,7 @@
     "industry": "manufacturing",
     "composite": 62,
     "industry_average": 57,
-    "gap_from_industry": 4.8,
+    "gap_from_industry": 4.9,
     "influence_weight": 0.117,
     "contagion_magnitude": 0.6,
     "is_positive_leader": false,
@@ -3693,7 +3693,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 12.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 11.2,
       "A": 0.2,
       "N": -0.3
@@ -3777,7 +3777,7 @@
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.18,
     "contagion_magnitude": 0.6,
     "is_positive_leader": false,
@@ -3785,13 +3785,13 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": 7.2,
+      "U": 7.5,
       "M": 3.6,
       "A": 7.5,
       "N": 0.4
     },
     "worst_dimension": "H",
-    "best_dimension": "A",
+    "best_dimension": "U",
     "industry_peer_count": 156
   },
   {
@@ -3846,7 +3846,7 @@
     "industry": "finance",
     "composite": 50,
     "industry_average": 57,
-    "gap_from_industry": -6.6,
+    "gap_from_industry": -6.5,
     "influence_weight": 0.088,
     "contagion_magnitude": 0.6,
     "is_positive_leader": false,
@@ -3854,7 +3854,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -22.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -3892,7 +3892,7 @@
     "industry": "manufacturing",
     "composite": 50,
     "industry_average": 57,
-    "gap_from_industry": -7.2,
+    "gap_from_industry": -7.1,
     "influence_weight": 0.08,
     "contagion_magnitude": 0.6,
     "is_positive_leader": false,
@@ -3900,7 +3900,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 1.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": -35.8,
       "A": -0.8,
       "N": -0.3
@@ -3961,7 +3961,7 @@
     "industry": "finance",
     "composite": 68,
     "industry_average": 57,
-    "gap_from_industry": 11.4,
+    "gap_from_industry": 11.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.6,
     "is_positive_leader": false,
@@ -3969,7 +3969,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 14.1,
-      "U": 17.2,
+      "U": 17.5,
       "M": 17.6,
       "A": 5.5,
       "N": 0.4
@@ -4076,7 +4076,7 @@
     "industry": "finance",
     "composite": 63,
     "industry_average": 57,
-    "gap_from_industry": 6.4,
+    "gap_from_industry": 6.5,
     "influence_weight": 0.076,
     "contagion_magnitude": 0.5,
     "is_positive_leader": false,
@@ -4084,7 +4084,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 14.1,
-      "U": 7.2,
+      "U": 7.5,
       "M": -0.4,
       "A": 7.5,
       "N": 0.4
@@ -4122,7 +4122,7 @@
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.154,
     "contagion_magnitude": 0.5,
     "is_positive_leader": false,
@@ -4130,13 +4130,13 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 2.1,
-      "U": 7.2,
+      "U": 7.5,
       "M": -0.4,
       "A": 7.5,
       "N": 0.4
     },
     "worst_dimension": "M",
-    "best_dimension": "A",
+    "best_dimension": "U",
     "industry_peer_count": 156
   },
   {
@@ -4168,7 +4168,7 @@
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.145,
     "contagion_magnitude": 0.5,
     "is_positive_leader": false,
@@ -4176,13 +4176,13 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": 7.2,
+      "U": 7.5,
       "M": 3.6,
       "A": 7.5,
       "N": 0.4
     },
     "worst_dimension": "H",
-    "best_dimension": "A",
+    "best_dimension": "U",
     "industry_peer_count": 156
   },
   {
@@ -4490,7 +4490,7 @@
     "industry": "manufacturing",
     "composite": 49,
     "industry_average": 57,
-    "gap_from_industry": -8.2,
+    "gap_from_industry": -8.1,
     "influence_weight": 0.067,
     "contagion_magnitude": 0.5,
     "is_positive_leader": false,
@@ -4498,7 +4498,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 15.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": -52.8,
       "A": 0.2,
       "N": -0.3
@@ -4506,29 +4506,6 @@
     "worst_dimension": "M",
     "best_dimension": "H",
     "industry_peer_count": 62
-  },
-  {
-    "company": "EQUIFAX INC",
-    "ticker": "EFX",
-    "industry": "tech",
-    "composite": 45,
-    "industry_average": 54,
-    "gap_from_industry": -9.1,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.5,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -17.8,
-      "U": -7.8,
-      "M": -19.9,
-      "A": -1.7,
-      "N": 0.6
-    },
-    "worst_dimension": "M",
-    "best_dimension": "N",
-    "industry_peer_count": 337
   },
   {
     "company": "Snap Inc",
@@ -4766,7 +4743,7 @@
     "industry": "manufacturing",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 2.8,
+    "gap_from_industry": 2.9,
     "influence_weight": 0.137,
     "contagion_magnitude": 0.4,
     "is_positive_leader": false,
@@ -4774,7 +4751,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 12.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -4881,7 +4858,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 0.8,
+    "gap_from_industry": 0.9,
     "influence_weight": 0.455,
     "contagion_magnitude": 0.4,
     "is_positive_leader": false,
@@ -4889,7 +4866,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.3,
-      "U": 6.6,
+      "U": 6.8,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -5234,7 +5211,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -29.8,
-      "U": 5.2,
+      "U": 8.2,
       "M": -1.9,
       "A": 3.3,
       "N": 0.6
@@ -5326,7 +5303,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -18.8,
-      "U": -5.8,
+      "U": -6.8,
       "M": 0.1,
       "A": -1.7,
       "N": 0.6
@@ -5355,6 +5332,29 @@
       "N": 0.6
     },
     "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 337
+  },
+  {
+    "company": "EQUIFAX INC",
+    "ticker": "EFX",
+    "industry": "tech",
+    "composite": 47,
+    "industry_average": 54,
+    "gap_from_industry": -7.1,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.4,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -17.8,
+      "U": -0.8,
+      "M": -19.9,
+      "A": -1.7,
+      "N": 0.6
+    },
+    "worst_dimension": "M",
     "best_dimension": "N",
     "industry_peer_count": 337
   },
@@ -5479,7 +5479,7 @@
     "industry": "manufacturing",
     "composite": 66,
     "industry_average": 57,
-    "gap_from_industry": 8.8,
+    "gap_from_industry": 8.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.4,
     "is_positive_leader": false,
@@ -5487,7 +5487,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 16.7,
-      "U": 12.6,
+      "U": 12.8,
       "M": 19.2,
       "A": 5.2,
       "N": -8.3
@@ -5502,7 +5502,7 @@
     "industry": "manufacturing",
     "composite": 66,
     "industry_average": 57,
-    "gap_from_industry": 8.8,
+    "gap_from_industry": 8.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.4,
     "is_positive_leader": false,
@@ -5510,7 +5510,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 13.7,
-      "U": 15.6,
+      "U": 15.8,
       "M": 19.2,
       "A": 5.2,
       "N": -8.3
@@ -5571,7 +5571,7 @@
     "industry": "finance",
     "composite": 63,
     "industry_average": 57,
-    "gap_from_industry": 6.4,
+    "gap_from_industry": 6.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
@@ -5579,7 +5579,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 14.1,
-      "U": 7.2,
+      "U": 7.5,
       "M": -0.4,
       "A": 7.5,
       "N": 0.4
@@ -5640,7 +5640,7 @@
     "industry": "finance",
     "composite": 62,
     "industry_average": 57,
-    "gap_from_industry": 5.4,
+    "gap_from_industry": 5.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
@@ -5648,7 +5648,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 20.1,
-      "U": 3.2,
+      "U": 3.5,
       "M": 3.6,
       "A": -1.5,
       "N": 0.4
@@ -5663,7 +5663,7 @@
     "industry": "finance",
     "composite": 62,
     "industry_average": 57,
-    "gap_from_industry": 5.4,
+    "gap_from_industry": 5.5,
     "influence_weight": 0.058,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
@@ -5671,7 +5671,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 14.1,
-      "U": 0.2,
+      "U": -1.5,
       "M": 2.6,
       "A": 7.5,
       "N": 0.4
@@ -5686,7 +5686,7 @@
     "industry": "finance",
     "composite": 62,
     "industry_average": 57,
-    "gap_from_industry": 5.4,
+    "gap_from_industry": 5.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
@@ -5694,7 +5694,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 17.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": 7.5,
       "N": 0.4
@@ -5709,7 +5709,7 @@
     "industry": "finance",
     "composite": 62,
     "industry_average": 57,
-    "gap_from_industry": 5.4,
+    "gap_from_industry": 5.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
@@ -5717,7 +5717,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 20.1,
-      "U": 3.2,
+      "U": 3.5,
       "M": 3.6,
       "A": -1.5,
       "N": 0.4
@@ -5980,35 +5980,12 @@
     "industry_peer_count": 89
   },
   {
-    "company": "Elevance Health, Inc.",
-    "ticker": "ELV",
-    "industry": "finance",
-    "composite": 56,
-    "industry_average": 57,
-    "gap_from_industry": -0.6,
-    "influence_weight": 0.461,
-    "contagion_magnitude": 0.3,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -11.9,
-      "U": -1.8,
-      "M": -0.4,
-      "A": 7.5,
-      "N": 0.4
-    },
-    "worst_dimension": "H",
-    "best_dimension": "A",
-    "industry_peer_count": 156
-  },
-  {
     "company": "HONDA MOTOR CO LTD",
     "ticker": "HMC",
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.227,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
@@ -6016,7 +5993,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -5.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -6146,7 +6123,7 @@
     "industry": "finance",
     "composite": 50,
     "industry_average": 57,
-    "gap_from_industry": -6.6,
+    "gap_from_industry": -6.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
@@ -6154,7 +6131,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 0.1,
-      "U": -7.8,
+      "U": -9.5,
       "M": -5.4,
       "A": -1.5,
       "N": -0.6
@@ -6192,7 +6169,7 @@
     "industry": "finance",
     "composite": 50,
     "industry_average": 57,
-    "gap_from_industry": -6.6,
+    "gap_from_industry": -6.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
@@ -6200,7 +6177,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -26.9,
-      "U": 8.2,
+      "U": 7.5,
       "M": 3.6,
       "A": 7.5,
       "N": 0.4
@@ -6261,7 +6238,7 @@
     "industry": "finance",
     "composite": 50,
     "industry_average": 57,
-    "gap_from_industry": -6.6,
+    "gap_from_industry": -6.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
@@ -6269,7 +6246,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -35.9,
-      "U": 8.2,
+      "U": 6.5,
       "M": 4.6,
       "A": 10.5,
       "N": 15.4
@@ -6284,7 +6261,7 @@
     "industry": "finance",
     "composite": 50,
     "industry_average": 57,
-    "gap_from_industry": -6.6,
+    "gap_from_industry": -6.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
@@ -6292,7 +6269,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -12.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": 7.5,
       "N": 0.4
@@ -6353,7 +6330,7 @@
     "industry": "finance",
     "composite": 50,
     "industry_average": 57,
-    "gap_from_industry": -6.6,
+    "gap_from_industry": -6.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
@@ -6361,13 +6338,13 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -26.9,
-      "U": 14.2,
+      "U": 2.5,
       "M": 5.6,
       "A": 7.5,
       "N": 0.4
     },
     "worst_dimension": "H",
-    "best_dimension": "U",
+    "best_dimension": "A",
     "industry_peer_count": 156
   },
   {
@@ -6376,7 +6353,7 @@
     "industry": "finance",
     "composite": 50,
     "industry_average": 57,
-    "gap_from_industry": -6.6,
+    "gap_from_industry": -6.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
@@ -6384,7 +6361,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -21.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -6399,7 +6376,7 @@
     "industry": "finance",
     "composite": 50,
     "industry_average": 57,
-    "gap_from_industry": -6.6,
+    "gap_from_industry": -6.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
@@ -6407,7 +6384,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -25.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -6468,7 +6445,7 @@
     "industry": "finance",
     "composite": 50,
     "industry_average": 57,
-    "gap_from_industry": -6.6,
+    "gap_from_industry": -6.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
@@ -6476,7 +6453,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -12.9,
-      "U": 5.2,
+      "U": 6.5,
       "M": 1.6,
       "A": -1.5,
       "N": 0.4
@@ -6675,7 +6652,7 @@
     "industry": "finance",
     "composite": 63,
     "industry_average": 57,
-    "gap_from_industry": 6.4,
+    "gap_from_industry": 6.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.3,
     "is_positive_leader": false,
@@ -6683,7 +6660,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 4.1,
-      "U": 12.2,
+      "U": 12.5,
       "M": 7.6,
       "A": 15.5,
       "N": -7.6
@@ -6905,7 +6882,7 @@
     "industry": "manufacturing",
     "composite": 61,
     "industry_average": 57,
-    "gap_from_industry": 3.8,
+    "gap_from_industry": 3.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -6913,7 +6890,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 15.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -6946,29 +6923,6 @@
     "industry_peer_count": 85
   },
   {
-    "company": "ASSOCIATED BANC-CORP",
-    "ticker": "ASB",
-    "industry": "finance",
-    "composite": 61,
-    "industry_average": 57,
-    "gap_from_industry": 4.4,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.2,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 17.1,
-      "U": 1.2,
-      "M": 2.6,
-      "A": -1.5,
-      "N": 0.4
-    },
-    "worst_dimension": "A",
-    "best_dimension": "H",
-    "industry_peer_count": 156
-  },
-  {
     "company": "CAMDEN PROPERTY TRUST",
     "ticker": "CPT",
     "industry": "reit",
@@ -6990,29 +6944,6 @@
     "worst_dimension": "M",
     "best_dimension": "H",
     "industry_peer_count": 54
-  },
-  {
-    "company": "CULLEN/FROST BANKERS, INC.",
-    "ticker": "CFR",
-    "industry": "finance",
-    "composite": 61,
-    "industry_average": 57,
-    "gap_from_industry": 4.4,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.2,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 15.1,
-      "U": 2.2,
-      "M": 2.6,
-      "A": -1.5,
-      "N": 0.4
-    },
-    "worst_dimension": "A",
-    "best_dimension": "H",
-    "industry_peer_count": 156
   },
   {
     "company": "GAP INC",
@@ -7043,7 +6974,7 @@
     "industry": "finance",
     "composite": 61,
     "industry_average": 57,
-    "gap_from_industry": 4.4,
+    "gap_from_industry": 4.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7051,7 +6982,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 15.1,
-      "U": 2.2,
+      "U": 2.5,
       "M": 2.6,
       "A": 0.5,
       "N": 0.4
@@ -7066,7 +6997,7 @@
     "industry": "manufacturing",
     "composite": 61,
     "industry_average": 57,
-    "gap_from_industry": 3.8,
+    "gap_from_industry": 3.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7074,7 +7005,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 15.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -7089,7 +7020,7 @@
     "industry": "manufacturing",
     "composite": 61,
     "industry_average": 57,
-    "gap_from_industry": 3.8,
+    "gap_from_industry": 3.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7097,7 +7028,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 15.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -7130,12 +7061,35 @@
     "industry_peer_count": 66
   },
   {
+    "company": "ASSOCIATED BANC-CORP",
+    "ticker": "ASB",
+    "industry": "finance",
+    "composite": 60,
+    "industry_average": 57,
+    "gap_from_industry": 3.5,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.2,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 17.1,
+      "U": -5.5,
+      "M": 2.6,
+      "A": -1.5,
+      "N": 0.4
+    },
+    "worst_dimension": "U",
+    "best_dimension": "H",
+    "industry_peer_count": 156
+  },
+  {
     "company": "Bank of New York Mellon Corp",
     "ticker": "BNY",
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7143,7 +7097,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 14.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": 3.6,
       "A": -1.5,
       "N": 0.4
@@ -7158,7 +7112,7 @@
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7166,7 +7120,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 18.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -7227,7 +7181,7 @@
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7235,35 +7189,12 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 16.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
     },
     "worst_dimension": "U",
-    "best_dimension": "H",
-    "industry_peer_count": 156
-  },
-  {
-    "company": "FIRST HORIZON CORP",
-    "ticker": "FHN",
-    "industry": "finance",
-    "composite": 60,
-    "industry_average": 57,
-    "gap_from_industry": 3.4,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.2,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 11.1,
-      "U": 2.2,
-      "M": 2.6,
-      "A": -1.5,
-      "N": 0.4
-    },
-    "worst_dimension": "A",
     "best_dimension": "H",
     "industry_peer_count": 156
   },
@@ -7296,7 +7227,7 @@
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7304,7 +7235,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 20.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -7319,7 +7250,7 @@
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7327,7 +7258,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 17.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -7388,7 +7319,7 @@
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7396,7 +7327,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 15.1,
-      "U": 1.2,
+      "U": 0.5,
       "M": 1.6,
       "A": -1.5,
       "N": 0.4
@@ -7457,7 +7388,7 @@
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7465,7 +7396,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 16.1,
-      "U": 0.2,
+      "U": 0.5,
       "M": 1.6,
       "A": -1.5,
       "N": 0.4
@@ -7480,7 +7411,7 @@
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.061,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7488,7 +7419,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 17.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -7503,7 +7434,7 @@
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7511,7 +7442,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 18.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -7526,7 +7457,7 @@
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7534,7 +7465,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 16.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -7549,7 +7480,7 @@
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7557,7 +7488,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 20.1,
-      "U": -2.8,
+      "U": -4.5,
       "M": -1.4,
       "A": -1.5,
       "N": 0.4
@@ -7572,7 +7503,7 @@
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7580,7 +7511,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 20.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -7595,7 +7526,7 @@
     "industry": "finance",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 3.4,
+    "gap_from_industry": 3.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7603,7 +7534,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 20.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -7618,7 +7549,7 @@
     "industry": "finance",
     "composite": 59,
     "industry_average": 57,
-    "gap_from_industry": 2.4,
+    "gap_from_industry": 2.5,
     "influence_weight": 0.075,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7626,7 +7557,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": 6.6,
       "A": 7.5,
       "N": 0.4
@@ -7733,7 +7664,7 @@
     "industry": "finance",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 1.4,
+    "gap_from_industry": 1.5,
     "influence_weight": 0.134,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -7741,7 +7672,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 1.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": 7.5,
       "N": 0.4
@@ -8124,7 +8055,7 @@
     "industry": "finance",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 1.4,
+    "gap_from_industry": 1.5,
     "influence_weight": 0.111,
     "contagion_magnitude": 0.2,
     "is_positive_leader": false,
@@ -8132,7 +8063,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 0.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": 7.5,
       "N": 0.4
@@ -8508,6 +8439,29 @@
     "worst_dimension": "H",
     "best_dimension": "U",
     "industry_peer_count": 14
+  },
+  {
+    "company": "Elevance Health, Inc.",
+    "ticker": "ELV",
+    "industry": "finance",
+    "composite": 56,
+    "industry_average": 57,
+    "gap_from_industry": -0.5,
+    "influence_weight": 0.461,
+    "contagion_magnitude": 0.2,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -11.9,
+      "U": -1.5,
+      "M": -0.4,
+      "A": 7.5,
+      "N": 0.4
+    },
+    "worst_dimension": "H",
+    "best_dimension": "A",
+    "industry_peer_count": 156
   },
   {
     "company": "EQUINIX INC",
@@ -10930,7 +10884,7 @@
     "industry": "manufacturing",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 2.8,
+    "gap_from_industry": 2.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -10938,7 +10892,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 11.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -10999,7 +10953,7 @@
     "industry": "manufacturing",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 2.8,
+    "gap_from_industry": 2.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -11007,7 +10961,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 11.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -11022,7 +10976,7 @@
     "industry": "manufacturing",
     "composite": 60,
     "industry_average": 57,
-    "gap_from_industry": 2.8,
+    "gap_from_industry": 2.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -11030,7 +10984,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 14.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -11068,7 +11022,7 @@
     "industry": "finance",
     "composite": 59,
     "industry_average": 57,
-    "gap_from_industry": 2.4,
+    "gap_from_industry": 2.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -11076,7 +11030,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 15.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -11160,7 +11114,7 @@
     "industry": "finance",
     "composite": 59,
     "industry_average": 57,
-    "gap_from_industry": 2.4,
+    "gap_from_industry": 2.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -11168,7 +11122,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 12.1,
-      "U": -0.8,
+      "U": -0.5,
       "M": 0.6,
       "A": -1.5,
       "N": 0.4
@@ -11229,7 +11183,7 @@
     "industry": "manufacturing",
     "composite": 59,
     "industry_average": 57,
-    "gap_from_industry": 1.8,
+    "gap_from_industry": 1.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -11237,7 +11191,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 6.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -11245,6 +11199,29 @@
     "worst_dimension": "U",
     "best_dimension": "H",
     "industry_peer_count": 62
+  },
+  {
+    "company": "CULLEN/FROST BANKERS, INC.",
+    "ticker": "CFR",
+    "industry": "finance",
+    "composite": 59,
+    "industry_average": 57,
+    "gap_from_industry": 2.5,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.1,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 15.1,
+      "U": -4.5,
+      "M": 2.6,
+      "A": -1.5,
+      "N": 0.4
+    },
+    "worst_dimension": "U",
+    "best_dimension": "H",
+    "industry_peer_count": 156
   },
   {
     "company": "DOLLAR GENERAL CORP",
@@ -11275,7 +11252,7 @@
     "industry": "finance",
     "composite": 59,
     "industry_average": 57,
-    "gap_from_industry": 2.4,
+    "gap_from_industry": 2.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -11283,7 +11260,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 15.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -11298,7 +11275,7 @@
     "industry": "finance",
     "composite": 59,
     "industry_average": 57,
-    "gap_from_industry": 2.4,
+    "gap_from_industry": 2.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -11306,12 +11283,35 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 12.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
     },
     "worst_dimension": "U",
+    "best_dimension": "H",
+    "industry_peer_count": 156
+  },
+  {
+    "company": "FIRST HORIZON CORP",
+    "ticker": "FHN",
+    "industry": "finance",
+    "composite": 59,
+    "industry_average": 57,
+    "gap_from_industry": 2.5,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.1,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 11.1,
+      "U": -0.5,
+      "M": 2.6,
+      "A": -1.5,
+      "N": 0.4
+    },
+    "worst_dimension": "A",
     "best_dimension": "H",
     "industry_peer_count": 156
   },
@@ -11413,7 +11413,7 @@
     "industry": "manufacturing",
     "composite": 59,
     "industry_average": 57,
-    "gap_from_industry": 1.8,
+    "gap_from_industry": 1.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -11421,7 +11421,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 6.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -11597,7 +11597,7 @@
     "industry": "finance",
     "composite": 59,
     "industry_average": 57,
-    "gap_from_industry": 2.4,
+    "gap_from_industry": 2.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -11605,7 +11605,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 15.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -11620,7 +11620,7 @@
     "industry": "manufacturing",
     "composite": 59,
     "industry_average": 57,
-    "gap_from_industry": 1.8,
+    "gap_from_industry": 1.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -11628,7 +11628,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 5.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -11666,7 +11666,7 @@
     "industry": "finance",
     "composite": 59,
     "industry_average": 57,
-    "gap_from_industry": 2.4,
+    "gap_from_industry": 2.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -11674,7 +11674,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 15.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -11712,7 +11712,7 @@
     "industry": "finance",
     "composite": 59,
     "industry_average": 57,
-    "gap_from_industry": 2.4,
+    "gap_from_industry": 2.5,
     "influence_weight": 0.051,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -11720,7 +11720,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": 6.6,
       "A": 7.5,
       "N": 0.4
@@ -11735,7 +11735,7 @@
     "industry": "finance",
     "composite": 59,
     "industry_average": 57,
-    "gap_from_industry": 2.4,
+    "gap_from_industry": 2.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -11743,7 +11743,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 14.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -11758,7 +11758,7 @@
     "industry": "finance",
     "composite": 59,
     "industry_average": 57,
-    "gap_from_industry": 2.4,
+    "gap_from_industry": 2.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -11766,7 +11766,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 15.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -11873,7 +11873,7 @@
     "industry": "finance",
     "composite": 59,
     "industry_average": 57,
-    "gap_from_industry": 2.4,
+    "gap_from_industry": 2.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -11881,7 +11881,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 15.1,
-      "U": -3.8,
+      "U": -3.5,
       "M": -2.4,
       "A": -1.5,
       "N": 0.4
@@ -11988,7 +11988,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 0.8,
+    "gap_from_industry": 0.9,
     "influence_weight": 0.061,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -11996,7 +11996,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 0.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -12034,7 +12034,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 0.8,
+    "gap_from_industry": 0.9,
     "influence_weight": 0.083,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -12042,7 +12042,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 2.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -12103,7 +12103,7 @@
     "industry": "finance",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 1.4,
+    "gap_from_industry": 1.5,
     "influence_weight": 0.099,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -12111,7 +12111,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -11.9,
-      "U": 6.2,
+      "U": 5.5,
       "M": 1.6,
       "A": 7.5,
       "N": 0.4
@@ -12126,7 +12126,7 @@
     "industry": "finance",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 1.4,
+    "gap_from_industry": 1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -12134,7 +12134,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 9.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -12149,7 +12149,7 @@
     "industry": "finance",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 1.4,
+    "gap_from_industry": 1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -12157,7 +12157,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -2.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": 3.6,
       "A": 7.5,
       "N": 0.4
@@ -12471,7 +12471,7 @@
     "industry": "finance",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 1.4,
+    "gap_from_industry": 1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -12479,7 +12479,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 7.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -12510,29 +12510,6 @@
     "worst_dimension": "M",
     "best_dimension": "H",
     "industry_peer_count": 54
-  },
-  {
-    "company": "Robinhood Markets, Inc.",
-    "ticker": "HOOD",
-    "industry": "finance",
-    "composite": 58,
-    "industry_average": 57,
-    "gap_from_industry": 1.4,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.1,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": 6.1,
-      "U": -2.8,
-      "M": 0.6,
-      "A": -1.5,
-      "N": 0.4
-    },
-    "worst_dimension": "U",
-    "best_dimension": "H",
-    "industry_peer_count": 156
   },
   {
     "company": "SAIA INC",
@@ -12586,7 +12563,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 0.8,
+    "gap_from_industry": 0.9,
     "influence_weight": 0.092,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -12594,7 +12571,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 2.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": 0.2,
       "N": -0.3
@@ -12609,7 +12586,7 @@
     "industry": "finance",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 1.4,
+    "gap_from_industry": 1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -12617,7 +12594,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 7.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -12632,7 +12609,7 @@
     "industry": "finance",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 1.4,
+    "gap_from_industry": 1.5,
     "influence_weight": 0.057,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -12640,7 +12617,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": 7.2,
+      "U": 7.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -12655,7 +12632,7 @@
     "industry": "finance",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 1.4,
+    "gap_from_industry": 1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -12663,7 +12640,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -2.9,
-      "U": -0.8,
+      "U": -2.5,
       "M": 1.6,
       "A": 7.5,
       "N": 0.4
@@ -12678,7 +12655,7 @@
     "industry": "finance",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 1.4,
+    "gap_from_industry": 1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -12686,7 +12663,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 7.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -12701,7 +12678,7 @@
     "industry": "finance",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 1.4,
+    "gap_from_industry": 1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -12709,7 +12686,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 8.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -13322,7 +13299,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.167,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -13330,7 +13307,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 4.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -13621,7 +13598,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -13629,7 +13606,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -7.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -13713,7 +13690,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -13721,7 +13698,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -6.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -13989,7 +13966,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -13997,7 +13974,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -6.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -14288,7 +14265,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.114,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -14296,7 +14273,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -14334,7 +14311,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.118,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -14342,7 +14319,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -15.3,
-      "U": 4.6,
+      "U": 4.8,
       "M": 4.2,
       "A": 0.2,
       "N": -0.3
@@ -14380,7 +14357,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.112,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -14388,7 +14365,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -14587,7 +14564,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -14595,7 +14572,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -7.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -14679,7 +14656,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -14687,7 +14664,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -6.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -14766,35 +14743,12 @@
     "industry_peer_count": 54
   },
   {
-    "company": "MITSUBISHI UFJ FINANCIAL GROUP INC",
-    "ticker": "MUFG",
-    "industry": "finance",
-    "composite": 56,
-    "industry_average": 57,
-    "gap_from_industry": -0.6,
-    "influence_weight": 0.087,
-    "contagion_magnitude": 0.1,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -1.9,
-      "U": -1.8,
-      "M": -0.4,
-      "A": -1.5,
-      "N": 0.4
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 156
-  },
-  {
     "company": "MOHAWK INDUSTRIES INC",
     "ticker": "MHK",
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -14802,7 +14756,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -6.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -14810,29 +14764,6 @@
     "worst_dimension": "H",
     "best_dimension": "M",
     "industry_peer_count": 62
-  },
-  {
-    "company": "MOLINA HEALTHCARE, INC.",
-    "ticker": "MOH",
-    "industry": "finance",
-    "composite": 56,
-    "industry_average": 57,
-    "gap_from_industry": -0.6,
-    "influence_weight": 0.092,
-    "contagion_magnitude": 0.1,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -3.9,
-      "U": -1.8,
-      "M": -0.4,
-      "A": -1.5,
-      "N": 0.4
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 156
   },
   {
     "company": "MUELLER INDUSTRIES INC",
@@ -14909,7 +14840,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -14917,7 +14848,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -6.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -15001,7 +14932,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -15009,7 +14940,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -6.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -15070,7 +15001,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -15078,7 +15009,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -7.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -15139,7 +15070,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -15147,7 +15078,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -7.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -15392,7 +15323,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -15400,7 +15331,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -6.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -15461,7 +15392,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -15469,7 +15400,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -6.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -15622,7 +15553,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -15630,7 +15561,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -6.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -15783,7 +15714,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -15791,7 +15722,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -6.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -15852,7 +15783,7 @@
     "industry": "manufacturing",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -1.2,
+    "gap_from_industry": -1.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -15860,7 +15791,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -6.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -15944,7 +15875,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -15952,7 +15883,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16013,7 +15944,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16021,7 +15952,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16036,7 +15967,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16044,7 +15975,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -8.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16174,7 +16105,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16182,7 +16113,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16243,7 +16174,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16251,7 +16182,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16335,7 +16266,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16343,7 +16274,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -6.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16358,7 +16289,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16366,7 +16297,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16381,7 +16312,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16389,7 +16320,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16427,7 +16358,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16435,7 +16366,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16450,7 +16381,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16458,7 +16389,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16496,7 +16427,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16504,7 +16435,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16542,7 +16473,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16550,7 +16481,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16565,7 +16496,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16573,7 +16504,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16588,7 +16519,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16596,7 +16527,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16611,7 +16542,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16619,30 +16550,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
-      "M": -0.4,
-      "A": -1.5,
-      "N": 0.4
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 156
-  },
-  {
-    "company": "Jefferies Financial Group Inc.",
-    "ticker": "JEF",
-    "industry": "finance",
-    "composite": 55,
-    "industry_average": 57,
-    "gap_from_industry": -1.6,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.1,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -8.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16657,7 +16565,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16665,7 +16573,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16680,7 +16588,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16688,7 +16596,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -8.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16703,7 +16611,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16711,7 +16619,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16726,7 +16634,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16734,7 +16642,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16749,7 +16657,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16757,7 +16665,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -5.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16841,7 +16749,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16849,7 +16757,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -16933,7 +16841,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -16941,7 +16849,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -17066,35 +16974,12 @@
     "industry_peer_count": 89
   },
   {
-    "company": "SLM Corp",
-    "ticker": "SLM",
-    "industry": "finance",
-    "composite": 55,
-    "industry_average": 57,
-    "gap_from_industry": -1.6,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.1,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -4.9,
-      "U": -2.8,
-      "M": -1.4,
-      "A": -1.5,
-      "N": 0.4
-    },
-    "worst_dimension": "H",
-    "best_dimension": "N",
-    "industry_peer_count": 156
-  },
-  {
     "company": "Solo Brands, Inc.",
     "ticker": "SBDS",
     "industry": "manufacturing",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -2.2,
+    "gap_from_industry": -2.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -17102,7 +16987,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -11.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -17296,6 +17181,29 @@
     "industry_peer_count": 337
   },
   {
+    "company": "UMB FINANCIAL CORP",
+    "ticker": "UMBF",
+    "industry": "finance",
+    "composite": 55,
+    "industry_average": 57,
+    "gap_from_industry": -1.5,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.1,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -4.9,
+      "U": -5.5,
+      "M": 2.6,
+      "A": -1.5,
+      "N": 0.4
+    },
+    "worst_dimension": "U",
+    "best_dimension": "M",
+    "industry_peer_count": 156
+  },
+  {
     "company": "US Foods Holding Corp.",
     "ticker": "USFD",
     "industry": "retail",
@@ -17416,7 +17324,7 @@
     "industry": "finance",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -1.6,
+    "gap_from_industry": -1.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -17424,7 +17332,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -17439,7 +17347,7 @@
     "industry": "manufacturing",
     "composite": 55,
     "industry_average": 57,
-    "gap_from_industry": -2.2,
+    "gap_from_industry": -2.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -17447,7 +17355,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -10.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -17462,7 +17370,7 @@
     "industry": "finance",
     "composite": 54,
     "industry_average": 57,
-    "gap_from_industry": -2.6,
+    "gap_from_industry": -2.5,
     "influence_weight": 0.051,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -17470,7 +17378,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -10.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -17508,7 +17416,7 @@
     "industry": "finance",
     "composite": 54,
     "industry_average": 57,
-    "gap_from_industry": -2.6,
+    "gap_from_industry": -2.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.1,
     "is_positive_leader": false,
@@ -17516,7 +17424,30 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -11.9,
-      "U": -1.8,
+      "U": -1.5,
+      "M": -0.4,
+      "A": -1.5,
+      "N": 0.4
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 156
+  },
+  {
+    "company": "Jefferies Financial Group Inc.",
+    "ticker": "JEF",
+    "industry": "finance",
+    "composite": 54,
+    "industry_average": 57,
+    "gap_from_industry": -2.5,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.1,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -9.9,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -19440,7 +19371,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 0.8,
+    "gap_from_industry": 0.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -19448,7 +19379,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 3.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -19739,7 +19670,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 0.8,
+    "gap_from_industry": 0.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -19747,7 +19678,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 1.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -20061,7 +19992,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 0.8,
+    "gap_from_industry": 0.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20069,7 +20000,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 0.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -20084,7 +20015,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 0.8,
+    "gap_from_industry": 0.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20092,7 +20023,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 1.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -20153,7 +20084,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 0.8,
+    "gap_from_industry": 0.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20161,7 +20092,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 1.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -20199,7 +20130,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 0.8,
+    "gap_from_industry": 0.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20207,7 +20138,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 2.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -20222,7 +20153,7 @@
     "industry": "manufacturing",
     "composite": 58,
     "industry_average": 57,
-    "gap_from_industry": 0.8,
+    "gap_from_industry": 0.9,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20230,7 +20161,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 1.7,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -20245,7 +20176,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20253,12 +20184,12 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 4.1,
-      "U": -2.8,
+      "U": -0.5,
       "M": -1.4,
       "A": -1.5,
       "N": 0.4
     },
-    "worst_dimension": "U",
+    "worst_dimension": "A",
     "best_dimension": "H",
     "industry_peer_count": 156
   },
@@ -20268,7 +20199,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20276,7 +20207,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 1.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -20291,7 +20222,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20299,7 +20230,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 0.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": 3.6,
       "A": -1.5,
       "N": 0.4
@@ -20314,7 +20245,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20322,7 +20253,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 5.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -20383,7 +20314,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20391,7 +20322,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -3.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": 7.5,
       "N": 0.4
@@ -20406,7 +20337,7 @@
     "industry": "manufacturing",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": -0.2,
+    "gap_from_industry": -0.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20414,7 +20345,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -20452,7 +20383,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20460,7 +20391,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 2.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -20567,7 +20498,7 @@
     "industry": "manufacturing",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": -0.2,
+    "gap_from_industry": -0.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20575,7 +20506,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -20590,7 +20521,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20598,7 +20529,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 5.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -20613,7 +20544,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20621,7 +20552,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": 2.2,
+      "U": 2.5,
       "M": 2.6,
       "A": -1.5,
       "N": 0.4
@@ -20636,7 +20567,7 @@
     "industry": "manufacturing",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": -0.2,
+    "gap_from_industry": -0.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20644,7 +20575,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -20728,7 +20659,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20736,7 +20667,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": 4.2,
+      "U": 4.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -20751,7 +20682,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20759,7 +20690,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": 2.2,
+      "U": 2.5,
       "M": 2.6,
       "A": -1.5,
       "N": 0.4
@@ -20774,7 +20705,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20782,7 +20713,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 4.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -20797,7 +20728,7 @@
     "industry": "manufacturing",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": -0.2,
+    "gap_from_industry": -0.1,
     "influence_weight": 0.204,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20805,7 +20736,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -10.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 11.2,
       "A": 0.2,
       "N": -0.3
@@ -20843,7 +20774,7 @@
     "industry": "manufacturing",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": -0.2,
+    "gap_from_industry": -0.1,
     "influence_weight": 0.07,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20851,7 +20782,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -5.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": 0.2,
       "N": -0.3
@@ -20866,7 +20797,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20874,7 +20805,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": 1.2,
+      "U": 1.5,
       "M": 2.6,
       "A": -1.5,
       "N": 0.4
@@ -20889,7 +20820,7 @@
     "industry": "manufacturing",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": -0.2,
+    "gap_from_industry": -0.1,
     "influence_weight": 0.052,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20897,7 +20828,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -3.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -20912,7 +20843,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20920,7 +20851,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": 3.2,
+      "U": 3.5,
       "M": 3.6,
       "A": -1.5,
       "N": 0.4
@@ -20935,7 +20866,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -20943,13 +20874,13 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -2.9,
-      "U": 0.2,
+      "U": 2.5,
       "M": 1.6,
       "A": -1.5,
       "N": 0.4
     },
     "worst_dimension": "H",
-    "best_dimension": "M",
+    "best_dimension": "U",
     "industry_peer_count": 156
   },
   {
@@ -20999,6 +20930,29 @@
     "industry_peer_count": 54
   },
   {
+    "company": "Robinhood Markets, Inc.",
+    "ticker": "HOOD",
+    "industry": "finance",
+    "composite": 57,
+    "industry_average": 57,
+    "gap_from_industry": 0.5,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.0,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": 6.1,
+      "U": -5.5,
+      "M": 0.6,
+      "A": -1.5,
+      "N": 0.4
+    },
+    "worst_dimension": "U",
+    "best_dimension": "H",
+    "industry_peer_count": 156
+  },
+  {
     "company": "Solstice Advanced Materials Inc.",
     "ticker": "SOLS",
     "industry": "chemicals",
@@ -21027,7 +20981,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21035,7 +20989,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": 3.2,
+      "U": 3.5,
       "M": 3.6,
       "A": -1.5,
       "N": 0.4
@@ -21073,7 +21027,7 @@
     "industry": "manufacturing",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": -0.2,
+    "gap_from_industry": -0.1,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21081,7 +21035,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -3.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -21119,7 +21073,7 @@
     "industry": "manufacturing",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": -0.2,
+    "gap_from_industry": -0.1,
     "influence_weight": 0.301,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21127,7 +21081,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -21142,7 +21096,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21150,7 +21104,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": 2.2,
+      "U": 2.5,
       "M": 2.6,
       "A": -1.5,
       "N": 0.4
@@ -21165,7 +21119,7 @@
     "industry": "manufacturing",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": -0.2,
+    "gap_from_industry": -0.1,
     "influence_weight": 0.058,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21173,7 +21127,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.3,
-      "U": -2.4,
+      "U": -2.2,
       "M": 4.2,
       "A": -0.8,
       "N": -0.3
@@ -21206,29 +21160,6 @@
     "industry_peer_count": 22
   },
   {
-    "company": "UMB FINANCIAL CORP",
-    "ticker": "UMBF",
-    "industry": "finance",
-    "composite": 57,
-    "industry_average": 57,
-    "gap_from_industry": 0.4,
-    "influence_weight": 0.05,
-    "contagion_magnitude": 0.0,
-    "is_positive_leader": false,
-    "is_negative_leader": false,
-    "negative_contagion_leader": false,
-    "dimension_gaps": {
-      "H": -4.9,
-      "U": 2.2,
-      "M": 2.6,
-      "A": -1.5,
-      "N": 0.4
-    },
-    "worst_dimension": "H",
-    "best_dimension": "M",
-    "industry_peer_count": 156
-  },
-  {
     "company": "VAIL RESORTS INC",
     "ticker": "MTN",
     "industry": "hospitality",
@@ -21257,7 +21188,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21265,7 +21196,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -4.9,
-      "U": 2.2,
+      "U": 2.5,
       "M": 2.6,
       "A": -1.5,
       "N": 0.4
@@ -21303,7 +21234,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21311,7 +21242,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -21418,7 +21349,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21426,7 +21357,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -11.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": 7.5,
       "N": 0.4
@@ -21441,7 +21372,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21449,7 +21380,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -21510,7 +21441,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21518,7 +21449,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -21533,7 +21464,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21541,7 +21472,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -21556,7 +21487,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21564,7 +21495,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -21579,7 +21510,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21587,7 +21518,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -2.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -21602,7 +21533,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21610,7 +21541,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -3.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -21694,7 +21625,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21702,7 +21633,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -21786,7 +21717,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21794,7 +21725,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -21855,7 +21786,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -21863,7 +21794,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -21993,7 +21924,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22001,7 +21932,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22039,7 +21970,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22047,7 +21978,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -2.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22085,7 +22016,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22093,7 +22024,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -2.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22108,7 +22039,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22116,7 +22047,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -2.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22177,7 +22108,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22185,7 +22116,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22246,7 +22177,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22254,7 +22185,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22292,7 +22223,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.054,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22300,7 +22231,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22407,7 +22338,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22415,7 +22346,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22430,7 +22361,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22438,7 +22369,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 0.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22453,7 +22384,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22461,7 +22392,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -2.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22476,7 +22407,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22484,7 +22415,30 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -2.9,
-      "U": -1.8,
+      "U": -1.5,
+      "M": -0.4,
+      "A": -1.5,
+      "N": 0.4
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 156
+  },
+  {
+    "company": "MITSUBISHI UFJ FINANCIAL GROUP INC",
+    "ticker": "MUFG",
+    "industry": "finance",
+    "composite": 56,
+    "industry_average": 57,
+    "gap_from_industry": -0.5,
+    "influence_weight": 0.087,
+    "contagion_magnitude": 0.0,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -1.9,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22499,7 +22453,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22507,7 +22461,30 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
+      "M": -0.4,
+      "A": -1.5,
+      "N": 0.4
+    },
+    "worst_dimension": "H",
+    "best_dimension": "N",
+    "industry_peer_count": 156
+  },
+  {
+    "company": "MOLINA HEALTHCARE, INC.",
+    "ticker": "MOH",
+    "industry": "finance",
+    "composite": 56,
+    "industry_average": 57,
+    "gap_from_industry": -0.5,
+    "influence_weight": 0.092,
+    "contagion_magnitude": 0.0,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -3.9,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22545,7 +22522,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22553,7 +22530,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22568,7 +22545,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22576,7 +22553,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -2.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22683,7 +22660,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22691,7 +22668,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -2.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22706,7 +22683,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22714,7 +22691,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -0.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22752,7 +22729,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22760,7 +22737,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22775,7 +22752,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.055,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22783,7 +22760,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22844,7 +22821,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22852,13 +22829,36 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -3.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
     },
     "worst_dimension": "H",
     "best_dimension": "N",
+    "industry_peer_count": 156
+  },
+  {
+    "company": "SLM Corp",
+    "ticker": "SLM",
+    "industry": "finance",
+    "composite": 56,
+    "industry_average": 57,
+    "gap_from_industry": -0.5,
+    "influence_weight": 0.05,
+    "contagion_magnitude": 0.0,
+    "is_positive_leader": false,
+    "is_negative_leader": false,
+    "negative_contagion_leader": false,
+    "dimension_gaps": {
+      "H": -4.9,
+      "U": 0.5,
+      "M": -1.4,
+      "A": -1.5,
+      "N": 0.4
+    },
+    "worst_dimension": "H",
+    "best_dimension": "U",
     "industry_peer_count": 156
   },
   {
@@ -22890,7 +22890,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.066,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22898,7 +22898,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -1.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22913,7 +22913,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22921,7 +22921,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": -2.9,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -22982,7 +22982,7 @@
     "industry": "finance",
     "composite": 56,
     "industry_average": 57,
-    "gap_from_industry": -0.6,
+    "gap_from_industry": -0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -22990,7 +22990,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 0.1,
-      "U": -1.8,
+      "U": -1.5,
       "M": -0.4,
       "A": -1.5,
       "N": 0.4
@@ -26133,7 +26133,7 @@
     "industry": "finance",
     "composite": 57,
     "industry_average": 57,
-    "gap_from_industry": 0.4,
+    "gap_from_industry": 0.5,
     "influence_weight": 0.05,
     "contagion_magnitude": 0.0,
     "is_positive_leader": false,
@@ -26141,7 +26141,7 @@
     "negative_contagion_leader": false,
     "dimension_gaps": {
       "H": 1.1,
-      "U": 12.2,
+      "U": 12.5,
       "M": 7.6,
       "A": -11.5,
       "N": -11.6
