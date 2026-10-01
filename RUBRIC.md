@@ -26,7 +26,7 @@ are listed here so nobody mistakes them for an agency pull:
 | EEOC actions | 13 | `EEOC_DATA` |
 | Insider-sale flags | 4 | `INSIDER_FLAGS` |
 
-Spec version: **v1.9.0** · Active sub-signals: **19** · Not yet scored: **5**
+Spec version: **v1.10.0** · Active sub-signals: **18** · Not yet scored: **6**
 
 **Industry constants are not evidence (v1.6.0).** Where a sub-signal's value comes from an
 industry lookup table rather than from anything about the company, it no longer counts toward that
@@ -36,7 +36,7 @@ v1.4.0 to the engine's own internal defaults: H.2 craft baselines, and the A.1 a
 The effect was 1.78 sub-signals per company, which moved published median coverage from 7/19 to
 5/19. **v1.7.0 found one more:** U.4 reads like a Glassdoor blend, but only about 37 of 1,141
 companies have a Glassdoor record, so for the other 692 affected companies it was the industry
-table alone. Median coverage is now a truthful **4/19**. No score changed in either release.
+table alone. Median coverage is now a truthful **2/18**. No score changed in either release.
 
 **One company, one score (v1.8.0).** The engine matched sources by a name normalizer that
 stripped a fixed suffix list once. SEC spellings (`BANK OF AMERICA CORP /DE/`) and
@@ -182,6 +182,7 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 **Status:** PARTIAL  
 **Inputs:** SEC litigation and EPA penalties (legal score), blended with certification signals when present (60% certifications, 40% legal); EEOC, pay-ratio (DEF 14A) and insider-trading (Form 4) adjustments  
 **Ladder:** Editorial. The legal-penalty dollar tiers ($1B / $100M / $10M / $1M) and the certification blend weights are in-house.  
+**v1.11.0 correction:** the legal component scored **85 when no penalty record was found**, and no record has ever been found — zero of 1,048 SEC records carry a litigation value and the EPA records carry empty `m_signals`. M.3 therefore read 85 for 1,013 of 1,139 companies while claiming to measure legal conduct. It is now a neutral 50 marked not-evidence unless a certification or a real penalty record exists, which is true for 128 companies.  
 **Path forward:** DOJ/FTC publish their own severity classifications for enforcement actions.
 
 ### M.4 — Product Ethics
@@ -234,11 +235,11 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 **Ladder:** The mapping from reporting level to score (90 / 70 / 45 / 25) is editorial.  
 **Path forward:** GRI publishes its own reporting quality scoring framework. Reproducing it would ground this.
 
-### N.5 — Filing Volume
-**Status:** PARTIAL *(was GROUNDED; changed September 2026)*  
-**Inputs:** SEC EDGAR filing counts and timeliness (on-time material disclosure)  
-**Ladder:** The filing data is SEC's own, but the tier cutoffs (8 / 5 / 3 / 1 filings → 90 / 75 / 60 / 40 / 20) are editorial.  
-**Path forward:** Derive the tiers from the distribution of filing counts across all SEC registrants, or from SEC's timeliness rules directly.
+### N.5 — Filing Volume  
+**Status:** **WITHDRAWN in v1.11.0.** Moved to *not yet scored*.  
+**Why:** it scored 90 whenever a company had filed eight documents recently, which every active SEC registrant does. It held the value 90 for **1,041 of 1,139 companies** and distinguished nothing — filing mandatory reports is not a transparency choice, it is the entry condition for appearing in this dataset. The entry above also claimed the signal read *timeliness*; the code never did.  
+**Consequence:** D_N now rests on N.2 alone. A one-sub-signal dimension is a weakness, and it is stated here rather than papered over with a second number.  
+**Path forward:** a real transparency construct — 12b-25 late-filing notices, restatements, or SEC's own timeliness rules.
 
 ---
 
@@ -276,4 +277,4 @@ We respond to ladder-grounding issues within 5 business days.
 
 ---
 
-*Last updated: September 2026. Spec v1.9.0 (one spelling per company; fossil rows expire; 21 sources; METHODOLOGY.md corrected to the engine; U.1 measured against CFPB's published per-product relief rates rather than per employee). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
+*Last updated: September 2026. Spec v1.10.0 (one spelling per company; fossil rows expire; 21 sources; METHODOLOGY.md corrected to the engine; U.1 measured against CFPB's published per-product relief rates rather than per employee). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*

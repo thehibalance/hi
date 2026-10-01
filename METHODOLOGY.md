@@ -1,6 +1,6 @@
 # HI Grade™ Methodology
 
-> **Note (September 2026):** this file has been corrected to the current engine, spec v1.9.0. What
+> **Note (September 2026):** this file has been corrected to the current engine, spec v1.10.0. What
 > changed since it was first written: industry baselines were recalibrated (v1.3); evidence gates
 > were added so a lookup that finds nothing can no longer be recorded as a favourable fact (v1.4);
 > CFPB matching was rebuilt against the regulator's own registered entity names and FDA was
@@ -14,7 +14,7 @@
 > those disagree, they are right and this one is a bug.
 ## The math behind being human kind.
 
-**Document version 1.9.0 · September 2026 · Apache 2.0 · [thehibalance.org](https://thehibalance.org)**
+**Document version 1.10.0 · September 2026 · Apache 2.0 · [thehibalance.org](https://thehibalance.org)**
 
 ---
 
@@ -26,7 +26,7 @@
 
 1. [Why HI Grade exists](#1-why-hi-grade-exists)
 2. [The HUMAN framework](#2-the-human-framework)
-3. [The 19 sub-signals](#3-the-19-sub-signals)
+3. [The 18 sub-signals](#3-the-18-sub-signals)
 4. [Gold HI Grade — the v1.1.0 gate](#4-gold-hi-grade--the-v110-gate)
 5. [The AI-HI Balance principle](#5-the-ai-hi-balance-principle)
 6. [Humanwashing™, AHI™, and PHI](#6-humanwashing-ahi-and-phi)
@@ -117,11 +117,11 @@ A company can score well on all five while being deeply AI-enabled. That's the p
 
 ---
 
-## 3. The 19 sub-signals
+## 3. The 18 sub-signals
 
-Each HUMAN dimension is computed from 2-5 sub-signals. The current engine (spec v1.9.0) scores **19 sub-signals**. Five more (H.4, N.1, N.3, N.4, U.5) are defined in the spec and contribute nothing yet.
+Each HUMAN dimension is computed from 2-5 sub-signals. The current engine (spec v1.10.0) scores **18 sub-signals**. Six more (H.4, N.1, N.3, N.4, N.5, U.5) are defined in the spec and contribute nothing yet.
 
-For the median company, only **4 of those 19** have direct evidence about that company. The rest are neutral 50s or industry priors, which pulls scores toward the middle. Priors still inform a score, but they are not counted as coverage or confidence, and the company's `data_sources` says `Industry` when one is used.
+For the median company, only **2 of those 18** have direct evidence about that company. The rest are neutral 50s or industry priors, which pulls scores toward the middle. Priors still inform a score, but they are not counted as coverage or confidence, and the company's `data_sources` says `Industry` when one is used.
 
 ### H — Human Consciousness (4 sub-signals)
 
@@ -419,7 +419,7 @@ Found a bug in a score or methodology: [github.com/thehibalance/hi/issues](https
 
 ## Version and license
 
-**HI Grade Methodology v1.9.0**
+**HI Grade Methodology v1.10.0**
 
 Published: April 2026 · corrected to the current engine September 2026
 License: Apache 2.0

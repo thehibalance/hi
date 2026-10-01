@@ -215,6 +215,11 @@ SIC_TO_INDUSTRY = {
 # as real data. Measured across 1,046 companies, that was 1.78 sub-signals per company, and moved
 # the published median coverage from an honest 5/19 to 7/19.
 INDUSTRY_DERIVED = set()
+# Values produced by the absence of data rather than by an industry table. The
+# v1.6.0 rule excluded industry priors from coverage but tested `v != 50`, so a
+# default of 85 (M.3, no legal record found) or 90 (N.5) sailed through and was
+# counted as evidence for years. A number is not a measurement because it is not 50.
+ABSENCE_DERIVED = set()
 
 
 def get_industry(sic_code):
@@ -1170,12 +1175,21 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
     total_legal = (litigation or 0) + epa_penalties
 
     # Legal-penalty-based score (downward)
+    # v1.11.0: `else: legal_m3 = 85` used to fire for every company, because the SEC
+    # litigation field is populated for none of them and EPA penalties for none either.
+    # A company with no legal record found is not a company with no legal problems.
     if total_legal > 1000000000: legal_m3 = 20
     elif total_legal > 100000000: legal_m3 = 40
     elif total_legal > 10000000: legal_m3 = 55
     elif total_legal > 1000000: legal_m3 = 65
     elif total_legal > 0: legal_m3 = 75
-    else: legal_m3 = 85
+    else:
+        # No score. A zero here cannot be distinguished from an absence: the SEC
+        # collector writes litigation {"value": 0} for all 1,048 records, JPMorgan
+        # included, and the EPA records carry empty m_signals. There is no company for
+        # which a 0 means 'we checked and found none'. Revisit this test if the
+        # collector is ever fixed to report real figures — then a genuine 0 earns 85.
+        legal_m3 = None
 
     # Fair Trade positive signal + USDA Organic (federal third-party supply-chain verification)
     ft_record = _get_fairtrade_record(ticker, company_name)
@@ -1191,11 +1205,18 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
         # Weight positive signals at 60%, legal at 40% — legal penalties can still drag
         # down a company with cert partials ($100M+ penalties matters even with Fair Trade coffee).
         cert_avg = sum(positive_signals) / len(positive_signals)
-        scores["M.3"] = round(cert_avg * 0.6 + legal_m3 * 0.4, 1)
+        # Blend with the legal baseline only when there IS one.
+        scores["M.3"] = (round(cert_avg * 0.6 + legal_m3 * 0.4, 1)
+                         if legal_m3 is not None else round(cert_avg, 1))
         if ft_m3 is not None and "Fair Trade" not in sources_used: sources_used.append("Fair Trade")
         if usda_m3 is not None and "USDA Organic" not in sources_used: sources_used.append("USDA Organic")
-    else:
+    elif legal_m3 is not None:
         scores["M.3"] = legal_m3
+    else:
+        # Neutral, and explicitly not evidence. It keeps its weight in D_M so the
+        # dimension stays comparable; it stops counting toward coverage.
+        scores["M.3"] = 50
+        ABSENCE_DERIVED.add("M.3")
 
     if litigation: sources_used.append("SEC")
     if epa_penalties > 0 or epa_actions > 0: sources_used.append("EPA")
@@ -1433,32 +1454,32 @@ def score_n_dimension(sec_n, cdp_data, epa_data, industry, gri=None):
             scores["N.2"] = clamp(scores["N.2"] + n2_adj)
             if "GRI" not in sources_used: sources_used.append("GRI")
 
-    total_filings = sec_n.get("total_recent_filings", 0)
-    if total_filings >= 8: scores["N.5"] = 90
-    elif total_filings >= 5: scores["N.5"] = 75
-    elif total_filings >= 3: scores["N.5"] = 60
-    elif total_filings >= 1: scores["N.5"] = 40
-    else: scores["N.5"] = 20
-    if total_filings > 0: sources_used.append("SEC")
-
-    epa_a = epa_data.get("a_signals", {}) if epa_data else {}
-    if epa_a.get("inspections_5yr", 0) > 10:
-        scores["N.5"] = min(100, scores["N.5"] + 5)
-        if "EPA" not in sources_used: sources_used.append("EPA")
-
-    if "Large Accelerated" in str(sec_n.get("category", "")):
-        scores["N.5"] = min(100, scores["N.5"] + 5)
+    # v1.11.0: N.5 "Filing Volume" withdrawn. It scored 90 whenever a company had filed
+    # eight documents recently, which every active SEC registrant does — 10-Qs, 8-Ks,
+    # Form 4s. It held the value 90 for 1,041 of 1,139 companies and distinguished
+    # nothing: filing mandatory reports is not a transparency choice, it is the entry
+    # condition for being in this dataset. The RUBRIC also claimed it read timeliness.
+    # It never did.
+    #
+    # Same decision as U.4 in v1.7.0 and H.2's BLS branch in v1.9.0: a sub-signal that
+    # does not measure the construct it claims is withdrawn, not reweighted. N.5 joins
+    # N.1, N.3 and N.4 as defined-but-not-scored. Grounding it needs a real construct —
+    # 12b-25 late filings, restatements, or SEC's own timeliness rules.
 
     # v1.2v UNIFORM: 2 active sub-signals weighted equally at 0.50.
     # Was 0.571/0.429. GRI bonus, AHI penalty apply downstream.
-    # NOTE: N dimension still depends on just two grounded signals (N.2, N.5).
-    # Three sub-signals deferred (target v1.3) per canonical spec:
+    # NOTE: N dimension rests on ONE sub-signal (N.2) as of v1.11.0.
+    # Four sub-signals deferred per canonical spec:
     #   N.1 = AI Disclosure
     #   N.3 = Labor Auditability
     #   N.4 = Humanwashing Detection
     # Future pass should add DSA transparency, 12b-25 late filings per
     # API_SHOPPING_LIST T1.1, T1.3.
-    D_N = 0.50*scores["N.2"] + 0.50*scores["N.5"]
+    # One sub-signal. That is a weakness stated plainly rather than a second number
+    # invented to keep it company: D_N now rests entirely on CDP reporting quality,
+    # which is neutral 50 for 88% of companies. Rebuilding this dimension is the next
+    # question, and it is a real one.
+    D_N = scores["N.2"]
     return round_score(D_N), scores, sources_used
 
 
@@ -1761,6 +1782,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
                   cdp_data=None, job_data=None, glassdoor_data=None,
                   subsignal_data=None):
     INDUSTRY_DERIVED.clear()
+    ABSENCE_DERIVED.clear()
     sic = sec_data.get("n_signals", {}).get("sic", "") if sec_data else ""
     industry = get_industry(sic)
     
@@ -1861,7 +1883,8 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
     all_details = {**h_detail, **u_detail, **m_detail, **a_detail, **n_detail}
     # A value that is not 50 still is not evidence if an industry constant produced it.
     real_count = sum(1 for k, v in all_details.items()
-                     if v != 50 and k not in INDUSTRY_DERIVED)
+                     if v != 50 and k not in INDUSTRY_DERIVED
+                     and k not in ABSENCE_DERIVED)
 
     hw_flags = []
     rpe = sec_h.get("revenue_per_employee")
@@ -1904,7 +1927,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.9.0",
+        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.10.0",
         "data_sources": all_sources,
         # Published beside the score, never folded into it: the complaint volume a
         # resolution-based U.1 cannot express. Equifax resolves slightly better than
