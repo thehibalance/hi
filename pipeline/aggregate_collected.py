@@ -125,6 +125,10 @@ def main():
     # CFPB, re-matched against CFPB's own registered company names (cfpb_pipeline.py).
     # Only rows that carry the matched names and a count are folded in.
     cfpb = load(os.path.join(a.data, "cfpb", "all_companies.json"), {})
+    # v1.11.1: the tickers the collector scored THIS run. Anything else holding a cfpb block
+    # in the aggregate is a fossil from a previous run and is removed below.
+    cfpb_scored = {str(t).upper() for t, r in (cfpb or {}).items()
+                   if isinstance(r, dict) and r.get("U.1") is not None}
     for t, row in (cfpb or {}).items():
         if not isinstance(row, dict) or row.get("match") != "suggest-exact":
             continue
@@ -139,9 +143,27 @@ def main():
             continue
         for k in WITHHELD_SS:
             v = d.get(k)
-            if v is not None and (v.get("raw") or {}).get("match") != "suggest-exact":
+            if v is None:
+                continue
+            # Two separate questions, and only the first was ever asked.
+            #
+            # 1. Was the company matched correctly? (v1.5.0 — keeps fuzzy matches out.)
+            if (v.get("raw") or {}).get("match") != "suggest-exact":
                 d.pop(k)
                 n["removed:" + k] += 1
+                continue
+            # 2. Does the collector still score it? A correctly matched company that stopped
+            #    qualifying — the evidence floor moved, the measure changed — kept its old
+            #    value here forever, because this file is loaded, updated and written back,
+            #    so anything not explicitly deleted survives. v1.10.0's first nightly
+            #    published twelve companies on the retired volume ladder that way, Columbia
+            #    Banking at U.1 68 against a measured 0.4% relief rate.
+            #
+            #    v1.8.0's rule, one level down: a value nothing re-earned is retired, not
+            #    republished. The collector is the authority on what it measured this run.
+            if k == "cfpb" and t.upper() not in cfpb_scored:
+                d.pop(k)
+                n["removed:cfpb-fossil"] += 1
         if "hibp" in d and not hibp_ok(d["hibp"]):
             d.pop("hibp")
             n["removed:hibp-unverified"] += 1
