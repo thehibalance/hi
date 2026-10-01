@@ -26,7 +26,7 @@ SURFACES = [
     ("RUBRIC.md", r"Spec version: \*\*v([0-9.]+)\*\*", "RUBRIC header"),
     ("RUBRIC.md", r"Last updated:[^.]*\. Spec v([0-9.]+)", "RUBRIC footer"),
     ("docs/index.html", r"c\.spec_version \|\| '([0-9.]+)'", "site spec fallback"),
-    ("human-edge/content.js", r"Spec v([0-9.]+) &middot; 19 active", "extension badge"),
+    ("human-edge/content.js", r"Spec v([0-9.]+) &middot; 18 active", "extension badge"),
     ("ios/HI/HI/AboutView.swift", r"Heartbeat\)\. Spec v([0-9.]+)\.", "iOS about screen"),
     ("METHODOLOGY.md", r"\*\*Document version ([0-9.]+) ", "METHODOLOGY version line"),
     ("METHODOLOGY.md", r"\*\*HI Grade Methodology v([0-9.]+)\*\*", "METHODOLOGY footer"),
@@ -77,30 +77,34 @@ def median_coverage():
         companies = json.load(open(p))
     except (OSError, ValueError):
         return None
-    counts = []
+    counts, denoms = [], set()
     for c in companies:
         m = re.match(r"(\d+)/(\d+)", str(c.get("signal_coverage") or ""))
         if m:
             counts.append(int(m.group(1)))
-    return int(statistics.median(counts)) if counts else None
+            denoms.add(m.group(2))
+    if not counts:
+        return None
+    return int(statistics.median(counts)), "/".join(sorted(denoms))
 
 
 # Each claim is anchored on the word "median" so the correction trail — "used to say 7 of 19"
 # — is not mistaken for a live claim.
 COVERAGE_CLAIMS = [
-    ("README.md", r"median company has real data behind \*\*(\d+) of 19\*\*"),
-    ("RUBRIC.md", r"[Mm]edian coverage is now a truthful \*\*(\d+)/19\*\*"),
-    ("docs/index.html", r"median company has real data behind <strong>(\d+) of its 19</strong>"),
-    ("METHODOLOGY.md", r"median company, only \*\*(\d+) of those 19\*\*"),
+    ("README.md", r"median company has real data behind \*\*(\d+) of 18\*\*"),
+    ("RUBRIC.md", r"[Mm]edian coverage is now a truthful \*\*(\d+)/18\*\*"),
+    ("docs/index.html", r"median company has real data behind <strong>(\d+) of its 18</strong>"),
+    ("METHODOLOGY.md", r"median company, only \*\*(\d+) of those 18\*\*"),
 ]
 
 
 def check_coverage():
     """Warn, do not fail: like the source count, this runs before the nightly regenerates
     scores, so a change published tonight shows up here tomorrow."""
-    actual = median_coverage()
-    if actual is None:
+    got = median_coverage()
+    if got is None:
         return
+    actual, denom = got
     for rel, pattern in COVERAGE_CLAIMS:
         p = ROOT / rel
         if not p.exists():
@@ -111,7 +115,8 @@ def check_coverage():
             continue
         for v in sorted(found):
             mark = "OK" if int(v) == actual else "!!"
-            print(f"  {mark} median coverage        {rel} claims {v}/19, scores show {actual}/19")
+            print(f"  {mark} median coverage        {rel} claims {v}, "
+                  f"scores show {actual}/{denom}")
 
 
 def check_source_count():

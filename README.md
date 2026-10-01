@@ -7,7 +7,7 @@
 **Score every company. Five dimensions AI can't replace.**
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Spec](https://img.shields.io/badge/spec-v1.9.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
+[![Spec](https://img.shields.io/badge/spec-v1.10.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
 [![API](https://img.shields.io/badge/API-live-16A34A.svg)](https://api.thehibalance.org)
 [![Chrome](https://img.shields.io/badge/Chrome-Extension-C49B20.svg)](https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg)
 [![iOS](https://img.shields.io/badge/iOS-App%20Store-000.svg)](https://apps.apple.com/app/hi/id6761270596)
@@ -22,7 +22,7 @@
 
 For 500 years we've made decisions using four filters: **cost, time, convenience, risk.** We left out a fifth — **verified human impact.** Not "does this company feel ethical?" but _"does it treat humans well in ways that leave a data trail?"_
 
-**HI Grade** measures how human a company is across five dimensions. Every company gets a score from 0 to 100, built from 19 active sub-signals and public data: 21 sources feed today's scores, out of 41 integrated. Zero AI in the scoring engine. Zero pay-to-play. Every pipeline-scored company can be reconstructed from public data.
+**HI Grade** measures how human a company is across five dimensions. Every company gets a score from 0 to 100, built from 18 active sub-signals and public data: 21 sources feed today's scores, out of 41 integrated. Zero AI in the scoring engine. Zero pay-to-play. Every pipeline-scored company can be reconstructed from public data.
 
 Whether you're shopping, investing, hiring, researching, or building, HI Grade gives you one number with full audit trail.
 
@@ -46,7 +46,7 @@ Five dimensions. Each measures something AI can't replace.
 | 🌍 | **A — Alive & Environmental** | Energy, water, land, product lifecycle | A.1 A.2 A.3 A.4 |
 | 🔍 | **N — Natural Transparency** | Reporting quality, filing volume, disclosure depth | N.2 N.5 |
 
-**19 active sub-signals. 5 more defined but not yet scored** (H.4, U.5, N.1, N.3, N.4). Our [methodology page](https://thehibalance.org/#methodology) documents every formula and threshold.
+**18 active sub-signals. 6 more defined but not yet scored** (H.4, U.5, N.1, N.3, N.4, N.5). Our [methodology page](https://thehibalance.org/#methodology) documents every formula and threshold.
 
 ## What's new in v1.5.1
 
@@ -192,10 +192,10 @@ Decay levels: **Stable → Watch → Warning → Critical**. When a company anno
 
 We publish what we haven't solved yet — because a transparency framework that hides its own gaps is hypocritical. See [`RUBRIC.md`](RUBRIC.md) for every sub-signal's status: **GROUNDED**, **PARTIAL**, or **UNGROUNDED**.
 
-**Current state (v1.9.0):**
+**Current state (v1.10.0):**
 
 - **No sub-signal is fully grounded yet.** 11 are PARTIAL (authoritative data, tier cutoffs we chose) and 8 are UNGROUNDED. Grounding them is the research priority.
-- **Most scores rest on partial data.** The median company has real data behind **4 of 19**
+- **Most scores rest on partial data.** The median company has real data behind **2 of 18**
   sub-signals (mean 4.7); the rest are neutral 50s or industry priors, which pulls scores toward
   the middle. That figure used to read 7 of 19. It was wrong: we were counting our own industry
   lookup tables as evidence about the company. v1.6.0 stopped. No score changed — only the honesty
@@ -271,7 +271,7 @@ Each response includes `score_status`: `verified`, `estimated`, or `pending` —
 └────────────────────────────┬───────────────────────────────┘
                              │
 ┌─ Scoring Engine (deterministic, no AI) ────────────────────┐
-│  19 active sub-signals → 5 dimensions → 1 composite (0-100)│
+│  18 active sub-signals → 5 dimensions → 1 composite (0-100)│
 │  + 4 harm detection systems applied at dimension level     │
 │  + 3-layer validation — critical problems stop publishing  │
 └────────────────────────────┬───────────────────────────────┘
