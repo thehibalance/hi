@@ -13,6 +13,13 @@ on:
         default: false
         type: boolean
 
+# Only one pipeline may run at a time. On Oct 6 a late scheduled run and two manual
+# dispatches were in flight together, every one of them committing to main. Queue
+# rather than race, and never cancel a run that may be mid-commit.
+concurrency:
+  group: daily-pipeline
+  cancel-in-progress: false
+
 jobs:
   score:
     runs-on: ubuntu-latest
