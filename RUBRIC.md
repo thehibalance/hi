@@ -26,7 +26,7 @@ are listed here so nobody mistakes them for an agency pull:
 | EEOC actions | 13 | `EEOC_DATA` |
 | Insider-sale flags | 4 | `INSIDER_FLAGS` |
 
-Spec version: **v1.10.0** · Active sub-signals: **18** · Not yet scored: **6**
+Spec version: **v1.11.0** · Active sub-signals: **18** · Not yet scored: **6**
 
 **Industry constants are not evidence (v1.6.0).** Where a sub-signal's value comes from an
 industry lookup table rather than from anything about the company, it no longer counts toward that
@@ -36,7 +36,7 @@ v1.4.0 to the engine's own internal defaults: H.2 craft baselines, and the A.1 a
 The effect was 1.78 sub-signals per company, which moved published median coverage from 7/19 to
 5/19. **v1.7.0 found one more:** U.4 reads like a Glassdoor blend, but only about 37 of 1,141
 companies have a Glassdoor record, so for the other 692 affected companies it was the industry
-table alone. Median coverage is now a truthful **2/18**. No score changed in either release.
+table alone. Median coverage is now a truthful **2/18** — and under v1.11.0, **270 of 1,041 scored companies measure nothing at all**, stated rather than hidden behind a composite. No score changed in either release.
 
 **One company, one score (v1.8.0).** The engine matched sources by a name normalizer that
 stripped a fixed suffix list once. SEC spellings (`BANK OF AMERICA CORP /DE/`) and
@@ -277,4 +277,4 @@ We respond to ladder-grounding issues within 5 business days.
 
 ---
 
-*Last updated: September 2026. Spec v1.10.0 (one spelling per company; fossil rows expire; 21 sources; METHODOLOGY.md corrected to the engine; U.1 measured against CFPB's published per-product relief rates rather than per employee). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
+*Last updated: October 2026. Spec v1.11.0 (one spelling per company; fossil rows expire in every store the pipeline updates in place; 21 sources; METHODOLOGY.md corrected to the engine; U.1 measured against CFPB's published per-product relief rates rather than per employee; M.3 and N.5 retired as defects; H.3 scored only where a credible industry RPE median exists). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*

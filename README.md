@@ -7,7 +7,7 @@
 **Score every company. Five dimensions AI can't replace.**
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Spec](https://img.shields.io/badge/spec-v1.10.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
+[![Spec](https://img.shields.io/badge/spec-v1.11.0-1B3A5C.svg)](https://thehibalance.org/#methodology)
 [![API](https://img.shields.io/badge/API-live-16A34A.svg)](https://api.thehibalance.org)
 [![Chrome](https://img.shields.io/badge/Chrome-Extension-C49B20.svg)](https://chromewebstore.google.com/detail/cpahbhdlmeinoaffjcpnnofgebcblkhg)
 [![iOS](https://img.shields.io/badge/iOS-App%20Store-000.svg)](https://apps.apple.com/app/hi/id6761270596)
@@ -192,7 +192,7 @@ Decay levels: **Stable → Watch → Warning → Critical**. When a company anno
 
 We publish what we haven't solved yet — because a transparency framework that hides its own gaps is hypocritical. See [`RUBRIC.md`](RUBRIC.md) for every sub-signal's status: **GROUNDED**, **PARTIAL**, or **UNGROUNDED**.
 
-**Current state (v1.10.0):**
+**Current state (v1.11.0):**
 
 - **No sub-signal is fully grounded yet.** 11 are PARTIAL (authoritative data, tier cutoffs we chose) and 8 are UNGROUNDED. Grounding them is the research priority.
 - **Most scores rest on partial data.** The median company has real data behind **2 of 18**
