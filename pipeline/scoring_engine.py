@@ -223,7 +223,8 @@ ABSENCE_DERIVED = set()
 
 
 def get_industry(sic_code):
-    if not sic_code: return "default"
+    # v1.12.2: unknown is not a category — the same rule the next line states.
+    if not sic_code: return None
     # v1.3.1: 3-digit first, then 2-digit. None if neither - an unmapped SIC
     # is unknown, not a category.
     s = str(sic_code)
