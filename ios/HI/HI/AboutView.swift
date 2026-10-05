@@ -46,7 +46,7 @@ struct AboutView: View {
                                 .font(.system(size: 17, weight: .bold, design: .serif))
                                 .foregroundColor(.hiNavy)
                         }
-                        Text("For centuries, we've made decisions through four filters: cost, time, convenience, risk. HI Grade asks what should come first — verified human impact.")
+                        Text("For centuries, we've made decisions through four filters: cost, time, convenience, risk. HI Grade asks what should come first — human intelligence: whether a company keeps people in the decisions that affect people.")
                             .font(.system(size: 14))
                             .foregroundColor(.secondary)
                             .lineSpacing(3)
