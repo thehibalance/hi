@@ -20,7 +20,7 @@
 
 ## What is HI Grade™?
 
-For 500 years we've made decisions using four filters: **cost, time, convenience, risk.** We left out a fifth — **verified human impact.** Not "does this company feel ethical?" but _"does it treat humans well in ways that leave a data trail?"_
+For 500 years we've made decisions using four filters: **cost, time, convenience, risk.** We left out a fifth — **human intelligence**: does a company keep people in the decisions that affect people? Not "does this company feel ethical?" but _"does it treat humans well in ways that leave a data trail?"_
 
 **HI Grade** measures how human a company is across five dimensions. Every company gets a score from 0 to 100, built from 18 active sub-signals and public data: 21 sources feed today's scores, out of 41 integrated. Zero AI in the scoring engine. Zero pay-to-play. Every pipeline-scored company can be reconstructed from public data.
 
