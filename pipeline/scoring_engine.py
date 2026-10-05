@@ -966,11 +966,30 @@ def score_h_dimension(sec_h, job_data, industry, patents=None):
     if displacement is not None and displacement > 20:
         h3 = clamp(h3 - displacement * 0.3)
     
+    # v1.12.0: the same missing datum, handled the way H.1 already handles it.
+    #
+    # `if rpe and _med_ok` above is H.3's only measured input. When it is false, h3 was
+    # left at its initialised 50 — and then the headcount tier and the h3_industry table
+    # were added anyway, lifting it off 50 and back into real_count as evidence. 344 of
+    # 1,045 companies published an H.3 built from a size bracket and a hand-authored
+    # industry constant, with nothing measured underneath.
+    #
+    # Line 897 does this correctly for H.1: no credible median, clean 50, excluded from
+    # real_count. H.3 now matches it. Precedent: v1.9.0 removed H.2's inert BLS path
+    # rather than connecting it; v1.11.0 made M.3 absence-derived rather than inventing
+    # a value. A score nothing measured is retired, not republished.
+    if not (rpe and _med_ok):
+        h3 = 50
+        h3_sources = []
+        ABSENCE_DERIVED.add("H.3")
     scores["H.3"] = round(h3, 1)
     sources_used.extend([s for s in h3_sources if s not in sources_used])
 
     # v1.2x Layered: fold USPTO.H.3_adj into H.3
-    if patents:
+    # v1.12.0: an absence-derived H.3 must not be lifted off 50 by an adjustment —
+    # that would re-admit it as evidence through the back door, which is the same
+    # defect one line later.
+    if patents and "H.3" not in ABSENCE_DERIVED:
         h3_adj = patents.get("H.3_adj", 0)
         if h3_adj != 0:
             scores["H.3"] = clamp(scores["H.3"] + h3_adj)
@@ -1927,7 +1946,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.10.0",
+        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.11.0",
         "data_sources": all_sources,
         # Published beside the score, never folded into it: the complaint volume a
         # resolution-based U.1 cannot express. Equifax resolves slightly better than
