@@ -623,25 +623,6 @@
     "composite": 40
   },
   {
-    "company": "Morgan Stanley",
-    "ticker": "MS",
-    "industry": "finance",
-    "hi_composite": 49,
-    "esg_composite": 55.9,
-    "esg_components": {
-      "environmental": 64,
-      "social": 50.0,
-      "governance": 53.0
-    },
-    "gap": -6.9,
-    "arbitrage_type": "esg_washing",
-    "arbitrage_label": "ESG Washing",
-    "gap_reasons": [
-      "H dimension at 24 \u2014 ESG ignores human consciousness"
-    ],
-    "composite": 49
-  },
-  {
     "company": "Bob's Red Mill",
     "ticker": "",
     "industry": "food",
@@ -659,6 +640,25 @@
       "HI and ESG agree \u2014 strong across both frameworks"
     ],
     "composite": 80
+  },
+  {
+    "company": "Morgan Stanley",
+    "ticker": "MS",
+    "industry": "finance",
+    "hi_composite": 49,
+    "esg_composite": 55.8,
+    "esg_components": {
+      "environmental": 64,
+      "social": 50.0,
+      "governance": 52.5
+    },
+    "gap": -6.8,
+    "arbitrage_type": "esg_washing",
+    "arbitrage_label": "ESG Washing",
+    "gap_reasons": [
+      "H dimension at 24 \u2014 ESG ignores human consciousness"
+    ],
+    "composite": 49
   },
   {
     "company": "37signals / Basecamp",
@@ -701,7 +701,7 @@
   {
     "company": "Patagonia",
     "ticker": "",
-    "industry": "default",
+    "industry": null,
     "hi_composite": 76,
     "esg_composite": 82.7,
     "esg_components": {
@@ -1862,7 +1862,7 @@
   {
     "company": "Shein",
     "ticker": "",
-    "industry": "default",
+    "industry": null,
     "hi_composite": 39,
     "esg_composite": 43.9,
     "esg_components": {
@@ -3191,7 +3191,7 @@
   {
     "company": "Temu",
     "ticker": "",
-    "industry": "default",
+    "industry": null,
     "hi_composite": 39,
     "esg_composite": 43.2,
     "esg_components": {
@@ -5897,6 +5897,25 @@
     "composite": 54
   },
   {
+    "company": "Vulcan Materials CO",
+    "ticker": "VMC",
+    "industry": "mining",
+    "hi_composite": 54,
+    "esg_composite": 51.0,
+    "esg_components": {
+      "environmental": 51,
+      "social": 50.0,
+      "governance": 52.0
+    },
+    "gap": 3.0,
+    "arbitrage_type": "double_risk",
+    "arbitrage_label": "Double Risk",
+    "gap_reasons": [
+      "Low on both HI and ESG \u2014 significant risk across all dimensions"
+    ],
+    "composite": 54
+  },
+  {
     "company": "Accenture plc",
     "ticker": "ACN",
     "industry": "tech",
@@ -7513,25 +7532,6 @@
       "environmental": 52,
       "social": 53.0,
       "governance": 50.0
-    },
-    "gap": 2.4,
-    "arbitrage_type": "double_risk",
-    "arbitrage_label": "Double Risk",
-    "gap_reasons": [
-      "Low on both HI and ESG \u2014 significant risk across all dimensions"
-    ],
-    "composite": 54
-  },
-  {
-    "company": "Vulcan Materials CO",
-    "ticker": "VMC",
-    "industry": "mining",
-    "hi_composite": 54,
-    "esg_composite": 51.6,
-    "esg_components": {
-      "environmental": 51,
-      "social": 50.0,
-      "governance": 53.5
     },
     "gap": 2.4,
     "arbitrage_type": "double_risk",
@@ -14483,7 +14483,7 @@
   {
     "company": "Dr. Bronner's",
     "ticker": "",
-    "industry": "default",
+    "industry": null,
     "hi_composite": 69,
     "esg_composite": 69.6,
     "esg_components": {
