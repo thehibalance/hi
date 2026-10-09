@@ -503,9 +503,10 @@ DEFORESTATION_FLAGS = {
     "SBUX": -10,   # Starbucks - coffee supply chain
 }
 
-def score_land(ticker, industry, epa_violations=0):
+def score_land(ticker, industry):
     """
-    Score A.3 (Land & Habitat) from industry data + deforestation risk + EPA.
+    Score A.3 (Land & Habitat) from an industry deforestation-risk table plus
+    hand-authored per-ticker flags. No external data is read here.
     """
     # Base from industry
     base = DEFORESTATION_RISK.get(industry, 50)
@@ -513,18 +514,15 @@ def score_land(ticker, industry, epa_violations=0):
     # Company-specific deforestation flags
     flag = DEFORESTATION_FLAGS.get(ticker.upper(), 0)
     
-    # EPA violation penalty (if data available)
-    epa_penalty = 0
-    if epa_violations > 20:
-        epa_penalty = -20
-    elif epa_violations > 10:
-        epa_penalty = -15
-    elif epa_violations > 3:
-        epa_penalty = -10
+    # No EPA term here. The violation penalty this function used to carry was dead:
+    # `epa_violations` defaulted to 0 and the one call site never passed it, so the
+    # penalty was always exactly 0 for all 1,045 companies — meaning no company was
+    # ever penalised for EPA violations in A.3. The penalty now lives in
+    # scoring_engine.py, where epa_data is in scope. See
+    # claude/FINDING-a3-is-a-table-and-the-baseline-is-eight.md
+    a3 = base + flag
     
-    a3 = base + flag + epa_penalty
-    
-    return {"A.3": round(max(0, min(100, a3)), 1), "source": "Industry+EPA"}
+    return {"A.3": round(max(0, min(100, a3)), 1), "source": "Industry"}
 
 
 # ═══════════════════════════════════════════════════════════════════════
