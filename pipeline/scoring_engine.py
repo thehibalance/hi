@@ -1386,13 +1386,13 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None, tick
         if land_score is not None:
             scores["A.3"] = round(usda_a3 * 0.7 + land_score * 0.3, 1)
             sources_used.append("USDA Organic")
-            if "Industry+EPA" not in sources_used: sources_used.append("Industry+EPA")
+            if "Industry" not in sources_used: sources_used.append("Industry")
         else:
             scores["A.3"] = usda_a3
             sources_used.append("USDA Organic")
     elif land_score is not None:
         scores["A.3"] = land_score
-        sources_used.append("Industry+EPA")
+        sources_used.append("Industry")
     else:
         epa_a = epa_data.get("a_signals", {}) if epa_data else {}
         if epa_a.get("total_violations_3yr") is not None:
