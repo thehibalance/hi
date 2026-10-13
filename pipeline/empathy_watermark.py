@@ -27,6 +27,7 @@ Patent Pending · Morf Innovations LLC
 import json
 from pathlib import Path
 from datetime import datetime
+from scored_rows import load_scored
 
 
 def load_json(path):
@@ -43,7 +44,7 @@ def compute_watermarks():
     print(f"  Patent Feature: Real vs Performative Empathy")
     print(f"{'='*60}\n")
 
-    scores = load_json("data/scores/all_scores.json")
+    scores = load_scored()
 
     output_dir = Path("data/empathy_watermark")
     output_dir.mkdir(parents=True, exist_ok=True)

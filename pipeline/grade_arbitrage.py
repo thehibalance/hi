@@ -24,6 +24,7 @@ Patent Pending · Morf Innovations LLC
 import json
 from pathlib import Path
 from datetime import datetime
+from scored_rows import load_scored
 
 
 def load_json(path):
@@ -66,7 +67,7 @@ def compute_arbitrage():
     print(f"{'='*60}\n")
 
     # Load data
-    scores = load_json("data/scores/all_scores.json")
+    scores = load_scored()
     finnhub = load_dict("data/finnhub/all_companies.json")
     cdp_data = load_dict("data/cdp/all_companies.json")
 
