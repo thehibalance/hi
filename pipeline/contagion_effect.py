@@ -21,6 +21,7 @@ Patent Pending · Morf Innovations LLC
 import json
 from pathlib import Path
 from datetime import datetime
+from scored_rows import load_scored
 
 
 def load_json(path):
@@ -37,7 +38,7 @@ def compute_contagion():
     print(f"  Patent Feature: Supply Chain Ethics Ripple")
     print(f"{'='*60}\n")
 
-    scores = load_json("data/scores/all_scores.json")
+    scores = load_scored()
 
     output_dir = Path("data/contagion")
     output_dir.mkdir(parents=True, exist_ok=True)
