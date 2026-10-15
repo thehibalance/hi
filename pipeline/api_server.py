@@ -709,7 +709,22 @@ def build_index():
 
 
 # ── Dynamic source count loader (added by patch_api_stats.py) ──
-_NOT_SOURCES = {"Industry", "Manual Scoring", "Defaults", "Seed Estimate"}
+_NOT_SOURCES = {
+    "Industry", "Manual Scoring", "Defaults", "Seed Estimate",
+    # GLASSDOOR_DATA (glassdoor_pipeline.py:26) and JOB_DATA
+    # (job_board_pipeline.py:34) are literal Python dicts — 43 and 37 hand-typed
+    # companies. Neither module fetches anything; neither is in the nightly. Every
+    # sampled ai_ratio is a multiple of 0.05 and exactly equals
+    # ai_postings/total_postings, so the ratio was authored and the count derived
+    # from it. A hand-authored table cannot be credited to the company whose name
+    # it carries — the same correction as Industry+EPA in v1.12.x, at ~70x the rows.
+    #
+    # They still feed scores. This only stops them being published as external
+    # PROVIDERS. Whether they should count as evidence in real_count is a separate
+    # and larger decision: 30 of 30 'Strong'/'Verified' rows cite one of them.
+    # See claude/FINDING-glassdoor-and-jobs-are-hand-authored-dicts.md
+    "Glassdoor", "Jobs",
+}
 
 
 def get_contributing_sources():
