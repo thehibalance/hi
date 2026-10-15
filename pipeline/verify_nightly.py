@@ -39,7 +39,7 @@ from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
-SPEC = "1.11.0"
+SPEC = "1.12.0"
 COV_DENOM = 18
 fails = []
 

@@ -1980,7 +1980,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.11.0",
+        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.12.0",
         "data_sources": all_sources,
         # Published beside the score, never folded into it: the complaint volume a
         # resolution-based U.1 cannot express. Equifax resolves slightly better than
