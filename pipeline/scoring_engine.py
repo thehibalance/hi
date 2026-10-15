@@ -935,10 +935,41 @@ def score_h_dimension(sec_h, job_data, industry, patents=None):
     h3_sources = []
     # v1.3.0: no credible industry baseline -> H.3 skips the RPE term entirely,
     # rather than deriving a 'human decision depth' from a fictional peer group.
-    if rpe and _med_ok:
+    # v1.13.0: the RPE term is recentred and given a declared domain.
+    #
+    # The old scale was `clamp(40 + rpe_ratio * 30)`, and its comment said "Range: ~40-70
+    # from RPE alone". That holds only while the ratio is at or below 1 — only for companies
+    # ABOVE their industry median. Measured across 641 companies, the median ratio is
+    # exactly 1.000, because the median of median/rpe over the population that DEFINES the
+    # median is 1. So the typical company scored 40 + 30 = 70, twenty points above neutral,
+    # by arithmetic rather than by measurement. And every company at or below half its
+    # industry's revenue per employee clamped at 100 — 102 of 641, indistinguishable.
+    #
+    # The input is a ratio, so the scale is logarithmic: 2x and 0.5x sit equal distances
+    # either side of neutral. The domain and the score range are the same boundary, so K
+    # follows from the domain instead of being chosen separately:
+    #
+    #     ratio 0.25 -> 0        ratio 1 -> 50        ratio 4 -> 100
+    #
+    # Outside the domain the ratio stops measuring the construct. TGTX sits at ratio 881 —
+    # revenue-per-employee of about $381, a pre-revenue biotech rather than a company with
+    # unusually deep human decisions. A REIT with a handful of employees is at the other end
+    # for the same kind of reason. 78 of 641 fall outside and get a clean 50, ABSENCE_DERIVED,
+    # excluded from real_count: v1.3.0's rule generalised from "no credible baseline" to
+    # "no credible ratio".
+    #
+    # Simulated over 1,041 published rows at 100% reproduction before shipping:
+    # mean 73.3 -> ~50.9, median 71.9 -> ~51.2, at 100: 102 -> ~26. The residual pile is the
+    # headcount tier and h3_industry below, which still apply. Removing h3_industry ALONE
+    # raises the mean, because tech carries -8 and is 181 of 641 — v1.13.1, measured on its
+    # own, as v1.12.0 said.
+    H3_RATIO_LO, H3_RATIO_HI, H3_K = 0.25, 4.0, 25
+    rpe_ratio = (industry_median / max(rpe, 1)) if (rpe and _med_ok) else None
+    _ratio_ok = rpe_ratio is not None and H3_RATIO_LO <= rpe_ratio <= H3_RATIO_HI
+    if _ratio_ok:
         # Lower revenue-per-employee = more humans in the loop = more human decisions
-        rpe_ratio = industry_median / max(rpe, 1)
-        h3 = clamp(40 + rpe_ratio * 30)  # Range: ~40-70 from RPE alone
+        import math
+        h3 = clamp(50 + H3_K * math.log2(rpe_ratio))
         h3_sources.append("SEC")
     
     # Adjust by headcount — larger workforces have deeper decision chains
@@ -979,7 +1010,9 @@ def score_h_dimension(sec_h, job_data, industry, patents=None):
     # real_count. H.3 now matches it. Precedent: v1.9.0 removed H.2's inert BLS path
     # rather than connecting it; v1.11.0 made M.3 absence-derived rather than inventing
     # a value. A score nothing measured is retired, not republished.
-    if not (rpe and _med_ok):
+    # v1.13.0: the same reset now covers an out-of-domain ratio as well as a missing
+    # median. A ratio of 881 is not a measurement of human decision depth.
+    if not _ratio_ok:
         h3 = 50
         h3_sources = []
         ABSENCE_DERIVED.add("H.3")
