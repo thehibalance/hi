@@ -73,7 +73,7 @@ def compute_epa_signals(company_name, facilities_data):
     }
 
     if not facilities_data or not facilities_data.get("facilities"):
-        signals["error"] = "No EPA-regulated facilities found"
+        signals["error"] = "facility name match returned no rows"
         return signals
 
     facilities = facilities_data["facilities"]
