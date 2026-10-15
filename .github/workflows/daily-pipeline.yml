@@ -107,6 +107,20 @@ jobs:
           SYSTEMATIC_THRESHOLD: '10'
         run: python3 pipeline/check_errors.py
 
+      - name: Collector freshness gate
+        if: always()
+        # check_errors.py groups identical error messages. This checks the opposite
+        # failure: a store that produces no errors because it produces nothing at all.
+        # Four collectors stopped on 2026-04-14 with zero errors between three of them
+        # and nothing reported it for 183 days, because every health check in the repo
+        # was a rule about error rate against a defect about time.
+        #
+        # Known stalls are declared inside the script with their stop date, so this
+        # fails only on a new stall, a new store with no retrieval stamp, or a declared
+        # store that recovered and is still listed as broken. Do not raise
+        # HI_MAX_STORE_AGE_DAYS to make it pass.
+        run: python3 pipeline/check_staleness.py
+
       - name: Commit and push updated data
         run: |
           set -e
