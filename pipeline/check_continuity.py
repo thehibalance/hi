@@ -58,8 +58,6 @@ def contributing_sources():
                 continue
             if src.startswith("SEC"):
                 src = "SEC"
-            elif src == "Industry+EPA":
-                src = "EPA"
             seen.add(src)
     return len(seen)
 

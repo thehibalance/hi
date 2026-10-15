@@ -710,6 +710,13 @@ def build_index():
 
 # ── Dynamic source count loader (added by patch_api_stats.py) ──
 _NOT_SOURCES = {
+    # Industry+EPA was A.3's source label until PR #40. The value came from the
+    # DEFORESTATION_RISK industry table; the EPA store is 26 records, every one an
+    # error, last fetched 2026-04-14. Excluded here rather than mapped to "EPA"
+    # below, because deleting that mapping alone would publish the literal string
+    # "Industry+EPA" as a source name.
+    "Industry+EPA",
+
     "Industry", "Manual Scoring", "Defaults", "Seed Estimate",
     # GLASSDOOR_DATA (glassdoor_pipeline.py:26) and JOB_DATA
     # (job_board_pipeline.py:34) are literal Python dicts — 43 and 37 hand-typed
@@ -732,7 +739,8 @@ def get_contributing_sources():
 
     The public "41 sources" figure counts collectors that exist, not ones that
     contribute. Derived tags (industry defaults, manual scoring) are not data
-    sources; SEC filing types count once as SEC; Industry+EPA counts as EPA.
+    sources; SEC filing types count once as SEC. Industry+EPA was A.3's retired
+    label (PR #40) and is excluded, not credited to EPA.
     """
     seen = set()
     for c in ALL_COMPANIES:
@@ -741,8 +749,6 @@ def get_contributing_sources():
                 continue
             if src.startswith("SEC"):
                 src = "SEC"
-            elif src == "Industry+EPA":
-                src = "EPA"
             seen.add(src)
     return sorted(seen)
 
