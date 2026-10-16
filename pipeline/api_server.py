@@ -709,29 +709,15 @@ def build_index():
 
 
 # ── Dynamic source count loader (added by patch_api_stats.py) ──
-_NOT_SOURCES = {
-    # Industry+EPA was A.3's source label until PR #40. The value came from the
-    # DEFORESTATION_RISK industry table; the EPA store is 26 records, every one an
-    # error, last fetched 2026-04-14. Excluded here rather than mapped to "EPA"
-    # below, because deleting that mapping alone would publish the literal string
-    # "Industry+EPA" as a source name.
-    "Industry+EPA",
-
-    "Industry", "Manual Scoring", "Defaults", "Seed Estimate",
-    # GLASSDOOR_DATA (glassdoor_pipeline.py:26) and JOB_DATA
-    # (job_board_pipeline.py:34) are literal Python dicts — 43 and 37 hand-typed
-    # companies. Neither module fetches anything; neither is in the nightly. Every
-    # sampled ai_ratio is a multiple of 0.05 and exactly equals
-    # ai_postings/total_postings, so the ratio was authored and the count derived
-    # from it. A hand-authored table cannot be credited to the company whose name
-    # it carries — the same correction as Industry+EPA in v1.12.x, at ~70x the rows.
-    #
-    # They still feed scores. This only stops them being published as external
-    # PROVIDERS. Whether they should count as evidence in real_count is a separate
-    # and larger decision: 30 of 30 'Strong'/'Verified' rows cite one of them.
-    # See claude/FINDING-glassdoor-and-jobs-are-hand-authored-dicts.md
-    "Glassdoor", "Jobs",
-}
+# v1.13.1: the exclusion rule moved to source_rules.py so check_continuity.py can apply the
+# same rule without importing this module, which boots the API on import. The comments
+# explaining each exclusion moved with it. os/sys are aliased and the path insert is guarded so
+# this works whether the process is started from pipeline/ or imported as pipeline.api_server.
+import os as _os, sys as _sys
+_sr_dir = _os.path.dirname(_os.path.abspath(__file__))
+if _sr_dir not in _sys.path:
+    _sys.path.insert(0, _sr_dir)
+from source_rules import NOT_SOURCES as _NOT_SOURCES, normalize_source
 
 
 def get_contributing_sources():
@@ -745,10 +731,9 @@ def get_contributing_sources():
     seen = set()
     for c in ALL_COMPANIES:
         for src in (c.get("data_sources") or []):
-            if src in _NOT_SOURCES:
+            src = normalize_source(src)
+            if src is None:
                 continue
-            if src.startswith("SEC"):
-                src = "SEC"
             seen.add(src)
     return sorted(seen)
 

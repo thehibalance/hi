@@ -37,7 +37,13 @@ SURFACES = [
 ]
 
 
-NOT_SOURCES = {"Industry", "Manual Scoring", "Defaults", "Seed Estimate"}
+# v1.13.1: this used to be a four-member copy of api_server._NOT_SOURCES, which has seven.
+# The copy went stale when PRs #40/#42/#43 added names to the original, so this check reported
+# README's stale 21 as correct for eight hours. One definition now, imported — the copy is
+# deleted rather than corrected, because correcting it would leave the same failure available.
+# See claude/FINDING-the-gate-copies-the-rule-it-claims-to-mirror.md
+sys.path.insert(0, str(ROOT / "pipeline"))
+from source_rules import NOT_SOURCES, normalize_source  # noqa: E402
 
 
 def contributing_sources():
@@ -54,10 +60,9 @@ def contributing_sources():
     seen = set()
     for c in companies:
         for src in (c.get("data_sources") or []):
-            if src in NOT_SOURCES:
+            src = normalize_source(src)
+            if src is None:
                 continue
-            if src.startswith("SEC"):
-                src = "SEC"
             seen.add(src)
     return len(seen)
 
@@ -118,23 +123,43 @@ def check_coverage():
 
 
 def check_source_count():
-    """Warn, do not fail: this runs before the nightly pipeline regenerates scores, so a change
-    published tonight shows up here tomorrow."""
+    """Returns findings. Over-claiming fails the build; under-claiming warns.
+
+    v1.13.1: this used to warn only, on the same reasoning as median coverage — "runs before the
+    nightly regenerates scores, so a change published tonight shows up here tomorrow." That is
+    right for a figure the nightly moves and wrong for this one. `contributing_sources()` applies
+    TODAY's rule to last night's rows, so a count that changed because of a CODE change is
+    already checkable: README's 18 was true the moment PR #43 merged, not the next morning.
+
+    What the nightly can still do is bring a new source online, raising the measured count above
+    the README's claim for one morning. Failing the build for that would punish honesty. So the
+    asymmetry: claiming MORE sources than are measured is the defect this project exists to
+    remove and fails; claiming fewer resolves itself overnight and warns.
+    """
     actual = contributing_sources()
     if actual is None:
-        return
+        print("  XX README source count      cannot be checked: no all_scores.json")
+        return ["contributing-source count unreadable — pipeline/data/scores/all_scores.json "
+                "missing, so the README's claim was not checked at all"]
     readme = (ROOT / "README.md").read_text(errors="ignore")
     claims = set(int(m) for m in re.findall(r"\*\*?(\d+) sources feed today's scores", readme))
     claims |= set(int(m) for m in re.findall(r"(\d+) sources feed today's scores", readme))
     if not claims:
-        print("  ?  README makes no 'N sources feed today's scores' claim")
-        return
+        print("  XX README makes no 'N sources feed today's scores' claim")
+        return ["README makes no 'N sources feed today's scores' claim — the sentence was "
+                "reworded and this check silently stopped covering it"]
+    bad = []
     for c in sorted(claims):
-        mark = "OK" if c == actual else "!!"
+        mark = "OK" if c == actual else ("XX" if c > actual else "!!")
         print(f"  {mark} README source count      claims {c}, scores show {actual}")
-    if claims != {actual}:
-        print(f"  !! README's source count is stale. Live figure: "
-              f"curl https://api.thehibalance.org/api/v1/stats | jq .data_sources")
+        if c > actual:
+            bad.append(f"README claims {c} sources feed today's scores; {actual} do. "
+                       f"Over-claiming — the live figure is "
+                       f"curl https://api.thehibalance.org/api/v1/stats | jq .data_sources")
+        elif c < actual:
+            print(f"  !! README under-claims ({c} < {actual}). Not a failure: a source that "
+                  f"came online overnight shows up here before the README catches up.")
+    return bad
 
 
 def registry_total():
@@ -150,8 +175,8 @@ def registry_total():
 # Anchored on wording specific to the source count. The composite floor rule also uses the
 # number 42; these patterns must never match it.
 REGISTRY_CLAIMS = [
-    ("README.md", r"sources feed today's scores, out of (\d+) integrated"),
-    ("README.md", r"sources feed today's scores; (\d+) are integrated"),
+    ("README.md", r"sources feed today's scores, out of (\d+) registered"),
+    ("README.md", r"sources feed today's scores; (\d+) are registered"),
     ("README.md", r"\(\d+ producing, (\d+) wired\)"),
     ("METHODOLOGY.md", r"pipelines pull data from (\d+) public sources"),
     ("METHODOLOGY.md", r"The data sources — (\d+) integrated"),
@@ -176,7 +201,13 @@ def check_registry_total():
             continue
         found = set(re.findall(pattern, p.read_text(errors="ignore")))
         if not found:
-            print(f"  ?  {rel:20} makes no registered-source claim matching {pattern!r}")
+            # v1.13.1: fail rather than shrug. A declared claim that cannot be found is either a
+            # surface that drifted or a pattern that went stale. Passing silently meant an
+            # honest rewording removed a surface from the gate without anyone noticing, so the
+            # only edit that kept the build green was the one that kept the wrong number.
+            print(f"  XX {rel:20} makes no registered-source claim matching {pattern!r}")
+            bad.append(f"{rel}: no registered-source claim matches {pattern!r} — "
+                       f"surface reworded, or pattern stale")
             continue
         for v in sorted(found):
             ok = int(v) == actual
@@ -202,14 +233,18 @@ def main():
         text = p.read_text(errors="ignore").replace("\u00b7", "&middot;").replace(chr(183), "&middot;")
         found = re.findall(pattern, text)
         if not found:
-            print(f"  ?  {label:24} pattern not found in {rel}")
+            # v1.13.1: same reasoning as the registry claims — a spec surface that stops
+            # matching its pattern has either moved or been reworded, and both deserve red.
+            print(f"  XX {label:24} pattern not found in {rel}")
+            bad.append(f"{label} ({rel}): spec pattern no longer matches — surface moved, "
+                       f"or pattern stale")
             continue
         for v in set(found):
             ok = (v == spec)
             print(f"  {'OK' if ok else 'XX'} {label:24} {rel} -> v{v}")
             if not ok:
                 bad.append(f"{label} ({rel}) says v{v}, engine says v{spec}")
-    check_source_count()
+    bad += check_source_count()
     check_coverage()
     bad += check_registry_total()
 
