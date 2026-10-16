@@ -739,17 +739,37 @@ def get_contributing_sources():
 
 
 def get_dynamic_source_count():
-    """Read live source count from pipeline data/source_count.json. Falls back to 41."""
+    """How many sources source_audit.py registered, or None if that cannot be read.
+
+    Published as `data_sources_registered`. It counts ROWS IN source_audit.py, a file maintained
+    by hand — not collectors that ran, not stores holding data, not names credited on a score.
+    `get_contributing_sources()` above is the measured figure, and the two are different
+    quantities on purpose. See claude/FINDING-the-fortyone-is-a-row-count-in-an-authored-registry.md
+
+    v1.13.2 fixed three things, none of which had fired:
+
+    * The docstring said the fallback was 41. The code returned 41 on a missing key and **42** on
+      a missing file or any exception.
+    * 42 is the number this project removed from seven documents, with a gate built to keep it
+      out and a warning in its own page copy: "The page said '700+ companies' and '42 sources'
+      long after both stopped being true." A retired figure surviving as a default return
+      re-earns itself on every exception.
+    * The path was relative, so it resolved against the process working directory. It worked
+      only because gunicorn starts from pipeline/; a deploy change would have published 42 with
+      no error anywhere, and check_continuity.py compares the HTML string to the registry file
+      rather than to what the API serves, so nothing would have caught it.
+
+    Now: resolved against this file, and None when unreadable, which publishes as null. A count
+    the API cannot compute is better served as null than as a number nobody measured — the same
+    rule the engine applies to a sub-signal with no data behind it.
+    """
+    import json as _json
+    from pathlib import Path as _Path
+    sc_path = _Path(__file__).resolve().parent / "data" / "source_count.json"
     try:
-        import json as _json
-        from pathlib import Path as _Path
-        sc_path = _Path("data/source_count.json")
-        if sc_path.exists():
-            data = _json.load(open(sc_path))
-            return data.get("total_registered", 41)
-    except Exception:
-        pass
-    return 42
+        return _json.load(open(sc_path)).get("total_registered")
+    except (OSError, ValueError, AttributeError):
+        return None
 
 @app.route("/")
 def root():
