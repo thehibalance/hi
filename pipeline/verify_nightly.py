@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Morning check — v1.12.0 (spec 1.11.0). Read-only. From pipeline/:
+"""Morning check — v1.14.0 (spec 1.13.0). Read-only. From pipeline/:
 
     python3 verify_nightly.py
 
@@ -39,7 +39,7 @@ from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
-SPEC = "1.12.0"
+SPEC = "1.13.0"
 COV_DENOM = 18
 fails = []
 

@@ -26,7 +26,7 @@ are listed here so nobody mistakes them for an agency pull:
 | EEOC actions | 13 | `EEOC_DATA` |
 | Insider-sale flags | 4 | `INSIDER_FLAGS` |
 
-Spec version: **v1.12.0** · Active sub-signals: **18** · Not yet scored: **5** · Retired: **1** (N.5, v1.11.0)
+Spec version: **v1.13.0** · Active sub-signals: **18** · Not yet scored: **5** · Retired: **1** (N.5, v1.11.0)
 
 **Of those 18, nine carry real measurement for 40 or more companies** (H.1+H.3 counted once, A.3, U.3, M.5, A.4, U.1, H.5, N.2, M.3). Four are industry lookup tables for 90–100% of companies (H.2, U.4, A.4, A.1). Five reach under 4% of companies. See `claude/AUDIT-the-honest-baseline.md`.
 
@@ -353,4 +353,4 @@ We respond to ladder-grounding issues within 5 business days.
 
 ---
 
-*Last updated: October 2026. Spec v1.12.0 (one spelling per company; fossil rows expire in every store the pipeline updates in place; 18 contributing sources, down from 21 — two hand-authored tables and one retired label stopped being credited to third parties; METHODOLOGY.md corrected to the engine; U.1 measured against CFPB's published per-product relief rates rather than per employee; M.3 and N.5 retired as defects; H.3 scored only where a credible industry RPE median exists, on a log scale whose neutral is 50 and whose declared domain is a quarter to four times the industry median). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
+*Last updated: October 2026. Spec v1.13.0 (one spelling per company; fossil rows expire in every store the pipeline updates in place; 18 contributing sources, down from 21 — two hand-authored tables and one retired label stopped being credited to third parties; METHODOLOGY.md corrected to the engine; U.1 measured against CFPB's published per-product relief rates rather than per employee; M.3 and N.5 retired as defects; H.1 and H.3 are two functions of revenue per employee against the industry median, so they now share one ratio and one declared domain of a quarter to four times that median — outside it neither is scored, and the 26 companies H.1 previously published at 100 were all outside it). Maintained by Morf Innovations LLC. Apache 2.0 licensed.*
