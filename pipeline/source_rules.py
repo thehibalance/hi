@@ -34,10 +34,22 @@ NOT_SOURCES = {
     "Industry", "Manual Scoring", "Defaults", "Seed Estimate",
     # GLASSDOOR_DATA (glassdoor_pipeline.py:26) and JOB_DATA
     # (job_board_pipeline.py:34) are literal Python dicts — 43 and 37 hand-typed
-    # companies. Neither module fetches anything; neither is in the nightly. Every
-    # sampled ai_ratio is a multiple of 0.05 and exactly equals
-    # ai_postings/total_postings, so the ratio was authored and the count derived
-    # from it. A hand-authored table cannot be credited to the company whose name
+    # companies. Neither module fetches anything; neither is in the nightly. That
+    # is what decides it.
+    #
+    # Corroborated across the whole table rather than a sample: all 37 of JOB_DATA's
+    # total_postings are multiples of 10, 36 of 100, and 18 of 1,000 — 30, 200, 300,
+    # 400, 500, 500, 600, 1200 … 9000, 12000, 15000. No job board returns thirty-seven
+    # companies' posting counts all divisible by ten.
+    #
+    # An earlier version of this comment said "every sampled ai_ratio is a multiple of
+    # 0.05". Eight of the 37 are not (0.01, 0.02, 0.03, 0.08), so that was true of a
+    # sample and false of the table. It also claimed the ratio equalling
+    # ai_postings/total_postings proved authorship; 36 of 37 do equal it, but a real
+    # collector would emit a count, a total and their quotient too, so that proves
+    # nothing either way. Measure the population or do not cite the number.
+    #
+    # A hand-authored table cannot be credited to the company whose name
     # it carries — the same correction as Industry+EPA in v1.12.x, at ~70x the rows.
     #
     # They still feed scores. This only stops them being published as external
