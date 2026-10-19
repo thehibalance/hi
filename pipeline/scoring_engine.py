@@ -885,23 +885,60 @@ def score_h_dimension(sec_h, job_data, industry, patents=None):
     displacement = sec_h.get("displacement_signal")
     industry_median = INDUSTRY_RPE_MEDIANS.get(industry)
     _med_ok = industry_median is not None
-    if not _med_ok:
-        industry_median = 350000  # legacy value, retained only for rpe_ratio below
     ai_ratio = job_data.get("h_signals", {}).get("ai_ratio") if job_data else None
 
-    if rpe and ai_ratio is not None:
-        rpe_score = _rpe_score(industry_median, rpe) if _med_ok else 50
+    # v1.14.0: ONE ratio, ONE domain, for both sub-signals that read it.
+    #
+    # H.1 and H.3 are two functions of industry_median / rpe and correlated at 0.930 —
+    # one measurement published twice. PR #46 gave H.3 a declared domain and left H.1
+    # scoring the same companies it refused to score. Measured: every one of the 26
+    # companies H.1 published at exactly 100 had a ratio outside [0.25, 4]. CPT sits at
+    # ratio 1,500 (revenue per employee ~$2,104), TGTX at 881 (~$381, a pre-revenue
+    # biotech). Outside the domain the ratio stops measuring the construct, and that is
+    # true of both functions of it or neither.
+    #
+    # The three lines below were H.3's, computed in its own block. They are hoisted here
+    # unchanged so both read the same test. v1.3.0's comment is the rule being applied:
+    # "no credible industry baseline -> skip the RPE term entirely, rather than deriving
+    # a 'human decision depth' from a fictional peer group." A ratio of 881 is a
+    # fictional peer group arrived at from the other direction.
+    #
+    # The `industry_median = 350000` fallback that used to sit here is gone. Its comment
+    # said it was retained only for rpe_ratio below; PR #46 rewrote that line to guard on
+    # _med_ok, which orphaned it. All six uses of industry_median were enumerated before
+    # deleting it — every consumer guards.
+    RPE_RATIO_LO, RPE_RATIO_HI = 0.25, 4.0
+    rpe_ratio = (industry_median / max(rpe, 1)) if (rpe and _med_ok) else None
+    _ratio_ok = rpe_ratio is not None and RPE_RATIO_LO <= rpe_ratio <= RPE_RATIO_HI
+
+    # v1.14.0: the branch condition is `_ratio_ok`, not `rpe`. An RPE that exists but
+    # whose ratio to its industry median is outside the declared domain is not a
+    # measurement, so it is neither scored nor blended.
+    #
+    # `if _med_ok else 50` is gone from both _rpe_score calls: _ratio_ok is only true
+    # when rpe_ratio is not None, which requires both `rpe` and `_med_ok`. The guard was
+    # unreachable under the new condition.
+    #
+    # An out-of-domain company that ALSO has a JOB_DATA entry falls through to the
+    # Jobs-only branch, exactly as a company with no RPE already does. That is
+    # deliberate: whether an authored table should count as evidence at all is a separate
+    # and larger decision (30 of 30 'Strong'/'Verified' rows cite one), and this change
+    # does not pre-empt it. This only stops an uncredible RATIO from being scored.
+    if _ratio_ok and ai_ratio is not None:
+        rpe_score = _rpe_score(industry_median, rpe)
         ai_score = job_data["h_signals"].get("adjusted_score", 50)
         scores["H.1"] = round(rpe_score * 0.5 + ai_score * 0.5, 1)
         sources_used.extend(["SEC", "Jobs"])
-    elif rpe:
-        scores["H.1"] = _rpe_score(industry_median, rpe) if _med_ok else 50
+    elif _ratio_ok:
+        scores["H.1"] = _rpe_score(industry_median, rpe)
         sources_used.append("SEC")
     elif ai_ratio is not None:
         scores["H.1"] = job_data["h_signals"].get("adjusted_score", 50)
         sources_used.append("Jobs")
     else:
+        # No credible ratio and no other input: withheld, not invented.
         scores["H.1"] = 50
+        ABSENCE_DERIVED.add("H.1")
 
     # H.2 Craft — an editorial prior, declared as one (v1.9.0).
     #
@@ -963,9 +1000,9 @@ def score_h_dimension(sec_h, job_data, industry, patents=None):
     # headcount tier and h3_industry below, which still apply. Removing h3_industry ALONE
     # raises the mean, because tech carries -8 and is 181 of 641 — v1.13.1, measured on its
     # own, as v1.12.0 said.
-    H3_RATIO_LO, H3_RATIO_HI, H3_K = 0.25, 4.0, 25
-    rpe_ratio = (industry_median / max(rpe, 1)) if (rpe and _med_ok) else None
-    _ratio_ok = rpe_ratio is not None and H3_RATIO_LO <= rpe_ratio <= H3_RATIO_HI
+    # v1.14.0: rpe_ratio and _ratio_ok are computed once at the top of this function and
+    # shared with H.1, which is the other function of the same ratio. Only K is H.3's own.
+    H3_K = 25
     if _ratio_ok:
         # Lower revenue-per-employee = more humans in the loop = more human decisions
         import math
