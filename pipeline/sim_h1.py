@@ -90,6 +90,10 @@ for p in (SEC, SCORES):
         raise SystemExit(f"  missing {p} — run from pipeline/")
 
 LO, HI, K_H3, NEUTRAL_H3 = 0.25, 4.0, 25, 50
+
+# job_board_pipeline.py:113-142 — five ai_hiring_score tiers, three trend_adjustment values.
+# Fifteen reachable numbers, and the blend's second term must be one of them.
+LADDER = sorted({tier + adj for tier in (20, 40, 65, 80, 95) for adj in (0, -5, -10)})
 NEUTRAL_H1, K_H1 = 65, 15
 
 
@@ -151,7 +155,11 @@ print("1. VALIDATION — does _rpe_score reproduce the published H.1?\n")
 exact = near = 0
 worst = []
 for c in joined:
-    want = _rpe_score(c["med"], c["rpe"])
+    # v1.14.0 shipped the domain, so the engine withholds an uncredible ratio. A
+    # simulator that still calls _rpe_score unconditionally disagrees with the engine on
+    # exactly those companies — and then blames something else for it.
+    c["in_domain"] = LO <= c["ratio"] <= HI
+    want = _rpe_score(c["med"], c["rpe"]) if c["in_domain"] else 50.0
     c["recomputed"] = want
     d = abs(want - c["pub"])
     if d < 0.051:
@@ -170,9 +178,63 @@ if worst:
     print(f"\n   {len(worst)} mismatch(es). Largest, published -> recomputed:")
     for d, t, p, w in sorted(worst, reverse=True)[:8]:
         print(f"      {t:8} {p:>7} -> {w:<7}  delta {d:.1f}")
-    print("   A mismatch means something modifies H.1 after _rpe_score returns — an H.1_adj")
-    print("   from the sub-signal store, a floor, or a seed overwrite. Find it before")
-    print("   trusting any variant below. That is a finding in its own right.")
+    print("   The domain is modelled, so a mismatch is no longer a withheld company.")
+    print("   What should remain is the BLEND branch at scoring_engine.py:927 —")
+    print("   H.1 = (rpe_score + JOB_DATA's adjusted_score) / 2 for companies holding both")
+    print("   an RPE and a JOB_DATA entry. Solving for the second term tests that:")
+    print()
+    # Two branches produce a mismatch, and they need different equations.
+    #
+    #   blend      (scoring_engine.py:927)  H.1 = (rpe_score + adjusted_score) / 2
+    #   jobs-only  (scoring_engine.py:934)  H.1 = adjusted_score
+    #
+    # The discriminator is exact rather than a tolerance: the blend requires _ratio_ok,
+    # so a company this script WITHHELD (recomputed == 50) cannot be on it. Using the
+    # blend equation everywhere reported SBUX as a third writer of H.1 (implied 110) and
+    # passed GOOGL and NFLX for the wrong reason — 2L-50 maps some ladder values back
+    # onto the ladder, so the single-equation test accepted coincidences.
+    blend, jobs, off = [], [], []
+    for d, t_, p_, w_ in sorted(worst, reverse=True):
+        withheld_here = abs(w_ - 50.0) < 0.051
+        implied = p_ if withheld_here else 2 * p_ - w_
+        hit = min(LADDER, key=lambda L: abs(L - implied))
+        # both terms round to 1dp and the blend doubles the published one, so error
+        # reaches 0.15. Ladder values are integers >= 5 apart, so 0.5 cannot false-match
+        # and 0.15 could false-MISS — which is how a nonexistent third writer gets hunted.
+        row = (t_, p_, w_, implied, hit, "jobs" if withheld_here else "blend")
+        if abs(hit - implied) >= 0.5:
+            off.append(row)
+        elif withheld_here:
+            jobs.append(row)
+        else:
+            blend.append(row)
+    on = blend + jobs
+    print(f"      blend branch, confirmed    : {len(blend):>4}   "
+          f"H.1 = (rpe + ladder) / 2")
+    print(f"      jobs-only branch, confirmed: {len(jobs):>4}   "
+          f"H.1 = ladder alone, ratio withheld")
+    print(f"      NOT on the ladder          : {len(off):>4}   "
+          f"<- a third writer of H.1")
+    for t_, p_, w_, implied, hit, kind in on[:8]:
+        eq = "pub" if kind == "jobs" else "2*pub - rpe"
+        print(f"         {t_:8} {kind:6} {eq:12} -> {implied:>6.1f} = {hit}")
+    if off:
+        print("\n      OFF-LADDER, and these are the finding:")
+        for t_, p_, w_, implied, hit, kind in off[:8]:
+            print(f"         {t_:8} {kind:6} pub {p_:>6} rpe {w_:>6} -> implied "
+                  f"{implied:>6.1f} (nearest ladder value {hit})")
+        print("      An implied second term that is not a tier plus a trend adjustment means")
+        print("      something other than JOB_DATA writes H.1. Find it before trusting the")
+        print("      variants below.")
+    else:
+        print("\n      Every mismatch is on the ladder, so the domain and JOB_DATA together")
+        print("      account for every disagreement between _rpe_score and the published H.1.")
+        print(f"      {len(blend)} companies have H.1 HALF authored (blend) and {len(jobs)} have it")
+        print("      WHOLLY authored (ratio withheld, ladder alone). Neither figure is")
+        print("      stated on any surface, and the second is the sharper one: a sub-signal")
+        print("      documented as revenue-per-employee, computed entirely from a five-step")
+        print("      function on a hand-typed field, and counted as evidence in real_count.")
+    print("   See claude/FINDING-h1s-authored-half-is-a-five-step-ladder-on-a-typed-ratio.md")
 
 if pct < 95:
     print(f"\n   !! {pct:.1f}% is not a reproduction. Everything below is void. Stop here and")
@@ -228,17 +290,20 @@ def h1_variant(c, domain=False, neutral=None, k=None):
     return round(clamp(neutral + k * math.log2(c["ratio"])), 1), False
 
 
+# v1.14.0 shipped the domain, so it belongs in the baseline and every candidate keeps it.
+# Measuring the neutral or the slope against the pre-domain world would answer a question
+# nobody has. The pre-domain row stays only as a reference point.
 VARIANTS = [
-    ("published (65, k=15, no domain)", dict()),
-    ("A  domain only", dict(domain=True)),
-    ("B  neutral 65 -> 50 only", dict(neutral=50)),
-    ("C  slope 15 -> 25 only", dict(k=25)),
+    ("shipped: 65, k=15, domain", dict(domain=True)),
+    ("pre-v1.14.0: no domain", dict()),
+    ("B  neutral 65 -> 50", dict(domain=True, neutral=50)),
+    ("C  slope 15 -> 25", dict(domain=True, k=25)),
     ("D  full H.3 treatment", dict(domain=True, neutral=50, k=25)),
 ]
 
-print(f"   {'variant':34} {'mean':>7} {'median':>7} {'@100':>6} {'=50':>6} "
-      f"{'withheld':>9} {'Δmean':>7}")
-print("   " + "─" * 86)
+print(f"   {'variant':28} {'mean ALL':>9} {'mean != 50':>11} {'median':>7} "
+      f"{'@100':>6} {'=50':>6} {'Δ ALL':>7}")
+print("   " + "─" * 82)
 base_mean = None
 results = {}
 for label, kw in VARIANTS:
@@ -248,12 +313,23 @@ for label, kw in VARIANTS:
         vals.append(v)
         withheld += w
     m = st.mean(vals)
+    nn = [v for v in vals if v != 50]
     if base_mean is None:
         base_mean = m
     results[label] = vals
-    print(f"   {label:34} {m:>7.1f} {st.median(vals):>7.1f} "
+    print(f"   {label:28} {m:>9.1f} {st.mean(nn) if nn else 0:>11.1f} "
+          f"{st.median(vals):>7.1f} "
           f"{sum(1 for v in vals if v >= 99.95):>6} {sum(1 for v in vals if v == 50):>6} "
-          f"{withheld:>9} {m - base_mean:>+7.1f}")
+          f"{m - base_mean:>+7.1f}")
+
+print("\n   TWO MEANS, ON PURPOSE, AND THEY ARE NOT INTERCHANGEABLE.")
+print("   `mean ALL`    averages every joined company, withheld counted as 50.")
+print("   `mean != 50`  averages non-neutral values only — what probe_ceiling.py reports")
+print("                 per sub-signal, and therefore what any published H.1 mean means.")
+print("   v1.14.0's mean prediction came out backwards because 62.7 (ALL, simulated) was")
+print("   quoted against 63.4 (!=50, published): the domain was expected to lower a mean")
+print("   it raised, because the removed tail was net-LOW. Same label, two denominators.")
+print("   See claude/FINDING-the-horizon-metric-measured-the-wrong-denominator.md")
 
 print("\n   Δmean is against the published row, not against each other. Reading two")
 print("   variants' deltas as additive is the mistake that made H.3's h3_industry look")
@@ -274,24 +350,34 @@ print("""
 
 5. READING IT
 
-   The DOMAIN is the unarguable change. H.3 already refuses to score a ratio outside
-   [0.25, 4] and says why in a comment. H.1 scores those same companies and clamps them
-   at 100. One of the two is wrong about the same number, and the one with the stated
-   reasoning is the one to copy.
+   THE DOMAIN SHIPPED (v1.14.0, PR #51). H.1's maximum is now 95, which is
+   65 + 15*log2(4) — the score at the domain's upper edge, so the domain is provably
+   binding rather than incidentally satisfied. The 26 companies H.1 used to publish at
+   exactly 100 all had a ratio H.3 refused to score. That is done; the baseline row above
+   includes it.
 
-   The NEUTRAL is editorial and the ratio median above decides how editorial. If the
-   median is 1.000, then 65 is what the typical company scores for being typical, which
-   is the thing v1.11.0 and v1.13.0 both shipped against — but H.1's 65 was CHOSEN and
-   written down, and churning a deliberate choice to match a bug fix is not obviously
-   right. That one is Aaron's, not a measurement.
+   THE SLOPE IS STILL HARMFUL, AND THE DOMAIN DID NOT FIX IT. Measured: raising k to 25
+   takes the companies at exactly 100 from 0 to 34, because 65 + 25*log2(4) = 115 and
+   clamps, so everything above ratio 2.64 pins at the ceiling. That is MORE saturation
+   than the domain just removed. Do not ship it alone.
 
-   The SLOPE follows the neutral. Picking a domain picks k if the domain boundary and the
-   score boundary are made to coincide, which is how H.3's 25 was derived rather than
-   chosen.
+   THE NEUTRAL AND THE SLOPE ARE ONE DECISION, NOT TWO. With a domain of [0.25, 4] the
+   log2 span is exactly +/-2, so a scale reaches its own ceiling without clamping only
+   when neutral + 2k = 100. H.3 satisfies it by construction: 50 + 2(25). With neutral 65
+   there is no k that works symmetrically — k = 17.5 tops out at 100 and bottoms at 30,
+   leaving a third of the range unreachable. So keeping 65 means permanently using part
+   of the scale, which is an argument from the scale rather than from honesty.
 
-   Ship variant A alone first if the domain holds up. It lowers scores, withholds rather
-   than invents, needs no editorial decision, and is the same move as v1.3.0, v1.11.0 and
-   v1.13.0. Then measure B and C against the NEW baseline, not this one.
+   WHAT IS LEFT IS BINARY, AND IT IS AARON'S. Keep 65, declared in _rpe_score's docstring
+   and deliberate — though the ratio median is exactly 1.000, so 65 is what the typical
+   company scores for being typical. Or move to 50 with k = 25, where the full range is
+   used and the domain boundary is the score boundary. B and D land within 0.3 of each
+   other, so the slope adds almost nothing once the neutral moves: the choice is 65 or 50,
+   worth about -0.67 of a composite point.
+
+   NOT A SCALE QUESTION AT ALL: the jobs-only count in section 1. Those companies have
+   H.1 computed entirely from JOB_DATA's ladder, and no neutral or slope touches them.
+   That is the 30-of-30 decision, and it is larger than this script.
 
 Nothing changed. Read-only.
 """)
