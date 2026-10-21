@@ -38,7 +38,7 @@ v1.4.0 to the engine's own internal defaults: H.2 craft baselines, and the A.1 a
 The effect was 1.78 sub-signals per company, which moved published median coverage from 7/19 to
 5/19. **v1.7.0 found one more:** U.4 reads like a Glassdoor blend, but only about 37 of 1,141
 companies have a Glassdoor record, so for the other 692 affected companies it was the industry
-table alone. Median coverage is now a truthful **2/18** — and under v1.11.0, **270 of 1,041 scored companies measure nothing at all**, stated rather than hidden behind a composite. No score changed in either release.
+table alone. Median coverage is now a truthful **2/18** — and under v1.11.0, **321 of 1,045 scored companies measure nothing at all**, stated rather than hidden behind a composite. No score changed in either release.
 
 **One company, one score (v1.8.0).** The engine matched sources by a name normalizer that
 stripped a fixed suffix list once. SEC spellings (`BANK OF AMERICA CORP /DE/`) and
@@ -106,11 +106,30 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 
 ---
 
+**How the Coverage figures below were measured (2026-10-21).**
+`pipeline/measure_rubric_figures.py` re-reads every `Coverage` line in this document and
+re-measures it against `pipeline/data/scores/all_scores.json`. **Fourteen of the eighteen
+sub-signals are exactly recomputable from that file**, because for them the engine's own
+evidence test — `v != 50` at `scoring_engine.py:1906` — is the whole test.
+
+**Four are not: H.2, U.4, A.1 and A.4.** Each is an industry lookup table whose constants sit
+off 50, and the engine excludes them through `INDUSTRY_DERIVED`, which is computed per company
+and never written to the row. Counting those four from the scores file yields 748 / 730 / 478 /
+951 against the 0 / 38 / ~32 / 101 documented below — the counts are wrong, not the document.
+Their coverage is measured from the collector stores instead, and a reader cannot check it
+without `scoring_engine.py`.
+
+Across the whole index the engine credits **2,282 sub-signal-instances** as evidence:
+**1,958** in the fourteen, and **324** in the four, where a measured path displaced the
+constant. Of those 324, **171** are accounted for in the figures below, so one of the four is
+under-reported — most likely A.1, whose own entry records why its split cannot be pinned down
+from published data.
+
 ## H — Human Consciousness
 
 ### H.1 — Workforce Valuation
 **Status:** PARTIAL *(was UNGROUNDED; changed in v1.3.0)*  
-**Coverage (Oct 2026):** **649 of 1,045** companies measured. Correlates with H.3 at **Spearman 0.930** (632 companies) — the two are one measurement counted twice; see the note under H.3.  
+**Coverage (Oct 2026):** **575 of 1,045** companies measured. Correlates with H.3 at **Spearman 0.944** over the **553** companies measured on both — the two are one measurement counted twice; see the note under H.3.  
 **Inputs:** SEC EDGAR / FMP `revenue_per_employee`, industry medians computed from the scored universe, job-board AI-vs-human hiring ratio  
 **Formula:** `65 + 15·log2(industry_median / rpe)`, clamped 0–100; blended 50/50 with the job-board score when that data exists  
 **Ladder:** The medians are now measured, not chosen: each is the median revenue per employee of the companies we score in that industry (`recalibrate_medians.py`), so the median company scores 65 by construction. The 65 anchor and the 15-points-per-doubling slope are editorial; the slope was chosen by testing five candidate formulas against the real distribution. Industries with fewer than 10 companies are marked provisional.  
@@ -126,14 +145,14 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 
 ### H.3 — Human Decision Depth
 **Status:** UNGROUNDED  
-**Coverage (Oct 2026):** **635 of 1,045** measured; **352** recorded as no-measurement since v1.12.0 (no credible industry RPE median). Of the measured arm, **16% sit at exactly 100** — the linear form saturates. Correlates with H.1 at **0.930**: both are functions of revenue per employee against the industry median, so D_H counts one datum twice.  
+**Coverage (Oct 2026):** **556 of 1,045** measured; **489** recorded as no-measurement (no credible industry RPE median). Of the measured arm, **1.6% sit at exactly 100** — v1.13.0 replaced the linear form with a log2 ratio and the saturation went with it; the 16% recorded here through v1.12.0 was the old form's ceiling. Correlates with H.1 at **0.944** over the 553 measured on both: both are functions of revenue per employee against the industry median, so D_H counts one datum twice.  
 **Inputs:** SEC EDGAR `revenue_per_employee`, headcount tier (>200k/>50k/>10k), industry bias dict, displacement signal  
 **Ladder:** Editorial apart from the industry median, which is measured since v1.3.0: the `40 + (median/rpe)·30` anchor, headcount tier cutoffs, industry bias values (healthcare +10, defense +8, retail −5, tech −8, etc.), displacement coefficient.  
 **Path forward:** **O*NET Work Context** publishes exactly this construct on verbally anchored 5-point scales: *Frequency of Decision Making* (Never → Every day), *Freedom to Make Decisions* (No freedom → A lot of freedom), *Impact of Decisions on Co-workers or Company Results*, and *Responsibility for Outcomes and Results*. Free bulk download, 291,201 rows, aggregated to industry by the same OEWS crosswalk H.2 uses. **This is the fix for the 0.930 correlation with H.1**, because it is wholly independent of revenue per employee. A second free measure of organisational depth is computable from OEWS alone: management and first-line-supervisor employment share per industry is the inverse of span of control. Separately, the linear `40 + ratio·30` form should become a log form — measured candidates put `65 + 15·log2(ratio)` at 26 companies on the ceiling against 105 today, the same correction H.1 took in v1.3.0. Per-employer alternatives were assessed and rejected: H-1B/PERM covers only sponsors and scores non-sponsors null rather than low; WARN has no federal database; NLRB measures unionisation, a different construct.
 
 ### H.5 — Human Augmentation Index
 **Status:** PARTIAL  
-**Coverage (Oct 2026):** **50 of 1,045** companies measured. Correlates with H.1 at **0.829** (44 companies).  
+**Coverage (Oct 2026):** **50 of 1,045** companies measured. Correlates with H.1 at **0.844** (44 companies).  
 **Inputs:** SEC `displacement_signal` (R&D-spend growth vs headcount change), job-board `ai_hiring_trend` (surging/growing/stable), USPTO patent AI ratio  
 **Ladder:** Spec (`h5-augmentation-draft.md`) is rubric-grade. Engine implements only the displacement half. Augmentation half (reskilling, internal mobility, tool-building) not yet ingested.  
 **Path forward:** **No free per-company source exists** and this sub-signal should be demoted to a disclosed diagnostic or dropped. Census **BTOS** asks precisely the right questions — whether AI increased or decreased employment, and whether staff were trained or hired for AI — but publishes **sector aggregates from a sample survey**, so it can set an industry prior and cannot distinguish two companies in a sector, which is the entire purpose. The one per-company option, the **American Opportunity Index** (395 large employers), is built on LinkedIn and proprietary Burning Glass data, so it is not reproducible, is scrape-only, publishes no thresholds, and is not AI-specific. Lightcast publishes no pricing and its free tier contains no employer data. At 50 of 1,045 companies, folding this into a composite is not defensible.
@@ -144,7 +163,7 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 
 ### U.1 — Customer Empathy  
 **Status:** PARTIAL — *anchor grounded, slope editorial* *(construct replaced in v1.10.0)*  
-**Coverage (Oct 2026):** **65 of 1,045** companies measured — CFPB-regulated financial services only. This is the only sub-signal in the index anchored to a published federal distribution.  
+**Coverage (Oct 2026):** **66 of 1,045** companies measured — CFPB-regulated financial services only. This is the only sub-signal in the index anchored to a published federal distribution.  
 **Inputs:** CFPB complaint outcomes by product, for the 27 companies with at least 100 complaints in a product CFPB publishes a rate for; BBB complaints (10% blend); Glassdoor overall and culture ratings as fallback; neutral 50 when none exists.  
 **Ladder:** `50 + (company relief rate − CFPB's published relief rate for that product)`, volume-weighted across the company's products and across CY2023 and CY2024, clamped to [25, 85]. **The neutral point is CFPB's own published figure** (Consumer Response Annual Report, Table 1, p.18), not a constant we chose — the first anchor in this system taken from an outside authority. The slope of one score point per percentage point remains editorial, and is 1:1 because that is the least tunable choice available and a reader can check it by hand.  
 **Role rule:** credit reporting and debt collection are scored only for SIC 732x (consumer credit reporting and collection agencies). For everyone else those benchmarks are set by a different kind of company: of 22 measured in credit reporting, 21 were furnishers answering disputes about data they reported and sat 20–52 points below, while the single actual bureau was the only one above. Verisk is gated out on SIC 7374 despite running consumer-reporting products — a close call, recorded rather than hidden.  
@@ -153,7 +172,7 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 
 ### U.2 — Worker Empathy
 **Status:** UNGROUNDED  
-**Coverage (Oct 2026):** **39 of 1,045** companies measured. OSHA and DOL remain unconnected.  
+**Coverage (Oct 2026):** **40 of 1,045** companies measured. OSHA and DOL remain unconnected.  
 **Inputs:** Glassdoor employee ratings, weighted by review count; OSHA (15% blend) and DOL (10% blend) — neither OSHA nor DOL is producing data today  
 **Ladder:** Glassdoor is a commercial reporter, not an authoritative threshold system. The blend weights are editorial.  
 **Path forward:** **OSHA Injury Tracking Application Form 300A establishment data** — free annual CSV, 2016 onward, carrying `company_name`, `ein_number`, `naics_code`, `annual_average_employees`, `total_hours_worked` and case counts — benchmarked against **BLS SOII Table 1** detailed-NAICS incidence rates. BLS also publishes its own **Incidence Rate Calculator and Comparison Tool**, whose stated purpose is this exact establishment-versus-industry comparison, so the rate formula, the industry comparand and the comparison method are all federal publications and nothing is hand-set. Two obligations come with it. The ITA file has **no parent identifier**, so the join is name plus EIN clustering. And finance, insurance, software publishing, data processing and professional services are **partially exempt from OSHA recordkeeping** under 29 CFR 1904 Subpart B Appendix A — so a large, identifiable part of this universe must return *no evidence*, never *safe*. Realistic reach is 350–500 companies. OSHA's own Site-Specific Targeting DART cutoffs are not public, so use BLS percentile position rather than an OSHA tier. Second free federal source: **DOL WHD compliance actions**, ~367,890 investigations with employer name, back wages, employees affected and penalties.
@@ -200,14 +219,14 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 
 ### M.4 — Product Ethics
 **Status:** UNGROUNDED *(was PARTIAL; changed in v1.5.1 when FDA was withdrawn)*  
-**Coverage (Oct 2026):** **38 of 1,045** companies measured. The CPSC path produces nothing; see the path forward for why.  
+**Coverage (Oct 2026):** **39 of 1,045** companies measured. The CPSC path produces nothing; see the path forward for why.  
 **Inputs:** CPSC SaferProducts recalls (integrated, not yet producing data); Glassdoor management and compensation ratings as fallback. **FDA is withdrawn** — an audit found 1,041 of 1,422 collected rows scoring 85 because openFDA returns 404 when nothing matches and the collector recorded that as "no recalls", and 228 more scoring 25 because an empty company name searches as a wildcard.  
 **Ladder:** Editorial while FDA is out: the score rests on employee ratings, which are not a measure of product safety.  
 **Path forward:** **openFDA enforcement endpoints** (food, drug, device) — free API and bulk JSON, 2004 onward, weekly, with `recalling_firm` per record and a severity classification **defined in binding regulation at 21 CFR 7.3(m)**: Class I "reasonable probability that use of, or exposure to, a violative product will cause serious adverse health consequences or death", Class II "temporary or medically reversible", Class III "not likely to cause adverse health consequences". The `classification` field is attached to every record, so the invented tiers can be deleted rather than recalibrated. **Correction, Oct 2026:** the previous note said CPSC publishes recall severity. **Class I/II/III is FDA's system.** CPSC does maintain a Class A/B/C hazard priority in its Recall Handbook, but it is an **internal staff tool and is not published per recall** — the SaferProducts API returns no severity field, which is almost certainly why this sub-signal's CPSC path produces nothing. NHTSA is worth adding for volume (free APIs and flat files, per manufacturer) but publishes no severity or hazard-class field; its one tiered publication is the NCAP 5-star rating, which measures product safety performance rather than recall severity.
 
 ### M.5 — Stakeholder Governance
 **Status:** PARTIAL  
-**Coverage (Oct 2026):** **104 of 1,045** companies measured — the best-covered sub-signal in M.  
+**Coverage (Oct 2026):** **111 of 1,045** companies measured — the best-covered sub-signal in M.  
 **Inputs:** stakeholder-centric legal structure (B Corp and similar signals); FEC political spending when available; Glassdoor CEO rating as a last fallback  
 **Ladder:** B Corp status is authoritative; the FEC spending tiers and the Glassdoor fallback are editorial. Since v1.4.0 FEC counts only when committees are actually found for that company — "none found" used to be scored as clean political conduct. Harm Documentation (settlements, attributed deaths, concealment) penalizes M.3 and M.4 directly; it is not an M.5 input.  
 **Path forward:** **No authority publishes corporate political-spending benchmarks relative to size** — not the FEC, not the IRS, not any trade or academic body. FEC bulk data is free and complete at committee and contribution level but publishes no tiers and no issuer rollup, so a "per $B of revenue" ladder remains entirely editorial with a denominator attached. The **CPA-Zicklin Index** does publish real tiers at real thresholds over the Russell 1000 — Trendsetters at 90% or above, a first tier at 80–100% — but it scores *disclosure and governance policy* for political spending, not amounts spent, so adopting it substitutes a different construct and must be renamed if used. **Urgent, Oct 2026:** the B Corp leg of this sub-signal rests on a scale being eliminated. B Lab's **V2 standards, launched 8 April 2025, remove the scoring system entirely** — no 80-point threshold, no numeric B Impact Score, pass/fail against seven mandatory impact topics verified by third parties. Large companies recertify under V2 from January 2026 and all recertifications from 2027, so `_score_from_bcorp` will stop having a score to read. This affects U.3 as well.
@@ -232,10 +251,10 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 
 ### A.3 — Land & Habitat
 **Status:** UNGROUNDED  
-**Coverage (Oct 2026):** **249 of 1,045** companies measured — the strongest signal in A.  
+**Coverage (Oct 2026):** **248 of 1,045** companies measured — the strongest signal in A.  
 **Inputs:** USDA Organic certification (70%) with sector land-use risk (30%); EPA violation counts when neither is available  
 **Ladder:** Sector risk weights and the EPA violation tiers (0 / 3 / 10 / 20) are editorial.  
-**Path forward:** Two independent upgrades, both available now. **Replace the invented EPA violation tiers (0 / 3 / 10 / 20) with EPA's own four-level ECHO classification** plus `Quarters with Noncompliance (of 12)` — a lookup-table rewrite with no new plumbing. Separately, **Forest 500** (Global Canopy) publishes the most precisely reproducible ladder found in this survey, verbatim: "0% is equivalent to 0/5, 1-19% → 1/5, 20-39% → 2/5, 40-59% → 3/5, 60-79% → 4/5, 80-100% → 5/5", over 56 indicators summing to 100 points with published per-indicator answer options. Free bulk Excel behind a registration form — **check its terms for commercial restrictions before shipping**, the same trap CDP sets. It covers 500 commodity-exposed entities; the US-listed subset is unverified and estimated at 40–70, so Forest 500 **narrows** coverage from 249 while deepening it. Note honestly that **USDA Organic publishes no tiers** — certification is binary and scope-based, so every gradation applied on top of it is editorial, as are the sector land-use risk weights under every option found.
+**Path forward:** Two independent upgrades, both available now. **Replace the invented EPA violation tiers (0 / 3 / 10 / 20) with EPA's own four-level ECHO classification** plus `Quarters with Noncompliance (of 12)` — a lookup-table rewrite with no new plumbing. Separately, **Forest 500** (Global Canopy) publishes the most precisely reproducible ladder found in this survey, verbatim: "0% is equivalent to 0/5, 1-19% → 1/5, 20-39% → 2/5, 40-59% → 3/5, 60-79% → 4/5, 80-100% → 5/5", over 56 indicators summing to 100 points with published per-indicator answer options. Free bulk Excel behind a registration form — **check its terms for commercial restrictions before shipping**, the same trap CDP sets. It covers 500 commodity-exposed entities; the US-listed subset is unverified and estimated at 40–70, so Forest 500 **narrows** coverage from 248 while deepening it. Note honestly that **USDA Organic publishes no tiers** — certification is binary and scope-based, so every gradation applied on top of it is editorial, as are the sector land-use risk weights under every option found.
 
 ### A.4 — Product Lifecycle
 **Status:** PARTIAL *(for 15 covered companies)*  
