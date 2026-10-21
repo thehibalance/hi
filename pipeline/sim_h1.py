@@ -324,7 +324,7 @@ for label, kw in VARIANTS:
 
 print("\n   TWO MEANS, ON PURPOSE, AND THEY ARE NOT INTERCHANGEABLE.")
 print("   `mean ALL`    averages every joined company, withheld counted as 50.")
-print("   `mean != 50`  averages non-neutral values only — what probe_ceiling.py reports")
+print("   `mean != 50`  averages non-neutral values only — what measure_ceiling.py reports")
 print("                 per sub-signal, and therefore what any published H.1 mean means.")
 print("   v1.14.0's mean prediction came out backwards because 62.7 (ALL, simulated) was")
 print("   quoted against 63.4 (!=50, published): the domain was expected to lower a mean")
