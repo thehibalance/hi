@@ -66,10 +66,12 @@ def git(*a):
         return "?"
 
 
-files = sorted(p for p in Path(".").glob("*.py")
-               if not p.name.startswith(("audit_", "probe_", "verify_", "count_",
-                                         "check_", "sim_", "diff_", "patch_",
-                                         "measure_")))
+# instruments.py holds the rule; see the note in audit_surface_area.py for why it is not
+# a prefix tuple any more. An instrument counted as production code gets its own
+# scaffolding reported as a hand-written table in the system under audit.
+from instruments import is_instrument  # noqa: E402
+
+files = sorted(p for p in Path(".").glob("*.py") if not is_instrument(p))
 
 print(f"branch {git('rev-parse', '--abbrev-ref', 'HEAD')} · "
       f"HEAD {git('log', '-1', '--format=%h %cr')}")
