@@ -67,8 +67,14 @@ print(f"branch {git('rev-parse', '--abbrev-ref', 'HEAD')} · "
       f"HEAD {git('log', '-1', '--format=%h %cr')}\n")
 
 pyfiles = sorted(p for p in HERE.glob("*.py"))
+# "measure_" was added 2026-10-22. probe_ceiling.py had been renamed to
+# measure_ceiling.py two days earlier to escape .gitignore's probe_*.py rule, which
+# silently moved it — and the five other measure_* instruments — out of AUDITS and
+# into CODE. An instrument classified as production code is scanned for hand-written
+# tables and is not counted as an audit, so this script's own denominator shrank
+# because an audit got renamed. Any new instrument prefix has to be added here too.
 AUDITS = [p for p in pyfiles if p.name.startswith(("audit_", "probe_", "verify_",
-                                                   "count_", "check_", "sim_", "diff_"))]
+                                                   "count_", "check_", "sim_", "diff_", "measure_"))]
 CODE = [p for p in pyfiles if p not in AUDITS]
 
 # ══ 1. Every hand-written numeric table, in every file ════════════════════

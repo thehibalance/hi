@@ -68,7 +68,8 @@ def git(*a):
 
 files = sorted(p for p in Path(".").glob("*.py")
                if not p.name.startswith(("audit_", "probe_", "verify_", "count_",
-                                         "check_", "sim_", "diff_", "patch_")))
+                                         "check_", "sim_", "diff_", "patch_",
+                                         "measure_")))
 
 print(f"branch {git('rev-parse', '--abbrev-ref', 'HEAD')} · "
       f"HEAD {git('log', '-1', '--format=%h %cr')}")
