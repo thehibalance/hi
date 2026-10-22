@@ -168,12 +168,31 @@ jobs:
           exit 1
 
       # NOTE: this does not deploy. It copies files into deploy/ and echoes.
-      # RAILWAY_TOKEN is set but never used, so Railway is redeploying off the
-      # git push above. If so this step can be deleted — it copies ~2,200 files
-      # nightly for nothing. Confirm before removing.
-      # Railway deploys on push to main by itself. This step used to be a no-op
-      # labelled "Deploy to Railway" that stayed green while the API served stale
-      # scores for days. It now proves the live API picked up what was committed.
+      # PUBLICATION — do not delete the step below, and do not soften it.
+      #
+      # This workflow has no deploy step. RAILWAY_TOKEN is set and unused; Railway deploys
+      # off the git push above by itself. So the step below is the only evidence anywhere
+      # in the system that publication actually happened.
+      #
+      # The comment that used to sit here described two different steps as if they were
+      # one. An early "Deploy to Railway" step was a no-op that stayed green while the API
+      # served stale scores for days — that is the step which "copies ~2,200 files nightly
+      # for nothing". It was deleted and this verification replaced it. The sentence that
+      # survived, "Railway deploys on push to main by itself. If so this step can be
+      # deleted", therefore proposed removing the instrument on the strength of the very
+      # thing it was built to check.
+      #
+      # True when written, false 36 hours later. On 2026-10-20T15:36Z Railway paused
+      # deploys for an upstream issue on their side and silently skipped every push for
+      # days. The API, both browser extensions and the iOS app served Oct 20 scores while
+      # every other check in this workflow stayed green. This step is what noticed, and
+      # its thirty retries are what diagnosed it: an unchanging scores_file_mtime across
+      # 30 attempts is what ruled out "slow deploy" without anyone designing a test.
+      # See claude/INCIDENT-the-api-has-served-oct-20-scores-since-oct-20.md
+      #
+      # When publication is broken this step fails and the run goes red. That is correct.
+      # Do not add retries, lengthen the window or make it non-blocking: a publish check
+      # that passes without publication is the exact defect it was built to remove.
       - name: Verify the live API is serving these scores
         if: success()
         env:

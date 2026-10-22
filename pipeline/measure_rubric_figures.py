@@ -6,15 +6,21 @@ scores. Read-only. From pipeline/:
 
 WHY
 
-RUBRIC.md carries a "Coverage (Oct 2026)" line under each sub-signal. Three of them are
-provably stale, and one of the three describes a defect that was fixed five days ago:
+RUBRIC.md carries a "Coverage (Oct 2026)" line under each sub-signal. When this script
+was written three of them were provably stale, and one described a defect that had been
+fixed five days earlier:
 
     H.3: "**16% sit at exactly 100** — the linear form saturates."
 
-v1.13.0 recentred H.3 on a log2 ratio. The form is not linear any more and the saturation
-that sentence reports is gone. A reader who checks the rubric against the data finds the
-rubric wrong about its own engine — which is worse than a rubric that says nothing, because
-it was written to be checked.
+v1.13.0 had already recentred H.3 on a log2 ratio: the form was not linear any more and the
+saturation that sentence reported was gone. A reader checking the rubric against the data
+would have found it wrong about its own engine — worse than a rubric that says nothing,
+because this one was written to be checked. All three were corrected on 2026-10-21 from this
+script's output.
+
+Note what it still cannot catch: it greps lines containing "overage", so a stale claim in a
+path-forward paragraph is invisible to it. One was found by hand the next day — RUBRIC's H.3
+entry proposing the log recentring that v1.13.0 had already shipped.
 
 The figures were last measured by hand, by pasting one-off `python3 -c` lines into a shell
 and reading the numbers off. That is how they went stale: nothing re-runs. This is the

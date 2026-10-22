@@ -286,7 +286,7 @@ for (fname, tname), info in sorted(tables.items()):
 
 print("\n  The two that matter most:")
 print("    EMPLOYEE_COUNTS  — revenue-per-employee is the divisor for H.1 AND H.3,")
-print("                       632 companies, half of D_H, the largest real signal.")
+print("                       553 companies, half of D_H, the largest real signal.")
 print("                       A hardcoded headcount makes part of that divisor editorial.")
 print("    GRI_REPORTERS    — a list of tickers labelled with the name of a database that")
 print("                       is decommissioned. It was never fetched from anywhere.")
