@@ -889,7 +889,7 @@ def score_h_dimension(sec_h, job_data, industry, patents=None):
 
     # v1.14.0: ONE ratio, ONE domain, for both sub-signals that read it.
     #
-    # H.1 and H.3 are two functions of industry_median / rpe and correlated at 0.930 —
+    # H.1 and H.3 are two functions of industry_median / rpe and correlated at 0.944 —
     # one measurement published twice. PR #46 gave H.3 a declared domain and left H.1
     # scoring the same companies it refused to score. Measured: every one of the 26
     # companies H.1 published at exactly 100 had a ratio outside [0.25, 4]. CPT sits at
