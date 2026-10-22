@@ -189,5 +189,12 @@ patcher_*.py
 *_bak
 pipeline/data/scores_*/
 *_probe*.json
-probe_*.py
+# narrowed 2026-10-22, the same fix v1.8.2 applied to check_* above. The blanket
+# rule kept nine read-only measurement scripts out of the repository, five of them
+# in pipeline/. audit_surface_area.py counts probe_* files as audits, so its
+# denominator differed between a working copy and a fresh clone — and the clone's
+# answer was the wrong one. patch_*.py above stays ignored: those are one-shot
+# appliers and genuinely scratch.
+probe_tmp*.py
+probe_scratch*.py
 *.v[0-9]*
