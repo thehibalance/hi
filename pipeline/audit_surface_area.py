@@ -67,14 +67,15 @@ print(f"branch {git('rev-parse', '--abbrev-ref', 'HEAD')} · "
       f"HEAD {git('log', '-1', '--format=%h %cr')}\n")
 
 pyfiles = sorted(p for p in HERE.glob("*.py"))
-# "measure_" was added 2026-10-22. probe_ceiling.py had been renamed to
-# measure_ceiling.py two days earlier to escape .gitignore's probe_*.py rule, which
-# silently moved it — and the five other measure_* instruments — out of AUDITS and
-# into CODE. An instrument classified as production code is scanned for hand-written
-# tables and is not counted as an audit, so this script's own denominator shrank
-# because an audit got renamed. Any new instrument prefix has to be added here too.
-AUDITS = [p for p in pyfiles if p.name.startswith(("audit_", "probe_", "verify_",
-                                                   "count_", "check_", "sim_", "diff_", "measure_"))]
+# The rule lives in instruments.py, not here. This script and audit_all_tables.py each
+# used to carry their own prefix tuple; both went stale the same way, missing measure_
+# until 2026-10-22 and still missing the _audit suffix spellings (source_audit.py,
+# ticker_audit.py, universe_audit.py) and simulate_renorm.py. A prefix list rots in the
+# flattering direction: a missed instrument inflates unaudited code and deflates the
+# audit count, in the script whose whole job is this denominator.
+from instruments import is_instrument  # noqa: E402
+
+AUDITS = [p for p in pyfiles if is_instrument(p)]
 CODE = [p for p in pyfiles if p not in AUDITS]
 
 # ══ 1. Every hand-written numeric table, in every file ════════════════════
