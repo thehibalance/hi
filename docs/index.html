@@ -1334,29 +1334,13 @@ var sT;function doSearch(q){clearTimeout(sT);var el=document.getElementById('sea
 function searchSelect(ticker,name){document.getElementById('searchInput').value=name;document.getElementById('searchResults').className='search-results';loadC(ticker,name)}
 async function loadC(ticker,name){try{var c=null;if(ticker){var r=await fetch(API+'/api/v1/score/ticker/'+ticker);var d=await r.json();if(!d.error)c=d}if(!c||c.error||!c.D_H){var r2=await fetch(API+'/api/v1/search?q='+encodeURIComponent(name)+'&limit=1');var d2=await r2.json();if(d2.results&&d2.results[0]){var res=d2.results[0];if(res.ticker&&res.ticker!==ticker){var r3=await fetch(API+'/api/v1/score/ticker/'+res.ticker);var d3=await r3.json();if(!d3.error&&d3.D_H)c=d3}if(!c||!c.D_H){if(res.domains&&res.domains[0]){var r4=await fetch(API+'/api/v1/score/'+res.domains[0]);var d4=await r4.json();if(!d4.error)c=d4}if(!c||!c.D_H)c=res}}}if(!c||c.error)return;renderDet(c);showPage('detail')}catch(e){console.log('loadC error',e)}}
 
-// v1.9.2: coverage parser + badge renderer
-function getCoveragePct(c){
-  // Parses signal_coverage like "13/19 sub-signals..." → 68
-  if(c.coverage_pct!=null)return Math.round(c.coverage_pct);
-  if(c.signal_coverage){
-    var m=c.signal_coverage.match(/(\d+)\s*\/\s*(\d+)/);
-    if(m)return Math.round(parseInt(m[1])/parseInt(m[2])*100);
-  }
-  if(c.real_signals!=null && c.total_signals)return Math.round(c.real_signals/c.total_signals*100);
-  return null;
-}
-function coverageBadge(pct, size){
-  if(pct==null)return '';
-  size = size || 'md';
-  var label, bg, fg, icon;
-  if(pct>=60){label='Verified';bg='#16A34A15';fg='#16A34A';icon='✓';}
-  else if(pct>=40){label='Partial';bg='#D9770615';fg='#D97706';icon='●';}
-  else{label='Limited';bg='#6B728015';fg='#6B7280';icon='○';}
-  if(size==='sm'){
-    return '<span style="display:inline-flex;align-items:center;gap:3px;padding:2px 6px;background:'+bg+';color:'+fg+';border-radius:10px;font-size:9px;font-weight:700;letter-spacing:0.3px">'+icon+' '+pct+'%</span>';
-  }
-  return '<span style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:'+bg+';color:'+fg+';border-radius:12px;font-size:11px;font-weight:700;letter-spacing:0.3px;text-transform:uppercase">'+icon+' '+pct+'% '+label+'</span>';
-}
+// v1.15.0: the confidence label is published by the engine and read here. It is NOT
+// recomputed. Two functions used to live at this spot — getCoveragePct and coverageBadge —
+// implementing a 60%/40% ladder that disagreed with the engine's bands, with the iOS app's
+// and with the extension's. coverageBadge was also dead: defined, never called. Both are
+// deleted rather than kept, because a second contradictory rule in the same file is how six
+// different answers to "how much real data backs this score" came to exist.
+// The one live renderer is covBadge, inside renderDet, driven by the COVERAGE map.
 
 function renderDet(c) {
   if (!c || !c.company) {
@@ -1381,26 +1365,37 @@ function renderDet(c) {
     }).length === 0);
   var scoreColor = isPending ? '#999' : isCertified ? '#C49B20' : sc(comp);
 
-  var covPct = null;
-  if (c.coverage_pct != null) {
-    covPct = Math.round(c.coverage_pct);
-  } else if (c.signal_coverage) {
+  // The count, as the engine published it: "2/18". Shown instead of a percentage, because
+  // 11% implies a precision that 2 of 18 does not have.
+  var covCount = null;
+  if (c.signal_coverage) {
     var m = c.signal_coverage.match(/(\d+)\s*\/\s*(\d+)/);
-    if (m) covPct = Math.round(parseInt(m[1]) / parseInt(m[2]) * 100);
+    if (m) covCount = m[1] + '/' + m[2];
   }
 
-  function covBadge(p, sz) {
-    if (p == null) return '';
-    var bg, fg, icon, label;
-    if (p >= 60) { bg = '#16A34A15'; fg = '#16A34A'; icon = '\u2713'; label = 'Verified'; }
-    else if (p >= 40) { bg = '#D9770615'; fg = '#D97706'; icon = '\u25CF'; label = 'Partial'; }
-    else { bg = '#6B728015'; fg = '#6B7280'; icon = '\u25CB'; label = 'Limited'; }
+  // Every label the engine can emit. The v1.2.1 set is here and so is the v1.15.0 set, so
+  // changing the engine's bands needs no edit in this file. An unknown label falls through
+  // to a neutral style and STILL RENDERS THE WORD — a pill that silently vanished would
+  // hide exactly the kind of drift this release exists to end.
+  var COVERAGE = {
+    Strong:    { bg: '#16A34A15',  fg: '#16A34A', icon: '\u2713' },
+    Verified:  { bg: '#16A34A15',  fg: '#16A34A', icon: '\u2713' },
+    Partial:   { bg: '#D9770615',  fg: '#D97706', icon: '\u25CF' },
+    Limited:   { bg: '#6B728015',  fg: '#6B7280', icon: '\u25CB' },
+    Estimated: { bg: '#6B728015',  fg: '#6B7280', icon: '\u25CB' },
+    None:      { bg: 'transparent', fg: '#9CA3AF', icon: '\u2014' }
+  };
+
+  function covBadge(label, sz) {
+    if (!label) return '';
+    var s = COVERAGE[label] || { bg: '#6B728015', fg: '#6B7280', icon: '\u25CB' };
     var pad = (sz === 'sm') ? '2px 6px' : '4px 10px';
     var fs = (sz === 'sm') ? '9px' : '11px';
-    var lbl = (sz === 'sm') ? '' : ' ' + label;
+    var txt = (sz === 'sm') ? (covCount || label)
+                            : ((covCount ? covCount + ' ' : '') + label);
     return '<span style="display:inline-flex;align-items:center;gap:4px;padding:' + pad +
-      ';background:' + bg + ';color:' + fg + ';border-radius:10px;font-size:' + fs +
-      ';font-weight:700;letter-spacing:0.3px;text-transform:uppercase">' + icon + ' ' + p + '%' + lbl + '</span>';
+      ';background:' + s.bg + ';color:' + s.fg + ';border-radius:10px;font-size:' + fs +
+      ';font-weight:700;letter-spacing:0.3px;text-transform:uppercase">' + s.icon + ' ' + txt + '</span>';
   }
 
   var dl = (c.decay_level || c.heartbeat_status || 'stable').toLowerCase();
@@ -1457,7 +1452,7 @@ function renderDet(c) {
   h += '<div style="font-size:11px;color:#94A3B8;text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;font-weight:700">';
   h += isCertified ? hiE(11) + ' Gold HI Grade\u2122 Certified' : 'HI Grade';
   h += '</div>';
-  if (covPct != null) h += '<div style="margin-top:8px">' + covBadge(covPct) + '</div>';
+  if (c.confidence) h += '<div style="margin-top:8px">' + covBadge(c.confidence) + '</div>';
   h += '</div>';
   h += '</div>';
   h += '</div>';
@@ -1702,7 +1697,7 @@ function renderDet(c) {
     h += '<details style="margin-bottom:14px;background:#F9FAFB;border-radius:8px;border:1px solid #E5E7EB"><summary style="padding:12px 14px;cursor:pointer;font-size:13px;font-weight:600;color:var(--navy)">How does data coverage affect confidence?</summary>';
     h += '<div style="padding:0 14px 14px;font-size:12px;color:#374151;line-height:1.6">';
     h += '<p style="margin:8px 0">Each company is scored across <strong>18 sub-signals</strong>. When a sub-signal lacks public data, the engine assigns a neutral default (50) rather than a flattering one. This produces conservative scores, not generous ones.</p>';
-    h += '<p style="margin:8px 0">The coverage badge tells you how much real data backs the score:</p>';
+    h += '<p style="margin:8px 0">The coverage badge is the engine\'s own label, read straight from the published score. It is not recomputed here, and it tells you how many of the 18 sub-signals have real data behind them:</p>';
     h += '<div style="display:flex;flex-direction:column;gap:6px;margin:8px 0">';
     h += '<div><span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:#16A34A15;color:#16A34A;border-radius:10px;font-size:11px;font-weight:700;text-transform:uppercase">✓ Verified</span> — 60% or more sub-signals have real data</div>';
     h += '<div><span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:#D9770615;color:#D97706;border-radius:10px;font-size:11px;font-weight:700;text-transform:uppercase">● Partial</span> — 40–59% real data, partial confidence</div>';
