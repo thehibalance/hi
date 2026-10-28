@@ -1699,9 +1699,10 @@ function renderDet(c) {
     h += '<p style="margin:8px 0">Each company is scored across <strong>18 sub-signals</strong>. When a sub-signal lacks public data, the engine assigns a neutral default (50) rather than a flattering one. This produces conservative scores, not generous ones.</p>';
     h += '<p style="margin:8px 0">The coverage badge is the engine\'s own label, read straight from the published score. It is not recomputed here, and it tells you how many of the 18 sub-signals have real data behind them:</p>';
     h += '<div style="display:flex;flex-direction:column;gap:6px;margin:8px 0">';
-    h += '<div><span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:#16A34A15;color:#16A34A;border-radius:10px;font-size:11px;font-weight:700;text-transform:uppercase">✓ Verified</span> — 60% or more sub-signals have real data</div>';
-    h += '<div><span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:#D9770615;color:#D97706;border-radius:10px;font-size:11px;font-weight:700;text-transform:uppercase">● Partial</span> — 40–59% real data, partial confidence</div>';
-    h += '<div><span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:#6B728015;color:#6B7280;border-radius:10px;font-size:11px;font-weight:700;text-transform:uppercase">○ Limited</span> — below 40% real data, score reflects mostly defaults</div>';
+    h += '<div><span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:#16A34A15;color:#16A34A;border-radius:10px;font-size:11px;font-weight:700;text-transform:uppercase">✓ Strong</span> — 10 or more of the 18 sub-signals have real data</div>';
+    h += '<div><span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:#D9770615;color:#D97706;border-radius:10px;font-size:11px;font-weight:700;text-transform:uppercase">● Partial</span> — 4 to 9 of 18</div>';
+    h += '<div><span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:#6B728015;color:#6B7280;border-radius:10px;font-size:11px;font-weight:700;text-transform:uppercase">○ Limited</span> — 1 to 3 of 18</div>';
+    h += '<div><span style="display:inline-flex;align-items:center;gap:4px;padding:2px 8px;background:transparent;color:#9CA3AF;border-radius:10px;font-size:11px;font-weight:700;text-transform:uppercase">— None</span> — no sub-signal has real data for this company</div>';
     h += '</div>';
     h += '</div></details>';
     
@@ -1739,7 +1740,7 @@ function renderDet(c) {
     h += '<br><span style="color:#94A3B8">U.1 scores the resolution rate, not the volume. Both are shown because they can disagree.</span>';
     h += '</div>';
   }
-  h += '<div style="margin-top:18px;font-size:11px;color:#94A3B8;line-height:1.6">HI Grades are estimated from public data and are not financial, legal, or investment advice. Not affiliated with or endorsed by ' + (c.company || 'this company') + '. Methodology: HUMAN Grade Spec v' + (c.spec_version || '1.13.0') + ' (Apache 2.0). HI Grade\u2122 Morf Innovations LLC.</div>';
+  h += '<div style="margin-top:18px;font-size:11px;color:#94A3B8;line-height:1.6">HI Grades are estimated from public data and are not financial, legal, or investment advice. Not affiliated with or endorsed by ' + (c.company || 'this company') + '. Methodology: HUMAN Grade Spec v' + (c.spec_version || '1.14.0') + ' (Apache 2.0). HI Grade\u2122 Morf Innovations LLC.</div>';
   // v1.10.2: close navy footer band
   h += '</div></div>';
 
