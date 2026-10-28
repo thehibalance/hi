@@ -189,21 +189,32 @@ for r in engine:
     for code, val in sub_scores(r).items():
         if code in dv:
             continue
-        if PROXY and val == 50:
-            continue      # the engine's own `v != 50` term, minus the sets we cannot see
+        if val == 50:
+            # `v != 50` is the FIRST half of the engine's own real_count term and applies
+            # whether or not the row carries provenance. Making it conditional on PROXY was
+            # a bug that could only surface once the engine began publishing the derived
+            # sets: exact mode would have counted a non-derived 50 as evidence, over-counted
+            # against signal_coverage, and tripped the cross-check below — a false alarm
+            # raised by the fix. Found by reading this consumer before shipping the producer.
+            continue
         MEASURED.setdefault(code, {})[name] = val
 
 print("\n\n2. MEASURE\n")
 if PROXY:
     print("   ARM = NON-NEUTRAL PROXY. No row carries a derived mark, so 'measured' here is")
-    print("   `v != 50` — the first half of the engine's own real_count term at")
-    print("   scoring_engine.py:1906, WITHOUT the INDUSTRY_DERIVED / ABSENCE_DERIVED")
-    print("   exclusions it cannot see. Every count below is therefore an UPPER BOUND on")
-    print("   coverage, and a genuinely measured value of exactly 50.0 is counted as")
-    print("   withheld. Row-level truth is the published `signal_coverage` string; this")
-    print("   table is the only per-sub-signal view the file permits.\n")
+    print("   `v != 50` alone — the first half of the engine's own real_count term, WITHOUT")
+    print("   the INDUSTRY_DERIVED / ABSENCE_DERIVED exclusions it cannot see. Every count")
+    print("   below is therefore an UPPER BOUND on coverage. Row-level truth is the")
+    print("   published `signal_coverage` string; this table is the only per-sub-signal")
+    print("   view the file permits.")
+    print("   The engine began publishing `industry_derived` and `absence_derived` on")
+    print("   2026-10-28. If this banner still appears, the rows predate that change — a")
+    print("   nightly has to run before the fields exist.\n")
 else:
-    print("   ARM = DERIVED MARKS. The rows carry provenance; these counts are exact.\n")
+    print("   ARM = DERIVED MARKS. The rows carry provenance, so this is the engine's own")
+    print("   test — `v != 50` AND not derived — and these counts are exact. The")
+    print("   cross-check below must then read +0 on every row; anything else means this")
+    print("   script and the engine disagree about what counts as evidence.\n")
 print(f"   {'code':6} {'measured':>9} {'withheld':>9} {'mean':>7} {'median':>7} "
       f"{'max':>6} {'at 100':>8}")
 print("   " + "─" * 62)
@@ -249,7 +260,7 @@ gap = Counter()
 for r in engine:
     dv = derived_codes(r)
     have = tuple(sorted(c for c, v in sub_scores(r).items()
-                        if c not in dv and not (PROXY and v == 50)))
+                        if c not in dv and v != 50))
     cov[len(have)] += 1
     if len(have) == 2:
         pairs[have] += 1

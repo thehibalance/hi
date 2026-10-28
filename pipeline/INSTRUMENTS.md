@@ -35,22 +35,35 @@ excluded. So means, correlations and coverage must all state which arm they were
 over. `mean ALL` and `mean != 50` are different numbers for the same sub-signal and have been
 confused in this project at least twice, once reversing a prediction.
 
-**`real_count` is published; the derived sets are not.** Every scored row carries
-`signal_coverage` — `"14/18 sub-signals with real data"` — but not *which* fourteen.
-`INDUSTRY_DERIVED` and `ABSENCE_DERIVED` are built per company at scoring time and cleared on
-the next call.
+**`real_count` and its provenance are both published.** Every scored row carries
+`signal_coverage` — `"14/18 sub-signals with real data"` — plus **`industry_derived`** and
+**`absence_derived`**, the two sorted lists of sub-signal codes that count excluded.
+
+Before 2026-10-28 only the count shipped and the sets were cleared on the next call, so
+nothing outside the engine could tell *which* fourteen. `measure_rubric_figures.py` still
+carries the `v != 50` fallback it needed then and prints which arm it used — if it says
+**NON-NEUTRAL PROXY**, the rows you are reading predate the change.
 
 **So fourteen of the eighteen sub-signals are exactly recomputable from
 `data/scores/all_scores.json`, and four are not.** For the fourteen, `v != 50` *is* the whole
 test, so a count of non-neutral values is the engine's own count — not an approximation of it.
 The four exceptions are industry lookup tables whose constants sit off 50:
 
-| sub-signal | `INDUSTRY_DERIVED.add` | why it cannot be counted from the scores file |
-|---|---|---|
-| H.2 | `scoring_engine.py:928` | unconditional; the whole sub-signal is `craft_defaults` |
-| U.4 | `1140`, discarded at `1148`/`1151` | `u4_industry` constant for most of the index |
-| A.1 | `1360`, discarded at `1369` | CDP scores collide with the fallback set {30,40,45,50,55,60,65} |
-| A.4 | `1439` | `hw_defaults` industry constant |
+| sub-signal | why a `v != 50` count gets it wrong |
+|---|---|
+| H.2 | added unconditionally — the entire sub-signal is the `craft_defaults` table |
+| U.4 | `u4_industry` constant for most of the index, discarded when real data arrives |
+| A.1 | discarded when real data arrives, but CDP scores collide with the fallback set {30,40,45,50,55,60,65}, so the split is not determinable from published data |
+| A.4 | `hw_defaults` industry constant |
+
+**No line numbers here, on purpose.** The first version of this file quoted eight of them
+from a two-week-old grep and every one was already wrong — the engine had grown underneath
+them. Hand-copied figures in the document whose §4 says not to hand-copy figures. Get the
+current ones from the source:
+
+```
+grep -n 'INDUSTRY_DERIVED\|ABSENCE_DERIVED' scoring_engine.py
+```
 
 Count those four from the scores file and you get 748 / 730 / 478 / 951 against RUBRIC's
 0 / 38 / ~32 / 101. RUBRIC's figures for them come from the collector stores instead, so they
@@ -64,8 +77,14 @@ says the split *"cannot be determined from published data because one measured p
 `cdp_score` directly and CDP scores collide with the fallback values"*. Resolving it needs
 `scoring_engine.py`, not the scores file — see §7.
 
-`H.3` and `M.3` are `ABSENCE_DERIVED` (`985`, `1239`) and are set to **exactly 50** when
-withheld, so `v != 50` already excludes them. That was an assumption until it was measured.
+`H.1`, `H.3` and `M.3` are `ABSENCE_DERIVED` and are set to **exactly 50** when withheld,
+so `v != 50` already excludes them and they stay exactly recomputable. That was an assumption
+until it was measured.
+
+**Seven sub-signals are tracked in total** — four industry, three absence — one more than the
+six recorded on 2026-10-14. H.1 joined when v1.14.0 gave it a declared domain of [0.25, 4]
+and began withholding ratios outside it. Expect this number to move again; the grep above is
+the only trustworthy count.
 
 > **Re-measure all of this:** `python3 measure_rubric_figures.py` — it reads every
 > `Coverage` line in `RUBRIC.md` and prints claim against measurement with a verdict, and

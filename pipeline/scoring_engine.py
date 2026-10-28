@@ -2025,6 +2025,19 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         # receives. Both are true. A reader gets to see both.
         "cfpb_disclosure": (ss.get("cfpb", {}).get("raw") or {}).get("disclosure"),
         "signal_coverage": f"{real_count}/{len(all_details)} sub-signals with real data",
+        # The provenance real_count is computed FROM, published instead of discarded.
+        # Both sets are cleared at the top of this function and populated across the
+        # seven add/discard sites above, so they describe this company and no other.
+        # Until 2026-10-28 only the count shipped: nothing outside the engine could
+        # tell WHICH sub-signals a coverage figure had excluded, so every per-sub-signal
+        # coverage claim in RUBRIC was unverifiable from the published file and an
+        # instrument built to check them over-counted on 991 of 1,045 rows using a
+        # `v != 50` proxy. See claude/FINDING-the-engine-computes-provenance-and-
+        # discards-it.md, which named this fix on 2026-10-14.
+        # No spec bump: this moves no score, and the stamp is paired to the formula.
+        # Sorted so a nightly diff shows real changes rather than set iteration order.
+        "industry_derived": sorted(INDUSTRY_DERIVED),
+        "absence_derived": sorted(ABSENCE_DERIVED),
         "humanwashing_flags": hw_flags,
         "algo_harm": algo_harm,
         "harm_documentation": harm_doc,
