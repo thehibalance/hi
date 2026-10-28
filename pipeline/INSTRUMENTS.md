@@ -44,10 +44,13 @@ nothing outside the engine could tell *which* fourteen. `measure_rubric_figures.
 carries the `v != 50` fallback it needed then and prints which arm it used — if it says
 **NON-NEUTRAL PROXY**, the rows you are reading predate the change.
 
-**So fourteen of the eighteen sub-signals are exactly recomputable from
-`data/scores/all_scores.json`, and four are not.** For the fourteen, `v != 50` *is* the whole
-test, so a count of non-neutral values is the engine's own count — not an approximation of it.
-The four exceptions are industry lookup tables whose constants sit off 50:
+**Every sub-signal's coverage is exactly recomputable from
+`data/scores/all_scores.json`**, because each row carries both derived lists. Read them;
+do not reimplement the test.
+
+What `v != 50` **alone** gets wrong, measured 2026-10-29: it is correct for **thirteen**
+sub-signals, wrong for the **four** industry lookup tables whose constants sit off 50, and
+wrong for **one** more in a way nobody predicted. The four:
 
 | sub-signal | why a `v != 50` count gets it wrong |
 |---|---|
@@ -77,14 +80,24 @@ says the split *"cannot be determined from published data because one measured p
 `cdp_score` directly and CDP scores collide with the fallback values"*. Resolving it needs
 `scoring_engine.py`, not the scores file — see §7.
 
-`H.1`, `H.3` and `M.3` are `ABSENCE_DERIVED` and are set to **exactly 50** when withheld,
-so `v != 50` already excludes them and they stay exactly recomputable. That was an assumption
-until it was measured.
+`H.1` and `H.3` are `ABSENCE_DERIVED` and **are** set to exactly 50 when withheld, so
+`v != 50` happens to exclude them correctly.
+
+**`M.3` is not, and it is the fifth thing a `v != 50` count gets wrong.** 21 of its 1,026
+absence-marked rows carry a **non-neutral** score: v1.11.0 records a zero-litigation company
+as no-measurement, correctly, and still publishes a non-neutral value for it. Counting
+non-50s gives M.3 **40**; its true coverage is **19**.
+
+That assumption — absence-derived implies 50 — was asserted on 2026-10-22 and called
+measured. The test used was a per-row gap check that removed only the four industry
+sub-signals, so a leak inside M.3 was invisible to it by construction, and it returned the
+expected answer. **A test that cannot fail in the direction of the claim is not evidence for
+the claim** (§4).
 
 **Seven sub-signals are tracked in total** — four industry, three absence — one more than the
 six recorded on 2026-10-14. H.1 joined when v1.14.0 gave it a declared domain of [0.25, 4]
-and began withholding ratios outside it. Expect this number to move again; the grep above is
-the only trustworthy count.
+and began withholding ratios outside it. Expect this to move again; the grep above is the
+only trustworthy count.
 
 > **Re-measure all of this:** `python3 measure_rubric_figures.py` — it reads every
 > `Coverage` line in `RUBRIC.md` and prints claim against measurement with a verdict, and
