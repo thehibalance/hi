@@ -106,24 +106,29 @@ This rule replaces a multi-tier floor system used in earlier specs (any dim < 10
 
 ---
 
-**How the Coverage figures below were measured (2026-10-21).**
-`pipeline/measure_rubric_figures.py` re-reads every `Coverage` line in this document and
-re-measures it against `pipeline/data/scores/all_scores.json`. **Fourteen of the eighteen
-sub-signals are exactly recomputable from that file**, because for them the engine's own
-evidence test — `v != 50` at `scoring_engine.py:1906` — is the whole test.
+**How the Coverage figures below were measured (2026-10-29).**
+Every scored row in `pipeline/data/scores/all_scores.json` carries `industry_derived` and
+`absence_derived` — the sub-signal codes the engine excluded from that company's coverage
+count. So **every figure below is exactly checkable from the published file**, by anyone,
+with one `json.load`. `pipeline/measure_rubric_figures.py` does it and prints claim against
+measurement.
 
-**Four are not: H.2, U.4, A.1 and A.4.** Each is an industry lookup table whose constants sit
-off 50, and the engine excludes them through `INDUSTRY_DERIVED`, which is computed per company
-and never written to the row. Counting those four from the scores file yields 748 / 730 / 478 /
-951 against the 0 / 38 / ~32 / 101 documented below — the counts are wrong, not the document.
-Their coverage is measured from the collector stores instead, and a reader cannot check it
-without `scoring_engine.py`.
+**Do not count coverage as `v != 50` alone.** The engine's test is `v != 50` **and** not
+derived, and the difference is not small: that shortcut gives 478 / 951 / 748 / 730 for
+A.1 / A.4 / H.2 / U.4 against their true 40 / 266 / 0 / 39. It is also wrong for **M.3**,
+which carries 21 values that are marked as an absence and are still not 50 — a zero-litigation
+company is recorded as no-measurement, correctly, but the score published for it is not
+neutral. Thirteen sub-signals are safe to count that way; five are not.
 
-Across the whole index the engine credits **2,282 sub-signal-instances** as evidence:
-**1,958** in the fourteen, and **324** in the four, where a measured path displaced the
-constant. Of those 324, **171** are accounted for in the figures below, so one of the four is
-under-reported — most likely A.1, whose own entry records why its split cannot be pinned down
-from published data.
+Across the whole index the engine credits **2,282** sub-signal-instances as evidence out of
+**4,865** non-neutral values — so **2,583** published numbers are constants sitting off 50.
+
+**Corrected 2026-10-29.** This note previously said fourteen of eighteen figures were
+recomputable and four could not be checked without the engine; it also attributed a
+171-vs-324 shortfall to A.1. Measurement puts the shortfall almost entirely in **A.4**, which
+understated its coverage by 165 companies while declaring no uncertainty, whereas A.1 was off
+by 8 and said plainly that its split could not be determined. A figure that declares its own
+uncertainty turned out to be the less wrong one.
 
 ## H — Human Consciousness
 
@@ -186,7 +191,7 @@ from published data.
 
 ### U.4 — Simulated Empathy Detection
 **Status:** UNGROUNDED *(was listed as PARTIAL; corrected in v1.7.0 — this entry described the AHI, which is a downstream penalty, not U.4's input)*  
-**Coverage (Oct 2026):** **38 of 1,045** companies measured; **1,007** receive the `u4_industry` constant. PARTIAL describes the 38; the remaining 96.4% are an industry lookup table.  
+**Coverage (Oct 2026):** **39 of 1,045** companies measured; **1,006** receive the `u4_industry` constant. PARTIAL describes the 39; the remaining 96.3% are an industry lookup table.  
 **Inputs:** a 15-entry industry automation table (in-house), blended 40/30/30 with Glassdoor culture and overall ratings **where a Glassdoor record exists — it does for about 37 of 1,141 companies**. For everyone else U.4 is the industry constant alone.  
 **Ladder:** Editorial in both halves: the industry values (hospitality 72, food 70, healthcare 65 … telecom 32, insurance 30) and the 40/30/30 blend were chosen by us.  
 **Path forward:** **AI Incident Database** (Responsible AI Collaborative) — free weekly bulk exports in JSON, MongoDB and CSV, with entities modelled structurally by role (as Deployer, as Developer, Harmed By) — with severity tiers from the **MIT AI Risk Initiative tracker**, which applies **CSET's AI Harm Taxonomy**: ten harm types scored 1 "Negligible" to 5 "Catastrophic", CC BY 4.0. That is the only published severity ladder found in this field. **Correction, Oct 2026:** the previous note cited AlgorithmWatch harm tier classifications. **No such dataset exists** — AlgorithmWatch is an advocacy and journalism organisation — and the claim has been struck. Honest ceiling: AIID is editor-curated from media reports, so realistic coverage is **60–120 of 1,045 companies**, concentrated in large-cap technology. A company with no incident record is one no journalist wrote about, not one without algorithmic harm. Adopting it replaces a 96.4% lookup table with ~10% real coverage and ~90% declared no-evidence, which is the honest trade.
@@ -211,7 +216,7 @@ from published data.
 
 ### M.3 — Market Ethics
 **Status:** PARTIAL  
-**Coverage (Oct 2026):** **40 of 1,045** companies measured; the rest are recorded as no-measurement (a litigation value of zero is an absence, not a clean record — v1.11.0).  
+**Coverage (Oct 2026):** **19 of 1,045** companies measured; **1,026** are recorded as no-measurement (a litigation value of zero is an absence, not a clean record — v1.11.0). **21 of those 1,026 still carry a non-neutral score**, so counting non-50 values gives 40 rather than 19: the absence is marked on the row but the value it marks is not 50. M.3 is the only sub-signal where those two disagree, and it is why coverage must be read from `absence_derived` rather than from `!= 50`. Corrected from 40 on 2026-10-29.  
 **Inputs:** SEC litigation and EPA penalties (legal score), blended with certification signals when present (60% certifications, 40% legal); EEOC, pay-ratio (DEF 14A) and insider-trading (Form 4) adjustments  
 **Ladder:** Editorial. The legal-penalty dollar tiers ($1B / $100M / $10M / $1M) and the certification blend weights are in-house.  
 **v1.11.0 correction:** the legal component scored **85 when no penalty record was found**, and no record has ever been found — zero of 1,048 SEC records carry a litigation value and the EPA records carry empty `m_signals`. M.3 therefore read 85 for 1,013 of 1,139 companies while claiming to measure legal conduct. It is now a neutral 50 marked not-evidence unless a certification or a real penalty record exists, which is true for 128 companies.  
@@ -237,7 +242,7 @@ from published data.
 
 ### A.1 — Energy & Emissions
 **Status:** UNGROUNDED  
-**Coverage (Oct 2026):** roughly **32 of 1,045** companies measured; approximately **1,013** receive an industry default. The exact split cannot be determined from published data because one measured path writes `cdp_score` directly and CDP scores collide with the fallback values {30, 40, 45, 50, 55, 60, 65}.  
+**Coverage (Oct 2026):** **40 of 1,045** companies measured; **1,005** receive an industry default. Read directly from `industry_derived` since 2026-10-28. Until then the split could not be determined from published data, because one measured path writes `cdp_score` directly and CDP scores collide with the fallback values {30, 40, 45, 50, 55, 60, 65}; the estimate recorded here was *roughly 32*, which was within 8.  
 **Inputs:** CDP Climate disclosures (when available), industry-default emissions intensity table  
 **Ladder:** CDP disclosure letter grades exist but engine doesn't reproduce them. Industry defaults are in-house.  
 **Path forward:** **SBTi Target Dashboard** — free .xlsx export covering 14,245 companies (12,092 with validated targets, 2,310 with active commitments), **carrying an ISIN column**, so matching is a join rather than a fuzzy-name problem. SBTi publishes its own exhaustive ordinal: near-term status `Validated Targets` / `Commitment to Set Targets` / `Commitment Removed`, and temperature alignment `1.5°C` / `well-below 2°C` / `2°C`, plus separate net-zero status. The decisive property is that **absence is informative** — SBTi enumerates every company that has acted, so a company not in the register is genuinely "not committed" and earns a real bottom rung instead of an industry default. That single property takes this sub-signal from ~97% invented to 0% invented in one pass. **It measures target ambition, not energy use or emissions**, so adopting it is a construct substitution and the sub-signal must be renamed. Layer **EPA eGRID** (plant-level CO₂ output rates in lb/MWh, free, authoritative — electric power only) and **EPA GHGRP**, which publishes a "Reported Parent Companies" file with percent ownership, for a quantitative second tier; discount GHGRP for durability, since EPA proposed in September 2025 to remove reporting for 46 of 47 source categories. **Correction, Oct 2026:** reproducing CDP's letter tiers is blocked by licence, not by data — CDP scores "must not, without prior written consent from CDP, be used for anything other than internal, non-commercial use," and the free Action Tracker licence explicitly prohibits research in a corporate setting. **Watch item:** California SB 253's first Scope 1/2 reports were due 10 November 2026; if CARB publishes structured figures for thousands of filers, that becomes the best source for this sub-signal in existence. Re-check Q1 2027. The SEC climate rule will not help — formal rescission was proposed 3 June 2026.
@@ -258,11 +263,11 @@ from published data.
 
 ### A.4 — Product Lifecycle
 **Status:** PARTIAL *(for 15 covered companies)*  
-**Coverage (Oct 2026):** **101 of 1,045** companies measured (iFixit, certifications, CDP Forests); **944** receive the `hw_defaults` industry constant. PARTIAL is accurate for the 101 and UNGROUNDED, by this document's own definitions, for the 944.  
+**Coverage (Oct 2026):** **266 of 1,045** companies measured (iFixit, certifications, CDP Forests); **732** receive the `hw_defaults` industry constant. PARTIAL is accurate for the 266 and UNGROUNDED, by this document's own definitions, for the 732. **Corrected 2026-10-29:** this line read 101 and 944 until `industry_derived` made the split measurable. It understated real coverage by 2.6x and overstated the constant by 212 companies — the largest single error found in this document, and the only one of the four industry figures that stated no uncertainty.  
 **Inputs:** iFixit repairability scores (consumer electronics, ~15 companies)  
 **Ladder:** Reproduces iFixit's 1-10 repairability tiers, scaled to 0-100. Grounded for covered companies.  
 **Coverage gap:** every other company falls back to certifications, then CDP Forests, then an industry default. Path forward: EU Extended Producer Responsibility datasets.
-**Path forward:** **Keep iFixit for the 101 companies where it applies and report nothing for the other 944.** A sub-signal that covers 101 of 1,045 and says so is a better artefact than one that covers 1,045 and invents 944 of them. **Correction, Oct 2026:** the previous note cited EU Extended Producer Responsibility datasets. **There is no central EU EPR register** — EPR is 27 fragmented national registers, and 2026 industry position papers argue *for* a central European register precisely because none exists. The claim has been struck. France's **indice de réparabilité** is genuinely statutory, free, bulk and daily-refreshed under Licence Ouverte 2.0, with a 0–10 score fixed by decree and mandated display bands — and it reaches an estimated **6–12 US-listed companies**, fewer than iFixit already covers, keyed to French legal entities and individual model references. The EU's Ecodesign for Sustainable Products Regulation will not help in time: horizontal repairability scoring is slated for 2027–2029 and phones and tablets for 2030, and the Digital Product Passport has no operational launch date. Nothing can ground the 944 before roughly 2029.
+**Path forward:** **Keep iFixit for the 266 companies where it applies and report nothing for the other 732.** A sub-signal that covers 266 of 1,045 and says so is a better artefact than one that covers 1,045 and invents 732 of them. **Correction, Oct 2026:** the previous note cited EU Extended Producer Responsibility datasets. **There is no central EU EPR register** — EPR is 27 fragmented national registers, and 2026 industry position papers argue *for* a central European register precisely because none exists. The claim has been struck. France's **indice de réparabilité** is genuinely statutory, free, bulk and daily-refreshed under Licence Ouverte 2.0, with a 0–10 score fixed by decree and mandated display bands — and it reaches an estimated **6–12 US-listed companies**, fewer than iFixit already covers, keyed to French legal entities and individual model references. The EU's Ecodesign for Sustainable Products Regulation will not help in time: horizontal repairability scoring is slated for 2027–2029 and phones and tablets for 2030, and the Digital Product Passport has no operational launch date. Nothing can ground the 732 before roughly 2029.
 
 ---
 
@@ -270,7 +275,7 @@ from published data.
 
 ### N.2 — Reporting Quality
 **Status:** PARTIAL *(was UNGROUNDED; changed September 2026)*  
-**Coverage (Oct 2026):** PARTIAL for **42 of 1,045** companies. The remaining 1,003 carry the neutral 50, which is excluded from published coverage. The input is CDP, and 24% of the 42 measured values sit at the ceiling — CDP respondents are a self-selected, disclosure-rich population, so this is a measurement of a narrow group, not of the universe. **CDP's licence forbids commercial use**, which caps this sub-signal where it stands and blocks A.1 and A.2 at the same time. See the grounding map.
+**Coverage (Oct 2026):** PARTIAL for **42 of 1,045** companies. The remaining 1,003 carry the neutral 50, which is excluded from published coverage. The input is CDP, and 24% of the 42 measured values sit at the ceiling — CDP respondents are a self-selected, disclosure-rich population, so this is a measurement of a narrow group, not of the universe. **CDP's licence forbids commercial use**, which caps this sub-signal where it stands and blocks A.1 and A.2 at the same time. See the grounding map.  
 **Inputs:** reporting-quality level (excellent / good / partial) from CDP disclosure; CDP non-responders receive a mild penalty; neutral 50 otherwise  
 **Ladder:** The mapping from reporting level to score (90 / 70 / 45 / 25) is editorial.  
 **Path forward:** **Two routes, and the free one is better aligned with the construct.** CDP's own published score bands would fix the saturation this sub-signal shows — D- 1–49%, D 50–80%, C- 1–44%, C 45–80%, B- 1–44%, B 45–75%, A- 1–69%, **A 70–100%**, a 30-point A band against the current single-value pile-up — but **CDP's licence blocks it**. **Correction, Oct 2026:** the previous note cited GRI's own reporting-quality scoring framework. GRI states that it "does not verify, check or pass judgment on the quality of the disclosures within a report," its Sustainability Disclosure Database **has been decommissioned**, registrations are not public, and Report Services are paid and private. The claim has been struck. SASB/ISSB publish jurisdictional profiles, not a per-company register, and the US is not an adopting jurisdiction. The better free route is to stop scoring self-reported quality and score **authority-found reporting failure** instead: SEC staff comment letters (UPLOAD/CORRESP), **Item 4.02 non-reliance restatements**, and ICFR material weaknesses — free, bulk, every US filer, and not saturated.
