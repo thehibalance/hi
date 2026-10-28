@@ -1580,25 +1580,45 @@ def round_score(val):
     return int(math.ceil(val)) if remainder >= 0.6 else int(math.floor(val))
 
 
-def _compute_confidence(real_count, total):
-    """v1.2.1: derive confidence label from real-data coverage.
+def _compute_confidence(real_count, total=18):
+    """v1.15.0: four plain labels, banded on the ABSOLUTE count of sub-signals with real
+    data about this company.
 
-    Replaces the hardcoded "Estimated" stamp at API response time.
-    Real-data percentage drives the label users see in the iOS app,
-    Chrome extension, and web detail page.
+        0        None       no sub-signal has real data
+        1-3      Limited
+        4-9      Partial
+        10+      Strong
 
-    Coca-Cola at 17/19 (89%) → "Verified"
-    Typical well-covered S&P 500 at 12-15/19 → "Strong"
-    Companies with thin data → "Partial" / "Limited" / "Estimated"
+    WHY THE BANDS CHANGED, measured 2026-10-29 over 1,045 scored companies
+
+    v1.2.1 banded on percentage-of-total, with thresholds chosen for a system expected to
+    reach 12-15 of 18. The median company has 2. The result was that "Estimated" described
+    856 companies — 82% of the index — and therefore described nothing, while "Verified"
+    described one company and claimed something this index cannot support.
+
+    The Limited/Estimated boundary also sat at 0.21, which is 3.8 of 18: it separated a
+    company with four real sub-signals from one with three, in the exact spot where most of
+    the index sits. Marking A.3 as industry-derived moved 66 labels across that line for no
+    evidentiary reason, which is how the band itself came under examination.
+
+    New distribution: None 334 · Limited 578 · Partial 99 · Strong 34.
+
+    "Strong" keeps its meaning: it required 12+ of 18 and covered 29 companies; at 10+ it
+    covers 34. "Verified" is retired because nothing here is verified. "Estimated" is
+    retired because it implied an estimate had been made for the 334 companies that have no
+    data at all.
+
+    `total` is kept in the signature because callers pass it and `signal_coverage` still
+    quotes it, but it no longer affects the label: a count of real sub-signals means the
+    same thing whether the denominator is 18 or 19. That decoupling is deliberate — the
+    denominator has changed twice in this project's history and silently moved every label
+    both times.
     """
-    if total <= 0:
-        return "Estimated"
-    pct = real_count / total
-    if pct >= 0.84: return "Verified"
-    if pct >= 0.63: return "Strong"
-    if pct >= 0.42: return "Partial"
-    if pct >= 0.21: return "Limited"
-    return "Estimated"
+    n = real_count or 0
+    if n >= 10: return "Strong"
+    if n >= 4: return "Partial"
+    if n >= 1: return "Limited"
+    return "None"
 
 
 def compute_composite(D_H, D_U, D_M, D_A, D_N):
@@ -2017,7 +2037,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.13.0",
+        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.14.0",
         "data_sources": all_sources,
         # Published beside the score, never folded into it: the complaint volume a
         # resolution-based U.1 cannot express. Equifax resolves slightly better than

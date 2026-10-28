@@ -34,6 +34,14 @@ SURFACES = [
     # spec v1.2.0 for six releases because nothing checked this file.
     ("human-edge/lib/engine.js", r"Filter Engine — v([0-9.]+)", "extension engine banner"),
     ("human-edge/lib/engine.js", r"SPECIFICATION REFERENCE: HUMAN Methodology Spec v([0-9.]+)", "extension engine spec ref"),
+    # v1.15.0: three claims about the CURRENT engine that no pattern above reached. The
+    # v1.14.0 bump landed on all ten surfaces and a scan for leftover "1.13.0" then found
+    # these, each asserting it described the current spec. Four other leftovers in RUBRIC.md
+    # and scoring_engine.py are correct history and deliberately not covered here — a gate
+    # that fails on an accurate historical reference gets switched off.
+    ("METHODOLOGY.md", r"corrected to the current engine, spec v([0-9]+[.][0-9]+[.][0-9]+)", "METHODOLOGY correction note"),
+    ("METHODOLOGY.md", r"The current engine \(spec v([0-9.]+)\)", "METHODOLOGY engine note"),
+    ("README.md", r"\*\*Current state \(v([0-9.]+)\)", "README current state"),
 ]
 
 
