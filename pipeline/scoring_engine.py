@@ -1463,6 +1463,19 @@ def score_a_dimension(sec_a, epa_data, cdp_data, industry, subsignals=None, tick
     elif land_score is not None:
         scores["A.3"] = land_score
         sources_used.append("Industry")
+        # v1.16.0: this branch is the DEFORESTATION_RISK industry table and nothing else.
+        # It reaches 235 companies with a non-neutral value, keyed on SIC: every software
+        # and semiconductor company scores 65.0, every health insurer and bank 70.0. The
+        # "Industry" source above said so all along; A.3 was simply never in the derived
+        # set, so real_count credited all 235 as evidence about the company.
+        # No discard needed — A.3's branches are if/elif, so exactly one runs. U.4 and A.1
+        # need add-then-discard because theirs are not exclusive.
+        # The blend branch above stays credited: 70% of its value is a USDA Organic
+        # certification, and A.1's precedent is to withdraw the mark when real data arrives.
+        # Measured: 68 published labels move, 13 of them from Limited to None — companies
+        # whose ONLY credited sub-signal was this table.
+        # See claude/MEASUREMENT-a3-is-235-not-248-and-the-epa-ladder-is-dead.md
+        INDUSTRY_DERIVED.add("A.3")
     else:
         epa_a = epa_data.get("a_signals", {}) if epa_data else {}
         if epa_a.get("total_violations_3yr") is not None:
@@ -2037,7 +2050,7 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
         "D_H": D_H, "D_U": D_U, "D_M": D_M, "D_A": D_A, "D_N": D_N,
         "composite": composite, "hi_grade": grade, "satire": satire,
         "floor_triggered": floor_triggered, "balance_floor": balance_floor_triggered, "triggering_dimension": triggering_dim,
-        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.14.0",
+        "confidence": _compute_confidence(real_count, len(all_details)), "spec_version": "1.15.0",
         "data_sources": all_sources,
         # Published beside the score, never folded into it: the complaint volume a
         # resolution-based U.1 cannot express. Equifax resolves slightly better than
