@@ -66,7 +66,7 @@ from pathlib import Path
 
 try:
     from scoring_engine import (_get_usda_organic_record, _score_from_usda_organic,
-                                index_by_company, find_match)
+                                index_by_company, find_match, _compute_confidence)
 except Exception as e:                                      # noqa: BLE001
     raise SystemExit(f"  cannot import from scoring_engine ({e}) — run from pipeline/")
 
@@ -121,6 +121,7 @@ DESC = {
 }
 
 by = {b: [] for b in BRANCHES}
+ROW = {}                 # (who, branch) -> the score row, for the label-impact section
 offenders = []
 zero_violations = []
 
@@ -156,6 +157,7 @@ for r in engine:
         b, want = "neutral", 50
 
     by[b].append((tick or name, pub, want, land, usda, viol))
+    ROW[(tick or name, b)] = r
     if abs(float(want) - pub) > 0.051:
         offenders.append((abs(float(want) - pub), tick or name, b, pub, want))
 
@@ -242,6 +244,87 @@ if "--names" in sys.argv and land_only:
 elif land_only:
     print(f"\n   Run with --names for the {len(land_only)} land-only companies.")
 
+# ── the consequence, under whatever bands and derived sets the engine currently has ──
+import re as _re
+
+_PUB = _re.compile(r"^\s*(\d+)\s*/\s*(\d+)")
+
+# Which side of v1.16.0 are these rows from? The engine publishes industry_derived per row,
+# so ask the data rather than assuming. Subtracting a coverage point from rows that have
+# ALREADY had it subtracted would charge the same change twice — the precise failure this
+# whole section exists to avoid.
+derived_rows = sum(1 for r in engine if "A.3" in (r.get("industry_derived") or []))
+APPLIED = derived_rows > len(engine) // 2
+if 0 < derived_rows <= len(engine) // 2:
+    print(f"\n   !! A.3 is industry_derived on {derived_rows} of {len(engine)} rows — a")
+    print("      partial state no release produces. The store is probably mid-rewrite or")
+    print("      mixes two nightlies. Section 6 below assumes PROSPECTIVE and may be wrong.")
+if not any("industry_derived" in r for r in engine):
+    print("\n   !! no row carries an industry_derived field — the store predates v1.11.1.")
+    print("      Section 6 assumes PROSPECTIVE; verify against the engine before quoting it.")
+
+movers = Counter()
+examples = []
+no_cov = 0
+for who, pub, want, land, usda, viol in land_only:
+    if pub == 50:
+        continue                      # already excluded by the v != 50 half of real_count
+    r = ROW.get((who, "land-only")) or {}
+    m = _PUB.match(str(r.get("signal_coverage") or ""))
+    if not m:
+        no_cov += 1
+        continue
+    n, d = int(m.group(1)), int(m.group(2))
+    if APPLIED:
+        before, after = _compute_confidence(n + 1, d), r.get("confidence")
+        shown = (n + 1, n)
+    else:
+        before, after = r.get("confidence"), _compute_confidence(n - 1, d)
+        shown = (n, n - 1)
+    if before != after:
+        movers[(before, after)] += 1
+        examples.append((who, shown, before, after))
+
+affected = sum(1 for _, p, _, _, _, _ in land_only if p != 50)
+mode = "APPLIED — v1.16.0 is live in these rows" if APPLIED else "PROSPECTIVE — not yet live"
+print(f"""
+
+6. WHAT MARKING THEM COSTS — {mode}
+
+   companies whose coverage A.3 {'no longer feeds' if APPLIED else 'feeds'} : {affected}
+   published label changes {'realised' if APPLIED else 'that would follow'}  : {sum(movers.values())}
+""")
+if no_cov:
+    print(f"   !! {no_cov} of them have no parseable signal_coverage and were skipped.")
+if movers:
+    for (a, b), k in movers.most_common():
+        print(f"      {k:>5}   {a} -> {b}")
+    print(f"\n   The first 20 of {len(examples)}:\n")
+    print(f"      {'company':22} {'cov':>8}  label")
+    for who, (hi, lo), a, b in examples[:20]:
+        print(f"      {str(who)[:22]:22} {hi:>3}->{lo:<3}  {a} -> {b}")
+    if len(examples) > 20:
+        print(f"      … and {len(examples) - 20} more")
+else:
+    print("   None. Every affected company keeps its label, so the fix is free: coverage")
+    print("   counts drop and no published word changes.")
+
+if APPLIED:
+    got = sum(movers.values())
+    print(f"""
+   VERIFICATION. 68 labels were predicted to move when v1.16.0 shipped
+   (claude/STATUS-v1160-a3s-table-stops-being-evidence.md). This run reconstructs
+   **{got}**. {'They agree.' if got == 68 else 'THEY DISAGREE — the prediction or the branch replay is wrong, and'}
+   {'' if got == 68 else 'a disagreement between two measurements is not evidence against either until both'}
+   {'' if got == 68 else 'rules are stated. State them before changing anything.'}""")
+
 print("""
+   This uses `_compute_confidence` as imported, not a copy of the bands, and reads
+   `industry_derived` off the rows rather than assuming which side of v1.16.0 they come
+   from, so it re-answers itself when either changes. The previous figure for this — 66,
+   from sim_a3_derived.py on 2026-10-28 — was measured against the five percentage bands
+   v1.15.0 retired AND over 248 companies rather than 235. Both inputs had moved, and
+   nothing complained.
+
 Nothing changed. Read-only.
 """)
