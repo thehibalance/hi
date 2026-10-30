@@ -189,8 +189,13 @@ REGISTRY_CLAIMS = [
     ("METHODOLOGY.md", r"pipelines pull data from (\d+) public sources"),
     ("METHODOLOGY.md", r"The data sources — (\d+) integrated"),
     ("METHODOLOGY.md", r"(\d+) public data sources are integrated"),
-    ("docs/index.html", r"(\d+) public sources\. Zero ESG ratings"),
-    ("docs/index.html", r"Edge-to-cloud\. (\d+) public data sources"),
+    # 2026-10-30: two patterns removed. Both were anchored to the body of a spotlight card,
+    # and both cards were deleted — one re-published the source count beside "Zero ESG
+    # ratings", the other inside an "Edge-to-cloud" line. A check whose anchor is editorial
+    # copy is deleted by a copy edit, which is how this was found. The source count on
+    # docs/index.html is still reconciled by the two patterns below, and by the two
+    # METHODOLOGY.md patterns above, so this removes two anchors and no coverage.
+    # See claude/FINDING-the-gates-source-count-check-is-anchored-to-marketing-copy.md
     ("docs/index.html", r"reconstructable from (\d+) public sources"),
     ("docs/index.html", r"ZERO AI in scoring\.</strong> (\d+) public data sources"),
 ]
