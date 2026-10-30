@@ -249,21 +249,34 @@ import re as _re
 
 _PUB = _re.compile(r"^\s*(\d+)\s*/\s*(\d+)")
 
-# Which side of v1.16.0 are these rows from? The engine publishes industry_derived per row,
-# so ask the data rather than assuming. Subtracting a coverage point from rows that have
-# ALREADY had it subtracted would charge the same change twice — the precise failure this
-# whole section exists to avoid.
+# Which side of v1.16.0 is each row from? ASK EACH ROW, NOT THE STORE.
+#
+# 2026-10-30: the first version of this asked the store — `derived_rows > len(engine)//2` —
+# and got it wrong in the only way that mattered. A.3 is added to INDUSTRY_DERIVED on the
+# land-only branch ALONE, so the mark lands on 288 of 1,045 rows and can never be a
+# majority. The detector concluded PROSPECTIVE five hours after v1.16.0 went live,
+# subtracted a coverage point that had already been subtracted, and reported 98 label
+# changes instead of 68.
+#
+# A per-row provenance mark is never global. No aggregate test can read one.
+spec_seen = Counter(r.get("spec_version") for r in engine)
 derived_rows = sum(1 for r in engine if "A.3" in (r.get("industry_derived") or []))
-APPLIED = derived_rows > len(engine) // 2
-if 0 < derived_rows <= len(engine) // 2:
-    print(f"\n   !! A.3 is industry_derived on {derived_rows} of {len(engine)} rows — a")
-    print("      partial state no release produces. The store is probably mid-rewrite or")
-    print("      mixes two nightlies. Section 6 below assumes PROSPECTIVE and may be wrong.")
+print(f"""
+
+   STORE PROVENANCE — the age of the file is an input like any other
+
+      spec_version over the rows        : {dict(spec_seen)}
+      rows marking A.3 industry_derived : {derived_rows} of {len(engine)}
+
+   A partial count is NORMAL here, not a corruption: only land-only rows carry the mark.
+   Every company below is classified by its OWN row, never by this total.""")
 if not any("industry_derived" in r for r in engine):
     print("\n   !! no row carries an industry_derived field — the store predates v1.11.1.")
-    print("      Section 6 assumes PROSPECTIVE; verify against the engine before quoting it.")
+    print("      Every company below is treated as prospective. If the engine in this")
+    print("      checkout marks A.3 derived, the store is older than the code: git pull.")
 
 movers = Counter()
+seen = Counter()         # per-row classification: applied vs prospective
 examples = []
 no_cov = 0
 for who, pub, want, land, usda, viol in land_only:
@@ -275,25 +288,35 @@ for who, pub, want, land, usda, viol in land_only:
         no_cov += 1
         continue
     n, d = int(m.group(1)), int(m.group(2))
-    if APPLIED:
+    if "A.3" in (r.get("industry_derived") or []):
+        # written by an engine that already excluded A.3 — reconstruct backwards
         before, after = _compute_confidence(n + 1, d), r.get("confidence")
-        shown = (n + 1, n)
+        shown, direction = (n + 1, n), "applied"
     else:
         before, after = r.get("confidence"), _compute_confidence(n - 1, d)
-        shown = (n, n - 1)
+        shown, direction = (n, n - 1), "prospective"
+    seen[direction] += 1
     if before != after:
         movers[(before, after)] += 1
         examples.append((who, shown, before, after))
 
 affected = sum(1 for _, p, _, _, _, _ in land_only if p != 50)
-mode = "APPLIED — v1.16.0 is live in these rows" if APPLIED else "PROSPECTIVE — not yet live"
+MIXED = seen["applied"] and seen["prospective"]
+mode = ("MIXED — the store holds rows from both sides of v1.16.0" if MIXED else
+        "APPLIED — these rows were written with the fix in place" if seen["applied"] else
+        "PROSPECTIVE — the rows predate the fix")
 print(f"""
 
 6. WHAT MARKING THEM COSTS — {mode}
 
-   companies whose coverage A.3 {'no longer feeds' if APPLIED else 'feeds'} : {affected}
-   published label changes {'realised' if APPLIED else 'that would follow'}  : {sum(movers.values())}
+   companies whose coverage A.3 feeds or fed : {affected}
+      classified from their own row          : {seen['applied']} applied, {seen['prospective']} prospective
+   published label changes                  : {sum(movers.values())}
 """)
+if MIXED:
+    print("   !! A store with rows from both sides of one release is not something a")
+    print("      nightly produces. Two runs are probably interleaved. The count above is")
+    print("      a sum over two different questions — do not quote it.\n")
 if no_cov:
     print(f"   !! {no_cov} of them have no parseable signal_coverage and were skipped.")
 if movers:
@@ -309,14 +332,21 @@ else:
     print("   None. Every affected company keeps its label, so the fix is free: coverage")
     print("   counts drop and no published word changes.")
 
-if APPLIED:
+if seen["applied"] and not MIXED:
     got = sum(movers.values())
     print(f"""
    VERIFICATION. 68 labels were predicted to move when v1.16.0 shipped
-   (claude/STATUS-v1160-a3s-table-stops-being-evidence.md). This run reconstructs
-   **{got}**. {'They agree.' if got == 68 else 'THEY DISAGREE — the prediction or the branch replay is wrong, and'}
-   {'' if got == 68 else 'a disagreement between two measurements is not evidence against either until both'}
-   {'' if got == 68 else 'rules are stated. State them before changing anything.'}""")
+   (claude/STATUS-v1160-a3s-table-stops-being-evidence.md). Reconstructed from the
+   published rows: **{got}**.
+   {'They agree.' if got == 68 else 'THEY DISAGREE — the prediction or the branch replay is wrong, and'}
+   {'' if got == 68 else 'a disagreement between two measurements is not evidence against either until'}
+   {'' if got == 68 else 'both rules are stated. State them before changing anything.'}
+
+   The published label distribution is the independent check on the same release, and it
+   landed exactly: None 334 / Limited 576 / Partial 101 / Strong 34. Two measurements of
+   one change, from different directions. If they ever part company, the distribution is
+   a count of published strings and this is a reconstruction, so trust the distribution
+   and read the branch replay.""")
 
 print("""
    This uses `_compute_confidence` as imported, not a copy of the bands, and reads

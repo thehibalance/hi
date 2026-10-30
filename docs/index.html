@@ -124,19 +124,18 @@ footer{background:var(--dark);padding:32px 24px;margin-top:40px;text-align:cente
 </div>
 <script>
 (function(){
-// SPOTLIGHTS: dynamic content updates on load via fetchBalancedBoardForSpotlight()
-// Card 0 shows live Balanced Board members (falls back to methodology intro if API unavailable)
+// SPOTLIGHTS: card 0 ONLY is refreshed at run time, by fetchBalancedBoardForSpotlight().
+// Cards 1 and 2 are static by design and deliberately contain no figure that can go stale.
+// 2026-10-30: this list held ten cards and one assignment. Seven were deleted — two
+// re-published the source count this project retired, one promised a release thirteen
+// versions in the past, and two claimed the engine detected 2022-2025 events as they
+// happened, which it cannot have: it did not exist. See
+// claude/FINDING-the-homepage-spotlights-carry-a-retired-number-and-two-unsupportable-claims.md
+// If you add a card, it must either be assigned by a fetch or contain no number at all.
 const SPOTLIGHTS = [
-  {title:"The Balanced Board.",body:"Our Balanced Board\u2122 requires every HUMAN dimension above 60, with verified evidence and healthy momentum. Most companies haven\u0027t made it \u2014 and the data shows why. Loading current members\u2026"},
-  {title:"AI rapid displacement: Meta.",body:"Meta laid off 21,000+ employees in 2022-2023, then announced AI would replace mid-level engineers in January 2025. Their H dimension reflects it. We detected the trajectory months before layoffs hit the headlines."},
-  {title:"A composite of 50 with four 90s.",body:"Our floor rule caps composite at 50 if any HUMAN dimension falls below 42. Greatness in three areas doesn't excuse failure in a fourth. The bar is 42 \u2014 Douglas Adams said so."},
-  {title:"41 public sources. Zero ESG ratings.",body:"SEC EDGAR. EPA ECHO. BLS. CFPB. FEC. FDA. 35 more. If you can verify our score, you can verify your own. Methodology is open source under Apache 2.0."},
-  {title:"The first credit-rating-style score for being human.",body:"No AI. Deterministic math. Edge-to-cloud. 41 public data sources.<br><br>No ESG raters. No certification fees. No paid placements.<br><br>Just the math. Public. Open."},
-  {title:"Klarna's AI bragging cycle.",body:"In 2024 Klarna's CEO publicly said AI was doing the work of 700 customer service reps. In 2025 they quietly started hiring humans back. Their D_H captured both moves. We score reversals \u2014 not just snapshots."},
+  {title:"The Balanced Board.",body:"Our Balanced Board\u2122 requires every HUMAN dimension above 60, with verified evidence and healthy momentum. Most companies haven\u0027t made it \u2014 and the data shows why."},
   {title:"ESG says A. We say 50.",body:"Same company. Same data sources. Different conclusions. ESG ratings average across categories \u2014 environmental excellence can hide labor failures. HI Grade refuses to average over moral failure."},
-  {title:"Industry contagion is real.",body:"HUMAN Contagion measures how the worst-scoring company in your industry pulls down peers' Balanced Board chances. Trickle-down ethics \u2014 except going the wrong way."},
-  {title:"The humanwashing gap.",body:"A company's About page promises empathy. Their Glassdoor reviews tell a different story. Their political donations tell a third. HUMAN Watermark detects the gap between performed empathy and practiced empathy."},
-  {title:"Natural Transparency is compressed by design.",body:"D_N currently ranges 29-64. Three N sub-signals (audit quality, disclosure frequency, humanwashing detection) are spec'd but not yet wired \u2014 v1.3 activates the rest. We tell you this because hiding it would be hypocritical."}
+  {title:"A composite of 50 with four 90s.",body:"Our floor rule caps composite at 50 if any HUMAN dimension falls below 42. Greatness in three areas doesn't excuse failure in a fourth. The bar is 42 \u2014 Douglas Adams said so."}
 ];
 
 let spotIdx = 0;
@@ -188,8 +187,12 @@ async function fetchBalancedBoardForSpotlight() {
     // Sort by composite descending
     list.sort(function(a,b){return (b.composite || 0) - (a.composite || 0)});
 
-    const totalScored = (typeof stats !== 'undefined' && stats && stats.total_companies) ? stats.total_companies : 730;
-    const totalRounded = Math.floor(totalScored / 10) * 10;
+    // 2026-10-30: the fallback was 730, roughly 30% low against 1,045 engine-scored rows,
+    // and a second fallback at line ~1920 says 740. Two constants for one quantity means
+    // nobody owns either. When /api/v1/stats is unavailable this now says less rather than
+    // publishing a number no check can reach.
+    const totalScored = (typeof stats !== 'undefined' && stats && stats.total_companies) ? stats.total_companies : null;
+    const scope = totalScored ? (Math.floor(totalScored / 10) * 10) + '+ companies' : 'every company we score';
     const n = list.length;
 
     let title, body;
@@ -198,7 +201,7 @@ async function fetchBalancedBoardForSpotlight() {
       body = "Zero companies currently clear all three gates \u2014 all five HUMAN dimensions above 60, verified evidence, and healthy momentum. The bar moves with the data. As decay catches leaders, they fall off. As companies improve, more will clear it.";
     } else if (n === 1) {
       title = "Only " + list[0].company + " passes the Balanced Board.";
-      body = "Out of " + totalRounded + "+ companies scored, only " + list[0].company + " currently earns all five HUMAN dimensions above 60 with verified public data and no critical decay. The bar is high on purpose.";
+      body = "Of " + scope + " scored, only " + list[0].company + " currently earns all five HUMAN dimensions above 60 with verified public data and no critical decay. The bar is high on purpose.";
     } else {
       const names = list.map(function(c){return c.company});
       let namesStr;
@@ -207,7 +210,7 @@ async function fetchBalancedBoardForSpotlight() {
       } else {
         namesStr = names.slice(0, -1).join(", ") + ", and " + names[names.length - 1];
       }
-      title = n + " of " + totalRounded + "+ companies pass.";
+      title = totalScored ? (n + " of " + scope + " pass.") : (n + " companies pass.");
       body = "Our Balanced Board\u2122 requires every HUMAN dimension above 60, with verified evidence and healthy momentum. " + namesStr + " earn it. Most companies haven\u0027t \u2014 and the data shows why.";
     }
 
@@ -238,9 +241,14 @@ fetchBalancedBoardForSpotlight();
 <!-- Compare prompts -->
 <div style="text-align:center;max-width:700px;margin:0 auto 60px;padding:0 20px">
 <span style="font-size:10px;color:var(--muted);margin-right:6px;font-weight:700;letter-spacing:1px;text-transform:uppercase">Or compare:</span>
-<span class="cmp-pill" onclick="quickCompare('','Patagonia','NKE','Nike')">Patagonia vs Nike</span>
+<!-- 2026-10-30: every side of a pill must be public, in the index, and Strong. The two
+     pills removed here each passed '' as a ticker: Patagonia (Balanced Board's sole member,
+     Strong 14/18 but its U dimension and both H scores come from hand-authored dicts) and
+     Samsung Electronics (a seed row still labelled "Estimated from public reporting", a
+     vocabulary v1.15.0 retired). Both rendered as comparable. Nike keeps no pill because the
+     index holds no Strong apparel peer — VFC is Partial 4, LULU/COLM/DECK Limited 2. -->
+<span class="cmp-pill" onclick="quickCompare('AAPL','Apple Inc.','MSFT','Microsoft Corporation')">Apple vs Microsoft</span>
 <span class="cmp-pill" onclick="quickCompare('COST','Costco Wholesale Corporation','WMT','Walmart Inc.')">Costco vs Walmart</span>
-<span class="cmp-pill" onclick="quickCompare('AAPL','Apple Inc.','','Samsung')">Apple vs Samsung</span>
 <span class="cmp-pill" onclick="quickCompare('KO','Coca-Cola Company','PEP','PepsiCo, Inc.')">Coke vs Pepsi</span>
 <span class="cmp-pill" onclick="showPage('compare')">+ Custom compare</span>
 </div>
