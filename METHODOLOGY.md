@@ -313,7 +313,7 @@ A company can be clean on all three. Many are. A company can be compromised on j
 
 ## 7. The data sources — 41 integrated, 21 contributing
 
-41 public data sources are integrated. **21 of them currently contribute to a published score**; the
+41 public data sources are integrated. **18 of them currently contribute to a published score**; the
 rest are wired up but not yet producing data for any company, and we count them separately rather
 than implying every source feeds every grade. The contributing count is served live at
 [/api/v1/stats](https://api.thehibalance.org/api/v1/stats) and checked against the scores in CI.

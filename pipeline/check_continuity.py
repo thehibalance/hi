@@ -130,6 +130,31 @@ def check_coverage():
                   f"scores show {actual}/{denom}")
 
 
+# 2026-11-01: check_source_count() read README.md and nothing else, while METHODOLOGY.md
+# made the same claim in different words — "21 of them currently contribute to a published
+# score" — matched by no pattern in either registry. Unmatched, so unchecked, so it drifted
+# to three above the measured figure. README's identical claim was correct because it was
+# guarded: two surfaces, one claim, and only the unchecked one wrong.
+#
+# Note which half of the sentence each registry captures. REGISTRY_CLAIMS captures the
+# REGISTERED count and writes past the contributing one with a bare \d+ — deliberately,
+# since the registry figure can be checked exactly against source_audit.py's rows while this
+# one needs last night's data and the softer asymmetric rule below. Between the two lists,
+# both halves of every source sentence are now covered.
+#
+# See claude/FINDING-the-honest-sentence-exists-and-the-gate-captures-the-wrong-half-of-it.md
+CONTRIBUTING_CLAIMS = [
+    ("README.md", r"(\d+) sources feed today's scores", "README"),
+    ("METHODOLOGY.md", r"(\d+) of them currently contribute to a published score",
+     "METHODOLOGY"),
+    # The homepage renders this number live from /api/v1/stats; the literal in the span is
+    # the pre-paint fallback, and registering it is what keeps the fallback fresh. Without
+    # this the fallback is only seen when the API is down, which is exactly when it matters.
+    ("docs/index.html", r"data-live=\"sources\">(\d+)</span> sources feed today's scores",
+     "homepage data-live fallback"),
+]
+
+
 def check_source_count():
     """Returns findings. Over-claiming fails the build; under-claiming warns.
 
@@ -149,24 +174,31 @@ def check_source_count():
         print("  XX README source count      cannot be checked: no all_scores.json")
         return ["contributing-source count unreadable — pipeline/data/scores/all_scores.json "
                 "missing, so the README's claim was not checked at all"]
-    readme = (ROOT / "README.md").read_text(errors="ignore")
-    claims = set(int(m) for m in re.findall(r"\*\*?(\d+) sources feed today's scores", readme))
-    claims |= set(int(m) for m in re.findall(r"(\d+) sources feed today's scores", readme))
-    if not claims:
-        print("  XX README makes no 'N sources feed today's scores' claim")
-        return ["README makes no 'N sources feed today's scores' claim — the sentence was "
-                "reworded and this check silently stopped covering it"]
     bad = []
-    for c in sorted(claims):
-        mark = "OK" if c == actual else ("XX" if c > actual else "!!")
-        print(f"  {mark} README source count      claims {c}, scores show {actual}")
-        if c > actual:
-            bad.append(f"README claims {c} sources feed today's scores; {actual} do. "
-                       f"Over-claiming — the live figure is "
-                       f"curl https://api.thehibalance.org/api/v1/stats | jq .data_sources")
-        elif c < actual:
-            print(f"  !! README under-claims ({c} < {actual}). Not a failure: a source that "
-                  f"came online overnight shows up here before the README catches up.")
+    for rel, pattern, label in CONTRIBUTING_CLAIMS:
+        p = ROOT / rel
+        if not p.exists():
+            continue
+        claims = set(int(m) for m in re.findall(pattern, p.read_text(errors="ignore")))
+        if not claims:
+            # Same rule as REGISTRY_CLAIMS: a declared claim that cannot be found is either
+            # a surface that drifted or a pattern that went stale. Shrugging meant an honest
+            # rewording removed a surface from the gate without anyone noticing.
+            print(f"  XX {rel:20} makes no contributing-source claim matching {pattern!r}")
+            bad.append(f"{rel}: no contributing-source claim matches {pattern!r} — the "
+                       f"sentence was reworded and this check stopped covering it")
+            continue
+        for c in sorted(claims):
+            mark = "OK" if c == actual else ("XX" if c > actual else "!!")
+            print(f"  {mark} source count      {rel} claims {c}, scores show {actual}"
+                  f"   [{label}]")
+            if c > actual:
+                bad.append(f"{rel} claims {c} sources feed today's scores; {actual} do. "
+                           f"Over-claiming — the live figure is "
+                           f"curl https://api.thehibalance.org/api/v1/stats | jq .data_sources")
+            elif c < actual:
+                print(f"  !! {rel} under-claims ({c} < {actual}). Not a failure: a source "
+                      f"that came online overnight shows up here before the docs catch up.")
     return bad
 
 
