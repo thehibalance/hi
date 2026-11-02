@@ -42,6 +42,14 @@ SURFACES = [
     ("METHODOLOGY.md", r"corrected to the current engine, spec v([0-9]+[.][0-9]+[.][0-9]+)", "METHODOLOGY correction note"),
     ("METHODOLOGY.md", r"The current engine \(spec v([0-9.]+)\)", "METHODOLOGY engine note"),
     ("README.md", r"\*\*Current state \(v([0-9.]+)\)", "README current state"),
+    # 2026-11-02: the spec version also prints INSIDE a span, on the methodology page and
+    # the Balanced Board blurb: `Spec v<span data-live="spec">1.3.1</span>`. It sat thirteen
+    # releases stale because nothing could see it — the pattern above for this file reaches
+    # the JS fallback, not this one, and `grep -o 'Spec v[0-9.]*'` stops at the `<`. A claim
+    # split across a tag boundary is invisible to every line-oriented check in this repo.
+    # The populator overwrites these spans from /api/v1/stats, so the literal shows only
+    # before the fetch lands or while the API is down — which is exactly when it matters.
+    ("docs/index.html", r"data-live=\"spec\">([0-9.]+)</span>", "homepage data-live spec fallback"),
 ]
 
 
