@@ -1119,6 +1119,12 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=N
 
     # v1.2x Layered: fold BBB blend into U.1 (customer-facing complaints)
     if bbb is not None:
+        # SUPPRESSED, and leave it that way for now. No BBB store exists under
+        # pipeline/data/, so `bbb` is None on every row and this never runs. If a BBB
+        # collector is ever added, it will almost certainly write "bbb_score" — the
+        # convention every other collector in this repo uses — and this .get("score") will
+        # silently keep the blend off. Decide the absence case BEFORE connecting it; see the
+        # OSHA and FDA notes below for why that order is not optional.
         bbb_score = bbb.get("score") if isinstance(bbb, dict) else None
         if bbb_score is not None:
             scores["U.1"] = round(scores["U.1"] * 0.9 + bbb_score * 0.1, 1)
@@ -1144,6 +1150,28 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=N
 
     # v1.2x Layered: fold OSHA blend into U.2 (worker safety)
     if osha is not None:
+        # ===== DO NOT "FIX" THIS KEY NAME. Measured 2026-11-03. =====
+        # The store writes "osha_score"; this reads .get("score"), so it returns None and
+        # the blend below never runs. That mismatch is the ONLY thing keeping a fabricated
+        # score out of the index.
+        #
+        # data/gov/osha_violations.json holds 19 rows. ALL 19 are
+        # inspections=0 -> osha_score=100, including walmart, amazon, starbucks, mcdonalds
+        # and target. Walmart has hundreds of OSHA inspections. The collector ran without
+        # error, queried api.dol.gov by bare lowercase company name, got nothing, and
+        # recorded zero — and zero inspections is scored as PERFECT worker safety.
+        #
+        # Correcting this one word blends U.2 15% toward 100 for 19 major
+        # employers, raises the contributing source count, fires the gate's under-claim
+        # branch exactly as designed, and leaves every check in this repo green.
+        #
+        # Required order:
+        #   1. establish that api.dol.gov can return a non-zero inspection count for ANY
+        #      company. Until one does, this collector has never been shown to work.
+        #   2. map "found nothing" to an absence, not to 100. ABSENCE_DERIVED is the
+        #      mechanism; M.3 is the precedent (v1.11.0 ruled a litigation zero an absence).
+        #   3. only then, the key name.
+        # Also unresolved: the store declares maps_to ["M.3","A.3"]; this folds it into U.2.
         osha_score = osha.get("score") if isinstance(osha, dict) else None
         if osha_score is not None:
             scores["U.2"] = round(scores["U.2"] * 0.85 + osha_score * 0.15, 1)
@@ -1151,6 +1179,10 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=N
 
     # v1.2x Layered: fold DOL wage blend into U.2
     if dol is not None:
+        # SUPPRESSED by the same key-name mismatch, and additionally dead: no DOL
+        # store exists under pipeline/data/, so `dol` is None on every row. Nothing to
+        # recover and nothing to protect against until a collector exists. When one is
+        # written, decide the absence case first — see the OSHA note above.
         dol_score = dol.get("score") if isinstance(dol, dict) else None
         if dol_score is not None:
             scores["U.2"] = round(scores["U.2"] * 0.9 + dol_score * 0.1, 1)
@@ -1348,6 +1380,25 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
 
     # v1.2x Layered: fold FDA blend into M.4
     if fda is not None and isinstance(fda, dict):
+        # SUPPRESSED by the same key-name mismatch — and here it is COSTING real
+        # evidence. Measured 2026-11-03: data/gov/fda_enforcement.json holds 12
+        # rows from api.fda.gov, graded well and monotonically —
+        # 678 enforcement actions -> 20, 183 -> 32, 83 -> 42, 24 -> 59, 3 -> 86 — with
+        # maps_to ["M.3"], which agrees with where this blend uses it. It is the
+        # best-behaved collector examined in this repo.
+        #
+        # BUT 2 rows are total_enforcement=0 -> fda_score=100
+        # (mcdonalds, starbucks). Same defect as OSHA, independently implemented:
+        # a query that returned nothing, scored as perfect.
+        #
+        # Required order, same as OSHA:
+        #   1. map total_enforcement == 0 to an absence (do not blend), so a name the FDA
+        #      API does not recognise cannot read as a clean record.
+        #   2. then .get("fda_score").
+        # Doing (2) first publishes a perfect M.3 for
+        # mcdonalds, starbucks. Doing both, in order, is worth
+        # 10 companies of real M.3 evidence from data already on
+        # disk — the only coverage gain available without new collection.
         fda_score = fda.get("score")
         if fda_score is not None:
             scores["M.4"] = round(scores["M.4"] * 0.9 + fda_score * 0.1, 1)
