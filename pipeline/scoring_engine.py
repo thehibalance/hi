@@ -1383,9 +1383,15 @@ def score_m_dimension(sec_m, epa_data, glassdoor_data, industry, subsignals=None
         # SUPPRESSED by the same key-name mismatch — and here it is COSTING real
         # evidence. Measured 2026-11-03: data/gov/fda_enforcement.json holds 12
         # rows from api.fda.gov, graded well and monotonically —
-        # 678 enforcement actions -> 20, 183 -> 32, 83 -> 42, 24 -> 59, 3 -> 86 — with
-        # maps_to ["M.3"], which agrees with where this blend uses it. It is the
+        # 678 enforcement actions -> 20, 183 -> 32, 83 -> 42, 24 -> 59, 3 -> 86 — the
         # best-behaved collector examined in this repo.
+        #
+        # CORRECTION 2026-11-03: an earlier version of this note said the store's
+        # maps_to ["M.3"] agrees with where this blend uses it. It does NOT — this
+        # blend writes M.4, at 10% weight. OSHA's store carries the same
+        # disagreement (maps_to ["M.3","A.3"], folded into U.2). So `maps_to` is
+        # metadata nothing consumes and nothing checks against the code. Resolve
+        # which sub-signal each source feeds BEFORE either key fix.
         #
         # BUT 2 rows are total_enforcement=0 -> fda_score=100
         # (mcdonalds, starbucks). Same defect as OSHA, independently implemented:
