@@ -50,6 +50,17 @@ SURFACES = [
     # The populator overwrites these spans from /api/v1/stats, so the literal shows only
     # before the fetch lands or while the API is down — which is exactly when it matters.
     ("docs/index.html", r"data-live=\"spec\">([0-9.]+)</span>", "homepage data-live spec fallback"),
+    # 2026-11-03: docs/press/index.html is published under the Pages root and no
+    # pattern named it. Its N-dimension note said "not yet wired in v1.2.1"
+    # against an engine stamping 1.15.0, and its og:description carried the
+    # pre-v1.13.1 "42 public data sources" — the seventh of the seven places the
+    # docs quoted 42, and the only one that outlived the campaign against it.
+    # The pattern is NOT r"v([0-9.]+)": this claim ends a sentence, and
+    # [0-9.] swallows the full stop, capturing "1.15.0." and failing the gate.
+    # Same trap as v1.14.0. during the v1.15.0 bump. The existing surfaces get
+    # away with ([0-9.]+) because each is followed by a quote, a ) or a <.
+    ("docs/press/index.html", r"not yet wired in v([0-9]+[.][0-9]+[.][0-9]+)",
+     "press kit N-dimension note"),
 ]
 
 
@@ -160,6 +171,8 @@ CONTRIBUTING_CLAIMS = [
     # this the fallback is only seen when the API is down, which is exactly when it matters.
     ("docs/index.html", r"data-live=\"sources\">(\d+)</span> sources feed today's scores",
      "homepage data-live fallback"),
+    ("docs/press/index.html", r"(\d+) feeding today's scores",
+     "press kit og:description"),
 ]
 
 
@@ -238,6 +251,7 @@ REGISTRY_CLAIMS = [
     # See claude/FINDING-the-gates-source-count-check-is-anchored-to-marketing-copy.md
     ("docs/index.html", r"reconstructable from (\d+) public sources"),
     ("docs/index.html", r"ZERO AI in scoring\.</strong> (\d+) public data sources"),
+    ("docs/press/index.html", r"(\d+) public data sources registered"),
 ]
 
 
