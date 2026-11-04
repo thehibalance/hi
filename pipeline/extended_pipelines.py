@@ -309,7 +309,14 @@ def fetch_fda(company_name, ticker):
                            params=params, timeout=15)
         
         if r.status_code != 200:
-            return {"company": company_name, "ticker": ticker, "recalls": 0, "class_i": 0, "source": "FDA"}
+            # A failed request is not a finding. This used to fabricate a
+            # zero-recall record, which score_fda then scored 85 — so a
+            # rate-limit or a 500 read as "no recalls, well done". openFDA
+            # also answers 404 for an empty result set, so this path conflated
+            # "no matching records" with "the request failed"; both are an
+            # absence. Returning None means score_fda returns None and nothing
+            # is cached, so the next run retries instead of inheriting a zero.
+            return None
         
         data = r.json()
         results = data.get("results", [])
@@ -329,11 +336,25 @@ def fetch_fda(company_name, ticker):
         return None
 
 def score_fda(data):
+    """Recalls on file grade a company's product safety. Finding NO recalls does not.
+
+    Nothing here tests whether the FDA regulates the company at all, so `recalls == 0` is
+    indistinguishable from "this agency has no view of this firm". Measured 2026-11-03:
+    1,050 of 1,431 tickers had recalls == 0 and scored 85 — AAL, AA, ACN, ABNB, ACGL, ACM
+    among them: airlines, aluminium, consulting, home rentals.
+
+    This is the same rule score_osha and score_dol already apply, and FDA is the example
+    cited in score_osha's own docstring. It was the last scorer still awarding a value for
+    finding nothing.
+    """
     if not data: return None
     recalls = data.get("recalls", 0)
     class_i = data.get("class_i", 0)
     
-    if recalls == 0: return 85
+    # An absence, not a clean record. See the docstring; score_osha and score_dol do the
+    # same for the same reason. Returning None leaves the blend unfired and the sub-signal
+    # to whatever other evidence exists, rather than lifting it on no evidence.
+    if recalls == 0: return None
     elif class_i == 0 and recalls <= 3: return 70
     elif class_i <= 1: return 55
     elif class_i <= 3: return 40
