@@ -1,0 +1,71 @@
+{
+  "probed_at": "2026-11-16T16:20:59.066850",
+  "source_file": "extended_pipelines.py",
+  "counts": {
+    "html_200": 3,
+    "ok_json": 3,
+    "http_404": 1
+  },
+  "endpoints": [
+    {
+      "source": "DOL_WHD_API",
+      "url": "https://enforcedata.dol.gov/api/whd_whisard",
+      "state": "html_200",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 9768
+    },
+    {
+      "source": "FDA_API",
+      "url": "https://api.fda.gov/drug/enforcement.json",
+      "state": "ok_json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 1840
+    },
+    {
+      "source": "FTC_CASES_URL",
+      "url": "https://www.ftc.gov/legal-library/browse/cases-proceedings",
+      "state": "http_404",
+      "http": 404,
+      "content_type": "text/html",
+      "bytes": 1301
+    },
+    {
+      "source": "OSHA_API",
+      "url": "https://enforcedata.dol.gov/api/osha_inspection",
+      "state": "html_200",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 9768
+    },
+    {
+      "source": "SEC_EDGAR_BASE",
+      "url": "https://efts.sec.gov/LATEST/search-index",
+      "state": "ok_json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 125
+    },
+    {
+      "source": "USPTO_API",
+      "url": "https://developer.uspto.gov/ibd-api/v1/application/publications",
+      "state": "html_200",
+      "http": 200,
+      "content_type": "text/html",
+      "bytes": 12258
+    },
+    {
+      "source": "fetch_fda",
+      "url": "https://api.fda.gov/food/enforcement.json",
+      "state": "ok_json",
+      "http": 200,
+      "content_type": "application/json",
+      "bytes": 1698
+    }
+  ],
+  "regressed": [],
+  "recovered": [],
+  "known_bad": [],
+  "baseline": null
+}
