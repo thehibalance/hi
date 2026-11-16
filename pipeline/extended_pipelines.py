@@ -309,13 +309,33 @@ def fetch_fda(company_name, ticker):
                            params=params, timeout=15)
         
         if r.status_code != 200:
-            # A failed request is not a finding. This used to fabricate a
-            # zero-recall record, which score_fda then scored 85 — so a
-            # rate-limit or a 500 read as "no recalls, well done". openFDA
-            # also answers 404 for an empty result set, so this path conflated
-            # "no matching records" with "the request failed"; both are an
-            # absence. Returning None means score_fda returns None and nothing
-            # is cached, so the next run retries instead of inheriting a zero.
+            # CORRECTED 2026-11-16. The first version of this returned None for EVERY
+            # non-200. Right for a failure, wrong for a 404: openFDA answers 404 for an
+            # EMPTY RESULT SET.
+            #
+            #   "we searched and found nothing"  -> a FINDING about the company
+            #   "the request failed"             -> no information at all
+            #
+            # Collapsing both to None left 425 records stuck at 85. A record with no
+            # "fetched" is refused by load_cache, so it refetches every run; the refetch
+            # 404s; this returned None; raw was None; _scored cannot declare an absence
+            # without raw; and fill_missing restored the previous night's value. Nightly,
+            # forever. Same two-meanings-of-None as score_fda's and fill_missing's.
+            if r.status_code == 404:
+                result = {
+                    "company": company_name, "ticker": ticker,
+                    "recalls": 0, "class_i": 0, "class_ii": 0,
+                    "source": "FDA", "fetched": datetime.now().isoformat(),
+                }
+                # Cached like any other result. Without this the record is refetched and
+                # rewritten with a fresh timestamp every night, churning 425 files on a
+                # timestamp alone. A 404 is a real answer and earns the same 168 hours.
+                save_cache(ticker, "fda", result)
+                return result
+            # A genuine failure — rate limit, 500, malformed query. Return None, carry no
+            # raw, declare no absence, and let fill_missing keep last night's value. That
+            # is exactly what that guard exists for. Nothing is cached, so the next run
+            # retries rather than inheriting a fabricated zero.
             return None
         
         data = r.json()
