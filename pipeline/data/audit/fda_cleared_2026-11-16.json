@@ -1,6 +1,6 @@
 {
   "cleared_at": "2026-11-16T10:00:02.548000",
-  "count": 107,
+  "count": 108,
   "test": "the record's own company field names a company the key does not, on a key that is not ticker-shaped",
   "fixes_in_place": [
     "#77 score_fda declines",
@@ -2043,6 +2043,31 @@
         },
         "source": "FDA"
       }
+    },
+    {
+      "key": "TOMS",
+      "file": "data/extended/TOMS.json",
+      "cleared_at": "2026-11-16T10:12:57.519664",
+      "why": "ticker key 'TOMS' holds 'ALDI''s recalls; ALDI has no ticker",
+      "before": {
+        "score": 55,
+        "raw": {
+          "company": "ALDI",
+          "ticker": "",
+          "recalls": 7,
+          "class_i": 1,
+          "class_ii": 5,
+          "source": "FDA",
+          "fetched": "2026-09-21T17:01:52.768427"
+        },
+        "source": "FDA"
+      }
     }
-  ]
+  ],
+  "second_pass": {
+    "at": "2026-11-16T10:12:57.519664",
+    "added": 1,
+    "test": "a ticker-shaped key whose record names a donor company that has no ticker",
+    "why_needed": "the group-size test fell below its own > 3 threshold once the 107 name-keyed records were cleared, so it stopped reporting these"
+  }
 }
