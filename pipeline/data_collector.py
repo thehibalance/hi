@@ -693,6 +693,15 @@ def fill_missing(new, old):
             new[k] = ov
             _KEPT.append(k)
         elif isinstance(new[k], dict) and isinstance(ov, dict):
+            # HI-PATCH:declared-absence:v1 — a record that says it looked and found nothing
+            # is not a gap to be filled. Without this, a scorer that correctly returns None
+            # has its verdict overwritten by the previous night's value, every night. That
+            # is what happened to PR #77's FDA fix on 2026-11-14: it ran, and all 1,050
+            # zero-recall records still scored 85 the next morning.
+            # Only records carrying "absent" are affected; raw=None still means outage and
+            # still keeps the old value, which is what this guard exists for.
+            if new[k].get("absent"):
+                continue
             fill_missing(new[k], ov)
     return new
 

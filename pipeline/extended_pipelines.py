@@ -335,6 +335,25 @@ def fetch_fda(company_name, ticker):
         print(f"  FDA error: {e}")
         return None
 
+def _scored(raw, score, source):
+    """Build a source record that tells a declared absence apart from an outage.
+
+    `absent: True` means the fetch SUCCEEDED and the scorer declined to produce a number —
+    a measurement, not a gap. data_collector.fill_missing leaves such a record alone.
+
+    Without this flag both cases are spelled `None`, and fill_missing restores the previous
+    night's value for each. That is how PR #77's FDA fix ran in the nightly of 2026-11-14
+    and left all 1,050 zero-recall records still scoring 85.
+
+    A record with `raw is None` carries no flag and keeps the old behaviour exactly: an
+    outage still cannot wipe good data, which is what the guard was built for.
+    """
+    rec = {"score": score, "raw": raw, "source": source}
+    if raw is not None and score is None:
+        rec["absent"] = True
+    return rec
+
+
 def score_fda(data):
     """Recalls on file grade a company's product safety. Finding NO recalls does not.
 
@@ -585,7 +604,7 @@ def fetch_all_extended(company_name, ticker, domain=None, industry=None):
     
     print(f"  FDA...")
     fda = fetch_fda(company_name, ticker)
-    results["fda"] = {"score": score_fda(fda), "raw": fda, "source": "FDA"}
+    results["fda"] = _scored(fda, score_fda(fda), "FDA")
     
     print(f"  DOL...")
     dol = fetch_dol_wages(company_name, ticker)
