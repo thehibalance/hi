@@ -292,9 +292,26 @@ def score_patents(data):
 FDA_API = "https://api.fda.gov/drug/enforcement.json"
 
 def fetch_fda(company_name, ticker):
-    # A blank name searches as a wildcard and matches every record in the database.
+    # A blank name searches as a wildcard and matches every record in the database, so the
+    # query is never made. That refusal is a DETERMINATION, not a failure: the company has no
+    # name in the universe, no amount of retrying changes that, and we therefore KNOW we have
+    # no FDA data for it.
+    #
+    # Returning None filed that knowledge as ignorance. raw was None, so _scored could not
+    # declare an absence, and data_collector.fill_missing restored the previous night's 25 —
+    # for 228 records, every night, with no refetch to clear them because the refusal happens
+    # before the request. Same two-meanings-of-None as #77 (score_fda), #79 (fill_missing) and
+    # #80 (the 404), one layer further up.
+    #
+    # No "fetched" key, deliberately. Nothing was fetched, and a fresh timestamp every night
+    # would rewrite 228 files on a timestamp alone. This record is byte-identical run to run,
+    # and it stays byte-identical until the universe gives the company a name.
     if not ticker or not (company_name or "").strip():
-        return None
+        return {
+            "company": company_name, "ticker": ticker, "queried": False,
+            "reason": "no ticker" if not ticker else "no company name in the universe",
+            "source": "FDA",
+        }
     cached = load_cache(ticker, "fda")
     if cached: return cached
     try:
@@ -387,6 +404,16 @@ def score_fda(data):
     finding nothing.
     """
     if not data: return None
+    # queried: False means fetch_fda determined the query could not be made at all (no
+    # ticker, or no company name in the universe). There is nothing to grade.
+    #
+    # This decline ALREADY happens without this line, because `recalls` defaults to 0 just
+    # below and the ladder's first rule declines on 0 — by accident, through a default that
+    # exists for a different reason. A guard that works by accident is indistinguishable from
+    # a bug, and fixing the bug removes the guard: anyone who later changes that default to
+    # None for good reasons would silently re-award 85 to every unqueryable company. So the
+    # decline is stated, and placed before the arithmetic that reads a missing key as a zero.
+    if data.get("queried") is False: return None
     recalls = data.get("recalls", 0)
     class_i = data.get("class_i", 0)
     
