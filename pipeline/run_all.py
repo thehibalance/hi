@@ -14,15 +14,45 @@ Usage:
 import subprocess, sys, os, time
 from pathlib import Path
 
+# This process's banners are flushed late, so each one is displaced past the output of
+# phases that ran after it. On 2026-11-15 that put consolidate_sources.py's NameError at log
+# line 16214 and the "failed (exit 1)" line describing it at 17611 — 1,397 lines apart, with
+# Python's own "Did you mean: 'oc_idx'?" in between and unread for 50 nights.
+#
+# Line-buffering helps and is free. It is NOT what makes the fix below work: the reason is
+# printed beside the failure, so it is adjacent whatever the buffering does.
+import sys as _sys
+
+_sys.stdout.reconfigure(line_buffering=True)
+
+_FAILURE_TAIL = 40     # lines of a child's stderr to echo beneath its own failure line
+
+
 def run(cmd, label):
     print(f"\n{'═' * 60}")
     print(f"  {label}")
     print(f"{'═' * 60}")
     start = time.time()
-    result = subprocess.run(cmd, shell=True, cwd=os.path.dirname(os.path.abspath(__file__)))
+    # stderr is captured so the reason can be reprinted AT the failure. stdout deliberately
+    # is NOT: SEC 8-K runs for hours, and capturing its progress would make a slow phase
+    # indistinguishable from a hung one. subprocess.run reads this pipe concurrently, so a
+    # chatty child cannot deadlock.
+    result = subprocess.run(cmd, shell=True, stderr=subprocess.PIPE, text=True,
+                            env={**os.environ, "PYTHONUNBUFFERED": "1"},
+                            cwd=os.path.dirname(os.path.abspath(__file__)))
     elapsed = round(time.time() - start, 1)
     if result.returncode != 0:
         print(f"  ⚠ {label} failed (exit {result.returncode}) in {elapsed}s")
+        # _FAILURE REASON_ — the whole point of this change.
+        err = (result.stderr or "").rstrip()
+        if err:
+            tail = err.splitlines()[-_FAILURE_TAIL:]
+            print(f"  ⚠ why it failed ({len(tail)} line(s) of stderr):")
+            for _line in tail:
+                print(f"       {_line}")
+        else:
+            print("  ⚠ the child wrote nothing to stderr, so the reason is not recorded.")
+            print("     Run it by hand to see what it does: the pipeline cannot say more.")
         return False
     print(f"  ✓ {label} done in {elapsed}s")
     return True
