@@ -366,9 +366,13 @@ def main():
     # merged nine sources, discarded all of them, never read the other three, and never
     # rewrote the files the scoring engine reads. 51 nights.
     #
-    # run_if_exists swallows stderr, so the nightly reported only
-    #     "Phase 2e: Consolidate All Sources -> Scoring Format failed (exit 1) in 0.1s"
-    # and never once said `av_idx`.
+    # CORRECTED. An earlier version of this comment said run_if_exists swallows stderr.
+    # It does not — run() passed no capture argument, so this traceback reached the log
+    # every night. It was DISPLACED: run_all.py's banners flush late, so on 2026-11-15 the
+    # NameError landed at log line 16214 and the "failed (exit 1) in 0.1s" line describing
+    # it at 17611, 1,397 lines apart, with Python's own "Did you mean: 'oc_idx'?" included
+    # and unread for 50 nights. run() now reprints a failed child's stderr directly beneath
+    # its own failure line, so the reason travels with the failure.
     #
     # A REPORT LINE IS NOT INERT. It runs, it can raise, and it can discard the work it
     # describes. When a source is removed, its progress message goes with it.
