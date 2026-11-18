@@ -355,7 +355,23 @@ def main():
             merged_count += 1
     print(f"  SEC 8-K:        {len(sec8k_idx)} companies merged")
 
-    print(f"  Alpha Vantage:  {len(av_idx)} companies merged")
+    # v1.9.1 (3b6859e2b, 2026-09-28) pulled Alpha Vantage and deleted its merge block, and
+    # left behind:
+    #
+    #     print(f"  Alpha Vantage:  {len(av_idx)} companies merged")
+    #
+    # `av_idx` no longer existed, so that line raised NameError on EVERY run from that day.
+    # It sits after nine sources have merged into memory and before the Yahoo Finance, FRED
+    # and OpenCorporates blocks and the write at the bottom of this function — so each night
+    # merged nine sources, discarded all of them, never read the other three, and never
+    # rewrote the files the scoring engine reads. 51 nights.
+    #
+    # run_if_exists swallows stderr, so the nightly reported only
+    #     "Phase 2e: Consolidate All Sources -> Scoring Format failed (exit 1) in 0.1s"
+    # and never once said `av_idx`.
+    #
+    # A REPORT LINE IS NOT INERT. It runs, it can raise, and it can discard the work it
+    # describes. When a source is removed, its progress message goes with it.
 
     # ─── Yahoo Finance ───────────────────────────────────────────────
     yahoo_data = load_json(base / "yahoo" / "all_companies.json")
