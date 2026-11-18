@@ -133,28 +133,85 @@ def search_company_8k(ticker, company_name, days=180):
 
 
 def run_pipeline(limit=None):
+    """Fetch 8-K material events, cached, oldest-first, under a time budget.
+
+    BEFORE THIS: every ticker was refetched every night with no cache and no timestamp, which
+    took 9,391s on 2026-11-15 and 13,683s on 2026-11-16 against a 300-minute job cap — the
+    2026-11-16 run hit the cap and committed nothing. A ticker whose fetch failed was also
+    dropped from the output entirely, so a transient EDGAR error deleted a known value.
+
+    The cache is this pipeline's OWN output file. No second store: one place for the truth.
+    Age comes from an internal `fetched` stamp, never a file mtime, because restore_mtimes.py
+    rewrites mtimes from git history on every CI run.
+    """
     output_dir = Path("data/sec_8k")
     output_dir.mkdir(parents=True, exist_ok=True)
+    output_file = output_dir / "all_companies.json"
 
     tickers = load_tickers()
     ticker_list = sorted(tickers.keys())
     if limit: ticker_list = ticker_list[:limit]
 
+    prev = {}
+    if output_file.exists():
+        try:
+            for _rec in json.load(open(output_file)):
+                if isinstance(_rec, dict) and _rec.get("ticker"):
+                    prev[_rec["ticker"]] = _rec
+        except Exception:
+            prev = {}
+
+    ttl_hours = float(os.environ.get("HI_8K_TTL_HOURS", "168") or 168)
+    budget_min = float(os.environ.get("HI_8K_BUDGET_MIN", "45") or 0)
+    deadline = time.time() + budget_min * 60 if budget_min > 0 else 0.0
+
+    def _age_hours(rec):
+        stamp = (rec or {}).get("fetched")
+        if not stamp:
+            return float("inf")          # never stamped == oldest possible
+        try:
+            return (datetime.now() - datetime.fromisoformat(stamp)).total_seconds() / 3600
+        except Exception:
+            return float("inf")
+
+    # Oldest first, so a night that runs out of time spends it on the stalest companies.
+    ticker_list.sort(key=lambda t: (-_age_hours(prev.get(t)), t))
+
     print(f"\n{'='*60}")
     print(f"  SEC 8-K Pipeline — Material Events")
     print(f"{'='*60}")
     print(f"  Tickers: {len(ticker_list)}")
+    print(f"  Cache: {len(prev)} known, TTL {ttl_hours:g}h, budget {budget_min:g} min")
     print(f"  Looking for: workforce reductions, restructuring, layoffs")
     print(f"  Period: last 180 days")
     print(f"{'='*60}\n")
 
-    records = []
-    errors = 0
+    records = {}
+    # A limited run must not shrink the file: keep what we are not going to look at.
+    if limit:
+        for _t in tickers:
+            if _t not in ticker_list and _t in prev:
+                records[_t] = prev[_t]
+
+    errors = fresh = reused = unreached = retained = 0
 
     for i, ticker in enumerate(ticker_list):
+        cached = prev.get(ticker)
+
+        if cached is not None and _age_hours(cached) < ttl_hours:
+            records[ticker] = cached
+            reused += 1
+            continue
+
+        if deadline and time.time() > deadline:
+            if cached is not None:
+                records[ticker] = cached
+            unreached += 1
+            continue
+
         result = search_company_8k(ticker, tickers[ticker])
         if result:
-            records.append({
+            records[ticker] = {
                 "company": tickers[ticker],
                 "ticker": ticker,
                 "h_signals": {
@@ -165,25 +222,36 @@ def run_pipeline(limit=None):
                     "high_activity": result["recent_8k_count"] > 5,
                 },
                 "source": "SEC 8-K",
-            })
+                "fetched": datetime.now().isoformat(),
+            }
+            fresh += 1
             count = result["recent_8k_count"]
-            flag = " ⚠" if count > 5 else ""
+            flag = " \u26a0" if count > 5 else ""
             print(f"  [{i+1}/{len(ticker_list)}] {ticker:6s} {tickers[ticker][:25]:25s} 8-K filings: {count:>3d}{flag}")
         else:
             errors += 1
+            # A FAILED REQUEST MUST NOT DELETE A KNOWN VALUE. The old loop collected only
+            # successes, so one transient EDGAR error removed the ticker from the output.
+            if cached is not None:
+                records[ticker] = cached
+                retained += 1
 
         time.sleep(0.15)  # 10 req/sec EDGAR limit
 
-    output_file = output_dir / "all_companies.json"
+    out = sorted(records.values(), key=lambda r: r.get("ticker", ""))
     with open(output_file, "w") as f:
-        json.dump(records, f, indent=2)
+        json.dump(out, f, indent=2)
 
-    high_activity = sum(1 for r in records if r["heartbeat"]["high_activity"])
+    high_activity = sum(1 for r in out if (r.get("heartbeat") or {}).get("high_activity"))
 
     print(f"\n{'='*60}")
-    print(f"  COMPLETE — {len(records)} companies checked")
+    print(f"  COMPLETE — {len(out)} companies in file")
+    print(f"  Fetched this run: {fresh}   reused from cache: {reused}")
+    print(f"  Errors: {errors} (kept {retained} previous value(s) rather than dropping them)")
+    if unreached:
+        print(f"  Budget ({budget_min:g} min) reached: {unreached} left for the next run")
+        print(f"  They keep their cached record and are first in line tomorrow.")
     print(f"  High 8-K activity (>5 filings): {high_activity}")
-    print(f"  Errors: {errors}")
     print(f"  Output: {output_file}")
     print(f"{'='*60}\n")
 
