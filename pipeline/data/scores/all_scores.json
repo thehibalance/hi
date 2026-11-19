@@ -65,8 +65,8 @@
           "H.5": 95
         },
         "sources": [
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -90,11 +90,11 @@
           "M.5": 85.0
         },
         "sources": [
+          "USDA Organic",
           "B Corp",
           "Glassdoor",
-          "Fair Trade",
-          "USDA Organic",
-          "1% for the Planet"
+          "1% for the Planet",
+          "Fair Trade"
         ]
       },
       "A": {
@@ -105,11 +105,11 @@
           "A.4": 73.3
         },
         "sources": [
-          "CDP",
-          "B Corp",
-          "Fair Trade",
           "USDA Organic",
-          "1% for the Planet"
+          "B Corp",
+          "CDP",
+          "1% for the Planet",
+          "Fair Trade"
         ]
       },
       "N": {
@@ -233,8 +233,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -260,10 +260,10 @@
           "M.5": 60.0
         },
         "sources": [
-          "SEC DEF 14A",
-          "1% for the Planet",
           "Fair Trade",
-          "Glassdoor"
+          "SEC DEF 14A",
+          "Glassdoor",
+          "1% for the Planet"
         ]
       },
       "A": {
@@ -274,8 +274,8 @@
           "A.4": 70.0
         },
         "sources": [
-          "SBTi",
           "Fair Trade",
+          "SBTi",
           "CDP",
           "1% for the Planet"
         ]
@@ -343,7 +343,7 @@
     "sic_description": "Beverages",
     "D_H": 68,
     "D_U": 70,
-    "D_M": 56,
+    "D_M": 59,
     "D_A": 75,
     "D_N": 100,
     "composite": 74,
@@ -429,7 +429,7 @@
           "M.2": 50,
           "M.3": 45,
           "M.4": 63.0,
-          "M.5": 70
+          "M.5": 85
         },
         "sources": [
           "SEC DEF 14A",
@@ -543,7 +543,7 @@
       "SEC DEF 14A"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 56958,
+      "complaints_3yr": 57141,
       "benchmarked_complaints": 22177,
       "relief_vs_benchmark_pts": 15.2
     },
@@ -614,10 +614,10 @@
         },
         "sources": [
           "FEC",
-          "CFPB",
-          "Glassdoor",
           "SEC DEF 14A",
-          "EEOC"
+          "Glassdoor",
+          "EEOC",
+          "CFPB"
         ]
       },
       "A": {
@@ -771,8 +771,8 @@
           "H.5": 60
         },
         "sources": [
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -800,10 +800,10 @@
         },
         "sources": [
           "FEC",
-          "Glassdoor",
-          "FTC",
           "SEC DEF 14A",
-          "EEOC"
+          "Glassdoor",
+          "EEOC",
+          "FTC"
         ]
       },
       "A": {
@@ -814,10 +814,10 @@
           "A.4": 60
         },
         "sources": [
+          "iFixit",
           "SBTi",
           "Industry",
-          "CDP",
-          "iFixit"
+          "CDP"
         ]
       },
       "N": {
@@ -861,7 +861,7 @@
           "N": true
         },
         "decay_level": "warning",
-        "decay_index": 43
+        "decay_index": 33
       }
     },
     "domains": [
@@ -876,7 +876,7 @@
       "software"
     ],
     "decay_level": "warning",
-    "decay_index": 43
+    "decay_index": 33
   },
   {
     "company": "Dr. Bronner's",
@@ -943,8 +943,8 @@
           "H.5": 95
         },
         "sources": [
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -968,9 +968,9 @@
           "M.5": 90.0
         },
         "sources": [
-          "B Corp",
           "Fair Trade",
           "USDA Organic",
+          "B Corp",
           "Glassdoor"
         ]
       },
@@ -982,10 +982,10 @@
           "A.4": 86.7
         },
         "sources": [
-          "Industry",
           "Fair Trade",
           "USDA Organic",
-          "B Corp"
+          "B Corp",
+          "Industry"
         ]
       },
       "N": {
@@ -1035,6 +1035,191 @@
       "personal care",
       "organic"
     ]
+  },
+  {
+    "company": "Walmart Inc.",
+    "ticker": "WMT",
+    "industry": "retail",
+    "sic": "5331",
+    "sic_description": "Retail-Variety Stores",
+    "D_H": 54,
+    "D_U": 58,
+    "D_M": 55,
+    "D_A": 72,
+    "D_N": 100,
+    "composite": 68,
+    "hi_grade": "scored",
+    "satire": "",
+    "floor_triggered": false,
+    "balance_floor": false,
+    "triggering_dimension": null,
+    "confidence": "Strong",
+    "spec_version": "1.15.0",
+    "data_sources": [
+      "BBB",
+      "CDP",
+      "Disability:IN DEI",
+      "EEOC",
+      "FEC",
+      "FTC",
+      "Fair Trade",
+      "GRI",
+      "Glassdoor",
+      "HRC CEI",
+      "Industry",
+      "Jobs",
+      "SBTi",
+      "SEC",
+      "SEC DEF 14A",
+      "USDA Organic"
+    ],
+    "cfpb_disclosure": null,
+    "signal_coverage": "16/18 sub-signals with real data",
+    "industry_derived": [
+      "H.2"
+    ],
+    "absence_derived": [],
+    "humanwashing_flags": [],
+    "algo_harm": {
+      "algo_harm_score": 24.0,
+      "penalties": {
+        "H": 0,
+        "U": 0,
+        "M": 0,
+        "N": 0
+      },
+      "flags": [],
+      "has_harm": false,
+      "components": {
+        "division": 5,
+        "addiction": 15,
+        "manipulation": 20,
+        "transparency": 40,
+        "human_override": 60
+      }
+    },
+    "harm_documentation": {
+      "has_harm": false,
+      "penalties": {
+        "M": 0
+      },
+      "flags": [],
+      "sources": []
+    },
+    "genome": {
+      "H": {
+        "scores": {
+          "H.1": 71.2,
+          "H.2": 45,
+          "H.3": 63.8,
+          "H.5": 75
+        },
+        "sources": [
+          "SEC",
+          "Industry",
+          "Jobs"
+        ]
+      },
+      "U": {
+        "scores": {
+          "U.1": 59.6,
+          "U.2": 35.0,
+          "U.3": 80.1,
+          "U.4": 55.8
+        },
+        "sources": [
+          "Glassdoor",
+          "BBB",
+          "EEOC",
+          "HRC CEI",
+          "Disability:IN DEI"
+        ]
+      },
+      "M": {
+        "scores": {
+          "M.1": 50,
+          "M.2": 51.5,
+          "M.3": 40.0,
+          "M.4": 49.0,
+          "M.5": 85
+        },
+        "sources": [
+          "FEC",
+          "USDA Organic",
+          "SEC DEF 14A",
+          "Glassdoor",
+          "EEOC",
+          "Fair Trade",
+          "FTC"
+        ]
+      },
+      "A": {
+        "scores": {
+          "A.1": 100,
+          "A.2": 70,
+          "A.3": 52.5,
+          "A.4": 65
+        },
+        "sources": [
+          "USDA Organic",
+          "SBTi",
+          "Industry",
+          "CDP"
+        ]
+      },
+      "N": {
+        "scores": {
+          "N.2": 100
+        },
+        "sources": [
+          "CDP",
+          "GRI"
+        ]
+      }
+    },
+    "key_signals": {
+      "headcount": 2100000,
+      "headcount_change_pct": null,
+      "revenue_per_employee": 308631,
+      "displacement_signal": null,
+      "ai_hiring_ratio": 0.03,
+      "glassdoor_rating": 3.4,
+      "cdp_climate": "A-",
+      "epa_violations": null
+    },
+    "hi_balanced": false,
+    "hi_balanced_gates": {
+      "dimensions": false,
+      "evidence": true,
+      "momentum": false,
+      "_detail": {
+        "dim_pass": {
+          "H": false,
+          "U": false,
+          "M": false,
+          "A": true,
+          "N": true
+        },
+        "evidence_pass": {
+          "H": true,
+          "U": true,
+          "M": true,
+          "A": true,
+          "N": true
+        },
+        "decay_level": "warning",
+        "decay_index": 38
+      }
+    },
+    "domains": [
+      "walmart.com"
+    ],
+    "tags": [
+      "retail",
+      "grocery"
+    ],
+    "decay_level": "warning",
+    "decay_index": 38
   },
   {
     "company": "McDonald's Corporation",
@@ -1106,8 +1291,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -1274,8 +1459,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -1301,8 +1486,8 @@
           "M.5": 65
         },
         "sources": [
-          "SEC DEF 14A",
           "Fair Trade",
+          "SEC DEF 14A",
           "Glassdoor"
         ]
       },
@@ -1375,191 +1560,6 @@
     "decay_index": 30
   },
   {
-    "company": "Walmart Inc.",
-    "ticker": "WMT",
-    "industry": "retail",
-    "sic": "5331",
-    "sic_description": "Retail-Variety Stores",
-    "D_H": 54,
-    "D_U": 58,
-    "D_M": 49,
-    "D_A": 72,
-    "D_N": 100,
-    "composite": 67,
-    "hi_grade": "scored",
-    "satire": "",
-    "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
-    "confidence": "Strong",
-    "spec_version": "1.15.0",
-    "data_sources": [
-      "BBB",
-      "CDP",
-      "Disability:IN DEI",
-      "EEOC",
-      "FEC",
-      "FTC",
-      "Fair Trade",
-      "GRI",
-      "Glassdoor",
-      "HRC CEI",
-      "Industry",
-      "Jobs",
-      "SBTi",
-      "SEC",
-      "SEC DEF 14A",
-      "USDA Organic"
-    ],
-    "cfpb_disclosure": null,
-    "signal_coverage": "16/18 sub-signals with real data",
-    "industry_derived": [
-      "H.2"
-    ],
-    "absence_derived": [],
-    "humanwashing_flags": [],
-    "algo_harm": {
-      "algo_harm_score": 24.0,
-      "penalties": {
-        "H": 0,
-        "U": 0,
-        "M": 0,
-        "N": 0
-      },
-      "flags": [],
-      "has_harm": false,
-      "components": {
-        "division": 5,
-        "addiction": 15,
-        "manipulation": 20,
-        "transparency": 40,
-        "human_override": 60
-      }
-    },
-    "harm_documentation": {
-      "has_harm": false,
-      "penalties": {
-        "M": 0
-      },
-      "flags": [],
-      "sources": []
-    },
-    "genome": {
-      "H": {
-        "scores": {
-          "H.1": 71.2,
-          "H.2": 45,
-          "H.3": 63.8,
-          "H.5": 75
-        },
-        "sources": [
-          "SEC",
-          "Jobs",
-          "Industry"
-        ]
-      },
-      "U": {
-        "scores": {
-          "U.1": 59.6,
-          "U.2": 35.0,
-          "U.3": 80.1,
-          "U.4": 55.8
-        },
-        "sources": [
-          "Glassdoor",
-          "BBB",
-          "EEOC",
-          "HRC CEI",
-          "Disability:IN DEI"
-        ]
-      },
-      "M": {
-        "scores": {
-          "M.1": 50,
-          "M.2": 51.5,
-          "M.3": 40.0,
-          "M.4": 49.0,
-          "M.5": 55
-        },
-        "sources": [
-          "FEC",
-          "Glassdoor",
-          "FTC",
-          "Fair Trade",
-          "USDA Organic",
-          "SEC DEF 14A",
-          "EEOC"
-        ]
-      },
-      "A": {
-        "scores": {
-          "A.1": 100,
-          "A.2": 70,
-          "A.3": 52.5,
-          "A.4": 65
-        },
-        "sources": [
-          "SBTi",
-          "Industry",
-          "CDP",
-          "USDA Organic"
-        ]
-      },
-      "N": {
-        "scores": {
-          "N.2": 100
-        },
-        "sources": [
-          "CDP",
-          "GRI"
-        ]
-      }
-    },
-    "key_signals": {
-      "headcount": 2100000,
-      "headcount_change_pct": null,
-      "revenue_per_employee": 308631,
-      "displacement_signal": null,
-      "ai_hiring_ratio": 0.03,
-      "glassdoor_rating": 3.4,
-      "cdp_climate": "A-",
-      "epa_violations": null
-    },
-    "hi_balanced": false,
-    "hi_balanced_gates": {
-      "dimensions": false,
-      "evidence": true,
-      "momentum": false,
-      "_detail": {
-        "dim_pass": {
-          "H": false,
-          "U": false,
-          "M": false,
-          "A": true,
-          "N": true
-        },
-        "evidence_pass": {
-          "H": true,
-          "U": true,
-          "M": true,
-          "A": true,
-          "N": true
-        },
-        "decay_level": "warning",
-        "decay_index": 38
-      }
-    },
-    "domains": [
-      "walmart.com"
-    ],
-    "tags": [
-      "retail",
-      "grocery"
-    ],
-    "decay_level": "warning",
-    "decay_index": 38
-  },
-  {
     "company": "NextEra Energy, Inc.",
     "ticker": "NEE",
     "industry": "energy",
@@ -1624,8 +1624,8 @@
           "H.5": 75
         },
         "sources": [
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -1796,8 +1796,8 @@
           "H.5": 90
         },
         "sources": [
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -1824,10 +1824,10 @@
         },
         "sources": [
           "FEC",
-          "Glassdoor",
-          "Fair Trade",
           "USDA Organic",
-          "SEC DEF 14A"
+          "SEC DEF 14A",
+          "Glassdoor",
+          "Fair Trade"
         ]
       },
       "A": {
@@ -1838,10 +1838,10 @@
           "A.4": 65
         },
         "sources": [
+          "USDA Organic",
           "SBTi",
           "Industry",
-          "CDP",
-          "USDA Organic"
+          "CDP"
         ]
       },
       "N": {
@@ -1964,8 +1964,8 @@
           "H.5": 95
         },
         "sources": [
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -2146,8 +2146,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -2333,10 +2333,10 @@
           "M.5": 67.5
         },
         "sources": [
-          "SEC DEF 14A",
-          "1% for the Planet",
           "Fair Trade",
-          "B Corp"
+          "SEC DEF 14A",
+          "B Corp",
+          "1% for the Planet"
         ]
       },
       "A": {
@@ -2347,9 +2347,9 @@
           "A.4": 75.0
         },
         "sources": [
-          "B Corp",
           "Fair Trade",
           "SBTi",
+          "B Corp",
           "1% for the Planet"
         ]
       },
@@ -2510,8 +2510,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "USDA Organic"
+          "USDA Organic",
+          "Industry"
         ]
       },
       "N": {
@@ -2794,8 +2794,8 @@
           "M.5": 85
         },
         "sources": [
-          "FEC",
-          "USDA Organic"
+          "USDA Organic",
+          "FEC"
         ]
       },
       "A": {
@@ -2806,8 +2806,8 @@
           "A.4": 75
         },
         "sources": [
-          "Industry",
-          "USDA Organic"
+          "USDA Organic",
+          "Industry"
         ]
       },
       "N": {
@@ -4302,12 +4302,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 14
+        "decay_level": "stable",
+        "decay_index": 4
       }
     },
-    "decay_level": "watch",
-    "decay_index": 14
+    "decay_level": "stable",
+    "decay_index": 4
   },
   {
     "company": "IONIS PHARMACEUTICALS INC",
@@ -4476,7 +4476,7 @@
       "SEC"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 9452,
+      "complaints_3yr": 9465,
       "benchmarked_complaints": 3983,
       "relief_vs_benchmark_pts": -2.0
     },
@@ -5162,12 +5162,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "BRISTOL MYERS SQUIBB CO",
@@ -5734,7 +5734,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -5750,16 +5750,16 @@
           "A": true,
           "N": false
         },
-        "decay_level": "warning",
-        "decay_index": 35
+        "decay_level": "watch",
+        "decay_index": 25
       }
     },
     "domains": [
       "citigroup.com",
       "citi.com"
     ],
-    "decay_level": "warning",
-    "decay_index": 35
+    "decay_level": "watch",
+    "decay_index": 25
   },
   {
     "company": "CLOROX CO /DE/",
@@ -5846,8 +5846,8 @@
           "M.5": 85
         },
         "sources": [
-          "FEC",
-          "USDA Organic"
+          "USDA Organic",
+          "FEC"
         ]
       },
       "A": {
@@ -5858,8 +5858,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "USDA Organic"
+          "USDA Organic",
+          "Industry"
         ]
       },
       "N": {
@@ -6741,8 +6741,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
           "SBTi",
+          "Industry",
           "iFixit"
         ]
       },
@@ -6893,8 +6893,8 @@
           "A.4": 70.0
         },
         "sources": [
-          "Industry",
-          "Fair Trade"
+          "Fair Trade",
+          "Industry"
         ]
       },
       "N": {
@@ -7329,8 +7329,8 @@
           "A.4": 65.0
         },
         "sources": [
-          "Industry",
-          "B Corp"
+          "B Corp",
+          "Industry"
         ]
       },
       "N": {
@@ -7402,7 +7402,7 @@
       "SEC"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 3441,
+      "complaints_3yr": 3449,
       "benchmarked_complaints": 1198,
       "relief_vs_benchmark_pts": 7.6
     },
@@ -8484,8 +8484,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "SBTi"
+          "SBTi",
+          "Industry"
         ]
       },
       "N": {
@@ -9398,14 +9398,14 @@
           "N": false
         },
         "decay_level": "watch",
-        "decay_index": 25
+        "decay_index": 15
       }
     },
     "domains": [
       "amctheatres.com"
     ],
     "decay_level": "watch",
-    "decay_index": 25
+    "decay_index": 15
   },
   {
     "company": "AMERICAN EAGLE OUTFITTERS INC",
@@ -10984,12 +10984,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "CONAGRA BRANDS INC.",
@@ -12140,154 +12140,6 @@
     "decay_index": 10
   },
   {
-    "company": "ESTEE LAUDER COMPANIES INC",
-    "ticker": "EL",
-    "industry": "healthcare",
-    "sic": "2844",
-    "sic_description": "Perfumes, Cosmetics & Other Toilet Preparations",
-    "D_H": 51,
-    "D_U": 62,
-    "D_M": 54,
-    "D_A": 55,
-    "D_N": 50,
-    "composite": 54,
-    "hi_grade": "scored",
-    "satire": "",
-    "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
-    "confidence": "Partial",
-    "spec_version": "1.15.0",
-    "data_sources": [
-      "Fair Trade",
-      "HRC CEI",
-      "Industry",
-      "SEC"
-    ],
-    "cfpb_disclosure": null,
-    "signal_coverage": "5/18 sub-signals with real data",
-    "industry_derived": [
-      "A.1",
-      "A.3",
-      "H.2",
-      "U.4"
-    ],
-    "absence_derived": [],
-    "humanwashing_flags": [],
-    "algo_harm": {
-      "algo_harm_score": 0,
-      "penalties": {
-        "H": 0,
-        "U": 0,
-        "M": 0,
-        "N": 0
-      },
-      "flags": [],
-      "has_harm": false
-    },
-    "harm_documentation": {
-      "has_harm": false,
-      "penalties": {
-        "M": 0
-      },
-      "flags": [],
-      "sources": []
-    },
-    "genome": {
-      "H": {
-        "scores": {
-          "H.1": 62.7,
-          "H.2": 70,
-          "H.3": 61.2,
-          "H.5": 50
-        },
-        "sources": [
-          "SEC",
-          "Industry"
-        ]
-      },
-      "U": {
-        "scores": {
-          "U.1": 50,
-          "U.2": 50,
-          "U.3": 85.0,
-          "U.4": 65
-        },
-        "sources": [
-          "HRC CEI"
-        ]
-      },
-      "M": {
-        "scores": {
-          "M.1": 50,
-          "M.2": 50,
-          "M.3": 70.0,
-          "M.4": 50,
-          "M.5": 50
-        },
-        "sources": [
-          "Fair Trade"
-        ]
-      },
-      "A": {
-        "scores": {
-          "A.1": 55,
-          "A.2": 50,
-          "A.3": 60,
-          "A.4": 55
-        },
-        "sources": [
-          "Industry"
-        ]
-      },
-      "N": {
-        "scores": {
-          "N.2": 50
-        },
-        "sources": []
-      }
-    },
-    "key_signals": {
-      "headcount": 41800,
-      "headcount_change_pct": null,
-      "revenue_per_employee": 373397,
-      "displacement_signal": null,
-      "ai_hiring_ratio": null,
-      "glassdoor_rating": null,
-      "cdp_climate": null,
-      "epa_violations": null
-    },
-    "hi_balanced": false,
-    "hi_balanced_gates": {
-      "dimensions": false,
-      "evidence": false,
-      "momentum": false,
-      "_detail": {
-        "dim_pass": {
-          "H": false,
-          "U": true,
-          "M": false,
-          "A": false,
-          "N": false
-        },
-        "evidence_pass": {
-          "H": true,
-          "U": true,
-          "M": true,
-          "A": true,
-          "N": false
-        },
-        "decay_level": "critical",
-        "decay_index": 53
-      }
-    },
-    "domains": [
-      "esteelauder.com"
-    ],
-    "decay_level": "critical",
-    "decay_index": 53
-  },
-  {
     "company": "Etsy",
     "ticker": "ETSY",
     "industry": "tech",
@@ -12352,8 +12204,8 @@
           "H.5": 60
         },
         "sources": [
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -13183,7 +13035,7 @@
       "SEC"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 2315,
+      "complaints_3yr": 2317,
       "benchmarked_complaints": 918,
       "relief_vs_benchmark_pts": 9.2
     },
@@ -15271,8 +15123,8 @@
           "A.4": 65.0
         },
         "sources": [
-          "Industry",
-          "B Corp"
+          "B Corp",
+          "Industry"
         ]
       },
       "N": {
@@ -15990,8 +15842,8 @@
           "M.5": 72.5
         },
         "sources": [
-          "1% for the Planet",
-          "B Corp"
+          "B Corp",
+          "1% for the Planet"
         ]
       },
       "A": {
@@ -16621,12 +16473,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "AXON ENTERPRISE, INC.",
@@ -16766,11 +16618,11 @@
           "N": false
         },
         "decay_level": "watch",
-        "decay_index": 22
+        "decay_index": 12
       }
     },
     "decay_level": "watch",
-    "decay_index": 22
+    "decay_index": 12
   },
   {
     "company": "BIO-TECHNE Corp",
@@ -17191,16 +17043,16 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
     "domains": [
       "campbellsoupcompany.com",
       "campbells.com"
     ],
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "Capri Holdings Ltd",
@@ -17336,12 +17188,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "CBRE GROUP, INC.",
@@ -17653,7 +17505,7 @@
       "SEC"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 6099,
+      "complaints_3yr": 6097,
       "benchmarked_complaints": 3053,
       "relief_vs_benchmark_pts": 3.7
     },
@@ -17771,12 +17623,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "Coca-Cola Consolidated, Inc.",
@@ -18020,8 +17872,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "USDA Organic"
+          "USDA Organic",
+          "Industry"
         ]
       },
       "N": {
@@ -18356,12 +18208,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "DARDEN RESTAURANTS INC",
@@ -18500,12 +18352,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "DARLING INGREDIENTS INC.",
@@ -19745,8 +19597,8 @@
           "A.4": 60.0
         },
         "sources": [
-          "Industry",
-          "USDA Organic"
+          "USDA Organic",
+          "Industry"
         ]
       },
       "N": {
@@ -20477,8 +20329,8 @@
           "A.4": 65
         },
         "sources": [
-          "Industry",
-          "USDA Organic"
+          "USDA Organic",
+          "Industry"
         ]
       },
       "N": {
@@ -24168,8 +24020,8 @@
           "M.5": 62.5
         },
         "sources": [
-          "1% for the Planet",
-          "B Corp"
+          "B Corp",
+          "1% for the Planet"
         ]
       },
       "A": {
@@ -26066,12 +25918,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "Banzai International, Inc.",
@@ -27648,12 +27500,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "CHIPOTLE MEXICAN GRILL INC",
@@ -28081,12 +27933,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable",
+        "decay_index": 5
       }
     },
-    "decay_level": "watch",
-    "decay_index": 15
+    "decay_level": "stable",
+    "decay_index": 5
   },
   {
     "company": "CLEANSPARK, INC.",
@@ -28930,12 +28782,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "Crinetics Pharmaceuticals, Inc.",
@@ -29353,12 +29205,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "Diageo plc",
@@ -29920,12 +29772,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "EASTMAN CHEMICAL CO",
@@ -30202,12 +30054,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "Encompass Health Corp",
@@ -32059,6 +31911,155 @@
     },
     "decay_level": "watch",
     "decay_index": 25
+  },
+  {
+    "company": "HONEYWELL INTERNATIONAL INC",
+    "ticker": "HON",
+    "industry": "manufacturing",
+    "sic": "3724",
+    "sic_description": "Aircraft Engines & Engine Parts",
+    "D_H": 52,
+    "D_U": 57,
+    "D_M": 50,
+    "D_A": 50,
+    "D_N": 50,
+    "composite": 52,
+    "hi_grade": "scored",
+    "satire": "",
+    "floor_triggered": false,
+    "balance_floor": false,
+    "triggering_dimension": null,
+    "confidence": "Limited",
+    "spec_version": "1.15.0",
+    "data_sources": [
+      "Disability:IN DEI",
+      "HRC CEI",
+      "Industry"
+    ],
+    "cfpb_disclosure": null,
+    "signal_coverage": "2/18 sub-signals with real data",
+    "industry_derived": [
+      "A.1",
+      "A.3",
+      "H.2",
+      "U.4"
+    ],
+    "absence_derived": [
+      "H.1",
+      "H.3",
+      "M.3"
+    ],
+    "humanwashing_flags": [],
+    "algo_harm": {
+      "algo_harm_score": 0,
+      "penalties": {
+        "H": 0,
+        "U": 0,
+        "M": 0,
+        "N": 0
+      },
+      "flags": [],
+      "has_harm": false
+    },
+    "harm_documentation": {
+      "has_harm": false,
+      "penalties": {
+        "M": 0
+      },
+      "flags": [],
+      "sources": []
+    },
+    "genome": {
+      "H": {
+        "scores": {
+          "H.1": 50,
+          "H.2": 60,
+          "H.3": 50,
+          "H.5": 50
+        },
+        "sources": [
+          "Industry"
+        ]
+      },
+      "U": {
+        "scores": {
+          "U.1": 50,
+          "U.2": 50,
+          "U.3": 80.0,
+          "U.4": 50
+        },
+        "sources": [
+          "HRC CEI",
+          "Disability:IN DEI"
+        ]
+      },
+      "M": {
+        "scores": {
+          "M.1": 50,
+          "M.2": 50,
+          "M.3": 50,
+          "M.4": 50,
+          "M.5": 50
+        },
+        "sources": []
+      },
+      "A": {
+        "scores": {
+          "A.1": 45,
+          "A.2": 50,
+          "A.3": 45,
+          "A.4": 60
+        },
+        "sources": [
+          "Industry"
+        ]
+      },
+      "N": {
+        "scores": {
+          "N.2": 50
+        },
+        "sources": []
+      }
+    },
+    "key_signals": {
+      "headcount": 101000,
+      "headcount_change_pct": null,
+      "revenue_per_employee": null,
+      "displacement_signal": null,
+      "ai_hiring_ratio": null,
+      "glassdoor_rating": null,
+      "cdp_climate": null,
+      "epa_violations": null
+    },
+    "hi_balanced": false,
+    "hi_balanced_gates": {
+      "dimensions": false,
+      "evidence": false,
+      "momentum": true,
+      "_detail": {
+        "dim_pass": {
+          "H": false,
+          "U": false,
+          "M": false,
+          "A": false,
+          "N": false
+        },
+        "evidence_pass": {
+          "H": true,
+          "U": true,
+          "M": false,
+          "A": true,
+          "N": false
+        },
+        "decay_level": "watch",
+        "decay_index": 20
+      }
+    },
+    "domains": [
+      "honeywell.com"
+    ],
+    "decay_level": "watch",
+    "decay_index": 20
   },
   {
     "company": "Ingredion Inc",
@@ -36287,8 +36288,8 @@
           "A.4": 60.0
         },
         "sources": [
-          "Industry",
-          "USDA Organic"
+          "USDA Organic",
+          "Industry"
         ]
       },
       "N": {
@@ -37649,7 +37650,7 @@
       "Industry"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 14596,
+      "complaints_3yr": 14635,
       "benchmarked_complaints": 5175,
       "relief_vs_benchmark_pts": -4.7
     },
@@ -38796,7 +38797,7 @@
       "SEC"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 15433,
+      "complaints_3yr": 15454,
       "benchmarked_complaints": 3716,
       "relief_vs_benchmark_pts": 4.7
     },
@@ -40205,12 +40206,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "CABOT CORP",
@@ -41063,7 +41064,7 @@
           "N": false
         },
         "decay_level": "watch",
-        "decay_index": 29
+        "decay_index": 19
       }
     },
     "domains": [
@@ -41074,7 +41075,7 @@
       "networking"
     ],
     "decay_level": "watch",
-    "decay_index": 29
+    "decay_index": 19
   },
   {
     "company": "Cloudflare, Inc.",
@@ -42218,14 +42219,14 @@
           "N": false
         },
         "decay_level": "watch",
-        "decay_index": 25
+        "decay_index": 15
       }
     },
     "domains": [
       "datadoghq.com"
     ],
     "decay_level": "watch",
-    "decay_index": 25
+    "decay_index": 15
   },
   {
     "company": "DELTA AIR LINES, INC.",
@@ -42943,6 +42944,147 @@
     },
     "decay_level": "watch",
     "decay_index": 10
+  },
+  {
+    "company": "Fidelity National Information Services, Inc.",
+    "ticker": "FIS",
+    "industry": "tech",
+    "sic": "7389",
+    "sic_description": "Services-Business Services, NEC",
+    "D_H": 58,
+    "D_U": 47,
+    "D_M": 50,
+    "D_A": 52,
+    "D_N": 50,
+    "composite": 51,
+    "hi_grade": "scored",
+    "satire": "",
+    "floor_triggered": false,
+    "balance_floor": false,
+    "triggering_dimension": null,
+    "confidence": "Limited",
+    "spec_version": "1.15.0",
+    "data_sources": [
+      "Industry",
+      "SEC"
+    ],
+    "cfpb_disclosure": null,
+    "signal_coverage": "3/18 sub-signals with real data",
+    "industry_derived": [
+      "A.1",
+      "A.3",
+      "H.2",
+      "U.4"
+    ],
+    "absence_derived": [
+      "M.3"
+    ],
+    "humanwashing_flags": [],
+    "algo_harm": {
+      "algo_harm_score": 0,
+      "penalties": {
+        "H": 0,
+        "U": 0,
+        "M": 0,
+        "N": 0
+      },
+      "flags": [],
+      "has_harm": false
+    },
+    "harm_documentation": {
+      "has_harm": false,
+      "penalties": {
+        "M": 0
+      },
+      "flags": [],
+      "sources": []
+    },
+    "genome": {
+      "H": {
+        "scores": {
+          "H.1": 76.5,
+          "H.2": 40,
+          "H.3": 66.2,
+          "H.5": 50
+        },
+        "sources": [
+          "SEC",
+          "Industry"
+        ]
+      },
+      "U": {
+        "scores": {
+          "U.1": 50,
+          "U.2": 50,
+          "U.3": 50,
+          "U.4": 38
+        },
+        "sources": []
+      },
+      "M": {
+        "scores": {
+          "M.1": 50,
+          "M.2": 50,
+          "M.3": 50,
+          "M.4": 50,
+          "M.5": 50
+        },
+        "sources": []
+      },
+      "A": {
+        "scores": {
+          "A.1": 50,
+          "A.2": 50,
+          "A.3": 65,
+          "A.4": 45
+        },
+        "sources": [
+          "Industry"
+        ]
+      },
+      "N": {
+        "scores": {
+          "N.2": 50
+        },
+        "sources": []
+      }
+    },
+    "key_signals": {
+      "headcount": 44000,
+      "headcount_change_pct": null,
+      "revenue_per_employee": 223432,
+      "displacement_signal": null,
+      "ai_hiring_ratio": null,
+      "glassdoor_rating": null,
+      "cdp_climate": null,
+      "epa_violations": null
+    },
+    "hi_balanced": false,
+    "hi_balanced_gates": {
+      "dimensions": false,
+      "evidence": false,
+      "momentum": true,
+      "_detail": {
+        "dim_pass": {
+          "H": false,
+          "U": false,
+          "M": false,
+          "A": false,
+          "N": false
+        },
+        "evidence_pass": {
+          "H": true,
+          "U": false,
+          "M": false,
+          "A": true,
+          "N": false
+        },
+        "decay_level": "watch",
+        "decay_index": 26
+      }
+    },
+    "decay_level": "watch",
+    "decay_index": 26
   },
   {
     "company": "FIGS, Inc.",
@@ -46993,9 +47135,9 @@
     "genome": {
       "H": {
         "scores": {
-          "H.1": 73.0,
+          "H.1": 73.1,
           "H.2": 50,
-          "H.3": 63.4,
+          "H.3": 63.5,
           "H.5": 50
         },
         "sources": [
@@ -47041,9 +47183,9 @@
       }
     },
     "key_signals": {
-      "headcount": 1372,
+      "headcount": 1376,
       "headcount_change_pct": null,
-      "revenue_per_employee": 810146,
+      "revenue_per_employee": 807791,
       "displacement_signal": null,
       "ai_hiring_ratio": null,
       "glassdoor_rating": null,
@@ -49223,7 +49365,7 @@
       "Industry"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 3222,
+      "complaints_3yr": 3223,
       "benchmarked_complaints": 1200,
       "relief_vs_benchmark_pts": 16.0
     },
@@ -49657,7 +49799,7 @@
       "SEC"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 4542,
+      "complaints_3yr": 4546,
       "benchmarked_complaints": 1161,
       "relief_vs_benchmark_pts": -16.1
     },
@@ -49724,8 +49866,8 @@
           "M.5": 50
         },
         "sources": [
-          "HIBP",
-          "CFPB"
+          "CFPB",
+          "HIBP"
         ]
       },
       "A": {
@@ -51443,8 +51585,8 @@
           "A.4": 65.0
         },
         "sources": [
-          "Industry",
-          "B Corp"
+          "B Corp",
+          "Industry"
         ]
       },
       "N": {
@@ -52549,8 +52691,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -53154,8 +53296,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -53182,12 +53324,12 @@
           "M.5": 72
         },
         "sources": [
-          "Glassdoor",
-          "FTC",
-          "Fair Trade",
           "USDA Organic",
           "SEC DEF 14A",
-          "EEOC"
+          "Glassdoor",
+          "EEOC",
+          "Fair Trade",
+          "FTC"
         ]
       },
       "A": {
@@ -53198,11 +53340,11 @@
           "A.4": 40
         },
         "sources": [
-          "SBTi",
-          "CDP",
           "USDA Organic",
+          "SBTi",
           "Industry",
-          "iFixit"
+          "iFixit",
+          "CDP"
         ]
       },
       "N": {
@@ -55284,147 +55426,6 @@
     "decay_index": 23
   },
   {
-    "company": "Baker Hughes Co",
-    "ticker": "BKR",
-    "industry": "tech",
-    "sic": "3533",
-    "sic_description": "Oil & Gas Field Machinery & Equipment",
-    "D_H": 51,
-    "D_U": 47,
-    "D_M": 50,
-    "D_A": 52,
-    "D_N": 50,
-    "composite": 50,
-    "hi_grade": "scored",
-    "satire": "",
-    "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
-    "confidence": "Limited",
-    "spec_version": "1.15.0",
-    "data_sources": [
-      "Industry",
-      "SEC"
-    ],
-    "cfpb_disclosure": null,
-    "signal_coverage": "3/18 sub-signals with real data",
-    "industry_derived": [
-      "A.1",
-      "A.3",
-      "H.2",
-      "U.4"
-    ],
-    "absence_derived": [
-      "M.3"
-    ],
-    "humanwashing_flags": [],
-    "algo_harm": {
-      "algo_harm_score": 0,
-      "penalties": {
-        "H": 0,
-        "U": 0,
-        "M": 0,
-        "N": 0
-      },
-      "flags": [],
-      "has_harm": false
-    },
-    "harm_documentation": {
-      "has_harm": false,
-      "penalties": {
-        "M": 0
-      },
-      "flags": [],
-      "sources": []
-    },
-    "genome": {
-      "H": {
-        "scores": {
-          "H.1": 64.5,
-          "H.2": 40,
-          "H.3": 51.2,
-          "H.5": 50
-        },
-        "sources": [
-          "SEC",
-          "Industry"
-        ]
-      },
-      "U": {
-        "scores": {
-          "U.1": 50,
-          "U.2": 50,
-          "U.3": 50,
-          "U.4": 38
-        },
-        "sources": []
-      },
-      "M": {
-        "scores": {
-          "M.1": 50,
-          "M.2": 50,
-          "M.3": 50,
-          "M.4": 50,
-          "M.5": 50
-        },
-        "sources": []
-      },
-      "A": {
-        "scores": {
-          "A.1": 50,
-          "A.2": 50,
-          "A.3": 65,
-          "A.4": 45
-        },
-        "sources": [
-          "Industry"
-        ]
-      },
-      "N": {
-        "scores": {
-          "N.2": 50
-        },
-        "sources": []
-      }
-    },
-    "key_signals": {
-      "headcount": 65600,
-      "headcount_change_pct": null,
-      "revenue_per_employee": 388811,
-      "displacement_signal": null,
-      "ai_hiring_ratio": null,
-      "glassdoor_rating": null,
-      "cdp_climate": null,
-      "epa_violations": null
-    },
-    "hi_balanced": false,
-    "hi_balanced_gates": {
-      "dimensions": false,
-      "evidence": false,
-      "momentum": false,
-      "_detail": {
-        "dim_pass": {
-          "H": false,
-          "U": false,
-          "M": false,
-          "A": false,
-          "N": false
-        },
-        "evidence_pass": {
-          "H": true,
-          "U": false,
-          "M": false,
-          "A": true,
-          "N": false
-        },
-        "decay_level": "warning",
-        "decay_index": 34
-      }
-    },
-    "decay_level": "warning",
-    "decay_index": 34
-  },
-  {
     "company": "BANK OF MONTREAL /CAN/",
     "ticker": "BMO",
     "industry": "finance",
@@ -56222,8 +56223,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -56306,14 +56307,14 @@
           "N": true
         },
         "decay_level": "watch",
-        "decay_index": 25
+        "decay_index": 15
       }
     },
     "domains": [
       "boeing.com"
     ],
     "decay_level": "watch",
-    "decay_index": 25
+    "decay_index": 15
   },
   {
     "company": "BRINKS CO",
@@ -57295,12 +57296,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "CAPITAL ONE FINANCIAL CORP",
@@ -57330,7 +57331,7 @@
       "SEC"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 87756,
+      "complaints_3yr": 87850,
       "benchmarked_complaints": 18650,
       "relief_vs_benchmark_pts": -7.5
     },
@@ -57739,11 +57740,11 @@
           "N": false
         },
         "decay_level": "watch",
-        "decay_index": 25
+        "decay_index": 15
       }
     },
     "decay_level": "watch",
-    "decay_index": 25
+    "decay_index": 15
   },
   {
     "company": "CARLISLE COMPANIES INC",
@@ -57879,12 +57880,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "CARNIVAL CORP",
@@ -58162,11 +58163,11 @@
           "N": false
         },
         "decay_level": "watch",
-        "decay_index": 22
+        "decay_index": 12
       }
     },
     "decay_level": "watch",
-    "decay_index": 22
+    "decay_index": 12
   },
   {
     "company": "CARRIER GLOBAL Corp",
@@ -58302,12 +58303,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "Cencora, Inc.",
@@ -59755,12 +59756,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable",
+        "decay_index": 5
       }
     },
-    "decay_level": "watch",
-    "decay_index": 15
+    "decay_level": "stable",
+    "decay_index": 5
   },
   {
     "company": "COPART INC",
@@ -60039,12 +60040,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable",
+        "decay_index": 5
       }
     },
-    "decay_level": "watch",
-    "decay_index": 15
+    "decay_level": "stable",
+    "decay_index": 5
   },
   {
     "company": "Costco Wholesale Corporation",
@@ -60123,8 +60124,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -60150,10 +60151,10 @@
           "M.5": 88
         },
         "sources": [
-          "SEC DEF 14A",
           "Fair Trade",
           "USDA Organic",
-          "Glassdoor"
+          "Glassdoor",
+          "SEC DEF 14A"
         ]
       },
       "A": {
@@ -60164,10 +60165,10 @@
           "A.4": 65
         },
         "sources": [
+          "USDA Organic",
           "SBTi",
           "Industry",
-          "CDP",
-          "USDA Organic"
+          "CDP"
         ]
       },
       "N": {
@@ -60194,7 +60195,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": true,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -60210,8 +60211,8 @@
           "A": true,
           "N": true
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "watch",
+        "decay_index": 20
       }
     },
     "domains": [
@@ -60221,8 +60222,8 @@
       "retail",
       "grocery"
     ],
-    "decay_level": "warning",
-    "decay_index": 30
+    "decay_level": "watch",
+    "decay_index": 20
   },
   {
     "company": "Crane NXT, Co.",
@@ -61191,7 +61192,7 @@
       }
     },
     "key_signals": {
-      "headcount": 2051,
+      "headcount": 2000,
       "headcount_change_pct": null,
       "revenue_per_employee": null,
       "displacement_signal": null,
@@ -61649,12 +61650,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "EAGLE MATERIALS INC",
@@ -62791,6 +62792,154 @@
     "decay_index": 10
   },
   {
+    "company": "ESTEE LAUDER COMPANIES INC",
+    "ticker": "EL",
+    "industry": "healthcare",
+    "sic": "2844",
+    "sic_description": "Perfumes, Cosmetics & Other Toilet Preparations",
+    "D_H": 36,
+    "D_U": 62,
+    "D_M": 54,
+    "D_A": 55,
+    "D_N": 50,
+    "composite": 50,
+    "hi_grade": "scored",
+    "satire": "",
+    "floor_triggered": true,
+    "balance_floor": false,
+    "triggering_dimension": "H",
+    "confidence": "Partial",
+    "spec_version": "1.15.0",
+    "data_sources": [
+      "Fair Trade",
+      "HRC CEI",
+      "Industry",
+      "SEC"
+    ],
+    "cfpb_disclosure": null,
+    "signal_coverage": "5/18 sub-signals with real data",
+    "industry_derived": [
+      "A.1",
+      "A.3",
+      "H.2",
+      "U.4"
+    ],
+    "absence_derived": [],
+    "humanwashing_flags": [],
+    "algo_harm": {
+      "algo_harm_score": 0,
+      "penalties": {
+        "H": 0,
+        "U": 0,
+        "M": 0,
+        "N": 0
+      },
+      "flags": [],
+      "has_harm": false
+    },
+    "harm_documentation": {
+      "has_harm": false,
+      "penalties": {
+        "M": 0
+      },
+      "flags": [],
+      "sources": []
+    },
+    "genome": {
+      "H": {
+        "scores": {
+          "H.1": 62.7,
+          "H.2": 70,
+          "H.3": 61.2,
+          "H.5": 50
+        },
+        "sources": [
+          "SEC",
+          "Industry"
+        ]
+      },
+      "U": {
+        "scores": {
+          "U.1": 50,
+          "U.2": 50,
+          "U.3": 85.0,
+          "U.4": 65
+        },
+        "sources": [
+          "HRC CEI"
+        ]
+      },
+      "M": {
+        "scores": {
+          "M.1": 50,
+          "M.2": 50,
+          "M.3": 70.0,
+          "M.4": 50,
+          "M.5": 50
+        },
+        "sources": [
+          "Fair Trade"
+        ]
+      },
+      "A": {
+        "scores": {
+          "A.1": 55,
+          "A.2": 50,
+          "A.3": 60,
+          "A.4": 55
+        },
+        "sources": [
+          "Industry"
+        ]
+      },
+      "N": {
+        "scores": {
+          "N.2": 50
+        },
+        "sources": []
+      }
+    },
+    "key_signals": {
+      "headcount": 41800,
+      "headcount_change_pct": null,
+      "revenue_per_employee": 373397,
+      "displacement_signal": null,
+      "ai_hiring_ratio": null,
+      "glassdoor_rating": null,
+      "cdp_climate": null,
+      "epa_violations": null
+    },
+    "hi_balanced": false,
+    "hi_balanced_gates": {
+      "dimensions": false,
+      "evidence": false,
+      "momentum": false,
+      "_detail": {
+        "dim_pass": {
+          "H": false,
+          "U": true,
+          "M": false,
+          "A": false,
+          "N": false
+        },
+        "evidence_pass": {
+          "H": true,
+          "U": true,
+          "M": true,
+          "A": true,
+          "N": false
+        },
+        "decay_level": "critical",
+        "decay_index": 53
+      }
+    },
+    "domains": [
+      "esteelauder.com"
+    ],
+    "decay_level": "critical",
+    "decay_index": 53
+  },
+  {
     "company": "Evercore Inc.",
     "ticker": "EVR",
     "industry": "finance",
@@ -63605,8 +63754,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "SBTi"
+          "SBTi",
+          "Industry"
         ]
       },
       "N": {
@@ -65362,147 +65511,6 @@
     "decay_index": 0
   },
   {
-    "company": "GARTNER INC",
-    "ticker": "IT",
-    "industry": "healthcare",
-    "sic": "8741",
-    "sic_description": "Services-Management Services",
-    "D_H": 45,
-    "D_U": 54,
-    "D_M": 50,
-    "D_A": 52,
-    "D_N": 50,
-    "composite": 50,
-    "hi_grade": "scored",
-    "satire": "",
-    "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
-    "confidence": "None",
-    "spec_version": "1.15.0",
-    "data_sources": [
-      "Industry"
-    ],
-    "cfpb_disclosure": null,
-    "signal_coverage": "0/18 sub-signals with real data",
-    "industry_derived": [
-      "A.1",
-      "A.4",
-      "H.2",
-      "U.4"
-    ],
-    "absence_derived": [
-      "H.1",
-      "H.3",
-      "M.3"
-    ],
-    "humanwashing_flags": [],
-    "algo_harm": {
-      "algo_harm_score": 0,
-      "penalties": {
-        "H": 0,
-        "U": 0,
-        "M": 0,
-        "N": 0
-      },
-      "flags": [],
-      "has_harm": false
-    },
-    "harm_documentation": {
-      "has_harm": false,
-      "penalties": {
-        "M": 0
-      },
-      "flags": [],
-      "sources": []
-    },
-    "genome": {
-      "H": {
-        "scores": {
-          "H.1": 50,
-          "H.2": 70,
-          "H.3": 50,
-          "H.5": 50
-        },
-        "sources": [
-          "Industry"
-        ]
-      },
-      "U": {
-        "scores": {
-          "U.1": 50,
-          "U.2": 50,
-          "U.3": 50,
-          "U.4": 65
-        },
-        "sources": []
-      },
-      "M": {
-        "scores": {
-          "M.1": 50,
-          "M.2": 50,
-          "M.3": 50,
-          "M.4": 50,
-          "M.5": 50
-        },
-        "sources": []
-      },
-      "A": {
-        "scores": {
-          "A.1": 55,
-          "A.2": 50,
-          "A.3": 50,
-          "A.4": 55
-        },
-        "sources": [
-          "Industry"
-        ]
-      },
-      "N": {
-        "scores": {
-          "N.2": 50
-        },
-        "sources": []
-      }
-    },
-    "key_signals": {
-      "headcount": 19460,
-      "headcount_change_pct": null,
-      "revenue_per_employee": null,
-      "displacement_signal": null,
-      "ai_hiring_ratio": null,
-      "glassdoor_rating": null,
-      "cdp_climate": null,
-      "epa_violations": null
-    },
-    "hi_balanced": false,
-    "hi_balanced_gates": {
-      "dimensions": false,
-      "evidence": false,
-      "momentum": false,
-      "_detail": {
-        "dim_pass": {
-          "H": false,
-          "U": false,
-          "M": false,
-          "A": false,
-          "N": false
-        },
-        "evidence_pass": {
-          "H": true,
-          "U": false,
-          "M": false,
-          "A": true,
-          "N": false
-        },
-        "decay_level": "critical",
-        "decay_index": 50
-      }
-    },
-    "decay_level": "critical",
-    "decay_index": 50
-  },
-  {
     "company": "GENERAL ELECTRIC CO",
     "ticker": "GE",
     "industry": "tech",
@@ -65735,8 +65743,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -66432,7 +66440,7 @@
       "SEC DEF 14A"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 15970,
+      "complaints_3yr": 16002,
       "benchmarked_complaints": 5202,
       "relief_vs_benchmark_pts": -2.5
     },
@@ -66474,8 +66482,8 @@
           "H.5": 35
         },
         "sources": [
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -66504,10 +66512,10 @@
         },
         "sources": [
           "FEC",
-          "CFPB",
-          "Glassdoor",
           "SEC DEF 14A",
-          "EEOC"
+          "Glassdoor",
+          "EEOC",
+          "CFPB"
         ]
       },
       "A": {
@@ -68144,155 +68152,6 @@
     ],
     "decay_level": "stable",
     "decay_index": 0
-  },
-  {
-    "company": "HONEYWELL INTERNATIONAL INC",
-    "ticker": "HON",
-    "industry": "manufacturing",
-    "sic": "3724",
-    "sic_description": "Aircraft Engines & Engine Parts",
-    "D_H": 42,
-    "D_U": 57,
-    "D_M": 50,
-    "D_A": 50,
-    "D_N": 50,
-    "composite": 50,
-    "hi_grade": "scored",
-    "satire": "",
-    "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
-    "confidence": "Limited",
-    "spec_version": "1.15.0",
-    "data_sources": [
-      "Disability:IN DEI",
-      "HRC CEI",
-      "Industry"
-    ],
-    "cfpb_disclosure": null,
-    "signal_coverage": "2/18 sub-signals with real data",
-    "industry_derived": [
-      "A.1",
-      "A.3",
-      "H.2",
-      "U.4"
-    ],
-    "absence_derived": [
-      "H.1",
-      "H.3",
-      "M.3"
-    ],
-    "humanwashing_flags": [],
-    "algo_harm": {
-      "algo_harm_score": 0,
-      "penalties": {
-        "H": 0,
-        "U": 0,
-        "M": 0,
-        "N": 0
-      },
-      "flags": [],
-      "has_harm": false
-    },
-    "harm_documentation": {
-      "has_harm": false,
-      "penalties": {
-        "M": 0
-      },
-      "flags": [],
-      "sources": []
-    },
-    "genome": {
-      "H": {
-        "scores": {
-          "H.1": 50,
-          "H.2": 60,
-          "H.3": 50,
-          "H.5": 50
-        },
-        "sources": [
-          "Industry"
-        ]
-      },
-      "U": {
-        "scores": {
-          "U.1": 50,
-          "U.2": 50,
-          "U.3": 80.0,
-          "U.4": 50
-        },
-        "sources": [
-          "HRC CEI",
-          "Disability:IN DEI"
-        ]
-      },
-      "M": {
-        "scores": {
-          "M.1": 50,
-          "M.2": 50,
-          "M.3": 50,
-          "M.4": 50,
-          "M.5": 50
-        },
-        "sources": []
-      },
-      "A": {
-        "scores": {
-          "A.1": 45,
-          "A.2": 50,
-          "A.3": 45,
-          "A.4": 60
-        },
-        "sources": [
-          "Industry"
-        ]
-      },
-      "N": {
-        "scores": {
-          "N.2": 50
-        },
-        "sources": []
-      }
-    },
-    "key_signals": {
-      "headcount": 101000,
-      "headcount_change_pct": null,
-      "revenue_per_employee": null,
-      "displacement_signal": null,
-      "ai_hiring_ratio": null,
-      "glassdoor_rating": null,
-      "cdp_climate": null,
-      "epa_violations": null
-    },
-    "hi_balanced": false,
-    "hi_balanced_gates": {
-      "dimensions": false,
-      "evidence": false,
-      "momentum": true,
-      "_detail": {
-        "dim_pass": {
-          "H": false,
-          "U": false,
-          "M": false,
-          "A": false,
-          "N": false
-        },
-        "evidence_pass": {
-          "H": true,
-          "U": true,
-          "M": false,
-          "A": true,
-          "N": false
-        },
-        "decay_level": "watch",
-        "decay_index": 20
-      }
-    },
-    "domains": [
-      "honeywell.com"
-    ],
-    "decay_level": "watch",
-    "decay_index": 20
   },
   {
     "company": "Howmet Aerospace Inc.",
@@ -71089,8 +70948,8 @@
           "H.5": 60
         },
         "sources": [
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -71223,7 +71082,7 @@
       "SEC DEF 14A"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 69030,
+      "complaints_3yr": 69085,
       "benchmarked_complaints": 27007,
       "relief_vs_benchmark_pts": -6.5
     },
@@ -71265,8 +71124,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -71294,8 +71153,8 @@
           "M.5": 85
         },
         "sources": [
-          "SEC DEF 14A",
           "EEOC",
+          "SEC DEF 14A",
           "CFPB",
           "Glassdoor"
         ]
@@ -73575,8 +73434,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -74463,8 +74322,8 @@
           "H.5": 30
         },
         "sources": [
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -74492,10 +74351,10 @@
         },
         "sources": [
           "FEC",
-          "Glassdoor",
-          "FTC",
           "SEC DEF 14A",
-          "EEOC"
+          "Glassdoor",
+          "EEOC",
+          "FTC"
         ]
       },
       "A": {
@@ -74506,10 +74365,10 @@
           "A.4": 50
         },
         "sources": [
+          "iFixit",
           "SBTi",
           "Industry",
-          "CDP",
-          "iFixit"
+          "CDP"
         ]
       },
       "N": {
@@ -76224,8 +76083,8 @@
           "H.5": 65
         },
         "sources": [
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -76253,8 +76112,8 @@
         "sources": [
           "FTC",
           "FEC",
-          "SEC DEF 14A",
-          "Glassdoor"
+          "Glassdoor",
+          "SEC DEF 14A"
         ]
       },
       "A": {
@@ -78128,8 +77987,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -78153,8 +78012,8 @@
         },
         "sources": [
           "SEC DEF 14A",
-          "HIBP",
-          "Glassdoor"
+          "Glassdoor",
+          "HIBP"
         ]
       },
       "A": {
@@ -78165,10 +78024,10 @@
           "A.4": 60
         },
         "sources": [
+          "iFixit",
           "SBTi",
           "Industry",
-          "CDP",
-          "iFixit"
+          "CDP"
         ]
       },
       "N": {
@@ -79423,8 +79282,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -81592,8 +81451,8 @@
           "A.4": 55
         },
         "sources": [
-          "Industry",
-          "SBTi"
+          "SBTi",
+          "Industry"
         ]
       },
       "N": {
@@ -83421,8 +83280,8 @@
           "H.5": 35
         },
         "sources": [
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -83450,8 +83309,8 @@
         "sources": [
           "FTC",
           "FEC",
-          "SEC DEF 14A",
-          "Glassdoor"
+          "Glassdoor",
+          "SEC DEF 14A"
         ]
       },
       "A": {
@@ -83507,7 +83366,7 @@
           "N": true
         },
         "decay_level": "critical",
-        "decay_index": 60
+        "decay_index": 50
       }
     },
     "domains": [
@@ -83519,7 +83378,7 @@
       "cloud"
     ],
     "decay_level": "critical",
-    "decay_index": 60
+    "decay_index": 50
   },
   {
     "company": "SAP SE",
@@ -84681,7 +84540,7 @@
       "Industry"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 2684,
+      "complaints_3yr": 2686,
       "benchmarked_complaints": 685,
       "relief_vs_benchmark_pts": 7.9
     },
@@ -86957,7 +86816,7 @@
       "Industry"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 39100,
+      "complaints_3yr": 39146,
       "benchmarked_complaints": 9630,
       "relief_vs_benchmark_pts": -4.6
     },
@@ -88578,8 +88437,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -89876,8 +89735,8 @@
           "H.5": 60
         },
         "sources": [
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -91922,8 +91781,8 @@
           "A.4": 70
         },
         "sources": [
-          "Industry",
           "SBTi",
+          "Industry",
           "iFixit"
         ]
       },
@@ -92852,7 +92711,7 @@
       "Industry"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 30870,
+      "complaints_3yr": 30924,
       "benchmarked_complaints": 10609,
       "relief_vs_benchmark_pts": 1.8
     },
@@ -92974,15 +92833,15 @@
           "A": true,
           "N": false
         },
-        "decay_level": "critical",
-        "decay_index": 58
+        "decay_level": "warning",
+        "decay_index": 48
       }
     },
     "domains": [
       "americanexpress.com"
     ],
-    "decay_level": "critical",
-    "decay_index": 58
+    "decay_level": "warning",
+    "decay_index": 48
   },
   {
     "company": "ANALOG DEVICES INC",
@@ -93259,12 +93118,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable",
+        "decay_index": 8
       }
     },
-    "decay_level": "watch",
-    "decay_index": 18
+    "decay_level": "stable",
+    "decay_index": 8
   },
   {
     "company": "APA Corp",
@@ -93964,12 +93823,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "BIOGEN INC.",
@@ -94106,7 +93965,7 @@
           "N": false
         },
         "decay_level": "watch",
-        "decay_index": 25
+        "decay_index": 15
       }
     },
     "domains": [
@@ -94118,7 +93977,7 @@
       "biotech"
     ],
     "decay_level": "watch",
-    "decay_index": 25
+    "decay_index": 15
   },
   {
     "company": "BJ's Wholesale Club Holdings, Inc.",
@@ -94965,12 +94824,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 14
+        "decay_level": "stable",
+        "decay_index": 4
       }
     },
-    "decay_level": "watch",
-    "decay_index": 14
+    "decay_level": "stable",
+    "decay_index": 4
   },
   {
     "company": "CADENCE DESIGN SYSTEMS INC",
@@ -95388,12 +95247,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable",
+        "decay_index": 8
       }
     },
-    "decay_level": "watch",
-    "decay_index": 18
+    "decay_level": "stable",
+    "decay_index": 8
   },
   {
     "company": "CENTENE CORP",
@@ -95673,12 +95532,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "ChargePoint Holdings, Inc.",
@@ -95814,12 +95673,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "Chewy, Inc.",
@@ -95955,8 +95814,8 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
     "domains": [
@@ -95967,8 +95826,8 @@
       "pets",
       "e-commerce"
     ],
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "Chord Energy Corp",
@@ -96237,7 +96096,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -96253,15 +96112,15 @@
           "A": true,
           "N": false
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "watch",
+        "decay_index": 20
       }
     },
     "domains": [
       "cigna.com"
     ],
-    "decay_level": "warning",
-    "decay_index": 30
+    "decay_level": "watch",
+    "decay_index": 20
   },
   {
     "company": "Clean Energy Fuels Corp.",
@@ -96538,12 +96397,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable",
+        "decay_index": 5
       }
     },
-    "decay_level": "watch",
-    "decay_index": 15
+    "decay_level": "stable",
+    "decay_index": 5
   },
   {
     "company": "CLEVELAND-CLIFFS INC.",
@@ -96961,12 +96820,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable",
+        "decay_index": 5
       }
     },
-    "decay_level": "watch",
-    "decay_index": 15
+    "decay_level": "stable",
+    "decay_index": 5
   },
   {
     "company": "DANAHER CORP /DE/",
@@ -97246,16 +97105,16 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable",
+        "decay_index": 8
       }
     },
     "domains": [
       "deere.com",
       "johndeere.com"
     ],
-    "decay_level": "watch",
-    "decay_index": 18
+    "decay_level": "stable",
+    "decay_index": 8
   },
   {
     "company": "DEXCOM INC",
@@ -98978,147 +98837,6 @@
     ],
     "decay_level": "warning",
     "decay_index": 33
-  },
-  {
-    "company": "Fidelity National Information Services, Inc.",
-    "ticker": "FIS",
-    "industry": "tech",
-    "sic": "7389",
-    "sic_description": "Services-Business Services, NEC",
-    "D_H": 48,
-    "D_U": 47,
-    "D_M": 50,
-    "D_A": 52,
-    "D_N": 50,
-    "composite": 49,
-    "hi_grade": "scored",
-    "satire": "",
-    "floor_triggered": false,
-    "balance_floor": false,
-    "triggering_dimension": null,
-    "confidence": "Limited",
-    "spec_version": "1.15.0",
-    "data_sources": [
-      "Industry",
-      "SEC"
-    ],
-    "cfpb_disclosure": null,
-    "signal_coverage": "3/18 sub-signals with real data",
-    "industry_derived": [
-      "A.1",
-      "A.3",
-      "H.2",
-      "U.4"
-    ],
-    "absence_derived": [
-      "M.3"
-    ],
-    "humanwashing_flags": [],
-    "algo_harm": {
-      "algo_harm_score": 0,
-      "penalties": {
-        "H": 0,
-        "U": 0,
-        "M": 0,
-        "N": 0
-      },
-      "flags": [],
-      "has_harm": false
-    },
-    "harm_documentation": {
-      "has_harm": false,
-      "penalties": {
-        "M": 0
-      },
-      "flags": [],
-      "sources": []
-    },
-    "genome": {
-      "H": {
-        "scores": {
-          "H.1": 76.5,
-          "H.2": 40,
-          "H.3": 66.2,
-          "H.5": 50
-        },
-        "sources": [
-          "SEC",
-          "Industry"
-        ]
-      },
-      "U": {
-        "scores": {
-          "U.1": 50,
-          "U.2": 50,
-          "U.3": 50,
-          "U.4": 38
-        },
-        "sources": []
-      },
-      "M": {
-        "scores": {
-          "M.1": 50,
-          "M.2": 50,
-          "M.3": 50,
-          "M.4": 50,
-          "M.5": 50
-        },
-        "sources": []
-      },
-      "A": {
-        "scores": {
-          "A.1": 50,
-          "A.2": 50,
-          "A.3": 65,
-          "A.4": 45
-        },
-        "sources": [
-          "Industry"
-        ]
-      },
-      "N": {
-        "scores": {
-          "N.2": 50
-        },
-        "sources": []
-      }
-    },
-    "key_signals": {
-      "headcount": 44000,
-      "headcount_change_pct": null,
-      "revenue_per_employee": 223432,
-      "displacement_signal": null,
-      "ai_hiring_ratio": null,
-      "glassdoor_rating": null,
-      "cdp_climate": null,
-      "epa_violations": null
-    },
-    "hi_balanced": false,
-    "hi_balanced_gates": {
-      "dimensions": false,
-      "evidence": false,
-      "momentum": true,
-      "_detail": {
-        "dim_pass": {
-          "H": false,
-          "U": false,
-          "M": false,
-          "A": false,
-          "N": false
-        },
-        "evidence_pass": {
-          "H": true,
-          "U": false,
-          "M": false,
-          "A": true,
-          "N": false
-        },
-        "decay_level": "watch",
-        "decay_index": 26
-      }
-    },
-    "decay_level": "watch",
-    "decay_index": 26
   },
   {
     "company": "Five9, Inc.",
@@ -103137,7 +102855,7 @@
       "SEC DEF 14A"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 864,
+      "complaints_3yr": 869,
       "benchmarked_complaints": 113,
       "relief_vs_benchmark_pts": -20.5
     },
@@ -107284,7 +107002,7 @@
       "Industry"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 7839,
+      "complaints_3yr": 7867,
       "benchmarked_complaints": 1254,
       "relief_vs_benchmark_pts": -14.0
     },
@@ -107345,7 +107063,7 @@
       },
       "M": {
         "scores": {
-          "M.1": 46,
+          "M.1": 45,
           "M.2": 50,
           "M.3": 50,
           "M.4": 50,
@@ -108096,7 +107814,7 @@
       }
     },
     "key_signals": {
-      "headcount": 3497,
+      "headcount": 3784,
       "headcount_change_pct": null,
       "revenue_per_employee": null,
       "displacement_signal": null,
@@ -112107,12 +111825,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "ADVANCED ENERGY INDUSTRIES INC",
@@ -112964,12 +112682,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "AMERICA MOVIL SAB DE CV/",
@@ -113246,12 +112964,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "AMKOR TECHNOLOGY, INC.",
@@ -114956,6 +114674,147 @@
     "decay_index": 27
   },
   {
+    "company": "Baker Hughes Co",
+    "ticker": "BKR",
+    "industry": "tech",
+    "sic": "3533",
+    "sic_description": "Oil & Gas Field Machinery & Equipment",
+    "D_H": 41,
+    "D_U": 47,
+    "D_M": 50,
+    "D_A": 52,
+    "D_N": 50,
+    "composite": 48,
+    "hi_grade": "scored",
+    "satire": "",
+    "floor_triggered": true,
+    "balance_floor": false,
+    "triggering_dimension": "H",
+    "confidence": "Limited",
+    "spec_version": "1.15.0",
+    "data_sources": [
+      "Industry",
+      "SEC"
+    ],
+    "cfpb_disclosure": null,
+    "signal_coverage": "3/18 sub-signals with real data",
+    "industry_derived": [
+      "A.1",
+      "A.3",
+      "H.2",
+      "U.4"
+    ],
+    "absence_derived": [
+      "M.3"
+    ],
+    "humanwashing_flags": [],
+    "algo_harm": {
+      "algo_harm_score": 0,
+      "penalties": {
+        "H": 0,
+        "U": 0,
+        "M": 0,
+        "N": 0
+      },
+      "flags": [],
+      "has_harm": false
+    },
+    "harm_documentation": {
+      "has_harm": false,
+      "penalties": {
+        "M": 0
+      },
+      "flags": [],
+      "sources": []
+    },
+    "genome": {
+      "H": {
+        "scores": {
+          "H.1": 64.5,
+          "H.2": 40,
+          "H.3": 51.2,
+          "H.5": 50
+        },
+        "sources": [
+          "SEC",
+          "Industry"
+        ]
+      },
+      "U": {
+        "scores": {
+          "U.1": 50,
+          "U.2": 50,
+          "U.3": 50,
+          "U.4": 38
+        },
+        "sources": []
+      },
+      "M": {
+        "scores": {
+          "M.1": 50,
+          "M.2": 50,
+          "M.3": 50,
+          "M.4": 50,
+          "M.5": 50
+        },
+        "sources": []
+      },
+      "A": {
+        "scores": {
+          "A.1": 50,
+          "A.2": 50,
+          "A.3": 65,
+          "A.4": 45
+        },
+        "sources": [
+          "Industry"
+        ]
+      },
+      "N": {
+        "scores": {
+          "N.2": 50
+        },
+        "sources": []
+      }
+    },
+    "key_signals": {
+      "headcount": 65600,
+      "headcount_change_pct": null,
+      "revenue_per_employee": 388811,
+      "displacement_signal": null,
+      "ai_hiring_ratio": null,
+      "glassdoor_rating": null,
+      "cdp_climate": null,
+      "epa_violations": null
+    },
+    "hi_balanced": false,
+    "hi_balanced_gates": {
+      "dimensions": false,
+      "evidence": false,
+      "momentum": false,
+      "_detail": {
+        "dim_pass": {
+          "H": false,
+          "U": false,
+          "M": false,
+          "A": false,
+          "N": false
+        },
+        "evidence_pass": {
+          "H": true,
+          "U": false,
+          "M": false,
+          "A": true,
+          "N": false
+        },
+        "decay_level": "warning",
+        "decay_index": 34
+      }
+    },
+    "decay_level": "warning",
+    "decay_index": 34
+  },
+  {
     "company": "Ballard Power Systems Inc.",
     "ticker": "BLDP",
     "industry": "tech",
@@ -115513,14 +115372,14 @@
           "N": false
         },
         "decay_level": "watch",
-        "decay_index": 25
+        "decay_index": 15
       }
     },
     "domains": [
       "bill.com"
     ],
     "decay_level": "watch",
-    "decay_index": 25
+    "decay_index": 15
   },
   {
     "company": "BlackSky Technology Inc.",
@@ -115797,12 +115656,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "BRUKER CORP",
@@ -116222,12 +116081,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 15
+        "decay_level": "stable",
+        "decay_index": 5
       }
     },
-    "decay_level": "watch",
-    "decay_index": 15
+    "decay_level": "stable",
+    "decay_index": 5
   },
   {
     "company": "CACI INTERNATIONAL INC /DE/",
@@ -116652,12 +116511,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "Clearwater Analytics Holdings, Inc.",
@@ -116793,12 +116652,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "stable",
-        "decay_index": 5
+        "decay_level": "watch",
+        "decay_index": 15
       }
     },
-    "decay_level": "stable",
-    "decay_index": 5
+    "decay_level": "watch",
+    "decay_index": 15
   },
   {
     "company": "CONOCOPHILLIPS",
@@ -116902,8 +116761,8 @@
           "A.4": 50
         },
         "sources": [
-          "Industry",
-          "SBTi"
+          "SBTi",
+          "Industry"
         ]
       },
       "N": {
@@ -116927,7 +116786,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -116943,15 +116802,15 @@
           "A": true,
           "N": false
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "watch",
+        "decay_index": 20
       }
     },
     "domains": [
       "conocophillips.com"
     ],
-    "decay_level": "warning",
-    "decay_index": 30
+    "decay_level": "watch",
+    "decay_index": 20
   },
   {
     "company": "Core & Main, Inc.",
@@ -117087,12 +116946,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 18
+        "decay_level": "stable",
+        "decay_index": 8
       }
     },
-    "decay_level": "watch",
-    "decay_index": 18
+    "decay_level": "stable",
+    "decay_index": 8
   },
   {
     "company": "Coursera, Inc.",
@@ -117228,8 +117087,8 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 14
+        "decay_level": "stable",
+        "decay_index": 4
       }
     },
     "domains": [
@@ -117239,8 +117098,8 @@
       "education",
       "technology"
     ],
-    "decay_level": "watch",
-    "decay_index": 14
+    "decay_level": "stable",
+    "decay_index": 4
   },
   {
     "company": "CSX CORP",
@@ -117362,7 +117221,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -117378,12 +117237,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "warning",
-        "decay_index": 38
+        "decay_level": "watch",
+        "decay_index": 28
       }
     },
-    "decay_level": "warning",
-    "decay_index": 38
+    "decay_level": "watch",
+    "decay_index": 28
   },
   {
     "company": "DENTSPLY SIRONA Inc.",
@@ -118517,12 +118376,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "DOW INC.",
@@ -118951,8 +118810,8 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
     "domains": [
@@ -118962,8 +118821,8 @@
       "technology",
       "cloud storage"
     ],
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "DTE ENERGY CO",
@@ -119244,14 +119103,14 @@
           "N": false
         },
         "decay_level": "watch",
-        "decay_index": 25
+        "decay_index": 15
       }
     },
     "domains": [
       "duolingo.com"
     ],
     "decay_level": "watch",
-    "decay_index": 25,
+    "decay_index": 15,
     "tags": [
       "education",
       "technology",
@@ -119376,7 +119235,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -119392,12 +119251,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "warning",
-        "decay_index": 34
+        "decay_level": "watch",
+        "decay_index": 24
       }
     },
-    "decay_level": "warning",
-    "decay_index": 34
+    "decay_level": "watch",
+    "decay_index": 24
   },
   {
     "company": "EnerSys",
@@ -135450,7 +135309,7 @@
       "SEC"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 16002,
+      "complaints_3yr": 16053,
       "benchmarked_complaints": 278,
       "relief_vs_benchmark_pts": -36.7
     },
@@ -136979,7 +136838,7 @@
     "hi_balanced_gates": {
       "dimensions": false,
       "evidence": false,
-      "momentum": false,
+      "momentum": true,
       "_detail": {
         "dim_pass": {
           "H": false,
@@ -136995,12 +136854,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "warning",
-        "decay_index": 30
+        "decay_level": "watch",
+        "decay_index": 20
       }
     },
-    "decay_level": "warning",
-    "decay_index": 30
+    "decay_level": "watch",
+    "decay_index": 20
   },
   {
     "company": "CrowdStrike Holdings, Inc.",
@@ -137137,14 +136996,14 @@
           "N": false
         },
         "decay_level": "warning",
-        "decay_index": 40
+        "decay_index": 30
       }
     },
     "domains": [
       "crowdstrike.com"
     ],
     "decay_level": "warning",
-    "decay_index": 40
+    "decay_index": 30
   },
   {
     "company": "DuPont de Nemours, Inc.",
@@ -137451,6 +137310,147 @@
     "decay_index": 10
   },
   {
+    "company": "GARTNER INC",
+    "ticker": "IT",
+    "industry": "healthcare",
+    "sic": "8741",
+    "sic_description": "Services-Management Services",
+    "D_H": 30,
+    "D_U": 54,
+    "D_M": 50,
+    "D_A": 52,
+    "D_N": 50,
+    "composite": 47,
+    "hi_grade": "scored",
+    "satire": "",
+    "floor_triggered": true,
+    "balance_floor": false,
+    "triggering_dimension": "H",
+    "confidence": "None",
+    "spec_version": "1.15.0",
+    "data_sources": [
+      "Industry"
+    ],
+    "cfpb_disclosure": null,
+    "signal_coverage": "0/18 sub-signals with real data",
+    "industry_derived": [
+      "A.1",
+      "A.4",
+      "H.2",
+      "U.4"
+    ],
+    "absence_derived": [
+      "H.1",
+      "H.3",
+      "M.3"
+    ],
+    "humanwashing_flags": [],
+    "algo_harm": {
+      "algo_harm_score": 0,
+      "penalties": {
+        "H": 0,
+        "U": 0,
+        "M": 0,
+        "N": 0
+      },
+      "flags": [],
+      "has_harm": false
+    },
+    "harm_documentation": {
+      "has_harm": false,
+      "penalties": {
+        "M": 0
+      },
+      "flags": [],
+      "sources": []
+    },
+    "genome": {
+      "H": {
+        "scores": {
+          "H.1": 50,
+          "H.2": 70,
+          "H.3": 50,
+          "H.5": 50
+        },
+        "sources": [
+          "Industry"
+        ]
+      },
+      "U": {
+        "scores": {
+          "U.1": 50,
+          "U.2": 50,
+          "U.3": 50,
+          "U.4": 65
+        },
+        "sources": []
+      },
+      "M": {
+        "scores": {
+          "M.1": 50,
+          "M.2": 50,
+          "M.3": 50,
+          "M.4": 50,
+          "M.5": 50
+        },
+        "sources": []
+      },
+      "A": {
+        "scores": {
+          "A.1": 55,
+          "A.2": 50,
+          "A.3": 50,
+          "A.4": 55
+        },
+        "sources": [
+          "Industry"
+        ]
+      },
+      "N": {
+        "scores": {
+          "N.2": 50
+        },
+        "sources": []
+      }
+    },
+    "key_signals": {
+      "headcount": 19460,
+      "headcount_change_pct": null,
+      "revenue_per_employee": null,
+      "displacement_signal": null,
+      "ai_hiring_ratio": null,
+      "glassdoor_rating": null,
+      "cdp_climate": null,
+      "epa_violations": null
+    },
+    "hi_balanced": false,
+    "hi_balanced_gates": {
+      "dimensions": false,
+      "evidence": false,
+      "momentum": false,
+      "_detail": {
+        "dim_pass": {
+          "H": false,
+          "U": false,
+          "M": false,
+          "A": false,
+          "N": false
+        },
+        "evidence_pass": {
+          "H": true,
+          "U": false,
+          "M": false,
+          "A": true,
+          "N": false
+        },
+        "decay_level": "critical",
+        "decay_index": 50
+      }
+    },
+    "decay_level": "critical",
+    "decay_index": 50
+  },
+  {
     "company": "HORTON D R INC /DE/",
     "ticker": "DHI",
     "industry": "construction",
@@ -137507,9 +137507,9 @@
     "genome": {
       "H": {
         "scores": {
-          "H.1": 36.8,
+          "H.1": 36.0,
           "H.2": 50,
-          "H.3": 8.1,
+          "H.3": 6.7,
           "H.5": 50
         },
         "sources": [
@@ -137557,7 +137557,7 @@
     "key_signals": {
       "headcount": 14341,
       "headcount_change_pct": null,
-      "revenue_per_employee": 2472659,
+      "revenue_per_employee": 2566167,
       "displacement_signal": null,
       "ai_hiring_ratio": null,
       "glassdoor_rating": null,
@@ -141076,8 +141076,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -141303,12 +141303,12 @@
           "A": true,
           "N": false
         },
-        "decay_level": "watch",
-        "decay_index": 10
+        "decay_level": "stable",
+        "decay_index": 0
       }
     },
-    "decay_level": "watch",
-    "decay_index": 10
+    "decay_level": "stable",
+    "decay_index": 0
   },
   {
     "company": "COGNEX CORP",
@@ -141445,11 +141445,11 @@
           "N": false
         },
         "decay_level": "warning",
-        "decay_index": 40
+        "decay_index": 30
       }
     },
     "decay_level": "warning",
-    "decay_index": 40
+    "decay_index": 30
   },
   {
     "company": "DoorDash, Inc.",
@@ -141982,8 +141982,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -142011,10 +142011,10 @@
         },
         "sources": [
           "FEC",
-          "Glassdoor",
-          "FTC",
           "SEC DEF 14A",
-          "EEOC"
+          "Glassdoor",
+          "EEOC",
+          "FTC"
         ]
       },
       "A": {
@@ -142025,8 +142025,8 @@
           "A.4": 45
         },
         "sources": [
-          "Industry",
-          "SBTi"
+          "SBTi",
+          "Industry"
         ]
       },
       "N": {
@@ -142464,8 +142464,8 @@
           "H.5": 10
         },
         "sources": [
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -142492,10 +142492,10 @@
           "M.5": 75
         },
         "sources": [
-          "Glassdoor",
-          "FTC",
           "SEC DEF 14A",
+          "Glassdoor",
           "EEOC",
+          "FTC",
           "SEC Form 4"
         ]
       },
@@ -142507,10 +142507,10 @@
           "A.4": 30
         },
         "sources": [
+          "iFixit",
           "SBTi",
           "Industry",
-          "CDP",
-          "iFixit"
+          "CDP"
         ]
       },
       "N": {
@@ -144472,7 +144472,7 @@
       "Industry"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 65962,
+      "complaints_3yr": 66017,
       "benchmarked_complaints": 6318,
       "relief_vs_benchmark_pts": -17.6
     },
@@ -144749,7 +144749,7 @@
           "N": true
         },
         "decay_level": "critical",
-        "decay_index": 73
+        "decay_index": 63
       }
     },
     "domains": [
@@ -144762,7 +144762,7 @@
       "retail"
     ],
     "decay_level": "critical",
-    "decay_index": 73
+    "decay_index": 63
   },
   {
     "company": "Nextpower Inc.",
@@ -146814,8 +146814,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -148439,7 +148439,7 @@
       "SEC"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 23798,
+      "complaints_3yr": 23881,
       "benchmarked_complaints": 7476,
       "relief_vs_benchmark_pts": 12.1
     },
@@ -148766,7 +148766,7 @@
       "Industry"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 56311,
+      "complaints_3yr": 56388,
       "benchmarked_complaints": 30013,
       "relief_vs_benchmark_pts": -4.5
     },
@@ -149899,7 +149899,7 @@
       "SEC"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 4277559,
+      "complaints_3yr": 4283129,
       "benchmarked_complaints": 1081644,
       "relief_vs_benchmark_pts": 6.1
     },
@@ -150441,8 +150441,8 @@
           "H.5": 10
         },
         "sources": [
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -150598,8 +150598,8 @@
           "H.5": 10
         },
         "sources": [
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -150877,7 +150877,7 @@
       "iFixit"
     ],
     "cfpb_disclosure": {
-      "complaints_3yr": 492,
+      "complaints_3yr": 499,
       "benchmarked_complaints": 127,
       "relief_vs_benchmark_pts": -8.2
     },
@@ -150919,8 +150919,8 @@
         },
         "sources": [
           "SEC",
-          "Jobs",
-          "Industry"
+          "Industry",
+          "Jobs"
         ]
       },
       "U": {
@@ -150946,12 +150946,12 @@
           "M.5": 68
         },
         "sources": [
-          "CFPB",
-          "Glassdoor",
-          "FTC",
           "SEC DEF 14A",
+          "Glassdoor",
           "EEOC",
-          "SEC Form 4"
+          "FTC",
+          "SEC Form 4",
+          "CFPB"
         ]
       },
       "A": {
@@ -150962,10 +150962,10 @@
           "A.4": 30
         },
         "sources": [
+          "iFixit",
           "SBTi",
           "Industry",
-          "CDP",
-          "iFixit"
+          "CDP"
         ]
       },
       "N": {
