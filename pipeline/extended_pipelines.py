@@ -291,6 +291,39 @@ def score_patents(data):
 
 FDA_API = "https://api.fda.gov/drug/enforcement.json"
 
+# SEC EDGAR appends a state of incorporation to many names, and openFDA's recalling_firm is
+# a Lucene phrase field. 68 of 1,139 names carry a trailing state fragment; two carry a
+# backslash form that makes openFDA answer 500 (token_mgr_error). The cost is not the 500,
+# it is the silent 404:
+#
+#     404 results=0  'TJX COMPANIES INC /DE/'  ->  200 results=6  'TJX COMPANIES INC'
+#     404 results=0  'CLOROX CO /DE/'          ->  200 results=2  'CLOROX CO'
+#
+# Real recalls recorded as absences because of four characters SEC added. Every other FDA
+# defect this month made a company look better than the DATA; this one made it look better
+# than REALITY, and the absence was the flattering answer.
+#
+# Deliberately conservative: a TRAILING state-shaped fragment only. 'CULLEN/FROST BANKERS,
+# INC.' keeps its slash, because removing it asks about a different company.
+def _fda_query_name(name):
+    """The company name as a well-formed openFDA phrase query.
+
+    A backslash is never part of a company name, and openFDA answers an unescaped one with
+    500 token_mgr_error. Normalise it to a slash first, so one rule covers both SEC forms:
+    'US BANCORP \\DE\\' and 'HORMEL FOODS CORP /DE/'.
+
+    Country and state codes are two letters except CAN, which is named explicitly rather
+    than widening the pattern to {2,3} — a three-letter wildcard would also strip a real
+    trailing fragment from a name that happens to end that way.
+
+    Conservative by design: a TRAILING code only. 'CULLEN/FROST BANKERS, INC.' keeps its
+    slash, because removing it asks openFDA about a different company.
+    """
+    n = (name or "").replace("\\", "/").strip()
+    n = re.sub(r"/\s*(?:CAN|DEL|NEW|[A-Z]{2})\s*/?\s*$", "", n)
+    return n.strip().rstrip("/").strip()
+
+
 def fetch_fda(company_name, ticker):
     # A blank name searches as a wildcard and matches every record in the database, so the
     # query is never made. That refusal is a DETERMINATION, not a failure: the company has no
@@ -314,9 +347,10 @@ def fetch_fda(company_name, ticker):
         }
     cached = load_cache(ticker, "fda")
     if cached: return cached
+    query_name = _fda_query_name(company_name)
     try:
         params = {
-            "search": f'recalling_firm:"{company_name}"',
+            "search": f'recalling_firm:"{query_name}"',
             "limit": 100,
         }
         r = requests.get(FDA_API, params=params, timeout=15)
@@ -344,12 +378,16 @@ def fetch_fda(company_name, ticker):
                     "recalls": 0, "class_i": 0, "class_ii": 0,
                     "source": "FDA", "fetched": datetime.now().isoformat(),
                 }
+                # Record WHICH QUESTION WAS ASKED: for 68 companies the stored name and the
+                # asked name are now different strings.
+                if query_name != company_name:
+                    result["queried_as"] = query_name
                 # Cached like any other result. Without this the record is refetched and
                 # rewritten with a fresh timestamp every night, churning 425 files on a
                 # timestamp alone. A 404 is a real answer and earns the same 168 hours.
                 save_cache(ticker, "fda", result)
                 return result
-            # A genuine failure — rate limit, 500, malformed query. Return None, carry no
+            # A genuine failure — a rate limit or a server fault. Return None, carry no
             # raw, declare no absence, and let fill_missing keep last night's value. That
             # is exactly what that guard exists for. Nothing is cached, so the next run
             # retries rather than inheriting a fabricated zero.
@@ -366,6 +404,8 @@ def fetch_fda(company_name, ticker):
             "recalls": len(results), "class_i": class_i, "class_ii": class_ii,
             "source": "FDA", "fetched": datetime.now().isoformat()
         }
+        if query_name != company_name:
+            result["queried_as"] = query_name
         save_cache(ticker, "fda", result)
         return result
     except Exception as e:
