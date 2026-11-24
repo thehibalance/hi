@@ -339,10 +339,27 @@ def fetch_fda(company_name, ticker):
     # No "fetched" key, deliberately. Nothing was fetched, and a fresh timestamp every night
     # would rewrite 228 files on a timestamp alone. This record is byte-identical run to run,
     # and it stays byte-identical until the universe gives the company a name.
-    if not ticker or not (company_name or "").strip():
+    # Three ways a universe entry cannot support a question. All three are
+    # determinations, not failures: we say so, and record no `fetched` stamp.
+    #
+    # The third is the one that bit us. A `company` field holding the ticker is a
+    # placeholder, and recalling_firm:"K" is a perfectly well-formed query for a
+    # firm named K. openFDA answers it: K C Pharmaceuticals, Antoto-K. Measured
+    # 2026-11-24, six such entries carried 35 recalls belonging to eight other
+    # firms, and five of the six had been refreshed three days earlier — so this
+    # regenerated nightly rather than sitting frozen.
+    _name = (company_name or "").strip()
+    _tick = (ticker or "").strip()
+    if not _tick or not _name or _name.upper() == _tick.upper():
         return {
-            "company": company_name, "ticker": ticker, "queried": False,
-            "reason": "no ticker" if not ticker else "no company name in the universe",
+            "company": company_name,
+            "ticker": ticker,
+            "queried": False,
+            "reason": (
+                "no ticker" if not _tick
+                else "no company name in the universe" if not _name
+                else "the universe entry has no company name, only the ticker"
+            ),
             "source": "FDA",
         }
     cached = load_cache(ticker, "fda")
