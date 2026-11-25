@@ -12,15 +12,20 @@
       "source": "USPTO"
     },
     "fda": {
-      "score": null,
+      "score": 25,
       "raw": {
         "company": "TJX COMPANIES INC /DE/",
         "ticker": "TJX",
-        "recalls": 0,
-        "class_i": 0,
-        "class_ii": 0,
+        "recalls": 6,
+        "class_i": 4,
+        "class_ii": 1,
         "source": "FDA",
-        "fetched": "2026-11-17T15:31:17.234287"
+        "fetched": "2026-11-25T16:35:22.228591",
+        "queried_as": "TJX COMPANIES INC",
+        "endpoints": {
+          "drug": 404,
+          "food": 200
+        }
       },
       "source": "FDA",
       "absent": true
