@@ -370,11 +370,18 @@ def fetch_fda(company_name, ticker):
             "search": f'recalling_firm:"{query_name}"',
             "limit": 100,
         }
+        # Every endpoint asked, and what it answered. `r` is rebound below when drug
+        # fails, so r.status_code alone cannot say whether the drug question was ever
+        # answered. Until 2026-11-25 that let a drug 5xx followed by a food 404 be
+        # recorded as "0 recalls" and cached for a week.
+        endpoints = {}
         r = requests.get(FDA_API, params=params, timeout=15)
+        endpoints["drug"] = r.status_code
         if r.status_code != 200:
             # Try food enforcement
             r = requests.get("https://api.fda.gov/food/enforcement.json",
                            params=params, timeout=15)
+            endpoints["food"] = r.status_code
         
         if r.status_code != 200:
             # CORRECTED 2026-11-16. The first version of this returned None for EVERY
@@ -389,7 +396,9 @@ def fetch_fda(company_name, ticker):
             # 404s; this returned None; raw was None; _scored cannot declare an absence
             # without raw; and fill_missing restored the previous night's value. Nightly,
             # forever. Same two-meanings-of-None as score_fda's and fill_missing's.
-            if r.status_code == 404:
+            # An absence only when EVERY endpoint asked found nothing. A 404 from food after
+            # a drug failure means one question went unanswered, and that is not a finding.
+            if endpoints and all(s == 404 for s in endpoints.values()):
                 result = {
                     "company": company_name, "ticker": ticker,
                     "recalls": 0, "class_i": 0, "class_ii": 0,
@@ -399,6 +408,7 @@ def fetch_fda(company_name, ticker):
                 # asked name are now different strings.
                 if query_name != company_name:
                     result["queried_as"] = query_name
+                result["endpoints"] = endpoints
                 # Cached like any other result. Without this the record is refetched and
                 # rewritten with a fresh timestamp every night, churning 425 files on a
                 # timestamp alone. A 404 is a real answer and earns the same 168 hours.
@@ -408,8 +418,16 @@ def fetch_fda(company_name, ticker):
             # raw, declare no absence, and let fill_missing keep last night's value. That
             # is exactly what that guard exists for. Nothing is cached, so the next run
             # retries rather than inheriting a fabricated zero.
+            print(f"  FDA {ticker}: no complete answer {endpoints} — keeping last value")
             return None
         
+        # Reaching here means some endpoint answered 200. If another endpoint failed
+        # (a rate limit, a server fault) the count below would cover only the
+        # questions that happened to get through, and it would be published as complete.
+        # Half a count is not written; last night's value is kept instead.
+        if any(s not in (200, 404) for s in endpoints.values()):
+            print(f"  FDA {ticker}: partial answer {endpoints} — keeping last value")
+            return None
         data = r.json()
         results = data.get("results", [])
 
@@ -439,6 +457,7 @@ def fetch_fda(company_name, ticker):
             result["classified_from"] = len(results)
         if query_name != company_name:
             result["queried_as"] = query_name
+        result["endpoints"] = endpoints
         save_cache(ticker, "fda", result)
         return result
     except Exception as e:
