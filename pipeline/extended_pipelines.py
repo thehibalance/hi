@@ -412,15 +412,31 @@ def fetch_fda(company_name, ticker):
         
         data = r.json()
         results = data.get("results", [])
+
+        # openFDA returns the true size of the result set in meta.results.total on every
+        # response. This used len(results), which is bounded by the limit:100 above — so a
+        # recorded count of exactly 100 was a page size wearing a measurement's clothes.
+        # Measured 2026-11-24: Cardinal Health 213, Target 202, Pfizer 120, Kroger 101, all
+        # four published as 100. Bug 4 in FINDING-fda-matching-broken.md, open since
+        # 2026-09-23.
+        _meta = (data.get("meta") or {}).get("results") or {}
+        _total = _meta.get("total")
+        recalls = _total if isinstance(_total, int) and _total >= len(results) else len(results)
         
         class_i = sum(1 for rec in results if rec.get("classification") == "Class I")
         class_ii = sum(1 for rec in results if rec.get("classification") == "Class II")
         
         result = {
             "company": company_name, "ticker": ticker,
-            "recalls": len(results), "class_i": class_i, "class_ii": class_ii,
+            "recalls": recalls, "class_i": class_i, "class_ii": class_ii,
             "source": "FDA", "fetched": datetime.now().isoformat()
         }
+        # The count is now complete. The BREAKDOWN is not: class_i and class_ii are counted
+        # by walking `results`, which is one page. Publishing 213 recalls beside a class_i
+        # counted over 100 of them, with nothing saying so, would be a complete number
+        # lending its authority to an incomplete one. The key states the sample size.
+        if recalls > len(results):
+            result["classified_from"] = len(results)
         if query_name != company_name:
             result["queried_as"] = query_name
         save_cache(ticker, "fda", result)
