@@ -1218,12 +1218,6 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=N
         if "OSHA" not in sources_used:
             sources_used.append("OSHA")
 
-    if eeoc is not None:
-        u2_adj = eeoc.get("U.2_adj", 0) if isinstance(eeoc, dict) else 0
-        if u2_adj != 0:
-            scores["U.2"] = clamp(scores["U.2"] + u2_adj)
-            if "EEOC" not in sources_used: sources_used.append("EEOC")
-
     # U.3 Relational Integrity — authoritative inclusion sources (HRC CEI, DEI, B Corp) blend with Glassdoor.
     # Per API_SHOPPING_LIST Pass 2D T0.1/T0.2/T0.5: HRC is the recognized US authority on LGBTQ+
     # workplace inclusion; Disability:IN DEI for disability inclusion; B Corp certification
@@ -1257,6 +1251,16 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=N
         if "Glassdoor" not in sources_used: sources_used.append("Glassdoor")
     else:
         scores["U.3"] = 50
+
+    # EEOC moved to U.3 on 2026-11-27. Discrimination settlements describe relational
+    # integrity, not worker safety. On U.2 they turned OSHA's measured rate into a
+    # different number (Walmart: OSHA 51, published 36). The same penalty still applies
+    # to M.3 elsewhere; counting one settlement in two dimensions is a separate decision.
+    if eeoc is not None:
+        u2_adj = eeoc.get("U.2_adj", 0) if isinstance(eeoc, dict) else 0
+        if u2_adj != 0:
+            scores["U.3"] = clamp(scores["U.3"] + u2_adj)
+            if "EEOC" not in sources_used: sources_used.append("EEOC")
 
     # U.4 Simulated Empathy Detection — deterministic heuristic
     # Proxy: Glassdoor ratings + industry automation baseline + worker empathy signals
