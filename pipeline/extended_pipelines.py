@@ -324,6 +324,20 @@ def _fda_query_name(name):
     return n.strip().rstrip("/").strip()
 
 
+# Reviewed 2026-11-24 (MEASUREMENT-the-loose-match-is-load-bearing-91-recalls-depend-on-it.md).
+# openFDA's phrase match is unanchored, which is what credits a parent with its divisions'
+# recalls (91 of them) and also what lets a namesake through. No string rule separates the two,
+# so the namesakes are listed by exact firm name, with the reason.
+FDA_REJECTED_FIRMS = {
+    "AAPL": {"tastee apple inc": "a produce company; matched on the words 'Apple Inc'"},
+    "UBER": {"uber vita llc": "a supplement maker; matched on the word 'Uber'"},
+}
+
+
+def _fda_firm_key(name):
+    return " ".join(re.sub(r"[^a-z0-9]+", " ", (name or "").lower()).split())
+
+
 def fetch_fda(company_name, ticker):
     # A blank name searches as a wildcard and matches every record in the database, so the
     # query is never made. That refusal is a DETERMINATION, not a failure: the company has no
@@ -350,7 +364,9 @@ def fetch_fda(company_name, ticker):
     # regenerated nightly rather than sitting frozen.
     _name = (company_name or "").strip()
     _tick = (ticker or "").strip()
-    if not _tick or not _name or _name.upper() == _tick.upper():
+    # Case-sensitive since 2026-11-27. The placeholders were the ticker in capitals
+    # ("K", "DAWN"); "Uber" is a real name that equals "UBER" only ignoring case.
+    if not _tick or not _name or _name == _tick:
         return {
             "company": company_name,
             "ticker": ticker,
@@ -440,6 +456,20 @@ def fetch_fda(company_name, ticker):
         _meta = (data.get("meta") or {}).get("results") or {}
         _total = _meta.get("total")
         recalls = _total if isinstance(_total, int) and _total >= len(results) else len(results)
+        # Remove reviewed namesakes before anything is counted or classified, and take them off
+        # the total too, so the count, the breakdown and the firm list all describe the same records.
+        _reject = FDA_REJECTED_FIRMS.get((ticker or "").strip().upper(), {})
+        _rejected = {}
+        if _reject:
+            _kept = []
+            for _rec in results:
+                _k = _fda_firm_key(_rec.get("recalling_firm"))
+                if _k in _reject:
+                    _rejected[_rec.get("recalling_firm", "?")] = _rejected.get(_rec.get("recalling_firm", "?"), 0) + 1
+                else:
+                    _kept.append(_rec)
+            recalls = max(0, recalls - (len(results) - len(_kept)))
+            results = _kept
         
         class_i = sum(1 for rec in results if rec.get("classification") == "Class I")
         class_ii = sum(1 for rec in results if rec.get("classification") == "Class II")
@@ -457,6 +487,15 @@ def fetch_fda(company_name, ticker):
             result["classified_from"] = len(results)
         if query_name != company_name:
             result["queried_as"] = query_name
+        # The firm names behind the count, so a reader can check whose recalls these are.
+        _firms = {}
+        for _rec in results:
+            _n = _rec.get("recalling_firm", "?")
+            _firms[_n] = _firms.get(_n, 0) + 1
+        result["firms"] = dict(sorted(_firms.items(), key=lambda kv: (-kv[1], kv[0]))[:10])
+        if _rejected:
+            result["rejected_firms"] = {n: {"recalls": c, "reason": _reject.get(_fda_firm_key(n), "")}
+                                       for n, c in _rejected.items()}
         result["endpoints"] = endpoints
         save_cache(ticker, "fda", result)
         return result
