@@ -1049,10 +1049,17 @@ def score_h_dimension(sec_h, job_data, industry, patents=None):
     # a value. A score nothing measured is retired, not republished.
     # v1.13.0: the same reset now covers an out-of-domain ratio as well as a missing
     # median. A ratio of 881 is not a measurement of human decision depth.
-    if not _ratio_ok:
-        h3 = 50
-        h3_sources = []
-        ABSENCE_DERIVED.add("H.3")
+    # 2026-11-27: H.3 is withheld for every company, not only out-of-domain ones.
+    # Inside the domain, everything above is the RPE ratio again (H.1 is the other function
+    # of the same ratio, v1.14.0), a size bracket, a hand-authored industry constant, or the
+    # displacement signal H.5 already scores. None measures human decision depth, and the
+    # ratio term counted one number twice in D_H for about half the index
+    # (MEASUREMENT-coverage-rose-and-most-of-the-gain-is-one-number-counted-twice.md).
+    # Clean 50, ABSENCE_DERIVED, excluded from real_count, until a source measures it. The
+    # computation above is unused from here and is removed in a follow-up.
+    h3 = 50
+    h3_sources = []
+    ABSENCE_DERIVED.add("H.3")
     scores["H.3"] = round(h3, 1)
     sources_used.extend([s for s in h3_sources if s not in sources_used])
 
