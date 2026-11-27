@@ -1100,6 +1100,31 @@ def score_h_dimension(sec_h, job_data, industry, patents=None):
     return round_score(D_H), scores, list(set(sources_used))
 
 
+_OSHA_ITA = None
+
+
+def _osha_ita_record(ticker, company_name):
+    """The OSHA ITA U.2 record for a company, from data/gov/osha_ita_u2_2024.json.
+
+    Keyed by ticker, or by company name when there is no ticker, exactly as osha_ita_u2.py
+    writes it, so tickerless companies never share a record. A missing file means no OSHA data
+    and leaves U.2 untouched. A corrupt file raises: a silent fallback would publish the old U.2
+    as though nothing were wrong.
+    """
+    global _OSHA_ITA
+    if _OSHA_ITA is None:
+        import json as _json
+        from pathlib import Path as _Path
+        _p = _Path(__file__).resolve().parent / "data" / "gov" / "osha_ita_u2_2024.json"
+        try:
+            with open(_p) as _f:
+                _OSHA_ITA = _json.load(_f).get("companies", {})
+        except FileNotFoundError:
+            _OSHA_ITA = {}
+    _t = (ticker or "").strip()
+    return _OSHA_ITA.get(_t) if _t else _OSHA_ITA.get((company_name or "").strip())
+
+
 def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=None, company_name=None, osha=None, dol=None, bbb=None, eeoc=None):
     scores = {}
     sources_used = []
@@ -1181,6 +1206,18 @@ def score_u_dimension(sec_u, glassdoor_data, industry, subsignals=None, ticker=N
             if "DOL" not in sources_used: sources_used.append("DOL")
 
     # v1.2x Layered: fold EEOC.U.2_adj into U.2
+    # U.2 from OSHA Form 300A, measured against BLS's rate for each establishment's own
+    # industry at its own size, scored by rule C (full penalty above the industry rate, a
+    # quarter of the credit below it, max 60, because a low number can also mean injuries went
+    # unreported). DECISION-u2-is-scored-against-peers-at-the-same-industry-and-size.md.
+    # It REPLACES the value above, whether that came from Glassdoor or the default 50. The
+    # old 15% OSHA blend above never fires and runs first, so it cannot touch this value.
+    _osha = _osha_ita_record(ticker, company_name)
+    if _osha and str(_osha.get("status", "")).startswith("scored") and _osha.get("score") is not None:
+        scores["U.2"] = float(_osha["score"])
+        if "OSHA" not in sources_used:
+            sources_used.append("OSHA")
+
     if eeoc is not None:
         u2_adj = eeoc.get("U.2_adj", 0) if isinstance(eeoc, dict) else 0
         if u2_adj != 0:
