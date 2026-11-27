@@ -2130,10 +2130,12 @@ def score_company(company_name, ticker="", sec_data=None, epa_data=None,
 
     hw_flags = []
     rpe = sec_h.get("revenue_per_employee")
-    industry_rpe_median = INDUSTRY_RPE_MEDIANS.get(industry)
     # v1.3.0: no baseline -> no accusation. Never flag on a guessed median.
-    if rpe and industry_rpe_median and rpe > industry_rpe_median * 4:
-        hw_flags.append(f"HW.1: Revenue/employee ${rpe:,.0f} is >4x industry median (${industry_rpe_median:,.0f})")
+    # 2026-11-27: HW.1 retired. Revenue per employee above 4x the industry median is the low
+    # side of the domain H.1 and H.3 reject as not credible (RPE_RATIO_LO). Of 111 flags, 32
+    # were local-currency revenue printed as dollars and the rest were business models:
+    # refiners, distributors, royalty pharma, REITs, platforms. None reads a claim, and
+    # humanwashing is a claim. MEASUREMENT-32-of-111-hw1-flags-are-a-currency-labelled-as-dollars.md
     displacement = sec_h.get("displacement_signal")
     if displacement and displacement > 30:
         hw_flags.append("HW.2: R&D growth significantly outpacing headcount")
