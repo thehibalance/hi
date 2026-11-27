@@ -224,16 +224,8 @@ const HumanEngine = {
   detectHumanwashing(company) {
     const flags = [];
 
-    if (company.revenuePerEmployee && company.industryMedianRPE) {
-      if (company.revenuePerEmployee > company.industryMedianRPE * 4) {
-        flags.push({
-          id: 'HW.1',
-          name: 'High Automation Signal',
-          detail: 'Revenue per employee exceeds 4x industry median',
-          severity: 25
-        });
-      }
-    }
+    // HW.1 retired 2026-11-27, as in the pipeline (#99). Revenue per employee above 4x the
+    // industry median is a business model or a currency error, not a claim.
 
     if (company.headcountDelta !== undefined && company.aiInvestDelta !== undefined) {
       if (company.headcountDelta < -0.20 && company.aiInvestDelta > 0.30) {
