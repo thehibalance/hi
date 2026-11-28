@@ -537,6 +537,39 @@ def fetch_fmp(ticker, fmp_key):
     return None
 
 
+_FX_USD = {}
+
+
+def _usd_per_unit(ccy):
+    """USD per one unit of `ccy`, from yfinance's latest {CCY}USD=X quote, cached per run.
+
+    Returns None when no finite positive rate is available. The caller then treats revenue as
+    missing, because a missing number is better than a number in the wrong currency.
+    """
+    ccy = (ccy or "").strip().upper()
+    if ccy == "USD":
+        return 1.0
+    if ccy in _FX_USD:
+        return _FX_USD[ccy]
+    rate = None
+    try:
+        import math
+        import yfinance as yf
+        q = yf.Ticker(f"{ccy}USD=X")
+        for getter in (lambda: q.fast_info["last_price"], lambda: (q.info or {}).get("regularMarketPrice")):
+            try:
+                v = float(getter())
+            except Exception:
+                continue
+            if math.isfinite(v) and v > 0:
+                rate = v
+                break
+    except Exception:
+        rate = None
+    _FX_USD[ccy] = rate
+    return rate
+
+
 def fetch_yfinance(ticker):
     """Fetch headcount + revenue from Yahoo Finance via yfinance library.
     
@@ -558,12 +591,22 @@ def fetch_yfinance(ticker):
         info = t.info or {}
         employees = info.get("fullTimeEmployees")
         revenue = info.get("totalRevenue")
+        # 2026-11-27: totalRevenue is in financialCurrency, not USD. Foreign filers reach this
+        # fallback because SEC's path reads us-gaap USD only, and 32 of them were publishing yen,
+        # Taiwan dollars, yuan or rupees per employee as dollars. Convert, or leave it missing.
+        revenue_currency = (info.get("financialCurrency") or "USD").strip().upper()
+        fx_to_usd = None
+        if revenue and revenue_currency != "USD":
+            fx_to_usd = _usd_per_unit(revenue_currency)
+            revenue = revenue * fx_to_usd if fx_to_usd else None
         
         # Only return a result if we have at least one useful field
         if employees or revenue:
             return {
                 "employees": employees if employees else None,
                 "revenue": revenue if revenue else None,
+                "revenue_currency": revenue_currency,
+                "fx_to_usd": fx_to_usd,
                 "sector": info.get("sector", ""),
                 "industry": info.get("industry", ""),
             }
