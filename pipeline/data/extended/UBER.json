@@ -16,9 +16,22 @@
       "raw": {
         "company": "Uber",
         "ticker": "UBER",
-        "queried": false,
-        "reason": "the universe entry has no company name, only the ticker",
-        "source": "FDA"
+        "recalls": 0,
+        "class_i": 0,
+        "class_ii": 0,
+        "source": "FDA",
+        "fetched": "2026-11-28T14:57:29.109892",
+        "firms": {},
+        "rejected_firms": {
+          "Uber Vita LLC": {
+            "recalls": 1,
+            "reason": "a supplement maker; matched on the word 'Uber'"
+          }
+        },
+        "endpoints": {
+          "drug": 404,
+          "food": 200
+        }
       },
       "source": "FDA",
       "absent": true
