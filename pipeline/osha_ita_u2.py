@@ -497,7 +497,7 @@ def headcount_of(u):
 
 ucore = C.defaultdict(list)
 for u in universe:
-    if u["company"].strip().upper() == (u.get("ticker") or "").strip().upper():
+    if u["company"].strip() == (u.get("ticker") or "").strip():
         continue
     u["_hc"] = headcount_of(u)
     u["_key"] = (u.get("ticker") or "").strip() or u["company"].strip()
